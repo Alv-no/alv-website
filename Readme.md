@@ -15,3 +15,9 @@ $ yarn --version
  2.3.3
 ```
 
+## Packages
+
+Package                       | Description
+-------                       | -----------
+[website](./packages/website) | Gatsby-powered website
+[cms](./packages/cms)         | Sanity CMS
