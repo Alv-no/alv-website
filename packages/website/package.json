@@ -1,6 +1,7 @@
 {
   "name": "website",
   "scripts": {
+    "build": "gatsby build",
     "dev": "gatsby develop"
   },
   "dependencies": {
