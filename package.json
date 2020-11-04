@@ -1,7 +1,25 @@
 {
-	"private": true,
-	"scripts": {},
-	"workspaces": [
-		"packages/*"
-	]
+  "private": true,
+  "scripts": {
+    "fix": "run-p -slc --aggregate-output 'fix:*'",
+    "fix:prettier": "prettier --ignore-path .lintignore --check --write \"packages/**/*.{ts,tsx,js,jsx,json,css,scss,html,md}\"",
+    "lint": "run-p -slc --aggregate-output 'lint:*'",
+    "lint:prettier": "prettier --ignore-path .lintignore --check \"packages/**/*.{ts,tsx,js,jsx,json,css,scss,html,md}\""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@blueberrypie/editor-config": "^1.0.0",
+    "@blueberrypie/prettier-config": "^1.0.0",
+    "husky": "^4.3.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s -s lint"
+    }
+  },
+  "prettier": "@blueberrypie/prettier-config"
 }
