@@ -1,6 +1,7 @@
 # Custom
 dist/
 build/
+.editorconfig
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,linux,visualstudiocode,vim,node,yarn
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,linux,visualstudiocode,vim,node,yarn
