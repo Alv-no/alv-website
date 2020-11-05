@@ -4,7 +4,7 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "start:storybook": "start-storybook -p 6006 --no-dll",
-    "build:storybook": "build-storybook --no-dll"
+    "build:storybook": "build-storybook --no-dll --quiet"
   },
   "dependencies": {
     "gatsby": "^2.25.2",
