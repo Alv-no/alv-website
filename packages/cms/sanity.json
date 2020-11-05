@@ -1,0 +1,32 @@
+{
+  "root": true,
+  "project": {
+    "name": "alv-no"
+  },
+  "api": {
+    "projectId": "mnr37rl0",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["@sanity/vision"]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "./src/logo/index.tsx"
+    }
+  ]
+}
