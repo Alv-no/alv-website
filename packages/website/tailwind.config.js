@@ -10,6 +10,9 @@ module.exports = {
         blue: '#1E92D0',
         offwhite: '#F7F7F7',
       },
+      fontFamily: {
+        sans: ['Source Sans Pro', '-apple-system', 'BlinkMacSystemFont'],
+      },
     },
   },
   variants: {},
