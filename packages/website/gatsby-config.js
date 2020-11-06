@@ -15,5 +15,17 @@ module.exports = {
         overlayDrafts: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Source Sans Pro`,
+            subsets: [`latin`],
+            variants: [`300`, `400`, `700`],
+          },
+        ],
+      },
+    },
   ],
 };
