@@ -1,28 +1,16 @@
 import React from 'react';
-import Layout from '../components/layout/Layout';
+import Layout from '../components/layout';
+import { Title } from '../components/title';
 
-const Home = () => {
+const Employees = () => {
   return (
     <Layout>
-      <div className="text-white flex items-center justify-center h-screen flex-col">
-        <p className="text-center text-black p-2">Tailwind color profile:</p>
-        <div className="flex">
-          <div className="p-10 h-10 w-10 flex justify-center items-center bg-blue">
-            Blue
-          </div>
-          <div className="p-10 h-10 w-10 flex justify-center items-center bg-navy">
-            Navy
-          </div>
-          <div className="p-10 h-10 w-10 flex justify-center items-center bg-yellow">
-            Yellow
-          </div>
-          <div className="p-10 h-10 w-10 flex justify-center items-center bg-orange">
-            orange
-          </div>
-        </div>
+      {/* Navy background for illustrative purposes */}
+      <div className="bg-navy h-40 w-full text-4xl py-12">
+        <Title>Ansatte</Title>
       </div>
     </Layout>
   );
 };
 
-export default Home;
+export default Employees;
