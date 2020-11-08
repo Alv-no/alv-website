@@ -9,7 +9,6 @@ module.exports = {
       wide: '.025em',
       wider: '.06em',
       widest: '.1em',
-      widest: '.25em',
     },
     extend: {
       colors: {
@@ -21,6 +20,12 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Source Sans Pro', '-apple-system', 'BlinkMacSystemFont'],
+      },
+      maxWidth: {
+        570: '570px',
+      },
+      spacing: {
+        25: '100px',
       },
       fontSize: {
         'base': ['16px', '26px'],

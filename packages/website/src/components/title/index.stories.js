@@ -16,6 +16,5 @@ export default {
 };
 
 export const Default = ({ children }) => {
-  console.log(children);
   return <Title>{children}</Title>;
 };
