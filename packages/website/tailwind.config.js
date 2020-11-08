@@ -9,6 +9,7 @@ module.exports = {
       wide: '.025em',
       wider: '.06em',
       widest: '.1em',
+      widest: '.25em',
     },
     extend: {
       colors: {
