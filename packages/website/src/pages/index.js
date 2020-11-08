@@ -1,13 +1,19 @@
 import React from 'react';
 import Layout from '../components/layout';
 import { Title } from '../components/title';
+import { Description } from '../components/description';
 
 const Employees = () => {
   return (
     <Layout>
       {/* Navy background for illustrative purposes */}
-      <div className="bg-navy h-40 w-full text-4xl py-12">
+      <div className="bg-navy h-screen w-full text-4xl py-12">
         <Title>Ansatte</Title>
+        <Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </Description>
       </div>
     </Layout>
   );

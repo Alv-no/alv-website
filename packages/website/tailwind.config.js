@@ -21,6 +21,12 @@ module.exports = {
       fontFamily: {
         sans: ['Source Sans Pro', '-apple-system', 'BlinkMacSystemFont'],
       },
+      maxWidth: {
+        570: '570px',
+      },
+      spacing: {
+        25: '100px',
+      },
       fontSize: {
         'base': ['16px', '26px'],
         'lg': ['20px', '22px'],
