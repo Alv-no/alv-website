@@ -10,11 +10,10 @@ export default {
       </div>
     ),
   ],
-  argTypes: {
-    children: 'text',
-  },
 };
 
-export const Default = ({ children }) => {
-  return <Title>{children}</Title>;
+export const Default = ({ children }) => <Title>{children}</Title>;
+Default.args = { children: 'Hello world' };
+Default.argType = {
+  children: 'text',
 };

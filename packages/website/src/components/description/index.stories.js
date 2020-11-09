@@ -16,6 +16,9 @@ const Template = (args) => <Description {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  text:
+  children:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+};
+Default.argType = {
+  children: 'text',
 };

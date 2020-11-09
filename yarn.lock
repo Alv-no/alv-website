@@ -3357,7 +3357,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-controls@npm:6.0.28":
+"@storybook/addon-controls@npm:6.0.28, @storybook/addon-controls@npm:^6.0.28":
   version: 6.0.28
   resolution: "@storybook/addon-controls@npm:6.0.28"
   dependencies:
@@ -25327,6 +25327,7 @@ typescript@^4.0.5:
     "@babel/core": ^7.12.3
     "@mdx-js/react": ^1.6.19
     "@storybook/addon-actions": ^6.0.28
+    "@storybook/addon-controls": ^6.0.28
     "@storybook/addon-docs": ^6.0.28
     "@storybook/addon-essentials": ^6.0.28
     "@storybook/addon-links": ^6.0.28
