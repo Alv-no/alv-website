@@ -1,6 +1,6 @@
 module.exports = {
   future: {},
-  purge: [],
+  purge: false,
   theme: {
     letterSpacing: {
       tighter: '-.05em',
@@ -16,6 +16,7 @@ module.exports = {
         orange: '#F39123',
         yellow: '#EABB26',
         blue: '#1E92D0',
+        darkblue: '#030F24',
         offwhite: '#F7F7F7',
       },
       fontFamily: {
@@ -23,12 +24,22 @@ module.exports = {
       },
       maxWidth: {
         570: '570px',
+        1320: '1320px',
+        100: '400px',
+      },
+      width: {
+        50: '200px',
       },
       spacing: {
+        9: '36px',
+        15: '60px',
         25: '100px',
+        100: '400px',
       },
       fontSize: {
+        'sm': ['14px', '18px'],
         'base': ['16px', '26px'],
+        'footer': ['18px', '30px'],
         'lg': ['20px', '22px'],
         'xl': ['22px', '34px'],
         '2xl': ['32px', '34px'],
