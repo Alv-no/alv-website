@@ -20,6 +20,7 @@
     "@babel/core": "^7.12.3",
     "@mdx-js/react": "^1.6.19",
     "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-controls": "^6.0.28",
     "@storybook/addon-docs": "^6.0.28",
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
