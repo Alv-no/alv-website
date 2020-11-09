@@ -2,7 +2,7 @@ import React from 'react';
 import { Title } from '.';
 
 export default {
-  title: 'components/Title',
+  title: 'components/title',
   decorators: [
     (Story) => (
       <div style={{ background: '#061838' }}>
