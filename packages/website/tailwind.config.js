@@ -19,6 +19,11 @@ module.exports = {
         darkblue: '#030F24',
         offwhite: '#F7F7F7',
       },
+      scale: {
+        10: '0.1',
+        15: '0.15',
+        20: '0.2',
+      },
       fontFamily: {
         sans: ['Source Sans Pro', '-apple-system', 'BlinkMacSystemFont'],
       },
@@ -27,14 +32,19 @@ module.exports = {
         1320: '1320px',
         100: '400px',
       },
+      minWidth: {
+        40: '160px',
+      },
       width: {
         50: '200px',
       },
       spacing: {
-        9: '36px',
-        15: '60px',
-        25: '100px',
-        100: '400px',
+        '2px': '2px',
+        '6px': '6px',
+        '9': '36px',
+        '15': '60px',
+        '25': '100px',
+        '100': '400px',
       },
       fontSize: {
         'sm': ['14px', '18px'],
