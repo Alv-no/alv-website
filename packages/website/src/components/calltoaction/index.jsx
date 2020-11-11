@@ -1,5 +1,9 @@
 import React from 'react';
 
-const CallToAction = () => <div>Call to action</div>;
+const CallToAction = ({ children, onClick, disabled = false }) => (
+  <button onClick={onClick} disabled={disabled}>
+    {children}-&gt;
+  </button>
+);
 
 export default CallToAction;
