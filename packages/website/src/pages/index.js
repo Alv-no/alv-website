@@ -3,12 +3,14 @@ import Layout from '../components/layout';
 import { Title } from '../components/title';
 import { Description } from '../components/description';
 import { Tags } from '../components/tagbar';
+import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
 
 const Employees = () => {
+  const data = useEmployeeQuery();
   return (
     <Layout>
       {/* Navy background for illustrative purposes */}
-      <div className="bg-navy h-screen w-full py-12">
+      <div className="bg-navy w-full py-12">
         <Title>Ansatte</Title>
         <Description>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -16,7 +18,10 @@ const Employees = () => {
           minim veniam.
         </Description>
         <div className="h-24" />
-        <Tags />
+        <Tags
+          sanityTags={data.allSanityEmployeeTag.edges}
+          sanityEmployees={data.allSanityEmployee.edges}
+        />
       </div>
     </Layout>
   );

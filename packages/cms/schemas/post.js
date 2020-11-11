@@ -21,7 +21,7 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: { type: 'author' },
+      to: { type: 'employee' },
     },
     {
       name: 'mainImage',
@@ -30,12 +30,6 @@ export default {
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
     },
     {
       name: 'publishedAt',
