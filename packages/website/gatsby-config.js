@@ -4,7 +4,10 @@ require('dotenv').config({
 
 module.exports = {
   plugins: [
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
+    'gatsby-background-image-es5',
     {
       resolve: `gatsby-source-sanity`,
       options: {

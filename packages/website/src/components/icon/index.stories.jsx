@@ -1,6 +1,7 @@
 import React from 'react';
-import { Tag } from '.';
+import { Tag, Shade } from '.';
 
 export default { title: 'components/icon' };
 
-export const Default = () => <Tag />;
+export const tag = () => <Tag />;
+export const shade = () => <Shade />;

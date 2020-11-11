@@ -37,14 +37,33 @@ module.exports = {
       },
       width: {
         50: '200px',
+        54: '216px',
+        80: '360px',
+        277: '277px',
+      },
+      opacity: {
+        65: '0.65',
+      },
+      gridTemplateColumns: {
+        'employees-sm': '216px 216px 216px',
+        'employees-nine': '277px 277px 277px',
+        'employees-lg': '277px 277px 277px 277px',
+      },
+      height: {
+        90: '360px',
+        70: '280px',
       },
       spacing: {
         '2px': '2px',
         '6px': '6px',
+        '7': '28px',
         '9': '36px',
         '15': '60px',
         '25': '100px',
         '100': '400px',
+      },
+      lineHeight: {
+        sm: '24px',
       },
       fontSize: {
         'sm': ['14px', '18px'],
@@ -57,8 +76,20 @@ module.exports = {
         '4xl': ['40px', '50px'],
         '5xl': ['62px', '72px'],
       },
+      screens: {
+        'sm': '640px',
+        'md': '768px',
+        'nine': '940px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1440px',
+      },
     },
   },
-  variants: {},
+  variants: {
+    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+    filter: ['responsive', 'hover', 'focus', 'group-hover'],
+  },
   plugins: [],
 };

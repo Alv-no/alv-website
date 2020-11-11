@@ -9,3 +9,14 @@ export const Tag = () => (
     />
   </svg>
 );
+
+export const Shade = () => (
+  <svg width="132.875" height="34.615" viewBox="0 0 132.875 34.615">
+    <path
+      data-name="Path 388"
+      d="M122.671,0H0V34.615H132.875Z"
+      fill="#061838"
+      opacity="0.293"
+    />
+  </svg>
+);
