@@ -6,7 +6,9 @@
     "fix:scripts": "eslint --ignore-path .lintignore --cache --fix \"packages/**/*.{ts,tsx,js,jsx,json}\"",
     "lint": "run-p -slc --aggregate-output 'lint:*'",
     "lint:prettier": "prettier --ignore-path .lintignore --check \"packages/**/*.{ts,tsx,js,jsx,json,css,scss,html,md}\"",
-    "lint:scripts": "eslint --ignore-path .lintignore --max-warnings 0 --cache \"packages/**/*.{ts,tsx,js,jsx,json}\""
+    "lint:scripts": "eslint --ignore-path .lintignore --max-warnings 0 --cache \"packages/**/*.{ts,tsx,js,jsx,json}\"",
+    "test": "run-p -slc --aggregate-output 'test:*'",
+    "test:website": "yarn workspace website run test"
   },
   "workspaces": [
     "packages/*"

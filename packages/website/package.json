@@ -5,7 +5,8 @@
     "dev": "gatsby develop",
     "disable-telemetry": "gatsby telemetry --disable",
     "start:storybook": "start-storybook -p 6006 --no-dll",
-    "build:storybook": "build-storybook --no-dll --quiet"
+    "build:storybook": "build-storybook --no-dll --quiet",
+    "test": "jest"
   },
   "dependencies": {
     "gatsby": "^2.25.2",
@@ -25,7 +26,12 @@
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
     "@storybook/react": "^6.0.28",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.1",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.1.0",
+    "babel-preset-gatsby": "^0.5.16",
+    "jest": "^26.6.3",
     "react-is": "^17.0.1"
   }
 }
