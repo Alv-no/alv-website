@@ -51,3 +51,4 @@ Package                       | Description
 -------                       | -----------
 [website](./packages/website) | Gatsby-powered website
 [cms](./packages/cms)         | Sanity CMS
+[infrastructure](./packages/infrastructure) | Terraform Infrastructure as Code for Azure
