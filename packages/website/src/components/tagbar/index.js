@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as Icon from '../icon';
 import { EmployeeCard } from '../employeeCard';
+import { EmployeeBio } from '../employeeBio';
 
 export const Tags = ({ sanityTags, sanityEmployees }) => {
   const [tags, setTags] = useState([]);
@@ -76,6 +77,15 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
           return <EmployeeCard {...employee.node} />;
         })}
       </div>
+      <div className="h-15" />
+      <EmployeeBio
+        firstname="Marcus Peter"
+        lastname="Petterson"
+        title="Daglig Leder og Prosjektleder"
+        id="123"
+        videoEmbed={'https://player.vimeo.com/video/76979871'}
+        bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Laboris nisi ut aliquip ex ea commodo consequat."
+      />
     </div>
   );
 };

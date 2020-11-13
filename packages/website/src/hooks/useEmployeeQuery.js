@@ -21,6 +21,11 @@ export const useEmployeeQuery = () => {
                   }
                 }
               }
+              bio {
+                _rawChildren
+                style
+                list
+              }
             }
           }
         }
