@@ -18,6 +18,7 @@ module.exports = {
         blue: '#1E92D0',
         darkblue: '#030F24',
         offwhite: '#F7F7F7',
+        footerblue: '#051531',
       },
       scale: {
         10: '0.1',

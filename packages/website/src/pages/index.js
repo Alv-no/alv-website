@@ -17,7 +17,7 @@ const Employees = () => {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam.
         </Description>
-        <div className="h-24" />
+        <div className="h-10 sm:h-16 md:h-24" />
         <Tags
           sanityTags={data.allSanityEmployeeTag.edges}
           sanityEmployees={data.allSanityEmployee.edges}
