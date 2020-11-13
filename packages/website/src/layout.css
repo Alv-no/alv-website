@@ -12,3 +12,11 @@
     }
   }
 }
+
+iframe .ytp-large-play-button,
+iframe .ytp-button {
+  display: none;
+}
+#movie_player > div.ytp-cued-thumbnail-overlay > button {
+  display: none;
+}

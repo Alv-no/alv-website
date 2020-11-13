@@ -29,9 +29,10 @@ module.exports = {
         sans: ['Source Sans Pro', '-apple-system', 'BlinkMacSystemFont'],
       },
       maxWidth: {
-        570: '570px',
-        1320: '1320px',
         100: '400px',
+        570: '570px',
+        1200: '1200px',
+        1320: '1320px',
       },
       minWidth: {
         40: '160px',
@@ -41,6 +42,7 @@ module.exports = {
         54: '216px',
         80: '360px',
         277: '277px',
+        140: '560px',
       },
       opacity: {
         65: '0.65',
@@ -51,8 +53,13 @@ module.exports = {
         'employees-lg': '277px 277px 277px 277px',
       },
       height: {
-        90: '360px',
         70: '280px',
+        80: '320px',
+        90: '360px',
+        120: '480px',
+        130: '520px',
+        140: '560px',
+        160: '640px',
       },
       spacing: {
         '2px': '2px',
@@ -60,7 +67,9 @@ module.exports = {
         '7': '28px',
         '9': '36px',
         '15': '60px',
+        '18': '72px',
         '25': '100px',
+        '30': '120px',
         '100': '400px',
       },
       lineHeight: {
