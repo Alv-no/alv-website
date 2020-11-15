@@ -1,5 +1,7 @@
 import React from 'react';
+import LogoColored from './logo_colored.svg';
+import LogoWhite from './logo_white.svg';
 
-const Logo = () => <div>Logo</div>;
+export const Colored = () => <img src={LogoColored} alt="Alv Logo" />;
 
-export default Logo;
+export const White = () => <img src={LogoWhite} alt="Alv Logo" />;
