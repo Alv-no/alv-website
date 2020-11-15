@@ -45,6 +45,16 @@ export default {
       ],
     },
     {
+      name: 'videoLink',
+      title: 'Video link',
+      type: 'string',
+    },
+    {
+      name: 'pdfLink',
+      title: 'CV link',
+      type: 'string',
+    },
+    {
       name: 'tags',
       title: 'Tags',
       type: 'array',

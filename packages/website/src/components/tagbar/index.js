@@ -1,12 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import * as Icon from '../icon';
+import * as Button from '../button';
 import { EmployeeCard } from '../employeeCard';
 import { EmployeeBio } from '../employeeBio';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export const Tags = ({ sanityTags, sanityEmployees }) => {
-  const [tags, setTags] = useState([]);
-  const [filteredEmployees, setFilteredEmployees] = useState(sanityEmployees);
+  const { width } = useWindowDimensions();
+  const [filteredEmployees, setFilteredEmployees] = useState(
+    sanityEmployees.map((el) => el.node)
+  );
+  const [tags, setTags] = useState(null);
+  const [columnsNr, setColumnsNr] = useState(null);
+  const [rows, setRows] = useState(null);
+  const [employeeGroups, setEmployeeGroups] = useState(null);
+  const [activeBio, setActiveBio] = useState(null);
+  const [visibleRows, setVisibleRows] = useState(1);
 
+  // On window.innerWidth < 1440, update number of grid columns from 4 to 3.
+  useEffect(() => {
+    setColumnsNr(width >= 1440 ? 4 : 3);
+  }, [width]);
+
+  // Update number of rows whenever number of visible employees change, and whenever screen resize lead to columnsNr change.
+  useEffect(() => {
+    setRows(Math.ceil(filteredEmployees.length / columnsNr));
+  }, [filteredEmployees, columnsNr]);
+
+  // Find all employee tags once component has mounted
   useEffect(() => {
     if (sanityTags !== undefined || sanityTags !== null) {
       const arr = sanityTags.map((sanityTag) => sanityTag.node.tag);
@@ -14,33 +35,72 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
     }
   }, [sanityTags]);
 
+  // Render independent rows of employee cards based on window.innerWidth, active tags and visible rows.
+  useEffect(() => {
+    if (typeof rows == 'number' && rows < 50) {
+      setEmployeeGroups(() => {
+        const newGroup = [];
+        const showEmployees = filteredEmployees;
+        let i;
+        for (i = 0; i < rows || newGroup.length < visibleRows; i++) {
+          const currentGroup = showEmployees.slice(
+            i * columnsNr,
+            (i + 1) * columnsNr
+          );
+          showEmployees.slice(0, columnsNr);
+          newGroup.push(currentGroup);
+        }
+        return newGroup;
+      });
+    }
+  }, [rows, filteredEmployees, columnsNr, visibleRows]);
+
+  // Filter employees based on active tags
   const filterEmployees = (tags) => {
     const filteredEmployeeArr = sanityEmployees.filter((employee) => {
       let test;
-      employee.node.tags.forEach((node) => {
-        if (!test) {
-          tags.indexOf(node.tag) > -1 ? (test = true) : (test = false);
-        }
-      });
+      employee.node.tags.forEach((node) =>
+        !test ? (test = tags.indexOf(node.tag) > -1) : null
+      );
       return test;
     });
-    return setFilteredEmployees(filteredEmployeeArr);
+    return setFilteredEmployees(filteredEmployeeArr.map((el) => el.node));
   };
 
+  // Add or remove clicked tag from state
   const handleClick = (e) => {
     const currentTag = e.target.value;
     let activeTags = tags;
     if (activeTags.indexOf(currentTag) > -1) {
-      // Remove tag from state
       activeTags = activeTags.filter((tag) => tag !== currentTag);
       e.target.style.opacity = 0.5;
     } else {
-      // Add tag to state
       e.target.style.opacity = 1;
       activeTags.push(currentTag);
     }
     setTags(activeTags);
     filterEmployees(activeTags);
+  };
+
+  // Update activeBio state with employee object corresponding to card clicked
+  const handleCardClick = (e) => {
+    if (activeBio && e.target.id === activeBio.id) {
+      return setActiveBio(null);
+    }
+    const currentBio = filteredEmployees.find(
+      (employee) => employee.id === e.target.id
+    );
+    setActiveBio(currentBio);
+  };
+
+  // Close button
+  const handleCloseClick = () => {
+    setActiveBio(null);
+  };
+
+  // Increase maximum number of employee groups to be rendered
+  const handleViewMoreClick = () => {
+    setVisibleRows(visibleRows + 3);
   };
 
   return (
@@ -72,20 +132,37 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
       </div>
 
       {/* EMPLOYEE CARDS */}
-      <div className="grid gap-4 justify-center mx-auto sm:grid-cols-employees-sm nine:grid-cols-employees-nine 2xl:grid-cols-employees-lg">
-        {filteredEmployees.map((employee) => {
-          return <EmployeeCard {...employee.node} />;
-        })}
+      {employeeGroups
+        ? employeeGroups.map((group) => (
+            <>
+              <div
+                className="grid gap-4 justify-center mx-auto sm:grid-cols-employees-sm nine:grid-cols-employees-nine 2xl:grid-cols-employees-lg mb-4"
+                key={employeeGroups.indexOf(group)}
+              >
+                {group.map((employee) => (
+                  <EmployeeCard
+                    {...employee}
+                    handleClick={handleCardClick}
+                    key={employee.id}
+                  />
+                ))}
+              </div>
+              {activeBio && group.some((el) => el.id === activeBio.id) ? (
+                <EmployeeBio
+                  {...activeBio}
+                  handleCloseClick={handleCloseClick}
+                  bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Laboris nisi ut aliquip ex ea commodo consequat."
+                />
+              ) : null}
+            </>
+          ))
+        : null}
+      <div className="max-w-1200 px-5 mx-auto flex justify-between mt-15">
+        <div />
+        <div className="font-bold tracking-wider" onClick={handleViewMoreClick}>
+          <Button.Line>View More</Button.Line>
+        </div>
       </div>
-      <div className="h-15" />
-      <EmployeeBio
-        firstname="Marcus Peter"
-        lastname="Petterson"
-        title="Daglig Leder og Prosjektleder"
-        id="123"
-        videoEmbed={'https://player.vimeo.com/video/76979871'}
-        bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Laboris nisi ut aliquip ex ea commodo consequat."
-      />
     </div>
   );
 };

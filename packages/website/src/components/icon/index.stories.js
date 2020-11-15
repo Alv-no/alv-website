@@ -6,3 +6,5 @@ export default { title: 'components/icon' };
 export const tag = () => <Icon.Tag />;
 export const shade = () => <Icon.Shade />;
 export const cv = () => <Icon.Cv />;
+export const cross = () => <Icon.Cross />;
+export const ctaArrow = () => <Icon.CtaArrow />;

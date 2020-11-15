@@ -20,11 +20,6 @@ module.exports = {
         offwhite: '#F7F7F7',
         footerblue: '#051531',
       },
-      scale: {
-        10: '0.1',
-        15: '0.15',
-        20: '0.2',
-      },
       fontFamily: {
         sans: ['Source Sans Pro', '-apple-system', 'BlinkMacSystemFont'],
       },
@@ -33,6 +28,7 @@ module.exports = {
         570: '570px',
         1200: '1200px',
         1320: '1320px',
+        1400: '1400px',
       },
       minWidth: {
         40: '160px',
@@ -70,7 +66,17 @@ module.exports = {
         '18': '72px',
         '25': '100px',
         '30': '120px',
+        '35': '140px',
         '100': '400px',
+      },
+      scale: {
+        10: '0.1',
+        15: '0.15',
+        20: '0.2',
+        60: '.60',
+        65: '.65',
+        80: '.80',
+        95: '.95',
       },
       lineHeight: {
         sm: '24px',
@@ -85,6 +91,7 @@ module.exports = {
         '3xl': ['36px', '46px'],
         '4xl': ['40px', '50px'],
         '5xl': ['62px', '72px'],
+        'cta': ['26px', '26px'],
       },
       screens: {
         'sm': '640px',
