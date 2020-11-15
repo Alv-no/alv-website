@@ -1,6 +1,7 @@
 import React from 'react';
-import Logo from './index';
+import * as Logo from './index';
 
 export default { title: 'components/logo' };
 
-export const Default = () => <Logo />;
+export const Colored = () => <Logo.Colored />;
+export const White = () => <Logo.White />;
