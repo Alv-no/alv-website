@@ -8,10 +8,13 @@ export const EmployeeCard = ({
   firstname,
   lastname,
   title,
+  handleClick,
 }) => (
   <div
     className="text-white relative group flex cursor-pointer h-90 w-277 sm:w-54 sm:h-70 nine:w-277 nine:h-90 overflow-hidden filter-grayscale hover:filter-grayscale-0 pb-2"
+    onClick={handleClick}
     key={id}
+    id={id}
   >
     <div className="h-90 w-277 sm:w-54 sm:h-70 nine:w-277 nine:h-100 absolute transition opacity-50 group-hover:opacity-100  duration-300 pointer-events-none">
       <img
@@ -34,7 +37,7 @@ export const EmployeeCard = ({
       <div className="text-xl tracking-wider uppercase leading-sm font-bold">
         {firstname}
       </div>
-      <div className="text-xl tracking-wider uppercase leading-sm pb-2">
+      <div className="text-xl tracking-wider uppercase leading-sm pb-2 font-thin">
         {lastname}
       </div>
       <div className="text-sm tracking-wider px-2">{title}</div>

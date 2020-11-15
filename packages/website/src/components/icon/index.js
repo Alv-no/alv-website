@@ -20,3 +20,79 @@ export const Shade = () => (
     />
   </svg>
 );
+
+export const Cross = () => (
+  <svg width="30.557" height="30.557" viewBox="0 0 30.557 30.557">
+    <path
+      d="M15.278,18.056l-12.5,12.5L0,27.778l12.5-12.5L0,2.777,2.777,0l12.5,12.5L27.778,0l2.779,2.777-12.5,12.5,12.5,12.5-2.779,2.779Z"
+      fill="#fff"
+    />
+  </svg>
+);
+
+export const CtaArrow = () => (
+  <svg width="67" height="67" viewBox="0 0 67 67">
+    <g transform="translate(-950 -2347)">
+      <g transform="translate(-312 1436)">
+        <g
+          transform="translate(1262 911)"
+          fill="none"
+          stroke="#fff"
+          stroke-width="3"
+        >
+          <circle cx="33.5" cy="33.5" r="33.5" stroke="none" />
+          <circle cx="33.5" cy="33.5" r="32" fill="none" />
+        </g>
+      </g>
+      <path
+        id="Path_375"
+        d="M-13902.463,2330.474l9.32,9.083-9.32,9.439"
+        transform="translate(14881.65 41.026)"
+        fill="none"
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="4"
+      />
+    </g>
+  </svg>
+);
+
+export const Cv = () => (
+  <svg width="15" height="12" viewBox="0 0 15 12">
+    <g data-name="Group 3848" transform="translate(-151.5 -1413.5)">
+      <g id="Group_3849" data-name="Group 3849" transform="translate(-62 68)">
+        <line
+          id="Line_52"
+          data-name="Line 52"
+          x2="13"
+          transform="translate(214.5 1346.5)"
+          fill="none"
+          stroke="#eabb26"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <line
+          id="Line_53"
+          data-name="Line 53"
+          x2="13"
+          transform="translate(214.5 1351.5)"
+          fill="none"
+          stroke="#eabb26"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <path
+          id="Path_389"
+          data-name="Path 389"
+          d="M0,0H7.465"
+          transform="translate(214.5 1356.5)"
+          fill="none"
+          stroke="#eabb26"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+      </g>
+    </g>
+  </svg>
+);

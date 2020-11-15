@@ -14,12 +14,19 @@ export const useEmployeeQuery = () => {
               id
               title
               experience
+              videoLink
+              pdfLink
               image {
                 asset {
                   fluid(maxWidth: 450) {
                     src
                   }
                 }
+              }
+              bio {
+                _rawChildren
+                style
+                list
               }
             }
           }
