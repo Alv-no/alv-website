@@ -90,6 +90,7 @@ module.exports = {
     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     filter: ['responsive', 'hover', 'focus', 'group-hover'],
+    fontBold: ['last'],
   },
   plugins: [],
 };
