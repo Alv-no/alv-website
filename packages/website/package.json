@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "browser-monads": "^1.0.0",
     "gatsby": "^2.25.2",
     "gatsby-plugin-postcss": "^3.0.4",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
