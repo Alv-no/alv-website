@@ -86,6 +86,7 @@ module.exports = {
         'sm': ['14px', '18px'],
         'base': ['16px', '26px'],
         'footer': ['18px', '30px'],
+        'mobile': ['18px', '28px'],
         'lg': ['20px', '22px'],
         'xl': ['22px', '34px'],
         '2xl': ['32px', '34px'],
