@@ -46,10 +46,9 @@ module.exports = {
         65: '0.65',
       },
       gridTemplateColumns: {
-        'employees-sm': 'minmax(100px, 200px) 200px 200px',
-        // 'employees-nine': 'repeat(minmax(277px, 216px))',
-        'employees-twelve': 'repeat(3, minmax(100px, 200px))',
-        // 'employees-lg': 'repeat(3, minmax(100px, 200px))',
+        'employees-sm': 'minmax(216px, 1fr) minmax(216px, 1fr)',
+        'employees-md': 'repeat(3, minmax(216px, 1fr))',
+        'employees-lg': 'repeat(4, minmax(216px, 1fr))',
       },
       height: {
         70: '280px',
@@ -100,8 +99,9 @@ module.exports = {
       },
       screens: {
         'sm': '640px',
+        'seven': '700px',
         'md': '768px',
-        'nine': '940px',
+        'nine': '930px',
         'lg': '1024px',
         'twelve': '1200px',
         'xl': '1280px',
