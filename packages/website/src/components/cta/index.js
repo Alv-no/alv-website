@@ -23,7 +23,7 @@ export const Cta = ({ internalLink, buttonText, description }) => (
             <img
               src={image}
               alt="cta"
-              className="object-cover transform scale-95"
+              className="object-cover transform 2xl:scale-95"
             />
           </Link>
         </div>
