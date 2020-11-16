@@ -38,7 +38,7 @@ export const CtaArrow = () => (
           transform="translate(1262 911)"
           fill="none"
           stroke="#fff"
-          stroke-width="3"
+          strokeWidth="3"
         >
           <circle cx="33.5" cy="33.5" r="33.5" stroke="none" />
           <circle cx="33.5" cy="33.5" r="32" fill="none" />
@@ -50,11 +50,32 @@ export const CtaArrow = () => (
         transform="translate(14881.65 41.026)"
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
       />
     </g>
+  </svg>
+);
+
+export const Dropdown = () => (
+  <div className="flex flex-col justify-center items-center h-7">
+    <div className="w-7 bg-white h-px mb-2" />
+    <div className="w-7 bg-white h-px" />
+  </div>
+);
+
+export const ContactArrow = () => (
+  <svg width="14.309" height="26.468" viewBox="0 0 14.309 26.468">
+    <path
+      d="M-13902.461,2330.474l11.895,11.592-11.895,12.047"
+      transform="translate(13903.875 -2329.06)"
+      fill="none"
+      stroke="#fff"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    />
   </svg>
 );
 
@@ -69,8 +90,8 @@ export const Cv = () => (
           transform="translate(214.5 1346.5)"
           fill="none"
           stroke="#eabb26"
-          stroke-linecap="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeWidth="2"
         />
         <line
           id="Line_53"
@@ -79,8 +100,8 @@ export const Cv = () => (
           transform="translate(214.5 1351.5)"
           fill="none"
           stroke="#eabb26"
-          stroke-linecap="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeWidth="2"
         />
         <path
           id="Path_389"
@@ -89,8 +110,8 @@ export const Cv = () => (
           transform="translate(214.5 1356.5)"
           fill="none"
           stroke="#eabb26"
-          stroke-linecap="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeWidth="2"
         />
       </g>
     </g>

@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Checkbox = ({ children, value, onChange, defaultValue = undefined }) => {
+export const Checkbox = ({
+  children,
+  value,
+  onChange,
+  defaultValue = undefined,
+}) => {
   if (defaultValue === undefined) defaultValue = value;
 
   return (
@@ -10,10 +15,10 @@ const Checkbox = ({ children, value, onChange, defaultValue = undefined }) => {
         defaultChecked={defaultValue}
         value={value}
         onChange={onChange}
-        className="hidden"
+        className="border-white border absolute cursor-pointer"
       />
       <span
-        className="text-white text-sm min-w-40 cursor-pointer border border-white rounded-full py-6px px-4 flex items-center focus:outline-none mr-6px mb-2 font-bold tracking-wider"
+        className="text-sm min-w-40 border border-white mr-6px rounded-full py-6px px-4 flex items-center focus:outline-none tracking-wider cursor-pointer"
         style={{ opacity: value ? '1' : '0.5' }}
       >
         <span className="transform -translate-y-1px pointer-events-none mx-auto font-bold">
@@ -23,5 +28,3 @@ const Checkbox = ({ children, value, onChange, defaultValue = undefined }) => {
     </label>
   );
 };
-
-export default Checkbox;

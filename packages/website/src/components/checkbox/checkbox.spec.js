@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Checkbox from '.';
+import { Checkbox } from '.';
 
 describe('Checkbox-component', () => {
   it('should render', () => {
