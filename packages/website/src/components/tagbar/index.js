@@ -22,7 +22,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
 
   // Update number of rows whenever number of visible employees change, and whenever screen resize lead to columnsNr change.
   useEffect(() => {
-    setColumnsNr(width >= 1200 ? 4 : 3);
+    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : 2);
     setRows(Math.ceil(filteredEmployees.length / columnsNr));
   }, [filteredEmployees, columnsNr, width]);
 
@@ -123,7 +123,8 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
               return (
                 <>
                   <div
-                    className="grid gap-4 justify-center mx-auto sm:grid-cols-employees-sm twelve:grid-cols-employees-twelve mb-4"
+                    // className="grid gap-4 justify-center mx-auto sm:grid-cols-employees-sm twelve:grid-cols-employees-twelve mb-4"
+                    className="grid gap-4 justify-center mx-auto mb-4 max-w-1200 px-10 seven:px-5 grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
                     key={employeeGroups.indexOf(group)}
                   >
                     {group.map((employee) => (
@@ -149,7 +150,10 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
         : null}
       <div className="max-w-1200 px-5 mx-auto flex justify-between mt-15">
         <div />
-        <div className="font-bold tracking-wider" onClick={handleViewMoreClick}>
+        <div
+          className="font-bold tracking-wider pr-2px"
+          onClick={handleViewMoreClick}
+        >
           <Button.Line>View More</Button.Line>
         </div>
       </div>

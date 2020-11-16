@@ -12,18 +12,15 @@ export const EmployeeCard = ({
 }) => (
   <div
     className="text-white relative group flex cursor-pointer overflow-hidden filter-grayscale hover:filter-grayscale-0 pb-130c h-0"
-    // className="text-white relative group flex cursor-pointer twelve:w-54 twelve:h-70 h-90 w-277 sm:w-54 sm:h-70 nine:w-277 nine:h-90 overflow-hidden filter-grayscale hover:filter-grayscale-0 pb-2"
     onClick={handleClick}
     key={id}
     id={id}
   >
-    <div className="absolute h-full  w-full max-w-277px transition opacity-50 group-hover:opacity-100 duration-300 pointer-events-none">
-      {/* <div className="h-90 w-277 sm:w-54 sm:h-70 twelve:w-54 twelve:h-70 nine:w-277 nine:h-100 absolute transition opacity-50 group-hover:opacity-100  duration-300 pointer-events-none"> */}
+    <div className="absolute h-full w-full max-w-277px transition opacity-75 group-hover:opacity-100 duration-300 pointer-events-none">
       <img
         src={image.asset.fluid.src}
         alt={firstname}
-        className="object-cover h-full"
-        // className="object-cover  h-auto transform translate-y-2 scale-110"
+        className="object-cover h-full w-full"
       />
     </div>
     <div className="absolute mt-2 z-10 pointer-events-none">
