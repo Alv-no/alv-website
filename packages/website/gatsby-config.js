@@ -19,15 +19,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Source Sans Pro`,
-            subsets: [`latin`],
-            variants: [`300`, `400`, `700`],
-          },
-        ],
+        fonts: [`source sans pro:200,300,400,700`],
+        display: 'swap',
       },
     },
   ],
