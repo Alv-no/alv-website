@@ -146,7 +146,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
             return null;
           })
         : null}
-      <div className="max-w-1200 mx-auto flex justify-between sm:mt-15 xs:mt-12 mt-10 px-6">
+      <div className="max-w-1200 mx-auto flex justify-between sm:mt-15 xs:mt-12 mt-10 twelve:px-6">
         <div />
         <div
           className="font-bold tracking-wider pr-2px"
