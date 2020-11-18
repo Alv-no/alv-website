@@ -117,7 +117,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
     <div className="w-full text-white xs:px-6 overflow-hidden">
       <div className="mx-auto flex md:flex-row flex-col text-white sm:items-center justify-center px-4 sm:px-4 mb-10">
         <div className="flex mr-4 text-base tracking-wider font-bold mb-5 sm:mb-3">
-          Tags{' '}
+          Kategorier{' '}
           <span className="transform scale-10 -translate-y-2px h-5 -mx-32">
             <Icon.Tag />
           </span>
@@ -170,7 +170,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
           className="font-bold tracking-wider pr-2px"
           onClick={handleViewMoreClick}
         >
-          <Button.Line>View More</Button.Line>
+          <Button.Line>Se Mer</Button.Line>
         </div>
       </div>
     </div>

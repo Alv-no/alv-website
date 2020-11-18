@@ -1,27 +1,29 @@
 import React from 'react';
 
 export const Footer = ({ ctaText, org, address, email }) => (
-  <footer className="bg-footerblue seven:pt-12 seven:pb-10 px-6 py-15">
+  <footer className="bg-footerblue seven:pt-12 seven:pb-10 seven:px-12 px-6 py-15">
     <div className="mx-auto max-w-1600 text-left flex flex-col seven:flex-row md:items-stretch text-white">
       <div className="tracking-wider mb-10 seven:mb-0">
-        <h4 className="text-lg pb-5 font-bold tracking-wider">CONTACT US</h4>
+        <h4 className="text-lg pb-5 font-bold tracking-wider uppercase">
+          Kontakt Oss
+        </h4>
         <h5 className="text-footer font-bold">ALV AS</h5>
         <p className="text-footer tracking-wider">{org}</p>
         <p className="text-footer tracking-wider">{address}</p>
         <p className="text-footer tracking-wider">{email}</p>
       </div>
       <div className="tracking-wider lg:ml-32 md:ml-15 seven:ml-10 mb-12 seven:mb-0">
-        <h4 className="text-lg pb-5 font-bold tracking-wider">
-          SUBSCRIBE VIA EMAIL
+        <h4 className="text-lg pb-5 font-bold tracking-wider uppercase">
+          Meld deg på nyhetsbrev
         </h4>
         <p className="text-footer max-w-100 pb-5 tracking-wider">{ctaText}</p>
         <div className="inline-flex">
           <input
             className="w-50 rounded-full text-sm py-3 px-5 outline-none border border-white bg-footerblue placeholder-white"
-            placeholder="Email Address"
+            placeholder="E-post"
           />
-          <button className="ml-6 focus:outline-none text-sm tracking-wider font-bold">
-            SUBSCRIBE
+          <button className="ml-6 focus:outline-none text-sm tracking-wider font-bold uppercase">
+            Meld På
           </button>
         </div>
       </div>
