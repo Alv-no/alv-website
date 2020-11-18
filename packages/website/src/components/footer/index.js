@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Footer = ({ ctaText, org, address, email }) => (
   <footer className="bg-footerblue  md:pt-12 md:pb-10 p-15">
-    <div className="mx-auto max-w-1600 text-center md:text-left flex flex-col md:flex-row items-center md:items-stretch text-white">
+    <div className="mx-auto max-w-1600 text-left flex flex-col sm:flex-row items-center md:items-stretch text-white">
       <div className="tracking-wider mb-10 md:mb-0">
         <h4 className="text-lg pb-5 font-bold tracking-wider">CONTACT US</h4>
         <h5 className="text-footer font-bold">ALV AS</h5>

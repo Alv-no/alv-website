@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Description = ({ children, align }) => (
   <p
-    className={`text-white text-${align} lg:text-xl text-mobile max-w-570 tracking-wider mx-5 sm:mx-auto font-thin `}
+    className={`text-white text-${align} lg:text-xl text-lg leading-relaxed max-w-570 tracking-wider sm:ml sm:font-thin `}
   >
     {children}
   </p>
