@@ -46,6 +46,7 @@ module.exports = {
       },
       opacity: {
         65: '0.65',
+        70: '0.65',
       },
       gridTemplateColumns: {
         'employees-xs': '1fr',
