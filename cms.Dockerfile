@@ -1,5 +1,5 @@
 # Stage 1 - Building the website
-FROM node:14-alpine
+FROM node:14
 
 WORKDIR /app
 RUN mkdir -p /app/packages/website
