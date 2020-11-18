@@ -1,16 +1,16 @@
 import React from 'react';
 
 export const Footer = ({ ctaText, org, address, email }) => (
-  <footer className="bg-footerblue  md:pt-12 md:pb-10 p-15">
-    <div className="mx-auto max-w-1600 text-left flex flex-col sm:flex-row items-center md:items-stretch text-white">
-      <div className="tracking-wider mb-10 md:mb-0">
+  <footer className="bg-footerblue seven:pt-12 seven:pb-10 px-6 py-15">
+    <div className="mx-auto max-w-1600 text-left flex flex-col seven:flex-row md:items-stretch text-white">
+      <div className="tracking-wider mb-10 seven:mb-0">
         <h4 className="text-lg pb-5 font-bold tracking-wider">CONTACT US</h4>
         <h5 className="text-footer font-bold">ALV AS</h5>
         <p className="text-footer tracking-wider">{org}</p>
         <p className="text-footer tracking-wider">{address}</p>
         <p className="text-footer tracking-wider">{email}</p>
       </div>
-      <div className="tracking-wider lg:ml-32 md:ml-15 sm:ml-10 mb-12 md:mb-0">
+      <div className="tracking-wider lg:ml-32 md:ml-15 seven:ml-10 mb-12 seven:mb-0">
         <h4 className="text-lg pb-5 font-bold tracking-wider">
           SUBSCRIBE VIA EMAIL
         </h4>
@@ -26,7 +26,7 @@ export const Footer = ({ ctaText, org, address, email }) => (
         </div>
       </div>
       <div className="md:ml-auto relative w-20">
-        <p className="mt-full md:absolute bottom-0">
+        <p className="mt-full seven:absolute bottom-0">
           Alv © {new Date().getFullYear()}
         </p>
       </div>
