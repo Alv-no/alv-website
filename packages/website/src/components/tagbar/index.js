@@ -18,6 +18,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
   const [rows, setRows] = useState(null);
   const [employeeGroups, setEmployeeGroups] = useState(null);
   const [activeBio, setActiveBio] = useState(null);
+  const [activeElement, setActiveElement] = useState(null);
   const [visibleRows, setVisibleRows] = useState(3);
 
   // Update number of rows whenever number of visible employees change, and whenever screen resize lead to columnsNr change.
@@ -76,17 +77,34 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
   // Update activeBio state with employee object corresponding to card clicked
   const handleCardClick = (e) => {
     if (activeBio && e.target.id === activeBio.id) {
+      e.target.style.filter = '';
+      e.target.firstChild.style.opacity = '';
       return setActiveBio(null);
     }
     const currentBio = filteredEmployees.find(
       (employee) => employee.id === e.target.id
     );
+
+    if (activeElement) {
+      activeElement.style.filter = '';
+      activeElement.firstChild.style.opacity = '';
+    }
+
+    if (width < 480) {
+      e.target.style.filter = 'grayscale(0)';
+      e.target.firstChild.style.opacity = 1;
+    }
+
     setActiveBio(currentBio);
+    setActiveElement(e.target);
   };
 
   // Close employee bio section by clearing activeBio state
   const handleCloseClick = () => {
+    activeElement.style.filter = '';
+    activeElement.firstChild.style.opacity = '';
     setActiveBio(null);
+    setActiveElement(null);
   };
 
   // Increase maximum number of employee groups to be rendered
