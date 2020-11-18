@@ -3,7 +3,7 @@ import React from 'react';
 export const Tag = ({ handleClick, id, tag, children }) => {
   return (
     <button
-      className="text-sm min-w-40 border border-white rounded-full py-6px px-4 flex items-center focus:outline-none mr-6px mb-2 tracking-wider"
+      className="transform sm:scale-100 scale-90 text-sm min-w-40 border-2 border-yellow sm:border-white rounded-full py-6px px-4 flex items-center focus:outline-none -mr-3 sm:mr-6px mb-2 tracking-wider"
       onClick={handleClick}
       key={id}
       value={tag}

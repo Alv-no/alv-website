@@ -11,14 +11,16 @@ const Employees = () => {
   return (
     <Layout>
       {/* Navy background for illustrative purposes */}
-      <div className="bg-navy w-full pt-16 pb-12">
+      <div className="bg-navy w-full pt-8 sm:pt-16 pb-12">
         <Title>Ansatte</Title>
-        <div className="h-3" />
-        <Description align="center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
-        </Description>
+        <div className="sm:h-3 h-4" />
+        <div className="flex justify-center">
+          <Description align="center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </Description>
+        </div>
         <div className="h-10 sm:h-16 md:h-24 mt-3" />
         <Tags
           sanityTags={data.allSanityEmployeeTag.edges}

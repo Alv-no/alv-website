@@ -13335,6 +13335,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-google-fonts@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "gatsby-plugin-google-fonts@npm:1.0.1"
+  checksum: c4ffa36b74f896ab0da7d3b25d613025d15e24fb51564e0afcec02114bf1d0c9e92426de137cf5dd14f00ee7c408736b7edb470f34896970a734cbc843c8a12a
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-page-creator@npm:^2.3.35":
   version: 2.3.35
   resolution: "gatsby-plugin-page-creator@npm:2.3.35"
@@ -22350,7 +22357,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.5.10, prop-types@npm:^15.5.4, prop-types@npm:^15.5.7, prop-types@npm:^15.6, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.5.10, prop-types@npm:^15.5.4, prop-types@npm:^15.5.7, prop-types@npm:^15.5.8, prop-types@npm:^15.6, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
   dependencies:
@@ -22613,7 +22620,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"raf@npm:^3.4.1":
+"raf@npm:^3.3.0, raf@npm:^3.4.1":
   version: 3.4.1
   resolution: "raf@npm:3.4.1"
   dependencies:
@@ -22978,6 +22985,19 @@ fsevents@^1.2.7:
   version: 3.2.0
   resolution: "react-fast-compare@npm:3.2.0"
   checksum: 6fe65c889eb4f326e97769135f97b3d63ac68737866f9c37f9625c9de4f5eaa9abed6f748eb3fd6a66808392118842916309cab7cfa99c67991f0c837433d6d2
+  languageName: node
+  linkType: hard
+
+"react-headroom@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "react-headroom@npm:3.0.0"
+  dependencies:
+    prop-types: ^15.5.8
+    raf: ^3.3.0
+    shallowequal: ^1.1.0
+  peerDependencies:
+    react: ^16.3.0
+  checksum: 5fddd6ceda22158bbe19f2a6f877ca002b9f814bdddd90c6b3c7099b508150dca9374c2178186452dcac9744a57b6e6b7196816f3c2dadf139774fb476e3d839
   languageName: node
   linkType: hard
 
@@ -28224,6 +28244,7 @@ typescript@^4.0.5:
     gatsby: ^2.25.2
     gatsby-background-image-es5: ^1.1.2
     gatsby-image: ^2.4.21
+    gatsby-plugin-google-fonts: ^1.0.1
     gatsby-plugin-postcss: ^3.0.4
     gatsby-plugin-prefetch-google-fonts: ^1.4.3
     gatsby-plugin-sharp: ^2.7.1
@@ -28233,6 +28254,7 @@ typescript@^4.0.5:
     jest: ^26.6.3
     react: ^17.0.1
     react-dom: ^17.0.1
+    react-headroom: ^3.0.0
     react-is: ^17.0.1
     tailwindcss: ^1.9.6
   languageName: unknown

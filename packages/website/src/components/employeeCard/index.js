@@ -16,14 +16,14 @@ export const EmployeeCard = ({
     key={id}
     id={id}
   >
-    <div className="absolute h-full w-full max-w-277px transition opacity-75 group-hover:opacity-100 duration-300 pointer-events-none">
+    <div className="absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen xs:max-w-277px transition opacity-75 group-hover:opacity-100 duration-300 pointer-events-none">
       <img
         src={image.asset.fluid.src}
         alt={firstname}
-        className="object-cover h-full w-full"
+        className="object-cover h-full xs:w-full"
       />
     </div>
-    <div className="absolute mt-2 z-10 pointer-events-none">
+    <div className="absolute mt-2 z-10 pointer-events-none transform translate-x-4 xs:translate-x-0">
       <Icon.Shade />
       <div className="z-10 relative transform -translate-y-9 translate-x-2 text-sm flex items-center tracking-wider pt-2px">
         <span className="text-xl font-bold mr-1 pointer-events-none">

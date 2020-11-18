@@ -22,7 +22,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
 
   // Update number of rows whenever number of visible employees change, and whenever screen resize lead to columnsNr change.
   useEffect(() => {
-    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : 2);
+    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 1);
     setRows(Math.ceil(filteredEmployees.length / columnsNr));
   }, [filteredEmployees, columnsNr, width]);
 
@@ -60,7 +60,6 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
 
   // Add or remove clicked tag from state
   const handleClick = (e) => {
-    console.log(e);
     const currentTag = e.target.value;
     let activeTags = tags;
     if (activeTags.indexOf(currentTag) > -1) {
@@ -97,15 +96,15 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
 
   return (
     // FILTER SECTION
-    <div className="w-full text-white">
-      <div className="mx-auto flex md:flex-row flex-col text-white items-center justify-center px-4 mb-10">
-        <div className="flex mr-4 text-base tracking-wider font-bold mb-3">
+    <div className="w-full text-white xs:px-6 overflow-hidden">
+      <div className="mx-auto flex md:flex-row flex-col text-white sm:items-center justify-center px-4 sm:px-4 mb-10">
+        <div className="flex mr-4 text-base tracking-wider font-bold mb-5 sm:mb-3">
           Tags{' '}
           <span className="transform scale-10 -translate-y-2px h-5 -mx-32">
             <Icon.Tag />
           </span>
         </div>
-        <div className="flex -ml-4 flex-wrap items-center justify-center">
+        <div className="flex -ml-4 flex-wrap items-center">
           {sanityTags.map((sanityTag) => {
             return (
               <Tag handleClick={handleClick} {...sanityTag.node}>
@@ -119,12 +118,11 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
       {/* EMPLOYEE CARDS */}
       {employeeGroups
         ? employeeGroups.map((group) => {
-            if (group.length > 1) {
+            if (group.length > 0) {
               return (
                 <>
                   <div
-                    // className="grid gap-4 justify-center mx-auto sm:grid-cols-employees-sm twelve:grid-cols-employees-twelve mb-4"
-                    className="grid gap-4 justify-center mx-auto mb-4 max-w-1200 px-10 seven:px-5 grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
+                    className="grid xs:gap-4 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
                     key={employeeGroups.indexOf(group)}
                   >
                     {group.map((employee) => (
@@ -148,7 +146,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
             return null;
           })
         : null}
-      <div className="max-w-1200 px-5 mx-auto flex justify-between mt-15">
+      <div className="max-w-1200 mx-auto flex justify-between sm:mt-15 xs:mt-12 mt-10 px-6">
         <div />
         <div
           className="font-bold tracking-wider pr-2px"
