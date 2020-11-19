@@ -5,7 +5,7 @@
     "dev": "gatsby develop",
     "disable-telemetry": "gatsby telemetry --disable",
     "start:storybook": "start-storybook -p 6006 --no-dll",
-    "build:storybook": "build-storybook --no-dll --quiet",
+    "build:storybook": "NODE_ENV=test build-storybook --no-dll --quiet",
     "test": "jest"
   },
   "dependencies": {
