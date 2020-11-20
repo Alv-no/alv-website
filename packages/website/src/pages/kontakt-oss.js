@@ -3,11 +3,11 @@ import Layout from '../components/layout';
 import { Title } from '../components/title';
 import { Description } from '../components/description';
 
-const Index = () => {
+const Contact = () => {
   return (
     <Layout>
       <div className="bg-navy w-full pt-8 sm:pt-16 sm:pb-12 pb-4">
-        <Title>Ansatte</Title>
+        <Title>Kontakt Oss</Title>
         <div className="sm:h-3 h-4" />
         <div className="flex justify-center">
           <span className="px-6">
@@ -23,4 +23,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Contact;
