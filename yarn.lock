@@ -6609,16 +6609,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.18.0":
-  version: 0.18.1
-  resolution: "axios@npm:0.18.1"
-  dependencies:
-    follow-redirects: 1.5.10
-    is-buffer: ^2.0.2
-  checksum: 6188a1b815733c1b6118eddc70d931caea7f867ca77ade8205e49cd6e457b837460cc4e325e19c66a81190a170fde5b76480878366b3743131977da76d571bec
-  languageName: node
-  linkType: hard
-
 "axios@npm:^0.19.0, axios@npm:^0.19.2":
   version: 0.19.2
   resolution: "axios@npm:0.19.2"
@@ -8529,7 +8519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clean-css@npm:^4.2.1, clean-css@npm:^4.2.3":
+"clean-css@npm:^4.2.3":
   version: 4.2.3
   resolution: "clean-css@npm:4.2.3"
   dependencies:
@@ -9843,7 +9833,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:^4.0.5, cssnano@npm:^4.1.10":
+"cssnano@npm:^4.1.10":
   version: 4.1.10
   resolution: "cssnano@npm:4.1.10"
   dependencies:
@@ -13059,17 +13049,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^7.0.0":
-  version: 7.0.1
-  resolution: "fs-extra@npm:7.0.1"
-  dependencies:
-    graceful-fs: ^4.1.2
-    jsonfile: ^4.0.0
-    universalify: ^0.1.0
-  checksum: 0de3773953a13b517f053dbfa291166da076cc563cdd8f0ecefc64018ab15d2614f1707860b82e6b0e41695f613c1855f410749bd01bcb585f0243b1018a6595
-  languageName: node
-  linkType: hard
-
 "fs-extra@npm:^8.0.0, fs-extra@npm:^8.1.0":
   version: 8.1.0
   resolution: "fs-extra@npm:8.1.0"
@@ -13370,22 +13349,6 @@ fsevents@^1.2.7:
     gatsby: ^2.0.0
     postcss: ^8.0.5
   checksum: d81ae62935c960b78e03860dc706c89843ce8de3063419e0fb000033b770de7e7567c083e860c61a681b51d7835b53bb6df58a6655ce6a55a49726eb4c6f4c8e
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-prefetch-google-fonts@npm:^1.4.3":
-  version: 1.4.3
-  resolution: "gatsby-plugin-prefetch-google-fonts@npm:1.4.3"
-  dependencies:
-    "@babel/runtime": ^7.2.0
-    clean-css: ^4.2.1
-    download: ^7.1.0
-    fs-extra: ^7.0.0
-    get-urls: ^8.0.0
-    globby: ^8.0.1
-    google-fonts-plugin: 2.0.2
-    object-hash: ^1.3.0
-  checksum: 5d5cbb0e1ac2745c177b3debe67b5c6ba53933ee38aa065bacfad0251930166e1575081999c8ab201c06f55f1df1977965ba1f2580ea672f9d7d5e9abd9bde0a
   languageName: node
   linkType: hard
 
@@ -13953,16 +13916,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"get-urls@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "get-urls@npm:8.0.0"
-  dependencies:
-    normalize-url: ^3.3.0
-    url-regex: ^4.0.0
-  checksum: 972f078e60162e3697f91341c846c704d0ed3d45afbf734fc7d400a7a370e85fef4826e1a71028564ff6522feeeaa2554ae67ff3f65a4e0c8b5c6d35dc3f2943
-  languageName: node
-  linkType: hard
-
 "get-value@npm:^2.0.3, get-value@npm:^2.0.6":
   version: 2.0.6
   resolution: "get-value@npm:2.0.6"
@@ -14206,7 +14159,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"globby@npm:8.0.2, globby@npm:^8.0.1":
+"globby@npm:8.0.2":
   version: 8.0.2
   resolution: "globby@npm:8.0.2"
   dependencies:
@@ -14272,19 +14225,6 @@ fsevents@^1.2.7:
   dependencies:
     delegate: ^3.1.2
   checksum: 640a1627e528ceb3337595a8020f44d09455f284c18c765eaf9ce5dcdf1799810e7b11ca2b61582a5a4db20aad0b7e6b820235864822d84df541d74383bcd01c
-  languageName: node
-  linkType: hard
-
-"google-fonts-plugin@npm:2.0.2":
-  version: 2.0.2
-  resolution: "google-fonts-plugin@npm:2.0.2"
-  dependencies:
-    axios: ^0.18.0
-    cssnano: ^4.0.5
-    mkdirp: ^0.5.1
-    neon-js: ^1.1.2
-    path: ^0.12.7
-  checksum: 4fde338c19fb4109a0f4f69a83387328aa1c5138ae91fcf770e5666a2f8610785fcc2565591ad6486746433381e98b71e0ea85788df53aba28ec97c00aea0177
   languageName: node
   linkType: hard
 
@@ -15720,13 +15660,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"ip-regex@npm:^1.0.1":
-  version: 1.0.3
-  resolution: "ip-regex@npm:1.0.3"
-  checksum: 6e2d0496dc52929b69ca3c6a80e0ad1348fb20ca11d64e28ec392b9e856dd9550fdcb70dd1e599940252d0d11606078a981924ea8d38da1898f96a10880eb879
-  languageName: node
-  linkType: hard
-
 "ip-regex@npm:^2.1.0":
   version: 2.1.0
   resolution: "ip-regex@npm:2.1.0"
@@ -15873,7 +15806,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-buffer@npm:^2.0.0, is-buffer@npm:^2.0.2":
+"is-buffer@npm:^2.0.0":
   version: 2.0.5
   resolution: "is-buffer@npm:2.0.5"
   checksum: 1a6dc68206e834887d3b0d8e8ec6c95e0d780314479526a5a2cf458838d1bc441a105c4cebf95d8cc16e383238f66c41761ec622f6154043186e3d9439d56970
@@ -19341,13 +19274,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"neon-js@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "neon-js@npm:1.1.2"
-  checksum: 8127b476c8c46073f0e9b81095a76ce642954b7209dbaa76c4cab5c53276ca37899a3552940cadbc3fbfd982a4185b69dab0c5ec9745564a68f7763265010ddb
-  languageName: node
-  linkType: hard
-
 "next-tick@npm:^1.0.0":
   version: 1.1.0
   resolution: "next-tick@npm:1.1.0"
@@ -19820,7 +19746,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"object-hash@npm:^1.1.4, object-hash@npm:^1.3.0":
+"object-hash@npm:^1.1.4":
   version: 1.3.1
   resolution: "object-hash@npm:1.3.1"
   checksum: 035cb0b0e66b34611ec5a6bf723380b7f4b3b1292ef44aa9ba93258334a2dca8cf91be28021e9ffa5edf737f97fc54b66d0605bf62db3a63f05191b0002be7bf
@@ -20841,16 +20767,6 @@ fsevents@^1.2.7:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: ef5835f2eb47e4d06004c7ec7bd51175c0455eaecd5ee99a9774bca5ef43242616e25b44ccc0ba86a0bf42b9f197550fcc0dfa7580e5ff9dca53c035e9bd86a9
-  languageName: node
-  linkType: hard
-
-"path@npm:^0.12.7":
-  version: 0.12.7
-  resolution: "path@npm:0.12.7"
-  dependencies:
-    process: ^0.11.1
-    util: ^0.10.3
-  checksum: 0e2d3342ca6f91aba8e514919cae8a08ad12071297a3a99da6e3ea493f5296d9bb323ca9bece4d035fc280e91b701a740ce1e48ff65802004deaaae2f2cd623e
   languageName: node
   linkType: hard
 
@@ -22253,7 +22169,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"process@npm:^0.11.1, process@npm:^0.11.10":
+"process@npm:^0.11.10":
   version: 0.11.10
   resolution: "process@npm:0.11.10"
   checksum: ed93a85e9185b40fb01788c588a87c1a9da0eb925ef7cebebbe1b8bbf0eba1802130366603a29e3b689c116969d4fe018de6aed3474bbeb5aefb3716b85d6449
@@ -26586,15 +26502,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"tlds@npm:^1.187.0":
-  version: 1.212.0
-  resolution: "tlds@npm:1.212.0"
-  bin:
-    tlds: bin.js
-  checksum: b329d9ed85efd9026f1abc83678bbded226cfeaca2b623801eb356f1463af51aecca7df02e57c01bd0492e0354b91652e94d6f80438343564ce2ba9f261c4eca
-  languageName: node
-  linkType: hard
-
 "tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "tmp@npm:0.0.33"
@@ -27540,16 +27447,6 @@ typescript@^4.0.5:
   languageName: node
   linkType: hard
 
-"url-regex@npm:^4.0.0":
-  version: 4.1.1
-  resolution: "url-regex@npm:4.1.1"
-  dependencies:
-    ip-regex: ^1.0.1
-    tlds: ^1.187.0
-  checksum: 005edca141ad4ff56ea8de1743ddd0bbdda50c1d978878761782b45752862459221d2a8e503db6d43c18c18989de369a8d2122572b7dee10a16792119e87beeb
-  languageName: node
-  linkType: hard
-
 "url-to-options@npm:^1.0.1":
   version: 1.0.1
   resolution: "url-to-options@npm:1.0.1"
@@ -27677,15 +27574,6 @@ typescript@^4.0.5:
   dependencies:
     inherits: 2.0.1
   checksum: 05c1a09f3af90250365386331b3986c0753af1900f20279f9302409b27e9d9d3c03a9cf4efba48aae859d04348ebfe56d68f89688113f61171da9c4fbe6baaca
-  languageName: node
-  linkType: hard
-
-"util@npm:^0.10.3":
-  version: 0.10.4
-  resolution: "util@npm:0.10.4"
-  dependencies:
-    inherits: 2.0.3
-  checksum: 6682ea8239076243495c45e81f19c2c002e02805de4de08554dc815500805923f27f504ec1a9c7599d420b62bf7452efbab6fa078219d529188b0ca830f142a5
   languageName: node
   linkType: hard
 
@@ -28246,7 +28134,6 @@ typescript@^4.0.5:
     gatsby-image: ^2.4.21
     gatsby-plugin-google-fonts: ^1.0.1
     gatsby-plugin-postcss: ^3.0.4
-    gatsby-plugin-prefetch-google-fonts: ^1.4.3
     gatsby-plugin-sharp: ^2.7.1
     gatsby-source-sanity: ^6.0.4
     gatsby-transformer-sharp: ^2.5.21
