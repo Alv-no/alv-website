@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as Icon from '../icon';
 import * as Button from '../button';
-import { EmployeeCard } from '../employeeCard';
-import { EmployeeBio } from '../employeeBio';
-import { Tag } from '../tag';
+// import { EmployeeCard } from '../employeeCard';
+// import { EmployeeBio } from '../employeeBio';
+import { EmployeeGroups } from '../employeeGroups';
+import { Checkbox } from '../checkbox';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export const Tags = ({ sanityTags, sanityEmployees }) => {
@@ -60,8 +61,8 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
   };
 
   // Add or remove clicked tag from state
-  const handleClick = (e) => {
-    const currentTag = e.target.value;
+  const handleTagClick = (e) => {
+    const currentTag = e.target.id;
     let activeTags = tags;
     if (activeTags.indexOf(currentTag) > -1) {
       activeTags = activeTags.filter((tag) => tag !== currentTag);
@@ -90,10 +91,8 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
       activeElement.firstChild.style.opacity = '';
     }
 
-    if (width < 480) {
-      e.target.style.filter = 'grayscale(0)';
-      e.target.firstChild.style.opacity = 1;
-    }
+    e.target.style.filter = 'grayscale(0)';
+    e.target.firstChild.style.opacity = 1;
 
     setActiveBio(currentBio);
     setActiveElement(e.target);
@@ -125,45 +124,25 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
         <div className="flex -ml-4 flex-wrap items-center">
           {sanityTags.map((sanityTag) => {
             return (
-              <Tag handleClick={handleClick} {...sanityTag.node}>
+              <Checkbox
+                updateFilter={handleTagClick}
+                key={sanityTag.node.id}
+                {...sanityTag.node}
+              >
                 {sanityTag.node.tag}
-              </Tag>
+              </Checkbox>
             );
           })}
         </div>
       </div>
 
       {/* EMPLOYEE CARDS */}
-      {employeeGroups
-        ? employeeGroups.map((group) => {
-            if (group.length > 0) {
-              return (
-                <>
-                  <div
-                    className="grid xs:gap-4 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
-                    key={employeeGroups.indexOf(group)}
-                  >
-                    {group.map((employee) => (
-                      <EmployeeCard
-                        {...employee}
-                        handleClick={handleCardClick}
-                        key={employee.id}
-                      />
-                    ))}
-                  </div>
-                  {activeBio && group.some((el) => el.id === activeBio.id) ? (
-                    <EmployeeBio
-                      {...activeBio}
-                      handleCloseClick={handleCloseClick}
-                      bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Laboris nisi ut aliquip ex ea commodo consequat."
-                    />
-                  ) : null}
-                </>
-              );
-            }
-            return null;
-          })
-        : null}
+      <EmployeeGroups
+        employeeGroups={employeeGroups}
+        activeBio={activeBio}
+        handleCardClick={handleCardClick}
+        handleCloseClick={handleCloseClick}
+      />
       <div className="max-w-1200 mx-auto flex justify-between sm:mt-15 xs:mt-12 mt-10 twelve:px-6">
         <div />
         <div

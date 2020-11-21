@@ -7,7 +7,7 @@ const Index = () => {
   return (
     <Layout>
       <div className="bg-navy w-full pt-8 sm:pt-16 sm:pb-12 pb-4">
-        <Title>Ansatte</Title>
+        <Title>Index</Title>
         <div className="sm:h-3 h-4" />
         <div className="flex justify-center">
           <span className="px-6">
