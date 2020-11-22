@@ -11,7 +11,7 @@ describe('Checkbox-component', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole('checkbox', { name: /Hello Checkbox/ }).checked
-    ).toEqual(false);
+    ).toEqual(true);
   });
 
   it('with defaultValue should render as checked', () => {
@@ -24,7 +24,7 @@ describe('Checkbox-component', () => {
     ).toEqual(true);
   });
 
-  it('onChange should fire when clickking the checkbox', () => {
+  it('onChange should fire when clicking the checkbox', () => {
     const mockCallBack = jest.fn();
     render(<Checkbox onChange={mockCallBack}>Hello Checkbox</Checkbox>);
 
