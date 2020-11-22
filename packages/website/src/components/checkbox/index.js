@@ -1,27 +1,20 @@
 import React, { useState } from 'react';
 
-export const Checkbox = ({
-  children,
-  updateFilter,
-  defaultValue = undefined,
-  tag,
-}) => {
-  const [value, setValue] = useState(true);
-  const handleClick = (e) => {
-    setValue(!value);
-    updateFilter(e);
-  };
-  if (defaultValue === undefined) defaultValue = value;
+export const Checkbox = ({ children, onChange, tag, defaultChecked }) => {
+  if (defaultChecked === undefined) defaultChecked = true;
+  const [value, setValue] = useState(defaultChecked);
 
+  const handleClick = (e) => {
+    onChange(e);
+    setValue(!value);
+  };
   return (
-    <label className="cursor-pointer ">
+    <label className="cursor-pointer">
       <input
         type="checkbox"
-        defaultChecked={defaultValue}
-        value={value}
+        checked={value}
         onChange={handleClick}
-        className="border-white border absolute cursor-pointer -my-2px opacity-0"
-        style={{ opacity: 0 }}
+        className="absolute invisible"
         id={tag}
       />
       <span

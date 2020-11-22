@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import * as Icon from '../icon';
-import * as Button from '../button';
-// import { EmployeeCard } from '../employeeCard';
-// import { EmployeeBio } from '../employeeBio';
 import { EmployeeGroups } from '../employeeGroups';
 import { Checkbox } from '../checkbox';
+import * as Icon from '../icon';
+import * as Button from '../button';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export const Tags = ({ sanityTags, sanityEmployees }) => {
@@ -125,7 +123,7 @@ export const Tags = ({ sanityTags, sanityEmployees }) => {
           {sanityTags.map((sanityTag) => {
             return (
               <Checkbox
-                updateFilter={handleTagClick}
+                onChange={handleTagClick}
                 key={sanityTag.node.id}
                 {...sanityTag.node}
               >

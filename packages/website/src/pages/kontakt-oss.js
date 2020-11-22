@@ -6,7 +6,7 @@ import { Description } from '../components/description';
 const Contact = () => {
   return (
     <Layout>
-      <div className="bg-navy w-full pt-8 sm:pt-16 sm:pb-12 pb-4">
+      <div className="bg-navy w-full pt-8 sm:pt-16 sm:pb-12 pb-4 h-screen">
         <Title>Kontakt Oss</Title>
         <div className="sm:h-3 h-4" />
         <div className="flex justify-center">

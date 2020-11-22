@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Checkbox } from './index';
 
 export default {
   title: 'components/checkbox',
   decorators: [
     (Story) => (
-      <div style={{ background: '#061838' }}>
+      <div style={{ background: '#061838', padding: '10px' }}>
         <Story />
       </div>
     ),
   ],
+  argTypes: { onChange: { action: 'clicked' } },
 };
-
 export const Default = ({ ...args }) => {
-  const [checked, setChecked] = useState(true);
-  const onChange = (e) => setChecked(e.target.checked);
-
-  return <Checkbox value={checked} onChange={onChange} {...args} />;
+  return <Checkbox {...args} />;
 };
 Default.args = {
   children: 'Frontend',
