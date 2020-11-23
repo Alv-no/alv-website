@@ -8512,7 +8512,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.5":
+"classnames@npm:^2.2.5, classnames@npm:^2.2.6":
   version: 2.2.6
   resolution: "classnames@npm:2.2.6"
   checksum: 490eaeca5931846737ffd33e472a701d268d5b8bc5717dd4cf108a127b06e86e05350e06799abbbe763a0e4c945b4217f6700b7ae00ddc703505682c370e5cf2
@@ -28129,6 +28129,7 @@ typescript@^4.0.5:
     babel-loader: ^8.1.0
     babel-preset-gatsby: ^0.5.16
     browser-monads: ^1.0.0
+    classnames: ^2.2.6
     gatsby: ^2.25.2
     gatsby-background-image-es5: ^1.1.2
     gatsby-image: ^2.4.21
