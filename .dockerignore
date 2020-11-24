@@ -1,3 +1,6 @@
 node_modules/
-public/
-dist/
+packages/website/public/
+packages/website/node_modules/
+packages/website/storybook-static
+packages/cms/dist/
+packages/cms/node_modules/
