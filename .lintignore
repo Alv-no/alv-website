@@ -2,3 +2,4 @@
 public
 storybook-static/
 dist/
+.terraform
