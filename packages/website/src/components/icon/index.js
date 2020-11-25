@@ -30,6 +30,27 @@ export const Cross = () => (
   </svg>
 );
 
+export const DropdownArrow = () => (
+  <svg
+    width="10.958"
+    height="6.49"
+    viewBox="0 0 10.958 6.49"
+    fill="#fff"
+    className="transform -rotate-90 scale-130"
+  >
+    <path
+      id="Path_363"
+      d="M7526.707-4437.99l4.141,4.076,3.988-4.076"
+      transform="translate(-7525.292 4439.404)"
+      fill="none"
+      stroke="#fff"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    />
+  </svg>
+);
+
 export const CtaArrow = () => (
   <svg width="67" height="67" viewBox="0 0 67 67">
     <g transform="translate(-950 -2347)">
