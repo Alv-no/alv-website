@@ -10,9 +10,9 @@ const Employees = () => {
   const data = useEmployeeQuery();
   return (
     <Layout>
-      <div className="bg-navy w-full pt-8 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
+      <div className="bg-navy w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
         <Title>Ansatte</Title>
-        <div className="sm:h-3 h-4" />
+        <div className="sm:h-8 h-4" />
         <div className="flex justify-center">
           <span className="px-6">
             <Description align="center">

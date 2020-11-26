@@ -22,7 +22,7 @@ export const LargeLink = ({ children, margin, link }) => {
           />
         ) : null}
         <h2
-          className={`text-white font-bold tracking-widest ${margin} uppercase text-nav my-15 w-full ml-6 sm:ml-8 eight:ml-0 z-50`}
+          className={`text-white font-bold tracking-widest ${margin} uppercase text-nav my-15 eight:my-10 w-full ml-6 sm:ml-8 eight:ml-0 z-50`}
         >
           {children}
           <span className="text-yellow">.</span>

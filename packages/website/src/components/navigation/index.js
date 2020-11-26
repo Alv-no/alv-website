@@ -16,7 +16,7 @@ export const Navigation = ({ open, toggleClose }) => {
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
     >
-      <div className="eight:flex justify-between mx-auto auto eight:mb-10 2xl:mb-25 max-w-1200 items-center mb-12 eight:mb-0">
+      <div className="eight:flex justify-between mx-auto auto eight:mb-0 2xl:mb-25 max-w-1200 items-center mb-12 eight:mb-0">
         <div className="w-32" />
         <span className="">
           <Link to="/">
@@ -114,7 +114,7 @@ export const Navigation = ({ open, toggleClose }) => {
           <LargeLink link="/" margin="eight:mt-10 2xl:mt-12">
             Videoserie
           </LargeLink>
-          <LargeLink link="/" margin="eight:mt-10 2xl:mt-12">
+          <LargeLink link="/blogg" margin="eight:mt-10 2xl:mt-12">
             Blogg
           </LargeLink>
           <LargeLink link="/kontakt-oss" margin="eight:mt-1≤0 2xl:mt-12">
@@ -122,7 +122,7 @@ export const Navigation = ({ open, toggleClose }) => {
           </LargeLink>
         </ConditionalWrapper>
       </div>
-      <div className="eight:flex justify-center eight:mt-10 2xl:mt-15 eight:mr-0 eight:relative absolute top-0 right-0 mt-5 mr-5  sm:mt-8 sm:mr-8 transform scale-70 sm:scale-80 eight:scale-90">
+      <div className="eight:flex justify-center eight:mt-0 2xl:mt-15 eight:mr-0 eight:relative absolute top-0 right-0 mt-5 mr-5 sm:mt-8 sm:mr-8 transform scale-70 sm:scale-80 eight:scale-90">
         <span className="cursor-pointer" onClick={toggleClose}>
           <Icon.Cross />
         </span>
