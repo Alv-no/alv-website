@@ -1,6 +1,6 @@
 export default {
-  name: 'post',
-  title: 'Post',
+  name: 'article',
+  title: 'Articles',
   type: 'document',
   fields: [
     {
@@ -40,6 +40,12 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+    },
+    {
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'articleTag' } }],
     },
   ],
 
