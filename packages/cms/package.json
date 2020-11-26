@@ -2,6 +2,7 @@
   "name": "cms",
   "scripts": {
     "start": "sanity start",
+    "graphql": "sanity graphql deploy",
     "build": "sanity build",
     "test": "sanity check"
   },
