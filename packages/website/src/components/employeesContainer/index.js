@@ -52,7 +52,7 @@ export const EmployeesContainer = ({ filteredEmployees }) => {
                 <EmployeeGroup
                   key={employeeGroups.indexOf(group)}
                   activeBio={activeBio}
-                  filteredEmployees={filteredEmployees}
+                  employees={filteredEmployees}
                   updateActiveBio={updateActiveBio}
                   group={group}
                 />

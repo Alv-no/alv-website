@@ -9,18 +9,27 @@ export const EmployeeCard = ({
   lastname,
   title,
   handleClick,
+  activeBio,
 }) => (
   <div
-    className="text-white relative group flex cursor-pointer overflow-hidden filter-grayscale hover:filter-grayscale-0 pb-130c h-0"
+    className={`text-white relative group flex cursor-pointer overflow-hidden ${
+      activeBio && id === activeBio.id
+        ? 'filter-grayscale-0'
+        : 'filter-grayscale'
+    } hover:filter-grayscale-0 pb-130c h-0`}
     onClick={handleClick}
     key={id}
     id={id}
   >
-    <div className="absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen xs:max-w-277px transition opacity-65 group-hover:opacity-100 duration-300 pointer-events-none">
+    <div
+      className={`absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen xs:max-w-277px transition ${
+        activeBio && id === activeBio.id ? 'opacity-100' : 'opacity-65'
+      } group-hover:opacity-100 duration-300 pointer-events-none`}
+    >
       <img
         src={image.asset.fluid.src}
         alt={firstname}
-        className="object-cover h-full xs:w-full "
+        className="object-cover h-full xs:w-full"
       />
     </div>
     <div className="absolute mt-2 z-10 pointer-events-none transform translate-x-4 xs:translate-x-0">
