@@ -3,16 +3,58 @@ export const useBlogQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        allSanityArticle {
+        articles: allSanityArticle {
           edges {
             node {
+              id
+              slug {
+                current
+              }
+              title
               tags {
                 tag
+              }
+              _rawBody
+              mainImage {
+                asset {
+                  url
+                  fluid {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+              author {
+                image {
+                  asset {
+                    fluid {
+                      ...GatsbySanityImageFluid
+                    }
+                  }
+                }
+                firstname
+                lastname
+              }
+              publishedAt
+            }
+          }
+        }
+        featuredArticle: sanityFeaturedArticle {
+          article {
+            title
+            _rawBody
+            slug {
+              current
+            }
+            mainImage {
+              asset {
+                fluid(maxWidth: 700) {
+                  ...GatsbySanityImageFluid
+                }
               }
             }
           }
         }
-        allSanityBlogTag {
+        tags: allSanityArticleTag {
           edges {
             node {
               tag
@@ -23,5 +65,8 @@ export const useBlogQuery = () => {
       }
     `
   );
+  console.log(data);
+  console.log(data);
+  console.log(data);
   return data;
 };
