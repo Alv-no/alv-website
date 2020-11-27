@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout';
 import { Title } from '../components/title';
 import { FeaturedCard } from '../components/featuredCard';
-import { BlogTagBar } from '../components/BlogTagBar';
+import { BlogTagBar } from '../components/blogTagBar';
 import image from '../assets/cta.png';
 import { useBlogQuery } from '../hooks/useBlogQuery';
 
