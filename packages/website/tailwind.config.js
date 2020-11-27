@@ -14,6 +14,7 @@ module.exports = {
       colors: {
         navy: '#061838',
         orange: '#F39123',
+        bordergray: '#f2f2f3',
         yellow: '#EABB26',
         blue: '#1E92D0',
         darkblue: '#030F24',
@@ -41,6 +42,7 @@ module.exports = {
       width: {
         50: '200px',
         54: '216px',
+        60: '240px',
         80: '360px',
         100: '400px',
         277: '277px',
