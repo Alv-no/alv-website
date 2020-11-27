@@ -1,24 +1,12 @@
 import React from 'react';
-import { EmployeeCard } from './index';
-import jpg from '../../assets/fallback.jpg';
+import { Navigation } from '.';
 
-export default { title: 'components/employeeCard' };
+export default {
+  title: 'components/navigation',
+};
 
-const Template = (data) => <EmployeeCard {...data} />;
+export const Default = ({ ...args }) => <Navigation {...args} />;
 
-export const Default = Template.bind({});
 Default.args = {
-  id: '123',
-  firstname: 'Eirik',
-  lastname: 'Helgesen',
-  experience: 5,
-  tags: ['Information Security'],
-  title: 'Leder',
-  image: {
-    asset: {
-      fluid: {
-        src: jpg,
-      },
-    },
-  },
+  open: true,
 };

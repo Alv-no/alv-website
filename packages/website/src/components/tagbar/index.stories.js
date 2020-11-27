@@ -1,5 +1,6 @@
 import React from 'react';
-import { Tags } from '.';
+import { Tagbar } from '.';
+import jpg from '../../assets/fallback.jpg';
 
 export default {
   title: 'components/tagbar',
@@ -18,14 +19,49 @@ export default {
   ],
 };
 
-const Template = (args) => <Tags {...args} />;
-
-export const Default = Template.bind({});
+export const Default = ({ ...args }) => <Tagbar {...args} />;
 Default.args = {
-  tags: [
-    'Data and analytics',
-    'Information security',
-    'Project management',
-    'Development',
+  sanityTags: [
+    {
+      node: {
+        tag: 'Data and analytics',
+        id: '1',
+      },
+    },
+    {
+      node: {
+        tag: 'Information security',
+        id: '2',
+      },
+    },
+    {
+      node: {
+        tag: 'Project management',
+        id: '3',
+      },
+    },
+    {
+      node: {
+        tag: 'Development',
+        id: '4',
+      },
+    },
+  ],
+  sanityEmployees: [
+    {
+      id: '123',
+      firstname: 'Eirik',
+      lastname: 'Helgesen',
+      experience: 5,
+      tags: ['Information Security'],
+      title: 'Leder',
+      image: {
+        asset: {
+          fluid: {
+            src: jpg,
+          },
+        },
+      },
+    },
   ],
 };

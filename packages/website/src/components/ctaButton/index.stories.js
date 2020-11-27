@@ -12,10 +12,8 @@ export default {
   ],
 };
 
-const Template = (args) => <CtaButton {...args} />;
-
-export const Default = Template.bind({});
+export const Default = ({ ...args }) => <CtaButton {...args} />;
 Default.args = {
-  text: 'Click me!',
+  children: 'Click Me!',
   internalLink: '/',
 };

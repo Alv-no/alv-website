@@ -2,7 +2,16 @@ import React from 'react';
 import { EmployeeCard } from './index';
 import jpg from '../../assets/fallback.jpg';
 
-export default { title: 'components/employeeCard' };
+export default {
+  title: 'components/employeeCard',
+  decorators: [
+    (Story) => (
+      <div style={{ background: '#061838', height: '270px', width: '207px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
 
 const Template = (data) => <EmployeeCard {...data} />;
 
