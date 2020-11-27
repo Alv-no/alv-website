@@ -1,7 +1,16 @@
 import React from 'react';
 import * as Icon from '.';
 
-export default { title: 'components/icon' };
+export default {
+  title: 'components/icon',
+  decorators: [
+    (Story) => (
+      <div style={{ background: 'gray', padding: '20px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
 
 export const tag = () => <Icon.Tag />;
 export const shade = () => <Icon.Shade />;

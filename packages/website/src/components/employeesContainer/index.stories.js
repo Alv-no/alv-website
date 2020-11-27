@@ -1,8 +1,8 @@
 import React from 'react';
-import { CtaButton } from '.';
+import { EmployeesContainer } from '.';
 
 export default {
-  title: 'components/ctaButton',
+  title: 'components/employeeContainer',
   decorators: [
     (Story) => (
       <div style={{ background: '#061838' }}>
@@ -12,10 +12,7 @@ export default {
   ],
 };
 
-const Template = (args) => <CtaButton {...args} />;
-
-export const Default = Template.bind({});
+export const Default = ({ ...args }) => <EmployeesContainer {...args} />;
 Default.args = {
-  text: 'Click me!',
-  internalLink: '/',
+  filteredEmployees: [],
 };

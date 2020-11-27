@@ -7,7 +7,9 @@ export const CtaButton = ({ children, internalLink }) => {
   return (
     <Link to={internalLink}>
       <button className="flex items-center focus:outline-none">
-        <div className="mr-6 text-cta uppercase font-bold">{children}</div>
+        <div className="mr-6 text-cta text-white uppercase font-bold">
+          {children}
+        </div>
         <div className="">
           <Icon.CtaArrow />
         </div>

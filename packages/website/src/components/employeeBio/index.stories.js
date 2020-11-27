@@ -1,11 +1,11 @@
 import React from 'react';
 import { EmployeeBio } from './index';
 
-export default { title: 'components/EmployeeBio' };
+export default {
+  title: 'components/employeeBio',
+};
 
-const Template = (data) => <EmployeeBio {...data} />;
-
-export const Default = Template.bind({});
+export const Default = (data) => <EmployeeBio {...data} />;
 Default.args = {
   id: '123',
   firstname: 'Marcus Sahlin',

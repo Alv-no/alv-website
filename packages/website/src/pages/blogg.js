@@ -10,8 +10,7 @@ const Blog = () => {
   const data = useBlogQuery();
   const articles = data.articles.edges;
   const featuredArticle = data.featuredArticle.article;
-  console.log(featuredArticle);
-  console.log(featuredArticle);
+
   return (
     <Layout>
       <FeaturedCard {...featuredArticle} image={image}>
