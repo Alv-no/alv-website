@@ -24,6 +24,12 @@ export default {
       to: { type: 'employee' },
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 3,
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
