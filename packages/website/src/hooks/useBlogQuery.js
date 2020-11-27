@@ -7,6 +7,7 @@ export const useBlogQuery = () => {
           edges {
             node {
               id
+              description
               slug {
                 current
               }
@@ -41,6 +42,7 @@ export const useBlogQuery = () => {
         featuredArticle: sanityFeaturedArticle {
           article {
             title
+            description
             _rawBody
             slug {
               current
