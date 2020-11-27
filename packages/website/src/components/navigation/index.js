@@ -12,7 +12,7 @@ export const Navigation = ({ open, toggleClose }) => {
   const { width } = useWindowDimensions();
   return (
     <header
-      className={`text-white tracking-wider fixed z-50 h-screen w-full bg-navy p-6 sm:p-8 top-0 transition duration-300 ${
+      className={`text-white tracking-wider fixed overflow-y-scroll z-50 h-screen w-full bg-navy p-6 sm:p-8 top-0 transition duration-300 ${
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
     >
