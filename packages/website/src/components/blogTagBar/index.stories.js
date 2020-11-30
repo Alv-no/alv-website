@@ -1,8 +1,8 @@
 import React from 'react';
-import { BlogTagBar } from '.';
+import { BlogTagbar } from '.';
 
 export default {
-  title: 'components/blogTagBar',
+  title: 'components/blogTagbar',
 };
 
-export const Default = ({ ...args }) => <BlogTagBar {...args} />;
+export const Default = ({ ...args }) => <BlogTagbar {...args} />;

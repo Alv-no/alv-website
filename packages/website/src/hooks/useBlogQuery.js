@@ -3,7 +3,7 @@ export const useBlogQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        articles: allSanityArticle {
+        articles: allSanityArticle(sort: { fields: publishedAt }) {
           edges {
             node {
               id
@@ -18,8 +18,7 @@ export const useBlogQuery = () => {
               _rawBody
               mainImage {
                 asset {
-                  url
-                  fluid {
+                  fluid(maxWidth: 400) {
                     ...GatsbySanityImageFluid
                   }
                 }
@@ -35,7 +34,7 @@ export const useBlogQuery = () => {
                 firstname
                 lastname
               }
-              publishedAt
+              publishedAt(formatString: "DD MMM, YYYY")
             }
           }
         }
@@ -56,19 +55,15 @@ export const useBlogQuery = () => {
             }
           }
         }
-        tags: allSanityArticleTag {
-          edges {
-            node {
-              tag
-              id
+        fallbackImg: file(name: { eq: "featuredFallback" }) {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
             }
           }
         }
       }
     `
   );
-  console.log(data);
-  console.log(data);
-  console.log(data);
   return data;
 };
