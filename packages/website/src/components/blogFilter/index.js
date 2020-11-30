@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Icon from '../icon';
-import styles from './BlogTagbar.module.css';
+import styles from './BlogFilter.module.css';
 
-export const BlogTagbar = () => {
+export const BlogFilter = () => {
   return (
     <div className="pt-32 mb-12 bg-white w-full">
       <div className="max-w-1200 mx-auto px-32">
