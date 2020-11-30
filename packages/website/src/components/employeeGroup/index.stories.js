@@ -17,5 +17,4 @@ Default.args = {
   group: [],
   activeBio: undefined,
   updateActiveBio: () => {},
-  filteredEmployees: [],
 };
