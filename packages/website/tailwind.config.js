@@ -15,6 +15,7 @@ module.exports = {
         navy: '#061838',
         orange: '#F39123',
         bordergray: '#f2f2f3',
+        postgray: '#0618384E',
         yellow: '#EABB26',
         blue: '#1E92D0',
         darkblue: '#030F24',
@@ -50,8 +51,13 @@ module.exports = {
       },
       opacity: {
         0: '0',
+        50: '0.50',
+        55: '0.55',
+        60: '0.60',
         65: '0.65',
-        70: '0.65',
+        70: '0.70',
+        80: '0.80',
+        90: '0.90',
       },
       gridTemplateColumns: {
         'employees-xs': '1fr',
@@ -106,6 +112,7 @@ module.exports = {
         sm: '24px',
       },
       fontSize: {
+        'xs': ['10px', '10px'],
         'sm': ['14px', '18px'],
         'base': ['16px', '26px'],
         'footer': ['18px', '30px'],
@@ -139,6 +146,8 @@ module.exports = {
     opacity: ['responsive', 'hover', 'focus', 'group-hover', 'checked'],
     filter: ['responsive', 'hover', 'focus', 'group-hover'],
     fontWeight: ['last'],
+    scale: ['active', 'responsive', 'hover', 'focus', 'group-hover'],
+    fill: ['hover', 'focus', 'group-hover'],
   },
   plugins: [],
 };

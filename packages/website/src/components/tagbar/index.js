@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import * as Icon from '../icon';
-import { EmployeesContainer } from '../employeesContainer';
+import { GridContainer } from '../gridContainer';
 import { Checkbox } from '../checkbox';
 
 export const Tagbar = ({ sanityTags, sanityEmployees }) => {
-  const [filteredEmployees, setFilteredEmployees] = useState(
+  const [filteredContent, setFilteredContent] = useState(
     sanityEmployees.map((el) => el.node)
   );
+
   const [tags, setTags] = useState(
     sanityTags.map((sanityTag) => sanityTag.node.tag)
   );
@@ -20,7 +21,7 @@ export const Tagbar = ({ sanityTags, sanityEmployees }) => {
       );
       return test;
     });
-    return setFilteredEmployees(filteredEmployeeArr.map((el) => el.node));
+    return setFilteredContent(filteredEmployeeArr.map((el) => el.node));
   };
 
   // Add or remove clicked tag from state
@@ -63,7 +64,7 @@ export const Tagbar = ({ sanityTags, sanityEmployees }) => {
         </div>
       </div>
       {/* CONTAINER WITH CARDS */}
-      <EmployeesContainer filteredEmployees={filteredEmployees} />
+      <GridContainer filteredContent={filteredContent} />
     </div>
   );
 };

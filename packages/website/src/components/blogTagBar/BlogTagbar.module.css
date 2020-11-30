@@ -1,0 +1,13 @@
+.search input:focus ~ span {
+  display: none;
+}
+
+.search input::placeholder {
+  font-weight: 700;
+}
+
+.search {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}

@@ -61,7 +61,6 @@ export const MobileHeader = () => {
         <div className="bg-navy sm:hidden py-5 px-10">
           <div className="max-w-1600 mx-auto">
             <div className="flex justify-between">
-              {/* <div className="flex flex-row-reverse sm:flex-row justify-between mb-7"> */}
               <div className="flex">
                 <span className="mr-5 cursor-pointer" onClick={handleClick}>
                   <Icon.Dropdown />
