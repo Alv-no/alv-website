@@ -19,3 +19,6 @@ export const cross = () => <Icon.Cross />;
 export const ctaArrow = () => <Icon.CtaArrow />;
 export const dropdown = () => <Icon.Dropdown />;
 export const contactArrow = () => <Icon.ContactArrow />;
+export const dropdownMini = () => <Icon.DropdownMini />;
+export const arrow = () => <Icon.Arrow />;
+export const search = () => <Icon.Search />;
