@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BlogTagbar } from '../blogTagbar';
+import { BlogFilter } from '../blogFilter';
 import { PostCard } from '../postCard';
 import * as Button from '../button';
 
@@ -26,7 +26,7 @@ export const BlogSection = ({ articles }) => {
   return (
     <>
       <div className="w-full">
-        <BlogTagbar tags={tags} />
+        <BlogFilter tags={tags} />
         <div className="max-w-1200 mx-auto">
           <div
             className="w-full grid xs:gap-4 xl:mx-0 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
