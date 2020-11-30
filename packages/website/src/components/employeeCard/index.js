@@ -30,6 +30,7 @@ export const EmployeeCard = ({
         src={image.asset.fluid.src}
         alt={firstname}
         className="object-cover h-full xs:w-full"
+        style={{ backgroundColor: 'rgba(40,40,40,50%)' }}
       />
     </div>
     <div className="absolute mt-2 z-10 pointer-events-none transform translate-x-4 xs:translate-x-0">
