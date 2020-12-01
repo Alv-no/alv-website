@@ -3,31 +3,52 @@ import * as Icon from '../icon';
 import styles from './BlogFilter.module.css';
 import { FilterContainer } from '../filterContainer';
 
-export const BlogFilter = ({ tags, authors }) => {
+export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
+  const [active, setActive] = useState(allArticles);
   const [filter, setFilter] = useState([]);
+  const [sort, setSort] = useState([]);
+  const [search, setSearch] = useState([]);
 
-  const handleClick = (e) => {
-    if (filter.indexOf(e.target.id) < 0) {
-      const newFilter = filter;
-      console.log(e.target.id);
-      newFilter.push(e.target.id);
-      setFilter(newFilter);
-    }
-  };
+  // Process all available content based on sort, search and filter input.
+  useEffect(() => {
+    const activeArticles = allArticles;
+    // Process articles here
+    setActive(activeArticles);
+  }, [sort, search, filter, allArticles]);
 
   useEffect(() => {
-    console.log(filter);
-    console.log(filter);
-  }, [filter]);
+    onChange(active);
+  }, [active, onChange]);
 
-  const handleChange = (e) => {
-    return e.target.value;
+  // Update sort state with selected sorting option
+  const sortClick = (e) => {
+    setSort(e.target.id);
   };
+
+  // Update state based on search input
+  const onSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  // Add or remove a fiter option from state
+  const filterClick = (e) => {
+    const current = e.target.id;
+    let newFilter = filter;
+    if (!filter.includes(e.target.id)) {
+      newFilter.push(e.target.id);
+    } else {
+      newFilter = filter.filter((el) => {
+        return el !== current;
+      });
+    }
+    setFilter(newFilter);
+  };
+
   return (
     <FilterContainer>
-      <SearchField onChange={handleChange} />
-      <FilterField tags={tags} authors={authors} onClick={handleClick} />
-      <SortField onClick={handleClick} />
+      <SearchField onChange={onSearch} />
+      <FilterField tags={allTags} authors={allAuthors} onClick={filterClick} />
+      <SortField onClick={sortClick} />
     </FilterContainer>
   );
 };
