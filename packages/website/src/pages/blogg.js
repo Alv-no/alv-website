@@ -20,7 +20,7 @@ const Blog = () => {
           våre <span className="font-semibold">tips og tanker</span>
         </div>
       </IntroContainer>
-      <BlogSection articles={articles} />
+      <BlogSection allArticles={articles} />
     </Layout>
   );
 };

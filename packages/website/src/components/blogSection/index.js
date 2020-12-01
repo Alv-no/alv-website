@@ -1,38 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BlogFilter } from '../blogFilter';
 import { PostCard } from '../postCard';
 import * as Button from '../button';
 
-export const BlogSection = ({ articles }) => {
-  const [tags, setTags] = useState(null);
-  const [authors, setAuthors] = useState(() => [
-    ...new Set(
-      articles.map(({ author }) => `${author.firstname} ${author.lastname}`)
-    ),
-  ]);
+export const BlogSection = ({ allArticles }) => {
+  const [articles, setArticles] = useState(allArticles);
   const [visibleRows, setVisibleRows] = useState(3);
-
-  useEffect(() => {
-    const tags = [];
-    articles.forEach((article) => {
-      article.tags.forEach((tag) => {
-        if (!tags.includes(tag.tag)) {
-          tags.push(tag.tag);
-        }
-      });
-    });
-    setTags(tags);
-    setAuthors(authors);
-  }, [articles, authors]);
 
   const handleViewMoreClick = () => {
     setVisibleRows(visibleRows + 3);
   };
 
+  const allAuthors = [
+    ...new Set(
+      articles.map(({ author }) => `${author.firstname} ${author.lastname}`)
+    ),
+  ];
+
+  const allTags = [];
+  articles.forEach((article) => {
+    article.tags.forEach((tag) => {
+      if (!allTags.includes(tag.tag)) {
+        allTags.push(tag.tag);
+      }
+    });
+  });
+
+  const updateArticles = (articles) => {
+    setArticles(articles);
+  };
+
   return (
     <>
       <div className="w-full">
-        {tags && <BlogFilter tags={tags} authors={authors} />}
+        {allTags && (
+          <BlogFilter
+            allTags={allTags}
+            allAuthors={allAuthors}
+            allArticles={articles}
+            onChange={updateArticles}
+          />
+        )}
         <div className="max-w-1200 mx-auto">
           <div
             className="w-full grid xs:gap-4 xl:mx-0 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
