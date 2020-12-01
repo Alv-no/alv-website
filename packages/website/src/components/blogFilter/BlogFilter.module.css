@@ -11,3 +11,54 @@
   display: flex;
   align-items: center;
 }
+
+.listItem span {
+  transition: 0.3s ease-in all;
+  z-index: 0;
+}
+
+.checkbox:checked ~ span {
+  transform: translateX(20px);
+  font-weight: bold;
+}
+
+.line {
+  height: 3px;
+}
+
+.checkbox,
+.dot {
+  z-index: 20;
+  opacity: 0;
+}
+
+.filterCheckbox,
+.sortCheckbox,
+.sort,
+.filter {
+  z-index: 20;
+  opacity: 0;
+}
+
+.filter {
+  transition: 0.3s ease opacity;
+}
+
+.filterCheckbox:checked ~ .filter,
+.sortCheckbox:checked ~ .sort {
+  opacity: 100%;
+}
+
+.sortCheckbox:checked ~ .sortSelected {
+  font-weight: bold;
+}
+
+.dot,
+.sort {
+  transition: 0.3s ease opacity;
+  opacity: 0%;
+}
+
+.checkbox:checked ~ .dot {
+  opacity: 100%;
+}
