@@ -5,23 +5,25 @@ import * as Button from '../button';
 
 export const BlogSection = ({ articles }) => {
   const [tags, setTags] = useState(null);
-  const [authors, setAuthors] = useState(null);
+  const [authors, setAuthors] = useState(() => [
+    ...new Set(
+      articles.map(({ author }) => `${author.firstname} ${author.lastname}`)
+    ),
+  ]);
   const [visibleRows, setVisibleRows] = useState(3);
 
   useEffect(() => {
     const tags = [];
-    const authors = [];
     articles.forEach((article) => {
-      authors.push(`${article.author.firstname} ${article.author.lastname}`);
       article.tags.forEach((tag) => {
-        if (tags.indexOf(tag.tag) < 0) {
+        if (!tags.includes(tag.tag)) {
           tags.push(tag.tag);
         }
       });
     });
     setTags(tags);
     setAuthors(authors);
-  }, [articles]);
+  }, [articles, authors]);
 
   const handleViewMoreClick = () => {
     setVisibleRows(visibleRows + 3);

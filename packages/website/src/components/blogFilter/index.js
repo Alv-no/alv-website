@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Icon from '../icon';
 import styles from './BlogFilter.module.css';
 import { FilterContainer } from '../filterContainer';
 
 export const BlogFilter = ({ tags, authors }) => {
+  const [filter, setFilter] = useState([]);
+
   const handleClick = (e) => {
-    return e.target.id;
+    if (filter.indexOf(e.target.id) < 0) {
+      const newFilter = filter;
+      console.log(e.target.id);
+      newFilter.push(e.target.id);
+      setFilter(newFilter);
+    }
   };
+
+  useEffect(() => {
+    console.log(filter);
+    console.log(filter);
+  }, [filter]);
+
   const handleChange = (e) => {
     return e.target.value;
   };
@@ -53,13 +66,11 @@ export const FilterField = ({ tags, authors, onClick }) => {
           <ul>
             {tags.map((tag) => (
               <li className={styles.listItem}>
-                <div
-                  className="text-sm text-gray-700 font-light relative mt-3 flex items-center"
-                  id={tag}
-                  onClick={onClick}
-                >
+                <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
                   <input
                     className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
+                    id={tag}
+                    onChange={onClick}
                     type="checkbox"
                   />
                   <div
@@ -79,13 +90,11 @@ export const FilterField = ({ tags, authors, onClick }) => {
           <ul>
             {authors.map((author) => (
               <li className={styles.listItem}>
-                <div
-                  className="text-sm text-gray-700 font-light relative mt-3 flex items-center"
-                  id={author}
-                  onClick={onClick}
-                >
+                <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
                   <input
                     className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
+                    id={author}
+                    onChange={onClick}
                     type="checkbox"
                   />
                   <div
