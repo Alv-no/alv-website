@@ -5,11 +5,14 @@ import * as Button from '../button';
 
 export const BlogSection = ({ articles }) => {
   const [tags, setTags] = useState(null);
+  const [authors, setAuthors] = useState(null);
   const [visibleRows, setVisibleRows] = useState(3);
 
   useEffect(() => {
     const tags = [];
+    const authors = [];
     articles.forEach((article) => {
+      authors.push(`${article.author.firstname} ${article.author.lastname}`);
       article.tags.forEach((tag) => {
         if (tags.indexOf(tag.tag) < 0) {
           tags.push(tag.tag);
@@ -17,6 +20,7 @@ export const BlogSection = ({ articles }) => {
       });
     });
     setTags(tags);
+    setAuthors(authors);
   }, [articles]);
 
   const handleViewMoreClick = () => {
@@ -26,7 +30,7 @@ export const BlogSection = ({ articles }) => {
   return (
     <>
       <div className="w-full">
-        <BlogFilter tags={tags} />
+        {tags && <BlogFilter tags={tags} authors={authors} />}
         <div className="max-w-1200 mx-auto">
           <div
             className="w-full grid xs:gap-4 xl:mx-0 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
