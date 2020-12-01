@@ -3,6 +3,8 @@ import * as Icon from '../icon';
 import styles from './BlogFilter.module.css';
 import { FilterContainer } from '../filterContainer';
 
+// Input: content and sorting options
+// Output: filtered and sorted content array
 export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
   const [active, setActive] = useState(allArticles);
   const [filter, setFilter] = useState([]);
@@ -13,6 +15,11 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
   useEffect(() => {
     const activeArticles = allArticles;
     // Process articles here
+    if (filter) {
+      console.log('Yes');
+    } else {
+      console.log('No');
+    }
     setActive(activeArticles);
   }, [sort, search, filter, allArticles]);
 
