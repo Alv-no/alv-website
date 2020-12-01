@@ -17,14 +17,9 @@ export const BlogSection = ({ allArticles }) => {
     ),
   ];
 
-  const allTags = [];
-  articles.forEach((article) => {
-    article.tags.forEach((tag) => {
-      if (!allTags.includes(tag.tag)) {
-        allTags.push(tag.tag);
-      }
-    });
-  });
+  const allTags = [
+    ...new Set(articles.flatMap(({ tags }) => tags.map(({ tag }) => tag))),
+  ];
 
   const updateArticles = (articles) => {
     setArticles(articles);
