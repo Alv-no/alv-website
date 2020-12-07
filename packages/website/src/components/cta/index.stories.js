@@ -5,7 +5,7 @@ export default {
   title: 'components/cta',
   decorators: [
     (Story) => (
-      <div style={{ background: '#061838', padding: '20px 0' }}>
+      <div style={{ padding: '20px 0' }}>
         <Story />
       </div>
     ),

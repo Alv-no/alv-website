@@ -3,13 +3,6 @@ import { Title } from '.';
 
 export default {
   title: 'components/title',
-  decorators: [
-    (Story) => (
-      <div style={{ background: '#061838' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const Default = ({ children }) => <Title>{children}</Title>;

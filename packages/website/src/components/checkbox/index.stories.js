@@ -5,7 +5,7 @@ export default {
   title: 'components/checkbox',
   decorators: [
     (Story) => (
-      <div style={{ background: '#061838', padding: '10px' }}>
+      <div style={{ padding: '10px' }}>
         <Story />
       </div>
     ),
