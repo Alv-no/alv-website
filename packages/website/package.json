@@ -11,17 +11,17 @@
   "dependencies": {
     "browser-monads": "^1.0.0",
     "classnames": "^2.2.6",
-    "gatsby": "^2.25.2",
-    "gatsby-plugin-google-fonts": "^1.0.1",
-    "gatsby-plugin-postcss": "^3.0.4",
-    "gatsby-source-filesystem": "^2.6.1",
-    "gatsby-source-sanity": "^6.0.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-headroom": "^3.0.0",
     "tailwindcss": "^1.9.6"
   },
   "devDependencies": {
+    "gatsby": "^2.25.2",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-postcss": "^3.0.4",
+    "gatsby-source-filesystem": "^2.6.1",
+    "gatsby-source-sanity": "^6.0.4",
     "@babel/core": "^7.12.3",
     "@mdx-js/react": "^1.6.19",
     "@storybook/addon-actions": "^6.0.28",
