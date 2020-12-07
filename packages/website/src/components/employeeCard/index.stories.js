@@ -6,7 +6,7 @@ export default {
   title: 'components/employeeCard',
   decorators: [
     (Story) => (
-      <div style={{ background: '#061838', height: '270px', width: '207px' }}>
+      <div style={{ height: '270px', width: '207px' }}>
         <Story />
       </div>
     ),

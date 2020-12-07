@@ -3,13 +3,6 @@ import { PostCard } from '.';
 
 export default {
   title: 'components/postCard',
-  decorators: [
-    (Story) => (
-      <div style={{ background: '#061838' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const Default = ({ ...args }) => <PostCard {...args} />;

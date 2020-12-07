@@ -8,7 +8,6 @@ export default {
     (Story) => (
       <div
         style={{
-          background: '#061838',
           paddingTop: '20px',
           paddingBottom: '20px',
         }}

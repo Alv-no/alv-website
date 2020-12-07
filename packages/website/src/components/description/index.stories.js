@@ -3,13 +3,6 @@ import { Description } from '.';
 
 export default {
   title: 'components/description',
-  decorators: [
-    (Story) => (
-      <div style={{ background: '#061838' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 const Template = (args) => <Description {...args} />;
