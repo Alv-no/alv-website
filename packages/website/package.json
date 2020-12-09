@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
     "browser-monads": "^1.0.0",
     "classnames": "^2.2.6",
     "react": "^17.0.1",
