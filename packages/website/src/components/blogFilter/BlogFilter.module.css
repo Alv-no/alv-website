@@ -33,29 +33,21 @@
 }
 
 .filterCheckbox,
-.sortCheckbox,
-.sort,
 .filter {
   z-index: 20;
   opacity: 0;
 }
 
 .filter {
-  transition: 0.3s ease opacity;
+  transition: 0.1s ease opacity;
 }
 
-.filterCheckbox:checked ~ .filter,
-.sortCheckbox:checked ~ .sort {
+.filterCheckbox:checked ~ .filter {
   opacity: 100%;
 }
 
-.sortCheckbox:checked ~ .sortSelected {
-  font-weight: bold;
-}
-
-.dot,
-.sort {
-  transition: 0.3s ease opacity;
+.dot {
+  transition: 0.1s ease opacity;
   opacity: 0%;
 }
 

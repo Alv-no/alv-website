@@ -3,13 +3,21 @@ import { EmployeeGroup } from '../employeeGroup';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import * as Button from '../button';
 
-export const GridContainer = ({ filteredContent }) => {
+export const GridContainer = ({ filteredContent, linkedId }) => {
   const { width } = useWindowDimensions();
   const [columnsNr, setColumnsNr] = useState(null);
   const [rows, setRows] = useState(null);
   const [contentGroups, setContentGroups] = useState(null);
-  const [activeBio, setActiveBio] = useState(null);
   const [visibleRows, setVisibleRows] = useState(3);
+
+  // Set active bio from internal link
+  const [activeBio, setActiveBio] = useState(() => {
+    if (linkedId) {
+      const active = filteredContent.filter((el) => el.id === linkedId);
+      return active[0];
+    }
+    return null;
+  });
 
   useEffect(() => {
     setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 1);

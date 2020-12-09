@@ -3,7 +3,7 @@ import * as Icon from '../icon';
 import { GridContainer } from '../gridContainer';
 import { Checkbox } from '../checkbox';
 
-export const Tagbar = ({ sanityTags, sanityEmployees }) => {
+export const Tagbar = ({ sanityTags, sanityEmployees, linkedId }) => {
   const [filteredContent, setFilteredContent] = useState(
     sanityEmployees.map((el) => el.node)
   );
@@ -64,7 +64,7 @@ export const Tagbar = ({ sanityTags, sanityEmployees }) => {
         </div>
       </div>
       {/* CONTAINER WITH CARDS */}
-      <GridContainer filteredContent={filteredContent} />
+      <GridContainer filteredContent={filteredContent} linkedId={linkedId} />
     </div>
   );
 };

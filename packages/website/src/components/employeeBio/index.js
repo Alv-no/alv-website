@@ -16,7 +16,7 @@ export const EmployeeBio = ({
     className="bg-darkblue text-white lg:py-18 pb-15 pt-20 xs:-mx-6 sm:mt-12 my-8 sm:px-5 xs:mt-8 -mt-4"
     id={id}
   >
-    <div className="max-w-1200 mx-auto sm:px-5">
+    <div className="max-w-1200 mx-auto sm:px-5" id={lastname}>
       <div className="w-full flex flex-end justify-between">
         <div />
         <div>

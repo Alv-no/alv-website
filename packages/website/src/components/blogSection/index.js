@@ -13,12 +13,12 @@ export const BlogSection = ({ allArticles }) => {
 
   const allAuthors = [
     ...new Set(
-      articles.map(({ author }) => `${author.firstname} ${author.lastname}`)
+      allArticles.map(({ author }) => `${author.firstname} ${author.lastname}`)
     ),
   ];
 
   const allTags = [
-    ...new Set(articles.flatMap(({ tags }) => tags.map(({ tag }) => tag))),
+    ...new Set(allArticles.flatMap(({ tags }) => tags.map(({ tag }) => tag))),
   ];
 
   const updateArticles = (articles) => {
@@ -44,7 +44,6 @@ export const BlogSection = ({ allArticles }) => {
             {articles.map((article) => {
               return (
                 <>
-                  <PostCard {...article} />
                   <PostCard {...article} />
                 </>
               );

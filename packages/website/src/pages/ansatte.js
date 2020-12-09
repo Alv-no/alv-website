@@ -6,8 +6,9 @@ import { Tagbar } from '../components/tagbar';
 import { Cta } from '../components/cta';
 import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
 
-const Employees = () => {
+const Employees = ({ location }) => {
   const data = useEmployeeQuery();
+  const activeCard = location.state ? location.state.activeCard : null;
   return (
     <Layout>
       <div className="bg-navy w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
@@ -26,6 +27,7 @@ const Employees = () => {
         <Tagbar
           sanityTags={data.allSanityEmployeeTag.edges}
           sanityEmployees={data.allSanityEmployee.edges}
+          linkedId={activeCard}
         />
         <Cta
           heading="Join With Us"
