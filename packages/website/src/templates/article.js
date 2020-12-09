@@ -6,44 +6,25 @@ import PortableText from '@sanity/block-content-to-react';
 import styles from './Article.module.css';
 import * as Icon from '../components/icon';
 
-// Serializer and styles html content from Sanity backend
-const serializer = {
-  types: {
-    listItem: (props) => (
-      <li
-        style={{
-          paddingBottom: '',
-          marginLeft: '30px',
-          marginTop: '5px',
-          listStyleType: 'decimal',
-        }}
-      >
-        {props.children}
-      </li>
-    ),
-  },
-};
-
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
   const { title, author, mainImage, tags, _rawBody } = props.data.sanityArticle;
-  console.log(_rawBody);
   return (
     <>
       <Sidebar {...author}>
         <div
-          className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25 max-w-2xl"
-          style={{ maxWidth: '900px' }}
+          className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25"
+          style={{ maxWidth: '770px' }}
         >
           <div className="w-full flex justify-end uppercase text-navy text-sm font-semibold items-center">
             Share{' '}
-            <span className="ml-2 text-navy filter-invert cursor-pointer">
-              <Icon.CircleLinkedIn />
+            <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+              <Icon.CircleFacebook />
             </span>
-            <span className="ml-2 text-navy filter-invert cursor-pointer">
-              <Icon.CircleLinkedIn />
+            <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+              <Icon.CircleTwitter />
             </span>
-            <span className="ml-2 text-navy filter-invert cursor-pointer">
+            <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
               <Icon.CircleLinkedIn />
             </span>
           </div>
@@ -54,7 +35,6 @@ const ArticleTemplate = (props) => {
           <span className={styles.body}>
             <PortableText
               blocks={_rawBody}
-              serializers={serializer}
               projectId="mnr37rl0"
               dataset="production"
             />
