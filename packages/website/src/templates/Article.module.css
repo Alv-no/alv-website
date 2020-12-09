@@ -1,0 +1,57 @@
+.body {
+  color: #061838;
+}
+
+.body h3 {
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: 1.8px;
+  margin: 40px 0;
+}
+
+.body h4 {
+  font-size: 24px;
+  line-height: 35px;
+  letter-spacing: 1.44px;
+  font-weight: 500;
+  margin: 40px 0;
+}
+
+.body img {
+  margin: 40px 0;
+}
+
+.body p {
+  margin: 40px 0;
+  line-height: 26px;
+  letter-spacing: 0.96px;
+}
+
+.body ol {
+  list-style-type: decimal;
+  margin-left: 35px;
+}
+
+.body ol > li > li {
+  list-style-type: lower-roman;
+  margin-left: 25px;
+}
+
+.body ul {
+  list-style-type: disc;
+  margin-left: 35px;
+}
+
+.body ul > li > li {
+  list-style-type: square;
+  margin-left: 25px;
+}
+
+.body blockquote {
+  font-size: 26px;
+  letter-spacing: 1.56px;
+  line-height: 33px;
+  margin: 40px 80px;
+  text-transform: uppercase;
+  text-align: center;
+}

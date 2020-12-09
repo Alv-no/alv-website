@@ -142,6 +142,60 @@ export const Linkedin = () => (
   </svg>
 );
 
+export const CircleLinkedIn = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22.897"
+    height="22.898"
+    viewBox="0 0 22.897 22.898"
+  >
+    <path
+      id="Path_286"
+      data-name="Path 286"
+      d="M-178.281,132.586a11.467,11.467,0,0,1-11.482,11.442,11.477,11.477,0,0,1-11.415-11.457,11.474,11.474,0,0,1,11.485-11.442A11.467,11.467,0,0,1-178.281,132.586Zm-5.361,4.686c0-1.824.084-3.6-.028-5.371a2.118,2.118,0,0,0-2.343-2.031,3.136,3.136,0,0,0-2.633,1.294c-.03-.446-.051-.768-.073-1.109h-2.532v7.19h2.752c0-.392-.005-.742,0-1.091.017-1-.007-2,.073-3a1.058,1.058,0,0,1,1.134-1.111c.6.037.889.426.9,1.237.008.927,0,1.854,0,2.781,0,.4,0,.8,0,1.21Zm-9.466-.011v-7.2h-2.7v7.2Zm-2.763-9.668a1.353,1.353,0,0,0,1.4,1.282,1.359,1.359,0,0,0,1.394-1.3,1.331,1.331,0,0,0-1.41-1.267A1.315,1.315,0,0,0-195.872,127.592Z"
+      transform="translate(201.178 -121.13)"
+      fill="#061838"
+    />
+  </svg>
+);
+
+export const CircleTwitter = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="19"
+    height="19"
+    viewBox="0 0 19 19"
+  >
+    <defs>
+      <clipPath id="clip-path">
+        <rect width="19" height="19" fill="none" />
+      </clipPath>
+    </defs>
+    <g
+      id="Component_11_1"
+      data-name="Component 11 – 1"
+      clip-path="url(#clip-path)"
+    >
+      <rect
+        id="Rectangle_392"
+        data-name="Rectangle 392"
+        width="19"
+        height="19"
+        transform="translate(0 0)"
+        fill="none"
+      />
+      <path
+        id="Path_1"
+        data-name="Path 1"
+        d="M86.518,19.233V10.472H89.51l.427-3.419H86.518V4.915c0-.962.321-1.71,1.71-1.71h1.816V.107c-.427,0-1.5-.107-2.671-.107a4.125,4.125,0,0,0-4.381,4.488V7.052H80v3.419h2.992v8.762Z"
+        transform="translate(-75.192 0.001)"
+        fill="#fff"
+        fill-rule="evenodd"
+      />
+    </g>
+  </svg>
+);
+
 export const TwitterWhite = () => (
   <svg width="22.894" height="22.898" viewBox="0 0 22.894 22.898">
     <path

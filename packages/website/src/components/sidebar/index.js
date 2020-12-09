@@ -5,7 +5,7 @@ import Link from 'gatsby-link';
 import * as Icon from '../icon';
 import '../../layout.css';
 
-const BlogLayout = ({
+const Sidebar = ({
   children,
   firstname,
   lastname,
@@ -19,11 +19,11 @@ const BlogLayout = ({
       <MobileHeader />
       <div
         className="hidden sm:grid"
-        style={{ gridTemplateColumns: '33% auto' }}
+        style={{ gridTemplateColumns: 'minmax(400px, 33%) auto' }}
       >
         <div className="h-full bg-navy flex flex-col items-end justify-between pr-12 text-white">
           {/* HEADER SECTION */}
-          <div className="pr-10">
+          <div className="pr-10 fixed">
             <BlogHeader />
             <div className="ml-10">
               <div className="uppercase text-base tracking-wider font-semibold my-10">
@@ -40,7 +40,7 @@ const BlogLayout = ({
             </div>
           </div>
           {/* AUTHOR SECTION */}
-          <div className="flex mb-12">
+          <div className="flex mb-12 fixed bottom-0">
             <div className="mr-5 w-32 h-40">
               <img
                 src={image.asset.fluid.src}
@@ -76,4 +76,4 @@ const BlogLayout = ({
   );
 };
 
-export default BlogLayout;
+export default Sidebar;

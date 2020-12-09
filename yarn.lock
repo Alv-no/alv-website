@@ -3220,6 +3220,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sanity/block-content-to-hyperscript@npm:^2.0.10":
+  version: 2.0.10
+  resolution: "@sanity/block-content-to-hyperscript@npm:2.0.10"
+  dependencies:
+    "@sanity/generate-help-url": ^0.140.0
+    "@sanity/image-url": ^0.140.15
+    hyperscript: ^2.0.2
+    object-assign: ^4.1.1
+  checksum: 69fac9eab725b13ee3fe8cb47af90573cee2c21b8facf82335c1ab7be3bc0a31b0f0fd8a512e283f82af5e6a0520bc70df92b503a92ee198d44e4a9a7eb05dd1
+  languageName: node
+  linkType: hard
+
+"@sanity/block-content-to-react@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@sanity/block-content-to-react@npm:2.0.7"
+  dependencies:
+    "@sanity/block-content-to-hyperscript": ^2.0.10
+    prop-types: ^15.6.2
+  peerDependencies:
+    react: ">=15.0.0"
+  checksum: 855d273bae036e422edae310e88fc5b93b3cb6592046cf6ab17d0670dbab247483c92a81824b6a20a704fc8418bc4efc1c3f32610298bb650d290390d77df5e0
+  languageName: node
+  linkType: hard
+
 "@sanity/block-tools@npm:2.0.9":
   version: 2.0.9
   resolution: "@sanity/block-tools@npm:2.0.9"
@@ -3627,7 +3651,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sanity/image-url@npm:^0.140.19":
+"@sanity/generate-help-url@npm:^0.140.0":
+  version: 0.140.0
+  resolution: "@sanity/generate-help-url@npm:0.140.0"
+  checksum: 19fd9808ad84f3ff6ff17bdd735ee4ed35c20eae9d8499ded8ed312ad9779778daf35aba0840e2d6d4cda00e2efcfb97ce37a94cc468c9e20714aade4d83fdb7
+  languageName: node
+  linkType: hard
+
+"@sanity/image-url@npm:^0.140.15, @sanity/image-url@npm:^0.140.19":
   version: 0.140.19
   resolution: "@sanity/image-url@npm:0.140.19"
   dependencies:
@@ -7786,6 +7817,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browser-split@npm:0.0.0":
+  version: 0.0.0
+  resolution: "browser-split@npm:0.0.0"
+  checksum: 639019ae60b2228ec43aed321a223426ad33da8fbc39bea89ae4ed0b3a6096b8ddbdd19181019579d3904a6f68a1d03e4f72739566d204264f31edc14b9676e6
+  languageName: node
+  linkType: hard
+
 "browserify-aes@npm:^1.0.0, browserify-aes@npm:^1.0.4":
   version: 1.2.0
   resolution: "browserify-aes@npm:1.2.0"
@@ -8654,6 +8692,15 @@ __metadata:
   version: 0.6.0
   resolution: "cjs-module-lexer@npm:0.6.0"
   checksum: 333671db7fb916d9c569a52fba714a86051881c69a4df784a07cb1dfec2a1796c7bcd7ba46ff9035cccb6e7aaff612a83f6505437c01a5ae14c4ebc6c36f762c
+  languageName: node
+  linkType: hard
+
+"class-list@npm:~0.1.0, class-list@npm:~0.1.1":
+  version: 0.1.1
+  resolution: "class-list@npm:0.1.1"
+  dependencies:
+    indexof: 0.0.1
+  checksum: a0fd849fb09b6fc6da6c821cbfdba6d28d6776bedb42390f7969ee0f81117512f638681b5f94282c5c360b7c0f0fc32ca858e72590ac4a6b34e06819a75fa491
   languageName: node
   linkType: hard
 
@@ -15147,6 +15194,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"html-element@npm:^2.0.0":
+  version: 2.3.1
+  resolution: "html-element@npm:2.3.1"
+  dependencies:
+    class-list: ~0.1.1
+  checksum: 6ab68b5a768fa5a6beec1f72d04e088f0c27c61c94cc1d4c8aac059d9fed8d763e0509b6d38aab8654b5d8b0889c30615603f1f619b2237e5a6458996d9d4086
+  languageName: node
+  linkType: hard
+
 "html-encoding-sniffer@npm:^1.0.2":
   version: 1.0.2
   resolution: "html-encoding-sniffer@npm:1.0.2"
@@ -15397,6 +15453,17 @@ fsevents@^1.2.7:
     husky-run: bin/run.js
     husky-upgrade: lib/upgrader/bin.js
   checksum: c212d9732de84cbd7c25d907b874f7844503f85e28c0512518cddbac9854c54f1c569e81c5b70387f1e3c27d35c2b43256c811cf06fdad066565c5fc178f33f7
+  languageName: node
+  linkType: hard
+
+"hyperscript@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "hyperscript@npm:2.0.2"
+  dependencies:
+    browser-split: 0.0.0
+    class-list: ~0.1.0
+    html-element: ^2.0.0
+  checksum: d97fa08a5905a4987678a9e466486aa651e8de9537bd6496fa414124fa705407767d5652369318cbb1233d62e969ecbffedebd3c64bfda077d5d107c8c9c9eae
   languageName: node
   linkType: hard
 
@@ -28387,6 +28454,7 @@ typescript@^4.0.5:
   dependencies:
     "@babel/core": ^7.12.3
     "@mdx-js/react": ^1.6.19
+    "@sanity/block-content-to-react": ^2.0.7
     "@storybook/addon-actions": ^6.1.10
     "@storybook/addon-controls": ^6.1.10
     "@storybook/addon-docs": ^6.1.10
