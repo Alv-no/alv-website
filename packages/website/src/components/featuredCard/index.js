@@ -12,7 +12,7 @@ export const FeaturedCard = ({
 }) => {
   return (
     <Link
-      to={`/blog/${slug.current}`}
+      to={`/blogg/${slug.current}`}
       className="relative"
       style={{ position: 'relative' }}
     >

@@ -7,7 +7,7 @@ export const FilterContainer = ({ children }) => (
         className="h-20 w-full rounded-lg grid  items-center py-5 px-6 text-navy text-base font-semibold tracking-wider"
         style={{
           boxShadow: '0px 0px 20px #00000015',
-          gridTemplateColumns: '100px auto 240px',
+          gridTemplateColumns: 'auto 240px',
         }}
       >
         {children}

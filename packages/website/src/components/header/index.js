@@ -78,3 +78,37 @@ export const MobileHeader = () => {
     </>
   );
 };
+
+export const BlogHeader = () => {
+  const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const toggleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <>
+      <Navigation open={open} toggleClose={toggleClose} />
+      <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
+        <div className="max-w-1600 mx-auto">
+          <div className="flex justify-between sm:mb-7 ">
+            <div className="flex">
+              <span className="mr-5 cursor-pointer" onClick={handleClick}>
+                <Icon.Dropdown />
+              </span>
+              <span className="transform ">
+                <Link to="/">
+                  <Logo.White />
+                </Link>
+              </span>
+            </div>
+          </div>
+          <span className="sm:block hidden">
+            <Breadcrumbs path={['Home', 'Selskapet', 'Ansatte']} />
+          </span>
+        </div>
+      </div>
+    </>
+  );
+};
