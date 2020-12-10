@@ -18,7 +18,7 @@ export const useEmployeeQuery = () => {
               pdfLink
               image {
                 asset {
-                  fluid(maxWidth: 450) {
+                  fluid(maxWidth: 600) {
                     src
                   }
                 }

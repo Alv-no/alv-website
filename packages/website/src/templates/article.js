@@ -3,21 +3,29 @@ import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import Image from 'gatsby-image';
 import PortableText from '@sanity/block-content-to-react';
+import Link from 'gatsby-link';
 import styles from './Article.module.css';
 import * as Icon from '../components/icon';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
-  const { title, author, mainImage, tags, _rawBody } = props.data.sanityArticle;
+  const { title, author, mainImage, _rawBody } = props.data.sanityArticle;
+  let authorSlug = author.firstname
+    .split(' ')
+    .concat(author.lastname.split(' '))
+    .map((name) => name.toLowerCase());
+  authorSlug = authorSlug.join('-');
   return (
     <>
-      <Sidebar {...author}>
+      <Sidebar {...author} authorSlug={authorSlug}>
         <div
-          className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25"
+          className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25 text-navy"
           style={{ maxWidth: '770px', marginLeft: '10vw' }}
         >
-          <ArticleShare />
-          <h1 className="text-blog font-bold mb-3">{title}</h1>
+          <div className="mb-5">
+            <ArticleShare />
+          </div>
+          <h1 className="text-blog font-bold mb-8">{title}</h1>
           <div className="w-full mb-3">
             <Image fluid={mainImage.asset.fluid} />
           </div>
@@ -28,12 +36,23 @@ const ArticleTemplate = (props) => {
               dataset="production"
             />
           </span>
-          <ArticleShare />
-          <p>
-            {tags.forEach((tag) => (
-              <div>{tag.tag}</div>
-            ))}
-          </p>
+          <div className="mt-6">
+            <ArticleShare />
+          </div>
+          <div className="flex justify-between mt-8">
+            <div className="">
+              <div className="uppercase text-xl tracking-wider mb-2 font-semibold">
+                Les også
+              </div>
+              <div className="h-3px w-8 bg-yellow" />
+            </div>
+            <div className="flex items-center font-semibold uppercase">
+              <Link to="/blogg">Se alle artikler</Link>
+              <span className="transform text-navy ml-3">
+                <Icon.Arrow />
+              </span>
+            </div>
+          </div>
         </div>
       </Sidebar>
     </>
@@ -71,7 +90,7 @@ export const query = graphql`
         title
         image {
           asset {
-            fluid(maxHeight: 1000) {
+            fluid {
               ...GatsbySanityImageFluid
             }
           }

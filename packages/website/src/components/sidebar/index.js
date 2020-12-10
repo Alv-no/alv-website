@@ -2,13 +2,16 @@ import React from 'react';
 import { MobileHeader, BlogHeader } from '../header';
 import { Title } from '../title';
 import Link from 'gatsby-link';
+import Image from 'gatsby-image';
 import * as Icon from '../icon';
+import { White } from '../logo';
 import '../../layout.css';
 
 const Sidebar = ({
   children,
   firstname,
   lastname,
+  authorSlug,
   title,
   image,
   id,
@@ -43,25 +46,31 @@ const Sidebar = ({
             </div>
           </div>
           {/* AUTHOR SECTION */}
-          <div className="flex mb-12 fixed bottom-0">
+          <div className="flex mb-12 ml-10 fixed bottom-0">
             <div className="mr-5">
-              <img
-                src={image.asset.fluid.src}
-                className="w-32 h-40 object-contain"
-                alt="author"
-              />
+              <Link
+                to={`/ansatte#${authorSlug}`}
+                state={{ activeCard: id, employee: authorSlug }}
+              >
+                <Image
+                  fluid={image.asset.fluid}
+                  className="w-32 h-40 object-contain filter-grayscale opacity-70 transition duration-300 hover:opacity-100 hover:filter-grayscale-0"
+                  alt="author"
+                />
+                <div className="absolute transform scale-60 -translate-y-8">
+                  <White />
+                </div>
+              </Link>
             </div>
             <div className="text-white tracking-wider flex flex-col justify-between">
               <div>
                 <h4 className="text-xl font-semibold leading-snug">
                   {firstname}
                 </h4>
-                <h4 className="text-xl font-light mb-3 leading-tight">
-                  {lastname}
-                </h4>
-                <p className="font-light mb-4">{title}</p>
+                <h4 className="text-xl font-light leading-tight">{lastname}</h4>
               </div>
-              <div className="flex items-center font-semibold text-sm mb-1">
+              <p className="font-light mb-1">{title}</p>
+              <div className="flex items-center font-semibold text-sm mb-2">
                 <Link to={`/ansatte#${lastname}`} state={{ activeCard: id }}>
                   <div className="uppercase">Se intro</div>
                 </Link>
