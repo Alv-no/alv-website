@@ -7,7 +7,9 @@ import { BlogSection } from '../components/blogSection';
 
 const Blog = () => {
   const data = useBlogQuery();
-  const articles = data.articles.edges.map((article) => article.node);
+  const articles = data.articles.edges
+    .map((article) => article.node)
+    .sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1));
   const featuredArticle = data.featuredArticle.article;
 
   return (

@@ -3,8 +3,6 @@ import * as Icon from '../icon';
 import styles from './BlogFilter.module.css';
 import { FilterContainer } from '../filterContainer';
 
-// Fetch post popularity data from Google Analytics.
-
 // Input: content array and filter elements
 // Output: filtered and sorted content array
 export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
@@ -15,7 +13,6 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
 
   // Process all available content based on sort and filter input.
   useEffect(() => {
-    console.log(filter.length);
     let activeArticles = allArticles;
     // Process articles here
     if (filter.length > 0) {
@@ -32,18 +29,26 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
       });
       activeArticles = filteredArticles;
     }
-    console.log(activeArticles);
+
     setActive(activeArticles);
   }, [sort, filter, allArticles, onChange]);
 
   useEffect(() => {
-    console.log('Updated!');
-    onChange(active);
-  }, [active, onChange]);
+    const sortedActive = active;
+    // Fetch post popularity data from Google Analytics.
 
-  useEffect(() => {
-    console.log(filter);
-  }, [filter]);
+    if (sort === 'oldest') {
+      sortedActive.sort((a, b) => {
+        if (a.publishedAt > b.publishedAt) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+    }
+
+    onChange(sortedActive);
+  }, [active, sort, onChange]);
 
   // Update sort state with selected sorting option
   const sortClick = (e) => {
@@ -59,13 +64,11 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
     } else {
       newFilter = filter.filter((el) => el !== current);
     }
-    console.log(newFilter);
     setFilter(newFilter);
   };
 
   return (
     <FilterContainer>
-      {/* <SearchField onChange={onSearch} /> */}
       <FilterField
         tags={allTags}
         authors={allAuthors}
@@ -76,6 +79,8 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
     </FilterContainer>
   );
 };
+
+// Kept in as we might want to implement search later
 
 // Update state based on search input
 // const onSearch = (e) => {
@@ -169,7 +174,10 @@ export const FilterField = ({ tags, authors, active, onClick }) => {
         >
           {active.length > 0 ? (
             active.map((tag) => (
-              <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
+              <div
+                className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
+                key={tag}
+              >
                 {tag}
               </div>
             ))
@@ -227,8 +235,8 @@ export const SortField = ({ sort, sortClick }) => {
           onClick={toggleOpen}
         />
         <ul
-          className={`opacity-0 ${
-            open && 'opacity-100'
+          className={`${
+            open ? 'opacity-100' : 'opacity-0 pointer-events-none'
           } absolute top-0 left-0 mt-9 bg-white pr-1 z-30 transition duration-100 -translate-x-px -translate-y-2px transform border-t-0 text-sm list-style-none border border-bordergray rounded-md font-light opacity-0 pb-6px`}
         >
           <li

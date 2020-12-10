@@ -21,7 +21,6 @@ exports.createPages = async ({ graphql, actions }) => {
   );
 
   // Create blog posts pages.
-  console.log(res.data.allSanityArticle.edges);
   res.data.allSanityArticle.edges.forEach((edge) => {
     createPage({
       component: articleTemplate,

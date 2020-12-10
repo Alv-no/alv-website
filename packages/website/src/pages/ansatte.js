@@ -25,8 +25,8 @@ const Employees = ({ location }) => {
         </div>
         <div className="h-10 sm:h-16 md:h-24 mt-3" />
         <Tagbar
-          sanityTags={data.allSanityEmployeeTag.edges}
-          sanityEmployees={data.allSanityEmployee.edges}
+          allTags={data.allSanityEmployeeTag.edges}
+          allEmployees={data.allSanityEmployee.edges}
           linkedId={activeCard}
         />
         <Cta

@@ -14,20 +14,9 @@ const ArticleTemplate = (props) => {
       <Sidebar {...author}>
         <div
           className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25"
-          style={{ maxWidth: '770px' }}
+          style={{ maxWidth: '770px', marginLeft: '10vw' }}
         >
-          <div className="w-full flex justify-end uppercase text-navy text-sm font-semibold items-center">
-            Share{' '}
-            <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
-              <Icon.CircleFacebook />
-            </span>
-            <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
-              <Icon.CircleTwitter />
-            </span>
-            <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
-              <Icon.CircleLinkedIn />
-            </span>
-          </div>
+          <ArticleShare />
           <h1 className="text-blog font-bold mb-3">{title}</h1>
           <div className="w-full mb-3">
             <Image fluid={mainImage.asset.fluid} />
@@ -39,6 +28,7 @@ const ArticleTemplate = (props) => {
               dataset="production"
             />
           </span>
+          <ArticleShare />
           <p>
             {tags.forEach((tag) => (
               <div>{tag.tag}</div>
@@ -51,6 +41,21 @@ const ArticleTemplate = (props) => {
 };
 
 export default ArticleTemplate;
+
+const ArticleShare = () => (
+  <div className="w-full flex justify-end uppercase text-navy text-sm font-semibold items-center">
+    Share{' '}
+    <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+      <Icon.CircleFacebook />
+    </span>
+    <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+      <Icon.CircleTwitter />
+    </span>
+    <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+      <Icon.CircleLinkedIn />
+    </span>
+  </div>
+);
 
 // GraphQL Query for article content
 export const query = graphql`

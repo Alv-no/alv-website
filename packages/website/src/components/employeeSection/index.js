@@ -3,14 +3,12 @@ import * as Icon from '../icon';
 import { GridContainer } from '../gridContainer';
 import { Checkbox } from '../checkbox';
 
-export const Tagbar = ({ allTags, allEmployees, linkedId }) => {
+export const EmployeeSection = ({ allTags, allEmployees, linkedId }) => {
   const [filteredContent, setFilteredContent] = useState(
     allEmployees.map((el) => el.node)
   );
 
-  const [tags, setTags] = useState(
-    allTags.map((sanityTag) => sanityTag.node.tag)
-  );
+  const [tags, setTags] = useState(allTags.map((tag) => tag.node.tag));
 
   // Filter employees based on active tags
   const filterEmployees = (tags) => {
@@ -40,31 +38,33 @@ export const Tagbar = ({ allTags, allEmployees, linkedId }) => {
   };
 
   return (
-    // FILTER SECTION
     <div className="w-full text-white xs:px-6 overflow-hidden">
-      <div className="mx-auto flex md:flex-row flex-col text-white sm:items-center justify-center px-4 sm:px-4 mb-10">
-        <div className="flex mr-4 text-base tracking-wider font-bold mb-5 sm:mb-3">
-          Kategorier{' '}
-          <span className="transform scale-10 -translate-y-2px h-5 -mx-32">
-            <Icon.Tag />
-          </span>
-        </div>
-        <div className="flex -ml-4 flex-wrap items-center">
-          {allTags.map((sanityTag) => {
-            return (
-              <Checkbox
-                onChange={handleTagClick}
-                key={sanityTag.node.id}
-                {...sanityTag.node}
-              >
-                {sanityTag.node.tag}
-              </Checkbox>
-            );
-          })}
-        </div>
-      </div>
-      {/* CONTAINER WITH CARDS */}
+      <EmployeeFilter allTags={allTags} onChange={handleTagClick} />
       <GridContainer filteredContent={filteredContent} linkedId={linkedId} />
     </div>
   );
 };
+
+export const EmployeeFilter = ({ allTags, onChange }) => (
+  <div className="mx-auto flex md:flex-row flex-col text-white sm:items-center justify-center px-4 sm:px-4 mb-10">
+    <div className="flex mr-4 text-base tracking-wider font-bold mb-5 sm:mb-3">
+      Kategorier{' '}
+      <span className="transform scale-10 -translate-y-2px h-5 -mx-32">
+        <Icon.Tag />
+      </span>
+    </div>
+    <div className="flex -ml-4 flex-wrap items-center">
+      {allTags.map((sanityTag) => {
+        return (
+          <Checkbox
+            onChange={onChange}
+            key={sanityTag.node.id}
+            {...sanityTag.node}
+          >
+            {sanityTag.node.tag}
+          </Checkbox>
+        );
+      })}
+    </div>
+  </div>
+);

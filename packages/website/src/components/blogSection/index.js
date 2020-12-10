@@ -38,15 +38,11 @@ export const BlogSection = ({ allArticles }) => {
         )}
         <div className="max-w-1200 mx-auto">
           <div
-            className="w-full grid xs:gap-4 xl:mx-0 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
-            style={{ rowGap: '50px' }}
+            className="w-full grid xs:gap-4 md:mx-4 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
+            style={{ rowGap: '50px', margin: '0 20px' }}
           >
             {articles.map((article) => {
-              return (
-                <>
-                  <PostCard {...article} />
-                </>
-              );
+              return <PostCard {...article} key={article.id} />;
             })}
           </div>
         </div>
