@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { window, document } from 'browser-monads';
+import * as Button from '../button';
 import { EmployeeGroup } from '../employeeGroup';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import * as Button from '../button';
 
 export const GridContainer = ({ filteredContent, linkedId }) => {
   const { width } = useWindowDimensions();
@@ -9,6 +10,13 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
   const [rows, setRows] = useState(null);
   const [contentGroups, setContentGroups] = useState(null);
   const [visibleRows, setVisibleRows] = useState(3);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!loaded) {
+      setLoaded(true);
+    }
+  }, [loaded]);
 
   // Set active bio from internal link
   const [activeBio, setActiveBio] = useState(() => {
@@ -18,6 +26,22 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
     }
     return null;
   });
+
+  useEffect(() => {
+    if (activeBio) {
+      let nameSlug = activeBio.firstname
+        .split(' ')
+        .concat(activeBio.lastname.split(' '))
+        .map((name) => name.toLowerCase());
+      nameSlug = nameSlug.join('-');
+      const element = document.getElementById(nameSlug);
+      const top =
+        window.scrollY +
+        element.getBoundingClientRect().top -
+        (width > 1024 ? 430 : width > 500 ? 100 : 0);
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, [activeBio, width]);
 
   useEffect(() => {
     setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 1);
@@ -70,7 +94,10 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
           })
         : null}
       {/* VIEW MORE BUTTON */}
-      <div className="max-w-1200 mx-auto flex justify-between sm:mt-15 xs:mt-12 mt-10 twelve:px-6">
+      <div
+        className="max-w-1200 mx-auto flex justify-between sm:mt-15 xs:mt-12 mt-10 twelve:px-6"
+        id="container"
+      >
         <div />
         <div
           className="font-bold tracking-wider pr-2px"

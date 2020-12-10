@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Icon from '../icon';
+import Image from 'gatsby-image';
 
 export const EmployeeCard = ({
   image,
@@ -26,8 +27,8 @@ export const EmployeeCard = ({
         activeBio && id === activeBio.id ? 'opacity-100' : 'opacity-65'
       } group-hover:opacity-100 duration-300 pointer-events-none`}
     >
-      <img
-        src={image.asset.fluid.src}
+      <Image
+        fluid={image.asset.fluid}
         alt={firstname}
         className="object-cover h-full xs:w-full"
         style={{ backgroundColor: 'rgba(40,40,40,50%)' }}
