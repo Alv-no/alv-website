@@ -16,49 +16,53 @@ export const PostCard = ({
   return (
     <Link
       to={slug.current}
-      className={` ${styles.container} group relative pb-6`}
+      className={`${styles.container} group relative pb-6`}
     >
-      <div className="flex justify-end text-sm absolute bottom-0 z-40 mb-2 w-full px-6 text-navy transform -translate-y-3">
-        <div className="font-semibold uppercase w-32 text-right justify-end items-end tracking-wider group-hover:text-white w-full">
-          <div className={styles.button}>
-            Les mer{' '}
-            <span className="ml-2 transform scale-80">
-              <Icon.Arrow />
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className={styles.container}>
-        <div className="text-white h-3/4 bg-navy bottom-0 absolute z-10 p-6 tracking-wider transition duration-300 opacity-0 group-hover:opacity-100">
-          <h3 className="text-lg font-semibold mb-3 -mx-2px">{title}</h3>
-          <div className="font-light mb-8">{description}</div>
-        </div>
-        <div className="overflow-hidden" style={{ height: '206px' }}>
-          <Image
-            fluid={mainImage.asset.fluid}
-            className="transform group-hover:scale-110 object-cover duration-300 transition"
-            style={{ maxHeight: '206px', height: '100%' }}
-          />
-        </div>
-        <div className="p-4 text-navy h-full">
-          <h3 className="text-lg font-semibold tracking-wide mb-4">{title}</h3>
-          <div className="flex flex-wrap mb-4">
-            {tags.map((tag) => (
-              <div
-                className="px-2 py-1 uppercase tracking-wider mr-6px text-xs"
-                style={{ background: '#F5F7F8', color: '#83959F' }}
-              >
-                {tag.tag}
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center mb-3">
-            <div className="h-6 w-6 rounded-full overflow-hidden mr-2 filter-grayscale">
-              <Image fluid={author.image.asset.fluid} />
+      <div>
+        <div className="flex justify-end text-sm absolute bottom-0 z-40 mb-2 w-full px-6 text-navy transform -translate-y-3">
+          <div className="font-semibold uppercase w-32 text-right justify-end items-end tracking-wider group-hover:text-white w-full">
+            <div className={styles.button}>
+              Les mer{' '}
+              <span className="ml-2 transform scale-80">
+                <Icon.Arrow />
+              </span>
             </div>
-            <div className="text-sm">
-              {author.firstname} {author.lastname}
-              <span className="text-postgray"> - {publishedAt}</span>
+          </div>
+        </div>
+        <div className={styles.container}>
+          <div className="text-white h-3/4 bg-navy bottom-0 absolute z-10 p-6 tracking-wider transition duration-300 opacity-0 group-hover:opacity-100">
+            <h3 className="text-lg font-semibold mb-3 -mx-2px">{title}</h3>
+            <div className="font-light mb-8">{description}</div>
+          </div>
+          <div className="overflow-hidden lg:h-50">
+            <Image
+              fluid={mainImage.asset.fluid}
+              className="transform group-hover:scale-110 object-cover duration-300 transition"
+              style={{ maxHeight: '206px', height: '100%' }}
+            />
+          </div>
+          <div className="p-4 text-navy h-full">
+            <h3 className="text-lg font-semibold tracking-wide mb-4">
+              {title}
+            </h3>
+            <div className="flex flex-wrap mb-4">
+              {tags.map((tag) => (
+                <div
+                  className="px-2 py-1 uppercase tracking-wider mr-6px text-xs"
+                  style={{ background: '#F5F7F8', color: '#83959F' }}
+                >
+                  {tag.tag}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center mb-3">
+              <div className="h-6 w-6 rounded-full overflow-hidden mr-2 filter-grayscale">
+                <Image fluid={author.image.asset.fluid} />
+              </div>
+              <div className="text-sm">
+                {author.firstname} {author.lastname}
+                <span className="text-postgray"> - {publishedAt}</span>
+              </div>
             </div>
           </div>
         </div>

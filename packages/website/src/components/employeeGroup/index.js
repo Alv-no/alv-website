@@ -23,7 +23,6 @@ export const EmployeeGroup = ({
   const handleCloseClick = () => {
     updateActiveBio(null);
   };
-  console.log(employees);
   return (
     <>
       <div>

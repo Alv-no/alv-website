@@ -40,10 +40,12 @@
 
 .filter {
   transition: 0.1s ease opacity;
+  pointer-events: none;
 }
 
 .filterCheckbox:checked ~ .filter {
   opacity: 100%;
+  pointer-events: all;
 }
 
 .dot {

@@ -21,7 +21,10 @@ const Sidebar = ({
         className="hidden sm:grid"
         style={{ gridTemplateColumns: 'minmax(400px, 33%) auto' }}
       >
-        <div className="h-full bg-navy flex flex-col items-end justify-between pr-12 text-white">
+        <div
+          className="h-full bg-navy flex flex-col justify-between pr-12 text-white"
+          style={{ paddingLeft: '3vw' }}
+        >
           {/* HEADER SECTION */}
           <div className="pr-10 fixed">
             <BlogHeader />
@@ -41,10 +44,10 @@ const Sidebar = ({
           </div>
           {/* AUTHOR SECTION */}
           <div className="flex mb-12 fixed bottom-0">
-            <div className="mr-5 w-32 h-40">
+            <div className="mr-5">
               <img
                 src={image.asset.fluid.src}
-                className="object-cover"
+                className="w-32 h-40 object-contain"
                 alt="author"
               />
             </div>
