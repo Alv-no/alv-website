@@ -1,9 +1,9 @@
 import React from 'react';
-import { Tagbar } from '.';
+import { EmployeeFilter } from '.';
 import jpg from '../../assets/fallback.jpg';
 
 export default {
-  title: 'components/tagbar',
+  title: 'components/employeeFilter',
   decorators: [
     (Story) => (
       <div
@@ -18,9 +18,9 @@ export default {
   ],
 };
 
-export const Default = ({ ...args }) => <Tagbar {...args} />;
+export const Default = ({ ...args }) => <EmployeeFilter {...args} />;
 Default.args = {
-  sanityTags: [
+  allTags: [
     {
       node: {
         tag: 'Data and analytics',
@@ -46,7 +46,7 @@ Default.args = {
       },
     },
   ],
-  sanityEmployees: [
+  allEmployees: [
     {
       id: '123',
       firstname: 'Eirik',
