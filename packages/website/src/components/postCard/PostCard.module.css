@@ -10,3 +10,7 @@
 .container h3 {
   line-height: 26px;
 }
+
+.container {
+  overflow: hidden;
+}
