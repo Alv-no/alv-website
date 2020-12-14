@@ -36,13 +36,8 @@ export const BlogSection = ({ allArticles }) => {
             onChange={updateArticles}
           />
         )}
-        <div className="max-w-1200 mx-auto flex justify-center px-4">
-          <div
-            className="w-full mb-4 grid justify-center xs:gap-4 xs:max-w-570 seven:max-w-none nine:max-w-1200 grid-cols-employees-xs xs:grid-cols-blog-sm nine:grid-cols-blog-nine twelve:grid-cols-employees-lg"
-            style={{
-              rowGap: '50px',
-            }}
-          >
+        <div className="max-w-1200 mx-auto flex justify-center px-6">
+          <div className="w-full mb-4 grid justify-center xs:gap-y-12 gap-y-4 xs:gap-4 xs:max-w-570 seven:max-w-none nine:max-w-1200 grid-cols-blog-xs five:grid-cols-blog-sm nine:grid-cols-blog-nine twelve:grid-cols-employees-lg">
             {articles.map((article) => {
               return (
                 <>

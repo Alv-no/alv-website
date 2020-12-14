@@ -34,11 +34,10 @@ export const PostCard = ({
             <h3 className="text-lg font-semibold mb-3 -mx-2px">{title}</h3>
             <div className="font-light mb-8">{description}</div>
           </div>
-          <div className="overflow-hidden" style={{ height: '206px' }}>
+          <div className="overflow-hidden h-50">
             <Image
               fluid={mainImage.asset.fluid}
-              className="transform group-hover:scale-110 object-cover duration-300 transition"
-              style={{ maxHeight: '206px', height: '100%' }}
+              className="transform group-hover:scale-110 object-cover duration-300 transition h-full"
             />
           </div>
           <div className="p-4 text-navy h-full">
@@ -47,10 +46,7 @@ export const PostCard = ({
             </h3>
             <div className="flex flex-wrap mb-4">
               {tags.map((tag) => (
-                <div
-                  className="px-2 py-1 uppercase tracking-wider mr-6px text-xs"
-                  style={{ background: '#F5F7F8', color: '#83959F' }}
-                >
+                <div className="px-2 py-1 uppercase tracking-wider mr-6px text-xs text-tag bg-tagbg">
                   {tag.tag}
                 </div>
               ))}

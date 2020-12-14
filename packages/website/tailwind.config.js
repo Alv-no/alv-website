@@ -13,6 +13,8 @@ module.exports = {
     extend: {
       colors: {
         navy: '#061838',
+        tag: '#83959F',
+        tagbg: '#F5F7F8',
         orange: '#F39123',
         bordergray: '#f2f2f3',
         lightblue: '#132442',
@@ -65,6 +67,7 @@ module.exports = {
         90: '0.90',
       },
       gridTemplateColumns: {
+        'blog-xs': 'minmax(180px, 300px)',
         'employees-xs': '1fr',
         'employees-sm': 'minmax(216px, 1fr) minmax(216px, 1fr)',
         'blog-sm': 'repeat(2, minmax(240px, 310px))',
@@ -76,6 +79,7 @@ module.exports = {
       },
       height: {
         '50': '200px',
+        '54': '216px',
         '60': '240px',
         '70': '280px',
         '80': '320px',
@@ -86,6 +90,7 @@ module.exports = {
         '140': '560px',
         '160': '640px',
         '60vw': '60vw',
+        'featured': '343px',
       },
       spacing: {
         '2px': '2px',
