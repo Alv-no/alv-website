@@ -26,3 +26,20 @@ export const OvalSimple = ({ children, onClick }) => (
     {children}
   </button>
 );
+
+export const FormSelect = ({ id, active, children, onClick }) => (
+  <div>
+    <div
+      onClick={onClick}
+      className={`flex items-center font-semibold uppercase mb-3 ${
+        active === id && 'text-yellow'
+      } transition duration-300 hover:text-yellow cursor-pointer`}
+      id={id}
+    >
+      {children}
+      <span className="transform ml-3">
+        <Icon.Arrow />
+      </span>
+    </div>
+  </div>
+);
