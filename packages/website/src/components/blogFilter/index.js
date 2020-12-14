@@ -81,7 +81,7 @@ export const FilterField = ({ tags, authors, active, onClick }) => {
   return (
     <div className="flex relative tracking-wider h-full border border-bordergray items-center pl-2 pr-3 mx-2 rounded-md flex-grow">
       <input
-        className={`${styles.filterCheckbox} absolute left-0 ml-2 w-25 h-6 transform cursor-pointer`}
+        className={`${styles.filterCheckbox} absolute left-0 ml-2 w-full h-6 transform cursor-pointer`}
         type="checkbox"
       />
       <div
@@ -143,30 +143,35 @@ export const FilterField = ({ tags, authors, active, onClick }) => {
       <span className="mr-3 -ml-1">Filter</span>
       <div className="overflow-hidden">
         <div
-          className="whitespace-pre w-full flex pl-2 rounded-full -ml-2"
+          className="whitespace-pre w-full pl-2 rounded-full -ml-2 relative"
           style={{ scrollbarWidth: 'thin' }}
         >
-          {active.length > 0 ? (
-            active.map((tag) => (
-              <div
-                className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
-                key={tag}
-              >
-                {tag}
-              </div>
-            ))
-          ) : (
-            <>
-              <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
-                Alle kategorier
-              </div>
-              <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
-                Alle forfattere
-              </div>
-            </>
-          )}
+          <span className="five:flex hidden">
+            {active.length > 0 ? (
+              active.map((tag) => (
+                <div
+                  className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
+                  key={tag}
+                >
+                  {tag}
+                </div>
+              ))
+            ) : (
+              <>
+                <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
+                  Alle kategorier
+                </div>
+                <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
+                  Alle forfattere
+                </div>
+              </>
+            )}
+          </span>
         </div>
       </div>
+      <span className="right-0 absolute mr-4 five:hidden">
+        <Icon.DropdownMini />
+      </span>
     </div>
   );
 };
@@ -184,8 +189,8 @@ export const SortField = ({ sort, sortClick }) => {
   };
 
   return (
-    <div className="flex items-center h-full w-60">
-      <span className="w-25 text-right">Sorter</span>
+    <div className="flex items-center h-full five:w-60 pr-2 pl-4 five:px-0">
+      <span className="five:w-25 five:text-right">Sorter</span>
       <div className="relative h-full border border-bordergray flex items-center px-4 rounded-md ml-2 w-full">
         <span
           className={`${styles.sortSelected} block font-light ${
