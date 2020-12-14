@@ -3,10 +3,10 @@ import { Footer } from '../footer';
 import { Header, MobileHeader } from '../header';
 import '../../layout.css';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, path }) => {
   return (
     <>
-      <Header />
+      <Header path={path} />
       <MobileHeader />
       <div>{children}</div>
       <Footer />
