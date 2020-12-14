@@ -7,7 +7,8 @@ import CTA from '../calltoaction';
 import Headroom from 'react-headroom';
 import { Navigation } from '../navigation';
 
-export const Header = () => {
+export const Header = ({ path }) => {
+  console.log(path);
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -31,11 +32,13 @@ export const Header = () => {
                 </Link>
               </span>
             </div>
-            <div className="text-white flex hidden sm:block">
-              <Link to="/kontakt-oss">
-                <CTA internalLink="/kontakt-oss">Ta kontakt</CTA>
-              </Link>
-            </div>
+            {!path || !path.includes('/kontakt-oss') ? (
+              <div className="text-white flex hidden sm:block">
+                <Link to="/kontakt-oss">
+                  <CTA internalLink="/kontakt-oss">Ta kontakt</CTA>
+                </Link>
+              </div>
+            ) : null}
           </div>
           <span className="sm:block hidden">
             <Breadcrumbs path={['Home', 'Selskapet', 'Ansatte']} />
