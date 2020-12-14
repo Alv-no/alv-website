@@ -27,9 +27,7 @@ export const EmployeeSection = ({ allTags, allEmployees, linkedId }) => {
     let activeTags = tags;
     if (activeTags.indexOf(currentTag) > -1) {
       activeTags = activeTags.filter((tag) => tag !== currentTag);
-      e.target.style.opacity = 0.5;
     } else {
-      e.target.style.opacity = 1;
       activeTags.push(currentTag);
     }
     setTags(activeTags);
