@@ -10,15 +10,9 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
   const [rows, setRows] = useState(null);
   const [contentGroups, setContentGroups] = useState(null);
   const [visibleRows, setVisibleRows] = useState(3);
-  const [loaded, setLoaded] = useState(false);
+  const [cardClick, setCardClick] = useState(false);
 
-  useEffect(() => {
-    if (!loaded) {
-      setLoaded(true);
-    }
-  }, [loaded]);
-
-  // Set active bio from internal link
+  // Set active bio on route update
   const [activeBio, setActiveBio] = useState(() => {
     if (linkedId) {
       const active = filteredContent.filter((el) => el.id === linkedId);
@@ -27,8 +21,9 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
     return null;
   });
 
+  // Scroll to active bio section on card click
   useEffect(() => {
-    if (activeBio) {
+    if (activeBio && cardClick) {
       let nameSlug = activeBio.firstname
         .split(' ')
         .concat(activeBio.lastname.split(' '))
@@ -41,7 +36,7 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
         (width > 1024 ? 430 : width > 500 ? 100 : 0);
       window.scrollTo({ top, behavior: 'smooth' });
     }
-  }, [activeBio, width]);
+  }, [activeBio, width, cardClick]);
 
   useEffect(() => {
     setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 1);
@@ -69,6 +64,7 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
 
   const updateActiveBio = (card) => {
     setActiveBio(card);
+    if (!cardClick) setCardClick(true);
   };
 
   const handleViewMoreClick = () => {
