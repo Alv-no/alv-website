@@ -9,14 +9,12 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
   const [active, setActive] = useState(allArticles);
   const [filter, setFilter] = useState([]);
   const [sort, setSort] = useState(null);
-  // const [search, setSearch] = useState([]);
 
   // Process all available content based on sort and filter input.
   useEffect(() => {
-    let activeArticles = allArticles;
     // Process articles here
     if (filter.length > 0) {
-      const filteredArticles = activeArticles.filter((article) => {
+      const filteredArticles = allArticles.filter((article) => {
         let test = false;
         article.tags.forEach(({ tag }) =>
           filter.includes(tag) ? (test = true) : null
@@ -27,15 +25,14 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
           ) || test
         );
       });
-      activeArticles = filteredArticles;
+      setActive(filteredArticles);
+    } else {
+      setActive(allArticles);
     }
-
-    setActive(activeArticles);
   }, [sort, filter, allArticles, onChange]);
 
   useEffect(() => {
     const sortedActive = active;
-    // Fetch post popularity data from Google Analytics.
 
     if (sort === 'oldest') {
       sortedActive.sort((a, b) => {
@@ -79,29 +76,6 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
     </FilterContainer>
   );
 };
-
-// Kept in as we might want to implement search later
-
-// Update state based on search input
-// const onSearch = (e) => {
-//   setSearch(e.target.value);
-// };
-
-// export const SearchField = ({ onChange }) => {
-//   return (
-//     <div className={styles.search}>
-//       <input
-//         type="text"
-//         className="h-full border border-bordergray px-3 placeholder-navy placeholder-font-bold w-25 rounded-md"
-//         placeholder="Søk"
-//         onChange={onChange}
-//       />
-//       <span className="absolute transform translate-x-18">
-//         <Icon.Search />
-//       </span>
-//     </div>
-//   );
-// };
 
 export const FilterField = ({ tags, authors, active, onClick }) => {
   return (
