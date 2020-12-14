@@ -42,6 +42,9 @@ module.exports = {
       minWidth: {
         40: '160px',
       },
+      boxShadow: {
+        filter: '0px 0px 20px #00000015',
+      },
       width: {
         50: '200px',
         54: '216px',
@@ -68,6 +71,8 @@ module.exports = {
         'employees-md': 'repeat(3, minmax(216px, 1fr))',
         'employees-lg': 'repeat(4, minmax(216px, 1fr))',
         'blog-nine': 'repeat(3, minmax(250px, 270px))',
+        'filter-lg': 'auto 240px',
+        'filter': '1fr',
       },
       height: {
         '50': '200px',
@@ -138,6 +143,7 @@ module.exports = {
       },
       screens: {
         'xs': '480px',
+        'five': '550px',
         'sm': '640px',
         'seven': '700px',
         'md': '768px',
