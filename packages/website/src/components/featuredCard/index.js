@@ -19,9 +19,10 @@ export const FeaturedCard = ({
       <BackgroundImage
         fluid={mainImage ? mainImage.asset.fluid : fallbackImg.asset.fluid}
       >
+        <div className="h-featured xs:hidden" />
         <div
+          className="xs:block hidden h-featured"
           style={{
-            height: '343px',
             background:
               'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
           }}
@@ -50,6 +51,36 @@ export const FeaturedCard = ({
           </div>
         </div>
       </BackgroundImage>
+      <div
+        className="xs:hidden"
+        style={{
+          background:
+            'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
+        }}
+      >
+        <div className="w-full z-50 h-full p-6 flex flex-col justify-between">
+          <div />
+          <div className="flex text-white flex-col tracking-wider">
+            <div className="pl-1">
+              <div className="uppercase text-base font-bold">
+                Vår nyeste artikkel
+              </div>
+              <div className="w-12 h-2px bg-yellow mb-4 mt-1" />
+              <div className="text-nav font-bold mt-4 mb-3">{title}</div>
+              <div className="max-w-100 font-light text-sm">{description}</div>
+            </div>
+            <div className="flex flex-col justify-between">
+              <div />
+              <div className="font-semibold uppercase w-full mt-4 flex text-right justify-end items-center">
+                Les Mer{' '}
+                <span className="ml-2">
+                  <Icon.Arrow color="#fff" />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Link>
   );
 };

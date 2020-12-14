@@ -11,7 +11,7 @@ export const IntroContainer = ({ article, children, fallbackImg }) => {
           </div>
         </div>
         <div className="twelve:flex-1 twelve:pr-4 twelve:pl-2 twelve:w-auto eight:w-2/3 w-full twelve:mx-0 mx-auto">
-          <div className="transform translate-y-16">
+          <div className="transform xs:translate-y-16 mt-12 xs:mt-0">
             <FeaturedCard {...article} fallbackImg={fallbackImg} />
           </div>
         </div>
