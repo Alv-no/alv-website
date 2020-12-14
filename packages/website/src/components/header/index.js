@@ -8,7 +8,6 @@ import Headroom from 'react-headroom';
 import { Navigation } from '../navigation';
 
 export const Header = ({ path }) => {
-  console.log(path);
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -49,7 +48,7 @@ export const Header = ({ path }) => {
   );
 };
 
-export const MobileHeader = () => {
+export const MobileHeader = ({ viewport }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -61,19 +60,21 @@ export const MobileHeader = () => {
     <>
       <Navigation open={open} toggleClose={toggleClose} />
       <Headroom>
-        <div className="bg-navy sm:hidden py-5 px-10">
+        <div
+          className={`bg-navy block ${
+            viewport || 'sm'
+          }:hidden py-5 px-6 five:px-10`}
+        >
           <div className="max-w-1600 mx-auto">
-            <div className="flex justify-between">
-              <div className="flex">
-                <span className="mr-5 cursor-pointer" onClick={handleClick}>
-                  <Icon.Dropdown />
-                </span>
-                <span className="transform ">
-                  <Link to="/">
-                    <Logo.White />
-                  </Link>
-                </span>
-              </div>
+            <div className="flex flex-row-reverse justify-between">
+              <span className="cursor-pointer" onClick={handleClick}>
+                <Icon.Dropdown />
+              </span>
+              <span className="transform ">
+                <Link to="/">
+                  <Logo.White />
+                </Link>
+              </span>
             </div>
           </div>
         </div>
