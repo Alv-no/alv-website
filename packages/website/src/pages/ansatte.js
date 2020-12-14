@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout';
 import { Title } from '../components/title';
 import { Description } from '../components/description';
-import { Tagbar } from '../components/tagbar';
+import { EmployeeSection } from '../components/employeeSection';
 import { Cta } from '../components/cta';
 import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
 
@@ -24,7 +24,7 @@ const Employees = ({ location }) => {
           </span>
         </div>
         <div className="h-10 sm:h-16 md:h-24 mt-3" />
-        <Tagbar
+        <EmployeeSection
           allTags={data.allSanityEmployeeTag.edges}
           allEmployees={data.allSanityEmployee.edges}
           linkedId={activeCard}
