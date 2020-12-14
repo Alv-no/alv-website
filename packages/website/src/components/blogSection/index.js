@@ -36,13 +36,21 @@ export const BlogSection = ({ allArticles }) => {
             onChange={updateArticles}
           />
         )}
-        <div className="max-w-1200 mx-auto">
+        <div className="max-w-1200 mx-auto flex justify-center px-4">
           <div
-            className="w-full grid xs:gap-4 md:mx-4 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg"
-            style={{ rowGap: '50px', margin: '0 20px' }}
+            className="w-full mb-4 grid justify-center xs:gap-4 xs:max-w-570 seven:max-w-none nine:max-w-1200 grid-cols-employees-xs xs:grid-cols-blog-sm nine:grid-cols-blog-nine twelve:grid-cols-employees-lg"
+            style={{
+              rowGap: '50px',
+            }}
           >
             {articles.map((article) => {
-              return <PostCard {...article} key={article.id} />;
+              return (
+                <>
+                  <PostCard {...article} key={article.id} />
+                  <PostCard {...article} key={article.id} />
+                  <PostCard {...article} key={article.id} />
+                </>
+              );
             })}
           </div>
         </div>

@@ -34,7 +34,7 @@ export const PostCard = ({
             <h3 className="text-lg font-semibold mb-3 -mx-2px">{title}</h3>
             <div className="font-light mb-8">{description}</div>
           </div>
-          <div className="overflow-hidden lg:h-50">
+          <div className="overflow-hidden" style={{ height: '206px' }}>
             <Image
               fluid={mainImage.asset.fluid}
               className="transform group-hover:scale-110 object-cover duration-300 transition"
