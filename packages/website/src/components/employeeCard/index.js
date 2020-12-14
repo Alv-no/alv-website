@@ -23,8 +23,8 @@ export const EmployeeCard = ({
     id={id}
   >
     <div
-      className={`absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen xs:max-w-277px transition ${
-        activeBio && id === activeBio.id ? 'opacity-100' : 'opacity-65'
+      className={`absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen xs:max-w-277px opacity-65 group-hover:opacity-100 transition ${
+        activeBio && id === activeBio.id ? 'opacity-100' : ''
       } group-hover:opacity-100 duration-300 pointer-events-none`}
     >
       <Image
