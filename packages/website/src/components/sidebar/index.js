@@ -22,13 +22,13 @@ const Sidebar = ({
       <MobileHeader />
       <div
         className="hidden sm:grid"
-        style={{ gridTemplateColumns: 'minmax(400px, 33%) auto' }}
+        style={{ gridTemplateColumns: 'minmax(430px, 33%) auto' }}
       >
-        <div className="h-full bg-navy flex flex-col justify-between pr-12 xl:pl-5 text-white">
+        <div className="h-full bg-navy flex flex-col justify-between pr-12 2xl:pl-5 text-white">
           {/* HEADER SECTION */}
-          <div className="pr-10 fixed">
+          <div className="pr-10 fixed z-10">
             <BlogHeader />
-            <div className="ml-10">
+            <div className="ml-6 lg:ml-10">
               <div className="uppercase text-base tracking-wider font-semibold my-10">
                 <Link to="/blogg">
                   <div className="flex">
@@ -43,7 +43,10 @@ const Sidebar = ({
             </div>
           </div>
           {/* AUTHOR SECTION */}
-          <div className="flex mb-12 ml-10 fixed bottom-0 z-10">
+          <div
+            className="flex mb-12 ml-10 fixed z-0 bottom-0"
+            style={{ zIndex: 1 }}
+          >
             <div className="mr-5">
               <Link
                 to={`/ansatte#${authorSlug}`}

@@ -98,7 +98,6 @@ export const BlogHeader = () => {
   };
   const crumbs = window.location.pathname.split('/');
   crumbs.shift();
-  console.log(crumbs);
   return (
     <>
       <Navigation open={open} toggleClose={toggleClose} />

@@ -7,34 +7,24 @@ import { FilterContainer } from '../filterContainer';
 // Output: filtered and sorted content array
 export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
   const [active, setActive] = useState(allArticles);
-  const [filter, setFilter] = useState([]);
+  const [activeTags, setActiveTags] = useState([]);
+  const [activeAuthors, setActiveAuthors] = useState([]);
   const [sort, setSort] = useState(null);
 
   // Process all available content based on sort and filter input.
   useEffect(() => {
-    // Process articles here
-    if (filter.length > 0) {
-      const filteredArticles = allArticles.filter((article) => {
-        let test = false;
-        article.tags.forEach(({ tag }) =>
-          filter.includes(tag) ? (test = true) : null
-        );
-        return (
-          filter.includes(
-            `${article.author.firstname} ${article.author.lastname}`
-          ) || test
-        );
-      });
-      setActive(filteredArticles);
-    } else {
-      setActive(allArticles);
-    }
-  }, [sort, filter, allArticles, onChange]);
-
-  useEffect(() => {
-    const sortedActive = active;
-
+    const sortedActive = [];
+    active.forEach((el) => sortedActive.push(el));
     if (sort === 'oldest') {
+      console.log('Sorting');
+      sortedActive.sort((a, b) => {
+        if (a.publishedAt < b.publishedAt) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+    } else if (sort === 'newest') {
       sortedActive.sort((a, b) => {
         if (a.publishedAt > b.publishedAt) {
           return -1;
@@ -43,41 +33,90 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
         }
       });
     }
-
     onChange(sortedActive);
-  }, [active, sort, onChange]);
+    // Including onChange results in infinite callback loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, sort]);
 
   // Update sort state with selected sorting option
   const sortClick = (e) => {
     setSort(e.target.id);
   };
 
-  // Add or remove a fiter option from state
-  const filterClick = (e) => {
-    const current = e.target.id;
-    let newFilter = filter;
-    if (!filter.includes(current)) {
-      newFilter.push(current);
+  useEffect(() => {
+    let filteredArticles;
+    if (activeTags.length > 0 || activeAuthors.length > 0) {
+      const articles = [];
+      allArticles.forEach((article) => articles.push(article));
+      filteredArticles = articles.filter((article) => {
+        const test =
+          article.tags.some((tag) => activeTags.includes(tag.tag)) ||
+          activeAuthors.includes(
+            `${article.author.firstname} ${article.author.lastname}`
+          );
+        return test;
+      });
     } else {
-      newFilter = filter.filter((el) => el !== current);
+      filteredArticles = allArticles;
     }
-    setFilter(newFilter);
+    setActive(filteredArticles);
+  }, [activeTags, activeAuthors, allArticles]);
+
+  // Add or remove a fiter option from state
+  const tagClick = (e) => {
+    const current = e.target.id;
+    let newFilter = [];
+    // Prevent array mutation
+    activeTags.forEach((tag) => newFilter.push(tag));
+    if (newFilter.includes(current)) {
+      newFilter = activeTags.filter((el) => el !== current);
+    } else {
+      newFilter.push(current);
+    }
+    setActiveTags(newFilter);
   };
 
+  const authorClick = (e) => {
+    const current = e.target.id;
+    let newFilter = [];
+    // Prevent array mutation
+    activeAuthors.forEach((author) => newFilter.push(author));
+    if (newFilter.includes(current)) {
+      newFilter = activeAuthors.filter((el) => el !== current);
+    } else {
+      newFilter.push(current);
+    }
+    setActiveAuthors(newFilter);
+  };
+  const noFilter =
+    active.length === allArticles.length &&
+    activeTags.length < 1 &&
+    activeAuthors.length < 1;
   return (
     <FilterContainer>
       <FilterField
         tags={allTags}
+        noFilter={noFilter}
         authors={allAuthors}
-        onClick={filterClick}
-        active={filter}
+        tagClick={tagClick}
+        authorClick={authorClick}
+        activeAuthors={activeAuthors}
+        activeTags={activeTags}
       />
       <SortField sortClick={sortClick} sort={sort} />
     </FilterContainer>
   );
 };
 
-export const FilterField = ({ tags, authors, active, onClick }) => {
+export const FilterField = ({
+  tags,
+  authors,
+  noFilter,
+  activeTags,
+  activeAuthors,
+  tagClick,
+  authorClick,
+}) => {
   return (
     <div className="flex relative tracking-wider h-full border border-bordergray items-center pl-2 pr-3 mx-2 rounded-md flex-grow">
       <input
@@ -99,7 +138,7 @@ export const FilterField = ({ tags, authors, active, onClick }) => {
                   <input
                     className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
                     id={tag}
-                    onChange={onClick}
+                    onChange={tagClick}
                     type="checkbox"
                   />
                   <div
@@ -121,9 +160,9 @@ export const FilterField = ({ tags, authors, active, onClick }) => {
               <li className={styles.listItem}>
                 <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
                   <input
-                    className={`${styles.checkbox} absolute  z-30 left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
+                    className={`${styles.checkbox} absolute z-30 left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
                     id={author}
-                    onChange={onClick}
+                    onChange={authorClick}
                     type="checkbox"
                   />
                   <div
@@ -147,16 +186,27 @@ export const FilterField = ({ tags, authors, active, onClick }) => {
           style={{ scrollbarWidth: 'thin' }}
         >
           <span className="five:flex hidden">
-            {active.length > 0 ? (
-              active.map((tag) => (
-                <div
-                  className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
-                  key={tag}
-                >
-                  {tag}
-                </div>
-              ))
-            ) : (
+            {activeTags !== undefined
+              ? activeTags.map((tag) => (
+                  <div
+                    className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
+                    key={tag}
+                  >
+                    {tag}
+                  </div>
+                ))
+              : null}
+            {activeAuthors !== undefined
+              ? activeAuthors.map((author) => (
+                  <div
+                    className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
+                    key={author}
+                  >
+                    {author}
+                  </div>
+                ))
+              : null}
+            {noFilter ? (
               <>
                 <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
                   Alle kategorier
@@ -165,7 +215,7 @@ export const FilterField = ({ tags, authors, active, onClick }) => {
                   Alle forfattere
                 </div>
               </>
-            )}
+            ) : null}
           </span>
         </div>
       </div>
