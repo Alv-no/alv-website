@@ -36,8 +36,10 @@ const ArticleTemplate = (props) => {
               />
             </div>
             <h1 className="text-blog font-bold mb-8">{title}</h1>
-            <div className="w-full mb-3">
-              <Image fluid={mainImage.asset.fluid} />
+            <div className="w-full mb-3 relative z-10">
+              <span className="relative z-0 fixed">
+                <Image fluid={mainImage.asset.fluid} />
+              </span>
             </div>
             <span className={styles.body}>
               <PortableText
@@ -68,7 +70,7 @@ const ArticleTemplate = (props) => {
       </span>
       <MobileHeader viewport="lg" />
       <div className="lg:hidden">
-        <div className="five:mx-10 mx-6">
+        <div className="five:mx-10 mx-6 z-10">
           <div className="my-5">
             <SocialShare />
           </div>

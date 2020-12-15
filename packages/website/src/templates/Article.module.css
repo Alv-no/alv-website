@@ -1,3 +1,8 @@
+.mainImage {
+  z-index: 10;
+  position: relative;
+}
+
 .body {
   color: #061838;
   max-width: 766px;

@@ -32,7 +32,7 @@ export const BlogSection = ({ allArticles }) => {
           <BlogFilter
             allTags={allTags}
             allAuthors={allAuthors}
-            allArticles={articles}
+            allArticles={allArticles}
             onChange={updateArticles}
           />
         )}
@@ -41,8 +41,6 @@ export const BlogSection = ({ allArticles }) => {
             {articles.map((article) => {
               return (
                 <>
-                  <PostCard {...article} key={article.id} />
-                  <PostCard {...article} key={article.id} />
                   <PostCard {...article} key={article.id} />
                 </>
               );

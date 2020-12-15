@@ -12,11 +12,12 @@ export const Navigation = ({ open, toggleClose }) => {
   const { width } = useWindowDimensions();
   return (
     <header
-      className={`text-white tracking-wider fixed overflow-y-scroll z-50 h-screen w-full bg-navy p-6 sm:p-8 top-0 transition duration-300 ${
+      className={`text-white tracking-wider fixed overflow-y-scroll z-50 h-screen w-screen bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 ${
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
+      style={{ zIndex: 999 }}
     >
-      <div className="eight:flex justify-between mx-auto auto eight:mb-0 2xl:mb-25 max-w-1200 items-center mb-12 eight:mb-0">
+      <div className="eight:flex relative z-40 justify-between mx-auto auto eight:mb-0 2xl:mb-25 max-w-1200 items-center mb-12 eight:mb-0">
         <div className="w-32" />
         <span className="">
           <Link to="/">
