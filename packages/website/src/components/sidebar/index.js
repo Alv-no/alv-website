@@ -24,7 +24,7 @@ const Sidebar = ({
         className="hidden sm:grid"
         style={{ gridTemplateColumns: 'minmax(400px, 33%) auto' }}
       >
-        <div className="h-full bg-navy flex flex-col justify-between pr-12 text-white">
+        <div className="h-full bg-navy flex flex-col justify-between pr-12 xl:pl-5 text-white">
           {/* HEADER SECTION */}
           <div className="pr-10 fixed">
             <BlogHeader />

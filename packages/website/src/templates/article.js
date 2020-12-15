@@ -9,17 +9,11 @@ import Link from 'gatsby-link';
 import styles from './Article.module.css';
 import * as Icon from '../components/icon';
 import { SocialShare } from '../components/socialShare';
+import { window } from 'browser-monads';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
-  const {
-    title,
-    author,
-    mainImage,
-    _rawBody,
-    tags,
-    slug,
-  } = props.data.sanityArticle;
+  const { title, author, mainImage, _rawBody, tags } = props.data.sanityArticle;
   let authorSlug = author.firstname
     .split(' ')
     .concat(author.lastname.split(' '))
@@ -36,7 +30,7 @@ const ArticleTemplate = (props) => {
           >
             <div className="mb-5">
               <SocialShare
-                url={`https://www.alv.no/blogg/${slug.current}`}
+                url={window.location.href}
                 title={title}
                 tags={socialTags}
               />

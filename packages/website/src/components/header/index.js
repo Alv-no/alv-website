@@ -6,6 +6,7 @@ import Breadcrumbs from '../breadcrumb';
 import CTA from '../calltoaction';
 import Headroom from 'react-headroom';
 import { Navigation } from '../navigation';
+import { window } from 'browser-monads';
 
 export const Header = ({ path }) => {
   const [open, setOpen] = useState(false);
@@ -15,6 +16,10 @@ export const Header = ({ path }) => {
   const toggleClose = () => {
     setOpen(false);
   };
+
+  const crumbs = window.location.pathname.split('/');
+  crumbs.shift();
+
   return (
     <>
       <Navigation open={open} toggleClose={toggleClose} />
@@ -40,7 +45,7 @@ export const Header = ({ path }) => {
             ) : null}
           </div>
           <span className="sm:block hidden">
-            <Breadcrumbs path={['Home', 'Selskapet', 'Ansatte']} />
+            <Breadcrumbs path={crumbs} />
           </span>
         </div>
       </div>
@@ -91,6 +96,9 @@ export const BlogHeader = () => {
   const toggleClose = () => {
     setOpen(false);
   };
+  const crumbs = window.location.pathname.split('/');
+  crumbs.shift();
+  console.log(crumbs);
   return (
     <>
       <Navigation open={open} toggleClose={toggleClose} />
@@ -109,7 +117,7 @@ export const BlogHeader = () => {
             </div>
           </div>
           <span className="sm:block hidden">
-            <Breadcrumbs path={['Home', 'Selskapet', 'Ansatte']} />
+            <Breadcrumbs path={crumbs} />
           </span>
         </div>
       </div>
