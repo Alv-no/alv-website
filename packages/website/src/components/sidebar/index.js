@@ -24,10 +24,7 @@ const Sidebar = ({
         className="hidden sm:grid"
         style={{ gridTemplateColumns: 'minmax(400px, 33%) auto' }}
       >
-        <div
-          className="h-full bg-navy flex flex-col justify-between pr-12 text-white"
-          style={{ paddingLeft: '3vw' }}
-        >
+        <div className="h-full bg-navy flex flex-col justify-between pr-12 text-white">
           {/* HEADER SECTION */}
           <div className="pr-10 fixed">
             <BlogHeader />
@@ -46,7 +43,7 @@ const Sidebar = ({
             </div>
           </div>
           {/* AUTHOR SECTION */}
-          <div className="flex mb-12 ml-10 fixed bottom-0">
+          <div className="flex mb-12 ml-10 fixed bottom-0 z-10">
             <div className="mr-5">
               <Link
                 to={`/ansatte#${authorSlug}`}
@@ -69,7 +66,7 @@ const Sidebar = ({
                 </h4>
                 <h4 className="text-xl font-light leading-tight">{lastname}</h4>
               </div>
-              <p className="font-light mb-1">{title}</p>
+              <p className="font-light mb-1 xl:w-full w-5/6">{title}</p>
               <div className="flex items-center font-semibold text-sm mb-2">
                 <Link to={`/ansatte#${lastname}`} state={{ activeCard: id }}>
                   <div className="uppercase">Se intro</div>

@@ -8,25 +8,38 @@ import { Footer } from '../components/footer';
 import Link from 'gatsby-link';
 import styles from './Article.module.css';
 import * as Icon from '../components/icon';
+import { SocialShare } from '../components/socialShare';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
-  const { title, author, mainImage, _rawBody } = props.data.sanityArticle;
+  const {
+    title,
+    author,
+    mainImage,
+    _rawBody,
+    tags,
+    slug,
+  } = props.data.sanityArticle;
   let authorSlug = author.firstname
     .split(' ')
     .concat(author.lastname.split(' '))
     .map((name) => name.toLowerCase());
   authorSlug = authorSlug.join('-');
+  const socialTags = tags.map((tag) => tag.tag);
   return (
     <>
       <span className="lg:block hidden">
         <Sidebar {...author} authorSlug={authorSlug}>
           <div
-            className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25 text-navy xl:ml-5vw"
+            className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25 text-navy 2xl:ml-1/2"
             style={{ maxWidth: '770px' }}
           >
             <div className="mb-5">
-              <ArticleShare />
+              <SocialShare
+                url={`https://www.alv.no/blogg/${slug.current}`}
+                title={title}
+                tags={socialTags}
+              />
             </div>
             <h1 className="text-blog font-bold mb-8">{title}</h1>
             <div className="w-full mb-3">
@@ -40,7 +53,7 @@ const ArticleTemplate = (props) => {
               />
             </span>
             <div className="mt-6">
-              <ArticleShare />
+              <SocialShare />
             </div>
             <div className="flex justify-between mt-8">
               <div className="">
@@ -63,7 +76,7 @@ const ArticleTemplate = (props) => {
       <div className="lg:hidden">
         <div className="five:mx-10 mx-6">
           <div className="my-5">
-            <ArticleShare />
+            <SocialShare />
           </div>
           <h1 className="text-blog font-bold mb-8">{title}</h1>
           <div className="w-full mb-3">
@@ -76,8 +89,16 @@ const ArticleTemplate = (props) => {
               dataset="production"
             />
           </span>
-          <div className="mt-6 mb-10">
-            <ArticleShare />
+          <div className="flex justify-between items-center mb-12">
+            <div className="">
+              <SocialShare />
+            </div>
+            <div className="flex justify-end items-center font-semibold uppercase">
+              <Link to="/blogg">Se alle artikler</Link>
+              <span className="transform text-navy ml-3">
+                <Icon.Arrow />
+              </span>
+            </div>
           </div>
         </div>
         <Footer />
@@ -87,21 +108,6 @@ const ArticleTemplate = (props) => {
 };
 
 export default ArticleTemplate;
-
-const ArticleShare = () => (
-  <div className="w-full flex justify-end uppercase text-navy text-sm font-semibold items-center">
-    Share{' '}
-    <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
-      <Icon.CircleFacebook />
-    </span>
-    <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
-      <Icon.CircleTwitter />
-    </span>
-    <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
-      <Icon.CircleLinkedIn />
-    </span>
-  </div>
-);
 
 // GraphQL Query for article content
 export const query = graphql`
