@@ -26,7 +26,7 @@ export const Header = ({ path }) => {
       <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
         <div className="max-w-1600 mx-auto">
           <div className="flex justify-between sm:mb-7 ">
-            <div className="flex">
+            <div className="flex relative z-50">
               <span className="mr-5 cursor-pointer" onClick={handleClick}>
                 <Icon.Dropdown />
               </span>
@@ -37,14 +37,14 @@ export const Header = ({ path }) => {
               </span>
             </div>
             {!path || !path.includes('/kontakt-oss') ? (
-              <div className="text-white flex hidden sm:block">
+              <div className="text-white flex hidden sm:block relative z-50">
                 <Link to="/kontakt-oss">
                   <CTA internalLink="/kontakt-oss">Ta kontakt</CTA>
                 </Link>
               </div>
             ) : null}
           </div>
-          <span className="sm:block hidden">
+          <span className="sm:block hidden relative z-50">
             <Breadcrumbs path={crumbs} />
           </span>
         </div>

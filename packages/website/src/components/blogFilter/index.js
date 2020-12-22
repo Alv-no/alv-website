@@ -16,7 +16,6 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
     const sortedActive = [];
     active.forEach((el) => sortedActive.push(el));
     if (sort === 'oldest') {
-      console.log('Sorting');
       sortedActive.sort((a, b) => {
         if (a.publishedAt < b.publishedAt) {
           return -1;
@@ -226,7 +225,7 @@ export const FilterField = ({
   );
 };
 
-export const SortField = ({ sort, sortClick }) => {
+export const SortField = ({ sort, sortClick, light }) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = (e) => {
@@ -241,7 +240,13 @@ export const SortField = ({ sort, sortClick }) => {
   return (
     <div className="flex items-center h-full five:w-60 pr-2 pl-4 five:px-0">
       <span className="five:w-25 five:text-right">Sorter</span>
-      <div className="relative h-full border border-bordergray flex items-center px-4 rounded-md ml-2 w-full">
+      <div
+        className="relative h-full border border-bordergray flex items-center px-4 rounded-md ml-3 w-full"
+        style={{
+          background: light && 'rgba(255,255,255,0.05)',
+          border: light && 'none',
+        }}
+      >
         <span
           className={`${styles.sortSelected} block font-light ${
             open && 'font-bold'
@@ -256,7 +261,10 @@ export const SortField = ({ sort, sortClick }) => {
               ? 'Nyest til eldst'
               : null
             : 'Nyest til eldst'}{' '}
-          <Icon.DropdownMini />
+          <span className="mt-2px" style={{ filter: light && 'invert(100%)' }}>
+            {' '}
+            <Icon.DropdownMini />
+          </span>
         </span>
         <input
           className={`${styles.sortCheckbox} absolute left-0 w-full h-6 transform cursor-pointer opacity-0`}
@@ -266,7 +274,9 @@ export const SortField = ({ sort, sortClick }) => {
         <ul
           className={`${
             open ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          } absolute top-0 left-0 mt-9 bg-white pr-1 z-30 transition duration-100 -translate-x-px -translate-y-2px transform border-t-0 text-sm list-style-none border border-bordergray rounded-md font-light opacity-0 pb-6px`}
+          } absolute top-0 left-0 mt-9 bg-white pr-1 z-30 transition duration-100 text-navy -translate-x-px -translate-y-2px transform border-t-none text-sm list-style-none border border-bordergray rounded-md font-light opacity-0 pb-6px ${
+            light && '-mt-px'
+          }`}
         >
           <li
             className="pb-2 pt-3 bg-white w-40 px-4 cursor-pointer"

@@ -37,24 +37,28 @@ export const Navigation = ({ open, toggleClose }) => {
           condition={width >= 800}
           wrapper={(children) => <div>{children}</div>}
         >
-          <LargeLink margin="eight:mb-10 2xl:mb-12">Vi Tilbyr</LargeLink>
+          <LargeLink link="/vi-tilbyr" margin="eight:mb-10 2xl:mb-12">
+            Vi Tilbyr
+          </LargeLink>
           <div>
-            <Subtitle margin="eight:mb-8 2xl:mb-10">Systemutvikling</Subtitle>
+            <Subtitle link="/systemutvikling" margin="eight:mb-8 2xl:mb-10">
+              Systemutvikling
+            </Subtitle>
             <List>
-              <ListLink link="/">.Net Utvikler</ListLink>
-              <ListLink link="/">Java Utvikler</ListLink>
-              <ListLink link="/">c# Utvikler</ListLink>
-              <ListLink link="/">Agile &amp; Devops</ListLink>
-              <ListLink link="/">Applikasjonsutvikling</ListLink>
-              <ListLink link="/">Web Utvikler</ListLink>
-              <ListLink link="/">Teknisk Tester</ListLink>
+              <ListLink link="/c-utvikler">.Net Utvikler</ListLink>
+              <ListLink link="/c-utvikler">Java Utvikler</ListLink>
+              <ListLink link="/c-utvikler">c# Utvikler</ListLink>
+              <ListLink link="/c-utvikler">Agile &amp; Devops</ListLink>
+              <ListLink link="/c-utvikler">Applikasjonsutvikling</ListLink>
+              <ListLink link="/c-utvikler">Web Utvikler</ListLink>
+              <ListLink link="/c-utvikler">Teknisk Tester</ListLink>
             </List>
           </div>
           <div>
-            <Subtitle link="/" margin="eight:mt-12">
+            <Subtitle link="/systemutvikling" margin="eight:mt-12">
               Prosjektledelse
             </Subtitle>
-            <Subtitle link="/" margin="eight:mt-7">
+            <Subtitle link="/systemutvikling" margin="eight:mt-7">
               Digitalisering
             </Subtitle>
           </div>
@@ -95,7 +99,10 @@ export const Navigation = ({ open, toggleClose }) => {
             </div>
           )}
         >
-          <LargeLink link="/" margin="eight:mb-10 2xl:mb-12 relative">
+          <LargeLink
+            link="/jobbe-i-alv"
+            margin="eight:mb-10 2xl:mb-12 relative"
+          >
             Jobbe i Alv
           </LargeLink>
           <div>
@@ -112,7 +119,7 @@ export const Navigation = ({ open, toggleClose }) => {
               </Subtitle>
             </div>
           </div>
-          <LargeLink link="/" margin="eight:mt-10 2xl:mt-12">
+          <LargeLink link="/videoserie" margin="eight:mt-10 2xl:mt-12">
             Videoserie
           </LargeLink>
           <LargeLink link="/blogg" margin="eight:mt-10 2xl:mt-12">
