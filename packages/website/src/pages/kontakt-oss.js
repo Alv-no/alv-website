@@ -18,7 +18,6 @@ const Contact = ({ location }) => {
   return (
     <Layout path={location.pathname}>
       <div className="bg-navy">
-        {/* <div className="bg-navy w-full sm:pb-12 pb-4 flex lg:flex-row flex-col -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto"> */}
         <div
           className="bg-navy w-full sm:pb-12 pb-4 -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto grid"
           style={{ gridTemplateColumns: '50% 50%' }}

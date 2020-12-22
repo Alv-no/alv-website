@@ -7,10 +7,7 @@ export default {
 
 export const Default = ({ ...args }) => <VideoCard {...args} />;
 Default.args = {
-  children: 'Child',
-  mainImage: { asset: { fluid: '' } },
-  slug: 'slug',
+  slug: '',
   title: 'title',
-  tags: ['Ledelse'],
-  description: 'desc',
+  thumbnail: '',
 };

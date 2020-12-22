@@ -1,13 +1,12 @@
 import React from 'react';
 import Layout from '../components/layout';
-import { ImageTextShifted } from '../components/imageTextShifted';
-import { ImageTextListHero } from '../components/imageTextListHero';
+import { ImageTextShifted } from '../components/imageTextOverlap';
+import { ImageTextListHero } from '../components/imageTextHero';
 import { useWorkQuery } from '../hooks/useWorkQuery';
 import Image from 'gatsby-image';
 
 const WorkForAlv = () => {
   const data = useWorkQuery();
-  console.log(data);
   return (
     <Layout>
       <ImageTextListHero image={data.stairs.childImageSharp.fluid} />

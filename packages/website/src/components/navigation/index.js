@@ -108,7 +108,7 @@ export const Navigation = ({ open, toggleClose }) => {
           <div>
             <LargeLink margin="eight:mb-10 2xl:mb-12">Selskapet</LargeLink>
             <div>
-              <Subtitle link="/" margin="eight:mb-5 2xl:mb-6">
+              <Subtitle link="/om-oss" margin="eight:mb-5 2xl:mb-6">
                 Om Oss
               </Subtitle>
               <Subtitle link="/" margin="eight:mb-5 2xl:mb-6">

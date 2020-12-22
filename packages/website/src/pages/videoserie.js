@@ -21,7 +21,7 @@ const Videoseries = () => {
           />
           <div className="my-10" />
           <Subtitle>Lorem ipsum dolar</Subtitle>
-          <VideoSection allVideos={videos} data={data} />
+          <VideoSection videos={videos} data={data} />
           <VideoCategory
             title="Dataprat"
             subtitle="Culpa qui officia deserunt mollit anim id est laborum."
