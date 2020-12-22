@@ -9,7 +9,6 @@ import { FeaturedTeam } from '../components/featuredTeam';
 const About = () => {
   const data = useAboutUsQuery();
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
-  console.log(data);
   const team = employees.slice(0, 4);
   return (
     <Layout>

@@ -2,24 +2,19 @@ import React from 'react';
 import Image from 'gatsby-image';
 import { Title } from '../title';
 import { FeaturedVideo } from '../featuredVideo';
+import styles from './VideoHero.module.css';
 
 export const VideoHero = ({ backgroundImage, thumbnail }) => {
   return (
     <div className="bg-navy w-full pt-2">
       <div className="twelve:grid grid-cols-videos-hero mx-auto twelve:mb-24">
-        <div className="" />
+        <div />
         <span
-          className="relative twelve:-ml-20 twelve:pr-40 2xl:ml-0 2xl:pr-0 transform translate-x-2/7 twelve:translate-x-0 block"
-          style={{ maxHeight: '535px' }}
+          className={`relative twelve:-ml-20 twelve:pr-40 2xl:ml-0 2xl:pr-0 transform translate-x-2/7 twelve:translate-x-0 block ${styles.card}`}
         >
-          <Image
-            fluid={backgroundImage}
-            className="opacity-20"
-            style={{ maxHeight: '535px' }}
-          />
+          <Image fluid={backgroundImage} className={styles.bgImage} />
           <div
-            className="absolute text-white top-1/2 transform -translate-y-1/2 -translate-x-40 md:m-0 ml-15"
-            style={{ top: '50%' }}
+            className={`absolute text-white top-1/2 transform -translate-y-1/2 -translate-x-40 md:m-0 ml-15 ${styles.cta}`}
           >
             <Title align="left">Videoserie</Title>
             <div className="pt-9 ml-10">

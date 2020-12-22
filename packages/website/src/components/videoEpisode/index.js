@@ -21,7 +21,6 @@ export const VideoEpisode = ({ title, description, subtitle }) => {
             </div>
             {/* ---- Above: Visible on Mobile only ---- */}
             <div className="mb-8 sm:mb-8">
-              {/* <FeaturedVideo thumbnail={thumbnail} /> */}
               <iframe
                 width="885"
                 title="video"

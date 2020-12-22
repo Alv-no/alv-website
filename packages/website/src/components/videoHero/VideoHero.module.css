@@ -1,0 +1,12 @@
+.bgImage {
+  opacity: 20%;
+}
+
+.card,
+.bgImage {
+  max-height: 535px;
+}
+
+.cta {
+  top: 50%;
+}

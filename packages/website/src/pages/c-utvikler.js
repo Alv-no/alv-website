@@ -13,6 +13,7 @@ const Systemutvikling = () => {
   const data = useSubServiceQuery();
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
   const team = employees.slice(0, 4);
+  console.log(data);
 
   const nav = ['Oversikt', 'Hva Gjør Vi', 'Vårt Team', 'Blogg', 'Kundeomtaler'];
   return (
@@ -28,10 +29,11 @@ const Systemutvikling = () => {
       />
       <div className="w-full bg-white sm:pb-20 pb-4 overflow-hidden tracking-wider">
         <ServiceNavList nav={nav} />
-        <RolesList />
+        <RolesList image={data.rolesImg.childImageSharp.fluid} />
         <CtaSection
           eyebrow="At vero eos et accusamus et iusto"
           heading="Excepteur sint occaeuiecat cupidatat."
+          buttonText="Meld deg på"
         />
         <FeaturedTeam team={team} />
         <BlogSlider image={data.sliderImg.childImageSharp.fluid} />

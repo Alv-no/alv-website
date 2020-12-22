@@ -3,10 +3,10 @@ import { VideoFilter } from '../videoFilter';
 import { VideoCard } from '../videoCard';
 import * as Button from '../button';
 
-export const VideoSection = ({ allVideos, data, tabs }) => {
+export const VideoSection = ({ videos, data, tabs }) => {
   // Placeholder until actual videos are loaded in
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [videos, setVideos] = useState(allVideos);
+  const [sortedVideos, setSortedVideos] = useState(videos);
   const [visibleRows, setVisibleRows] = useState(3);
 
   const handleViewMoreClick = () => {
@@ -14,11 +14,11 @@ export const VideoSection = ({ allVideos, data, tabs }) => {
   };
 
   const updateVideos = (videos) => {
-    setVideos(videos);
+    setSortedVideos(videos);
   };
 
   useEffect(() => {
-    setVideos([1, 2, 3]);
+    setSortedVideos([1, 2, 3]);
   }, []);
 
   const dummySettings = {
@@ -32,12 +32,8 @@ export const VideoSection = ({ allVideos, data, tabs }) => {
   return (
     <>
       <div className="w-full">
-        {allVideos && (
-          <VideoFilter
-            allVideos={allVideos}
-            onChange={updateVideos}
-            tabs={tabs}
-          />
+        {videos && (
+          <VideoFilter videos={videos} onChange={updateVideos} tabs={tabs} />
         )}
         <div className="flex justify-center">
           <div
