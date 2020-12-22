@@ -3,25 +3,31 @@ import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { Title } from '../components/title';
 import * as Icon from '../components/icon';
+import { useContactQuery } from '../hooks/useContactQuery';
 import { Description } from '../components/description';
 import Image from 'gatsby-image';
 import * as Form from '../components/form';
 import { FormSelect } from '../components/button';
 
-const Contact = ({ location, data }) => {
+const Contact = ({ location }) => {
   const [active, setActive] = useState('offer');
   const formChange = (e) => {
     setActive(e.target.id);
   };
+  const queryData = useContactQuery();
   return (
     <Layout path={location.pathname}>
       <div className="bg-navy">
-        <div className="bg-navy w-full sm:pb-12 pb-4 flex lg:flex-row flex-col -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto">
+        {/* <div className="bg-navy w-full sm:pb-12 pb-4 flex lg:flex-row flex-col -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto"> */}
+        <div
+          className="bg-navy w-full sm:pb-12 pb-4 -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto grid"
+          style={{ gridTemplateColumns: '50% 50%' }}
+        >
           <div className="flex-1 mt-18 px-10">
             <div className="" style={{ height: '23vw', width: '45vw' }}>
-              <div className="opacity-90 w-full h-full">
+              <div className="opacity-90 w-full h-full -ml-20">
                 <Image
-                  fluid={data.allFile.edges[2].node.childImageSharp.fluid}
+                  fluid={queryData.contactUsImg.childImageSharp.fluid}
                   className="h-full"
                   alt="kontakt"
                 />
