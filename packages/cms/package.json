@@ -3,6 +3,7 @@
   "scripts": {
     "start": "sanity start",
     "graphql-deploy": "sanity graphql deploy",
+    "deploy": "sanity deploy",
     "build": "sanity build",
     "test": "sanity check"
   },

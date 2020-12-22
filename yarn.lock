@@ -11384,6 +11384,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"enquire.js@npm:^2.1.6":
+  version: 2.1.6
+  resolution: "enquire.js@npm:2.1.6"
+  checksum: b606573cfe49285ef5648ddd7044f2b4bef21a20ca32e48f2f5d10cedef2454c82f5085805f1a966aa65faec1a36eac081c337ae80cb8e74872d7643a5c93c94
+  languageName: node
+  linkType: hard
+
 "enquirer@npm:^2.3.5":
   version: 2.3.6
   resolution: "enquirer@npm:2.3.6"
@@ -17755,6 +17762,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"json2mq@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "json2mq@npm:0.2.0"
+  dependencies:
+    string-convert: ^0.2.0
+  checksum: 4d017ede2baf2a2b5cd27d311082b49acbabd498020ec1bd1c36a915662c8be011f3a1a7e9629076bb779d8382466a0067e0d442cde6f9b8d09273273424c702
+  languageName: node
+  linkType: hard
+
 "json3@npm:^3.3.2":
   version: 3.3.3
   resolution: "json3@npm:3.3.3"
@@ -18321,6 +18337,13 @@ fsevents@^1.2.7:
   version: 4.1.1
   resolution: "lodash.curry@npm:4.1.1"
   checksum: 081f9214b5d65030e66d0219c330de5a07089096f20362fc965c671b70b2bdb7b8f4cbac45546f79afed3bf17ae46434ffea9db1dbcbe043a09b722e2834ac3d
+  languageName: node
+  linkType: hard
+
+"lodash.debounce@npm:^4.0.8":
+  version: 4.0.8
+  resolution: "lodash.debounce@npm:4.0.8"
+  checksum: b6042bd8c09ff1961c9127d32266316bc21f946ece5e3464a663ec61fadb98e7d56ec0ef7e23b47d393695310c19cf24e651c1756be6da91ac02c72be7f79465
   languageName: node
   linkType: hard
 
@@ -23496,6 +23519,22 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-slick@npm:^0.27.13":
+  version: 0.27.13
+  resolution: "react-slick@npm:0.27.13"
+  dependencies:
+    classnames: ^2.2.5
+    enquire.js: ^2.1.6
+    json2mq: ^0.2.0
+    lodash.debounce: ^4.0.8
+    resize-observer-polyfill: ^1.5.0
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0
+    react-dom: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0
+  checksum: b58aba1c79c2037e3dca874c7d0c4e273b3934c880a6759d9f1e92eece78cc55269c9f0881835cc80ece106189d97ef483d415989890e7bc85d3f1ed39ca8fa7
+  languageName: node
+  linkType: hard
+
 "react-sortable-hoc@npm:^1.11.0":
   version: 1.11.0
   resolution: "react-sortable-hoc@npm:1.11.0"
@@ -25924,6 +25963,13 @@ fsevents@^1.2.7:
   version: 2.0.0
   resolution: "strict-uri-encode@npm:2.0.0"
   checksum: 775012e88b9d8dff939d514bf376d615a15e8228a5dd587a94ac3c71fce41aa3635cd808aa796e2c1cd33f3f2fe2fbf89b74ee18a504a1905efa1854311e04bb
+  languageName: node
+  linkType: hard
+
+"string-convert@npm:^0.2.0":
+  version: 0.2.1
+  resolution: "string-convert@npm:0.2.1"
+  checksum: 75d8fa2c6ec50105f232ed394142086e60ae358b4902111be7d93baa0d848b7551ab23db508cb959a33652fdc5808276bb8300e3792f9ec8e02b6736496b4295
   languageName: node
   linkType: hard
 
@@ -28505,6 +28551,7 @@ typescript@^4.0.5:
     react-headroom: ^3.0.0
     react-is: ^17.0.1
     react-share: ^4.3.1
+    react-slick: ^0.27.13
     tailwindcss: ^1.9.6
   languageName: unknown
   linkType: soft
