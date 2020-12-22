@@ -1,9 +1,10 @@
 import React from 'react';
 import * as Icon from '../icon';
+import Link from 'gatsby-link';
 
 export const Line = ({ children }) => (
   <div className="flex cursor-pointer">
-    <div className="w-8 h-2px bg-yellow mr-4 transform translate-y-1" />
+    <div className="w-8 h-2px bg-yellow mr-4 transform translate-y-1 font-semibold" />
     <span className="transform -translate-y-2 uppercase">{children}</span>
   </div>
 );
@@ -25,6 +26,19 @@ export const OvalSimple = ({ children, onClick }) => (
   >
     {children}
   </button>
+);
+
+export const CtaArrow = ({ children, onClick }) => (
+  <Link>
+    <button
+      className="flex items-center focus:outline-none tracking-wider"
+      type="button"
+      onClick={onClick}
+    >
+      <span className="mr-2 block uppercase font-semibold">{children}</span>{' '}
+      <Icon.Arrow />
+    </button>
+  </Link>
 );
 
 export const FormSelect = ({ id, active, children, onClick }) => (

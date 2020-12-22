@@ -16,6 +16,28 @@ export const Shade = () => (
   </svg>
 );
 
+export const VideoPlay = () => (
+  <svg width="70" height="70" viewBox="0 0 70 70">
+    <path
+      id="Path_5"
+      data-name="Path 5"
+      d="M13,8,0,0V16Z"
+      transform="translate(31 27)"
+      fill="#fff"
+    />
+    <g
+      id="Ellipse_2"
+      data-name="Ellipse 2"
+      fill="none"
+      stroke="#fff"
+      stroke-width="2"
+    >
+      <circle cx="35" cy="35" r="35" stroke="none" />
+      <circle cx="35" cy="35" r="34" fill="none" />
+    </g>
+  </svg>
+);
+
 export const Cross = () => (
   <svg width="30.557" height="30.557" viewBox="0 0 30.557 30.557">
     <path
