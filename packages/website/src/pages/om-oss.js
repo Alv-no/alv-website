@@ -2,8 +2,10 @@ import React from 'react';
 import Layout from '../components/layout';
 import { useAboutUsQuery } from '../hooks/useAboutUsQuery';
 import Image from 'gatsby-image';
-import { Title } from '../components/title';
+import { Title, Subtitle } from '../components/title';
 import { BlogSlider } from '../components/blogSlider';
+import BackgroundImage from 'gatsby-background-image-es5';
+import * as Button from '../components/button';
 import { FeaturedTeam } from '../components/featuredTeam';
 
 const About = () => {
@@ -23,20 +25,20 @@ const About = () => {
             <div className="w-full">
               <Image
                 fluid={data.aboutUsTop.childImageSharp.fluid}
-                style={{ height: '600px' }}
+                style={{ height: '600px', width: '100%' }}
               />
               <div className=" ml-30 tracking-wider font-light text-xl -mt-40">
                 <h2 className="text-white font-semibold uppercase text-4xl w-80 relative z-30">
                   Sed ut perspici atis unde omnis iste natusRe
                 </h2>
-                <p className="mb-8 mt-6 pr-15 w-full pr-20">
+                <p className="mb-8 mt-6 pr-15 w-full pr-10">
                   Sed ut perspici atis unde omnis iste natus Excepturi quaerat
                   sapiente et omnis cum ut praesentium.
                 </p>
                 <p className="uppercase font-semibold text-lg mb-7 pr-35 text-about">
                   Vår misjon
                 </p>
-                <p className="mb-15 pr-30">
+                <p className="mb-15 pr-10">
                   Excepturi quaerat sapiente et omnis cum ut praesentium
                   doloremque. Velit quas in eum. Tenetur enim aperiam. Lorem
                   ipsum dolor sit
@@ -90,8 +92,94 @@ const About = () => {
             </div>
           </div>
         </div>
-        <FeaturedTeam team={team} color="navy" />
-        <BlogSlider image={data.sliderImg.childImageSharp.fluid} />
+        <div
+          className="max-w-1440 mx-auto grid gap-x-10 pt-20"
+          style={{
+            gridTemplateColumns: '1fr 1fr',
+          }}
+        >
+          <div className="w-full"></div>
+          <div className="font-light flex flex-col justify-between h-full text-xl">
+            <div>
+              <Subtitle>Våre tjenester</Subtitle>
+              <p className="mb-4 mt-4 pr-15 w-full pr-20">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut.
+              </p>
+              <Button.CtaArrow>Les mer</Button.CtaArrow>
+              <div className="h-12" />
+            </div>
+          </div>
+        </div>
+        <div
+          className="max-w-1440 mx-auto grid gap-x-10 pb-15"
+          style={{
+            gridTemplateColumns: '1fr 1fr',
+          }}
+        >
+          <div className="w-full pl-12">
+            <ul>
+              <li className="text-nav tracking-wider font-semibold mb-8">
+                <p className="uppercase">Systemutvikling</p>
+                <div className="w-12 mt-2 mb-12 h-2px bg-yellow" />
+                <div className="pl-10 mb-15">
+                  <p className="tracking-wider text-lg leading-snug font-thin mb-4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incidunt.
+                  </p>
+                  <div className="flex -mr-24 z-40 relative items-center cursor-pointer">
+                    <p className="font-semibold tracking-wider uppercase text-base w-54">
+                      Find out more
+                    </p>
+                    <div className="h-2px bg-white w-full" />
+                  </div>
+                </div>
+              </li>
+              <li className="uppercase text-nav tracking-wider font-semibold mb-8">
+                Prosjektledelse
+              </li>
+              <li className="uppercase text-nav tracking-wider font-semibold mb-8">
+                Digitalisering
+              </li>
+              <li className="uppercase text-nav tracking-wider font-semibold mb-8">
+                Data & Analyse
+              </li>
+              <li className="uppercase text-nav tracking-wider font-semibold mb-8">
+                Informasjonssikkerhet
+              </li>
+            </ul>
+          </div>
+          <div className="font-light flex flex-col justify-between h-full text-xl">
+            <div>
+              <BackgroundImage
+                fluid={data.aboutUsTop.childImageSharp.fluid}
+                style={{ height: '530px' }}
+              >
+                <div
+                  className="flex justify-end items-center p-16 bg-black bg-opacity-50"
+                  style={{ height: '530px' }}
+                >
+                  <div className="text-slider uppercase font-semibold tracking-wider leading-tighter w-5/6 text-right">
+                    Quis autem vel eum iure reprehende
+                  </div>
+                </div>
+              </BackgroundImage>
+            </div>
+          </div>
+        </div>
+        <div className="px-12 "></div>
+        <div className="px-12 -mb-10 mt-12">
+          <Subtitle>Ansatte</Subtitle>
+        </div>
+        <FeaturedTeam notitle team={team} color="navy" />
+        <div className="px-12 -mb-7">
+          <Subtitle>Hva tenker alvene?</Subtitle>
+        </div>
+        <BlogSlider
+          image={data.sliderImg.childImageSharp.fluid}
+          color="text-white"
+          dot={false}
+        />
       </div>
     </Layout>
   );
