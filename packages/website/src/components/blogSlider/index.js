@@ -4,11 +4,11 @@ import * as Button from '../button';
 import { Title } from '../title';
 import BackgroundImage from 'gatsby-background-image-es5';
 
-export const BlogSlider = ({ image }) => {
+export const BlogSlider = ({ image, dot, color }) => {
   return (
     <div className="mb-4 mt-10 px-12 w-full">
       <div className="max-w-1200 mx-auto">
-        <Title underline align="left" color="text-navy">
+        <Title underline align="left" color={color || 'text-navy'} nodot={dot}>
           Blogg
         </Title>
       </div>
