@@ -234,6 +234,43 @@ export const Twitter = () => (
   </svg>
 );
 
+export const ScrollArrow = () => (
+  <svg width="17.661" height="99.998" viewBox="0 0 17.661 99.998">
+    <g id="Group_3279" transform="translate(1204.427 -1054.215) rotate(90)">
+      <path
+        id="Path_306"
+        data-name="Path 306"
+        d="M-13935.02,2339.291h98.453"
+        transform="translate(14989.734 -1144)"
+        fill="none"
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-width="1"
+      />
+      <path
+        id="Path_307"
+        data-name="Path 307"
+        d="M-13902.462,2330.474l8.176,7.967-8.176,8.28"
+        transform="translate(15048 -1143)"
+        fill="none"
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1"
+      />
+    </g>
+  </svg>
+);
+
+export const ScrollToContinue = () => (
+  <div className="absolute text-white right-0 bottom-0 text-base mr-5 mb-40 transform -rotate-90 tracking-wider font-thin flex">
+    <div className="transform rotate-90 -translate-x-12 -translate-y-9">
+      <ScrollArrow />
+    </div>
+    <span className="font-semibold">SCROLL</span> TO CONTINUE{' '}
+  </div>
+);
+
 export const ContactArrow = () => (
   <svg width="14.309" height="26.468" viewBox="0 0 14.309 26.468">
     <path

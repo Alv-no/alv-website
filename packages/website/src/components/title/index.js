@@ -30,3 +30,11 @@ export const Title = ({
     </>
   );
 };
+
+export const Subtitle = ({ children }) => {
+  return (
+    <h3 className="text-about-xl text-white font-thin tracking-wider uppercase">
+      {children}
+    </h3>
+  );
+};

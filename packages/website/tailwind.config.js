@@ -167,6 +167,7 @@ module.exports = {
         '3xl': ['36px', '46px'],
         '4xl': ['40px', '50px'],
         '5xl': ['62px', '72px'],
+        'about-xl': ['42px', '54px'],
         'slider': ['46px', '50px'],
         'cta': ['26px', '26px'],
       },
