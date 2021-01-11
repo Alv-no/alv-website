@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Subscribe } from '../subscribe';
 
 export const Footer = ({ ctaText, org, address, email }) => (
   <footer className="bg-footerblue seven:pt-12 seven:pb-10 seven:px-12 px-6 py-15">
@@ -17,15 +18,7 @@ export const Footer = ({ ctaText, org, address, email }) => (
           Meld deg på nyhetsbrev
         </h4>
         <p className="text-footer max-w-100 pb-5 tracking-wider">{ctaText}</p>
-        <div className="inline-flex">
-          <input
-            className="w-50 rounded-full text-sm py-3 px-5 outline-none border border-white bg-footerblue placeholder-white"
-            placeholder="E-post"
-          />
-          <button className="ml-6 focus:outline-none text-sm tracking-wider font-bold uppercase">
-            Meld På
-          </button>
-        </div>
+        {/* <Subscribe /> */}
       </div>
       <div className="md:ml-auto relative w-20">
         <p className="mt-full seven:absolute bottom-0">

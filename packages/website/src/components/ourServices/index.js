@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'gatsby-link';
 import BackgroundImage from 'gatsby-background-image-es5';
 
@@ -6,12 +6,10 @@ const dummyLink = '/';
 const dummyText =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt';
 
-export const OurServices = ({ children, image }) => {
+export const OurServices = ({ image }) => {
   const [activeItem, setActiveItem] = useState('1');
 
   const handleClick = (e) => {
-    console.log(e.target.id);
-    console.log(e);
     setActiveItem(e.target.id);
   };
   return (
@@ -21,6 +19,7 @@ export const OurServices = ({ children, image }) => {
         gridTemplateColumns: '1fr 1fr',
       }}
     >
+      {/* Map from array of list items */}
       <div className="w-full pl-12">
         <ul>
           <li
@@ -95,7 +94,7 @@ export const OurServices = ({ children, image }) => {
   );
 };
 
-const ListContent = ({ description, link, id }) => (
+const ListContent = ({ description, link }) => (
   <div>
     <div className="w-12 mt-2 mb-12 h-2px bg-yellow" />
     <div className="pl-10 mb-15">

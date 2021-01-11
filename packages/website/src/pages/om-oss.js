@@ -168,18 +168,20 @@ const About = () => {
           </div>
         </div>
         <div className="px-12 "></div>
-        <div className="px-12 -mb-10 mt-12">
+        <div className="max-w-1440 mx-auto px-12 -mb-10 mt-12">
           <Subtitle>Ansatte</Subtitle>
         </div>
         <FeaturedTeam notitle team={team} color="navy" />
-        <div className="px-12 -mb-7">
-          <Subtitle>Hva tenker alvene?</Subtitle>
+        <div className="mx-auto max-w-1440">
+          <div className="-mb-7">
+            <Subtitle>Hva tenker alvene?</Subtitle>
+          </div>
+          <BlogSlider
+            image={data.sliderImg.childImageSharp.fluid}
+            color="text-white"
+            dot={false}
+          />
         </div>
-        <BlogSlider
-          image={data.sliderImg.childImageSharp.fluid}
-          color="text-white"
-          dot={false}
-        />
       </div>
     </Layout>
   );

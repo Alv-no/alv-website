@@ -8,6 +8,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
     'gatsby-background-image-es5',
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-sanity`,
       options: {
