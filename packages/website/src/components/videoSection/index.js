@@ -31,7 +31,7 @@ export const VideoSection = ({ videos, data, tabs }) => {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full px-5 sm:px-0">
         {videos && (
           <VideoFilter videos={videos} onChange={updateVideos} tabs={tabs} />
         )}
@@ -39,7 +39,7 @@ export const VideoSection = ({ videos, data, tabs }) => {
           <div
             className="grid gap-x-4 gap-y-10 w-full"
             style={{
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
             }}
           >
             <VideoCard {...dummySettings} />

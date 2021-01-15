@@ -10,6 +10,7 @@ export const Title = ({
   noDot,
   color,
   underline,
+  classes,
   size,
 }) => {
   const classNames = classnames(
@@ -17,7 +18,8 @@ export const Title = ({
     bold ? 'font-bold' : 'font-thin',
     align ? `text-${align}` : 'text-center',
     color || 'text-white',
-    underline ? 'text-blog' : 'text-4xl'
+    underline ? 'text-blog' : 'text-4xl',
+    classes || null
   );
 
   return (

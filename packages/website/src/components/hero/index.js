@@ -27,7 +27,7 @@ export const Hero = () => {
       const css = document.createElement('style');
       css.type = 'text/css';
       css.innerHTML =
-        '.txt-rotate > .wrap { border-right: 0.02em solid #d6a30d; padding-right: 8px } @media only screen and (max-width: 768px) { .text-rotate .wrap { padding-right: 30px; } } ';
+        '.txt-rotate > .wrap { padding-right: 8px } @media only screen and (max-width: 768px) { .text-rotate .wrap { padding-right: 30px; } } ';
       document.body.appendChild(css);
       setActive(true);
     }
@@ -55,7 +55,7 @@ export const Hero = () => {
 
     if (!this.isDeleting && this.txt === fullTxt) {
       delta = this.period;
-      this.isDeleting = true;
+      this.isDeleting = false;
     } else if (this.isDeleting && this.txt === '') {
       this.isDeleting = false;
       this.loopNum++;
@@ -67,23 +67,26 @@ export const Hero = () => {
     }, delta);
   };
   return (
-    <div className="bg-navy w-full text-6xl flex justify-center items-center h-screen -mt-25 p-12 relative flex-col">
-      <Title bold={false} size="text-6xl leading-tight">
+    <div className="bg-navy w-full flex justify-center items-center h-screen -mt-25 p-12 relative flex-col">
+      <Title
+        bold={false}
+        size="lg:text-5xl sm:text-hero-tablet text-hero-mobile leading-tight"
+      >
         <div>Vi bygger </div>
         <div className="font-black">Norges mest attraktive</div>
         <span>konsulentselskap</span>
-      </Title>
-      <div>
-        <h1
-          className="md:text-150 sm:text-120 txt-rotate mt-10 headline relative z-0 text-white font-bold"
+        {/* <span
+          className="txt-rotate"
           data-period="2000"
-          data-rotate='[ "Tekst 1", "Tekst 2", "Tekst 3", "Tekst 4", "Tekst 5" ]'
+          data-rotate='["konsulentselskap"]'
         >
-          Typewriter effekt
-        </h1>
-      </div>
+          konsulentselskap
+        </span> */}
+      </Title>
       <div className="sm:h-3 h-4" />
-      <Icon.ScrollToContinue />
+      <div className="">
+        <Icon.ScrollToContinue />
+      </div>
     </div>
   );
 };

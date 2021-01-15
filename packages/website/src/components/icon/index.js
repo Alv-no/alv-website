@@ -95,6 +95,33 @@ export const CtaArrow = () => (
     </g>
   </svg>
 );
+export const SliderArrow = () => (
+  <svg width="67" height="67" viewBox="0 0 67 67">
+    <g transform="translate(-950 -2347)">
+      <g transform="translate(-312 1436)">
+        <g
+          transform="translate(1262 911)"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="4"
+        >
+          <circle cx="33.5" cy="33.5" r="33.5" stroke="none" />
+          <circle cx="33.5" cy="33.5" r="32" fill="none" />
+        </g>
+      </g>
+      <path
+        id="Path_375"
+        d="M-13902.463,2330.474l9.32,9.083-9.32,9.439"
+        transform="translate(14881.65 41.026)"
+        fill="none"
+        stroke="#fff"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="5"
+      />
+    </g>
+  </svg>
+);
 
 export const Dropdown = () => (
   <div className="flex flex-col justify-center items-center h-7">
@@ -263,10 +290,10 @@ export const ScrollArrow = () => (
 );
 
 export const ScrollToContinue = () => (
-  <div className="absolute text-white right-0 bottom-0 text-base -mr-20 2xl:mr-5 mb-40 transform -rotate-90 tracking-wider font-thin flex">
+  <div className="absolute text-white right-0 bottom-0 text-base -mr-20 2xl:mr-5 mb-40 transform -rotate-90 tracking-wider font-thin flex translate-y-32 twelve:translate-y-0 z-20">
     <div className="transform rotate-90 -translate-x-12 -translate-y-9">
       <ScrollArrow />
-    </div>
+    </div>{' '}
     <span className="font-semibold">SCROLL</span> TO CONTINUE{' '}
   </div>
 );

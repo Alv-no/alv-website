@@ -3,19 +3,19 @@ import * as Icon from '../icon';
 
 export const OwnedByStaff = ({ children }) => {
   return (
-    <div className="bg-darkblue bg-opacity-50 w-full text-white tracking-wider py-20 mt-15">
+    <div className="bg-darkblue bg-opacity-50 w-full text-white tracking-wider lg:py-20 py-10 mt-15">
       <div
-        className="max-w-1440 mx-auto px-12 grid gap-x-25"
-        style={{ gridTemplateColumns: '35% auto' }}
+        className="max-w-1440 mx-auto px-5 sm:px-12 twelve:grid gap-x-10 2xl:gap-x-25"
+        style={{ gridTemplateColumns: 'auto 60%' }}
       >
         <div className="">
-          <h3 className="text-about-xl font-light mb-10 uppercase">
+          <h3 className="text-about-xl font-light lg:mb-10 seven:mb-5 uppercase">
             Eid av våre ansatte
           </h3>
-          <p className="font-light text-xl">{children}</p>
+          <p className="font-light hidden twelve:block text-xl">{children}</p>
         </div>
-        <div className="flex h-full items-center">
-          <div className="w-64 h-64 transform -translate-y-12 -translate-x-10 mr-16">
+        <div className="seven:flex justify-center h-full items-center">
+          <div className="h-64 seven:mb-0 mb-32 transform seven:scale-80 lg:scale-100 seven:-translate-y-12 seven:-translate-x-10 mr-5 lg:mr-16 xl:mx-auto">
             <Icon.Chart />
           </div>
           <div className="flex">
@@ -40,6 +40,9 @@ export const OwnedByStaff = ({ children }) => {
             </div>
           </div>
         </div>
+        <p className="font-light mt-15 lg:w-4/6 twelve:hidden text-xl lg:mx-auto">
+          {children}
+        </p>
       </div>
     </div>
   );

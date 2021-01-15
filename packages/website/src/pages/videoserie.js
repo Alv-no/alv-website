@@ -11,8 +11,8 @@ const Videoseries = () => {
   const data = useVideoseriesQuery();
   return (
     <Layout>
-      <div className="bg-navy text-white px-6 seven:px-10 overflow-hidden">
-        <div className="max-w-1200 mx-auto px-5">
+      <div className="bg-navy text-white seven:px-10 overflow-hidden">
+        <div className="max-w-1200 mx-auto">
           <VideoHero
             backgroundImage={data.videoserieBg.childImageSharp.fluid}
             thumbnail={data.fallbackImg.childImageSharp.fluid}
