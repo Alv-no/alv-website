@@ -10,25 +10,28 @@ export const VideoHero = ({ backgroundImage, thumbnail }) => {
       <div className="twelve:grid grid-cols-videos-hero mx-auto twelve:mb-24">
         <div />
         <span
-          className={`relative twelve:-ml-20 twelve:pr-40 2xl:ml-0 2xl:pr-0 transform translate-x-2/7 twelve:translate-x-0 block ${styles.card}`}
+          className={`relative twelve:-ml-20 twelve:pr-40 2xl:ml-0 2xl:pr-0 transform sm:translate-x-2/7 twelve:translate-x-0 block ${styles.card}`}
         >
-          <Image fluid={backgroundImage} className={styles.bgImage} />
+          <Image
+            fluid={backgroundImage}
+            className={`-mx-12 h-screen sm:mx-0  ${styles.bgImage}`}
+          />
           <div
-            className={`absolute text-white top-1/2 transform -translate-y-1/2 -translate-x-40 md:m-0 ml-15 ${styles.cta}`}
+            className={`absolute -translate-y-32 w-full text-white top-1/2 transform sm:-translate-y-1/2 sm:-translate-x-40 md:m-0 sm:ml-15 ${styles.cta}`}
           >
-            <Title align="left">Videoserie</Title>
-            <div className="pt-9 ml-10">
-              <h2 className="text-blog w-100 pr-12 tracking-wider">
+            <Title classes="sm:text-left text-center w-full">Videoserie</Title>
+            <div className="pt-7 sm:pt-9 sm:ml-10">
+              <h2 className="sm:text-blog text-center text-xl sm:text-left mx-auto sm:mx-0 sm:w-100 sm:pr-12 w-5/6 tracking-wider">
                 Culpa qui officia deserunt mollit anim id est laborum. Sed ut
                 perspiciatis mollit
               </h2>
             </div>
-            <div className="flex mt-12 items-center">
-              <span className="mr-4">
+            <div className="flex mt-12 items-center justify-center sm:justify-start">
+              {/* <span className="mr-4">
                 <button className="rounded-full font-semibold tracking-wider text-base py-2 uppercase px-10 focus:outline-none border border-white bg-transparent">
                   Meld deg på
                 </button>
-              </span>
+              </span> */}
               <button className="font-semibold tracking-wider text-base uppercase bg-transparent focus:outline-none">
                 Se miniserier
               </button>
@@ -42,7 +45,7 @@ export const VideoHero = ({ backgroundImage, thumbnail }) => {
           </div>
         </span>
       </div>
-      <div className="sm:mx-auto twelve:hidden sm:w-featured mt-10 lg:mt-15 sm:w-7/12 w-full">
+      <div className="sm:mx-auto twelve:hidden sm:w-featured mt-8 sm:mt-10 lg:mt-15 sm:w-7/12 w-full">
         <FeaturedVideo
           thumbnail={thumbnail}
           title="DataPrat | Kan du stole på en fornøyd kunde? [Episode 4]"
