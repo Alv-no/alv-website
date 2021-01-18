@@ -11,20 +11,13 @@ export const WhatWeDo = () => {
   return (
     <>
       <div className="w-full" id="hva-gjør-vi">
-        <div
-          className="max-w-1200 mx-auto py-8"
-          style={{
-            gridTemplateColumns: '1fr 1fr',
-            order: '-1',
-            gridAutoFlow: 'dense',
-          }}
-        >
+        <div className="max-w-1200 mx-auto py-8 sm:px-12 px-5">
           <div className="mb-15">
             <Title underline align="text-left" color="text-navy">
               Hva gjør vi
             </Title>
           </div>
-          <div className="ml-15 flex">
+          <div className="lg:ml-15 sm:flex">
             <div>
               <Service image={img1}>
                 Dolor sit amet, consectetur adipisifwcing elit, sed do eiusmod
@@ -39,7 +32,7 @@ export const WhatWeDo = () => {
                 tempor incididunt ut labore.
               </Service>
             </div>
-            <div className="ml-16">
+            <div className="lg:ml-16 sm:ml-8">
               <Service image={img4}>
                 Amet, consectetur adipisifwcing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore roipi magna.

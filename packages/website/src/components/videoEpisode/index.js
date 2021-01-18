@@ -1,7 +1,7 @@
 import React from 'react';
 import { Title } from '../title';
 
-export const VideoEpisode = ({ title, description, subtitle }) => {
+export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
   return (
     <section className="text-white lg:py-10 mb-5 mb-8 xl:pl-5 -mt-4">
       <div className="max-w-1200 mx-auto sm:pl-5">
@@ -25,7 +25,9 @@ export const VideoEpisode = ({ title, description, subtitle }) => {
                 width="885"
                 title="video"
                 height="500"
-                src="https://www.youtube.com/embed/DGeIF8tSfHU?controls=0"
+                src={`https://www.youtube.com/embed/${
+                  videoId || 'w41C6nB_pYM'
+                }?controls=0`}
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen

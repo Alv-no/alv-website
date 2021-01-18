@@ -28,6 +28,7 @@ const Employees = ({ location }) => {
           allTags={data.allSanityEmployeeTag.edges}
           allEmployees={data.allSanityEmployee.edges}
           linkedId={activeCard}
+          fallbackImg={data.fallbackImg.childImageSharp.fluid}
         />
         <Cta
           heading="Join With Us"

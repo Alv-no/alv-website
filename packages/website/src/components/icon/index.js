@@ -30,7 +30,7 @@ export const VideoPlay = () => (
       data-name="Ellipse 2"
       fill="none"
       stroke="#fff"
-      stroke-width="2"
+      strokeWidth="2"
     >
       <circle cx="35" cy="35" r="35" stroke="none" />
       <circle cx="35" cy="35" r="34" fill="none" />
@@ -91,6 +91,33 @@ export const CtaArrow = () => (
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="4"
+      />
+    </g>
+  </svg>
+);
+export const SliderArrowBlue = () => (
+  <svg width="67" height="67" viewBox="0 0 67 67">
+    <g transform="translate(-950 -2347)">
+      <g transform="translate(-312 1436)">
+        <g
+          transform="translate(1262 911)"
+          fill="none"
+          stroke="#061838"
+          strokeWidth="4"
+        >
+          <circle cx="33.5" cy="33.5" r="33.5" stroke="none" />
+          <circle cx="33.5" cy="33.5" r="32" fill="none" />
+        </g>
+      </g>
+      <path
+        id="Path_375"
+        d="M-13902.463,2330.474l9.32,9.083-9.32,9.439"
+        transform="translate(14881.65 41.026)"
+        fill="none"
+        stroke="#061838"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="5"
       />
     </g>
   </svg>

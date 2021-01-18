@@ -22,7 +22,7 @@ export const OurServices = ({ image }) => {
         }}
       >
         <div />
-        <div className="px-5  sm:mx-12 lg:ml-0">
+        <div className="px-5 sm:pl-0 sm:mx-12 lg:ml-0">
           <h2 className="text-5xl font-light mb-3 uppercase lg:w-full sm:w-full">
             Våre Tjenester
           </h2>
@@ -126,7 +126,7 @@ const ListContent = ({ description, link }) => (
   <div>
     <div className="w-12 mt-2 mb-8 h-2px bg-yellow" />
     <div className="pl-10 mb-15">
-      <p className="tracking-wider text-lg leading-snug font-thin mb-4 w-4/6 lg:w-full">
+      <p className="tracking-wider text-lg leading-snug font-thin mb-4 sm:w-4/6 w-5/6 lg:w-full">
         {description}
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">

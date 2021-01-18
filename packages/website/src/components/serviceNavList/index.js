@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import Image from 'gatsby-image';
 import { Title } from '../title';
 
-export const ServiceNavList = ({ nav }) => (
-  <div className="px-12">
-    <div className="max-w-1200 mx-auto pt-16 w-full tracking-wider">
-      <nav className="mx-auto grid" style={{ gridTemplateColumns: '35% auto' }}>
+export const ServiceNavList = ({ nav, image }) => (
+  <div className="px-5 sm:px-12">
+    <div className="max-w-1200 mx-auto pt-10 sm:pt-16 w-full tracking-wider">
+      <nav className="mx-auto sm:grid sm:gap-x-4 lg:grid-cols-navlist sm:grid-cols-navlist-sm">
         <ul className="text-lg list-style-none text-navynav opacity-80 tracking-wider">
           {nav.map((el) => (
             <li className="mb-7">
@@ -13,8 +14,18 @@ export const ServiceNavList = ({ nav }) => (
             </li>
           ))}
         </ul>
-        <div className="font-light mb-15">
+        <div className="font-light sm:mb-15 sm:h-auto h-80 -mb-10 relative overflow-hidden">
+          <div
+            className="absolute sm:hidden bg-white w-full h-80 mt-15 "
+            style={{
+              background:
+                'linear-gradient(0deg, rgba(255,255,255,1) 8%, rgba(255,255,255,0.1) 100%, rgba(0,0,0,1) 100%)',
+            }}
+          />
           <div>
+            <div className="z-20 relative">
+              <Image fluid={image} className="hidden -mt-40 z-20" />
+            </div>
             <div className="mb-10">
               <Title align="left" underline color="text-navy">
                 Om C#-Utvikler

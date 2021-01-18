@@ -23,7 +23,11 @@ const ArticleTemplate = (props) => {
   return (
     <>
       <span className="lg:block hidden">
-        <Sidebar {...author} authorSlug={authorSlug}>
+        <Sidebar
+          {...author}
+          authorSlug={authorSlug}
+          fallbackImg={props.data.fallbackImg.childImageSharp.fluid}
+        >
           <div
             className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25 text-navy 2xl:ml-1/2"
             style={{ maxWidth: '770px' }}
@@ -36,11 +40,13 @@ const ArticleTemplate = (props) => {
               />
             </div>
             <h1 className="text-blog font-bold mb-8">{title}</h1>
-            <div className="w-full mb-3 relative z-10">
-              <span className="relative z-0 fixed">
-                <Image fluid={mainImage.asset.fluid} />
-              </span>
-            </div>
+            {mainImage && (
+              <div className="w-full mb-3 relative z-10">
+                <span className="relative z-0 fixed">
+                  <Image fluid={mainImage.asset.fluid} />
+                </span>
+              </div>
+            )}
             <span className={styles.body}>
               <PortableText
                 blocks={_rawBody}
@@ -51,14 +57,8 @@ const ArticleTemplate = (props) => {
             <div className="mt-6">
               <SocialShare />
             </div>
-            <div className="flex justify-between mt-8">
-              <div className="">
-                <div className="uppercase text-xl tracking-wider mb-2 font-semibold">
-                  Les også
-                </div>
-                <div className="h-3px w-8 bg-yellow" />
-              </div>
-              <div className="flex items-center font-semibold uppercase">
+            <div className="flex justify-between flex-col">
+              <div className="flex items-center font-semibold uppercase transform -translate-y-4">
                 <Link to="/blogg">Se alle artikler</Link>
                 <span className="transform text-navy ml-3">
                   <Icon.Arrow />
@@ -75,9 +75,11 @@ const ArticleTemplate = (props) => {
             <SocialShare />
           </div>
           <h1 className="text-blog font-bold mb-8">{title}</h1>
-          <div className="w-full mb-3">
-            <Image fluid={mainImage.asset.fluid} />
-          </div>
+          {mainImage && (
+            <div className="w-full mb-3">
+              <Image fluid={mainImage.asset.fluid} />
+            </div>
+          )}
           <span className={styles.body}>
             <PortableText
               blocks={_rawBody}
@@ -108,6 +110,13 @@ export default ArticleTemplate;
 // GraphQL Query for article content
 export const query = graphql`
   query($slug: String!) {
+    fallbackImg: file(name: { eq: "fallback" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     sanityArticle(slug: { current: { eq: $slug } }) {
       title
       publishedAt(formatString: "MMMM Do, YYYY")

@@ -6,14 +6,16 @@ import * as Button from '../button';
 export const BlogSection = ({ allArticles }) => {
   const [articles, setArticles] = useState(allArticles);
   const [visibleRows, setVisibleRows] = useState(3);
-
   const handleViewMoreClick = () => {
     setVisibleRows(visibleRows + 3);
   };
 
   const allAuthors = [
     ...new Set(
-      allArticles.map(({ author }) => `${author.firstname} ${author.lastname}`)
+      allArticles.map(({ author }) => {
+        if (author) return `${author.firstname} ${author.lastname}`;
+        return '';
+      })
     ),
   ];
 

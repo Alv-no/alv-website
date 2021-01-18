@@ -6,6 +6,7 @@ export const EmployeeGroup = ({
   group,
   activeBio,
   updateActiveBio,
+  fallbackImg,
   employees,
 }) => {
   // Update activeBio state with employee object corresponding to card clicked
@@ -33,6 +34,7 @@ export const EmployeeGroup = ({
               handleClick={handleCardClick}
               key={employee.id}
               activeBio={activeBio}
+              fallbackImg={fallbackImg}
             />
           ))}
         </div>
@@ -40,7 +42,7 @@ export const EmployeeGroup = ({
           <EmployeeBio
             {...activeBio}
             handleCloseClick={handleCloseClick}
-            bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Laboris nisi ut aliquip ex ea commodo consequat."
+            // bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Laboris nisi ut aliquip ex ea commodo consequat."
           />
         ) : null}
       </div>

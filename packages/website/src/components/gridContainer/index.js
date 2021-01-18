@@ -4,7 +4,7 @@ import * as Button from '../button';
 import { EmployeeGroup } from '../employeeGroup';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-export const GridContainer = ({ filteredContent, linkedId }) => {
+export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   const { width } = useWindowDimensions();
   const [columnsNr, setColumnsNr] = useState(null);
   const [rows, setRows] = useState(null);
@@ -83,6 +83,7 @@ export const GridContainer = ({ filteredContent, linkedId }) => {
                   employees={filteredContent}
                   updateActiveBio={updateActiveBio}
                   group={group}
+                  fallbackImg={fallbackImg}
                 />
               );
             }

@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { GridContainer } from '../gridContainer';
 import { EmployeeFilter } from '../employeeFilter';
 
-export const EmployeeSection = ({ allTags, allEmployees, linkedId }) => {
+export const EmployeeSection = ({
+  allTags,
+  allEmployees,
+  linkedId,
+  fallbackImg,
+}) => {
   const [filteredContent, setFilteredContent] = useState(
     allEmployees.map((el) => el.node)
   );
@@ -37,7 +42,11 @@ export const EmployeeSection = ({ allTags, allEmployees, linkedId }) => {
   return (
     <div className="w-full text-white xs:px-6 overflow-hidden">
       <EmployeeFilter allTags={allTags} onChange={handleTagClick} />
-      <GridContainer filteredContent={filteredContent} linkedId={linkedId} />
+      <GridContainer
+        filteredContent={filteredContent}
+        linkedId={linkedId}
+        fallbackImg={fallbackImg}
+      />
     </div>
   );
 };
