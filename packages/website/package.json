@@ -3,6 +3,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
+    "clean": "gatsby clean",
     "disable-telemetry": "gatsby telemetry --disable",
     "start:storybook": "start-storybook -p 6006 --no-dll",
     "build:storybook": "NODE_ENV=test build-storybook --no-dll --quiet",
@@ -12,6 +13,7 @@
     "@sanity/block-content-to-react": "^2.0.7",
     "browser-monads": "^1.0.0",
     "classnames": "^2.2.6",
+    "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-react-helmet": "^3.8.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

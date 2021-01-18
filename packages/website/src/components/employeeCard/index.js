@@ -12,6 +12,7 @@ export const EmployeeCard = ({
   handleClick,
   activeBio,
   contrast,
+  fallbackImg,
 }) => (
   <div
     className={`text-white relative group flex cursor-pointer overflow-hidden ${
@@ -31,7 +32,7 @@ export const EmployeeCard = ({
       } group-hover:opacity-100 duration-300 pointer-events-none`}
     >
       <Image
-        fluid={image.asset.fluid}
+        fluid={(image && image.asset.fluid) || fallbackImg}
         alt={firstname}
         className="object-cover h-full xs:w-full"
         style={{ backgroundColor: 'rgba(40,40,40,50%)' }}

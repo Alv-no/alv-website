@@ -31,6 +31,13 @@ export const useSubServiceQuery = () => {
             }
           }
         }
+        fallbackImg: file(name: { eq: "fallback" }) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         allSanityEmployee {
           edges {
             node {

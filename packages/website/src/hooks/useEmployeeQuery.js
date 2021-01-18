@@ -16,18 +16,21 @@ export const useEmployeeQuery = () => {
               experience
               videoLink
               pdfLink
+              _rawBio
               image {
                 asset {
                   fluid(maxWidth: 600) {
-                    src
+                    ...GatsbySanityImageFluid
                   }
                 }
               }
-              bio {
-                _rawChildren
-                style
-                list
-              }
+            }
+          }
+        }
+        fallbackImg: file(name: { eq: "fallback" }) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

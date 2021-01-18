@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
+import PortableText from '@sanity/block-content-to-react';
 
 export const EmployeeBio = ({
   handleCloseClick,
@@ -9,7 +10,7 @@ export const EmployeeBio = ({
   lastname,
   pdfLink,
   title,
-  bio,
+  _rawBio,
   id,
 }) => {
   let employeeSlug = firstname
@@ -74,14 +75,30 @@ export const EmployeeBio = ({
                 </Link>
               </div>
             </div>
-            <p className="tracking-wider font-thin px-6 sm:hidden">{bio}</p>
+            <p className="tracking-wider font-thin px-6 sm:hidden">
+              {_rawBio && (
+                <PortableText
+                  blocks={_rawBio}
+                  projectId="mnr37rl0"
+                  dataset="production"
+                />
+              )}
+            </p>
             <div className="flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left">
               <h4 className="text-4xl leading-none font-thin mb-4 uppercase tracking-wider">
                 <span className="font-bold block">{firstname}</span>
                 {lastname}
               </h4>
               <h5 className="text-lg font-thin tracking-wider mb-8">{title}</h5>
-              <p className="tracking-wider lg:px-0 sm:px-10">{bio}</p>
+              <p className="tracking-wider lg:px-0 sm:px-10">
+                {_rawBio && (
+                  <PortableText
+                    blocks={_rawBio}
+                    projectId="mnr37rl0"
+                    dataset="production"
+                  />
+                )}
+              </p>
             </div>
           </div>
         </div>

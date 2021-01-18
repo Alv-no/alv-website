@@ -9,6 +9,11 @@ export default {
       type: 'reference',
       to: { type: 'article' },
     },
+    {
+      title: 'Default to newest (overrides selection)',
+      name: 'released',
+      type: 'boolean',
+    },
   ],
   preview: {
     select: {

@@ -7,21 +7,15 @@ export const Overview = ({ image }) => {
     <>
       <div className="w-full bg-white" id="overview">
         <div
-          className="max-w-1200 mx-auto grid gap-x-10 bg-white py-8"
+          className="max-w-1200 mx-auto lg:grid gap-x-10 bg-white py-8"
           style={{
             gridTemplateColumns: '1fr 1fr',
             order: '-1',
             gridAutoFlow: 'dense',
           }}
         >
-          {
-            <Image
-              fluid={image}
-              style={{ maxHeight: '320px' }}
-              className="h-80"
-            />
-          }
-          <div className="px-12  font-light flex flex-col justify-between h-full">
+          {<Image fluid={image} className="h-80 lg:mt-0 sm:-mt-6 -mt-7" />}
+          <div className="sm:px-12 px-5 lg:mt-0 mt-10 font-light flex flex-col justify-between h-full">
             <div>
               <Title underline align="left" color="text-navy">
                 Oversikt

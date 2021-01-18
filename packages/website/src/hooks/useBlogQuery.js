@@ -35,6 +35,7 @@ export const useBlogQuery = () => {
                 lastname
               }
               publishedAt(formatString: "DD MMM, YYYY")
+              rawDate: publishedAt
             }
           }
         }

@@ -3,7 +3,7 @@ export const useAboutUsQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        aboutUsTop: file(name: { eq: "vitilbyr_header" }) {
+        aboutUsTop: file(name: { eq: "contact_us_img2" }) {
           childImageSharp {
             fluid {
               ...GatsbyImageSharpFluid
@@ -20,6 +20,20 @@ export const useAboutUsQuery = () => {
         sliderImg: file(name: { eq: "systemutvikling_img" }) {
           childImageSharp {
             fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        services: file(name: { eq: "about_us_img2" }) {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        fallbackImg: file(name: { eq: "fallback" }) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
               ...GatsbyImageSharpFluid
             }
           }

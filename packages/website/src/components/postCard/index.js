@@ -12,7 +12,17 @@ export const PostCard = ({
   tags,
   author,
   publishedAt,
+  fallbackImg,
 }) => {
+  let newDescription = description;
+  if (description.length > 300) {
+    const wordArr = description.split(' ').slice(0, 40);
+    wordArr.push('...');
+    newDescription = wordArr.join(' ');
+    newDescription =
+      newDescription.slice(0, newDescription.length - 4) +
+      newDescription.slice(newDescription.length - 3);
+  }
   return (
     <Link
       to={slug.current}
@@ -32,11 +42,11 @@ export const PostCard = ({
         <div className={styles.container}>
           <div className="text-white h-3/4 bg-navy bottom-0 absolute z-10 p-6 tracking-wider transition duration-300 opacity-0 group-hover:opacity-100">
             <h3 className="text-lg font-semibold mb-3 -mx-2px">{title}</h3>
-            <div className="font-light mb-8">{description}</div>
+            <div className="font-light mb-8">{newDescription}</div>
           </div>
           <div className="overflow-hidden h-50">
             <Image
-              fluid={mainImage.asset.fluid}
+              fluid={(mainImage && mainImage.asset.fluid) || fallbackImg}
               className="transform group-hover:scale-110 object-cover duration-300 transition h-full"
             />
           </div>
@@ -53,10 +63,15 @@ export const PostCard = ({
             </div>
             <div className="flex items-center mb-3">
               <div className="h-6 w-6 rounded-full overflow-hidden mr-2 filter-grayscale">
-                <Image fluid={author.image.asset.fluid} />
+                <Image
+                  fluid={
+                    (author && author.image && author.image.asset.fluid) ||
+                    fallbackImg
+                  }
+                />
               </div>
               <div className="text-sm">
-                {author.firstname} {author.lastname}
+                {author ? `${author.firstname} ${author.lastname}` : null}
                 <span className="text-postgray"> - {publishedAt}</span>
               </div>
             </div>

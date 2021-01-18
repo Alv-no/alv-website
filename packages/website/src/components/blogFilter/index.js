@@ -17,7 +17,7 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
     active.forEach((el) => sortedActive.push(el));
     if (sort === 'oldest') {
       sortedActive.sort((a, b) => {
-        if (a.publishedAt < b.publishedAt) {
+        if (a.rawDate < b.rawDate) {
           return -1;
         } else {
           return 1;
@@ -25,7 +25,7 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
       });
     } else if (sort === 'newest') {
       sortedActive.sort((a, b) => {
-        if (a.publishedAt > b.publishedAt) {
+        if (a.rawDate > b.rawDate) {
           return -1;
         } else {
           return 1;

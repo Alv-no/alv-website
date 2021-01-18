@@ -4,31 +4,27 @@ import Link from 'gatsby-link';
 import { Title } from '../title';
 import * as Button from '../button';
 
-export const FeaturedTeam = ({ team, notitle }) => {
+export const FeaturedTeam = ({ team, notitle, fallbackImg }) => {
   const handleClick = (e) => {
     return e;
   };
   return (
-    <div className="mb-4 mt-10 px-12">
-      <div className="max-w-1200 mx-auto">
+    <div className="mb-4 mt-10 ">
+      <div className="max-w-1440 px-5 sm:px-12 mx-auto">
         {!notitle && (
           <Title underline align="left" color="text-navy">
             Featured Team Members
           </Title>
         )}
         <div className="h-12" />
-        <div
-          className="grid xs:gap-4 xs:mx-auto mb-10"
-          style={{
-            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-          }}
-        >
+        <div className="grid xs:gap-4 mb-12 xs:max-w-570 seven:max-w-none nine:max-w-grid grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg gap-y-6">
           {team.map((employee) => (
             <Link to="/ansatte">
               <EmployeeCard
                 {...employee}
                 handleClick={handleClick}
                 key={employee.id}
+                fallbackImg={fallbackImg}
               />
             </Link>
           ))}

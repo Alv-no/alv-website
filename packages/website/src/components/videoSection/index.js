@@ -3,11 +3,13 @@ import { VideoFilter } from '../videoFilter';
 import { VideoCard } from '../videoCard';
 import * as Button from '../button';
 
-export const VideoSection = ({ videos, data, tabs }) => {
+export const VideoSection = ({ videos, fallbackImg, tabs }) => {
   // Placeholder until actual videos are loaded in
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [sortedVideos, setSortedVideos] = useState(videos);
   const [visibleRows, setVisibleRows] = useState(3);
+
+  console.log(videos);
 
   const handleViewMoreClick = () => {
     setVisibleRows(visibleRows + 3);
@@ -18,16 +20,8 @@ export const VideoSection = ({ videos, data, tabs }) => {
   };
 
   useEffect(() => {
-    setSortedVideos([1, 2, 3]);
-  }, []);
-
-  const dummySettings = {
-    slug: {
-      current: '/episode',
-    },
-    title: 'ALV#050 | HVORDAN OPPNÅ DET BESTE FRA TO ULIKE VERDENER?',
-    thumbnail: data.fallbackImg.childImageSharp.fluid,
-  };
+    setSortedVideos(videos);
+  }, [videos]);
 
   return (
     <>
@@ -42,14 +36,15 @@ export const VideoSection = ({ videos, data, tabs }) => {
               gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
             }}
           >
-            <VideoCard {...dummySettings} />
-            <VideoCard {...dummySettings} />
-            <VideoCard {...dummySettings} />
-            <VideoCard {...dummySettings} />
-            <VideoCard {...dummySettings} />
-            <VideoCard {...dummySettings} />
-            <VideoCard {...dummySettings} />
-            <VideoCard {...dummySettings} />
+            {videos.map((video) => {
+              return (
+                <VideoCard
+                  fallbackImg={fallbackImg}
+                  title={video.title}
+                  thumbnail={video.thumbnails.standard.url}
+                />
+              );
+            })}
           </div>
         </div>
         <div className="flex justify-end">

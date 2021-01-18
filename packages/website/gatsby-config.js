@@ -27,6 +27,32 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './src/favicons/favicon-32x32.png',
+
+        // WebApp Manifest Configuration
+        dir: 'auto',
+        lang: 'en-US',
+        background: '#fff',
+        themeColor: '#fff',
+        display: 'standalone',
+        orientation: 'any',
+        version: '1.0',
+
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [`source sans pro:200,300,400,700`],

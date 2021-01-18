@@ -10,15 +10,23 @@ export const FeaturedCard = ({
   description,
   fallbackImg,
 }) => {
+  let newDescription = description;
+  if (description.length > 300) {
+    const wordArr = description.split(' ').slice(0, 20);
+    wordArr.push('...');
+    newDescription = wordArr.join(' ');
+    newDescription =
+      newDescription.slice(0, newDescription.length - 4) +
+      newDescription.slice(newDescription.length - 3);
+  }
+
   return (
     <Link
       to={`/blogg/${slug.current}`}
       className="relative"
       style={{ position: 'relative' }}
     >
-      <BackgroundImage
-        fluid={mainImage ? mainImage.asset.fluid : fallbackImg.asset.fluid}
-      >
+      <BackgroundImage fluid={mainImage ? mainImage.asset.fluid : fallbackImg}>
         <div className="h-featured xs:hidden" />
         <div
           className="xs:block hidden h-featured"
@@ -36,7 +44,7 @@ export const FeaturedCard = ({
                 </div>
                 <div className="w-12 h-2px bg-yellow mb-4 mt-3" />
                 <div className="text-nav font-bold mt-4 mb-3">{title}</div>
-                <div className="max-w-100">{description}</div>
+                <div className="max-w-100">{newDescription}</div>
               </div>
               <div className="flex flex-col justify-between">
                 <div />
