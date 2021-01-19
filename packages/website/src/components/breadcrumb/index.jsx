@@ -8,9 +8,9 @@ const Breadcrumb = ({ path }) => {
     crumbs = filteredPath.map((el) => {
       let formattedEl = el[0].toUpperCase() + el.slice(1);
       if (formattedEl.includes('-')) {
-        if (formattedEl.length > 5) {
-          formattedEl = ['Blogginnlegg'];
-        }
+        formattedEl.length > 35
+          ? (formattedEl = ['Blogginnlegg'])
+          : (formattedEl = formattedEl.split('-').join(' '));
       }
 
       return formattedEl;
@@ -20,7 +20,7 @@ const Breadcrumb = ({ path }) => {
   return (
     <div className="overflow-hidden">
       {crumbs.length > 1 && (
-        <div className="flex space-x-4 text-white -ml-4 tracking-wider">
+        <div className="flex space-x-4 text-white -ml-3 tracking-wider relative z-20">
           {(crumbs || []).map((item, i) => {
             let link;
             if (i === 0) {

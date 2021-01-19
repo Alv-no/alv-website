@@ -9,8 +9,6 @@ export const VideoSection = ({ videos, fallbackImg, tabs }) => {
   const [sortedVideos, setSortedVideos] = useState(videos);
   const [visibleRows, setVisibleRows] = useState(3);
 
-  console.log(videos);
-
   const handleViewMoreClick = () => {
     setVisibleRows(visibleRows + 3);
   };

@@ -14,11 +14,14 @@ import { window } from 'browser-monads';
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
   const { title, author, mainImage, _rawBody, tags } = props.data.sanityArticle;
-  let authorSlug = author.firstname
-    .split(' ')
-    .concat(author.lastname.split(' '))
-    .map((name) => name.toLowerCase());
-  authorSlug = authorSlug.join('-');
+  let authorSlug;
+  if (author && author.firstname && author.lastname) {
+    authorSlug = author.firstname
+      .split(' ')
+      .concat(author.lastname.split(' '))
+      .map((name) => name.toLowerCase());
+    authorSlug = authorSlug.join('-');
+  }
   const socialTags = tags.map((tag) => tag.tag);
   return (
     <>
