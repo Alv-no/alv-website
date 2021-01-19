@@ -60,6 +60,7 @@ const Videoseries = () => {
                       description="Culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis."
                       featuredVideo={featuredVideo}
                       fallbackImg={data.digitaliseringImg.childImageSharp.fluid}
+                      playlist={list}
                     />
                   )}
                   <div className="sm:mx-12 md:mx-0">

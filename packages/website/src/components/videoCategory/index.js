@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Title } from '../title';
+import Link from 'gatsby-link';
 
 export const VideoCategory = ({
   title,
   featuredVideo,
   description,
   subtitle,
+  playlist,
 }) => {
   const [loaded, setLoaded] = useState(false);
 
@@ -34,22 +36,23 @@ export const VideoCategory = ({
             {/* ---- Above: Visible on Mobile only ---- */}
             <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
               <div className="py-4 bg-black">
-                <div
-                  className="xs:block h-featured 2xl:h-featured"
-                  style={{
-                    backgroundColor:
-                      'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
-                    backgroundImage:
-                      loaded && `url("${thumbnails.standard.url}")`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                >
-                  <div className="w-full z-50 h-full p-8 flex flex-col justify-between">
-                    <div />
+                <Link to="/episode" state={{ video: featuredVideo, playlist }}>
+                  <div
+                    className="xs:block h-featured 2xl:h-featured"
+                    style={{
+                      backgroundColor:
+                        'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
+                      backgroundImage:
+                        loaded && `url("${thumbnails.standard.url}")`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  >
+                    <div className="w-full z-50 h-full p-8 flex flex-col justify-between">
+                      <div />
 
-                    <div className="flex text-white justify-between tracking-wider">
-                      {/* <div className="pl-1">
+                      <div className="flex text-white justify-between tracking-wider">
+                        {/* <div className="pl-1">
                       {title && (
                         <>
                           <div className="uppercase sm:block hidden text-base font-bold ">
@@ -62,7 +65,7 @@ export const VideoCategory = ({
                         {title}
                       </div>
                     </div> */}
-                      {/* <div className="flex flex-col justify-between">
+                        {/* <div className="flex flex-col justify-between">
                       <div />
                       <div className="font-semibold uppercase w-32 flex text-right justify-end items-center">
                         <span className="ml-2">
@@ -70,9 +73,10 @@ export const VideoCategory = ({
                         </span>
                       </div>
                     </div> */}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

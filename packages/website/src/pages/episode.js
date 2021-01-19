@@ -3,11 +3,13 @@ import Layout from '../components/layout';
 import { VideoSection } from '../components/videoSection';
 import { SocialShare } from '../components/socialShare';
 import { VideoEpisode } from '../components/videoEpisode';
-import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
 
-const Episode = () => {
-  const videos = [1, 2, 3];
-  const data = useVideoseriesQuery();
+const Episode = ({ location }) => {
+  const passedVideo = location.state ? location.state.video : null;
+  const playlist = location.state ? location.state.playlist : null;
+  const videoId = (passedVideo && passedVideo.videoId) || 'XFtoMwOtqqU';
+  const group =
+    playlist && playlist.length > 12 ? playlist.slice(0, 12) : playlist;
   return (
     <Layout>
       <div className="bg-navy text-white px-6 seven:px-10 overflow-hidden">
@@ -17,9 +19,9 @@ const Episode = () => {
             title="Dataprat"
             subtitle="Culpa qui officia deserunt mollit anim id est laborum."
             description="Culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis."
-            thumbnail={data.digitaliseringImg.childImageSharp.fluid}
+            videoId={videoId}
           />
-          <VideoSection allVideos={videos} data={data} tabs={false} />
+          {playlist && <VideoSection videos={group} tabs={false} />}
         </div>
       </div>
     </Layout>

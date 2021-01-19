@@ -38,47 +38,49 @@ const Services = () => {
   };
   return (
     <Layout>
-      <ServicesHero backgroundImage={data.heroImage.childImageSharp.fluid}>
-        <Title>Vi tilbyr</Title>
-        <div className="h-8" />
-        <Description align="center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
-        </Description>
-      </ServicesHero>
-      <div className="bg-white text-navy px-6 seven:px-12 -mt-32 overflow-hidden">
-        <ColumnSection
-          eyebrow="Lorem ipsum"
-          title="Lorem ipsum dolor sit amet"
-          image={data.columnsImg.childImageSharp.fluid}
-        />
-      </div>
-      <div className="bg-servicesgray text-navy px-6 seven:px-12 overflow-hidden">
-        <ServicesSection>
-          <ServicesCard {...dummyCard1} />
+      <div className="overflow-hidden w-screen">
+        <ServicesHero backgroundImage={data.heroImage.childImageSharp.fluid}>
+          <Title>Vi tilbyr</Title>
+          <div className="h-8" />
+          <Description align="center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </Description>
+        </ServicesHero>
+        <div className="bg-white text-navy px-5 sm:px-12 sm:-mt-20 -mt-5 overflow-hidden">
+          <ColumnSection
+            eyebrow="Lorem ipsum"
+            title="Lorem ipsum dolor sit amet"
+            image={data.columnsImg.childImageSharp.fluid}
+          />
+        </div>
+        <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
+          <ServicesSection title="Systemutvikling">
+            <ServicesCard {...dummyCard1} />
+            <ServicesCard {...dummyCard2} />
+            <ServicesCard {...dummyCard3} />
+            <ServicesCard {...dummyCard4} />
+            <ServicesCard {...dummyCard2} />
+            <ServicesCard {...dummyCard3} />
+            <ServicesCard {...dummyCard4} />
+          </ServicesSection>
+        </div>
+        <ImageTextFull image={data.imageLeft.childImageSharp.fluid} />
+        <ImageTextFull image={data.imageRight.childImageSharp.fluid} flip />
+        <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
+          <ServicesSection title="Data & Analyse">
+            <ServicesCard {...dummyCard1} />
+            <ServicesCard {...dummyCard4} />
+            <ServicesCard {...dummyCard2} />
+            <ServicesCard {...dummyCard3} />
+          </ServicesSection>
+        </div>
+        <ImageTextCards image={data.imageLeft.childImageSharp.fluid}>
           <ServicesCard {...dummyCard2} />
           <ServicesCard {...dummyCard3} />
-          <ServicesCard {...dummyCard4} />
-          <ServicesCard {...dummyCard2} />
-          <ServicesCard {...dummyCard3} />
-          <ServicesCard {...dummyCard4} />
-        </ServicesSection>
+        </ImageTextCards>
       </div>
-      <ImageTextFull image={data.imageLeft.childImageSharp.fluid} />
-      <ImageTextFull image={data.imageRight.childImageSharp.fluid} flip />
-      <div className="bg-servicesgray text-navy px-6 seven:px-12 overflow-hidden">
-        <ServicesSection>
-          <ServicesCard {...dummyCard1} />
-          <ServicesCard {...dummyCard4} />
-          <ServicesCard {...dummyCard2} />
-          <ServicesCard {...dummyCard3} />
-        </ServicesSection>
-      </div>
-      <ImageTextCards image={data.imageLeft.childImageSharp.fluid}>
-        <ServicesCard {...dummyCard2} />
-        <ServicesCard {...dummyCard3} />
-      </ImageTextCards>
     </Layout>
   );
 };

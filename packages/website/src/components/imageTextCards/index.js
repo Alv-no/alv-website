@@ -9,17 +9,23 @@ export const ImageTextCards = ({ image, flip, children }) => {
       <div className="w-full">
         <div className="w-full h-15 bg-white" />
         <div
-          className="max-w-1440 mx-auto grid bg-servicesgray pb-15"
+          className="max-w-1440 mx-auto lg:grid bg-servicesgray pb-15"
           style={{
             gridTemplateColumns: '1fr 1fr',
           }}
         >
           <div className="h-full bg-servicesgray">
-            {!flip && <Image fluid={image} style={{ maxHeight: '555px' }} />}
+            {!flip && (
+              <Image
+                fluid={image}
+                className="h-40vh lg:h-auto"
+                style={{ maxHeight: '555px' }}
+              />
+            )}
           </div>
           <div className="font-light h-full">
             <div className="flex flex-col justify-between">
-              <div className="px-10 pb-9 bg-white">
+              <div className="sm:px-12 px-5 pb-9 pt-10 lg:pt-0 bg-white">
                 <div className="">
                   <Title align="left" color="text-navy">
                     Prosjektledelse
@@ -40,7 +46,7 @@ export const ImageTextCards = ({ image, flip, children }) => {
                   <Button.CtaArrow>Lær Mer</Button.CtaArrow>
                 </div>
               </div>
-              <div className="grid grid-cols-2 px-10 pt-10 gap-x-4 justify-center bg-servicesgray ">
+              <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 px-10 lg:pt-10 gap-x-4 justify-center bg-servicesgray ">
                 {children}
               </div>
             </div>

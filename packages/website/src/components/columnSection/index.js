@@ -5,22 +5,29 @@ import * as Icon from '../icon';
 export const ColumnSection = ({ title, eyebrow, image }) => {
   return (
     <>
-      <div className="py-12 tracking-wider">
+      <div className="tracking-wider sm:pb-15">
         <div
-          className="max-w-1200 mx-auto grid gap-x-10"
+          className="max-w-1200 mx-auto lg:grid gap-x-3 xl:gap-x-10 "
           style={{
-            gridTemplateColumns: 'minmax(660px, 740px) auto',
+            gridTemplateColumns: 'minmax(610px, 740px) minmax(320px, 400px)',
           }}
         >
-          <div>
+          <div className="h-100 sm:h-auto overflow-hidden">
+            <div
+              className="absolute mt-10 h-100 w-full sm:hidden"
+              style={{
+                background:
+                  'linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%, rgba(0,0,0,1) 100%)',
+              }}
+            />
             <div>
               <h4 className="text-lg mb-2">{eyebrow}</h4>
-              <h3 className="text-4xl uppercase font-semibold mb-10">
+              <h3 className="text-4xl uppercase font-semibold mb-3 lg:mb-10">
                 {title}
               </h3>
             </div>
-            <div className="flex">
-              <div className="font-light flex-1 mr-12">
+            <div className="lg:flex">
+              <div className="font-light flex-1 sm:mr-6 xl:mr-12">
                 <div className="mb-8">
                   Culpa qui officia deserunt mollit anim id est laborum. Sed ut
                   perspiciatis unde omnis iste natus error sit voluptartem
@@ -57,16 +64,20 @@ export const ColumnSection = ({ title, eyebrow, image }) => {
               </div>
             </div>
           </div>
-          <div className="pt-8 ml-5">
+          <div className="pt-8 lg:ml-5 -mx-5 sm:mx-0">
             <BackgroundImage fluid={image} className="h-full w-full">
               <div
                 className="absolute inset-0 bg-navy text-white cursor-pointer"
                 style={{ opacity: '30%' }}
               />
-              <div className="h-full w-full w-full flex justify-center items-center text-white ">
-                <div className="uppercase flex font-semibold w-full transform -rotate-90 -translate-y-10 -translate-x-35">
-                  <div className="mr-20 whitespace-nowrap">CONSEQUAT</div>
-                  <div className="">LOREMIPSUM</div>
+              <div className="h-40vh lg:h-full w-full flex justify-between transform -translate-y-3 items-center text-white px-15">
+                <div className="uppercase flex w-10 h-10 font-semibold">
+                  <div className="whitespace-nowrap w-0 transform -rotate-90">
+                    CONSEQUAT
+                  </div>
+                  <div className="transform -rotate-90 w-0 transform translate-y-32">
+                    LOREMIPSUM
+                  </div>
                 </div>
                 <div>
                   <div className="flex justify-end w-full mr-12 absolute right-0">
