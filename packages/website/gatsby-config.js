@@ -3,12 +3,16 @@ require('dotenv').config({
 });
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://www.alv.no`,
+  },
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
     'gatsby-background-image-es5',
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-sanity`,
       options: {
