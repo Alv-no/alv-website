@@ -14266,6 +14266,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-sitemap@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "gatsby-plugin-sitemap@npm:2.11.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    common-tags: ^1.8.0
+    minimatch: ^3.0.4
+    pify: ^3.0.0
+    sitemap: ^1.13.0
+  peerDependencies:
+    gatsby: ^2.0.0
+  checksum: 3350b60f3c42e181badfe4382e8ebea3c83a3c011944539cbebf8ecbbbc9e761bdfc04cfd109cfdb0fbf7421f3c1047dbbcfc0217caad2cfb1ea34057aee253a
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-typescript@npm:^2.5.0":
   version: 2.5.0
   resolution: "gatsby-plugin-typescript@npm:2.5.0"
@@ -26277,6 +26292,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"sitemap@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "sitemap@npm:1.13.0"
+  dependencies:
+    underscore: ^1.7.0
+    url-join: ^1.1.0
+  checksum: 62aa832a7c126d8f45100328783cf4d1197db2fc146f5f5ad80c4b779efdcc69d6a83acad10d6b6056f442315274909b246cf79475abc5dc2dabb8a7fbe84d0d
+  languageName: node
+  linkType: hard
+
 "slash@npm:^1.0.0":
   version: 1.0.0
   resolution: "slash@npm:1.0.0"
@@ -28403,6 +28428,13 @@ typescript@^4.0.5:
   languageName: node
   linkType: hard
 
+"underscore@npm:^1.7.0":
+  version: 1.12.0
+  resolution: "underscore@npm:1.12.0"
+  checksum: c4423fa2c68de8d5e0ccfdeeb7f61f803d6600b8ec14c1f154ad28f8734e3cdf39152e0e09a6a3f1e9911f6a815074b83803a7aa4dfee6f375427ec12e80d1d4
+  languageName: node
+  linkType: hard
+
 "unfetch@npm:^4.1.0":
   version: 4.2.0
   resolution: "unfetch@npm:4.2.0"
@@ -28762,6 +28794,13 @@ typescript@^4.0.5:
   version: 0.1.0
   resolution: "urix@npm:0.1.0"
   checksum: 6bdfca4e7fb7d035537068a47a04ace1bacfa32e6b1aaf54c5a0340c83125a186d59109a19b9a3a1c1f986d3eb718b82faf9ad03d53cb99cf868068580b15b3b
+  languageName: node
+  linkType: hard
+
+"url-join@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "url-join@npm:1.1.0"
+  checksum: 2f42ba3642f3fa879b12eaa31d085055a67e650c4ad08a44983e155cbcc3dee888e885f31b084d33d819b19e8c764f04d25bf63d7357c59796d7bc9a0e996999
   languageName: node
   linkType: hard
 
@@ -29574,6 +29613,7 @@ typescript@^4.0.5:
     gatsby-plugin-postcss: ^3.0.4
     gatsby-plugin-react-helmet: ^3.8.0
     gatsby-plugin-sharp: ^2.7.1
+    gatsby-plugin-sitemap: ^2.11.0
     gatsby-source-filesystem: ^2.6.1
     gatsby-source-sanity: ^6.0.4
     gatsby-transformer-sharp: ^2.5.21

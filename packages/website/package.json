@@ -2,6 +2,7 @@
   "name": "website",
   "scripts": {
     "build": "gatsby build",
+    "serve": "gatsby serve",
     "dev": "gatsby develop",
     "clean": "gatsby clean",
     "disable-telemetry": "gatsby telemetry --disable",
@@ -15,6 +16,7 @@
     "classnames": "^2.2.6",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-react-helmet": "^3.8.0",
+    "gatsby-plugin-sitemap": "^2.11.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-headroom": "^3.0.0",

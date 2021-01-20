@@ -10,7 +10,7 @@ export const useWorkQuery = () => {
             }
           }
         }
-        street: file(name: { eq: "street" }) {
+        street: file(name: { eq: "jobbeialv_1" }) {
           childImageSharp {
             fluid {
               ...GatsbyImageSharpFluid

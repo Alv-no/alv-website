@@ -1,13 +1,13 @@
 import React from 'react';
-import Layout from '../components/layout';
-import { useSubServiceQuery } from '../hooks/useSubServiceQuery';
-import { ServiceNavList } from '../components/serviceNavList';
-import { RolesList } from '../components/rolesList';
-import { NavyIntroImage } from '../components/navyIntroImage';
-import { BlogSlider } from '../components/blogSlider';
-import { FeaturedTeam } from '../components/featuredTeam';
-import { Testimonials } from '../components/testimonials';
-import { CtaSection } from '../components/ctaSection';
+import Layout from '../../components/layout';
+import { useSubServiceQuery } from '../../hooks/useSubServiceQuery';
+import { ServiceNavList } from '../../components/serviceNavList';
+import { RolesList } from '../../components/rolesList';
+import { NavyIntroImage } from '../../components/navyIntroImage';
+import { BlogSlider } from '../../components/blogSlider';
+import { FeaturedTeam } from '../../components/featuredTeam';
+import { Testimonials } from '../../components/testimonials';
+import { CtaSection } from '../../components/ctaSection';
 
 const Systemutvikling = () => {
   const data = useSubServiceQuery();
