@@ -45,13 +45,17 @@ export const Navigation = ({ open, toggleClose }) => {
               Systemutvikling
             </Subtitle>
             <List>
-              <ListLink link="/c-utvikler">.Net Utvikler</ListLink>
-              <ListLink link="/c-utvikler">Java Utvikler</ListLink>
-              <ListLink link="/c-utvikler">c# Utvikler</ListLink>
-              <ListLink link="/c-utvikler">Agile &amp; Devops</ListLink>
-              <ListLink link="/c-utvikler">Applikasjonsutvikling</ListLink>
-              <ListLink link="/c-utvikler">Web Utvikler</ListLink>
-              <ListLink link="/c-utvikler">Teknisk Tester</ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">.Net Utvikler</ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">Java Utvikler</ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">c# Utvikler</ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">
+                Agile &amp; Devops
+              </ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">
+                Applikasjonsutvikling
+              </ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">Web Utvikler</ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">Teknisk Tester</ListLink>
             </List>
           </div>
           <div>
@@ -76,18 +80,28 @@ export const Navigation = ({ open, toggleClose }) => {
               Data &amp; Analyse
             </Subtitle>
             <List>
-              <ListLink link="/">Data Rådivning/Strategi</ListLink>
-              <ListLink link="/">Business Intelligence</ListLink>
-              <ListLink link="/">Maskinlæring &amp; AI</ListLink>
-              <ListLink link="/">Agile &amp; Devops</ListLink>
-              <ListLink link="/">Opplæring</ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">
+                Data Rådivning/Strategi
+              </ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">
+                Business Intelligence
+              </ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">
+                Maskinlæring &amp; AI
+              </ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">
+                Agile &amp; Devops
+              </ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">Opplæring</ListLink>
             </List>
           </div>
           <div>
             <Subtitle margin="mt-12">Informasjonssikkerhet</Subtitle>
             <List>
-              <ListLink link="/">Sikkerhetstesting</ListLink>
-              <ListLink link="/">Cloud Security</ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">
+                Sikkerhetstesting
+              </ListLink>
+              <ListLink link="/vi-tilbyr/c-utvikler">Cloud Security</ListLink>
             </List>
           </div>
         </ConditionalWrapper>

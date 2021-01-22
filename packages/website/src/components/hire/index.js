@@ -11,40 +11,39 @@ export const Hire = ({ data }) => {
         style={{ gridTemplateColumns: '50% auto' }}
       >
         <BackgroundImage fluid={data.interview.childImageSharp.fluid}>
-          <div
-            className="flex justify-end items-center bg-black bg-opacity-25"
-            style={{ height: '715px' }}
-          >
-            <div className="twelve:-mr-64 sm:block hidden sm:-mr-56 w-full px-0">
+          <div className="flex justify-end items-center bg-black bg-opacity-25 h-60vh twelve:h-715">
+            <div className="twelve:-mr-64 sm:block hidden sm:-mr-32 w-full px-0">
               <Fade>
                 <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider text-white ">
-                  Sed ut perspici atis unde omnis iste natus.
+                  HILS PÅ KONSULENTENE I ALV
                 </h2>
                 <p className="text-xl tracking-wider mb-16 font-light">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut.
+                  Vi har et bredt spekter av kompetanseområder innenfor
+                  systemutvikling. Utforsk våre konsulenter, og bli bedre kjent
+                  med dine potensielle kolleger eller problemløsere.
                 </p>
                 <div className="w-full flex justify-end">
                   <div className="twelve:-mr-40 eight:-mr-20 sm:-mr-8 -mt-10">
-                    <CtaButton>Hyr en alv</CtaButton>
+                    <CtaButton>Våre konsulenter</CtaButton>
                   </div>
                 </div>
               </Fade>
             </div>
           </div>
         </BackgroundImage>
-        <div className="px-5 sm:hidden -mt-24">
+        <div className="px-5 sm:hidden -mt-15">
           <Fade>
             <h2 className="uppercase text-blog sm:text-slider mb-8 font-semibold tracking-wider text-white ">
-              Sed ut perspici atis unde omnis iste natus.
+              HILS PÅ KONSULENTENE I ALV
             </h2>
             <p className="text-xl tracking-wider mb-16 font-light">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut.
+              Vi har et bredt spekter av kompetanseområder innenfor
+              systemutvikling. Utforsk våre konsulenter, og bli bedre kjent med
+              dine potensielle kolleger eller problemløsere.
             </p>
             <div className="w-full flex justify-end">
               <div className="twelve:-mr-40 eight:-mr-20 sm:-mr-8 -mt-10">
-                <CtaButton>Hyr en alv</CtaButton>
+                <CtaButton>Våre konsulenter</CtaButton>
               </div>
             </div>
           </Fade>
@@ -62,16 +61,16 @@ export const HireAlt = ({ data }) => {
       >
         <div className="w-full mt-10 lg:mt-0">
           <h2 className="text-5xl font-light mb-7 uppercase -mt-32 sm:-mt-1 relative z-20">
-            Bli en av oss
+            Bli en del av Alv
           </h2>
           <p className="mb-4 lg:pr-15 w-full font-light text-xl lg:mb-15">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
+            Vi bygger Norges mest attraktive konsulentselskap. For å lykkes med
+            dette, trenger vi flere medarbeidere. Vi trenger all kompetanse
+            relatert til systemutvikling.
           </p>
           <div className="w-full flex justify-end">
             <div className="lg:mb-24 lg:mt-56 mr-24">
-              <CtaButton>Hyr en alv</CtaButton>
+              <CtaButton>Våre stillinger</CtaButton>
             </div>
           </div>
           <div className="h-10 relative" />
@@ -79,7 +78,7 @@ export const HireAlt = ({ data }) => {
             className="tracking-wider hidden block twelve:absolute leading-tight inset-x-0 text-white text-3xl font-semibold w-7/12 lg:w-5/12 2xl:w-3/12 text-right z-40 uppercase"
             style={{ left: '42%', right: '50%' }}
           >
-            Ut enim ad minima veniam, quis nostrum exerciE tationem ullam
+            ALV ER IMIDLERTID IKKE FOR ALLE. SE OM DET PASSER DEG.
           </div>
         </div>
         <div
@@ -90,7 +89,7 @@ export const HireAlt = ({ data }) => {
           <BackgroundImage fluid={data.cta.childImageSharp.fluid}>
             <div className="bg-navy bg-opacity-25 pr-56 lg:h-715 h-450 flex items-center">
               <div className=" tracking-wider sm:block hidden leading-tight -ml-40 eight:-ml-56 absolute inset-x-0 text-white text-3xl font-semibold w-full text-right z-40 uppercase">
-                Ut enim ad minima veniam, quis nostrum exerciE tationem ullam
+                ALV ER IMIDLERTID IKKE FOR ALLE. SE OM DET PASSER DEG.
               </div>
             </div>
           </BackgroundImage>

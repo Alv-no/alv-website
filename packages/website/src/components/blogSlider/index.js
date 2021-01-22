@@ -42,7 +42,7 @@ export const BlogSlider = ({ dot, color, blueText }) => {
           Blogg
         </Title>
       </div>
-      <div className="pt-12 mx-auto gap-x-7">
+      <div className="pt-12 sm:pb-10 mx-auto gap-x-7">
         <Slider {...settings}>
           {articles.map((el) => {
             return (
@@ -67,15 +67,16 @@ export const BlogSlider = ({ dot, color, blueText }) => {
                   </Link>
                 </BackgroundImage>
                 <div
-                  className="grid"
-                  style={{ gridTemplateColumns: '70% auto' }}
+                  className={`grid ${blueText ? 'text-navy' : 'text-white'}`}
+                  style={{ gridTemplateColumns: '80% auto' }}
                 >
                   <div className="text-xl sm:hidden font-semibold relative mt-3 px-5">
-                    {el.title}
+                    <Link to={`/blogg/${el.slug.current}`}>{el.title}</Link>{' '}
+                    <span className="px-5 w-full text-base sm:hidden -mt-12 relative mt-2 z-10">
+                      <Button.CtaArrow>Les mer</Button.CtaArrow>
+                    </span>
                   </div>
-                  <div className="px-5 w-full sm:hidden mt-5 flex justify-end">
-                    <Button.CtaArrow>Les mer</Button.CtaArrow>
-                  </div>
+                  <div className="px-5 w-full sm:hidden -mt-12 relative z-10 flex justify-end"></div>
                 </div>
               </>
             );
@@ -90,7 +91,7 @@ const NextArrow = ({ onClick, blueText }) => {
   return (
     <>
       <div
-        className="transform absolute mt-20 -translate-y-8 sm:translate-y-18 -translate-x-1 ml-3 sm:ml-0 right-0 bottom-0 scale-60 cursor-pointer"
+        className="transform absolute mt-20 -translate-y-25 sm:translate-y-18 -translate-x-1 ml-3 sm:ml-0 right-0 bottom-0 scale-60 cursor-pointer"
         style={{ display: 'inline-block', background: '' }}
         onClick={onClick}
       >
@@ -106,7 +107,7 @@ const PrevArrow = ({ onClick, blueText }) => {
   return (
     <>
       <div
-        className="transform absolute -translate-y-8 opacity-50 sm:translate-y-18 mr-3 -translate-x-12 ml-2 right-0 mt-20 bottom-0 rotate-180 scale-60 cursor-pointer"
+        className="transform absolute -translate-y-25 opacity-50 sm:translate-y-18 mr-3 -translate-x-12 ml-2 right-0 mt-20 bottom-0 rotate-180 scale-60 cursor-pointer"
         style={{ display: 'inline-block', background: '' }}
         onClick={onClick}
       >

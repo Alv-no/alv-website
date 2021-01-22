@@ -44,9 +44,14 @@ const ArticleTemplate = (props) => {
             </div>
             <h1 className="text-blog font-bold mb-8">{title}</h1>
             {mainImage && (
-              <div className="w-full mb-3 relative z-10">
-                <span className="relative z-0 fixed">
-                  <Image fluid={mainImage.asset.fluid} />
+              <div className="w-full mb-3">
+                <span
+                  className={` ${styles.mainImg} relative z-0 fixed opacity-90`}
+                >
+                  <Image
+                    fluid={mainImage.asset.fluid}
+                    style={{ zIndex: '0', position: 'relative' }}
+                  />
                 </span>
               </div>
             )}

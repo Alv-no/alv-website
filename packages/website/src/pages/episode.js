@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../components/layout';
-import { VideoSection } from '../components/videoSection';
+import { EpisodeCards } from '../components/episodeCards';
 import { SocialShare } from '../components/socialShare';
 import { VideoEpisode } from '../components/videoEpisode';
+import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
 
 const Episode = ({ location }) => {
-  const passedVideo = location.state ? location.state.video : null;
-  const playlist = location.state ? location.state.playlist : null;
-  const videoId = (passedVideo && passedVideo.videoId) || 'XFtoMwOtqqU';
-  const group =
-    playlist && playlist.length > 12 ? playlist.slice(0, 12) : playlist;
+  const data = useVideoseriesQuery();
+  const [video, setVideo] = useState(data.playlists[0][0]);
+  const [playlist, setPlaylist] = useState(data.playlists[0]);
+
+  useState(() => {
+    location.state && setVideo(location.state.video);
+    location.state && setPlaylist(location.state.playlist);
+  }, []);
+
+  const updateVideo = (video) => {
+    setVideo(video);
+  };
+
   return (
     <Layout>
       <div className="bg-navy text-white px-6 seven:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto px-5">
           <SocialShare title="title" tags="tags" url="url" />
           <VideoEpisode
-            title="Dataprat"
-            subtitle="Culpa qui officia deserunt mollit anim id est laborum."
-            description="Culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis."
-            videoId={videoId}
+            title={video.title}
+            subtitle=""
+            description=""
+            videoId={video.videoId}
           />
-          {playlist && <VideoSection videos={group} tabs={false} />}
+          {playlist && (
+            <EpisodeCards
+              playlist={playlist}
+              onClick={updateVideo}
+              tabs={false}
+            />
+          )}
         </div>
       </div>
     </Layout>

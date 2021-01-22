@@ -41,7 +41,9 @@ export const EmployeeSection = ({
 
   return (
     <div className="w-full text-white xs:px-6 overflow-hidden">
-      <EmployeeFilter allTags={allTags} onChange={handleTagClick} />
+      <div className="max-w-1440 mx-auto lg:px-10 2xl:px-32">
+        <EmployeeFilter allTags={allTags} onChange={handleTagClick} />
+      </div>
       <GridContainer
         filteredContent={filteredContent}
         linkedId={linkedId}

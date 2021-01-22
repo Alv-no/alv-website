@@ -11,10 +11,14 @@ export const useEmployeeQuery = () => {
               }
               firstname
               lastname
+              video {
+                asset {
+                  url
+                }
+              }
               id
               title
               experience
-              videoLink
               pdfLink
               _rawBio
               image {
