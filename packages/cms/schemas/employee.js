@@ -45,14 +45,14 @@ export default {
       ],
     },
     {
-      name: 'videoLink',
-      title: 'Video link',
-      type: 'string',
+      name: 'video',
+      title: 'Video',
+      type: 'file',
     },
     {
-      name: 'pdfLink',
-      title: 'CV link',
-      type: 'string',
+      name: 'cv',
+      title: 'CV',
+      type: 'file',
     },
     {
       name: 'tags',

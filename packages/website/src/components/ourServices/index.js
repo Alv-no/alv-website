@@ -3,9 +3,7 @@ import Link from 'gatsby-link';
 import * as Button from '../button';
 import BackgroundImage from 'gatsby-background-image-es5';
 
-const dummyLink = '/';
-const dummyText =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidunt';
+const dummyLink = '/kontakt-oss';
 
 export const OurServices = ({ image }) => {
   const [activeItem, setActiveItem] = useState('1');
@@ -26,9 +24,10 @@ export const OurServices = ({ image }) => {
           <h2 className="text-5xl font-light mb-3 uppercase lg:w-full sm:w-full">
             Våre Tjenester
           </h2>
-          <p className="mb-5 pr-15 w-full font-light text-xl lg:w-full sm:w-full">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut.
+          <p className="mb-5 sm:pr-15 w-full font-light text-xl lg:w-full sm:w-full">
+            Alv bygges rundt systemutviklingsprosessen. Kjernen i det vi driver
+            med og kan er koding, men for å skape gode løsninger av kode, trengs
+            det også en rekke støttefunksjoner.
           </p>
           <div className="lg:block flex justify-between">
             <div />
@@ -54,9 +53,13 @@ export const OurServices = ({ image }) => {
               id="1"
               onClick={handleClick}
             >
-              <p className="uppercase pointer-events-none">Systemutvikling</p>
+              <p className="uppercase pointer-events-none">Prosjektleder</p>
               {activeItem === '1' && (
-                <ListContent description={dummyText} link={dummyLink} />
+                <ListContent link={dummyLink}>
+                  Kunden kjenner domenet, kravene og behovene, mens vi vet
+                  hvordan vi raskest og best kan utvikle systemene som gir
+                  høyest verdi, raskest mulig.
+                </ListContent>
               )}
             </li>
             <li
@@ -64,9 +67,13 @@ export const OurServices = ({ image }) => {
               id="2"
               onClick={handleClick}
             >
-              <p className="uppercase pointer-events-none">Prosjektledelse</p>
+              <p className="uppercase pointer-events-none">Systemutvikling</p>
               {activeItem === '2' && (
-                <ListContent description={dummyText} link={dummyLink} />
+                <ListContent link={dummyLink}>
+                  Systemutvikling er kjernen i det vi driver med. Det er jo der
+                  vi faktisk lager noe. Det er kode som skaper systemene vi
+                  utvikler for og sammen med kundene våre.
+                </ListContent>
               )}
             </li>
             <li
@@ -76,7 +83,10 @@ export const OurServices = ({ image }) => {
             >
               <p className="uppercase pointer-events-none">Digitalisering</p>
               {activeItem === '3' && (
-                <ListContent description={dummyText} link={dummyLink} />
+                <ListContent link={dummyLink}>
+                  Digitalisering er blitt et buzzword. Alle ønsker å
+                  digitalisere, men hva betyr det egentlig?
+                </ListContent>
               )}
             </li>
             <li
@@ -86,7 +96,12 @@ export const OurServices = ({ image }) => {
             >
               <p className="uppercase pointer-events-none">Data & Analyse</p>
               {activeItem === '4' && (
-                <ListContent description={dummyText} link={dummyLink} />
+                <ListContent link={dummyLink}>
+                  I Alv tilbyr vi tjenester i spekteret fra rådgivning og
+                  strategi til implementering og oppfølging, slik at enda flere
+                  kan bli bedre på å utnytte de dataene de sitter på til sitt
+                  fulle potensiale.
+                </ListContent>
               )}
             </li>
             <li
@@ -98,7 +113,11 @@ export const OurServices = ({ image }) => {
                 Informasjonssikkerhet
               </p>
               {activeItem === '5' && (
-                <ListContent description={dummyText} link={dummyLink} />
+                <ListContent link={dummyLink}>
+                  Konsulentene innen informasjonssikkerhet hos Alv har god
+                  erfaring med å både vurdere, teste og utvikle
+                  sikkerhetstiltak.
+                </ListContent>
               )}
             </li>
           </ul>
@@ -111,7 +130,7 @@ export const OurServices = ({ image }) => {
                 style={{ height: '530px' }}
               >
                 <div className="text-slider uppercase font-semibold tracking-wider leading-tighter w-5/6 text-right">
-                  Quis autem vel eum iure reprehende
+                  Bygget rundt systemutviklings-prosessen
                 </div>
               </div>
             </BackgroundImage>
@@ -122,16 +141,16 @@ export const OurServices = ({ image }) => {
   );
 };
 
-const ListContent = ({ description, link }) => (
+const ListContent = ({ children, link }) => (
   <div>
     <div className="w-12 mt-2 mb-8 h-2px bg-yellow" />
     <div className="pl-10 mb-15">
       <p className="tracking-wider text-lg leading-snug font-thin mb-4 sm:w-4/6 w-5/6 lg:w-full">
-        {description}
+        {children}
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">
         <p className="font-semibold tracking-wider uppercase text-base w-40">
-          <Link to={link}>Find out more</Link>
+          <Link to={link}>Finn ut mer</Link>
         </p>
         <div className="h-2px bg-white mt-1 w-1/2 lg:w-full hidden sm:block" />
       </div>

@@ -33,55 +33,15 @@ export const Hero = () => {
     }
   }, [active]);
 
-  TxtRotate.prototype.tick = function () {
-    const i = this.loopNum % this.toRotate.length;
-    const fullTxt = this.toRotate[i];
-
-    if (this.isDeleting) {
-      this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
-    const that = this;
-    let delta = 300 - Math.random() * 100;
-
-    if (this.isDeleting) {
-      delta /= 2;
-    }
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-      delta = this.period;
-      this.isDeleting = false;
-    } else if (this.isDeleting && this.txt === '') {
-      this.isDeleting = false;
-      this.loopNum++;
-      delta = 500;
-    }
-
-    setTimeout(function () {
-      that.tick();
-    }, delta);
-  };
   return (
-    <div className="bg-navy w-full flex justify-center items-center h-screen -mt-25 p-12 relative flex-col">
+    <div className="bg-navy w-full flex justify-center items-center h-screen -mt-25 px-5 sm:p-12 relative flex-col">
       <Title
         bold={false}
-        size="lg:text-5xl sm:text-hero-tablet text-hero-mobile leading-tight"
+        size="lg:text-5xl sm:text-hero-tablet text-hero-sm leading-tight"
       >
         <div>Vi bygger </div>
         <div className="font-black">Norges mest attraktive</div>
         <span>konsulentselskap</span>
-        {/* <span
-          className="txt-rotate"
-          data-period="2000"
-          data-rotate='["konsulentselskap"]'
-        >
-          konsulentselskap
-        </span> */}
       </Title>
       <div className="sm:h-3 h-4" />
       <div className="">

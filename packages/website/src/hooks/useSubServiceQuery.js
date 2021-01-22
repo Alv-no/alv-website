@@ -49,7 +49,11 @@ export const useSubServiceQuery = () => {
               id
               title
               experience
-              videoLink
+              video {
+                asset {
+                  url
+                }
+              }
               pdfLink
               image {
                 asset {

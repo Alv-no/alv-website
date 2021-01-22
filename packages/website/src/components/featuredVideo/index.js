@@ -8,9 +8,11 @@ export const FeaturedVideo = ({ video }) => {
       {video && (
         <>
           <div className="px-5">
-            <div className="uppercase sm:hidden tracking-wider text-base font-bold ">
+            {/* THIS CODE IS REQUIRED TO MATCH SPEC */}
+            {/* COMMENTED OUT BECAUSE IT LOOKS TOO BUSY ON TOP OF THUMBNAIL */}
+            {/* <div className="uppercase sm:hidden tracking-wider text-base font-bold ">
               Vår nyeste video
-            </div>
+            </div> */}
             <div className="w-12 h-2px sm:hidden bg-yellow mb-6 mt-6px" />
           </div>
         </>
@@ -30,7 +32,7 @@ export const FeaturedVideo = ({ video }) => {
           <div className="w-full z-50 h-full p-8 flex flex-col justify-between">
             <div />
             <div className="flex text-white justify-between tracking-wider">
-              <div className="pl-1">
+              {/* <div className="pl-1">
                 {video && (
                   <>
                     <div className="uppercase sm:block hidden text-base font-bold ">
@@ -42,8 +44,8 @@ export const FeaturedVideo = ({ video }) => {
                 <div className="text-nav font-bold mt-4 mb-3">
                   {video && video.title}
                 </div>
-              </div>
-              <div className="flex flex-col justify-between">
+              </div> */}
+              <div className="flex w-full justify-between">
                 <div />
                 <div className="font-semibold uppercase w-32 flex text-right justify-end items-center">
                   <span className="ml-2">
