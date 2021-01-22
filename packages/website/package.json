@@ -14,9 +14,11 @@
     "@sanity/block-content-to-react": "^2.0.7",
     "browser-monads": "^1.0.0",
     "classnames": "^2.2.6",
+    "crypto": "^1.0.1",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-react-helmet": "^3.8.0",
     "gatsby-plugin-sitemap": "^2.11.0",
+    "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-headroom": "^3.0.0",
@@ -26,7 +28,8 @@
     "react-slick": "^0.27.13",
     "react-three-fiber": "^5.3.14",
     "tailwindcss": "^1.9.6",
-    "three": "^0.124.0"
+    "three": "^0.124.0",
+    "youtube-playlist-info": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

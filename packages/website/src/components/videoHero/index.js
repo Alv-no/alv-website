@@ -7,7 +7,7 @@ import styles from './VideoHero.module.css';
 
 export const VideoHero = ({ backgroundImage, fallbackImg, video }) => {
   return (
-    <div className="bg-navy w-full pt-2">
+    <div className="bg-navy w-full pt-2 twelve:pb-10">
       <div className="twelve:grid grid-cols-videos-hero mx-auto twelve:mb-24">
         <div />
         <span
@@ -41,7 +41,7 @@ export const VideoHero = ({ backgroundImage, fallbackImg, video }) => {
               </Link>
             </div>
           </div>
-          <div className="twelve:absolute hidden twelve:block relative mt-10 twelve:mt-0 bottom-0 right-0 w-7/12 2xl:w-4/6 mr-10 -mb-12 2xl:-mb-32">
+          <div className="twelve:absolute hidden twelve:block relative mt-10 twelve:mt-0 bottom-0 right-0 w-7/12 2xl:w-4/6 mr-10 2xl:mr-4 -mb-12 2xl:-mb-15">
             <FeaturedVideo fallbackImg={fallbackImg} video={video} />
           </div>
         </span>

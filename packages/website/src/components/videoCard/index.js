@@ -2,9 +2,27 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Image from 'gatsby-image';
 
-export const VideoCard = ({ title, thumbnail, fallbackImg }) => {
+export const VideoCard = ({
+  title,
+  thumbnail,
+  fallbackImg,
+  video,
+  playlist,
+  onClick,
+  noLink,
+}) => {
+  const handleClick = () => {
+    onClick(video);
+    // eslint-disable-next-line no-restricted-globals
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
   return (
-    <Link to="/episode" className="w-full">
+    <Link
+      to="/episode"
+      state={{ playlist, video, id: video.videoId }}
+      className="w-full"
+      onClick={noLink ? handleClick : null}
+    >
       <div className="w-full">
         <div className="bg-black">
           <div className="w-full">

@@ -5,9 +5,9 @@ import PortableText from '@sanity/block-content-to-react';
 
 export const EmployeeBio = ({
   handleCloseClick,
-  videoLink,
   firstname,
   lastname,
+  video,
   pdfLink,
   title,
   _rawBio,
@@ -18,6 +18,9 @@ export const EmployeeBio = ({
     .concat(lastname.split(' '))
     .map((name) => name.toLowerCase());
   employeeSlug = employeeSlug.join('-');
+  const videoUrl = video
+    ? video.asset.url
+    : 'https://cdn.sanity.io/files/mnr37rl0/production/c5b50fd85d4b754b26c4023536abc9e9e62f7c91.webm';
   return (
     <div id={employeeSlug}>
       <section
@@ -53,7 +56,7 @@ export const EmployeeBio = ({
                 <iframe
                   className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
                   title={firstname}
-                  src={videoLink}
+                  src={videoUrl}
                 />
               </div>
               <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">

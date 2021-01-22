@@ -68,13 +68,13 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   };
 
   const handleViewMoreClick = () => {
-    setVisibleRows(visibleRows + 3);
+    setVisibleRows(visibleRows + 2);
   };
 
   return (
     <>
       {contentGroups
-        ? contentGroups.map((group) => {
+        ? contentGroups.slice(0, visibleRows).map((group) => {
             if (group.length > 0) {
               return (
                 <EmployeeGroup
@@ -99,6 +99,10 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
         <div
           className="font-bold tracking-wider pr-2px"
           onClick={handleViewMoreClick}
+          style={{
+            opacity:
+              contentGroups && visibleRows > contentGroups.length ? 0 : 1,
+          }}
         >
           <Button.Line>Se Mer</Button.Line>
         </div>
