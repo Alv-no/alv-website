@@ -18,10 +18,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   website:
-    container_name: website
-    build:
-      context: ./
-      dockerfile: website.Dockerfile
+    image: website
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.website.rule=Host(`website.localhost`)"
@@ -29,10 +26,7 @@ services:
     restart: unless-stopped
 
   cms:
-    container_name: cms
-    build:
-      context: ./
-      dockerfile: cms.Dockerfile
+    image: cms
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.cms.rule=Host(`cms.localhost`)"

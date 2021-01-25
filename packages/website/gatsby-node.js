@@ -127,7 +127,7 @@ if (process.env.YT_API) {
       description: '',
       videoId,
       thumbnails: { standard: { url: '' } },
-      position: '',
+      position: 0,
       publishedAt: '',
       formattedPublishedAt: '',
       playlistId: '',
