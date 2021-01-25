@@ -5,7 +5,12 @@ import { Title } from '../title';
 import { FeaturedVideo } from '../featuredVideo';
 import styles from './VideoHero.module.css';
 
-export const VideoHero = ({ backgroundImage, fallbackImg, video }) => {
+export const VideoHero = ({
+  backgroundImage,
+  fallbackImg,
+  video,
+  playlist,
+}) => {
   return (
     <div className="bg-navy w-full pt-2 twelve:pb-10">
       <div className="twelve:grid grid-cols-videos-hero mx-auto twelve:mb-24">
@@ -23,8 +28,8 @@ export const VideoHero = ({ backgroundImage, fallbackImg, video }) => {
             <Title classes="sm:text-left text-center w-full">Videoserie</Title>
             <div className="pt-7 sm:pt-9 sm:ml-10">
               <h2 className="sm:text-blog text-center text-xl sm:text-left mx-auto sm:mx-0 sm:w-100 sm:pr-12 w-5/6 tracking-wider">
-                Culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis mollit
+                Se gjerne videoserien vår der vi har dokumentert selskapet siden
+                oppstarten med en ukentlig videoepisode.
               </h2>
             </div>
             <div className="flex mt-12 items-center justify-center sm:justify-start">
@@ -42,11 +47,15 @@ export const VideoHero = ({ backgroundImage, fallbackImg, video }) => {
             </div>
           </div>
           <div className="twelve:absolute hidden twelve:block relative mt-10 twelve:mt-0 bottom-0 right-0 w-7/12 2xl:w-4/6 mr-10 2xl:mr-4 -mb-12 2xl:-mb-15">
-            <FeaturedVideo fallbackImg={fallbackImg} video={video} />
+            <FeaturedVideo
+              fallbackImg={fallbackImg}
+              video={video}
+              playlist={playlist}
+            />
           </div>
         </span>
       </div>
-      <div className="sm:mx-auto twelve:hidden sm:w-featured mt-8 sm:mt-10 lg:mt-15 sm:w-7/12 w-full">
+      <div className="sm:mx-auto hidden twelve:hidden sm:w-featured mt-8 sm:mt-10 lg:mt-15 sm:w-7/12 w-full">
         <FeaturedVideo video={video} fallbackImg={fallbackImg} />
       </div>
     </div>

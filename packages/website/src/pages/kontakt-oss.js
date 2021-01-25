@@ -19,12 +19,12 @@ const Contact = ({ location }) => {
     <Layout path={location.pathname}>
       <div className="bg-navy">
         <div
-          className="bg-navy w-full sm:pb-12 pb-4 -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto grid"
+          className="bg-navy w-full sm:pb-12 pb-4 -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto xl:grid"
           style={{ gridTemplateColumns: '50% 50%' }}
         >
-          <div className="flex-1 mt-18 px-10">
-            <div className="" style={{ height: '23vw', width: '45vw' }}>
-              <div className="opacity-90 w-full h-full -ml-20">
+          <div className="flex-1 mt-18 sm:px-10">
+            <div className="">
+              <div className="opacity-90 w-full xl:h-full h-40vh">
                 <Image
                   fluid={queryData.contactUsImg.childImageSharp.fluid}
                   className="h-full"
@@ -33,16 +33,18 @@ const Contact = ({ location }) => {
               </div>
             </div>
             <div className="2xl:ml-15 ml-5">
-              <div className="z-20 relative -mt-15 w-80">
+              <div className="z-20 relative -mt-15 sm:w-80">
                 <Title align="left">Kontakt Oss</Title>
                 <div className="sm:h-6 h-6" />
                 <span className="">
                   <Description align="left">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vi holder til i helt nye lokaler i Pløens gate 1, 0181 Oslo.
+                    Ta gjerne turen innom for en hyggelig prat, eller kontakt
+                    oss
                   </Description>
                 </span>
               </div>
-              <div className="text-white tracking-wider 2xl:ml-30 mt-12 text-lg mb-15">
+              <div className="text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
                 {/* <FormSelect id="offer" onClick={formChange} active={active}>
                   Be om et tilbud
                 </FormSelect>
@@ -73,10 +75,7 @@ const Contact = ({ location }) => {
               </div>
             </div>
           </div>
-          <div
-            className="flex-1 -mx-10 p-10 lg:mx-0 lg:p-18 lg:pb-15 tracking-wider bg-lightblue"
-            style={{ maxWidth: '725px' }}
-          >
+          <div className="flex-1 p-5 sm:px-12 lg:mx-0 lg:p-12 lg:pb-15 tracking-wider bg-lightblue">
             {active === 'offer' && <Form.Offer />}
             {active === 'call' && <Form.Call />}
             {active === 'visit' && <Form.Visit />}

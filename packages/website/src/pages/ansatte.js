@@ -17,9 +17,8 @@ const Employees = ({ location }) => {
         <div className="flex justify-center">
           <span className="px-6">
             <Description align="center">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
+              Alv produktet av alle konsulentene som jobber i selskapet. Utforsk
+              våre konsulenter - alle med Alv i genene
             </Description>
           </span>
         </div>

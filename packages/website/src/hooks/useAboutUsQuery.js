@@ -54,7 +54,6 @@ export const useAboutUsQuery = () => {
                   url
                 }
               }
-              pdfLink
               image {
                 asset {
                   fluid(maxWidth: 600) {

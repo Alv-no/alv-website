@@ -19,7 +19,6 @@ export const useEmployeeQuery = () => {
               id
               title
               experience
-              pdfLink
               _rawBio
               image {
                 asset {

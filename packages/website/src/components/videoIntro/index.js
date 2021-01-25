@@ -18,7 +18,7 @@ export const VideoIntro = ({ video, children }) => {
         </Fade>
       </div>
       <Fade>
-        <h2 className="mx-5 sm:mx-16  uppercase block twelve:hidden text-index sm:text-slider font-semibold tracking-wider text-white sm:w-7/12 leading-tight mt-5">
+        <h2 className="mx-5 sm:mx-16 uppercase block twelve:hidden text-index sm:text-slider font-semibold tracking-wider text-white sm:w-7/12 leading-tight mt-5 sm:mt-25">
           {children}
         </h2>
       </Fade>

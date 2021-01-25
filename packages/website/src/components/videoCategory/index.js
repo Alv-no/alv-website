@@ -24,12 +24,12 @@ export const VideoCategory = ({
           <div className="mx-auto flex-1">
             <div className="flex-1 px-5 sm:px-0 sm:hidden">
               {/* ---- Underneath: Visible on Mobile only ---- */}
-              <Title classes="text-left mt-10 mb-5">{title}</Title>
-              <h4 className="leading-none mt-6 mb-7 text-blog leading-tight tracking-wider">
+              <Title classes="text-left mb-5 xs:text-blog">{title}</Title>
+              <h4 className="leading-none mt-6 mb-7 leading-tight tracking-wider text-xl">
                 {subtitle}
               </h4>
 
-              <h5 className="text-lg font-thin tracking-wider mb-8">
+              <h5 className="font-thin tracking-wider mb-8 text-base">
                 {description}
               </h5>
             </div>
