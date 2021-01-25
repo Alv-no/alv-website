@@ -11,8 +11,6 @@ export const EpisodeCards = ({ fallbackImg, playlist, onClick }) => {
     setSortedVideos(playlist);
   }, [playlist]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
   const handleViewMoreClick = () => {
     setVisibleRows(visibleRows + 8);
   };
