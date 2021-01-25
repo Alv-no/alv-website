@@ -15,11 +15,11 @@ const Index = () => {
   const data = useIndexQuery();
   return (
     <Layout>
-      <div className="">
+      <div className="overflow-hidden">
         <Hero>
           <div>Vi bygger </div>
           <div className="font-black">Norges mest attraktive</div>
-          <span>konsulentselskap</span>
+          <span className="">konsulent-selskap</span>
         </Hero>
         <div className="bg-navy">
           <div className="bg-navy w-full py-15">
@@ -28,12 +28,12 @@ const Index = () => {
             </VideoIntro>
             <WhoWeAre title="Hvem er vi">
               {' '}
-              <p className="text-xl tracking-wider mb-8 font-thin">
+              <p className="text-footer sm:text-xl tracking-wider mb-8 font-thin">
                 Alv er produktet av alle konsulentene som jobber i selskapet.
                 Dyktige konsulenter gjør Alv til et bra produkt. En dyktig
                 konsulent er en konsulent som er mer en bare faglig sterk.
               </p>
-              <p className="text-xl tracking-wider mb-8 font-thin">
+              <p className="text-footer sm:text-xl tracking-wider mb-8 font-thin">
                 I Alv har vi tro på at dyktige konsulenter er de som hele tiden
                 ønsker å utvikle seg selv, og de rundt seg. Dette er
                 grunnpilarene for hvordan vi bygger Alv. Følg gjerne videoserien
@@ -63,7 +63,7 @@ const Index = () => {
             color="text-white"
             dot={false}
           />
-          <div className="h-6" />
+          <div className="sm:h-6" />
           <OwnedByStaff>
             Alv AS er 100% eid av våre ansatte. Det betyr at du vil få mulighet
             til å kjøpe deg inn på eiersiden av selskapet når du blir ansatt.

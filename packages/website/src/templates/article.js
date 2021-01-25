@@ -132,7 +132,6 @@ export const query = graphql`
         firstname
         lastname
         id
-        pdfLink
         title
         image {
           asset {

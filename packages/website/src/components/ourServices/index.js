@@ -21,11 +21,11 @@ export const OurServices = ({ image }) => {
       >
         <div />
         <div className="px-5 sm:pl-0 sm:mx-12 lg:ml-0">
-          <h2 className="text-5xl font-light mb-3 uppercase lg:w-full sm:w-full">
+          <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
             Våre Tjenester
           </h2>
-          <p className="mb-5 sm:pr-15 w-full font-light text-xl lg:w-full sm:w-full">
-            Alv bygges rundt systemutviklingsprosessen. Kjernen i det vi driver
+          <p className="mb-5 sm:pr-15  font-light text-xl w-full text-footer sm:text-xl tracking-wider">
+            Alv bygges rundt systemutviklings-prosessen. Kjernen i det vi driver
             med og kan er koding, men for å skape gode løsninger av kode, trengs
             det også en rekke støttefunksjoner.
           </p>
@@ -46,10 +46,10 @@ export const OurServices = ({ image }) => {
         }}
       >
         {/* Map from array of list items */}
-        <div className="w-full px-5 sm:mx-12 lg:mx-0 lg:pl-12 mt-9">
+        <div className="w-full px-5 sm:mx-12 lg:mx-0 lg:pl-12 mt-9 text-lg sm:text-nav">
           <ul>
             <li
-              className="text-nav tracking-wider font-semibold mb-8 cursor-pointer"
+              className="tracking-wider font-semibold mb-8 cursor-pointer"
               id="1"
               onClick={handleClick}
             >
@@ -63,7 +63,7 @@ export const OurServices = ({ image }) => {
               )}
             </li>
             <li
-              className="text-nav tracking-wider font-semibold mb-8 cursor-pointer"
+              className="tracking-wider font-semibold mb-8 cursor-pointer"
               id="2"
               onClick={handleClick}
             >
@@ -77,7 +77,7 @@ export const OurServices = ({ image }) => {
               )}
             </li>
             <li
-              className="text-nav tracking-wider font-semibold mb-8 cursor-pointer"
+              className="tracking-wider font-semibold mb-8 cursor-pointer"
               id="3"
               onClick={handleClick}
             >
@@ -90,7 +90,7 @@ export const OurServices = ({ image }) => {
               )}
             </li>
             <li
-              className="text-nav tracking-wider font-semibold mb-8 cursor-pointer"
+              className="tracking-wider font-semibold mb-8 cursor-pointer"
               id="4"
               onClick={handleClick}
             >
@@ -105,12 +105,12 @@ export const OurServices = ({ image }) => {
               )}
             </li>
             <li
-              className="text-nav tracking-wider font-semibold mb-8 cursor-pointer"
+              className="tracking-wider font-semibold mb-8 cursor-pointer"
               id="5"
               onClick={handleClick}
             >
               <p className="uppercase pointer-events-none">
-                Informasjonssikkerhet
+                Informasjons<span className="xs:hidden">-</span>sikkerhet
               </p>
               {activeItem === '5' && (
                 <ListContent link={dummyLink}>
@@ -126,10 +126,10 @@ export const OurServices = ({ image }) => {
           <div>
             <BackgroundImage fluid={image} style={{ height: '530px' }}>
               <div
-                className="flex justify-end items-center p-16 bg-black bg-opacity-50"
+                className="flex sm:justify-end items-center p-5 sm:p-16 bg-black bg-opacity-50"
                 style={{ height: '530px' }}
               >
-                <div className="text-slider uppercase font-semibold tracking-wider leading-tighter w-5/6 text-right">
+                <div className="sm:text-slider uppercase text-left font-semibold tracking-wider leading-tighter w-5/6 sm:text-right">
                   Bygget rundt systemutviklings-prosessen
                 </div>
               </div>
@@ -144,15 +144,15 @@ export const OurServices = ({ image }) => {
 const ListContent = ({ children, link }) => (
   <div>
     <div className="w-12 mt-2 mb-8 h-2px bg-yellow" />
-    <div className="pl-10 mb-15">
-      <p className="tracking-wider text-lg leading-snug font-thin mb-4 sm:w-4/6 w-5/6 lg:w-full">
+    <div className="sm:pl-10 pl-5 mb-15">
+      <p className="tracking-wider text-footer sm:text-lg leading-snug font-thin mb-4 sm:w-4/6 w-full lg:w-full">
         {children}
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">
         <p className="font-semibold tracking-wider uppercase text-base w-40">
           <Link to={link}>Finn ut mer</Link>
         </p>
-        <div className="h-2px bg-white mt-1 w-1/2 lg:w-full hidden sm:block" />
+        <div className="h-2px bg-white sm:opacity-0 twelve:opacity-100 mt-1 w-1/2 lg:w-full hidden sm:block" />
       </div>
     </div>
   </div>

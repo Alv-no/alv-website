@@ -12,12 +12,12 @@ export const Hire = ({ data }) => {
       >
         <BackgroundImage fluid={data.interview.childImageSharp.fluid}>
           <div className="flex justify-end items-center bg-black bg-opacity-25 h-60vh twelve:h-715">
-            <div className="twelve:-mr-64 sm:block hidden sm:-mr-32 w-full px-0">
+            <div className="twelve:-mr-64 sm:block hidden sm:-mr-32 w-full transform sm:translate-x-48 2xl:translate-x-56 px-0">
               <Fade>
                 <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider text-white ">
                   HILS PÅ KONSULENTENE I ALV
                 </h2>
-                <p className="text-xl tracking-wider mb-16 font-light">
+                <p className="text-footer sm:text-xl tracking-wider mb-16 font-light">
                   Vi har et bredt spekter av kompetanseområder innenfor
                   systemutvikling. Utforsk våre konsulenter, og bli bedre kjent
                   med dine potensielle kolleger eller problemløsere.
@@ -31,12 +31,12 @@ export const Hire = ({ data }) => {
             </div>
           </div>
         </BackgroundImage>
-        <div className="px-5 sm:hidden -mt-15">
+        <div className="px-5 sm:hidden -mt-20">
           <Fade>
             <h2 className="uppercase text-blog sm:text-slider mb-8 font-semibold tracking-wider text-white ">
               HILS PÅ KONSULENTENE I ALV
             </h2>
-            <p className="text-xl tracking-wider mb-16 font-light">
+            <p className="text-footer sm:text-xl tracking-wider mb-16 font-light">
               Vi har et bredt spekter av kompetanseområder innenfor
               systemutvikling. Utforsk våre konsulenter, og bli bedre kjent med
               dine potensielle kolleger eller problemløsere.
@@ -54,22 +54,22 @@ export const Hire = ({ data }) => {
 };
 export const HireAlt = ({ data }) => {
   return (
-    <div className="bg-navy w-full">
+    <div className="bg-navy w-full mb-10">
       <div
         className="max-w-1440 lg:mx-auto px-5 sm:pr-0 sm:pl-12 text-white lg:grid flex flex-col-reverse tracking-wider"
         style={{ gridTemplateColumns: '60% auto' }}
       >
-        <div className="w-full mt-10 lg:mt-0">
-          <h2 className="text-5xl font-light mb-7 uppercase -mt-32 sm:-mt-1 relative z-20">
+        <div className="w-full mt-24 sm:mt-4 lg:mt-0">
+          <h2 className="sm:text-5xl text-4xl font-light mb-7 uppercase -mt-40 sm:-mt-0 sm:-mt-1 relative z-20">
             Bli en del av Alv
           </h2>
-          <p className="mb-4 lg:pr-15 w-full font-light text-xl lg:mb-15">
+          <p className="text-footer z-20 relative sm:text-xl mb-4 lg:pr-15 w-full font-light text-xl lg:mb-15">
             Vi bygger Norges mest attraktive konsulentselskap. For å lykkes med
             dette, trenger vi flere medarbeidere. Vi trenger all kompetanse
             relatert til systemutvikling.
           </p>
-          <div className="w-full flex justify-end">
-            <div className="lg:mb-24 lg:mt-56 mr-24">
+          <div className="w-full flex justify-end transform lg:-translate-x-20 lg:translate-y-20">
+            <div className="lg:mb-24 lg:mt-56 sm:mr-24">
               <CtaButton>Våre stillinger</CtaButton>
             </div>
           </div>
@@ -82,7 +82,7 @@ export const HireAlt = ({ data }) => {
           </div>
         </div>
         <div
-          className="lg:block sm:grid -mx-16 lg:mx-0"
+          className="lg:block sm:grid -mx-5 sm:-mx-16 lg:mx-0"
           style={{ gridTemplateColumns: '50% auto' }}
         >
           <div />

@@ -14,7 +14,7 @@ export const Title = ({
   size,
 }) => {
   const classNames = classnames(
-    'w-full tracking-wider uppercase',
+    'w-full tracking-wider uppercase text-blog sm:text-4xl',
     bold ? 'font-bold' : 'font-thin',
     align ? `text-${align}` : 'text-center',
     color || 'text-white',

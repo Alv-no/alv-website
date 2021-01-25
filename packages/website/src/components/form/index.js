@@ -211,7 +211,7 @@ export const Visit = () => (
     <div className="filter-grayscale">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.0735322098096!2d10.747090515952525!3d59.91432698186731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e624867b1ef%3A0xfb5f51d2c07a5923!2sYoungstorget%203%2C%200181%20Oslo!5e0!3m2!1sen!2sno!4v1607846131330!5m2!1sen!2sno"
-        width="566"
+        className="w-full sm:mx-0"
         height="384"
         title="map"
         frameborder="0"
@@ -221,23 +221,23 @@ export const Visit = () => (
         tabindex="0"
       ></iframe>
     </div>
-    <div className="px-8 mt-15 mb-8">
+    <div className="sm:px-8 mt-15 mb-8">
       <h4 className="text-lg font-semibold mb-1 uppercase">
         Ta en tur innom oss i Y3!
       </h4>
       <p className="text-mobile leading-relaxed font-light">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem or fill
-        out our contact form.
+        Vi tar gjerne en kaffe, enten du er potensiell ansatt, eller interessert
+        i hva vi driver med. Vi håper å se deg.
       </p>
     </div>
-    <div className="flex">
-      <div className="px-8">
+    <div className="sm:flex">
+      <div className="sm:px-8 mb-5 sm:mb-0">
         <h4 className="text-lg font-semibold mb-1 uppercase">ADRESSE</h4>
         <p className="text-mobile leading-relaxed font-light">
           Youngstorget 3, 0181 Oslo
         </p>
       </div>
-      <div className="px-8">
+      <div className="sm:px-8">
         <h4 className="text-lg font-semibold mb-1 uppercase">ORG. NR.</h4>
         <p className="text-mobile leading-relaxed font-light">822 70 4042</p>
       </div>

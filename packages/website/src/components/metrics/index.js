@@ -6,29 +6,23 @@ export const Metrics = () => {
       <div className="grid lg:flex justify-center">
         <div className="text-center mx-12 mb-3">
           <h2 className="" style={{ fontSize: '70px' }}>
-            50+
+            60+
           </h2>
-          <p>Ansatte</p>
+          <p>Videoepisoder</p>
         </div>
         <div className="text-center mx-12 mb-3">
           <h2 className="" style={{ fontSize: '70px' }}>
-            15
+            1500+
           </h2>
-          <p>Års erfaring</p>
+          <p>Visninger hver uke</p>
         </div>
       </div>
       <div className="grid lg:flex justify-center">
         <div className="text-center mx-12 mb-3">
           <h2 className="" style={{ fontSize: '70px' }}>
-            1,000+
+            2,300
           </h2>
-          <p>Kundeforhold</p>
-        </div>
-        <div className="text-center mx-12 mb-3">
-          <h2 className="" style={{ fontSize: '70px' }}>
-            4
-          </h2>
-          <p>Kontorer</p>
+          <p>Følgere på LinkdIn</p>
         </div>
       </div>
     </div>

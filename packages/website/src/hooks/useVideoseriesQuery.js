@@ -31,14 +31,11 @@ export const useVideoseriesQuery = () => {
               id
               playlistId
               position
-              publishedAt(fromNow: false)
+              publishedAt
               title
               description
               videoId
               thumbnails {
-                maxres {
-                  url
-                }
                 standard {
                   url
                 }

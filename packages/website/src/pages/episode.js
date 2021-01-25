@@ -19,10 +19,12 @@ const Episode = ({ location }) => {
     setVideo(video);
   };
 
+  //
+
   return (
     <Layout>
-      <div className="bg-navy text-white px-6 seven:px-10 overflow-hidden">
-        <div className="max-w-1200 mx-auto px-5">
+      <div className="bg-navy text-white seven:px-10 overflow-hidden">
+        <div className="max-w-1200 mx-auto">
           <SocialShare title="title" tags="tags" url="url" />
           <VideoEpisode
             title={video.title}

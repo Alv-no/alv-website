@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import * as Icon from '../icon';
 import * as Logo from '../logo';
-import { LargeLink, Subtitle, ListLink, List } from '../navItems';
+import { LargeLink, Subtitle } from '../navItems';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
@@ -33,7 +33,7 @@ export const Navigation = ({ open, toggleClose }) => {
         </div>
       </div>
       <div className="eight:flex eight:mx-auto justify-between max-w-1000 -mx-6 sm:-mx-8">
-        <ConditionalWrapper
+        {/* <ConditionalWrapper
           condition={width >= 800}
           wrapper={(children) => <div>{children}</div>}
         >
@@ -66,8 +66,8 @@ export const Navigation = ({ open, toggleClose }) => {
               Digitalisering
             </Subtitle>
           </div>
-        </ConditionalWrapper>
-        <ConditionalWrapper
+        </ConditionalWrapper> */}
+        {/* <ConditionalWrapper
           condition={width >= 800}
           wrapper={(children) => (
             <div className="transform eight:translate-x-5 w-screen eight:w-auto cursor-pointer">
@@ -104,7 +104,7 @@ export const Navigation = ({ open, toggleClose }) => {
               <ListLink link="/vi-tilbyr/c-utvikler">Cloud Security</ListLink>
             </List>
           </div>
-        </ConditionalWrapper>
+        </ConditionalWrapper> */}
         <ConditionalWrapper
           condition={width >= 800}
           wrapper={(children) => (
@@ -113,21 +113,21 @@ export const Navigation = ({ open, toggleClose }) => {
             </div>
           )}
         >
-          <LargeLink
+          {/* <LargeLink
             link="/jobbe-i-alv"
             margin="eight:mb-10 2xl:mb-12 relative"
           >
             Jobbe i Alv
-          </LargeLink>
+          </LargeLink> */}
           <div>
             <LargeLink margin="eight:mb-10 2xl:mb-12">Selskapet</LargeLink>
             <div>
               <Subtitle link="/om-oss" margin="eight:mb-5 2xl:mb-6">
                 Om Oss
               </Subtitle>
-              <Subtitle link="/" margin="eight:mb-5 2xl:mb-6">
+              {/* <Subtitle link="/" margin="eight:mb-5 2xl:mb-6">
                 Aktuelt
-              </Subtitle>
+              </Subtitle> */}
               <Subtitle link="/ansatte" margin="eight:mb-5 2xl:mb-6">
                 Ansatte
               </Subtitle>

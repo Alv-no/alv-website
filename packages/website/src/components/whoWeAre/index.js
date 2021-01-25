@@ -10,16 +10,16 @@ export const WhoWeAre = ({ title, children }) => {
         className="mx-5 sm:mx-16 twelve::px-12 twelve:grid text-white twelve:mt-20 mt-8 sm:mt-10 tracking-wider gap-x-10 max-w-1440 twleve:mx-auto"
         style={{ gridTemplateColumns: '1fr 1fr' }}
       >
-        <div className="twelve:flex justify-end w-full">
+        <div className="twelve:flex justify-end w-full ">
           <div>
-            <h4 className="uppercase tracking-wider font-semibold text-about mt-2">
+            <h4 className="uppercase tracking-wider font-semibold mt-2 text-footer sm:text-about">
               {title}
             </h4>
             <div className="w-10 h-2px bg-yellow mt-2 mb-4" />
           </div>
         </div>
         <Fade>
-          <div className="max-w-seven">
+          <div className="max-w-seven text-footer sm:text-about">
             {children}
             <div className="twelve:block hidden">
               <Link to="/om-oss">

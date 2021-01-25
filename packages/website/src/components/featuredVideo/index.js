@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import * as Icon from '../icon';
 
-export const FeaturedVideo = ({ video }) => {
+export const FeaturedVideo = ({ video, playlist }) => {
   return (
     <>
       {video && (
@@ -17,7 +17,7 @@ export const FeaturedVideo = ({ video }) => {
           </div>
         </>
       )}
-      <Link to="/episode">
+      <Link to="/episode" state={{ playlist, video, id: video.videoId }}>
         <div className="sm:h-40 h-56 twelve:h-full" />
         <div
           className="xs:block h-featured 2xl:h-featured"

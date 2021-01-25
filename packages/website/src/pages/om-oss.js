@@ -28,8 +28,8 @@ const About = () => {
         </div>
         <div className="h-10 lg:h-0" />
         <OurServices image={data.services.childImageSharp.fluid}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut.
+          Alv er produktet av alle konsulentene som jobber i selskapet. Dyktige
+          konsulenter gjør Alv til et bra produkt.
         </OurServices>
         <div className="px-12 "></div>
         <div className="max-w-1440 mx-auto sm:px-12 px-5 -mb-10 mt-12">
@@ -45,7 +45,7 @@ const About = () => {
             color="text-white"
             dot={false}
           />
-          <div className="h-10  " />
+          <div className="h-10" />
         </div>
       </div>
     </Layout>

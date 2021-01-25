@@ -54,7 +54,6 @@ export const useSubServiceQuery = () => {
                   url
                 }
               }
-              pdfLink
               image {
                 asset {
                   fluid(maxWidth: 600) {

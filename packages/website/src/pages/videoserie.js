@@ -17,6 +17,8 @@ const Videoseries = () => {
     });
   });
 
+  //
+
   return (
     <Layout>
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
@@ -26,8 +28,9 @@ const Videoseries = () => {
               video={lists[0][0]}
               backgroundImage={data.videoserieBg.childImageSharp.fluid}
               fallbackImg={data.fallbackImg.childImageSharp.fluid}
-              title="Videoserie"
-              description="Culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis mollit"
+              title=""
+              description=""
+              playlist={lists[0]}
             />
           )}
           <div className="my-10" />
@@ -40,7 +43,7 @@ const Videoseries = () => {
                     <VideoCategory
                       title="Dataprat"
                       subtitle="Culpa qui officia deserunt mollit anim id est laborum."
-                      description="Culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis."
+                      description="Vi har fem episoder på lager som tar for seg forskjellige sider av hvordan data kan hjelpe deg som person, og bedrift, til å fjerne dine blindsoner!"
                       featuredVideo={featuredVideo}
                       fallbackImg={data.digitaliseringImg.childImageSharp.fluid}
                       playlist={list}

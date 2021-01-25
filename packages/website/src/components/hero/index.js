@@ -41,7 +41,8 @@ export const Hero = () => {
       >
         <div>Vi bygger </div>
         <div className="font-black">Norges mest attraktive</div>
-        <span>konsulentselskap</span>
+        <span className="xs:hidden">konsulent-selskap</span>
+        <span className="hidden xs:inline">konsulentselskap</span>
       </Title>
       <div className="sm:h-3 h-4" />
       <div className="">
