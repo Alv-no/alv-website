@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../../components/layout';
+import Layout from '../../layout';
 import { ServicesHero } from '../../components/servicesHero';
 import { Title } from '../../components/title';
 import { Description } from '../../components/description';

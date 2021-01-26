@@ -1,4 +1,5 @@
 import React from 'react';
+
 // import { Subscribe } from '../subscribe';
 
 export const Footer = ({ org, address, email }) => (
@@ -28,11 +29,3 @@ export const Footer = ({ org, address, email }) => (
     </div>
   </footer>
 );
-
-Footer.defaultProps = {
-  org: 'Org.nr: 822 70 4042',
-  address: 'Youngstorget 3, 0181 Oslo',
-  email: 'hei@alv.no',
-  ctaText:
-    'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia',
-};

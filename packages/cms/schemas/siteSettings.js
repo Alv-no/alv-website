@@ -25,5 +25,15 @@ export default {
       name: 'featuredPostBool',
       type: 'boolean',
     },
+    {
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+    },
+    {
+      name: 'address',
+      title: 'Address',
+      type: 'string',
+    },
   ],
 };

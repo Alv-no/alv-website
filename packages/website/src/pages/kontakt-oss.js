@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Layout from '../components/layout';
-import { graphql } from 'gatsby';
+import Layout from '../layout';
 import { Title } from '../components/title';
 import * as Icon from '../components/icon';
 import { useContactQuery } from '../hooks/useContactQuery';
@@ -14,7 +13,8 @@ const Contact = ({ location }) => {
   const formChange = (e) => {
     setActive(e.target.id);
   };
-  const queryData = useContactQuery();
+
+  const { address, phone, fluidImage } = useContactQuery();
   return (
     <Layout path={location.pathname}>
       <div className="bg-navy">
@@ -25,11 +25,7 @@ const Contact = ({ location }) => {
           <div className="flex-1 mt-18 sm:px-10">
             <div className="">
               <div className="opacity-90 w-full xl:h-full h-40vh">
-                <Image
-                  fluid={queryData.contactUsImg.childImageSharp.fluid}
-                  className="h-full"
-                  alt="kontakt"
-                />
+                <Image fluid={fluidImage} className="h-full" alt="kontakt" />
               </div>
             </div>
             <div className="2xl:ml-15 ml-5">
@@ -38,9 +34,8 @@ const Contact = ({ location }) => {
                 <div className="sm:h-6 h-6" />
                 <span className="">
                   <Description align="left">
-                    Vi holder til i helt nye lokaler i Pløens gate 1, 0181 Oslo.
-                    Ta gjerne turen innom for en hyggelig prat, eller kontakt
-                    oss
+                    Vi holder til i helt nye lokaler i {address}. Ta gjerne
+                    turen innom for en hyggelig prat, eller kontakt oss
                   </Description>
                 </span>
               </div>
@@ -61,7 +56,7 @@ const Contact = ({ location }) => {
                     <span className="mr-3">
                       <Icon.Phone />
                     </span>{' '}
-                    915 30 363
+                    {phone}
                   </a>
                 </div>
                 <div className="mb-3">
@@ -78,7 +73,7 @@ const Contact = ({ location }) => {
           <div className="flex-1 p-5 sm:px-12 lg:mx-0 lg:p-12 lg:pb-15 tracking-wider bg-lightblue">
             {active === 'offer' && <Form.Offer />}
             {active === 'call' && <Form.Call />}
-            {active === 'visit' && <Form.Visit />}
+            {active === 'visit' && <Form.Visit address={address} />}
           </div>
         </div>
       </div>
@@ -87,19 +82,3 @@ const Contact = ({ location }) => {
 };
 
 export default Contact;
-
-export const query = graphql`
-  query {
-    allFile {
-      edges {
-        node {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-  }
-`;

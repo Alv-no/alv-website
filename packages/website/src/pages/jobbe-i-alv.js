@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../layout';
 import { ImageTextShifted } from '../components/imageTextOverlap';
 import { ImageTextListHero } from '../components/imageTextHero';
 import { ReasonsSlider } from '../components/reasonsSlider';

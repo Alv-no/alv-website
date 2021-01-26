@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../layout';
 import { Title } from '../components/title';
 import { Description } from '../components/description';
 import { EmployeeSection } from '../components/employeeSection';
@@ -33,9 +33,7 @@ const Employees = ({ location }) => {
           heading="Join With Us"
           internalLink="/jobbe-i-alv"
           buttonText="Bli en alv"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam."
+          description=""
         />
       </div>
     </Layout>
