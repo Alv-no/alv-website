@@ -8,7 +8,7 @@ export const EmployeeBio = ({
   firstname,
   lastname,
   video,
-  pdfLink,
+  cv,
   title,
   _rawBio,
   id,
@@ -60,15 +60,17 @@ export const EmployeeBio = ({
                 />
               </div>
               <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">
-                <a href={pdfLink} target="_blank" rel="noreferrer">
-                  <div className="flex">
-                    <span className="mr-3">
-                      <Icon.Cv />
-                    </span>
-                    <span className="transform -translate-y-2">SE CV</span>
-                  </div>
-                </a>
-                <Link to="/contact">
+                {cv !== null && (
+                  <a href={cv.asset.url} target="_blank" rel="noreferrer">
+                    <div className="flex">
+                      <span className="mr-3">
+                        <Icon.Cv />
+                      </span>
+                      <span className="transform -translate-y-2">SE CV</span>
+                    </div>
+                  </a>
+                )}
+                <Link to="/kontakt-oss">
                   <div className="flex cursor-pointer">
                     <div className="w-8 h-2px bg-yellow mr-4 transform translate-y-1" />
                     <span className="transform -translate-y-2">

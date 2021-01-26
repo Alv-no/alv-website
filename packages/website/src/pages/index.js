@@ -1,8 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout';
 import { Hero } from '../components/hero';
-import { Subtitle } from '../components/title';
-import { BlogSlider } from '../components/blogSlider';
 import { WhoWeAre } from '../components/whoWeAre';
 import { OwnedByStaff } from '../components/ownedByStaff';
 import { OurServices } from '../components/ourServices';
@@ -42,28 +40,19 @@ const Index = () => {
               </p>
             </WhoWeAre>
           </div>
-
           <Hire data={data} />
-
           <div className="bg-navy h-10 lg:h-32" />
-
           <OurServices image={data.services.childImageSharp.fluid}>
-            Alv bygges rundt systemutviklingsprosessen. Kjernen i det vi driver
-            med og kan er koding, men for å skape gode løsninger av kode, trengs
-            det også en rekke støttefunksjoner.
+            Kjernen i det vi driver med og kan er koding, men for å skape gode
+            løsninger av kode, trengs det også en rekke støttefunksjoner.
           </OurServices>
           <div className="lg:h-40  h-5" />
           <HireAlt data={data} />
-          <div className="px-5 sm:px-12 -mb-10 max-w-1440 mx-auto">
-            <Subtitle>Hva tenker alvene?</Subtitle>
-          </div>
-          <div className="mt-10" />
-          <BlogSlider
+          {/* <BlogSlider
             image={data.sliderImg.childImageSharp.fluid}
             color="text-white"
             dot={false}
-          />
-          <div className="sm:h-6" />
+          /> */}
           <OwnedByStaff>
             Alv AS er 100% eid av våre ansatte. Det betyr at du vil få mulighet
             til å kjøpe deg inn på eiersiden av selskapet når du blir ansatt.

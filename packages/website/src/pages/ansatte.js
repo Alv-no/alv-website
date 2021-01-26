@@ -31,7 +31,7 @@ const Employees = ({ location }) => {
         />
         <Cta
           heading="Join With Us"
-          internalLink="/bli-en-alv"
+          internalLink="/jobbe-i-alv"
           buttonText="Bli en alv"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
