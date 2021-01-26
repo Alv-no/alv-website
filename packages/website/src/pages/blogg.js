@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../layout';
 import { Title } from '../components/title';
 import { IntroContainer } from '../components/introContainer';
 import { useBlogQuery } from '../hooks/useBlogQuery';

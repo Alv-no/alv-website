@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../../components/layout';
+import Layout from '../../layout';
 import { useSubServiceQuery } from '../../hooks/useSubServiceQuery';
 import { ServiceNavList } from '../../components/serviceNavList';
 import { RolesList } from '../../components/rolesList';

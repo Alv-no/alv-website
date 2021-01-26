@@ -206,7 +206,7 @@ export const Offer = () => {
   );
 };
 
-export const Visit = () => (
+export const Visit = ({ address }) => (
   <div>
     <div className="filter-grayscale">
       <iframe
@@ -214,16 +214,16 @@ export const Visit = () => (
         className="w-full sm:mx-0"
         height="384"
         title="map"
-        frameborder="0"
+        frameBorder="0"
         style={{ border: 0 }}
-        allowfullscreen=""
-        aria-hidden="false"
-        tabindex="0"
+        allowFullscreen=""
+        ariaHidden="false"
+        tabIndex="0"
       ></iframe>
     </div>
     <div className="sm:px-8 mt-15 mb-8">
       <h4 className="text-lg font-semibold mb-1 uppercase">
-        Ta en tur innom oss i Y3!
+        Ta en tur innom oss!
       </h4>
       <p className="text-mobile leading-relaxed font-light">
         Vi tar gjerne en kaffe, enten du er potensiell ansatt, eller interessert
@@ -233,9 +233,7 @@ export const Visit = () => (
     <div className="sm:flex">
       <div className="sm:px-8 mb-5 sm:mb-0">
         <h4 className="text-lg font-semibold mb-1 uppercase">ADRESSE</h4>
-        <p className="text-mobile leading-relaxed font-light">
-          Youngstorget 3, 0181 Oslo
-        </p>
+        <p className="text-mobile leading-relaxed font-light">{address}</p>
       </div>
       <div className="sm:px-8">
         <h4 className="text-lg font-semibold mb-1 uppercase">ORG. NR.</h4>

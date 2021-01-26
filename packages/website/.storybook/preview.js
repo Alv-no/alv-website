@@ -16,4 +16,4 @@ export const parameters = {
   },
 };
 
-import '../src/layout.css';
+import '../src/layout/layout.css';
