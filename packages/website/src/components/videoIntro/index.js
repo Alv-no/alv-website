@@ -12,7 +12,7 @@ export const VideoIntro = ({ video, children }) => {
           <source src={video} type="video/webm" />
         </video>
         <Fade>
-          <h2 className="uppercase hidden twelve:block twelve:absolute top-0 right-0 text-slider font-semibold tracking-wider text-white w-4/12 transform translate-x-20 leading-tight -mr-40 mt-40">
+          <h2 className="uppercase hidden twelve:block twelve:absolute top-0 right-0 text-cta-lg font-semibold tracking-wider text-white w-4/12 transform translate-x-20 leading-tight -mr-40 mt-40">
             {children}
           </h2>
         </Fade>

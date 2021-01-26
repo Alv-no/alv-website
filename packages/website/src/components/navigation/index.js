@@ -12,12 +12,12 @@ export const Navigation = ({ open, toggleClose }) => {
   const { width } = useWindowDimensions();
   return (
     <header
-      className={`text-white tracking-wider fixed overflow-y-scroll z-50 h-screen w-screen bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 ${
+      className={`text-white tracking-wider fixed overflow-y-scroll z-50 h-screen w-screen bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 eight:text-center ${
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       style={{ zIndex: 999 }}
     >
-      <div className="eight:flex relative z-40 justify-between mx-auto auto eight:mb-0 2xl:mb-25 max-w-1200 items-center mb-12 eight:mb-0">
+      <div className="eight:flex justify-center relative z-40 justify-between mx-auto auto eight:mb-0 2xl:mb-25 max-w-1200 items-center mb-12 eight:mb-0">
         <div className="w-32" />
         <span className="">
           <Link to="/">
@@ -32,7 +32,7 @@ export const Navigation = ({ open, toggleClose }) => {
           <Icon.Facebook />
         </div>
       </div>
-      <div className="eight:flex eight:mx-auto justify-between max-w-1000 -mx-6 sm:-mx-8">
+      <div className="eight:flex eight:mx-auto justify-center max-w-1000 -mx-6 sm:-mx-8">
         {/* <ConditionalWrapper
           condition={width >= 800}
           wrapper={(children) => <div>{children}</div>}
@@ -113,12 +113,12 @@ export const Navigation = ({ open, toggleClose }) => {
             </div>
           )}
         >
-          {/* <LargeLink
+          <LargeLink
             link="/jobbe-i-alv"
             margin="eight:mb-10 2xl:mb-12 relative"
           >
             Jobbe i Alv
-          </LargeLink> */}
+          </LargeLink>
           <div>
             <LargeLink margin="eight:mb-10 2xl:mb-12">Selskapet</LargeLink>
             <div>

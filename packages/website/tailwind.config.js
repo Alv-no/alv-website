@@ -186,6 +186,7 @@ module.exports = {
         '2xl': ['32px', '34px'],
         '3xl': ['36px', '46px'],
         '4xl': ['40px', '50px'],
+        'cta-lg': ['46px', '54px'],
         'hero-tablet': ['50px', '52px'],
         'hero-mobile': ['42px', '48px'],
         '5xl': ['62px', '72px'],

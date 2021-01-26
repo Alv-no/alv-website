@@ -25,9 +25,8 @@ export const OurServices = ({ image }) => {
             Våre Tjenester
           </h2>
           <p className="mb-5 sm:pr-15  font-light text-xl w-full text-footer sm:text-xl tracking-wider">
-            Alv bygges rundt systemutviklings-prosessen. Kjernen i det vi driver
-            med og kan er koding, men for å skape gode løsninger av kode, trengs
-            det også en rekke støttefunksjoner.
+            Kjernen i det vi driver med og kan er koding, men for å skape gode
+            løsninger av kode, trengs det også en rekke støttefunksjoner.
           </p>
           <div className="lg:block flex justify-between">
             <div />
@@ -129,8 +128,9 @@ export const OurServices = ({ image }) => {
                 className="flex sm:justify-end items-center p-5 sm:p-16 bg-black bg-opacity-50"
                 style={{ height: '530px' }}
               >
-                <div className="sm:text-slider uppercase text-left font-semibold tracking-wider leading-tighter w-5/6 sm:text-right">
-                  Bygget rundt systemutviklings-prosessen
+                <div className="sm:text-slider text-blog uppercase text-left font-semibold tracking-wider leading-tighter w-5/6 sm:text-right">
+                  Bygget rundt systemutviklings
+                  <span className="">-</span>prosessen
                 </div>
               </div>
             </BackgroundImage>

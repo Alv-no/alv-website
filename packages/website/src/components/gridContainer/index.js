@@ -9,7 +9,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   const [columnsNr, setColumnsNr] = useState(null);
   const [rows, setRows] = useState(null);
   const [contentGroups, setContentGroups] = useState(null);
-  const [visibleRows, setVisibleRows] = useState(3);
+  const [visibleRows, setVisibleRows] = useState(20);
   const [cardClick, setCardClick] = useState(false);
 
   // Set active bio on route update

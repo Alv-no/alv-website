@@ -16,6 +16,11 @@ export const useEmployeeQuery = () => {
                   url
                 }
               }
+              cv {
+                asset {
+                  url
+                }
+              }
               id
               title
               experience

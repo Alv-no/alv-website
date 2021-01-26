@@ -61,7 +61,7 @@ const Contact = ({ location }) => {
                     <span className="mr-3">
                       <Icon.Phone />
                     </span>{' '}
-                    822 70 4042
+                    915 30 363
                   </a>
                 </div>
                 <div className="mb-3">
