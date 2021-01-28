@@ -91,6 +91,7 @@ module.exports = {
         'blog-sm': 'repeat(2, minmax(240px, 310px))',
         'employees-md': 'repeat(3, minmax(216px, 1fr))',
         'employees-lg': 'repeat(4, minmax(216px, 1fr))',
+        'team-lg': 'repeat(4, minmax(216px, 270px))',
         'blog-nine': 'repeat(3, minmax(250px, 270px))',
         'navlist': '35% auto',
         'navlist-sm': '25% auto',

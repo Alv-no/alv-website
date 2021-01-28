@@ -317,7 +317,7 @@ export const ScrollArrow = () => (
 );
 
 export const ScrollToContinue = () => (
-  <div className="absolute text-white right-0 bottom-0 sm:text-base -mr-20 2xl:mr-5 mb-40 transform -rotate-90 text-sm tracking-wider translate-x-2 font-thin flex translate-y-32 twelve:translate-y-0 z-20">
+  <div className="absolute text-white right-0 bottom-0 sm:text-base -mr-20 2xl:mr-5 mb-40 transform -rotate-90 text-sm tracking-wider translate-x-2 font-thin flex translate-y-25 sm:translate-y-15 twelve:-translate-y-8 z-20">
     <div className="transform rotate-90 -translate-x-12 -translate-y-10 sm:-translate-y-9">
       <ScrollArrow />
     </div>{' '}

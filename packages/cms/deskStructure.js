@@ -10,7 +10,14 @@ export default () =>
           S.document().schemaType('siteSettings').documentId('siteSettings')
         ),
       S.divider(),
+      S.listItem()
+        .title('Landing Page')
+        .child(
+          S.document().schemaType('landingPage').documentId('landingPage')
+        ),
+      S.divider(),
       ...S.documentTypeListItems().filter(
-        (listItem) => !['siteSettings'].includes(listItem.getId())
+        (listItem) =>
+          !['siteSettings', 'landingPage'].includes(listItem.getId())
       ),
     ]);

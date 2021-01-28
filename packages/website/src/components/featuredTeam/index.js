@@ -17,7 +17,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg }) => {
           </Title>
         )}
         <div className="h-12" />
-        <div className="grid xs:gap-4 mb-12 xs:max-w-570 seven:max-w-none nine:max-w-grid grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg gap-y-6">
+        <div className="grid xs:gap-4 mb-12 xs:max-w-570 seven:max-w-none grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-team-lg nine:justify-between gap-y-6">
           {team.map((employee) => (
             <Link to="/ansatte">
               <EmployeeCard

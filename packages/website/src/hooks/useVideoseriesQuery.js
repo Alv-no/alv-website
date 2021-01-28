@@ -59,6 +59,13 @@ export const useVideoseriesQuery = () => {
               video.playlistId === id && video.thumbnails.standard !== null
           )
           .sort((a, b) => (a.position > b.position ? -1 : 1)))
+    )
+    .filter(
+      (list) =>
+        !list.some(
+          (video) =>
+            video.title.includes('#PROMO') || video.title.includes('#ANSATTE')
+        )
     );
 
   return data;

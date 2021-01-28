@@ -10,6 +10,7 @@ import employee from './employee';
 import employeeTag from './employeeTag';
 import article from './article';
 import articleTag from './articleTag';
+import landingPage from './landingPage';
 import testimonial from './testimonial';
 import siteSettings from './siteSettings';
 
@@ -24,6 +25,7 @@ export default createSchema({
     // in the studio.
     siteSettings,
     article,
+    landingPage,
     articleTag,
     employee,
     employeeTag,

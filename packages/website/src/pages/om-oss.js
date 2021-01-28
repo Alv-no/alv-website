@@ -3,7 +3,6 @@ import Layout from '../layout';
 import { useAboutUsQuery } from '../hooks/useAboutUsQuery';
 import { Subtitle } from '../components/title';
 import { OurServices } from '../components/ourServices';
-import { BlogSlider } from '../components/blogSlider';
 import { Metrics } from '../components/metrics';
 import { AboutIntro } from '../components/aboutIntro';
 import { FeaturedTeam } from '../components/featuredTeam';
@@ -31,22 +30,19 @@ const About = () => {
           Alv er produktet av alle konsulentene som jobber i selskapet. Dyktige
           konsulenter gjør Alv til et bra produkt.
         </OurServices>
-        <div className="px-12 "></div>
+        <div className="px-12 lg:h-5"></div>
         <div className="max-w-1440 mx-auto sm:px-12 px-5 -mb-10 mt-12">
           <Subtitle>Ansatte</Subtitle>
         </div>
         <FeaturedTeam notitle team={team} color="navy" />
-        <div className="mx-auto max-w-1440">
-          <div className="mx-5 sm:mx-12">
+        {/* <div className="mx-5 sm:mx-12">
             <Subtitle>Hva tenker alvene?</Subtitle>
           </div>
           <BlogSlider
             image={data.sliderImg.childImageSharp.fluid}
             color="text-white"
             dot={false}
-          />
-          <div className="h-10" />
-        </div>
+          /> */}
       </div>
     </Layout>
   );

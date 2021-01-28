@@ -11,19 +11,19 @@ export const Hire = ({ data }) => {
         style={{ gridTemplateColumns: '50% auto' }}
       >
         <BackgroundImage fluid={data.interview.childImageSharp.fluid}>
-          <div className="flex justify-end items-center bg-black bg-opacity-25 h-60vh twelve:h-715">
-            <div className="twelve:-mr-64 sm:block hidden lg:-mr-32 w-full transform sm:translate-x-64 2xl:translate-x-80 px-0">
+          <div className="flex justify-end items-center bg-black bg-opacity-25 h-60vh sm:h-auto lg:p-0 p-10 lg:h-715">
+            <div className="twelve:-mr-64 sm:block hidden sm:-mr-0 md:-mr-20 lg:-mr-48 w-full transform sm:translate-x-64 2xl:translate-x-80 px-0">
               <Fade>
                 <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider text-white sm:w-5/6 lg:w-4/6">
                   HILS PÅ KONSULENTENE I ALV
                 </h2>
-                <p className="text-footer sm:text-xl tracking-wider mb-16 font-light sm:w-5/6 lg:w-4/6">
+                <p className="text-footer sm:text-xl tracking-wider mb-16 font-light sm:w-full lg:w-4/6">
                   Vi har et bredt spekter av kompetanseområder innenfor
                   systemutvikling. Utforsk våre konsulenter, og bli bedre kjent
                   med dine potensielle kolleger eller problemløsere.
                 </p>
                 <div className="w-full flex justify-end">
-                  <div className="twelve:mr-0 eight:-mr-20 sm:-mr-8 -mt-10">
+                  <div className="twelve:mr-0 lg:-ml-10 -mt-10">
                     <CtaButton internalLink="/ansatte">
                       Våre konsulenter
                     </CtaButton>
