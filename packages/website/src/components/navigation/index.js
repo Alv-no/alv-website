@@ -25,11 +25,29 @@ export const Navigation = ({ open, toggleClose }) => {
           </Link>
         </span>
         <div className="eight:flex w-32 hidden">
-          <Icon.Instagram />
+          <a
+            href="https://www.instagram.com/alvnoas/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon.Instagram />
+          </a>
           <span className="mr-4 ml-6">
-            <Icon.Twitter />
+            <a
+              href="https://twitter.com/alvnoas/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon.Twitter />
+            </a>
           </span>
-          <Icon.Facebook />
+          <a
+            href="https://www.facebook.com/AlvNorge/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon.Facebook />
+          </a>
         </div>
       </div>
       <div className="eight:flex eight:mx-auto justify-center max-w-1000 -mx-6 sm:-mx-8">

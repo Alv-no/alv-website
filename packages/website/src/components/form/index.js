@@ -206,7 +206,7 @@ export const Offer = () => {
   );
 };
 
-export const Visit = ({ address }) => (
+export const Visit = ({ address, org }) => (
   <div>
     <div className="filter-grayscale">
       <iframe
@@ -237,7 +237,7 @@ export const Visit = ({ address }) => (
       </div>
       <div className="sm:px-8">
         <h4 className="text-lg font-semibold mb-1 uppercase">ORG. NR.</h4>
-        <p className="text-mobile leading-relaxed font-light">822 70 4042</p>
+        <p className="text-mobile leading-relaxed font-light">{org}</p>
       </div>
     </div>
   </div>

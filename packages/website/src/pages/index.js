@@ -7,21 +7,22 @@ import { OurServices } from '../components/ourServices';
 import { Hire, HireAlt } from '../components/hire';
 import { VideoIntro } from '../components/videoIntro';
 import { useIndexQuery } from '../hooks/useIndexQuery';
-import video from '../assets/heroVideo.webm';
 
 const Index = () => {
   const data = useIndexQuery();
+  const linesAndClasses = [
+    { line: 'Vi bygger', classes: '' },
+    { line: 'Norges mest attraktive', classes: 'font-black' },
+    { line: 'konsulentselskap', classes: '', dot: true },
+  ];
+
   return (
     <Layout>
       <div className="overflow-hidden">
-        <Hero>
-          <div>Vi bygger </div>
-          <div className="font-black">Norges mest attraktive</div>
-          <span className="">konsulent-selskap</span>
-        </Hero>
+        <Hero linesAndClasses={linesAndClasses} delay={110} />
         <div className="bg-navy">
-          <div className="bg-navy w-full py-15">
-            <VideoIntro video={video}>
+          <div className="bg-navy w-full pb-15">
+            <VideoIntro video={data.video.video.asset.url}>
               FØLG OSS GJENNOM VÅR UKENTLIGE VIDEOSERIE
             </VideoIntro>
             <WhoWeAre title="Hvem er vi">

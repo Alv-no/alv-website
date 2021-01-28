@@ -3,6 +3,14 @@ export const useIndexQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
+        video: sanityLandingPage(video: { asset: { url: { ne: "" } } }) {
+          id
+          video {
+            asset {
+              url
+            }
+          }
+        }
         stairs: file(name: { eq: "stairs" }) {
           childImageSharp {
             fluid {

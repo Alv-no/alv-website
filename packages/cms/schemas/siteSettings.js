@@ -1,6 +1,5 @@
 export default {
   name: 'siteSettings',
-  title: 'Article Tags',
   type: 'document',
   fields: [
     {
@@ -31,8 +30,18 @@ export default {
       type: 'string',
     },
     {
+      name: 'email',
+      title: 'Email',
+      type: 'string',
+    },
+    {
       name: 'address',
       title: 'Address',
+      type: 'string',
+    },
+    {
+      name: 'org',
+      title: 'Org. nr',
       type: 'string',
     },
   ],

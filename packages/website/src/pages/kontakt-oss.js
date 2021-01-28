@@ -14,7 +14,7 @@ const Contact = ({ location }) => {
     setActive(e.target.id);
   };
 
-  const { address, phone, fluidImage } = useContactQuery();
+  const { address, phone, fluid, email, org } = useContactQuery();
   return (
     <Layout path={location.pathname}>
       <div className="bg-navy">
@@ -25,7 +25,7 @@ const Contact = ({ location }) => {
           <div className="flex-1 mt-18 sm:px-10">
             <div className="">
               <div className="opacity-90 w-full xl:h-full h-40vh">
-                <Image fluid={fluidImage} className="h-full" alt="kontakt" />
+                <Image fluid={fluid} className="h-full" alt="kontakt" />
               </div>
             </div>
             <div className="2xl:ml-15 ml-5">
@@ -64,7 +64,7 @@ const Contact = ({ location }) => {
                     <span className="mr-3">
                       <Icon.Mail />
                     </span>{' '}
-                    hei@alv.no
+                    {email}
                   </a>
                 </div>
               </div>
@@ -73,7 +73,7 @@ const Contact = ({ location }) => {
           <div className="flex-1 p-5 sm:px-12 lg:mx-0 lg:p-12 lg:pb-15 tracking-wider bg-lightblue">
             {active === 'offer' && <Form.Offer />}
             {active === 'call' && <Form.Call />}
-            {active === 'visit' && <Form.Visit address={address} />}
+            {active === 'visit' && <Form.Visit address={address} org={org} />}
           </div>
         </div>
       </div>

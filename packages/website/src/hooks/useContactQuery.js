@@ -15,13 +15,20 @@ export const useContactQuery = () => {
             node {
               address
               phone
+              email
+              org
             }
           }
         }
       }
     `
   );
-  const { address, phone } = data.allSanitySiteSettings.edges[0].node;
-  const { fluidImage } = data.contactUsImg.childImageSharp.fluid;
-  return { address, phone, fluidImage };
+  const {
+    address,
+    phone,
+    org,
+    email,
+  } = data.allSanitySiteSettings.edges[0].node;
+  const { fluid } = data.contactUsImg.childImageSharp;
+  return { address, phone, org, email, fluid };
 };
