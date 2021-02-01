@@ -72,9 +72,13 @@ export const MobileHeader = ({ viewport }) => {
         >
           <div className="max-w-1600 mx-auto">
             <div className="flex flex-row-reverse justify-between">
-              <span className="cursor-pointer" onClick={handleClick}>
+              <button
+                type="button"
+                className="cursor-pointer focus:outline-none"
+                onClick={handleClick}
+              >
                 <Icon.Dropdown />
-              </span>
+              </button>
               <span className="transform ">
                 <Link to="/">
                   <Logo.White />
@@ -105,9 +109,13 @@ export const BlogHeader = () => {
         <div className="max-w-1600 mx-auto">
           <div className="flex justify-between sm:mb-7 ">
             <div className="flex">
-              <span className="mr-5 cursor-pointer" onClick={handleClick}>
+              <button
+                type="button"
+                className="mr-5 cursor-pointer"
+                onClick={handleClick}
+              >
                 <Icon.Dropdown />
-              </span>
+              </button>
               <span className="transform ">
                 <Link to="/">
                   <Logo.White />

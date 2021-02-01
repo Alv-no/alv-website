@@ -38,15 +38,17 @@ export const EmployeeCard = ({
         style={{ backgroundColor: 'rgba(40,40,40,50%)' }}
       />
     </div>
-    <div className="absolute mt-2 z-10 pointer-events-none transform translate-x-4 xs:translate-x-0">
-      <Icon.Shade />
-      <div className="z-10 relative transform -translate-y-9 translate-x-2 text-sm flex items-center tracking-wider pt-2px">
-        <span className="text-xl font-bold mr-1 pointer-events-none">
-          {experience}
-        </span>
-        års erfaring
+    {experience && (
+      <div className="absolute mt-2 z-10 pointer-events-none transform translate-x-4 xs:translate-x-0">
+        <Icon.Shade />
+        <div className="z-10 relative transform -translate-y-9 translate-x-2 text-sm flex items-center tracking-wider pt-2px">
+          <span className="text-xl font-bold mr-1 pointer-events-none">
+            {experience}
+          </span>
+          års erfaring
+        </div>
       </div>
-    </div>
+    )}
     <div className="absolute bottom-0 mb-4 text-center mt-auto w-full flex justify-center flex-col leading-base mb-2 z-10 pointer-events-none">
       <div className="text-xl tracking-wider uppercase leading-sm font-bold">
         {firstname}

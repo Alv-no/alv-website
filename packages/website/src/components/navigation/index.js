@@ -163,9 +163,13 @@ export const Navigation = ({ open, toggleClose }) => {
         </ConditionalWrapper>
       </div>
       <div className="eight:flex justify-center eight:mt-0 2xl:mt-15 eight:mr-0 eight:relative absolute top-0 right-0 mt-5 mr-5 sm:mt-8 sm:mr-8 transform scale-70 sm:scale-80 eight:scale-90">
-        <span className="cursor-pointer" onClick={toggleClose}>
+        <button
+          type="button"
+          className="cursor-pointer focus:outline-none"
+          onClick={toggleClose}
+        >
           <Icon.Cross />
-        </span>
+        </button>
       </div>
     </header>
   );
