@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Layout from '../layout';
-import { VideoCategory } from '../components/videoCategory';
-import { VideoSection } from '../components/videoSection';
-import { VideoHero } from '../components/videoHero';
-import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
+import Layout from '../../layout';
+import { VideoCategory } from '../../components/videoCategory';
+import { VideoSection } from '../../components/videoSection';
+import { VideoHero } from '../../components/videoHero';
+import { useVideoseriesQuery } from '../../hooks/useVideoseriesQuery';
 
 const Videoseries = () => {
   const data = useVideoseriesQuery();
@@ -41,9 +41,13 @@ const Videoseries = () => {
                 <>
                   {i !== 0 && (
                     <VideoCategory
-                      title="Dataprat"
-                      subtitle="Culpa qui officia deserunt mollit anim id est laborum."
-                      description="Vi har fem episoder på lager som tar for seg forskjellige sider av hvordan data kan hjelpe deg som person, og bedrift, til å fjerne dine blindsoner!"
+                      title={i === 1 ? 'Dataprat' : 'Historie'}
+                      subtitle=""
+                      description={
+                        i === 1
+                          ? 'Vi har fem episoder på lager som tar for seg forskjellige sider av hvordan data kan hjelpe deg som person, og bedrift, til å fjerne dine blindsoner!'
+                          : 'Vi har laget noen episoder om Alv sin historie. Her får du innblikk i det som har foregått bak fasaden.'
+                      }
                       featuredVideo={featuredVideo}
                       fallbackImg={data.digitaliseringImg.childImageSharp.fluid}
                       playlist={list}

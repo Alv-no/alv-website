@@ -30,7 +30,7 @@ const Employees = ({ location }) => {
           fallbackImg={data.fallbackImg.childImageSharp.fluid}
         />
         <Cta
-          heading="Join With Us"
+          heading="Bli en av oss"
           internalLink="/jobbe-i-alv"
           buttonText="Bli en alv"
           description=""

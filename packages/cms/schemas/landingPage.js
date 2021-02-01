@@ -4,8 +4,13 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'video',
-      title: 'Video introduction',
+      name: 'videoWebm',
+      title: 'Video introduction webm',
+      type: 'file',
+    },
+    {
+      name: 'videoMp4',
+      title: 'Video introduction mp4',
       type: 'file',
     },
   ],

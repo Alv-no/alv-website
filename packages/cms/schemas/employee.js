@@ -50,6 +50,11 @@ export default {
       type: 'file',
     },
     {
+      name: 'videoLink',
+      title: 'Video link',
+      type: 'string',
+    },
+    {
       name: 'cv',
       title: 'CV',
       type: 'file',

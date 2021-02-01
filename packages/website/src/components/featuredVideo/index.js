@@ -17,7 +17,10 @@ export const FeaturedVideo = ({ video, playlist }) => {
           </div>
         </>
       )}
-      <Link to="/episode" state={{ playlist, video, id: video.videoId }}>
+      <Link
+        to="/videoserie/episode"
+        state={{ playlist, video, id: video.videoId }}
+      >
         <div className="sm:h-40 h-56 twelve:h-full" />
         <div
           className="xs:block h-featured 2xl:h-featured"

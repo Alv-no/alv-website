@@ -1,12 +1,15 @@
 import React from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
+import { isIOS, isSafari } from 'react-device-detect';
 import PortableText from '@sanity/block-content-to-react';
+import fallback from '../../assets/bioVideoFallback.png';
 
 export const EmployeeBio = ({
   handleCloseClick,
   firstname,
   lastname,
+  videoLink,
   video,
   cv,
   title,
@@ -18,9 +21,8 @@ export const EmployeeBio = ({
     .concat(lastname.split(' '))
     .map((name) => name.toLowerCase());
   employeeSlug = employeeSlug.join('-');
-  const videoUrl = video
-    ? video.asset.url
-    : 'https://cdn.sanity.io/files/mnr37rl0/production/c5b50fd85d4b754b26c4023536abc9e9e62f7c91.webm';
+  const videoUrlWebm = video ? video.asset.url : false;
+  const videoUrlYoutube = videoLink || false;
   return (
     <div id={employeeSlug}>
       <section
@@ -54,11 +56,32 @@ export const EmployeeBio = ({
               </div>
               {/* ---- Above: Visible on Mobile only ---- */}
               <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
-                <iframe
-                  className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
-                  title={firstname}
-                  src={videoUrl}
-                />
+                {videoUrlWebm && !isIOS && !isSafari && (
+                  <video
+                    autoplay="true"
+                    controls="true"
+                    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0 focus:outline-none"
+                  >
+                    <source type="video/webm" src={videoUrlWebm} />
+                  </video>
+                )}
+                {!videoUrlWebm && videoUrlYoutube && (
+                  <iframe
+                    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
+                    title={firstname}
+                    src={`${videoUrlYoutube}?autoplay=1&mute=0&enablejsapi=1`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay;"
+                    allowFullScreen
+                  />
+                )}
+                {!videoUrlWebm && !videoUrlYoutube && (
+                  <img
+                    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
+                    alt={firstname}
+                    src={fallback}
+                  />
+                )}
               </div>
               <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">
                 {cv !== null && (

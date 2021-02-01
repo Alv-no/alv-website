@@ -22,7 +22,10 @@ const Index = () => {
         <Hero linesAndClasses={linesAndClasses} delay={90} />
         <div className="bg-navy">
           <div className="bg-navy w-full pb-15">
-            <VideoIntro video={data.video.video.asset.url}>
+            <VideoIntro
+              videoMp4={data.video.videoMp4.asset.url}
+              videoWebm={data.video.videoWebm.asset.url}
+            >
               FØLG OSS GJENNOM VÅR UKENTLIGE VIDEOSERIE
             </VideoIntro>
             <WhoWeAre title="Hvem er vi">

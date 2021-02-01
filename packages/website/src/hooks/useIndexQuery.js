@@ -3,9 +3,14 @@ export const useIndexQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        video: sanityLandingPage(video: { asset: { url: { ne: "" } } }) {
+        video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
           id
-          video {
+          videoMp4 {
+            asset {
+              url
+            }
+          }
+          videoWebm {
             asset {
               url
             }
