@@ -24539,6 +24539,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-device-detect@npm:^1.15.0":
+  version: 1.15.0
+  resolution: "react-device-detect@npm:1.15.0"
+  dependencies:
+    ua-parser-js: ^0.7.23
+  peerDependencies:
+    react: ">= 0.14.0 < 18.0.0"
+    react-dom: ">= 0.14.0 < 18.0.0"
+  checksum: 1e271e21823ebe23f52e97cf5e3a2f7a55cf4b1a94f0ad7cc866a988ce8ecaa62302980b8405c22bb2c2dc40934a801bbe7688d8b53b7e80ac772a767f3d0174
+  languageName: node
+  linkType: hard
+
 "react-docgen-typescript-plugin@npm:^0.6.2":
   version: 0.6.3
   resolution: "react-docgen-typescript-plugin@npm:0.6.3"
@@ -29140,6 +29152,13 @@ typescript@^4.0.5:
   languageName: node
   linkType: hard
 
+"ua-parser-js@npm:^0.7.23":
+  version: 0.7.23
+  resolution: "ua-parser-js@npm:0.7.23"
+  checksum: ce6ce4f53f2905519eb427b12ab441c2f72dd162073a925b4e052b6ebbc0f2325554ac44175d58a125e1919888e1226364603e7ea2d797e8210238a20f81802d
+  languageName: node
+  linkType: hard
+
 "uglify-js@npm:^2.8.29":
   version: 2.8.29
   resolution: "uglify-js@npm:2.8.29"
@@ -30388,6 +30407,7 @@ typescript@^4.0.5:
     jest: ^26.6.3
     node-fetch: ^2.6.1
     react: ^17.0.1
+    react-device-detect: ^1.15.0
     react-dom: ^17.0.1
     react-headroom: ^3.1.0
     react-helmet: ^6.1.0

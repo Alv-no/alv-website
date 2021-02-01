@@ -24,13 +24,12 @@ export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
               <iframe
                 className="w-full h-40vh lg:h-500 lg:w-video mb-12 mx-auto"
                 title="video"
-                autoplay
                 src={`https://www.youtube.com/embed/${
                   videoId || 'w41C6nB_pYM'
-                }?controls=0`}
-                frameborder="0"
+                }?autoplay=1&mute=0&enablejsapi=1`}
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
           </div>

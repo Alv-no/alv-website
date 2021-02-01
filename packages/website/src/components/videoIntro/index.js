@@ -1,7 +1,7 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 
-export const VideoIntro = ({ video, children }) => {
+export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
   return (
     <div
       className="lg:pr-12 lg:grid mx-auto max-w-1440"
@@ -9,7 +9,8 @@ export const VideoIntro = ({ video, children }) => {
     >
       <div className="relative lg:pl-15 lg:pr-4 w-full">
         <video controls autoplay="true" className="h-auto mx-auto" muted>
-          <source src={video} type="video/mp4" />
+          <source src={videoMp4} type="video/mp4" />
+          <source src={videoWebm} type="video/mp4" />
         </video>
         <Fade>
           <h2 className="uppercase hidden lg:block lg:absolute top-0 right-0 text-cta-lg font-semibold tracking-wider text-white w-4/12 transform translate-x-20 leading-tight -mr-40 mt-15 xl:mt-25 2xl:mt-40">

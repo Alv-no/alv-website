@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Layout from '../layout';
-import { EpisodeCards } from '../components/episodeCards';
-import { SocialShare } from '../components/socialShare';
-import { VideoEpisode } from '../components/videoEpisode';
-import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
+import Layout from '../../layout';
+import { EpisodeCards } from '../../components/episodeCards';
+import { SocialShare } from '../../components/socialShare';
+import { VideoEpisode } from '../../components/videoEpisode';
+import { useVideoseriesQuery } from '../../hooks/useVideoseriesQuery';
 
 const Episode = ({ location }) => {
   const data = useVideoseriesQuery();

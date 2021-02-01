@@ -11,6 +11,7 @@ export const useEmployeeQuery = () => {
               }
               firstname
               lastname
+              videoLink
               video {
                 asset {
                   url
@@ -24,6 +25,7 @@ export const useEmployeeQuery = () => {
               id
               title
               experience
+              videoLink
               _rawBio
               image {
                 asset {
