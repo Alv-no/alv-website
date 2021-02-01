@@ -50,7 +50,6 @@ export const useVideoseriesQuery = () => {
   // Sort videos into playlists, and in order of "position" property asc.
   const allVideos = data.allYtVideo.edges.map((edge) => edge.node);
   data.playlists = [...new Set(allVideos.map((video) => video.playlistId))]
-    .sort((a, b) => (a.length < b.length ? -1 : 1))
     .map(
       (id) =>
         (id = allVideos
@@ -66,7 +65,8 @@ export const useVideoseriesQuery = () => {
           (video) =>
             video.title.includes('#PROMO') || video.title.includes('#ANSATTE')
         )
-    );
+    )
+    .sort((a, b) => (a.length > b.length ? -1 : 1));
 
   return data;
 };

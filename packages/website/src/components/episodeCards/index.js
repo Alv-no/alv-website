@@ -15,11 +15,15 @@ export const EpisodeCards = ({ fallbackImg, playlist, onClick }) => {
     setVisibleRows(visibleRows + 8);
   };
 
+  const sortedList = (list) => {
+    setSortedVideos(list);
+  };
+
   return (
     <>
       <div className="w-full px-5 sm:px-0">
         {sortedVideos !== [] && (
-          <VideoFilter videos={playlist} onChange={() => console.log('Sort')} />
+          <VideoFilter videos={playlist} onChange={sortedList} />
         )}
         <div className="flex justify-center">
           <div

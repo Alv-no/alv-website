@@ -292,13 +292,6 @@ export const SortField = ({ sort, sortClick, light }) => {
           >
             Nyest til eldst
           </li>
-          <li
-            className="py-2 bg-white w-full px-4 cursor-pointer"
-            id="popular"
-            onClick={handleClick}
-          >
-            Populæritet
-          </li>
         </ul>
       </div>
     </div>

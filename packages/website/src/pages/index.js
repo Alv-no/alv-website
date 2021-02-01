@@ -19,7 +19,7 @@ const Index = () => {
   return (
     <Layout>
       <div className="overflow-hidden">
-        <Hero linesAndClasses={linesAndClasses} delay={110} />
+        <Hero linesAndClasses={linesAndClasses} delay={90} />
         <div className="bg-navy">
           <div className="bg-navy w-full pb-15">
             <VideoIntro video={data.video.video.asset.url}>

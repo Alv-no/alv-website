@@ -31,12 +31,13 @@ export const EmployeeBio = ({
           <div className="w-full flex flex-end justify-between">
             <div />
             <div>
-              <span
-                className="transform block sm:-translate-y-12 sm:-translate-x-8 -translate-y-15  -translate-x-12 scale-60 cursor-pointer absolute"
+              <button
+                type="button"
+                className="transform block focus:outline-none sm:-translate-y-12 sm:-translate-x-8 -translate-y-15  -translate-x-12 scale-60 cursor-pointer absolute"
                 onClick={handleCloseClick}
               >
                 <Icon.Cross />
-              </span>
+              </button>
             </div>
           </div>
           <div className="flex lg:flex-row flex-col sm:px-0">
