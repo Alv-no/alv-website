@@ -88,7 +88,10 @@ export const HireAlt = ({ data }) => {
           style={{ gridTemplateColumns: '50% auto' }}
         >
           <div />
-          <BackgroundImage fluid={data.cta.childImageSharp.fluid}>
+          <BackgroundImage
+            fluid={data.cta.childImageSharp.fluid}
+            style={{ backgroundPosition: 'right center' }}
+          >
             <div className="bg-navy bg-opacity-25 pr-56 lg:h-715 h-450 flex items-center">
               <div className=" tracking-wider transform lg:translate-y-48 sm:block hidden leading-tight -ml-40 eight:-ml-64 eight:-translate-x-0 xl:-translate-x-20 absolute inset-x-0 text-white text-cta-lg font-semibold w-full text-right z-40 uppercase">
                 ALV ER IMIDLERTID IKKE FOR ALLE. SE OM DET PASSER DEG.

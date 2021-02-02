@@ -37,9 +37,9 @@ export const useIndexQuery = () => {
             }
           }
         }
-        cta: file(name: { eq: "featuredFallback" }) {
+        cta: file(name: { eq: "Alv_fredag" }) {
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 1500) {
               ...GatsbyImageSharpFluid
             }
           }
