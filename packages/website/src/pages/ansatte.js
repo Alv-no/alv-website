@@ -30,10 +30,14 @@ const Employees = ({ location }) => {
           fallbackImg={data.fallbackImg.childImageSharp.fluid}
         />
         <Cta
+          image={data.cta.childImageSharp.fluid}
+          fallback={data.ctaFallback.childImageSharp.fluid}
           heading="Bli en av oss"
           internalLink="/jobbe-i-alv"
           buttonText="Bli en alv"
-          description=""
+          description="Vi bygger Norges mest attraktive konsulentselskap. For å lykkes
+          med dette, trenger vi flere medarbeidere. Vi trenger all
+          kompetanse relatert til systemutvikling."
         />
       </div>
     </Layout>
