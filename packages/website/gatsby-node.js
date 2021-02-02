@@ -49,13 +49,32 @@ if (process.env.YT_API) {
           `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&key=${process.env.YT_API}`
         );
         const list = await apiCall.json();
-        const formattedItems = await list.items.map((item) => {
+        let formattedItems = await list.items.map((item) => {
           item.snippet.formattedPublishedAt = new Date(
             item.snippet.publishedAt
           ).toUTCString();
           item.snippet.videoId = item.snippet.resourceId.videoId;
           return item.snippet;
         });
+        if (list.pageInfo.totalResults > 50) {
+          let nextPageToken = list.nextPageToken;
+          while (nextPageToken) {
+            const apiCall = await fetch(
+              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&pageToken=${nextPageToken}&key=${process.env.YT_API}`
+            );
+            const nextPageList = await apiCall.json();
+            const nextPageItems = await nextPageList.items.map((item) => {
+              item.snippet.formattedPublishedAt = new Date(
+                item.snippet.publishedAt
+              ).toUTCString();
+              item.snippet.videoId = item.snippet.resourceId.videoId;
+              return item.snippet;
+            });
+            formattedItems = formattedItems.concat(nextPageItems);
+            nextPageToken = nextPageList.nextPageToken || false;
+          }
+        }
+
         return formattedItems.sort((a, b) =>
           a.position > b.position ? -1 : 1
         );
