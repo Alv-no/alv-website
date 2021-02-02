@@ -44,6 +44,20 @@ export const useEmployeeQuery = () => {
             }
           }
         }
+        cta: file(name: { eq: "Alv_fredag" }) {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        ctaFallback: file(name: { eq: "featuredFallback" }) {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         allSanityEmployeeTag {
           edges {
             node {
