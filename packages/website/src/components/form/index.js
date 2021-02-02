@@ -210,7 +210,7 @@ export const Visit = ({ address, org }) => (
   <div>
     <div className="filter-grayscale">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.0735322098096!2d10.747090515952525!3d59.91432698186731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e624867b1ef%3A0xfb5f51d2c07a5923!2sYoungstorget%203%2C%200181%20Oslo!5e0!3m2!1sen!2sno!4v1607846131330!5m2!1sen!2sno"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.0959165114027!2d10.747489116095961!3d59.913955481867234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e62391dd685%3A0xf8f6a5db4daeb1db!2sPl%C3%B8ens%20Gate%201%2C%200181%20Oslo!5e0!3m2!1sen!2sno!4v1612259695181!5m2!1sen!2sno"
         className="w-full sm:mx-0"
         height="384"
         title="map"

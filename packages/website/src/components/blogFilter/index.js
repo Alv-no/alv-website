@@ -48,11 +48,13 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
       const articles = [];
       allArticles.forEach((article) => articles.push(article));
       filteredArticles = articles.filter((article) => {
-        const test =
-          article.tags.some((tag) => activeTags.includes(tag.tag)) ||
-          activeAuthors.includes(
-            `${article.author.firstname} ${article.author.lastname}`
-          );
+        let test = false;
+        if (article.author)
+          test =
+            article.tags.some((tag) => activeTags.includes(tag.tag)) ||
+            activeAuthors.includes(
+              `${article.author.firstname} ${article.author.lastname}`
+            );
         return test;
       });
     } else {

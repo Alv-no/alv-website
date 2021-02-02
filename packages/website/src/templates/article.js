@@ -62,8 +62,12 @@ const ArticleTemplate = (props) => {
                 dataset="production"
               />
             </span>
-            <div className="mt-6">
-              <SocialShare />
+            <div className="mt-6 relative z-20">
+              <SocialShare
+                url={window.location.href}
+                title={title}
+                tags={socialTags}
+              />
             </div>
             <div className="flex justify-between flex-col">
               <div className="flex items-center font-semibold uppercase transform -translate-y-4">
@@ -79,8 +83,12 @@ const ArticleTemplate = (props) => {
       <MobileHeader viewport="lg" />
       <div className="lg:hidden">
         <div className="five:mx-10 mx-6 z-10">
-          <div className="my-5">
-            <SocialShare />
+          <div className="my-5 relative z-20">
+            <SocialShare
+              url={window.location.href}
+              title={title}
+              tags={socialTags}
+            />
           </div>
           <h1 className="text-blog font-bold mb-8">{title}</h1>
           {mainImage && (
@@ -96,8 +104,12 @@ const ArticleTemplate = (props) => {
             />
           </span>
           <div className="flex justify-between items-center mb-12">
-            <div className="">
-              <SocialShare />
+            <div className="relative z-20">
+              <SocialShare
+                url={window.location.href}
+                title={title}
+                tags={socialTags}
+              />
             </div>
             <div className="flex justify-end items-center font-semibold uppercase">
               <Link to="/blogg">Se alle artikler</Link>
@@ -131,6 +143,11 @@ export const query = graphql`
       author {
         firstname
         lastname
+        cv {
+          asset {
+            url
+          }
+        }
         id
         title
         image {
