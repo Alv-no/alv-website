@@ -16,8 +16,9 @@ const Sidebar = ({
   title,
   image,
   id,
-  pdfLink,
+  cv,
 }) => {
+  const pdfLink = cv ? cv.asset.url : false;
   return (
     <>
       <MobileHeader />
@@ -75,13 +76,18 @@ const Sidebar = ({
               </div>
               <p className="font-light mb-1 w-5/6">{title}</p>
               <div className="flex items-center font-semibold text-sm mb-2">
-                <Link to={`/ansatte#${lastname}`} state={{ activeCard: id }}>
+                <Link
+                  to={`/ansatte#${authorSlug}`}
+                  state={{ activeCard: id, employee: authorSlug }}
+                >
                   <div className="uppercase">Se intro</div>
                 </Link>
-                <a href={pdfLink} className="flex items-center">
-                  <div className="h-2px w-8 bg-yellow ml-6 mr-3" />
-                  <div className="uppercase">Se CV</div>
-                </a>
+                {pdfLink && (
+                  <a href={pdfLink} className="flex items-center">
+                    <div className="h-2px w-8 bg-yellow ml-6 mr-3" />
+                    <div className="uppercase">Se CV</div>
+                  </a>
+                )}
               </div>
             </div>
           </div>

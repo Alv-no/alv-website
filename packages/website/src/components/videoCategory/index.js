@@ -36,7 +36,10 @@ export const VideoCategory = ({
             {/* ---- Above: Visible on Mobile only ---- */}
             <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
               <div className="py-4 bg-black">
-                <Link to="/episode" state={{ video: featuredVideo, playlist }}>
+                <Link
+                  to="/videoserie/episode"
+                  state={{ video: featuredVideo, playlist }}
+                >
                   <div
                     className="xs:block h-featured 2xl:h-featured"
                     style={{
