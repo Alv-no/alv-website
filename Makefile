@@ -18,6 +18,11 @@ docker-compose-up: ## Deploy images based on docker-compose-prod.yml
 	docker compose up --file docker-compose-prod.yml
 	docker context use default
 
+prod-deploy:
+	az acr login --name AlvNoProd --expose-token|jq .accessToken -r|docker login AlvNoProd.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin
+	docker tag website AlvNoProd.azurecr.io/website
+	docker push AlvNoProd.azurecr.io/website
+
 .PHONY: help
 
 .DEFAULT_GOAL := help
