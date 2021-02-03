@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
 import { isIOS, isSafari } from 'react-device-detect';
@@ -9,6 +9,7 @@ export const EmployeeBio = ({
   handleCloseClick,
   firstname,
   lastname,
+  slug,
   videoLink,
   video,
   cv,
@@ -16,15 +17,27 @@ export const EmployeeBio = ({
   _rawBio,
   id,
 }) => {
-  let employeeSlug = firstname
-    .split(' ')
-    .concat(lastname.split(' '))
-    .map((name) => name.toLowerCase());
-  employeeSlug = employeeSlug.join('-');
-  const videoUrlWebm = video ? video.asset.url : false;
-  const videoUrlYoutube = videoLink || false;
+  const webM = useMemo(() => {
+    return video ? video.asset.url : false;
+  }, [video]);
+  const youtube = useMemo(() => {
+    return videoLink || false;
+  }, [videoLink]);
+
+  const supportWebM = !isIOS && !isSafari;
+
+  const validatedVideo = useMemo(() => {
+    return supportWebM && webM ? (
+      <Webm src={webM} />
+    ) : youtube ? (
+      <Youtube src={youtube} title={slug} />
+    ) : (
+      <Fallback src={fallback} alt={slug} />
+    );
+  }, [slug, youtube, webM, supportWebM]);
+
   return (
-    <div id={employeeSlug}>
+    <div id={slug.slice(1, slug.length)}>
       <section
         className="bg-darkblue text-white lg:py-18 pb-15 pt-20 xs:-mx-6 sm:mt-12 my-8 sm:px-5 xs:mt-8 -mt-4"
         id={id}
@@ -56,32 +69,7 @@ export const EmployeeBio = ({
               </div>
               {/* ---- Above: Visible on Mobile only ---- */}
               <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
-                {videoUrlWebm && !isIOS && !isSafari && (
-                  <video
-                    autoplay="true"
-                    controls="true"
-                    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0 focus:outline-none"
-                  >
-                    <source type="video/webm" src={videoUrlWebm} />
-                  </video>
-                )}
-                {!videoUrlWebm && videoUrlYoutube && (
-                  <iframe
-                    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
-                    title={firstname}
-                    src={`${videoUrlYoutube}?autoplay=1&mute=0&enablejsapi=1`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay;"
-                    allowFullScreen
-                  />
-                )}
-                {!videoUrlWebm && !videoUrlYoutube && (
-                  <img
-                    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
-                    alt={firstname}
-                    src={fallback}
-                  />
-                )}
+                {validatedVideo}
               </div>
               <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">
                 {cv !== null && (
@@ -135,3 +123,31 @@ export const EmployeeBio = ({
     </div>
   );
 };
+
+const Webm = ({ src }) => (
+  <video
+    key={src}
+    autoplay="true"
+    controls="true"
+    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0 focus:outline-none"
+  >
+    <source type="video/webm" src={src} />
+  </video>
+);
+const Youtube = ({ src, slug }) => (
+  <iframe
+    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
+    title={slug}
+    src={`${src}?autoplay=1&mute=0&enablejsapi=1`}
+    frameBorder="0"
+    allow="accelerometer; autoplay;"
+    allowFullScreen
+  />
+);
+const Fallback = ({ src, slug }) => (
+  <img
+    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
+    alt={slug}
+    src={src}
+  />
+);

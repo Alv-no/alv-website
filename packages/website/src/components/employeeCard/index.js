@@ -14,7 +14,7 @@ export const EmployeeCard = ({
   contrast,
   fallbackImg,
 }) => (
-  <div
+  <button
     className={`text-white relative group flex cursor-pointer overflow-hidden ${
       activeBio && id === activeBio.id
         ? 'filter-grayscale-0'
@@ -58,7 +58,7 @@ export const EmployeeCard = ({
       </div>
       <div className="text-sm tracking-wider px-2">{title}</div>
     </div>
-  </div>
+  </button>
 );
 
 export default EmployeeCard;

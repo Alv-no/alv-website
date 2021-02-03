@@ -22,6 +22,7 @@ export const EmployeeGroup = ({
 
   // Close employee bio section by clearing activeBio state
   const handleCloseClick = () => {
+    // eslint-disable-next-line no-self-assign
     updateActiveBio(null);
   };
   return (
@@ -39,11 +40,7 @@ export const EmployeeGroup = ({
           ))}
         </div>
         {activeBio && group.some((el) => el.id === activeBio.id) ? (
-          <EmployeeBio
-            {...activeBio}
-            handleCloseClick={handleCloseClick}
-            // bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Laboris nisi ut aliquip ex ea commodo consequat."
-          />
+          <EmployeeBio {...activeBio} handleCloseClick={handleCloseClick} />
         ) : null}
       </div>
     </>
