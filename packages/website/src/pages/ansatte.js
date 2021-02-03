@@ -8,7 +8,19 @@ import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
 
 const Employees = ({ location }) => {
   const data = useEmployeeQuery();
-  const activeCard = location.state ? location.state.activeCard : null;
+  const { allEmployees } = data;
+
+  let activeCard;
+  if (location.state) {
+    activeCard = location.state.activeCard;
+  } else {
+    if (location.hash) {
+      const card = allEmployees.find((el) => {
+        return el.slug === location.hash;
+      });
+      activeCard = card.id;
+    }
+  }
   return (
     <Layout>
       <div className="bg-navy w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
@@ -25,7 +37,7 @@ const Employees = ({ location }) => {
         <div className="h-10 sm:h-16 md:h-24 mt-3" />
         <EmployeeSection
           allTags={data.allSanityEmployeeTag.edges}
-          allEmployees={data.allSanityEmployee.edges}
+          allEmployees={allEmployees}
           linkedId={activeCard}
           fallbackImg={data.fallbackImg.childImageSharp.fluid}
         />

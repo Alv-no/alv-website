@@ -16,4 +16,7 @@ export const onRouteUpdate = ({ location }) => {
   if (location.state) {
     window.setTimeout(scrollTo(`#${location.state.employee}`), 100);
   }
+  if (location.hash) {
+    window.setTimeout(scrollTo(location.hash), 500);
+  }
 };

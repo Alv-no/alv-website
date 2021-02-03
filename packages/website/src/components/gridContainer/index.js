@@ -24,12 +24,9 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   // Scroll to active bio section on card click
   useEffect(() => {
     if (activeBio && cardClick) {
-      let nameSlug = activeBio.firstname
-        .split(' ')
-        .concat(activeBio.lastname.split(' '))
-        .map((name) => name.toLowerCase());
-      nameSlug = nameSlug.join('-');
-      const element = document.getElementById(nameSlug);
+      const element = document.getElementById(
+        activeBio.slug.slice(1, activeBio.slug.length)
+      );
       const top =
         window.scrollY +
         element.getBoundingClientRect().top -
@@ -44,7 +41,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   }, [filteredContent, columnsNr, width]);
 
   useEffect(() => {
-    if (typeof rows == 'number' && rows < 50) {
+    if (typeof rows == 'number' && rows < 20) {
       setContentGroups(() => {
         const newGroup = [];
         const showEmployees = filteredContent;

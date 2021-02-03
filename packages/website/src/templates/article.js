@@ -70,12 +70,14 @@ const ArticleTemplate = (props) => {
               />
             </div>
             <div className="flex justify-between flex-col">
-              <div className="flex items-center font-semibold uppercase transform -translate-y-4">
-                <Link to="/blogg">Se alle artikler</Link>
-                <span className="transform text-navy ml-3">
-                  <Icon.Arrow />
-                </span>
-              </div>
+              <Link className="relative z-50" to="/blogg">
+                <div className="flex items-center font-semibold uppercase transform -translate-y-5">
+                  Se alle artikler
+                  <span className="transform text-navy ml-3">
+                    <Icon.Arrow />
+                  </span>
+                </div>
+              </Link>
             </div>
           </div>
         </Sidebar>
@@ -112,7 +114,9 @@ const ArticleTemplate = (props) => {
               />
             </div>
             <div className="flex justify-end items-center font-semibold uppercase">
-              <Link to="/blogg">Se alle artikler</Link>
+              <Link className="relative z-50" to="/blogg">
+                Se alle artikler
+              </Link>
               <span className="transform text-navy ml-3">
                 <Icon.Arrow />
               </span>

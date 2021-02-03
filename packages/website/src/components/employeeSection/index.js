@@ -8,9 +8,7 @@ export const EmployeeSection = ({
   linkedId,
   fallbackImg,
 }) => {
-  const [filteredContent, setFilteredContent] = useState(
-    allEmployees.map((el) => el.node)
-  );
+  const [filteredContent, setFilteredContent] = useState(allEmployees);
 
   const [tags, setTags] = useState(allTags.map((tag) => tag.node.tag));
 
@@ -18,12 +16,12 @@ export const EmployeeSection = ({
   const filterEmployees = (tags) => {
     const filteredEmployeeArr = allEmployees.filter((employee) => {
       let test;
-      employee.node.tags.forEach((node) =>
+      employee.tags.forEach((node) =>
         !test ? (test = tags.indexOf(node.tag) > -1) : null
       );
       return test;
     });
-    return setFilteredContent(filteredEmployeeArr.map((el) => el.node));
+    return setFilteredContent(filteredEmployeeArr);
   };
 
   // Add or remove clicked tag from state

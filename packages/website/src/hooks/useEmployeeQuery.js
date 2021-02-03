@@ -69,5 +69,14 @@ export const useEmployeeQuery = () => {
       }
     `
   );
+  data.allEmployees = data.allSanityEmployee.edges.map((el) => {
+    const employee = el.node;
+    let slug =
+      employee.firstname &&
+      employee.firstname.split(' ').concat(employee.lastname.split(' '));
+    slug = '#' + slug.join('-').toLowerCase();
+    employee.slug = slug;
+    return employee;
+  });
   return data;
 };

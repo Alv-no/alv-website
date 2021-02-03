@@ -24,7 +24,7 @@ export const Cta = ({
               <div className="h-8 lg:h-12" />
               <div className="w-full flex justify-between sm:block">
                 <div />
-                <CtaButton>{buttonText}</CtaButton>
+                <CtaButton internalLink={internalLink}>{buttonText}</CtaButton>
               </div>
             </div>
           </div>
