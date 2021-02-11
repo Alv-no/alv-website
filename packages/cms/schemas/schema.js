@@ -10,8 +10,10 @@ import employee from './employee';
 import employeeTag from './employeeTag';
 import article from './article';
 import articleTag from './articleTag';
+import redirects from './redirects';
 import landingPage from './landingPage';
 import testimonial from './testimonial';
+import servicePage from './servicePage';
 import siteSettings from './siteSettings';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -24,12 +26,14 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
-    article,
     landingPage,
+    servicePage,
+    article,
     articleTag,
     employee,
     employeeTag,
     testimonial,
+    redirects,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,

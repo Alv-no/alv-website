@@ -14562,6 +14562,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-google-tagmanager@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "gatsby-plugin-google-tagmanager@npm:2.11.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    gatsby: ^2.0.0
+  checksum: 2c2d92cb795415b2c07574285b6073ec2ede8e87ef5c261e7100e41e15629074cfe258132c589cb6197a87f3b566d40c50313000abe2934f5f06dadc06886ab9
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-page-creator@npm:^2.8.0":
   version: 2.9.0
   resolution: "gatsby-plugin-page-creator@npm:2.9.0"
@@ -30396,6 +30407,7 @@ typescript@^4.0.5:
     gatsby-image: ^2.10.0
     gatsby-plugin-favicon: ^3.1.6
     gatsby-plugin-google-fonts: ^1.0.1
+    gatsby-plugin-google-tagmanager: ^2.11.0
     gatsby-plugin-postcss: ^3.6.0
     gatsby-plugin-react-helmet: ^3.9.0
     gatsby-plugin-sharp: ^2.13.1
