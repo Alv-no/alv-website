@@ -57,6 +57,20 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'UA-145784500-1',
+        includeInDevelopment: true,
+
+        // Delete line underneath once feature has been successfully implemented
+
+        // function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-145784500-1')
+        defaultDataLayer: { platform: 'gatsby' },
+
+        routeChangeEventName: 'gatsbyRouteChange',
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [`source sans pro:200,300,400,700`],

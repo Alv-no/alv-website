@@ -8,6 +8,7 @@ const crypto = require('crypto');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const articleTemplate = path.resolve(`./src/templates/article.js`);
+  const serviceTemplate = path.resolve(`./src/templates/service.js`);
   const res = await graphql(
     `
       {
@@ -17,6 +18,24 @@ exports.createPages = async ({ graphql, actions }) => {
               slug {
                 current
               }
+            }
+          }
+        }
+        allSanityServices {
+          edges {
+            node {
+              slug {
+                current
+              }
+            }
+          }
+        }
+        allSanityRedirect {
+          edges {
+            node {
+              fromPath
+              statusCode
+              toPath
             }
           }
         }
@@ -34,7 +53,20 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  // Create services pages.
+  res.data.allSanityServices.edges.forEach((edge) => {
+    createPage({
+      component: serviceTemplate,
+      path: `/vi-tilbyr/${edge.node.slug.current}`,
+      context: {
+        slug: edge.node.slug.current,
+      },
+    });
+  });
 };
+
+// Fetch videos with Youtube API
 if (process.env.YT_API) {
   exports.sourceNodes = async ({ actions }) => {
     const playlistData = await fetch(
@@ -80,7 +112,8 @@ if (process.env.YT_API) {
         );
       })
     );
-    // build Gatsby nodes
+
+    // build Gatsby nodes from fetch result
     const makeNode = (node) => {
       node.internal.contentDigest = crypto
         .createHash('md5')
