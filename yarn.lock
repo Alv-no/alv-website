@@ -14555,6 +14555,20 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-google-analytics@npm:^2.11.0":
+  version: 2.11.0
+  resolution: "gatsby-plugin-google-analytics@npm:2.11.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    minimatch: 3.0.4
+  peerDependencies:
+    gatsby: ^2.0.0
+    react: ^16.4.2 || ^17.0.0
+    react-dom: ^16.4.2 || ^17.0.0
+  checksum: b1e3f2ae4e17e141e1d36377c390e5cd239e65cc7f6b8f0a9d64cfa1dabcf14bc063b53429474be094917314e81297b0658c960a09a26ce590518806980baa26
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-google-fonts@npm:^1.0.1":
   version: 1.0.1
   resolution: "gatsby-plugin-google-fonts@npm:1.0.1"
@@ -30406,6 +30420,7 @@ typescript@^4.0.5:
     gatsby-background-image-es5: ^1.4.0
     gatsby-image: ^2.10.0
     gatsby-plugin-favicon: ^3.1.6
+    gatsby-plugin-google-analytics: ^2.11.0
     gatsby-plugin-google-fonts: ^1.0.1
     gatsby-plugin-google-tagmanager: ^2.11.0
     gatsby-plugin-postcss: ^3.6.0

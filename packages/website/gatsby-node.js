@@ -30,15 +30,6 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        allSanityRedirect {
-          edges {
-            node {
-              fromPath
-              statusCode
-              toPath
-            }
-          }
-        }
       }
     `
   );

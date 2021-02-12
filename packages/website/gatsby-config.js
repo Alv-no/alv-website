@@ -7,6 +7,13 @@ module.exports = {
     siteUrl: `https://www.alv.no`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-145784500-1',
+        head: true,
+      },
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
@@ -62,9 +69,6 @@ module.exports = {
         id: 'UA-145784500-1',
         includeInDevelopment: true,
 
-        // Delete line underneath once feature has been successfully implemented
-
-        // function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-145784500-1')
         defaultDataLayer: { platform: 'gatsby' },
 
         routeChangeEventName: 'gatsbyRouteChange',

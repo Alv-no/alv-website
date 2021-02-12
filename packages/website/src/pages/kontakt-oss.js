@@ -17,20 +17,20 @@ const Contact = ({ location }) => {
   const { address, phone, fluid, email, org } = useContactQuery();
   return (
     <Layout path={location.pathname}>
-      <div className="bg-navy">
+      <div className="bg-navy xl:pt-5">
         <div
-          className="bg-navy w-full sm:pb-12 pb-4 -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto xl:grid"
+          className="bg-navy w-full -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto xl:grid xl:pb-20"
           style={{ gridTemplateColumns: '50% 50%' }}
         >
-          <div className="flex-1 mt-18 sm:px-10">
+          <div className="flex-1 mt-12 sm:px-10 xl:block sm:grid grid-cols-fifty sm:-ml-12 xl:ml-0">
             <div className="">
-              <div className="opacity-90 w-full xl:h-full h-40vh">
+              <div className="opacity-60 w-full xl:h-full h-50vh">
                 <Image fluid={fluid} className="h-full" alt="kontakt" />
               </div>
             </div>
             <div className="2xl:ml-15 ml-5">
-              <div className="z-20 relative -mt-15 sm:w-80">
-                <Title align="left">Kontakt Oss</Title>
+              <div className="z-20 relative -mt-15 sm:w-100 sm:mt-5 xl:-mt-15 sm:-ml-20 xl:ml-0">
+                <Title align="left sm:text-cta-lg">Kontakt Oss</Title>
                 <div className="sm:h-6 h-6" />
                 <span className="">
                   <Description align="left">
@@ -50,7 +50,31 @@ const Contact = ({ location }) => {
                   Besøk
                 </FormSelect>
               </div>
-              <div className="text-lg tracking-wider 2xl:ml-30 mb-20">
+              <div className="hidden xl:block">
+                <div className="text-lg tracking-wider 2xl:ml-30 mb-20">
+                  <div className="mb-3">
+                    <a href="tel:822704042" className="flex">
+                      <span className="mr-3">
+                        <Icon.Phone />
+                      </span>{' '}
+                      {phone}
+                    </a>
+                  </div>
+                  <div className="mb-3">
+                    <a href="mailto:hei@alv.no" className="flex items-center">
+                      <span className="mr-3">
+                        <Icon.Mail />
+                      </span>{' '}
+                      {email}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="ml-25 xl:hidden h-40 flex items-center">
+            <div>
+              <div className="text-lg tracking-wider">
                 <div className="mb-3">
                   <a href="tel:822704042" className="flex">
                     <span className="mr-3">

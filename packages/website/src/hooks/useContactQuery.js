@@ -3,7 +3,7 @@ export const useContactQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        contactUsImg: file(name: { eq: "about_us_img2" }) {
+        contactUsImg: file(name: { eq: "contact_us_img" }) {
           childImageSharp {
             fluid(quality: 100) {
               ...GatsbyImageSharpFluid
