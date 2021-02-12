@@ -4,10 +4,10 @@ import Image from 'gatsby-image';
 import Link from 'gatsby-link';
 import BackgroundImage from 'gatsby-background-image-es5';
 
-export const RolesList = ({ image }) => {
+export const RolesList = ({ image, roles }) => {
   return (
     <>
-      <div className="w-full" id="hva-gjør-vi">
+      <div className="w-full" id="hva-gjor-vi">
         <div
           className="max-w-1440 mx-auto sm:grid py-8 lg:gap-x-15 sm:gap-x-0 justify-between sm:pr-12"
           style={{ gridTemplateColumns: '30% 30% 30%' }}
@@ -41,19 +41,30 @@ export const RolesList = ({ image }) => {
           </span>
 
           <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end px-5 sm:px-0">
-            <RoleItem>.NET utvikler</RoleItem>
-            <RoleItem>Java utvikler</RoleItem>
-            <RoleItem>c# utvikler</RoleItem>
-            <RoleItem>Agile & Devops</RoleItem>
+            {roles &&
+              roles.slice(0, Math.ceil(roles.length / 2)).map((role) => {
+                return (
+                  <RoleItem internalLink={role.node.slug.current}>
+                    {role.node.heroHeading}
+                  </RoleItem>
+                );
+              })}
           </div>
           <div
             className="h-2px w-full mx-5 sm:hidden"
             style={{ background: 'rgba(6, 24, 56, 0.3)' }}
           />
           <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end px-5 sm:px-0">
-            <RoleItem>Applikasjonsutvikling</RoleItem>
-            <RoleItem>WEB utvikler</RoleItem>
-            <RoleItem>Teknisk Tester</RoleItem>
+            {roles &&
+              roles
+                .slice(Math.ceil(roles.length / 2), roles.length)
+                .map((role) => {
+                  return (
+                    <RoleItem internalLink={role.node.slug.current}>
+                      {role.node.heroHeading}
+                    </RoleItem>
+                  );
+                })}
           </div>
         </div>
       </div>
@@ -61,8 +72,8 @@ export const RolesList = ({ image }) => {
   );
 };
 
-export const RoleItem = ({ children, color }) => (
-  <Link to="/systemutvikling">
+export const RoleItem = ({ children, color, internalLink }) => (
+  <Link to={`/vi-tilbyr/${internalLink || ''}`}>
     <div
       className={`flex w-full sm:text-sm md:text-base items-center my-2 h-10 uppercase ${
         color || 'text-navy'

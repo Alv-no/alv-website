@@ -317,11 +317,12 @@ export const ScrollArrow = () => (
 );
 
 export const ScrollToContinue = () => (
-  <div className="absolute text-white right-0 bottom-0 sm:text-base -mr-20 2xl:mr-5 mb-40 transform -rotate-90 text-sm tracking-wider translate-x-2 font-thin flex translate-y-25 sm:translate-y-15 twelve:-translate-y-8 z-20">
-    <div className="transform rotate-90 -translate-x-12 -translate-y-10 sm:-translate-y-9">
+  <div className="absolute text-white right-0 bottom-0 sm:text-base -mr-20 2xl:mr-5 mb-40 transform -rotate-90 text-sm tracking-wider translate-x-2 font-thin flex translate-y-25 sm:translate-y-20 z-20">
+    <div className="transform rotate-90 -translate-x-12 sm:-translate-x-15 -translate-y-10 sm:-translate-y-9">
       <ScrollArrow />
     </div>{' '}
-    <span className="font-semibold">SCROLL</span> TO CONTINUE{' '}
+    <span className="font-semibold">SCROLL</span>
+    <span className="opacity-0">-</span>TO CONTINUE{' '}
   </div>
 );
 export const Chart = () => (

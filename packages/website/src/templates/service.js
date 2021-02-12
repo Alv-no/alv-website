@@ -6,24 +6,40 @@ import { RolesList } from '../components/rolesList';
 import { NavyIntroImage } from '../components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
 
-const Systemutvikling = ({ data }) => {
-  const nav = ['Oversikt', 'Hva Gjør Vi', 'Vårt Team', 'Blogg', 'Kundeomtaler'];
+const Service = ({ data }) => {
+  const nav = [
+    { label: 'Oversikt', id: 'oversikt' },
+    { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
+  ];
+
+  const scrollTo = (e) => {
+    const element = document.getElementById(e.target.name);
+    const top = element && window.scrollY + element.getBoundingClientRect().top;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
   return (
     <Layout>
       <NavyIntroImage
         title={data.sanityServices.heroHeading}
         description={data.sanityServices.heroDescription}
-        buttonText="Request a QUOTE"
-        link="/kontakt-oss"
+        internalLink="/kontakt-oss"
         image={data.sanityServices.heroImage.asset.fluid}
       />
-      <div className="w-full bg-white sm:pb-20 pb-12 overflow-hidden tracking-wider">
+      <div className="w-full bg-white sm:pb-0 pb-12 overflow-hidden tracking-wider">
         <ServiceNavList
           nav={nav}
           image={data.cUtvikler.childImageSharp.fluid}
+          raw={data.sanityServices._rawAboutBlock}
+          heading={data.sanityServices.aboutSection}
+          scrollTo={scrollTo}
         />
         <div className="h-10" />
-        <RolesList image={data.rolesImg.childImageSharp.fluid} />
+        <RolesList
+          image={data.rolesImg.childImageSharp.fluid}
+          roles={data.allSanityServices.edges}
+          id="hva-gjor-vi"
+        />
         <CtaSection
           eyebrow={data.sanityServices.ctaEyebrow}
           heading={data.sanityServices.ctaHeading}
@@ -35,7 +51,7 @@ const Systemutvikling = ({ data }) => {
   );
 };
 
-export default Systemutvikling;
+export default Service;
 
 // GraphQL Query for article content
 export const query = graphql`
@@ -56,12 +72,23 @@ export const query = graphql`
       }
       heroHeading
       heroDescription
+      _rawAboutBlock
       ctaHeading
       ctaEyebrow
       ctaBool
       aboutSection
       aboutBlock {
         _rawChildren
+      }
+    }
+    allSanityServices {
+      edges {
+        node {
+          heroHeading
+          slug {
+            current
+          }
+        }
       }
     }
     rolesImg: file(name: { eq: "vitilbyr_digitalisering" }) {

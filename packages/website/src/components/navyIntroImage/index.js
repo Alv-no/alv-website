@@ -4,7 +4,7 @@ import { Description } from '../description';
 import Link from 'gatsby-link';
 import Image from 'gatsby-image';
 
-export const NavyIntroImage = ({ title, description, image }) => (
+export const NavyIntroImage = ({ title, description, image, internalLink }) => (
   <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:pb-15 sm:h-auto h-screen flex sm:block justify-center items-center flex-col">
     <div
       className="max-w-1440 mx-auto sm:grid sm:pl-30"
@@ -21,10 +21,10 @@ export const NavyIntroImage = ({ title, description, image }) => (
           </Description>
         </div>
 
-        <Outline>Få et tilbud</Outline>
+        <Outline link={internalLink}>Få et tilbud</Outline>
         <div className="h-20" />
       </div>
-      <div className="transform translate-y-48 hidden twelve:block">
+      <div className="transform 2xl:translate-y-48 twelve:translate-y-40 translate-y-56  hidden lg:block">
         <Image fluid={image} />
       </div>
     </div>
@@ -32,7 +32,7 @@ export const NavyIntroImage = ({ title, description, image }) => (
 );
 
 export const Outline = ({ children, link }) => (
-  <Link link={link}>
+  <Link to={link}>
     <button className="text-white px-10 rounded rounded-full font-semibold text-base uppercase py-2 border border-white border-2 tracking-wider">
       {children}
     </button>

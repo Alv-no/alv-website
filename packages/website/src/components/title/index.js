@@ -28,7 +28,7 @@ export const Title = ({
         <span className={`${size || ''}`}>{children}</span>
         {!noDot && <Dot />}
       </h2>
-      {underline && <div className="w-12 h-3px bg-yellow mt-2px" />}
+      {underline && <div className="w-12 h-3px bg-yellow mt-6px" />}
     </>
   );
 };

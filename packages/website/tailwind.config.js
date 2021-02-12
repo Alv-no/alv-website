@@ -82,6 +82,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'slider-md': '75% 25%',
+        'fifty': '50% 50%',
         'videos-lg': '20% 80%',
         'videos-hero': '25% 75%',
         'videos': 'repeat(4, minmax(220px, 278px))',
