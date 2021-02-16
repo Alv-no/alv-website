@@ -6,12 +6,12 @@ import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import './layout.css';
 
 const Layout = ({ children, path }) => {
-  const { address, org, email, phone } = useLayoutQuery();
+  const { address, org, email, phone, pages } = useLayoutQuery();
   return (
     <>
       <SEO />
-      <Header path={path} />
-      <MobileHeader />
+      <Header path={path} pages={pages} />
+      <MobileHeader pages={pages} />
       <div>{children}</div>
       <Footer address={address} org={org} email={email} phone={phone} />
     </>

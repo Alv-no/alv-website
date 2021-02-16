@@ -5,6 +5,7 @@ import { Title } from '../title';
 import * as Button from '../button';
 
 export const FeaturedTeam = ({ team, notitle, fallbackImg }) => {
+  console.log(team);
   const handleClick = (e) => {
     return e;
   };
