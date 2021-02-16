@@ -1,5 +1,5 @@
-variable "git_hash" {
-  description = "git hash"
+variable "docker_tag" {
+  description = "Tag for the docker image"
   type        = string
 }
 
@@ -10,21 +10,6 @@ variable "subscription_id" {
 
 variable "service_name" {
   description = "service_name"
-  type        = string
-}
-
-variable "container_registry" {
-  description = "Docker container registry link"
-  type        = string
-}
-
-variable "container_registry_username" {
-  description = "Docker container registry link"
-  type        = string
-}
-
-variable "container_registry_password" {
-  description = "Docker container registry password"
   type        = string
 }
 
@@ -41,6 +26,28 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = var.service_name
   location = "West Europe"
+}
+
+resource "azurerm_container_registry" "acr" {
+  name                     = "alvnoacr"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  sku                      = "Basic"
+  admin_enabled            = true
+}
+
+resource "null_resource" "docker_build" {
+  triggers = {
+    always_run = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = "./dockerbuild.sh ${azurerm_container_registry.acr.login_server} ${azurerm_container_registry.acr.admin_username} ${azurerm_container_registry.acr.admin_password} ${var.docker_tag}"
+  }
+
+  depends_on = [
+    azurerm_container_registry.acr,
+  ]
 }
 
 resource "azurerm_app_service_plan" "asp" {
@@ -64,9 +71,9 @@ resource "azurerm_app_service" "as" {
   app_service_plan_id = azurerm_app_service_plan.asp.id
 
 	app_settings = {
-    DOCKER_REGISTRY_SERVER_URL      = "https://${var.container_registry}"
-    DOCKER_REGISTRY_SERVER_USERNAME = var.container_registry_username
-    DOCKER_REGISTRY_SERVER_PASSWORD = var.container_registry_password
+    DOCKER_REGISTRY_SERVER_URL      = "https://${azurerm_container_registry.acr.login_server}"
+    DOCKER_REGISTRY_SERVER_USERNAME = azurerm_container_registry.acr.admin_username
+    DOCKER_REGISTRY_SERVER_PASSWORD = azurerm_container_registry.acr.admin_password
 	}
 
   identity {
@@ -75,7 +82,10 @@ resource "azurerm_app_service" "as" {
 
   site_config {
     app_command_line = ""
-#    linux_fx_version = "DOCKER|${var.container_registry}/${azurerm_resource_group.rg.name}:${var.git_hash}"
-    linux_fx_version = "DOCKER|${var.container_registry}/${azurerm_resource_group.rg.name}"
+    linux_fx_version = "DOCKER|alvnoacr.azurecr.io/website:${var.docker_tag}"
   }
+
+  depends_on = [
+    null_resource.docker_build,
+  ]
 }
