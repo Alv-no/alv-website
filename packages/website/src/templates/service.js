@@ -20,32 +20,42 @@ const Service = ({ data }) => {
 
   return (
     <Layout>
-      <NavyIntroImage
-        title={data.sanityServices.heroHeading}
-        description={data.sanityServices.heroDescription}
-        internalLink="/kontakt-oss"
-        image={data.sanityServices.heroImage.asset.fluid}
-      />
-      <div className="w-full bg-white sm:pb-0 pb-12 overflow-hidden tracking-wider">
+      <div className="z-0 relative">
+        <NavyIntroImage
+          title={data.sanityServices.heroHeading}
+          description={data.sanityServices.heroDescription}
+          internalLink="/kontakt-oss"
+          image={data.sanityServices.heroImage.asset.fluid}
+        />
+      </div>
+      <div className="w-full bg-white tracking-wider z-10 relative">
         <ServiceNavList
           nav={nav}
-          image={data.cUtvikler.childImageSharp.fluid}
+          heroImage={data.sanityServices.heroImage.asset.fluid}
           raw={data.sanityServices._rawAboutBlock}
           heading={data.sanityServices.aboutSection}
           scrollTo={scrollTo}
         />
-        <div className="h-10" />
-        <RolesList
-          image={data.rolesImg.childImageSharp.fluid}
-          roles={data.allSanityServices.edges}
-          id="hva-gjor-vi"
-        />
-        <CtaSection
-          eyebrow={data.sanityServices.ctaEyebrow}
-          heading={data.sanityServices.ctaHeading}
-          buttonText="Ta Kontakt"
-          internalLink="/kontakt-oss"
-        />
+        <div className="overflow-x-hidden">
+          <div className="h-10" />
+          <RolesList
+            image={data.rolesImg.childImageSharp.fluid}
+            roles={data.allSanityServices.edges}
+            id="hva-gjor-vi"
+          />
+          <CtaSection
+            eyebrow={
+              data.sanityServices.ctaEyebrow ||
+              'Tenker du på å kjøre i gang med et prosjekt?'
+            }
+            heading={
+              data.sanityServices.ctaHeading ||
+              'Ta kontakt med oss for å se om vi har passende konsulenter tilgjengelig.'
+            }
+            buttonText="Ta Kontakt"
+            internalLink="/kontakt-oss"
+          />
+        </div>
       </div>
     </Layout>
   );
