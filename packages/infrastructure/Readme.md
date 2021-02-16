@@ -9,12 +9,9 @@ This is the infrastructure setup for Azure.
 - Create a file "stage-1/terraform.tfvars":
 
 ```
-git_hash = "latest"
+docker_tag = "latest"
 subscription_id = ""
-service_name = "website"
-container_registry = "dockercontainerregistry2020.azurecr.io"
-container_registry_username = "dockerContainerRegistry2020"
-container_registry_password = ""
+service_name = "alvno-dev"
 ```
 
-- `cd stage-1 && terraform init && terraform apply`
+- `cd stage-1 && terraform init && terraform apply -auto-approve`
