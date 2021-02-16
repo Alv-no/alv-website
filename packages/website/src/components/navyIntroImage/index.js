@@ -5,26 +5,27 @@ import Link from 'gatsby-link';
 import Image from 'gatsby-image';
 
 export const NavyIntroImage = ({ title, description, image, internalLink }) => (
-  <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:pb-15 sm:h-auto h-screen flex sm:block justify-center items-center flex-col">
+  <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative">
     <div
-      className="max-w-1440 mx-auto sm:grid sm:pl-30"
+      className="max-w-1440 mx-auto twelve:grid twelve:pl-30 relative"
       style={{ gridTemplateColumns: '60% auto' }}
     >
       <div className="transform sm:-translate-x-5 sm:px-0 px-12 flex sm:block justify-center items-center flex-col">
-        <Title align="center sm:text-left text-blog sm:text-about-xl">
+        <Title align="center twelve:text-left text-blog sm:text-about-xl">
           {title}
         </Title>
         <div className="sm:h-8 h-4" />
-        <div className="mb-10">
-          <Description align="center sm:text-left text-lg">
+        <div className="mb-10 flex justify-center">
+          <Description align="center twelve:text-left text-lg">
             {description}
           </Description>
         </div>
-
-        <Outline link={internalLink}>Få et tilbud</Outline>
-        <div className="h-20" />
+        <div className="w-full flex justify-center twelve:justify-start">
+          <Outline link={internalLink}>Få et tilbud</Outline>
+        </div>
+        <div className="h-30 twelve:h-20" />
       </div>
-      <div className="transform 2xl:translate-y-48 twelve:translate-y-40 translate-y-56  hidden lg:block">
+      <div className="h-54 w-100 xl:scale-110 twelve:absolute twelve:block right-0 bottom-0 transform translate-y-0 hidden">
         <Image fluid={image} />
       </div>
     </div>

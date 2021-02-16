@@ -12,19 +12,19 @@ export const Navigation = ({ open, toggleClose, pages }) => {
   const { width } = useWindowDimensions();
   return (
     <header
-      className={`text-white tracking-wider fixed overflow-y-scroll z-50 h-full w-full bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 eight:text-center ${
+      className={`text-white tracking-wider fixed overflow-y-scroll overflow-x-hidden z-50 h-full w-full bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 eight:text-center ${
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       style={{ zIndex: 999 }}
     >
-      <div className="eight:flex justify-center relative z-40 mr-5 justify-between mx-auto auto eight:mb-0 eight:mb-25 max-w-1200 items-center mb-12 eight:mb-0">
-        <div className="w-40" />
+      <div className="eight:flex justify-center relative z-40 justify-between mx-auto auto eight:mb-0 eight:mb-25 eight:mx-auto max-w-1200 items-center mb-12 eight:mb-0">
+        <div className="w-32" />
         <span className="">
           <Link to="/">
             <Logo.White />
           </Link>
         </span>
-        <div className="eight:flex w-35 hidden">
+        <div className="eight:flex hidden">
           <a
             href="https://www.instagram.com/alvnoas/"
             target="_blank"
@@ -48,18 +48,9 @@ export const Navigation = ({ open, toggleClose, pages }) => {
           >
             <Icon.Facebook />
           </a>
-          <div className="hidden eight:block justify-center ml-10 -mt-1 transform scale-60">
-            <button
-              type="button"
-              className="cursor-pointer focus:outline-none"
-              onClick={toggleClose}
-            >
-              <Icon.Cross />
-            </button>
-          </div>
         </div>
       </div>
-      <div className="eight:flex eight:mx-auto eight:-mt-10 justify-center items-center max-w-1000 -mx-6 sm:-mx-8">
+      <div className="eight:flex eight:mx-auto eight:-mt-10 justify-center items-center max-w-1000 -mx-6 sm:-mx-8 eight:pr-8">
         <ConditionalWrapper
           condition={width >= 800}
           wrapper={(children) => <div>{children}</div>}
@@ -113,7 +104,7 @@ export const Navigation = ({ open, toggleClose, pages }) => {
           </LargeLink>
         </ConditionalWrapper>
       </div>
-      <div className="eight:absolute eight:mr-12 eight:hidden eight:mt-8 justify-center eight:mr-0 absolute top-0 right-0 mt-5 mr-5 sm:mt-8 sm:mr-8 transform scale-70 sm:scale-80 eight:scale-70">
+      <div className="eight:relative eight:block eight:mt-8 justify-center eight:mr-0 absolute top-0 right-0 mt-5 sm:translate-x-0 xs:-translate-x-7 -translate-x-4 sm:mr-0 sm:mt-8 transform scale-70">
         <button
           type="button"
           className="cursor-pointer focus:outline-none"
