@@ -1,3 +1,5 @@
+stage-1/terraform.tfvars
+stage-1/.terraform.lock.hcl
 
 # Created by https://www.toptal.com/developers/gitignore/api/terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=terraform
