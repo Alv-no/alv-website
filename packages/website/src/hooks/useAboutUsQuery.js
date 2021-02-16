@@ -57,7 +57,7 @@ export const useAboutUsQuery = () => {
               image {
                 asset {
                   fluid(maxWidth: 600) {
-                    src
+                    ...GatsbySanityImageFluid
                   }
                 }
               }

@@ -8,7 +8,7 @@ import Headroom from 'react-headroom';
 import { Navigation } from '../navigation';
 import { window } from 'browser-monads';
 
-export const Header = ({ path }) => {
+export const Header = ({ path, pages }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -22,7 +22,7 @@ export const Header = ({ path }) => {
 
   return (
     <>
-      <Navigation open={open} toggleClose={toggleClose} />
+      <Navigation open={open} toggleClose={toggleClose} pages={pages} />
       <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
         <div className="max-w-1600 mx-auto">
           <div className="flex justify-between sm:mb-7 ">
@@ -57,7 +57,7 @@ export const Header = ({ path }) => {
   );
 };
 
-export const MobileHeader = ({ viewport }) => {
+export const MobileHeader = ({ viewport, pages }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -67,7 +67,7 @@ export const MobileHeader = ({ viewport }) => {
   };
   return (
     <>
-      <Navigation open={open} toggleClose={toggleClose} />
+      <Navigation open={open} toggleClose={toggleClose} pages={pages} />
       <Headroom>
         <div
           className={`bg-navy block ${
@@ -96,7 +96,7 @@ export const MobileHeader = ({ viewport }) => {
   );
 };
 
-export const BlogHeader = () => {
+export const BlogHeader = ({ pages }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -108,7 +108,7 @@ export const BlogHeader = () => {
   crumbs.shift();
   return (
     <>
-      <Navigation open={open} toggleClose={toggleClose} />
+      <Navigation open={open} toggleClose={toggleClose} pages={pages} />
       <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
         <div className="max-w-1600 mx-auto">
           <div className="flex justify-between sm:mb-7 ">

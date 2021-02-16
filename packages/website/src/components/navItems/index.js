@@ -78,13 +78,13 @@ export const Subtitle = ({ children, margin, link }) => {
 };
 
 export const List = ({ children }) => (
-  <ul className="eight:max-h-full list-none hidden eight:block mt-8 mb-12">
+  <ul className="eight:max-h-full list-none list-style-none hidden eight:block mt-8 mb-12">
     {children}
   </ul>
 );
 
 export const ListLink = ({ children, link }) => (
-  <li className="text-base uppercase font-light mb-5 eight:mb-3 2xl:mb-4 tracking-wider eight:ml-0 ml-20 tracking-widest">
+  <li className="text-base uppercase font-light mb-5 list-none list-style-none eight:mb-3 2xl:mb-4 tracking-wider eight:ml-0 ml-20 tracking-widest">
     <Link to={link}>{children}</Link>
   </li>
 );
