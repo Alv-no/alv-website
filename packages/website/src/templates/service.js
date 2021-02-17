@@ -20,7 +20,7 @@ const Service = ({ data }) => {
 
   return (
     <Layout>
-      <div className="z-0 relative">
+      <div className="z-0 twelve:z-20 relative">
         <NavyIntroImage
           title={data.sanityServices.heroHeading}
           description={data.sanityServices.heroDescription}

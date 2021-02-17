@@ -8,11 +8,15 @@ const Breadcrumb = ({ path }) => {
     crumbs = filteredPath.map((el) => {
       let formattedEl = el[0].toUpperCase() + el.slice(1);
       if (formattedEl.includes('-')) {
-        formattedEl.length > 35
-          ? (formattedEl = ['Blogginnlegg'])
-          : (formattedEl = formattedEl.split('-').join(' '));
+        if (path[0] !== 'vi-tilbyr') {
+          formattedEl.length > 35
+            ? (formattedEl = ['Blogginnlegg'])
+            : (formattedEl = formattedEl.split('-').join(' '));
+        } else {
+          formattedEl = formattedEl.split('-').join(' ');
+        }
       }
-
+      if (el === 'vi-tilbyr') formattedEl = 'Vi tilbyr';
       return formattedEl;
     });
   }

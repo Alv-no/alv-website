@@ -13,9 +13,11 @@ export const Hero = ({ linesAndClasses, delay }) => {
       >
         <Typewriter linesAndClasses={linesAndClasses} delay={delay} />
       </Title>
-      <div className="sm:h-3 h-4" />
-      <div className="">
-        <Icon.ScrollToContinue />
+      <div className="sm:h-3 h-4 relative w-full" />
+      <div className="w-full relative max-w-1600 mx-auto">
+        <div className="absolute right-0">
+          <Icon.ScrollToContinue />
+        </div>
       </div>
     </div>
   );

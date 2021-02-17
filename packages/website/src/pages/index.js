@@ -21,7 +21,7 @@ const Index = () => {
       <div className="overflow-hidden">
         <Hero linesAndClasses={linesAndClasses} delay={90} />
         <div className="bg-navy">
-          <div className="bg-navy w-full pb-15">
+          <div className="bg-navy w-full pb-15 sm:pt-0 pt-10">
             <VideoIntro
               videoMp4={data.video.videoMp4.asset.url}
               videoWebm={data.video.videoWebm.asset.url}

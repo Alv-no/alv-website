@@ -15,7 +15,7 @@ export const NavyIntroImage = ({ title, description, image, internalLink }) => (
           {title}
         </Title>
         <div className="sm:h-8 h-4" />
-        <div className="mb-10 flex justify-center">
+        <div className="mb-10 flex twelve:block justify-center">
           <Description align="center twelve:text-left text-lg">
             {description}
           </Description>
@@ -25,7 +25,7 @@ export const NavyIntroImage = ({ title, description, image, internalLink }) => (
         </div>
         <div className="h-30 twelve:h-20" />
       </div>
-      <div className="h-54 w-100 xl:scale-110 twelve:absolute twelve:block right-0 bottom-0 transform translate-y-0 hidden">
+      <div className="h-54 w-100 twelve:absolute twelve:block right-0 bottom-0 transform translate-y-0 hidden">
         <Image fluid={image} />
       </div>
     </div>
