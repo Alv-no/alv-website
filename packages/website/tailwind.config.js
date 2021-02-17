@@ -1,6 +1,6 @@
 module.exports = {
   future: {},
-  purge: false,
+  purge: ['./src/**/*.js', './src/**/*.jsx'],
   theme: {
     letterSpacing: {
       tighter: '-.05em',
@@ -119,6 +119,7 @@ module.exports = {
         '550': '550px',
         '160': '640px',
         '20vh': '20vh',
+        '25vh': '25vh',
         '30vh': '30vh',
         '40vh': '40vh',
         '50vh': '50vh',
@@ -147,6 +148,7 @@ module.exports = {
         '15': '60px',
         '18': '72px',
         '25': '100px',
+        '28': '112px',
         '30': '120px',
         '35': '140px',
         '100': '400px',
@@ -220,6 +222,7 @@ module.exports = {
         'twelve': '1200px',
         'xl': '1280px',
         '2xl': '1440px',
+        '3xl': '1700px',
         '1600': '1600px',
       },
     },

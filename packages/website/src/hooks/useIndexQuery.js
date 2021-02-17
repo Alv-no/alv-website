@@ -5,6 +5,7 @@ export const useIndexQuery = () => {
       query {
         video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
           id
+          pageTitle
           videoMp4 {
             asset {
               url
