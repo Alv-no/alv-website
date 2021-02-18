@@ -4,6 +4,11 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'pageTitle',
+      title: 'Page title',
+      type: 'string',
+    },
+    {
       name: 'videoWebm',
       title: 'Video introduction webm',
       type: 'file',
