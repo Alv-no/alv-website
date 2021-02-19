@@ -26,3 +26,9 @@ jobs:
 
       - name: Tests
         run: yarn test
+
+      - name: Sanity configcheck
+        run: yarn workspace cms run sanity configcheck
+
+      - name: Sanity check
+        run: yarn workspace cms run sanity check
