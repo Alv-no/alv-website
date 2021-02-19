@@ -13,9 +13,7 @@ COPY packages/website /app/packages/website/
 RUN yarn
 
 RUN yarn workspace website run disable-telemetry
-# How the fuck did we fuck this up
-# Now it only successfully builds if we build it twice in a row?
-RUN yarn workspace website run build; yarn workspace website run build
+RUN yarn workspace website run build
 
 # Stage 2 - Webserver using Ngnix
 FROM nginx:1.18-alpine
