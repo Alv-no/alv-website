@@ -13,9 +13,9 @@ variable "service_name" {
   type        = string
 }
 
-#terraform {
-#  backend "azurerm" {}
-#}
+terraform {
+  backend "azurerm" {}
+}
 
 provider "azurerm" {
   subscription_id = var.subscription_id
@@ -29,7 +29,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                     = "alvnoacr"
+  name                     = "${var.service_name}acr"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   sku                      = "Basic"
@@ -82,10 +82,10 @@ resource "azurerm_app_service" "as" {
 
   site_config {
     app_command_line = ""
-    linux_fx_version = "DOCKER|alvnoacr.azurecr.io/website:${var.docker_tag}"
+    linux_fx_version = "DOCKER|${azurerm_resource_group.rg.name}acr.azurecr.io/website:${var.docker_tag}"
   }
 
   depends_on = [
-    null_resource.docker_build,
+    null_resource.docker_build, azurerm_app_service_plan.asp
   ]
 }
