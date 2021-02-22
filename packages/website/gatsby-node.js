@@ -21,11 +21,25 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allSanityCategoryPage {
+          edges {
+            node {
+              slug {
+                current
+              }
+            }
+          }
+        }
         allSanityServices {
           edges {
             node {
               slug {
                 current
+              }
+              parentPage {
+                slug {
+                  current
+                }
               }
             }
           }
@@ -49,7 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
   res.data.allSanityServices.edges.forEach((edge) => {
     createPage({
       component: serviceTemplate,
-      path: `/vi-tilbyr/${edge.node.slug.current}`,
+      path: `/vi-tilbyr/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },

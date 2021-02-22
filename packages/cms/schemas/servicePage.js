@@ -11,6 +11,16 @@ export default {
         source: 'heroHeading',
         maxLength: 96,
       },
+      validation: (Rule) =>
+        Rule.required().warning('This field cannot be empty'),
+    },
+    {
+      name: 'parentPage',
+      title: 'Parent Category Page',
+      type: 'reference',
+      to: { type: 'categoryPage' },
+      validation: (Rule) =>
+        Rule.required().warning('This field cannot be empty'),
     },
     {
       name: 'heroHeading',
