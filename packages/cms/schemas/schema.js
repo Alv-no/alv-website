@@ -12,6 +12,7 @@ import article from './article';
 import articleTag from './articleTag';
 import redirects from './redirects';
 import landingPage from './landingPage';
+import categoryPage from './categoryPage';
 import testimonial from './testimonial';
 import servicePage from './servicePage';
 import siteSettings from './siteSettings';
@@ -28,6 +29,7 @@ export default createSchema({
     siteSettings,
     landingPage,
     servicePage,
+    categoryPage,
     article,
     articleTag,
     employee,

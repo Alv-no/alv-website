@@ -8,11 +8,16 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-export const Navigation = ({ open, toggleClose, pages }) => {
+export const Navigation = ({
+  open,
+  toggleClose,
+  servicePages,
+  categoryPages,
+}) => {
   const { width } = useWindowDimensions();
   return (
     <header
-      className={`text-white tracking-wider fixed overflow-y-scroll overflow-x-hidden z-50 h-full w-full bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 eight:text-center ${
+      className={`text-white tracking-wider fixed overflow-y-scroll overflow-x-hidden z-50 h-full w-full bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 ${
         open ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       style={{ zIndex: 999 }}
@@ -50,17 +55,50 @@ export const Navigation = ({ open, toggleClose, pages }) => {
           </a>
         </div>
       </div>
-      <div className="eight:flex eight:mx-auto eight:-mt-10 justify-center items-center max-w-1000 -mx-6 sm:-mx-8 eight:pr-8">
+      <div className="eight:flex eight:mx-auto eight:-mt-10 justify-center max-w-1000 -mx-6 sm:-mx-8 eight:pr-8">
         <ConditionalWrapper
           condition={width >= 800}
           wrapper={(children) => <div>{children}</div>}
         >
           <LargeLink margin="eight:mb-10 2xl:mb-12">Vi Tilbyr</LargeLink>
+          {categoryPages &&
+            categoryPages.map((categoryPage) => {
+              return (
+                <div>
+                  <Subtitle margin="eight:mb-10 2xl:mb-12">
+                    {categoryPage.heroHeading}
+                  </Subtitle>
+                  {servicePages.some(
+                    (page) =>
+                      page.parentPage.slug.current === categoryPage.slug.current
+                  ) && (
+                    <div>
+                      {servicePages
+                        .filter(
+                          (page) =>
+                            page.parentPage.slug.current ===
+                            categoryPage.slug.current
+                        )
+                        .map((page) => (
+                          <ListLink
+                            link={`vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
+                            margin="eight:mb-5 2xl:mb-6"
+                          >
+                            {page.heroHeading}
+                          </ListLink>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           <div>
-            {pages &&
-              pages.map((page) => {
+            {servicePages &&
+              servicePages.map((page) => {
                 return (
-                  <ListLink link={`/vi-tilbyr/${page.slug.current}`}>
+                  <ListLink
+                    link={`/${page.parentPage.slug.current}/${page.slug.current}`}
+                  >
                     {page.heroHeading}
                   </ListLink>
                 );
