@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import * as Icon from '../icon';
 import * as Logo from '../logo';
-import { LargeLink, Subtitle, ListLink } from '../navItems';
+import { LargeLink, Subtitle, ListLink, List } from '../navItems';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
@@ -22,14 +22,13 @@ export const Navigation = ({
       }`}
       style={{ zIndex: 999 }}
     >
-      <div className="eight:flex justify-center relative z-40 justify-between mx-auto auto eight:mb-0 eight:mb-25 eight:mx-auto max-w-1200 items-center mb-12 eight:mb-0">
-        <div className="w-32" />
-        <span className="">
+      <div className="eight:flex justify-center relative z-40 mx-auto auto eight:mb-0 eight:mb-25 eight:mx-auto max-w-1200 items-center mb-12 eight:mb-0">
+        <div className="">
           <Link to="/">
             <Logo.White />
           </Link>
-        </span>
-        <div className="eight:flex hidden">
+        </div>
+        <div className="absolute right-0 transform -translate-x-20 eight:flex hidden">
           <a
             href="https://www.instagram.com/alvnoas/"
             target="_blank"
@@ -62,17 +61,27 @@ export const Navigation = ({
         >
           <LargeLink margin="eight:mb-10 2xl:mb-12">Vi Tilbyr</LargeLink>
           {categoryPages &&
-            categoryPages.map((categoryPage) => {
+            categoryPages.slice(0, 3).map((categoryPage) => {
               return (
-                <div>
-                  <Subtitle margin="eight:mb-10 2xl:mb-12">
+                <div className="eight:max-w-68">
+                  <Subtitle
+                    // Temporarily disables links to category pages
+                    inactive={
+                      !servicePages.some(
+                        (page) =>
+                          page.parentPage.slug.current ===
+                          categoryPage.slug.current
+                      )
+                    }
+                    margin="eight:mb-8 2xl:mb-12"
+                  >
                     {categoryPage.heroHeading}
                   </Subtitle>
                   {servicePages.some(
                     (page) =>
                       page.parentPage.slug.current === categoryPage.slug.current
                   ) && (
-                    <div>
+                    <List>
                       {servicePages
                         .filter(
                           (page) =>
@@ -81,31 +90,67 @@ export const Navigation = ({
                         )
                         .map((page) => (
                           <ListLink
-                            link={`vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
+                            link={`/vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
                             margin="eight:mb-5 2xl:mb-6"
                           >
                             {page.heroHeading}
                           </ListLink>
                         ))}
-                    </div>
+                    </List>
                   )}
                 </div>
               );
             })}
-          <div>
-            {servicePages &&
-              servicePages.map((page) => {
-                return (
-                  <ListLink
-                    link={`/${page.parentPage.slug.current}/${page.slug.current}`}
-                  >
-                    {page.heroHeading}
-                  </ListLink>
-                );
-              })}
-          </div>
         </ConditionalWrapper>
-        <div className="w-20" />
+        <div className="eight:w-10 lg:w-15 xl:w-20 2xl:w-32" />
+        <ConditionalWrapper
+          condition={width >= 800}
+          wrapper={(children) => <div>{children}</div>}
+        >
+          <div className="eight:mt-20 eight:pt-7 xl:pt-10" />
+          {categoryPages &&
+            categoryPages.slice(3, categoryPages.length).map((categoryPage) => {
+              return (
+                <div className="eight:max-w-68">
+                  <Subtitle
+                    // Temporarily disables links to category pages
+                    inactive={
+                      !servicePages.some(
+                        (page) =>
+                          page.parentPage.slug.current ===
+                          categoryPage.slug.current
+                      )
+                    }
+                    margin="eight:mb-10 2xl:mb-12"
+                  >
+                    {categoryPage.heroHeading}
+                  </Subtitle>
+                  {servicePages.some(
+                    (page) =>
+                      page.parentPage.slug.current === categoryPage.slug.current
+                  ) && (
+                    <List>
+                      {servicePages
+                        .filter(
+                          (page) =>
+                            page.parentPage.slug.current ===
+                            categoryPage.slug.current
+                        )
+                        .map((page) => (
+                          <ListLink
+                            link={`/vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
+                            margin="eight:mb-5 2xl:mb-6"
+                          >
+                            {page.heroHeading}
+                          </ListLink>
+                        ))}
+                    </List>
+                  )}
+                </div>
+              );
+            })}
+        </ConditionalWrapper>
+        <div className="eight:w-12 lg:w-15 xl:w-20 2xl:w-32" />
         <ConditionalWrapper
           condition={width >= 800}
           wrapper={(children) => (
@@ -120,13 +165,13 @@ export const Navigation = ({
           >
             Jobbe i Alv
           </LargeLink>
-          <div>
+          <div className="eight:w-64">
             <LargeLink margin="eight:mb-10 2xl:mb-12">Selskapet</LargeLink>
             <div>
-              <Subtitle link="/om-oss" margin="eight:mb-5 2xl:mb-6">
+              <Subtitle link="/om-oss" margin="eight:mb-8 2xl:mb-6">
                 Om Oss
               </Subtitle>
-              <Subtitle link="/ansatte" margin="eight:mb-5 2xl:mb-6">
+              <Subtitle link="/ansatte" margin="eight:mb-8 2xl:mb-6">
                 Ansatte
               </Subtitle>
             </div>
@@ -142,7 +187,7 @@ export const Navigation = ({
           </LargeLink>
         </ConditionalWrapper>
       </div>
-      <div className="eight:relative eight:block eight:mt-8 justify-center eight:mr-0 absolute top-0 right-0 mt-5 sm:translate-x-0 xs:-translate-x-7 -translate-x-4 sm:mr-0 sm:mt-8 transform scale-70">
+      <div className="eight:relative eight:flex eight:m-0 justify-center eight:mr-0 absolute z-40 top-0 right-0 mt-5 sm:mr-7 sm:mr-0 mr-4 sm:mt-8 transform scale-70">
         <button
           type="button"
           className="cursor-pointer focus:outline-none"

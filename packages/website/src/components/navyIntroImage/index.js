@@ -7,7 +7,7 @@ import Image from 'gatsby-image';
 export const NavyIntroImage = ({ title, description, image, internalLink }) => (
   <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative">
     <div
-      className="max-w-1440 mx-auto twelve:grid twelve:pl-30 relative"
+      className="max-w-1200 mx-auto twelve:grid relative"
       style={{ gridTemplateColumns: '60% auto' }}
     >
       <div className="transform sm:-translate-x-5 sm:px-0 px-12 flex sm:block justify-center items-center flex-col">
@@ -25,9 +25,12 @@ export const NavyIntroImage = ({ title, description, image, internalLink }) => (
         </div>
         <div className="h-30 twelve:h-20" />
       </div>
-      <div className="h-54 w-100 twelve:absolute twelve:block right-0 bottom-0 transform translate-y-0 hidden">
-        <Image fluid={image} />
-      </div>
+    </div>
+    <div
+      style={{ height: '50vh', width: '70vh' }}
+      className="twelve:absolute twelve:block overflow-hidden right-0 bottom-0 transform translate-y-18 hidden"
+    >
+      <Image fluid={image} />
     </div>
   </div>
 );

@@ -52,7 +52,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
               <div className="z-50 relative sm:block twelve:hidden mb-10 hidden">
                 <Image
                   fluid={heroImage}
-                  className="-mt-32 relative z-50 sm:-mr-12 sm:h-25vh md:h-30vh -mx-5"
+                  className="-mt-32 relative z-50 sm:-mr-12 sm:h-25vh md:h-30vh -mr-5"
                 />
               </div>
               <div className="mb-10">

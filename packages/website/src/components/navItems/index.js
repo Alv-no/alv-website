@@ -22,7 +22,7 @@ export const LargeLink = ({ children, margin, link }) => {
           />
         ) : null}
         <h2
-          className={`text-white font-bold tracking-widest ${margin} uppercase text-nav my-15 eight:my-10 w-full ml-6 sm:ml-8 eight:ml-0 z-50`}
+          className={`text-white font-bold tracking-widest ${margin} uppercase text-nav my-15 eight:my-8 w-full ml-6 sm:ml-8 eight:ml-0 z-50`}
         >
           {children}
           <span className="text-yellow">.</span>
@@ -41,14 +41,18 @@ export const LargeLink = ({ children, margin, link }) => {
   );
 };
 
-export const Subtitle = ({ children, margin, link }) => {
+export const Subtitle = ({ children, margin, link, inactive }) => {
   const [open, setOpen] = useState(false);
   const toggleDropdown = () => {
     setOpen(!open);
   };
   return (
     <>
-      <ConditionalLinkWrapper condition={link !== undefined} link={link}>
+      <ConditionalLinkWrapper
+        condition={link !== undefined || link !== 'inactive'}
+        inactive={inactive}
+        link={link}
+      >
         {!link ? (
           <input
             type="checkbox"
@@ -58,10 +62,10 @@ export const Subtitle = ({ children, margin, link }) => {
         ) : null}
         <li className="list-none hidden eight:block">
           <h3
-            className={`uppercase text-lg ${margin} tracking-widest mb-12 eight:mb-7 eight:ml-0 sm:ml-15 ml-12`}
+            className={`uppercase text-lg ${margin} tracking-widest mb-12 eight:mb-4 eight:ml-0 sm:ml-15 ml-12`}
           >
             {children}
-            {link === undefined ? (
+            {link === undefined && !inactive ? (
               <span
                 className={`absolute right-0 mt-4 mr-7 sm:mr-10 pr-2px eight:hidden transform transition duration-300 ${
                   open ? 'rotate-90' : null
