@@ -29,7 +29,7 @@ You can either build and start all services by using docker-compose:
 
 
 ```
-docker-compose build
+make build-website build-cms
 docker-compose up -d
 ```
 

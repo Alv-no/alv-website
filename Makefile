@@ -1,24 +1,13 @@
-az-docker-login: ## logs you in to azure and uses those credentials for docker
-	az acr login --name dockercontainerregistry2020 --expose-token|jq .accessToken -r|docker login dockercontainerregistry2020.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin
-
-build-website: ## Builds website docker image and pushes it to Azure's container registry
-	docker context use default
+build-website: ## Builds website docker image
 	docker build -f website.Dockerfile -t website .
-	docker tag website dockercontainerregistry2020.azurecr.io/website
-	docker push dockercontainerregistry2020.azurecr.io/website
 
-build-cms: ## Builds cms docker image and pushes it to Azure's container registry
-	docker context use default
+build-cms: ## Builds cms docker image
 	docker build -f cms.Dockerfile -t cms .
-	docker tag cms dockercontainerregistry2020.azurecr.io/cms
-	docker push dockercontainerregistry2020.azurecr.io/cms
 
-docker-compose-up: ## Deploy images based on docker-compose-prod.yml
-	docker context use myacicontext
-	docker compose up --file docker-compose-prod.yml
-	docker context use default
+docker-compose-up: build-website build-cms ## Run docker compose up
+	docker-compose up
 
-prod-deploy:
+prod-deploy: ## Deploy to prod
 	az acr login --name AlvNoProd --expose-token|jq .accessToken -r|docker login AlvNoProd.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin
 	docker tag website AlvNoProd.azurecr.io/website
 	docker push AlvNoProd.azurecr.io/website
