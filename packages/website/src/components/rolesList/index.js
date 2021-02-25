@@ -14,12 +14,12 @@ export const RolesList = ({ image, roles }) => {
         >
           <div>
             <div className="relative" />
-            <div className="hidden sm:block sm:absolute transform -translate-y-16 translate-x-56">
+            <div className="hidden sm:block sm:absolute transform -translate-y-7 translate-x-56">
               <h3
                 className="text-4xl leading-tight font-semibold uppercase w-100"
                 style={{ lineHeight: '1.05' }}
               >
-                Excepteur sint occaecat cupida tat non proident Et assumenda
+                Andre tjenester fra Alv
               </h3>
             </div>
             <Image
@@ -34,7 +34,7 @@ export const RolesList = ({ image, roles }) => {
                   className="text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase w-100"
                   style={{ lineHeight: '1.05' }}
                 >
-                  Excepteur sint occaecat cupida tat non proident Et assumenda
+                  Andre tjenester fra Alv
                 </h3>
               </div>
             </BackgroundImage>
