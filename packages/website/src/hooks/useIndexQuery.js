@@ -3,6 +3,10 @@ export const useIndexQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
+        sanityLandingPage {
+          pageDescription
+          pageTitle
+        }
         video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
           id
           pageTitle

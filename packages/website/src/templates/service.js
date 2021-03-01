@@ -18,8 +18,13 @@ const Service = ({ data }) => {
     window.scrollTo({ top, behavior: 'smooth' });
   };
 
+  const {
+    sanityServices: { pageDescription } = { pageDescription: false },
+    sanityServices: { pageTitle } = { pageTitle: false },
+  } = data;
+
   return (
-    <Layout>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="z-0 twelve:z-20 relative">
         <NavyIntroImage
           title={data.sanityServices.heroHeading}
@@ -67,6 +72,8 @@ export default Service;
 export const query = graphql`
   query($slug: String!) {
     sanityServices(slug: { current: { eq: $slug } }) {
+      pageTitle
+      pageDescription
       servicesBool
       servicesListText
       id

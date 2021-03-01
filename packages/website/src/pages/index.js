@@ -16,8 +16,13 @@ const Index = () => {
     { line: 'konsulentselskap', classes: '', dot: true },
   ];
 
+  const {
+    sanityLandingPage: { pageDescription } = { pageDescription: false },
+    sanityLandingPage: { pageTitle } = { pageTitle: false },
+  } = data;
+
   return (
-    <Layout>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="overflow-hidden">
         <Hero linesAndClasses={linesAndClasses} delay={90} />
         <div className="bg-navy">

@@ -12,6 +12,13 @@ import article from './article';
 import articleTag from './articleTag';
 import redirects from './redirects';
 import landingPage from './landingPage';
+import aboutPage from './aboutPage';
+import employeePage from './employeePage';
+import careerPage from './careerPage';
+import contactPage from './contactPage';
+import ourServicesPage from './ourServicesPage';
+import videoseriesPage from './videoseriesPage';
+import blogPage from './blogPage';
 import categoryPage from './categoryPage';
 import testimonial from './testimonial';
 import servicePage from './servicePage';
@@ -28,9 +35,16 @@ export default createSchema({
     // in the studio.
     siteSettings,
     landingPage,
+    videoseriesPage,
     servicePage,
     categoryPage,
     article,
+    employeePage,
+    blogPage,
+    contactPage,
+    aboutPage,
+    careerPage,
+    ourServicesPage,
     articleTag,
     employee,
     employeeTag,

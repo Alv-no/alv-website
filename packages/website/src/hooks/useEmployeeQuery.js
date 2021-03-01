@@ -3,6 +3,10 @@ export const useEmployeeQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
+        sanityEmployeePage {
+          pageDescription
+          pageTitle
+        }
         allSanityEmployee {
           edges {
             node {

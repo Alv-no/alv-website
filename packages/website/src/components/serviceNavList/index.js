@@ -18,6 +18,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
           <ul className="text-lg sm:mt-3 -mt-2 list-style-none text-navynav opacity-80 tracking-wider sm:block flex">
             {nav.map((el) => (
               <button
+                aria-label="Scroll Link"
                 className="mb-7 block sm:mr-0 mr-4"
                 onClick={scrollTo}
                 name={el.id}
@@ -34,6 +35,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
           </div>
           <button
             type="button"
+            aria-label="show-text"
             onClick={revealText}
             className={`font-light block sm:mb-15 sm:h-auto ${
               showText ? 'h-auto' : 'h-80'

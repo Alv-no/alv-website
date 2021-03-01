@@ -9,6 +9,11 @@ const Videoseries = () => {
   const data = useVideoseriesQuery();
   let { playlists } = data;
 
+  const {
+    sanityVideoseriesPage: { pageDescription } = { pageDescription: false },
+    sanityVideoseriesPage: { pageTitle } = { pageTitle: false },
+  } = data;
+
   const [lists] = useState(playlists);
 
   playlists = playlists.forEach((list) => {
@@ -17,10 +22,8 @@ const Videoseries = () => {
     });
   });
 
-  //
-
   return (
-    <Layout>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto">
           {lists && (

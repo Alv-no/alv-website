@@ -5,6 +5,7 @@ import Image from 'gatsby-image';
 import PortableText from '@sanity/block-content-to-react';
 import { MobileHeader } from '../components/header';
 import { Footer } from '../components/footer';
+import { SEO } from '../components/seo';
 import Link from 'gatsby-link';
 import styles from './Article.module.css';
 import * as Icon from '../components/icon';
@@ -25,6 +26,7 @@ const ArticleTemplate = (props) => {
   const socialTags = tags.map((tag) => tag.tag);
   return (
     <>
+      <SEO title={title} />
       <span className="lg:block hidden">
         <Sidebar
           {...author}

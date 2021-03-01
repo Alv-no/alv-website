@@ -20,7 +20,7 @@ export const VideoHero = ({
         >
           <Image
             fluid={backgroundImage}
-            className={`-mx-12 h-screen sm:mx-0  ${styles.bgImage}`}
+            className={`-mx-12 h-screen w-screen sm:mx-0  ${styles.bgImage}`}
           />
           <div
             className={`absolute -translate-y-32 w-full text-white top-1/2 transform sm:-translate-y-1/2 sm:-translate-x-40 md:m-0 sm:ml-15 ${styles.cta}`}
@@ -40,7 +40,11 @@ export const VideoHero = ({
               </span> */}
 
               <Link to="/videoserie#miniserier">
-                <button className="font-semibold tracking-wider text-base uppercase bg-transparent focus:outline-none">
+                <button
+                  type="button"
+                  aria-label="link"
+                  className="font-semibold tracking-wider text-base uppercase bg-transparent focus:outline-none"
+                >
                   Se miniserier
                 </button>
               </Link>

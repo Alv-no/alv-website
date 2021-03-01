@@ -5,8 +5,12 @@ import { useWorkQuery } from '../hooks/useWorkQuery';
 
 const WorkForAlv = () => {
   const data = useWorkQuery();
+  const {
+    sanityCareerPage: { pageDescription } = { pageDescription: false },
+    sanityCareerPage: { pageTitle } = { pageTitle: false },
+  } = data;
   return (
-    <Layout>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <ImageTextListHero image={data.stairs.childImageSharp.fluid} />
       {/* <ReasonsSlider image={data.street.childImageSharp.fluid} />
       <ImageTextShifted image={data.interview.childImageSharp.fluid} /> */}

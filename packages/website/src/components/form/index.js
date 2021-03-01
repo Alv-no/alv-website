@@ -23,6 +23,7 @@ export const Call = () => {
             className="border rounded-sm h-10 p-4 w-full rounded-md relative flex items-center cursor-pointer focus:outline-none"
             onClick={() => setOpen(!open)}
             type="button"
+            aria-label="Toggle open"
           >
             <span className={`${open && 'font-semibold'}`}>{dropdown}</span>
             <span className="transform rotate-90 scale-60 translate-y-2px -translate-x-4 absolute right-0">
@@ -87,6 +88,7 @@ export const Call = () => {
           <button
             className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
             type="submit"
+            aria-label="Send"
           >
             Send inn
           </button>
@@ -116,6 +118,7 @@ export const Offer = () => {
           className="border rounded-sm h-10 p-4 w-full rounded-md relative flex items-center cursor-pointer focus:outline-none"
           onClick={() => setOpen(!open)}
           type="button"
+          aria-label="Toggle Open"
         >
           <span className={`${open && 'font-semibold'}`}>{dropdown}</span>
           <span className="transform rotate-90 scale-60 translate-y-2px -translate-x-4 absolute right-0">
@@ -198,6 +201,7 @@ export const Offer = () => {
         <button
           className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
           type="submit"
+          aria-label="Send"
         >
           Send inn
         </button>

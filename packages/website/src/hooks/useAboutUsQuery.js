@@ -3,6 +3,10 @@ export const useAboutUsQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
+        sanityAboutPage {
+          pageDescription
+          pageTitle
+        }
         aboutUsTop: file(name: { eq: "contact_us_img2" }) {
           childImageSharp {
             fluid {

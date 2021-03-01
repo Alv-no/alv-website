@@ -9,13 +9,17 @@ import { FeaturedTeam } from '../components/featuredTeam';
 
 const About = () => {
   const data = useAboutUsQuery();
+  const {
+    sanityAboutPage: { pageDescription } = { pageDescription: false },
+    sanityAboutPage: { pageTitle } = { pageTitle: false },
+  } = data;
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
   employees.map(
     (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.fluid)
   );
   const team = employees.slice(0, 4);
   return (
-    <Layout>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="w-full bg-navy text-white sm:pb-20 pb-4 overflow-hidden tracking-wider">
         <div className="w-full">
           <AboutIntro
@@ -35,14 +39,6 @@ const About = () => {
           <Subtitle>Ansatte</Subtitle>
         </div>
         <FeaturedTeam notitle team={team} color="navy" />
-        {/* <div className="mx-5 sm:mx-12">
-            <Subtitle>Hva tenker alvene?</Subtitle>
-          </div>
-          <BlogSlider
-            image={data.sliderImg.childImageSharp.fluid}
-            color="text-white"
-            dot={false}
-          /> */}
       </div>
     </Layout>
   );

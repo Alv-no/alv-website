@@ -12,6 +12,12 @@ import { ImageTextCards } from '../../components/imageTextCards';
 
 const Services = () => {
   const data = useServicesQuery();
+
+  const {
+    sanityVideoseriesPage: { pageDescription } = { pageDescription: false },
+    sanityVideoseriesPage: { pageTitle } = { pageTitle: false },
+  } = data;
+
   const dummyCard1 = {
     title: '.NET utvikler',
     description:
@@ -37,7 +43,7 @@ const Services = () => {
     link: '/vi-tilbyr',
   };
   return (
-    <Layout>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="overflow-hidden w-screen">
         <ServicesHero backgroundImage={data.heroImage.childImageSharp.fluid}>
           <Title>Vi tilbyr</Title>

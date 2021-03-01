@@ -24,6 +24,7 @@ export const EmployeeCard = ({
       onClick={handleClick}
       key={id}
       id={id}
+      aria-label={firstname}
     >
       <div
         className={`absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen ${

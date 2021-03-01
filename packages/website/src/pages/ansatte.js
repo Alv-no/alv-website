@@ -8,7 +8,11 @@ import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
 
 const Employees = ({ location }) => {
   const data = useEmployeeQuery();
-  const { allEmployees } = data;
+  const {
+    allEmployees,
+    sanityEmployeePage: { pageDescription } = { pageDescription: false },
+    sanityEmployeePage: { pageTitle } = { pageTitle: false },
+  } = data;
 
   let activeCard;
   if (location.state) {
@@ -22,7 +26,7 @@ const Employees = ({ location }) => {
     }
   }
   return (
-    <Layout>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
         <Title>Ansatte</Title>
         <div className="sm:h-8 h-4" />

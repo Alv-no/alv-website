@@ -37,7 +37,11 @@ export const NavyIntroImage = ({ title, description, image, internalLink }) => (
 
 export const Outline = ({ children, link }) => (
   <Link to={link}>
-    <button className="text-white px-10 rounded rounded-full font-semibold text-base uppercase py-2 border border-white border-2 tracking-wider">
+    <button
+      type="button"
+      aria-label={children}
+      className="text-white px-10 rounded rounded-full font-semibold text-base uppercase py-2 border border-white border-2 tracking-wider"
+    >
       {children}
     </button>
   </Link>
