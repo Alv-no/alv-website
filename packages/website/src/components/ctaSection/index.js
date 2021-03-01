@@ -9,7 +9,11 @@ export const CtaSection = ({ eyebrow, heading, buttonText, internalLink }) => {
         {heading}
       </h4>
       <Link to={internalLink}>
-        <button className="px-10 rounded rounded-full font-semibold text-base uppercase py-6px border border-navy border-2">
+        <button
+          type="button"
+          aria-label={buttonText}
+          className="px-10 rounded rounded-full font-semibold text-base uppercase py-6px border border-navy border-2"
+        >
           {buttonText}
         </button>
       </Link>

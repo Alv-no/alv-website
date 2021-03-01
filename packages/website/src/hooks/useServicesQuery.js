@@ -3,6 +3,10 @@ export const useServicesQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
+        sanityOurServicesPage {
+          pageDescription
+          pageTitle
+        }
         heroImage: file(name: { eq: "vitilbyr_header" }) {
           childImageSharp {
             fluid {

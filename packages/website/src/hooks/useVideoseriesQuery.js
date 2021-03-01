@@ -3,6 +3,10 @@ export const useVideoseriesQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
+        sanityVideoseriesPage {
+          pageDescription
+          pageTitle
+        }
         fallbackImg: file(name: { eq: "featuredFallback" }) {
           childImageSharp {
             fluid {

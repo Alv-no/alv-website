@@ -23,6 +23,7 @@ export const OvalSimple = ({ children, onClick }) => (
     className="uppercase tracking-wider text-base px-8 py-6px text-navy border border-bordergray rounded-full font-semibold focus:outline-none"
     style={{ border: '2px solid #E3E3E3' }}
     onClick={onClick}
+    aria-label={children}
   >
     {children}
   </button>
@@ -34,6 +35,7 @@ export const CtaArrow = ({ children, onClick }) => (
       className="flex items-center focus:outline-none tracking-wider"
       type="button"
       onClick={onClick}
+      aria-label={children}
     >
       <span className="mr-2 block uppercase font-semibold">{children}</span>{' '}
       <Icon.Arrow />

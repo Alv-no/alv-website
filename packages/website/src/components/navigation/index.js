@@ -190,6 +190,7 @@ export const Navigation = ({
       <div className="eight:relative eight:flex eight:m-0 justify-center eight:mr-0 absolute z-40 top-0 right-0 mt-5 sm:mr-7 sm:mr-0 mr-4 sm:mt-8 transform scale-70">
         <button
           type="button"
+          aria-label="Close"
           className="cursor-pointer focus:outline-none"
           onClick={toggleClose}
         >

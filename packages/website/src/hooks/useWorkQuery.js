@@ -3,6 +3,10 @@ export const useWorkQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
+        sanityCareerPage {
+          pageDescription
+          pageTitle
+        }
         stairs: file(name: { eq: "stairs" }) {
           childImageSharp {
             fluid {

@@ -14,9 +14,21 @@ const Contact = ({ location }) => {
     setActive(e.target.id);
   };
 
-  const { address, phone, fluid, email, org } = useContactQuery();
+  const {
+    address,
+    phone,
+    fluid,
+    email,
+    org,
+    pageTitle,
+    pageDescription,
+  } = useContactQuery();
   return (
-    <Layout path={location.pathname}>
+    <Layout
+      path={location.pathname}
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+    >
       <div className="bg-navy xl:pt-5">
         <div
           className="bg-navy w-full -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto xl:grid xl:pb-20"

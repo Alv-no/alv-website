@@ -17,7 +17,10 @@ const Blog = () => {
   articles.shift();
   featuredArticle.fallbackImg = data.fallbackImg.childImageSharp.fluid;
   return (
-    <Layout>
+    <Layout
+      pageTitle={data.sanityBlogPage.pageTitle}
+      pageDescription={data.sanityBlogPage.pageDescription}
+    >
       <div className="overflow-hidden">
         <IntroContainer article={featuredArticle}>
           <Title align="text-center twelve:text-left">Blogg</Title>

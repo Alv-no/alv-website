@@ -50,6 +50,7 @@ export const EmployeeBio = ({
                 type="button"
                 className="transform block focus:outline-none sm:-translate-y-12 sm:-translate-x-8 -translate-y-15  -translate-x-12 scale-60 cursor-pointer absolute"
                 onClick={handleCloseClick}
+                aria-label="Close"
               >
                 <Icon.Cross />
               </button>

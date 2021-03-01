@@ -5,6 +5,7 @@ const CallToAction = ({ children, onClick, disabled = false }) => (
   <button
     onClick={onClick}
     disabled={disabled}
+    aria-label={children}
     className="uppercase text-xl font-thin flex tracking-wider"
   >
     <div className="mr-5">{children}</div>

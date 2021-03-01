@@ -5,7 +5,7 @@ import { SEO } from '../components/seo';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import './layout.css';
 
-const Layout = ({ children, path }) => {
+const Layout = ({ children, path, pageDescription, pageTitle }) => {
   const {
     address,
     org,
@@ -16,7 +16,7 @@ const Layout = ({ children, path }) => {
   } = useLayoutQuery();
   return (
     <>
-      <SEO />
+      <SEO description={pageDescription} title={pageTitle} />
       <Header
         path={path}
         servicePages={servicePages}

@@ -34,6 +34,7 @@ export const Header = ({ path, categoryPages, servicePages }) => {
             <div className="flex relative z-50">
               <button
                 type="button"
+                aria-label="Dropdown"
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
@@ -88,6 +89,7 @@ export const MobileHeader = ({ viewport, categoryPages, servicePages }) => {
             <div className="flex flex-row-reverse justify-between">
               <button
                 type="button"
+                aria-label="Dropdown"
                 className="cursor-pointer focus:outline-none"
                 onClick={handleClick}
               >
@@ -125,6 +127,7 @@ export const BlogHeader = ({ pages }) => {
             <div className="flex">
               <button
                 type="button"
+                aria-label="Dropdown"
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >

@@ -1,6 +1,6 @@
 export default {
-  name: 'landingPage',
-  title: 'Landing Page',
+  name: 'aboutPage',
+  title: 'About Page',
   type: 'document',
   fields: [
     {
@@ -19,16 +19,6 @@ export default {
       options: {
         maxLength: 160,
       },
-    },
-    {
-      name: 'videoWebm',
-      title: 'Video introduction webm',
-      type: 'file',
-    },
-    {
-      name: 'videoMp4',
-      title: 'Video introduction mp4',
-      type: 'file',
     },
   ],
 };

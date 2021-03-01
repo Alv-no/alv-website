@@ -5,6 +5,9 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     siteUrl: `https://www.alv.no`,
+    title: `Alv Konsulentselskap`,
+    description: `Vi bygger Norges mest attraktive konsulentselskap`,
+    author: `Alv`,
   },
   plugins: [
     {
@@ -15,6 +18,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
+    'gatsby-plugin-webpack-bundle-analyzer',
     'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
     'gatsby-background-image-es5',
