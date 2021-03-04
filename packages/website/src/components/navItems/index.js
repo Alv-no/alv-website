@@ -67,7 +67,7 @@ export const Subtitle = ({ children, margin, link, inactive }) => {
             {children}
             {link === undefined && !inactive ? (
               <span
-                className={`absolute right-0 mt-4 mr-7 sm:mr-10 pr-2px eight:hidden transform transition duration-300 ${
+                className={`absolute right-0 mt-2 mr-7 sm:mr-10 pr-2px eight:hidden transform transition duration-300 ${
                   open ? 'rotate-90' : null
                 }`}
               >
