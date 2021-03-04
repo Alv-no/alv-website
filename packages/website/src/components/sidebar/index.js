@@ -9,6 +9,8 @@ import { White } from '../logo';
 
 const Sidebar = ({
   children,
+  servicePages,
+  categoryPages,
   firstname,
   lastname,
   authorSlug,
@@ -21,7 +23,7 @@ const Sidebar = ({
   const pdfLink = cv ? cv.asset.url : false;
   return (
     <>
-      <MobileHeader />
+      <MobileHeader servicePages={servicePages} categoryPages={categoryPages} />
       <div
         className="hidden sm:grid"
         style={{ gridTemplateColumns: 'minmax(430px, 33%) auto' }}
@@ -32,7 +34,10 @@ const Sidebar = ({
             className="pr-10 fixed z-10 sm:max-w-430 lg:max-w-seven"
             style={{ maxWidth: '430px' }}
           >
-            <BlogHeader />
+            <BlogHeader
+              servicePages={servicePages}
+              categoryPages={categoryPages}
+            />
             <div className="ml-6 lg:ml-10">
               <div className="uppercase text-base tracking-wider font-semibold my-10">
                 <Link to="/blogg">

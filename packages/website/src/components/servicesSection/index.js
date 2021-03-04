@@ -2,7 +2,7 @@ import React from 'react';
 import { Title } from '../title';
 import * as Button from '../button';
 
-export const ServicesSection = ({ children, title }) => {
+export const ServicesSection = ({ children, title, description }) => {
   return (
     <>
       <div className="w-full py-10 lg:py-15 tracking-wider">
@@ -14,12 +14,7 @@ export const ServicesSection = ({ children, title }) => {
             <Title align="left lg:mb-0 mb-3" color="text-navy">
               {title}
             </Title>
-            <div className="font-light">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim. Lorem ipsum dolor sit amet, consectetur
-              adipisifwcing.
-            </div>
+            <div className="font-light">{description}</div>
             <div className="flex justify-end h-full items-center lg:mt-0 mt-5">
               <div className="text-navy flex items-center cursor-pointer">
                 <Button.CtaArrow>Lær mer</Button.CtaArrow>

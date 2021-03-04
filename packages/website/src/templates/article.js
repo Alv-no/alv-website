@@ -4,6 +4,7 @@ import Sidebar from '../components/sidebar';
 import Image from 'gatsby-image';
 import PortableText from '@sanity/block-content-to-react';
 import { MobileHeader } from '../components/header';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { Footer } from '../components/footer';
 import { SEO } from '../components/seo';
 import Link from 'gatsby-link';
@@ -14,6 +15,8 @@ import { window } from 'browser-monads';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
+  const { servicePages, categoryPages } = useLayoutQuery();
+
   const { title, author, mainImage, _rawBody, tags } = props.data.sanityArticle;
   let authorSlug;
   if (author && author.firstname && author.lastname) {
@@ -32,6 +35,8 @@ const ArticleTemplate = (props) => {
           {...author}
           authorSlug={authorSlug}
           fallbackImg={props.data.fallbackImg.childImageSharp.fluid}
+          servicePages={servicePages}
+          categoryPages={categoryPages}
         >
           <div
             className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25 text-navy 2xl:ml-1/2"
@@ -84,7 +89,11 @@ const ArticleTemplate = (props) => {
           </div>
         </Sidebar>
       </span>
-      <MobileHeader viewport="lg" />
+      <MobileHeader
+        viewport="lg"
+        servicePages={servicePages}
+        categoryPages={categoryPages}
+      />
       <div className="lg:hidden">
         <div className="five:mx-10 mx-6 z-10">
           <div className="my-5 relative z-20">

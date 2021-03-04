@@ -108,7 +108,7 @@ export const MobileHeader = ({ viewport, categoryPages, servicePages }) => {
   );
 };
 
-export const BlogHeader = ({ pages }) => {
+export const BlogHeader = ({ categoryPages, servicePages }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -120,7 +120,12 @@ export const BlogHeader = ({ pages }) => {
   crumbs.shift();
   return (
     <>
-      <Navigation open={open} toggleClose={toggleClose} pages={pages} />
+      <Navigation
+        open={open}
+        toggleClose={toggleClose}
+        servicePages={servicePages}
+        categoryPages={categoryPages}
+      />
       <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
         <div className="max-w-1600 mx-auto">
           <div className="flex justify-between sm:mb-7 ">
