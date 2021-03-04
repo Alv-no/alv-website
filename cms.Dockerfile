@@ -7,6 +7,7 @@ RUN mkdir -p /app/.yarn/releases
 
 COPY package.json yarn.lock .yarnrc.yml /app/
 COPY .yarn/releases /app/.yarn/releases/
+COPY .yarn/plugins /app/.yarn/plugins/
 COPY packages/cms /app/packages/cms/
 
 RUN yarn
