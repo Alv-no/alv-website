@@ -23,8 +23,13 @@ const Index = () => {
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-      <div className="overflow-hidden">
-        <Hero linesAndClasses={linesAndClasses} delay={90} />
+      <Hero
+        linesAndClasses={linesAndClasses}
+        delay={90}
+        videoMp4={data.video.heroVideoMp4.asset.url}
+        videoWebm={data.video.heroVideoWebm.asset.url}
+      />
+      <div className="">
         <div className="bg-navy">
           <div className="bg-navy w-full pb-15 sm:pt-0 pt-10">
             <VideoIntro
@@ -57,11 +62,6 @@ const Index = () => {
           </OurServices>
           <div className="lg:h-40  h-5" />
           <HireAlt data={data} />
-          {/* <BlogSlider
-            image={data.sliderImg.childImageSharp.fluid}
-            color="text-white"
-            dot={false}
-          /> */}
           <OwnedByStaff>
             Alv AS er 100% eid av våre ansatte. Det betyr at du vil få mulighet
             til å kjøpe deg inn på eiersiden av selskapet når du blir ansatt.

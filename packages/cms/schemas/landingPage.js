@@ -21,13 +21,23 @@ export default {
       },
     },
     {
+      name: 'heroVideoWebm',
+      title: 'Hero Video - webm',
+      type: 'file',
+    },
+    {
+      name: 'heroVideoMp4',
+      title: 'Hero Video - mp4',
+      type: 'file',
+    },
+    {
       name: 'videoWebm',
-      title: 'Video introduction webm',
+      title: 'Video Introduction - webm',
       type: 'file',
     },
     {
       name: 'videoMp4',
-      title: 'Video introduction mp4',
+      title: 'Video Introduction - mp4',
       type: 'file',
     },
   ],

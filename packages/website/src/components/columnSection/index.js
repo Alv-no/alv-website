@@ -2,7 +2,13 @@ import React from 'react';
 import BackgroundImage from 'gatsby-background-image-es5';
 import * as Icon from '../icon';
 
-export const ColumnSection = ({ title, eyebrow, image, blockContent }) => {
+export const ColumnSection = ({
+  title,
+  eyebrow,
+  image,
+  blockContent,
+  imageText,
+}) => {
   return (
     <>
       <div className="tracking-wider sm:pb-15">
@@ -36,11 +42,8 @@ export const ColumnSection = ({ title, eyebrow, image, blockContent }) => {
               />
               <div className="h-40vh lg:h-full w-full flex justify-between transform -translate-y-3 items-center text-white px-15">
                 <div className="uppercase flex w-10 h-10 font-semibold">
-                  <div className="whitespace-nowrap w-0 transform -rotate-90">
-                    CONSEQUAT
-                  </div>
-                  <div className="transform -rotate-90 w-0 transform translate-y-32">
-                    LOREMIPSUM
+                  <div className="whitespace-nowrap transform -rotate-90">
+                    {imageText}
                   </div>
                 </div>
                 <div>

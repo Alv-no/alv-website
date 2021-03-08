@@ -1,9 +1,10 @@
 import React from 'react';
 import { Title } from '../title';
 import * as Button from '../button';
+import PortableText from '@sanity/block-content-to-react';
 import Image from 'gatsby-image';
 
-export const ImageTextFull = ({ image, flip }) => {
+export const ImageTextFull = ({ image, flip, blockContent, path, title }) => {
   return (
     <>
       <div className="w-full bg-white">
@@ -38,35 +39,20 @@ export const ImageTextFull = ({ image, flip }) => {
                 classes="text-nav sm:text-3xl"
                 color="text-navy"
               >
-                Prosjektledelse
+                {title}
               </Title>
-              <p className="mb-8 sm:mt-6 mt-3 lg:mt-6">
-                Culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis unde omnis iste natus error sit voluptartem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi ropeior architecto
-                beatae vitae dicta sunt explicabo. Nemo eniem ipsam voluptatem
-                quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur.
-              </p>
-              <p className="mb-8">
-                Magni dolores eosep quiklop ratione voluptatem sequi nesciunt.
-                Neque porro quisquam est, quepi dolorem ipsum quia dolor srit
-                amet, consectetur adipisci velit, seid quia non numquam eiuris
-                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                iope voluptatem.
-              </p>
-              <p className="mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipisifwcing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore roipi.
-              </p>
+              <PortableText
+                blocks={blockContent}
+                projectId="mnr37rl0"
+                dataset="production"
+              />
             </div>
             <div
               className={`w-full hidden sm:flex justify-end sm:relative lg:justify-${
                 flip ? 'start' : 'end'
               }`}
             >
-              <Button.CtaArrow>Lær Mer</Button.CtaArrow>
+              <Button.CtaArrow path={path}>Lær Mer</Button.CtaArrow>
             </div>
           </div>
           {flip && <Image fluid={image} className="sm:h-40vh lg:h-auto" />}

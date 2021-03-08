@@ -29,8 +29,8 @@ export const Header = ({ path, categoryPages, servicePages }) => {
         categoryPages={categoryPages}
       />
       <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
-        <div className="max-w-1200 mx-auto">
-          <div className="flex justify-between sm:mb-7 ">
+        <div className="max-w-1200 mx-auto relative z-50">
+          <div className="flex justify-between sm:mb-7">
             <div className="flex relative z-50">
               <button
                 type="button"

@@ -3,31 +3,20 @@ export const useServicesQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        heroImage: file(name: { eq: "vitilbyr_header" }) {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        columnsImg: file(name: { eq: "vitilbyr_side" }) {
-          childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        imageLeft: file(name: { eq: "port_img1" }) {
-          childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        imageRight: file(name: { eq: "vitilbyr_prosjektledelse" }) {
-          childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
+        allSanityServices {
+          edges {
+            node {
+              heroDescription
+              heroHeading
+              id
+              slug {
+                current
+              }
+              parentPage {
+                slug {
+                  current
+                }
+              }
             }
           }
         }
