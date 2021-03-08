@@ -15,7 +15,22 @@ export const useIndexQuery = () => {
               url
             }
           }
+          heroVideoWebm {
+            asset {
+              url
+            }
+          }
+          heroVideoMp4 {
+            asset {
+              url
+            }
+          }
           videoWebm {
+            asset {
+              url
+            }
+          }
+          videoMp4 {
             asset {
               url
             }

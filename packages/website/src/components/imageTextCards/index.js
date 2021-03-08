@@ -3,7 +3,7 @@ import { Title } from '../title';
 import * as Button from '../button';
 import Image from 'gatsby-image';
 
-export const ImageTextCards = ({ image, flip, children }) => {
+export const ImageTextCards = ({ image, flip, children, title, text }) => {
   return (
     <>
       <div className="w-full">
@@ -28,17 +28,9 @@ export const ImageTextCards = ({ image, flip, children }) => {
               <div className="sm:px-12 px-5 pb-9 pt-10 lg:pt-0 bg-white">
                 <div className="">
                   <Title align="left" color="text-navy">
-                    Prosjektledelse
+                    {title}
                   </Title>
-                  <p className="mb-8 mt-6">
-                    Culpa qui officia deserunt mollit anim id est laborum. Sed
-                    ut perspiciatis unde omnis iste natus error sit voluptartem
-                    accusantium doloremque laudantium, totam rem aperiam, eaque
-                    ipsa quae ab illo inventore veritatis et quasi ropeior
-                    architecto beatae vitae dicta sunt explicabo. Nemo eniem
-                    ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-                    fugit, sed quia consequuntur.
-                  </p>
+                  <p className="mb-8 mt-6">{text}</p>
                 </div>
                 <div
                   className={`w-full flex justify-${flip ? 'start' : 'end'}`}

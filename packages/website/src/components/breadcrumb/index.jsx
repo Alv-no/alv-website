@@ -35,17 +35,10 @@ const Breadcrumb = ({ path }) => {
 
             return (
               <>
-                {link === '/vi-tilbyr' ? (
-                  <div key={i} className="last:font-bold font-thin">
-                    <span className="mr-3 -ml-1 font-light">/</span>
-                    {item}
-                  </div>
-                ) : (
-                  <Link to={link} key={i} className="last:font-bold font-thin">
-                    <span className="mr-3 -ml-1 font-light">/</span>
-                    {item}
-                  </Link>
-                )}
+                <Link to={link} key={i} className="last:font-bold font-thin">
+                  <span className="mr-3 -ml-1 font-light">/</span>
+                  {item}
+                </Link>
               </>
             );
           })}

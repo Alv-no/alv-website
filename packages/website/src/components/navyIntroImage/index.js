@@ -26,11 +26,18 @@ export const NavyIntroImage = ({ title, description, image, internalLink }) => (
         <div className="h-30 twelve:h-20" />
       </div>
     </div>
-    <div
-      style={{ height: '50vh', width: '70vh' }}
-      className="twelve:absolute twelve:block overflow-hidden right-0 bottom-0 transform translate-y-18 hidden"
-    >
-      <Image fluid={image} />
+    <div className="block w-screem relative max-w-1440 mx-auto">
+      <div
+        style={{
+          height: '20vw',
+          width: '32vw',
+          maxWidth: '540px',
+          maxHeight: '340px',
+        }}
+        className="twelve:absolute twelve:block right-0 bottom-0 transform hidden translate-y-8"
+      >
+        <Image fluid={image} />
+      </div>
     </div>
   </div>
 );

@@ -29,8 +29,8 @@ export const OvalSimple = ({ children, onClick }) => (
   </button>
 );
 
-export const CtaArrow = ({ children, onClick }) => (
-  <Link>
+export const CtaArrow = ({ children, onClick, path }) => (
+  <Link to={path || ''}>
     <button
       className="flex items-center focus:outline-none tracking-wider"
       type="button"
