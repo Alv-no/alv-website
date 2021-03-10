@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const articleTemplate = path.resolve(`./src/templates/article.js`);
   const serviceTemplate = path.resolve(`./src/templates/service.js`);
+  const videoTemplate = path.resolve(`./src/templates/video.js`);
   const res = await graphql(
     `
       {
@@ -44,6 +45,15 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allSanityVideo {
+          edges {
+            node {
+              slug {
+                current
+              }
+            }
+          }
+        }
       }
     `
   );
@@ -64,6 +74,17 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       component: serviceTemplate,
       path: `/vi-tilbyr/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`,
+      context: {
+        slug: edge.node.slug.current,
+      },
+    });
+  });
+
+  // Create video pages.
+  res.data.allSanityVideo.edges.forEach((edge) => {
+    createPage({
+      component: videoTemplate,
+      path: `/videoserie/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },
