@@ -18,7 +18,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
-    'gatsby-plugin-webpack-bundle-analyzer',
     'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
     'gatsby-background-image-es5',
@@ -32,6 +31,13 @@ module.exports = {
         token: process.env.SANITY_TOKEN,
         graphqlTag: 'default',
         overlayDrafts: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      options: {
+        analyzerPort: 7000,
+        disable: true,
       },
     },
     {
