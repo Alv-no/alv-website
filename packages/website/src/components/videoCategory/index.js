@@ -37,7 +37,7 @@ export const VideoCategory = ({
             <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
               <div className="py-4 bg-black">
                 <Link
-                  to="/videoserie/episode"
+                  to={`/videoserie/${featuredVideo.videoId}`}
                   state={{ video: featuredVideo, playlist }}
                 >
                   <div
