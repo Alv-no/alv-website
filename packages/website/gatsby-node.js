@@ -11,6 +11,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const serviceTemplate = path.resolve(`./src/templates/service.js`);
   const categoryTemplate = path.resolve(`./src/templates/category.js`);
   const careerTemplate = path.resolve(`./src/templates/career.js`);
+  const videoTemplate = path.resolve(`./src/templates/video.js`);
   const res = await graphql(
     `
       {
@@ -58,6 +59,68 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `
   );
+  console.log(process.env);
+  // Fetch videos with Youtube API
+  if (process.env.YT_API) {
+    (async () => {
+      const playlistData = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/playlists?part=localizations&maxResults=20&channelId=UCLaJhfc1tFmHzP4usj1LKfA&key=${process.env.YT_API}`
+      )
+        .then((res) => res.json())
+        .then((result) => result);
+
+      const playlists = await Promise.all(
+        playlistData.items.map(async (el) => {
+          const apiCall = await fetch(
+            `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&key=${process.env.YT_API}`
+          );
+          const list = await apiCall.json();
+          let formattedItems = await list.items.map((item) => {
+            item.snippet.formattedPublishedAt = new Date(
+              item.snippet.publishedAt
+            ).toUTCString();
+            item.snippet.videoId = item.snippet.resourceId.videoId;
+            return item.snippet;
+          });
+          if (list.pageInfo.totalResults > 50) {
+            let nextPageToken = list.nextPageToken;
+            while (nextPageToken) {
+              const apiCall = await fetch(
+                `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&pageToken=${nextPageToken}&key=${process.env.YT_API}`
+              );
+              const nextPageList = await apiCall.json();
+              const nextPageItems = await nextPageList.items.map((item) => {
+                item.snippet.formattedPublishedAt = new Date(
+                  item.snippet.publishedAt
+                ).toUTCString();
+                item.snippet.videoId = item.snippet.resourceId.videoId;
+                return item.snippet;
+              });
+              formattedItems = formattedItems.concat(nextPageItems);
+              nextPageToken = nextPageList.nextPageToken || false;
+            }
+          }
+
+          return formattedItems.sort((a, b) =>
+            a.position > b.position ? -1 : 1
+          );
+        })
+      );
+
+      playlists.forEach((playlist) => {
+        playlist.forEach((video) => {
+          console.log(video);
+          createPage({
+            component: videoTemplate,
+            path: `/videoserie/${video.videoId}`,
+            context: {
+              video: video,
+            },
+          });
+        });
+      });
+    })();
+  }
 
   // Create blog posts pages.
   res.data.allSanityArticle.edges.forEach((edge) => {
