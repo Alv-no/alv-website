@@ -18,7 +18,7 @@ export const FeaturedVideo = ({ video, playlist }) => {
         </>
       )}
       <Link
-        to="/videoserie/episode"
+        to={`/videoserie/${video.videoId}`}
         state={{ playlist, video, id: video.videoId }}
       >
         <div className="sm:h-40 h-56 twelve:h-full" />
