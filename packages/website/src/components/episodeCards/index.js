@@ -3,7 +3,7 @@ import { VideoFilter } from '../videoFilter';
 import { VideoCard } from '../videoCard';
 import * as Button from '../button';
 
-export const EpisodeCards = ({ fallbackImg, playlist, onClick }) => {
+export const EpisodeCards = ({ fallbackImg, playlist }) => {
   const [sortedVideos, setSortedVideos] = useState(playlist);
   const [visibleRows, setVisibleRows] = useState(12);
 
@@ -41,8 +41,8 @@ export const EpisodeCards = ({ fallbackImg, playlist, onClick }) => {
                       video={video}
                       playlist={sortedVideos}
                       thumbnail={video.thumbnails.standard.url}
-                      onClick={onClick}
                       noLink={true}
+                      key={video.videoId}
                     />
                   );
                 })
