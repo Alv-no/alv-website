@@ -18,6 +18,8 @@ import careerPage from './careerPage';
 import whatWeDo from './whatWeDo';
 import contactPage from './contactPage';
 import ourServicesPage from './ourServicesPage';
+// import featuredTeam from './featuredTeam';
+import openPositionPage from './openPositionPage';
 import videoseriesPage from './videoseriesPage';
 import imageAndText from './imageAndText';
 import blogPage from './blogPage';
@@ -40,6 +42,7 @@ export default createSchema({
     videoseriesPage,
     servicePage,
     categoryPage,
+    openPositionPage,
     article,
     employeePage,
     blogPage,
@@ -57,5 +60,6 @@ export default createSchema({
     blockContent,
     whatWeDo,
     imageAndText,
+    // featuredTeam,
   ]),
 });
