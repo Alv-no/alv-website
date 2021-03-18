@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const articleTemplate = path.resolve(`./src/templates/article.js`);
   const serviceTemplate = path.resolve(`./src/templates/service.js`);
+  const categoryTemplate = path.resolve(`./src/templates/category.js`);
   const res = await graphql(
     `
       {
@@ -64,6 +65,17 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       component: serviceTemplate,
       path: `/vi-tilbyr/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`,
+      context: {
+        slug: edge.node.slug.current,
+      },
+    });
+  });
+
+  // Create category pages.
+  res.data.allSanityCategoryPage.edges.forEach((edge) => {
+    createPage({
+      component: categoryTemplate,
+      path: `/vi-tilbyr/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },
