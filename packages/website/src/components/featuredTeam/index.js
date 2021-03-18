@@ -13,7 +13,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg }) => {
       <div className="max-w-1440 pr-5 sm:px-12 mx-auto">
         {!notitle && (
           <Title underline align="left" color="text-navy">
-            Featured Team Members
+            Vårt Team
           </Title>
         )}
         <div className="h-12" />

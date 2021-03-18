@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import { NavyIntro } from '../components/navyIntro';
 import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
+import { FeaturedTeam } from '../components/featuredTeam';
 import { WhatWeDo } from '../components/whatWeDo';
 
 const Category = ({ data }) => {
@@ -46,6 +47,9 @@ const Category = ({ data }) => {
           <WhatWeDo data={sanityCategoryPage.whatWeDo.process} />
         )}
         <div className="sm:mt-12 lg:mt-20" />
+        {sanityCategoryPage.featuredTeam && (
+          <FeaturedTeam team={sanityCategoryPage.featuredTeam} />
+        )}
       </div>
     </Layout>
   );
@@ -70,6 +74,21 @@ export const query = graphql`
             ...GatsbySanityImageFluid
           }
           url
+        }
+      }
+      featuredTeam {
+        firstname
+        lastname
+        experience
+        title
+        id
+        image {
+          asset {
+            url
+            fluid {
+              ...GatsbySanityImageFluid
+            }
+          }
         }
       }
       _rawText

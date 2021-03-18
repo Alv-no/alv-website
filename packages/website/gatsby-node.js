@@ -10,6 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const articleTemplate = path.resolve(`./src/templates/article.js`);
   const serviceTemplate = path.resolve(`./src/templates/service.js`);
   const categoryTemplate = path.resolve(`./src/templates/category.js`);
+  const careerTemplate = path.resolve(`./src/templates/career.js`);
   const res = await graphql(
     `
       {
@@ -23,6 +24,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
         allSanityCategoryPage {
+          edges {
+            node {
+              slug {
+                current
+              }
+            }
+          }
+        }
+        allSanityOpenPostionPage {
           edges {
             node {
               slug {
@@ -76,6 +86,17 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       component: categoryTemplate,
       path: `/vi-tilbyr/${edge.node.slug.current}`,
+      context: {
+        slug: edge.node.slug.current,
+      },
+    });
+  });
+
+  // Create career pages.
+  res.data.allSanityOpenPostionPage.edges.forEach((edge) => {
+    createPage({
+      component: careerTemplate,
+      path: `/karriere/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },
