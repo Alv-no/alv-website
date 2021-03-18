@@ -63,9 +63,10 @@ export const Navigation = ({
           {categoryPages &&
             categoryPages.slice(0, 3).map((categoryPage) => {
               return (
-                <div className="eight:max-w-68">
+                <div className="eight:max-w-68" key={categoryPage.slug.current}>
                   <Subtitle
                     // Temporarily disables links to category pages
+                    link={`/vi-tilbyr/${categoryPage.slug.current}`}
                     inactive={
                       !servicePages.some(
                         (page) =>
@@ -92,6 +93,7 @@ export const Navigation = ({
                           <ListLink
                             link={`/vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
                             margin="eight:mb-5 2xl:mb-6"
+                            key={page.slug.current}
                           >
                             {page.heroHeading}
                           </ListLink>

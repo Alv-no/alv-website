@@ -15,9 +15,11 @@ import landingPage from './landingPage';
 import aboutPage from './aboutPage';
 import employeePage from './employeePage';
 import careerPage from './careerPage';
+import whatWeDo from './whatWeDo';
 import contactPage from './contactPage';
 import ourServicesPage from './ourServicesPage';
 import videoseriesPage from './videoseriesPage';
+import imageAndText from './imageAndText';
 import blogPage from './blogPage';
 import categoryPage from './categoryPage';
 import testimonial from './testimonial';
@@ -53,5 +55,7 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
+    whatWeDo,
+    imageAndText,
   ]),
 });

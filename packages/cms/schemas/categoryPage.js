@@ -43,11 +43,21 @@ export default {
     },
     {
       name: 'heroImage',
-      title: 'Hero Bg Image',
+      title: 'Image',
       type: 'image',
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'text',
+      title: 'Block content - Overview',
+      type: 'blockContent',
+    },
+    {
+      name: 'whatWeDo',
+      title: 'What We Do (add in pairs)',
+      type: 'whatWeDo',
     },
   ],
   preview: {

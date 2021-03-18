@@ -1,11 +1,13 @@
 import React from 'react';
-import { Title } from '../title';
 import Image from 'gatsby-image';
+import PortableText from '@sanity/block-content-to-react';
+import styles from '../../templates/Category.module.css';
+import { Title } from '../title';
 
-export const Overview = ({ image }) => {
+export const Overview = ({ image, blockContent }) => {
   return (
     <>
-      <div className="w-full bg-white" id="overview">
+      <div className="w-full bg-white sm:-mt-7" id="oversikt">
         <div
           className="max-w-1200 mx-auto lg:grid gap-x-10 bg-white py-8"
           style={{
@@ -14,34 +16,21 @@ export const Overview = ({ image }) => {
             gridAutoFlow: 'dense',
           }}
         >
-          {<Image fluid={image} className="h-80 lg:mt-0 sm:-mt-6 -mt-7" />}
+          {image && (
+            <Image fluid={image} className="h-80 lg:mt-2 sm:-mt-2 -mt-7" />
+          )}
           <div className="sm:px-12 px-5 lg:mt-0 mt-10 font-light flex flex-col justify-between h-full">
             <div>
               <Title underline align="left" color="text-navy">
                 Oversikt
               </Title>
-              <p className="mb-8 mt-8 text-lg font-semibold uppercase">
-                Lorem ipsum DO LARATE
-              </p>
-              <p className="mt-8">
-                Dolor sit amet, consectetur adipisifwcing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore roipi magna.dolor sit
-                amet, consectetur adipisifwcing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore roipi magna.dolor sit amet,
-                consectetur adipisifwcing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore roipi magna.
-              </p>
-              <p className="mb-8">
-                Sed do eiusmod tempor incididunt ut labore et dolore roipi
-                magna.dolor sit amet, consectetur adipisifwcing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore roipi magna.
-                Consectetur adipisifwcing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore.
-              </p>
-              <p className="font-semibold text-lg leading-snug">
-                Consectetur adipisifwcing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore.
-              </p>
+              <div className={styles.body}>
+                <PortableText
+                  blocks={blockContent}
+                  projectId="mnr37rl0"
+                  dataset="production"
+                />
+              </div>
             </div>
           </div>
         </div>

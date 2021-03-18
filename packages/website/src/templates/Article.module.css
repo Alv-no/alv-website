@@ -8,6 +8,10 @@
   max-width: 766px;
 }
 
+.body strong {
+  font-weight: 700;
+}
+
 .body h2 {
   font-size: 32px;
   line-height: 38px;

@@ -1,14 +1,14 @@
 import React from 'react';
-import Layout from '../../layout';
-import { ServicesHero } from '../../components/servicesHero';
-import { Title } from '../../components/title';
-import { Description } from '../../components/description';
-import { ServicesSection } from '../../components/servicesSection';
-import { ColumnSection } from '../../components/columnSection';
-import { ImageTextFull } from '../../components/imageTextFull';
-import { useServicesQuery } from '../../hooks/useServicesQuery';
-import { ServicesCard } from '../../components/servicesCard';
-import { ImageTextCards } from '../../components/imageTextCards';
+import Layout from '../layout';
+import { ServicesHero } from '../components/servicesHero';
+import { Title } from '../components/title';
+import { Description } from '../components/description';
+import { ServicesSection } from '../components/servicesSection';
+import { ColumnSection } from '../components/columnSection';
+import { ImageTextFull } from '../components/imageTextFull';
+import { useServicesQuery } from '../hooks/useServicesQuery';
+import { ServicesCard } from '../components/servicesCard';
+import { ImageTextCards } from '../components/imageTextCards';
 
 const Services = () => {
   const data = useServicesQuery();
