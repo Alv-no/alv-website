@@ -39,6 +39,7 @@ export const useVideoseriesQuery = () => {
               title
               description
               videoId
+              slug
               thumbnails {
                 standard {
                   url
