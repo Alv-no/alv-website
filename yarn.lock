@@ -27040,6 +27040,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"slugify@npm:^1.4.7":
+  version: 1.4.7
+  resolution: "slugify@npm:1.4.7"
+  checksum: df4963d10c69d8f5331a9c741a6d123e519010ef7b41d00a5c14f476c39c7e9be993889f4dd762ea4f8fb99c21fcf8ce13e73ec7e2fe1e9ca4322e65e6cae548
+  languageName: node
+  linkType: hard
+
 "snapdragon-node@npm:^2.0.1":
   version: 2.1.1
   resolution: "snapdragon-node@npm:2.1.1"
@@ -30430,6 +30437,7 @@ typescript@^4.0.5:
     react-share: ^4.3.1
     react-slick: ^0.28.0
     react-three-fiber: ^5.3.17
+    slugify: ^1.4.7
     tailwindcss: ^1.9.6
     three: ^0.124.0
     youtube-playlist-info: ^1.1.2

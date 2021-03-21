@@ -4,6 +4,8 @@ const path = require(`path`);
 const fetch = require('node-fetch');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const crypto = require('crypto');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const slugify = require('slugify');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -59,7 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `
   );
-  console.log(process.env);
+
   // Fetch videos with Youtube API
   if (process.env.YT_API) {
     (async () => {
@@ -109,10 +111,14 @@ exports.createPages = async ({ graphql, actions }) => {
 
       playlists.forEach((playlist) => {
         playlist.forEach((video) => {
-          console.log(video);
+          const slug = slugify(video.title.replace(' |', ''), {
+            remove: /[*+~.()|#'"!:@]/,
+            lower: true,
+          });
+
           createPage({
             component: videoTemplate,
-            path: `/videoserie/${video.videoId}`,
+            path: `/videoserie/${slug}`,
             context: {
               video: video,
             },
@@ -234,8 +240,13 @@ if (process.env.YT_API) {
           formattedPublishedAt,
           playlistId,
         }) => {
+          const slug = slugify(title.replace(' |', ''), {
+            remove: /[*+~.()|#'"!:@]/,
+            lower: true,
+          });
           makeNode({
             id: `ytVideo-${videoId}`,
+            slug,
             title,
             description,
             thumbnails,
@@ -279,6 +290,7 @@ if (process.env.YT_API) {
       title: '',
       description: '',
       videoId,
+      slug: '',
       thumbnails: { standard: { url: '' } },
       position: 0,
       publishedAt: '',
