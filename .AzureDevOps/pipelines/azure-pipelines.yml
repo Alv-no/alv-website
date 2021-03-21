@@ -20,7 +20,7 @@ jobs:
   - job: Deploy
     steps:
       - task: TerraformInstaller@0
-        displayName: Install Terraform v0.13.0
+        displayName: Install Terraform v0.14.7
         inputs:
           terraformVersion: "0.13.0"
 
