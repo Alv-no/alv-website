@@ -11,6 +11,7 @@ const Category = ({ data }) => {
   const nav = [
     { label: 'Oversikt', id: 'oversikt' },
     { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
+    { label: 'Vårt Team', id: 'our-team' },
   ];
 
   const { sanityCategoryPage } = data;
@@ -47,9 +48,14 @@ const Category = ({ data }) => {
           <WhatWeDo data={sanityCategoryPage.whatWeDo.process} />
         )}
         <div className="sm:mt-12 lg:mt-20" />
-        {sanityCategoryPage.featuredTeam && (
-          <FeaturedTeam team={sanityCategoryPage.featuredTeam} />
-        )}
+        <div className="max-w-1200 mx-auto">
+          {sanityCategoryPage.featuredTeam && (
+            <FeaturedTeam
+              team={sanityCategoryPage.featuredTeam}
+              notransparent
+            />
+          )}
+        </div>
       </div>
     </Layout>
   );

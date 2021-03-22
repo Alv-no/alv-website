@@ -24,7 +24,7 @@ const Career = ({ data }) => {
         />
       </div>
       <div
-        className="bg-white max-w-1440 mx-auto lg:grid xl:px-25 sm:px-12 px-5 pt-8 pb-18 gap-x-12"
+        className="bg-white max-w-1200 mx-auto lg:grid xl:pl-25 sm:px-12 lg:pr-0 px-5 pt-8 pb-18 gap-x-12"
         style={{ gridTemplateColumns: '60% auto' }}
       >
         <span className={styles.body}>

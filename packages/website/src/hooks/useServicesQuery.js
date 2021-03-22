@@ -21,16 +21,52 @@ export const useServicesQuery = () => {
           }
         }
         sanityOurServicesPage {
-          pageDescription
-          pageTitle
           description
           heading
+          pageDescription
+          pageTitle
+          section7link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section6link {
+            heroHeading
+            slug {
+              current
+            }
+          }
+          section5link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section4link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section3link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section3description
+          section2Title
+          section2Eyebrow
+          section2ImageText
+          section7description
+          section6description
           mainImage {
             asset {
+              url
               fluid {
                 ...GatsbySanityImageFluid
               }
-              url
             }
           }
           section1Image {
@@ -41,15 +77,7 @@ export const useServicesQuery = () => {
               url
             }
           }
-          section1ImageText
-          section2Eyebrow
-          section2Title
-          section3description
-          section4title
-          section5title
-          section6description
-          section7description
-          section7Image {
+          section4Image {
             asset {
               fluid {
                 ...GatsbySanityImageFluid
@@ -65,7 +93,7 @@ export const useServicesQuery = () => {
               url
             }
           }
-          section4Image {
+          section7Image {
             asset {
               fluid {
                 ...GatsbySanityImageFluid

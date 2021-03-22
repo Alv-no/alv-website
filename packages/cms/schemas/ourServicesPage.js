@@ -63,12 +63,18 @@ export default {
       },
     },
     {
-      name: 'section1ImageText',
+      name: 'section2ImageText',
       title: 'Text over image - section 2',
       type: 'string',
       options: {
         maxLength: 50,
       },
+    },
+    {
+      name: 'section3link',
+      title: 'Category Page Link - section 3',
+      type: 'reference',
+      to: { type: 'categoryPage' },
     },
     {
       name: 'section3description',
@@ -77,9 +83,10 @@ export default {
       rows: 3,
     },
     {
-      name: 'section4title',
-      title: 'Title - section 4',
-      type: 'string',
+      name: 'section4link',
+      title: 'Category Page Link - section 4',
+      type: 'reference',
+      to: { type: 'categoryPage' },
     },
     {
       name: 'section4block',
@@ -95,9 +102,10 @@ export default {
       },
     },
     {
-      name: 'section5title',
-      title: 'Title - section 5',
-      type: 'string',
+      name: 'section5link',
+      title: 'Category Page Link - section 5',
+      type: 'reference',
+      to: { type: 'categoryPage' },
     },
     {
       name: 'section5block',
@@ -113,10 +121,22 @@ export default {
       },
     },
     {
+      name: 'section6link',
+      title: 'Category Page Link - section 6',
+      type: 'reference',
+      to: { type: 'categoryPage' },
+    },
+    {
       name: 'section6description',
       title: 'Description - section 6',
       type: 'text',
       rows: 3,
+    },
+    {
+      name: 'section7link',
+      title: 'Category Page Link - section 7',
+      type: 'reference',
+      to: { type: 'categoryPage' },
     },
     {
       name: 'section7description',

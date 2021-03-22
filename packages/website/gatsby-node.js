@@ -165,7 +165,7 @@ exports.createPages = async ({ graphql, actions }) => {
   res.data.allSanityOpenPostionPage.edges.forEach((edge) => {
     createPage({
       component: careerTemplate,
-      path: `/karriere/${edge.node.slug.current}`,
+      path: `/jobbe-i-alv/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },

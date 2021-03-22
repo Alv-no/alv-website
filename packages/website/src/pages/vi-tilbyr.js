@@ -24,17 +24,15 @@ const Services = () => {
       section2Eyebrow,
       section2Title,
       section3description,
-      section3title,
-      section4title,
-      section4text,
-      section5title,
-      section5text,
-      section6title,
-      section7title,
+      section6description,
+      section7description,
       section1Image,
       section4Image,
       section5Image,
       section7Image,
+      _rawSection2Block,
+      _rawSection4Block,
+      _rawSection5Block,
     },
   } = data;
 
@@ -42,6 +40,8 @@ const Services = () => {
     sanityOurServicesPage: { pageDescription } = { pageDescription: false },
     sanityOurServicesPage: { pageTitle } = { pageTitle: false },
   } = data;
+
+  console.log(section7description);
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -51,10 +51,11 @@ const Services = () => {
           <div className="h-8" />
           <Description align="center">{description}</Description>
         </ServicesHero>
-        <div className="bg-white text-navy px-5 sm:px-12 sm:-mt-20 -mt-5 overflow-hidden">
+        <div className="bg-white text-navy px-5 sm:px-12 lg:px-0 sm:-mt-20 -mt-5 overflow-hidden max-w-1200 mx-auto w-full">
           <ColumnSection
             eyebrow={section2Eyebrow}
             title={section2Title}
+            blockContent={_rawSection2Block}
             imageText={section2ImageText}
             image={section1Image.asset.fluid}
           />
@@ -62,7 +63,7 @@ const Services = () => {
         <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
           <ServicesSection
             description={section3description}
-            title={section3title}
+            title={data.sanityOurServicesPage.section3link.heroHeading}
           >
             {cards
               .filter(
@@ -79,21 +80,26 @@ const Services = () => {
               })}
           </ServicesSection>
         </div>
-        <ImageTextFull
-          path=""
-          title={section4title}
-          text={section4text}
-          image={section4Image.asset.fluid}
-        />
-        <ImageTextFull
-          path=""
-          title={section5title}
-          text={section5text}
-          image={section5Image.asset.fluid}
-          flip
-        />
+        <div className="max-w-1200 mx-auto xl:px-0 sm:px-12">
+          <ImageTextFull
+            link={data.sanityOurServicesPage.section4link.slug.current}
+            title={data.sanityOurServicesPage.section4link.heroHeading}
+            blockContent={_rawSection4Block}
+            image={section4Image.asset.fluid}
+          />
+          <ImageTextFull
+            link={data.sanityOurServicesPage.section5link.slug.current}
+            title={data.sanityOurServicesPage.section5link.heroHeading}
+            blockContent={_rawSection5Block}
+            image={section5Image.asset.fluid}
+            flip
+          />
+        </div>
         <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
-          <ServicesSection title={section6title}>
+          <ServicesSection
+            title={data.sanityOurServicesPage.section6link.heroHeading}
+            description={section6description}
+          >
             {cards.slice(0, 4).map((card) => {
               return (
                 <ServicesCard
@@ -105,7 +111,11 @@ const Services = () => {
             })}
           </ServicesSection>
         </div>
-        <ImageTextCards title={section7title} image={section7Image.asset.fluid}>
+        <ImageTextCards
+          title={data.sanityOurServicesPage.section7link.heroHeading}
+          image={section7Image.asset.fluid}
+          description={section7description}
+        >
           {cards.slice(4, 6).map((card) => {
             return (
               <ServicesCard

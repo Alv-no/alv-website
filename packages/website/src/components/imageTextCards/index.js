@@ -3,13 +3,19 @@ import { Title } from '../title';
 import * as Button from '../button';
 import Image from 'gatsby-image';
 
-export const ImageTextCards = ({ image, flip, children, title, text }) => {
+export const ImageTextCards = ({
+  image,
+  flip,
+  children,
+  title,
+  description,
+}) => {
   return (
     <>
       <div className="w-full">
         <div className="w-full h-15 bg-white" />
         <div
-          className="max-w-1440 mx-auto lg:grid bg-servicesgray pb-15"
+          className="max-w-1200 mx-auto lg:grid bg-servicesgray pb-15"
           style={{
             gridTemplateColumns: '1fr 1fr',
           }}
@@ -19,7 +25,7 @@ export const ImageTextCards = ({ image, flip, children, title, text }) => {
               <Image
                 fluid={image}
                 className="h-40vh lg:h-auto"
-                style={{ maxHeight: '555px' }}
+                style={{ maxHeight: '' }}
               />
             )}
           </div>
@@ -30,7 +36,7 @@ export const ImageTextCards = ({ image, flip, children, title, text }) => {
                   <Title align="left" color="text-navy">
                     {title}
                   </Title>
-                  <p className="mb-8 mt-6">{text}</p>
+                  <p className="mb-8 mt-6">{description}</p>
                 </div>
                 <div
                   className={`w-full flex justify-${flip ? 'start' : 'end'}`}

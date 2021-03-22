@@ -7,6 +7,14 @@ export const useWorkQuery = () => {
           pageDescription
           pageTitle
         }
+        allSanityOpenPostionPage {
+          nodes {
+            slug {
+              current
+            }
+            pageTitle
+          }
+        }
         stairs: file(name: { eq: "stairs" }) {
           childImageSharp {
             fluid {

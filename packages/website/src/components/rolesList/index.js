@@ -9,7 +9,7 @@ export const RolesList = ({ image, roles }) => {
     <>
       <div className="w-full" id="hva-gjor-vi">
         <div
-          className="max-w-1440 mx-auto sm:grid py-8 lg:gap-x-15 sm:gap-x-0 justify-between sm:pr-12"
+          className="max-w-1200 mx-auto sm:grid py-8 lg:gap-x-15 sm:gap-x-0 justify-between sm:pr-12"
           style={{ gridTemplateColumns: '30% 30% 30%' }}
         >
           <div>
@@ -24,7 +24,7 @@ export const RolesList = ({ image, roles }) => {
             </div>
             <Image
               fluid={image}
-              className="relative h-100 opacity-35 sm:block hidden"
+              className="relative h-100 opacity-35 sm:block hidden md:-ml-10"
             />
           </div>
           <span className="sm:hidden">

@@ -4,12 +4,12 @@ import Link from 'gatsby-link';
 import { Title } from '../title';
 import * as Button from '../button';
 
-export const FeaturedTeam = ({ team, notitle, fallbackImg }) => {
+export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
   const handleClick = (e) => {
     return e;
   };
   return (
-    <div className="mb-4 mt-10 ">
+    <div className="mb-4 mt-10" id="our-team">
       <div className="max-w-1440 pr-5 sm:px-12 mx-auto">
         {!notitle && (
           <Title underline align="left" color="text-navy">
@@ -25,6 +25,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg }) => {
                 handleClick={handleClick}
                 key={employee.id}
                 fallbackImg={fallbackImg}
+                notransparent={notransparent}
               />
             </Link>
           ))}

@@ -22,7 +22,7 @@ module.exports = {
         bordergray: '#f2f2f3',
         lightblue: '#132442',
         postgray: '#0618384E',
-        servicesgray: '#06183805',
+        servicesgray: '#f7f7f7',
         yellow: '#EABB26',
         blue: '#1E92D0',
         darkblue: '#030F24',

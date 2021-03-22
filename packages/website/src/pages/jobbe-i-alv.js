@@ -10,11 +10,18 @@ const WorkForAlv = () => {
     sanityCareerPage: { pageTitle } = { pageTitle: false },
   } = data;
   return (
-    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-      <ImageTextListHero image={data.stairs.childImageSharp.fluid} />
-      {/* <ReasonsSlider image={data.street.childImageSharp.fluid} />
+    <div className="min-h-screen bg-footerblue">
+      <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+        <div className="">
+          <ImageTextListHero
+            image={data.stairs.childImageSharp.fluid}
+            openPositions={data.allSanityOpenPostionPage.nodes}
+          />
+        </div>
+        {/* <ReasonsSlider image={data.street.childImageSharp.fluid} />
       <ImageTextShifted image={data.interview.childImageSharp.fluid} /> */}
-    </Layout>
+      </Layout>
+    </div>
   );
 };
 
