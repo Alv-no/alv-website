@@ -70,7 +70,8 @@
 
 .body ol {
   list-style-type: decimal;
-  margin-left: 35px;
+  margin-left: 20px;
+  letter-spacing: 0.96px;
 }
 
 .body ol > li > li {
@@ -80,7 +81,8 @@
 
 .body ul {
   list-style-type: disc;
-  margin-left: 35px;
+  margin-left: 20px;
+  letter-spacing: 0.96px;
 }
 
 .body ul > li > li {

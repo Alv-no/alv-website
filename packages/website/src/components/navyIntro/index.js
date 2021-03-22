@@ -6,9 +6,9 @@ import { Description } from '../description';
 export const NavyIntro = ({ title, description, image }) => (
   <>
     {image ? (
-      <div className="sm:z-40 -mt-32 transform -translate-y-2 -mb-2">
+      <div className="sm:z-40 -mt-35 -mb-2">
         <BackgroundImage fluid={image}>
-          <div className="bg-navy bg-opacity-75 w-full pt-10 sm:h-40vh h-screen flex flex-col justify-center items-center sm:pt-16 sm:pb-35 pb-4">
+          <div className="bg-navy bg-opacity-75 w-full pt-10 sm:h-50vh h-screen flex flex-col justify-center items-center sm:pt-16 sm:pb-16 pb-4">
             <Title>{title}</Title>
             <div className="sm:h-6 h-4" />
             <div className="flex justify-center">

@@ -13,6 +13,7 @@ export const EmployeeCard = ({
   activeBio,
   contrast,
   fallbackImg,
+  notransparent,
 }) => {
   return (
     <button
@@ -29,7 +30,9 @@ export const EmployeeCard = ({
       <div
         className={`absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen ${
           contrast && 'opacity-100'
-        } xs:max-w-277px opacity-65 group-hover:opacity-100 transition ${
+        } xs:max-w-277px ${
+          !notransparent && 'opacity-65'
+        } group-hover:opacity-100 transition ${
           activeBio && id === activeBio.id ? 'opacity-100' : ''
         } group-hover:opacity-100 duration-300 pointer-events-none`}
       >

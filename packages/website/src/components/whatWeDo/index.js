@@ -5,7 +5,7 @@ import Image from 'gatsby-image';
 export const WhatWeDo = ({ data }) => {
   return (
     <>
-      <div className="w-full" id="hva-gjør-vi">
+      <div className="w-full" id="hva-gjor-vi">
         <div className="max-w-1200 mx-auto py-8 sm:px-12 px-5">
           <div className="mb-15">
             <Title underline align="text-left" color="text-navy">

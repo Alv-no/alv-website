@@ -1,11 +1,11 @@
 import BackgroundImage from 'gatsby-background-image-es5';
 import React, { useState } from 'react';
+import Link from 'gatsby-link';
 import * as Button from '../button';
 import { Title } from '../title';
 
-export const ImageTextListHero = ({ image }) => {
+export const ImageTextListHero = ({ image, openPositions }) => {
   const [fadeOut, setFadeOut] = useState(true);
-
   const handleClick = () => {
     setFadeOut(!fadeOut);
   };
@@ -68,12 +68,12 @@ export const ImageTextListHero = ({ image }) => {
           </div>
           <div className="text-white hidden twelve:flex grid sm:grid-cols-2 mt-5 w-full lg:pl-8 xl:pl-0 ml-18 mr-40 twelve:max-w-720">
             <div className="divide-y-2 divide-white divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
-              <Roles link="https://www.linkedin.com/jobs/search/?f_C=19148136&geoId=92000000&redirect=false&position=1&pageNum=0">
-                Se våre ledige stillinger
-              </Roles>
+              {openPositions.map((el) => (
+                <Roles link={el.slug.current}>{el.pageTitle}</Roles>
+              ))}
             </div>
             <div className="divide-y-2 divide-white divide-solid h-full flex flex-col justify-end w-full flex-1 mr-10">
-              <Roles link="mailto: hei@alv.no">Send inn åpen søknad</Roles>
+              <Mail link="mailto: hei@alv.no">Send inn åpen søknad</Mail>
             </div>
           </div>
         </div>
@@ -85,12 +85,12 @@ export const ImageTextListHero = ({ image }) => {
       </div>
       <div className="text-white  twelve:hidden grid gap-x-10 sm:grid-cols-2 sm:px-12 px-5 mt-5 sm:mt-5 pb-10">
         <div className="border-b-2 border-divide sm:border-none divide-y-2 divide-divide mr-10 divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
-          <Roles link="https://www.linkedin.com/jobs/search/?f_C=19148136&geoId=92000000&redirect=false&position=1&pageNum=0">
-            Se våre ledige stillinger
-          </Roles>
+          {openPositions.map((el) => (
+            <Roles link={el.slug.current}>{el.pageTitle}</Roles>
+          ))}
         </div>
         <div className="divide-y-2 divide-divide divide-solid h-full flex flex-col justify-end w-full flex-1 mr-10">
-          <Roles link="mailto: hei@alv.no">Send inn åpen søknad</Roles>
+          <Mail link="mailto: hei@alv.no">Send inn åpen søknad</Mail>
         </div>
       </div>
     </div>
@@ -98,6 +98,16 @@ export const ImageTextListHero = ({ image }) => {
 };
 
 export const Roles = ({ children, link }) => (
+  <Link to={link}>
+    <div
+      className={`flex w-full items-center my-2 h-10 uppercase text-white font-semibold justify-between`}
+    >
+      <p className="">{children}</p>
+      <Button.CtaArrow />
+    </div>
+  </Link>
+);
+export const Mail = ({ children, link }) => (
   <a href={link} target="_blank" rel="noreferrer">
     <div
       className={`flex w-full items-center my-2 h-10 uppercase text-white font-semibold justify-between`}
