@@ -59,7 +59,9 @@ export const Navigation = ({
           condition={width >= 800}
           wrapper={(children) => <div>{children}</div>}
         >
-          <LargeLink margin="eight:mb-10 2xl:mb-12">Vi Tilbyr</LargeLink>
+          <LargeLink margin="eight:mb-10 2xl:mb-12" link="/vi-tilbyr">
+            Vi Tilbyr
+          </LargeLink>
           {categoryPages &&
             categoryPages.slice(0, 3).map((categoryPage) => {
               return (

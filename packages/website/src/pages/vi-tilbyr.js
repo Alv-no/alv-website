@@ -36,6 +36,8 @@ const Services = () => {
     },
   } = data;
 
+  console.log(_rawSection5Block);
+
   const {
     sanityOurServicesPage: { pageDescription } = { pageDescription: false },
     sanityOurServicesPage: { pageTitle } = { pageTitle: false },
@@ -80,19 +82,23 @@ const Services = () => {
           </ServicesSection>
         </div>
         <div className="max-w-1200 mx-auto xl:px-0 sm:px-12">
-          <ImageTextFull
-            link={data.sanityOurServicesPage.section4link.slug.current}
-            title={data.sanityOurServicesPage.section4link.heroHeading}
-            blockContent={_rawSection4Block}
-            image={section4Image.asset.fluid}
-          />
-          <ImageTextFull
-            link={data.sanityOurServicesPage.section5link.slug.current}
-            title={data.sanityOurServicesPage.section5link.heroHeading}
-            blockContent={_rawSection5Block}
-            image={section5Image.asset.fluid}
-            flip
-          />
+          {_rawSection4Block && (
+            <ImageTextFull
+              link={data.sanityOurServicesPage.section4link.slug.current}
+              title={data.sanityOurServicesPage.section4link.heroHeading}
+              blockContent={_rawSection4Block}
+              image={section4Image.asset.fluid}
+            />
+          )}
+          {_rawSection5Block && (
+            <ImageTextFull
+              link={data.sanityOurServicesPage.section5link.slug.current}
+              title={data.sanityOurServicesPage.section5link.heroHeading}
+              blockContent={_rawSection5Block}
+              image={section5Image.asset.fluid}
+              flip
+            />
+          )}
         </div>
         <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
           <ServicesSection
