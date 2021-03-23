@@ -7,14 +7,11 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  - name: packageDiractory
-    value: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
-
   - name: subscriptionIdDev
     value: '32547ca3-abba-45c8-b76e-46a590958b5e'
 
   - name: serviceName
-    value: 'alvnodev'
+    value: alvnodev
 
 jobs:
   - job: Deploy
@@ -38,30 +35,34 @@ jobs:
       - task: TerraformTaskV1@0
         displayName: Terraform init
         inputs:
-          provider: 'azurerm'
-          command: 'init'
-          backendServiceArm: 'AlvNo-Dev'
-          backendAzureRmResourceGroupName: 'Common'
+          provider: azurerm
+          command: init
+          backendServiceArm: AlvNo-Dev
+          backendAzureRmResourceGroupName: Common
           backendAzureRmStorageAccountName: '$(serviceName)'
-          backendAzureRmContainerName: 'terraformstatus'
-          backendAzureRmKey: 'terraform.tfstate'
-          workingDirectory: '$(packageDiractory)'
+          backendAzureRmContainerName: terraformstatus
+          backendAzureRmKey: terraform.tfstate
+          workingDirectory: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
 
       - task: TerraformTaskV1@0
         displayName: Terraform validate
         inputs:
           provider: azurerm
           command: validate
-          workingDirectory: '$(packageDiractory)'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
 
       - task: TerraformTaskV1@0
         displayName: Terraform plan -out=tfplan
         inputs:
           provider: azurerm
           command: plan
-          commandOptions: '-var "docker_tag=$(git-short-hash)" -var "subscription_id=$(subscriptionIdDev)" -var "service_name=$(serviceName)" -out=tfplan'
-          environmentServiceNameAzureRM: 'AlvNo-Dev'
-          workingDirectory: $(packageDiractory)
+          environmentServiceNameAzureRM: AlvNo-Dev
+          workingDirectory: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
+          commandOptions: >
+            -var "docker_tag=$(git-short-hash)"
+            -var "subscription_id=$(subscriptionIdDev)"
+            -var "service_name=$(serviceName)"
+            -out=tfplan
 
       - task: TerraformTaskV1@0
         displayName: Terraform apply tfplan
@@ -69,5 +70,5 @@ jobs:
           provider: azurerm
           command: apply
           commandOptions: tfplan
-          environmentServiceNameAzureRM: 'AlvNo-Dev'
-          workingDirectory: '$(packageDiractory)'
+          environmentServiceNameAzureRM: AlvNo-Dev
+          workingDirectory: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
