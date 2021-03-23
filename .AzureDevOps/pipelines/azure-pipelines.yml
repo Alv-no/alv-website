@@ -19,6 +19,17 @@ variables:
 jobs:
   - job: Deploy
     steps:
+      - task: Bash@3
+        name: createHash
+        displayName: Create hash
+        inputs:
+          targetType: inline
+          script: |
+            ## At least 7 digits, more if needed for uniqueness
+            SHORT_HASH=`git rev-parse --short=7 HEAD`
+            echo "Short hash set to $SHORT_HASH"
+            echo "##vso[task.setvariable variable=git-short-hash;isOutput=true]$SHORT_HASH"
+
       - task: TerraformInstaller@0
         displayName: Install Terraform v0.14.7
         inputs:
@@ -48,7 +59,7 @@ jobs:
         inputs:
           provider: azurerm
           command: plan
-          commandOptions: '-var "docker_tag=Latest" -var "subscription_id=$(subscriptionIdDev)" -var "service_name=$(serviceName)" -out=tfplan'
+          commandOptions: '-var "docker_tag=$(git-short-hash)" -var "subscription_id=$(subscriptionIdDev)" -var "service_name=$(serviceName)" -out=tfplan'
           environmentServiceNameAzureRM: 'AlvNo-Dev'
           workingDirectory: $(packageDiractory)
 
