@@ -12,7 +12,7 @@ export const ServicesCard = ({ title, description, link }) => (
       </div>
     </Link>
     <div className="bottom-0 mb-8 ml-10 w-full absolute">
-      <Button.CtaArrow>Lær mer</Button.CtaArrow>
+      <Button.CtaArrow path={link}>Lær mer</Button.CtaArrow>
     </div>
   </div>
 );

@@ -20,7 +20,7 @@ export const ColumnSection = ({
             gridTemplateColumns: 'minmax(610px, 740px) minmax(320px, 400px)',
           }}
         >
-          <div className="h-100 sm:h-auto overflow-hidden">
+          <div className="h-100 sm:h-auto overflow-hidden lg:mx-12">
             <div
               className="absolute mt-10 h-100 w-full sm:hidden"
               style={{

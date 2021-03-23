@@ -65,6 +65,19 @@ export default {
     //   type: 'featuredTeam',
     // },
     {
+      name: 'servicesListText',
+      title: 'Text (over image) - Services List',
+      type: 'string',
+    },
+    {
+      name: 'servicesListImage',
+      title: 'Image - Services List',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'featuredTeam',
       title: 'Featured Team',
       type: 'array',

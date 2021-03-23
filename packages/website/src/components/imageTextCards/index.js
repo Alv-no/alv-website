@@ -9,6 +9,7 @@ export const ImageTextCards = ({
   children,
   title,
   description,
+  link,
 }) => {
   return (
     <>
@@ -41,7 +42,7 @@ export const ImageTextCards = ({
                 <div
                   className={`w-full flex justify-${flip ? 'start' : 'end'}`}
                 >
-                  <Button.CtaArrow>Lær Mer</Button.CtaArrow>
+                  <Button.CtaArrow path={link}>Lær Mer</Button.CtaArrow>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 px-10 lg:pt-10 gap-x-4 justify-center bg-servicesgray ">

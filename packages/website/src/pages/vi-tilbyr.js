@@ -41,8 +41,6 @@ const Services = () => {
     sanityOurServicesPage: { pageTitle } = { pageTitle: false },
   } = data;
 
-  console.log(section7description);
-
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="overflow-hidden w-screen">
@@ -64,6 +62,7 @@ const Services = () => {
           <ServicesSection
             description={section3description}
             title={data.sanityOurServicesPage.section3link.heroHeading}
+            link={data.sanityOurServicesPage.section3link.slug.current}
           >
             {cards
               .filter(
@@ -99,6 +98,7 @@ const Services = () => {
           <ServicesSection
             title={data.sanityOurServicesPage.section6link.heroHeading}
             description={section6description}
+            link={data.sanityOurServicesPage.section6link.slug.current}
           >
             {cards.slice(0, 4).map((card) => {
               return (
@@ -115,13 +115,14 @@ const Services = () => {
           title={data.sanityOurServicesPage.section7link.heroHeading}
           image={section7Image.asset.fluid}
           description={section7description}
+          link={data.sanityOurServicesPage.section7link.slug.current}
         >
           {cards.slice(4, 6).map((card) => {
             return (
               <ServicesCard
                 title={card.heroHeading}
                 description={card.heroDescription}
-                link={card.parentPage.slug.current}
+                link={`${data.sanityOurServicesPage.section7link.slug.current}/${card.slug.current}`}
               />
             );
           })}

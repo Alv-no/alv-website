@@ -101,6 +101,11 @@ export const query = graphql`
     allSanityServices {
       edges {
         node {
+          parentPage {
+            slug {
+              current
+            }
+          }
           heroHeading
           slug {
             current

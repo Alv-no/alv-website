@@ -2,7 +2,7 @@ import React from 'react';
 import { Title } from '../title';
 import * as Button from '../button';
 
-export const ServicesSection = ({ children, title, description }) => {
+export const ServicesSection = ({ children, title, description, link }) => {
   return (
     <>
       <div className="w-full py-10 lg:py-15 tracking-wider">
@@ -17,7 +17,7 @@ export const ServicesSection = ({ children, title, description }) => {
             <div className="font-light ml-10">{description}</div>
             <div className="flex justify-end h-full items-center lg:mt-0 mt-5">
               <div className="text-navy flex items-center cursor-pointer">
-                <Button.CtaArrow>Lær mer</Button.CtaArrow>
+                <Button.CtaArrow path={link}>Lær mer</Button.CtaArrow>
               </div>
             </div>
           </div>
