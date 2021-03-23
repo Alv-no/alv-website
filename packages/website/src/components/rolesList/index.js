@@ -4,13 +4,14 @@ import Image from 'gatsby-image';
 import Link from 'gatsby-link';
 import BackgroundImage from 'gatsby-background-image-es5';
 
-export const RolesList = ({ image, roles }) => {
+export const RolesList = ({ image, roles, text }) => {
   return (
     <>
       <div className="w-full" id="hva-gjor-vi">
         <div
           className="max-w-1200 mx-auto sm:grid py-8 lg:gap-x-15 sm:gap-x-0 justify-between sm:pr-12"
           style={{ gridTemplateColumns: '30% 30% 30%' }}
+          id="tjenester"
         >
           <div>
             <div className="relative" />
@@ -19,7 +20,7 @@ export const RolesList = ({ image, roles }) => {
                 className="text-4xl leading-tight font-semibold uppercase w-100"
                 style={{ lineHeight: '1.05' }}
               >
-                Andre tjenester fra Alv
+                {text || 'Andre tjenester fra Alv'}
               </h3>
             </div>
             <Image
@@ -34,7 +35,7 @@ export const RolesList = ({ image, roles }) => {
                   className="text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase w-100"
                   style={{ lineHeight: '1.05' }}
                 >
-                  Andre tjenester fra Alv
+                  {text || 'Andre tjenester fra Alv'}
                 </h3>
               </div>
             </BackgroundImage>
@@ -44,7 +45,9 @@ export const RolesList = ({ image, roles }) => {
             {roles &&
               roles.slice(0, Math.ceil(roles.length / 2)).map((role) => {
                 return (
-                  <RoleItem internalLink={role.node.slug.current}>
+                  <RoleItem
+                    internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
+                  >
                     {role.node.heroHeading}
                   </RoleItem>
                 );
@@ -60,7 +63,9 @@ export const RolesList = ({ image, roles }) => {
                 .slice(Math.ceil(roles.length / 2), roles.length)
                 .map((role) => {
                   return (
-                    <RoleItem internalLink={role.node.slug.current}>
+                    <RoleItem
+                      internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
+                    >
                       {role.node.heroHeading}
                     </RoleItem>
                   );

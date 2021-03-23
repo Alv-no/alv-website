@@ -2,19 +2,21 @@ import React from 'react';
 import Layout from '../layout';
 import { graphql } from 'gatsby';
 import { NavyIntro } from '../components/navyIntro';
+import { RolesList } from '../components/rolesList';
 import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
 import { FeaturedTeam } from '../components/featuredTeam';
 import { WhatWeDo } from '../components/whatWeDo';
 
 const Category = ({ data }) => {
+  const { sanityCategoryPage } = data;
+
   const nav = [
     { label: 'Oversikt', id: 'oversikt' },
     { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
+    { label: 'Tjenester', id: 'tjenester' },
     { label: 'Vårt Team', id: 'our-team' },
   ];
-
-  const { sanityCategoryPage } = data;
 
   const scrollTo = (e) => {
     const element = document.getElementById(e.target.name);
@@ -44,6 +46,15 @@ const Category = ({ data }) => {
           }
           blockContent={sanityCategoryPage._rawText || null}
         />
+        {sanityCategoryPage.servicesListText && (
+          <div className="mt-12">
+            <RolesList
+              text={sanityCategoryPage.servicesListText}
+              image={sanityCategoryPage.servicesListImage.asset.fluid}
+              roles={data.allSanityServices.edges}
+            />
+          </div>
+        )}
         {sanityCategoryPage.whatWeDo && (
           <WhatWeDo data={sanityCategoryPage.whatWeDo.process} />
         )}
@@ -97,6 +108,15 @@ export const query = graphql`
           }
         }
       }
+      servicesListImage {
+        asset {
+          url
+          fluid {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      servicesListText
       _rawText
       whatWeDo {
         process {
@@ -108,6 +128,23 @@ export const query = graphql`
                 ...GatsbySanityImageFluid
               }
             }
+          }
+        }
+      }
+    }
+    allSanityServices(
+      filter: { parentPage: { slug: { current: { eq: $slug } } } }
+    ) {
+      edges {
+        node {
+          heroHeading
+          parentPage {
+            slug {
+              current
+            }
+          }
+          slug {
+            current
           }
         }
       }

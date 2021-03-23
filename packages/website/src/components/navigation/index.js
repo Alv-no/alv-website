@@ -115,7 +115,7 @@ export const Navigation = ({
               return (
                 <div className="eight:max-w-68">
                   <Subtitle
-                    // Temporarily disables links to category pages
+                    link={`/vi-tilbyr/${categoryPage.slug.current}`}
                     inactive={
                       !servicePages.some(
                         (page) =>
