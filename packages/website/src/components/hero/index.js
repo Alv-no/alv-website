@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Icon from '../icon';
 
-export const Hero = ({ videoMp4, videoWebm }) => {
+export const Hero = ({ videoMp4, videoWebm, routeUpdate }) => {
   return (
     <div className="bg-navy w-full flex justify-center h-screen relative flex-col sm:pb-24 sm:z-40 -mt-25">
       {/* <Title
@@ -17,7 +17,11 @@ export const Hero = ({ videoMp4, videoWebm }) => {
       </video>
       <div className="sm:h-3 h-4" />
       <div className="max-w-3xl w-full mx-auto absolute bottom-0 right-0 flex justify-end inset-x-0">
-        <div className="transform translate-y-8">
+        <div
+          className={`relative z-30 transform ${
+            routeUpdate ? 'translate-y-8' : 'translate-y-2'
+          }`}
+        >
           <Icon.ScrollToContinue />
         </div>
       </div>

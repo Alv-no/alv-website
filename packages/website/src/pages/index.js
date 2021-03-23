@@ -8,7 +8,7 @@ import { Hire, HireAlt } from '../components/hire';
 import { VideoIntro } from '../components/videoIntro';
 import { useIndexQuery } from '../hooks/useIndexQuery';
 
-const Index = () => {
+const Index = ({ location }) => {
   const data = useIndexQuery();
   const linesAndClasses = [
     { line: 'Vi bygger', classes: '' },
@@ -29,6 +29,7 @@ const Index = () => {
           delay={90}
           videoMp4={data.video.heroVideoMp4.asset.url}
           videoWebm={data.video.heroVideoWebm.asset.url}
+          routeUpdate={location.action}
         />
         <div className="">
           <div className="bg-navy">
