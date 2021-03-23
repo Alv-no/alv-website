@@ -1,0 +1,40 @@
+steps:
+  - task: TerraformInstaller@0
+    displayName: Install Terraform v0.14.7
+    inputs:
+      terraformVersion: '0.14.7'
+
+  - task: TerraformTaskV1@0
+    displayName: Terraform init
+    inputs:
+      provider: azurerm
+      command: init
+      backendServiceArm: '$(serviceConnection)'
+      backendAzureRmResourceGroupName: Common
+      backendAzureRmStorageAccountName: '$(serviceName)'
+      backendAzureRmContainerName: terraformstatus
+      backendAzureRmKey: terraform.tfstate
+      workingDirectory: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
+
+  - task: TerraformTaskV1@0
+    displayName: Terraform validate
+    inputs:
+      provider: azurerm
+      command: validate
+      workingDirectory: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
+
+  # - bash: docker run -t -v "$(System.DefaultWorkingDirectory)":/tf bridgecrew/checkov -d /tf
+  #   displayName: Checkov Static Code Analysis
+  #   workingDirectory: packages/infrastructure
+
+  - task: TerraformTaskV1@0
+    displayName: Terraform plan
+    inputs:
+      provider: azurerm
+      command: plan
+      environmentServiceNameAzureRM: '$(serviceConnection)'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/packages/infrastructure/stage-1'
+      commandOptions: >
+        -var "docker_tag=$(git-short-hash)"
+        -var "subscription_id=$(subscriptionId)"
+        -var "service_name=$(serviceName)"

@@ -1,0 +1,40 @@
+steps:
+  - checkout: self
+    fetchDepth: 1
+
+  - task: DownloadSecureFile@1
+    name: envFile
+    displayName: 'Download env file'
+    inputs:
+      secureFile: '$(envFileName)'
+
+  - script: mv "$(envFile.secureFilePath)" "packages/website/"
+
+  - task: TerraformInstaller@0
+    displayName: Install Terraform v0.14.7
+    inputs:
+      terraformVersion: '0.14.7'
+
+  - task: TerraformTaskV1@0
+    displayName: Terraform init
+    inputs:
+      provider: azurerm
+      command: init
+      backendServiceArm: '$(serviceConnection)'
+      backendAzureRmResourceGroupName: Common
+      backendAzureRmStorageAccountName: '$(serviceName)'
+      backendAzureRmContainerName: terraformstatus
+      backendAzureRmKey: terraform.tfstate
+      workingDirectory: packages/infrastructure/stage-1
+
+  - task: TerraformTaskV1@0
+    displayName: Terraform apply tfplan
+    inputs:
+      provider: azurerm
+      command: apply
+      environmentServiceNameAzureRM: '$(serviceConnection)'
+      workingDirectory: packages/infrastructure/stage-1
+      commandOptions: >
+        -var "docker_tag=$(git-short-hash)"
+        -var "subscription_id=$(subscriptionId)"
+        -var "service_name=$(serviceName)"
