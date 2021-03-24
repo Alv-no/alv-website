@@ -1,5 +1,5 @@
 build-website: ## Builds website docker image
-	docker build -f website.Dockerfile -t website .
+	docker build -f website.Dockerfile -t website --no-cache .
 
 build-cms: ## Builds cms docker image
 	docker build -f cms.Dockerfile -t cms .
