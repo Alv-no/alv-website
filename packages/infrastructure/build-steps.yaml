@@ -38,3 +38,4 @@ steps:
         -var "docker_tag=$(git-short-hash)"
         -var "subscription_id=$(subscriptionId)"
         -var "service_name=$(serviceName)"
+        -var "hostname=$(hostname)"

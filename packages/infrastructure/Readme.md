@@ -14,9 +14,10 @@ This is the infrastructure setup for Azure.
 - Create a file "stage-1/terraform.tfvars":
 
 ```
-docker_tag = "latest"
+docker_tag      = "latest"
 subscription_id = ""
-service_name = "alvnodev"
+service_name    = "alvnodev"
+hostname        = "dev.alv.no"
 ```
 
 - `cd stage-1 && terraform init -backend-config="test-backend.tfvars && terraform apply -auto-approve`
