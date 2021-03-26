@@ -3,22 +3,20 @@ export const useLayoutQuery = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        allSanitySiteSettings {
-          edges {
-            node {
-              address
-              phone
-            }
-          }
+        sanitySiteSettings(
+          id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }
+        ) {
+          email
+          org
+          phone
+          address
         }
         allSanityCategoryPage {
-          edges {
-            node {
-              slug {
-                current
-              }
-              heroHeading
+          nodes {
+            slug {
+              current
             }
+            heroHeading
           }
         }
         allSanityServices {
@@ -40,12 +38,8 @@ export const useLayoutQuery = () => {
       }
     `
   );
-  const { address, phone } = data.allSanitySiteSettings.edges[0].node;
-  const org = '822 70 4042';
-  const email = 'hei@alv.no';
   const servicePages = data.allSanityServices.edges.map((edge) => edge.node);
-  const categoryPages = data.allSanityCategoryPage.edges.map(
-    (edge) => edge.node
-  );
+  const categoryPages = data.allSanityCategoryPage.nodes;
+  const { address, phone, org, email } = data.sanitySiteSettings;
   return { address, phone, org, email, servicePages, categoryPages };
 };

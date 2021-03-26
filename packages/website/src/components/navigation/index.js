@@ -115,7 +115,7 @@ export const Navigation = ({
           {categoryPages &&
             categoryPages.slice(3, categoryPages.length).map((categoryPage) => {
               return (
-                <div className="eight:max-w-68">
+                <div className="eight:max-w-68" key={categoryPage.slug.current}>
                   <Subtitle
                     link={`/vi-tilbyr/${categoryPage.slug.current}`}
                     inactive={
@@ -144,6 +144,7 @@ export const Navigation = ({
                           <ListLink
                             link={`/vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
                             margin="eight:mb-5 2xl:mb-6"
+                            key={page.slug.current}
                           >
                             {page.heroHeading}
                           </ListLink>

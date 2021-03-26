@@ -59,11 +59,6 @@ export default {
       title: 'What We Do (add in pairs)',
       type: 'whatWeDo',
     },
-    // {
-    //   name: 'featuredTeam',
-    //   title: 'Featured Team',
-    //   type: 'featuredTeam',
-    // },
     {
       name: 'servicesListText',
       title: 'Text (over image) - Services List',

@@ -14472,13 +14472,13 @@ fsevents@^1.2.7:
   linkType: hard
 
 "gatsby-image@npm:^2.10.0":
-  version: 2.10.0
-  resolution: "gatsby-image@npm:2.10.0"
+  version: 2.11.0
+  resolution: "gatsby-image@npm:2.11.0"
   dependencies:
     "@babel/runtime": ^7.12.5
     object-fit-images: ^3.2.4
     prop-types: ^15.7.2
-  checksum: c16e4f0659ee4439b63b0dffe36495fc2975feacbf412e4fe2efd1e2b16489dab6b8482b751a40f393ef5e4d611f888df6d98ac1d23043f747f5962b1f5b3bd6
+  checksum: fb7e3bd8641c43872b1c8c8e665b9919fc972f04ecc4a6699d166585337ca359b498ba17352175352cfa248d8e49be9dd01e1c61ab32f50d683d439695c8bd40
   languageName: node
   linkType: hard
 

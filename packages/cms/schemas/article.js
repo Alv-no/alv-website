@@ -4,11 +4,6 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -16,6 +11,11 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+    },
+    {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
     },
     {
       name: 'author',
@@ -46,6 +46,11 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+    },
+    {
+      name: 'socials',
+      title: 'Social Media',
+      type: 'socials',
     },
     {
       name: 'tags',

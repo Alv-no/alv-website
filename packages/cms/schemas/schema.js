@@ -20,6 +20,7 @@ import contactPage from './contactPage';
 import ourServicesPage from './ourServicesPage';
 // import featuredTeam from './featuredTeam';
 import openPositionPage from './openPositionPage';
+import socials from './socials';
 import videoseriesPage from './videoseriesPage';
 import imageAndText from './imageAndText';
 import blogPage from './blogPage';
@@ -60,6 +61,6 @@ export default createSchema({
     blockContent,
     whatWeDo,
     imageAndText,
-    // featuredTeam,
+    socials,
   ]),
 });

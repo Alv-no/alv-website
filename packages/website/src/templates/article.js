@@ -16,8 +16,19 @@ import { window } from 'browser-monads';
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
   const { servicePages, categoryPages } = useLayoutQuery();
+  const {
+    title,
+    author,
+    mainImage,
+    _rawBody,
+    tags,
+    description,
+    socials,
+  } = props.data.sanityArticle;
 
-  const { title, author, mainImage, _rawBody, tags } = props.data.sanityArticle;
+  const socialObj = socials || {};
+  const { socialTitle, socialSubtitle, socialImage } = socialObj;
+
   let authorSlug;
   if (author && author.firstname && author.lastname) {
     authorSlug = author.firstname
@@ -26,10 +37,20 @@ const ArticleTemplate = (props) => {
       .map((name) => name.toLowerCase());
     authorSlug = authorSlug.join('-');
   }
-  const socialTags = tags.map((tag) => tag.tag);
+
+  const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
+  const metaImage =
+    socials && socials.socialImage
+      ? socialImage.asset.fixed.src
+      : mainImage.asset.fluid.src;
+
   return (
     <>
-      <SEO title={title} />
+      <SEO
+        title={socialTitle || title}
+        description={socialSubtitle || description}
+        metaImage={metaImage || ''}
+      />
       <span className="lg:block hidden">
         <Sidebar
           {...author}
@@ -45,7 +66,8 @@ const ArticleTemplate = (props) => {
             <div className="mb-5">
               <SocialShare
                 url={window.location.href}
-                title={title}
+                title={socialTitle}
+                subtitle={socialSubtitle}
                 tags={socialTags}
               />
             </div>
@@ -185,6 +207,17 @@ export const query = graphql`
         asset {
           fluid {
             ...GatsbySanityImageFluid
+          }
+        }
+      }
+      socials {
+        socialSubtitle
+        socialTitle
+        socialImage {
+          asset {
+            fixed(height: 630, width: 1200) {
+              src
+            }
           }
         }
       }
