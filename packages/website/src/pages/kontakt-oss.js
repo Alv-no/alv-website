@@ -106,7 +106,7 @@ const Contact = ({ location }) => {
               </div>
             </div>
           </div>
-          <div className="flex-1 p-5 sm:px-12 lg:mx-0 lg:p-12 lg:pb-15 tracking-wider bg-lightblue">
+          <div className="flex-1 p-5 sm:p-12 lg:mx-0 lg:pb-15 tracking-wider bg-lightblue">
             {active === 'offer' && <Form.Offer />}
             {active === 'call' && <Form.Call />}
             {active === 'visit' && <Form.Visit address={address} org={org} />}

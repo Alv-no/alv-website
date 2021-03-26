@@ -6,20 +6,17 @@ import { OwnedByStaff } from '../components/ownedByStaff';
 import { OurServices } from '../components/ourServices';
 import { Hire, HireAlt } from '../components/hire';
 import { VideoIntro } from '../components/videoIntro';
-import { useIndexQuery } from '../hooks/useIndexQuery';
+import { graphql } from 'gatsby';
 
-const Index = ({ location }) => {
-  const data = useIndexQuery();
+const Index = ({ data, location }) => {
   const linesAndClasses = [
     { line: 'Vi bygger', classes: '' },
     { line: 'Norges mest attraktive', classes: 'font-black' },
     { line: 'konsulentselskap', classes: '', dot: true },
   ];
 
-  const {
-    sanityLandingPage: { pageDescription } = { pageDescription: false },
-    sanityLandingPage: { pageTitle } = { pageTitle: false },
-  } = data;
+  const pageTitle = data.sanityLandingPage.pageTitle || false;
+  const pageDescription = data.sanityLandingPage.pageDescription || false;
 
   return (
     <div className="overflow-hidden">
@@ -77,3 +74,83 @@ const Index = ({ location }) => {
 };
 
 export default Index;
+
+export const query = graphql`
+  query {
+    sanityLandingPage {
+      pageDescription
+      pageTitle
+    }
+    video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
+      id
+      pageTitle
+      videoMp4 {
+        asset {
+          url
+        }
+      }
+      heroVideoWebm {
+        asset {
+          url
+        }
+      }
+      heroVideoMp4 {
+        asset {
+          url
+        }
+      }
+      videoWebm {
+        asset {
+          url
+        }
+      }
+      videoMp4 {
+        asset {
+          url
+        }
+      }
+    }
+    stairs: file(name: { eq: "stairs" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    street: file(name: { eq: "street" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    services: file(name: { eq: "vitilbyr_header" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    cta: file(name: { eq: "Alv_fredag" }) {
+      childImageSharp {
+        fluid(maxWidth: 1500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    sliderImg: file(name: { eq: "systemutvikling_img" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    interview: file(name: { eq: "interview" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;

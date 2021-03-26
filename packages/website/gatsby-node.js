@@ -125,7 +125,6 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
   }
-
   // Create blog posts pages.
   res.data.allSanityArticle.edges.forEach((edge) => {
     createPage({

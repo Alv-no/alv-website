@@ -12,7 +12,6 @@ import { ImageTextCards } from '../components/imageTextCards';
 
 const Services = () => {
   const data = useServicesQuery();
-
   const cards = data.allSanityServices.edges.map((edge) => edge.node);
 
   const {
@@ -109,7 +108,7 @@ const Services = () => {
                 <ServicesCard
                   title={card.heroHeading}
                   description={card.heroDescription}
-                  link={card.parentPage.slug.current}
+                  link={`${card.parentPage.slug.current}/${card.slug.current}`}
                 />
               );
             })}
