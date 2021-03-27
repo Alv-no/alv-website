@@ -5,21 +5,26 @@ export default {
   title: 'components/button',
 };
 
-export const Arrow = () => <Button.Arrow>Test</Button.Arrow>;
-export const line = () => (
-  <Button.Line onClick={() => console.log('Click')}>Test</Button.Line>
-);
-export const OvalSimple = () => (
-  <Button.OvalSimple onClick={() => console.log('Click')}>
-    Test
-  </Button.OvalSimple>
-);
-export const FormSelect = () => (
-  <Button.FormSelect
-    id="id"
-    active={false}
-    onClick={() => console.log('Click')}
-  >
-    Test
-  </Button.FormSelect>
-);
+export const Arrow = (args) => <Button.Arrow {...args} />;
+Arrow.args = {
+  children: 'Test',
+};
+
+export const Line = (args) => <Button.Line {...args} />;
+Line.args = {
+  children: 'Test',
+};
+
+export const OvalSimple = (args) => <Button.OvalSimple {...args} />;
+OvalSimple.args = {
+  children: 'Test',
+};
+OvalSimple.argTypes = { onClick: { action: 'clicked' } };
+
+export const FormSelect = (args) => <Button.FormSelect {...args} />;
+FormSelect.args = {
+  children: 'Test',
+  active: false,
+  id: 'id',
+};
+FormSelect.argTypes = { onClick: { action: 'clicked' } };
