@@ -44,7 +44,7 @@ export const ColumnSection = ({
             <BackgroundImage fluid={image} className="h-full w-full">
               <div
                 className="absolute inset-0 bg-navy text-white cursor-pointer"
-                style={{ opacity: '30%' }}
+                style={{ opacity: '0.3' }}
               />
               <div className="h-40vh lg:h-full w-full flex justify-between transform -translate-y-3 items-center text-white px-15">
                 <div className="uppercase flex w-10 h-10 font-semibold">
