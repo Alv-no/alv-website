@@ -21,7 +21,8 @@ ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN yarn workspace website run build
 
 # Stage 2 - Webserver using Ngnix
-FROM nginx:1.18-alpine
+FROM nginx:1.19-alpine
 COPY --from=0 /app/packages/website/public /usr/share/nginx/html/
+COPY website.nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
