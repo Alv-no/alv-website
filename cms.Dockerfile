@@ -15,8 +15,8 @@ RUN yarn
 RUN yarn workspace cms run build
 
 # Stage 2 - Webserver using Ngnix
-FROM nginx:1.18-alpine
+FROM nginx:1.19-alpine
 COPY --from=0 /app/packages/cms/dist /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY cms.nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
