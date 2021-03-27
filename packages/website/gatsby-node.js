@@ -1,10 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`);
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fetch = require('node-fetch');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const crypto = require('crypto');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const slugify = require('slugify');
 
 exports.createPages = async ({ graphql, actions }) => {
