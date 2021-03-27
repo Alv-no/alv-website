@@ -36,8 +36,6 @@ const Services = () => {
     },
   } = data;
 
-  console.log(_rawSection5Block);
-
   const {
     sanityOurServicesPage: { pageDescription } = { pageDescription: false },
     sanityOurServicesPage: { pageTitle } = { pageTitle: false },
