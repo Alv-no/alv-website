@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Layout from '../../layout';
-import { VideoCategory } from '../../components/videoCategory';
-import { VideoSection } from '../../components/videoSection';
-import { VideoHero } from '../../components/videoHero';
-import { useVideoseriesQuery } from '../../hooks/useVideoseriesQuery';
+import Layout from '../layout';
+import { VideoCategory } from '../components/videoCategory';
+import { VideoSection } from '../components/videoSection';
+import { VideoHero } from '../components/videoHero';
+import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
 
 const Videoseries = () => {
   const data = useVideoseriesQuery();
