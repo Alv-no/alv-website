@@ -1,7 +1,0 @@
-version: "3.8"
-services:
-  website:
-    image: dockercontainerregistry2020.azurecr.io/website
-    ports:
-      - 80:80
-    restart: unless-stopped
