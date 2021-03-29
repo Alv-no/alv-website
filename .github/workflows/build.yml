@@ -23,3 +23,6 @@ jobs:
 
       - name: Build
         run: yarn workspace website run build
+        env:
+          DEBUG: sanity
+          SANITY_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
