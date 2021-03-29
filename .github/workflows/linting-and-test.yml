@@ -29,6 +29,10 @@ jobs:
 
       - name: Sanity configcheck
         run: yarn workspace cms run sanity configcheck
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
 
       - name: Sanity check
         run: yarn workspace cms run sanity check
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
