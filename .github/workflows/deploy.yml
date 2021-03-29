@@ -22,5 +22,7 @@ jobs:
 
       - name: Deploy Sanity
         run: |
-          SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" yarn workspace cms run graphql-deploy
-          SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" yarn workspace cms run deploy
+          yarn workspace cms run graphql-deploy
+          yarn workspace cms run deploy
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.DEPLOY_SANITY_STUDIO }}
