@@ -18,6 +18,9 @@ RUN yarn workspace website run disable-telemetry
 # As such we add the next line to try and do a cache bust
 # Recommended by: https://stackoverflow.com/a/58801213/359825
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+
+# Ensure that proper .env files exists before building
+RUN test -f "/app/packages/website/.env.production"
 RUN yarn workspace website run build
 
 # Stage 2 - Webserver using Ngnix

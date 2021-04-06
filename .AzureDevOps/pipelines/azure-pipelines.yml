@@ -41,7 +41,7 @@ stages:
           serviceName: alvnodev
           serviceConnection: AlvNo-Dev
           hostname: "dev.alv.no"
-          envFileName: '.env.development'
+          envFileName: '.env.production'
           git-short-hash: $[ stageDependencies.build.githash.outputs['createHash.git-short-hash'] ]
         displayName: Test
         environment: Test
