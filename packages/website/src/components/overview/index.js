@@ -9,7 +9,7 @@ export const Overview = ({ image, blockContent }) => {
     <>
       <div className="w-full bg-white sm:-mt-7" id="oversikt">
         <div
-          className="max-w-1200 mx-auto lg:grid gap-x-10 bg-white py-8 px-12"
+          className="max-w-1200 mx-auto lg:grid gap-x-10 bg-white py-8"
           style={{
             gridTemplateColumns: '1fr 1fr',
             order: '-1',
@@ -19,7 +19,7 @@ export const Overview = ({ image, blockContent }) => {
           {image && (
             <Image fluid={image} className="h-80 lg:mt-2 sm:-mt-2 -mt-7" />
           )}
-          <div className="lg:px-0 sm:px-12 px-5 lg:mt-0 mt-10 font-light flex flex-col justify-between h-full">
+          <div className="lg:px-0 lg:mt-0 mt-10 font-light flex flex-col justify-between h-full sm:px-12 px-5">
             <div>
               <Title underline align="left" color="text-navy">
                 Oversikt

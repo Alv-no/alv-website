@@ -63,19 +63,11 @@ export const Navigation = ({
             Vi Tilbyr
           </LargeLink>
           {categoryPages &&
-            categoryPages.slice(0, 3).map((categoryPage) => {
+            categoryPages.slice(0, 2).map((categoryPage) => {
               return (
                 <div className="eight:max-w-68" key={categoryPage.slug.current}>
                   <Subtitle
-                    // Temporarily disables links to category pages
                     link={`/vi-tilbyr/${categoryPage.slug.current}`}
-                    inactive={
-                      !servicePages.some(
-                        (page) =>
-                          page.parentPage.slug.current ===
-                          categoryPage.slug.current
-                      )
-                    }
                     margin="eight:mb-8 2xl:mb-12"
                   >
                     {categoryPage.heroHeading}
@@ -113,7 +105,7 @@ export const Navigation = ({
         >
           <div className="eight:mt-20 eight:pt-7 xl:pt-10" />
           {categoryPages &&
-            categoryPages.slice(3, categoryPages.length).map((categoryPage) => {
+            categoryPages.slice(2, categoryPages.length).map((categoryPage) => {
               return (
                 <div className="eight:max-w-68" key={categoryPage.slug.current}>
                   <Subtitle

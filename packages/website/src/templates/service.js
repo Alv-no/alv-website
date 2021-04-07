@@ -21,7 +21,10 @@ const Service = ({ data }) => {
   const {
     sanityServices: { pageDescription } = { pageDescription: false },
     sanityServices: { pageTitle } = { pageTitle: false },
+    sanityServices: { headingSplit } = { headingSplit: {} },
   } = data;
+
+  const mobileHeading = headingSplit ? headingSplit.split : false;
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -31,6 +34,7 @@ const Service = ({ data }) => {
           description={data.sanityServices.heroDescription}
           internalLink="/kontakt-oss"
           image={data.sanityServices.heroImage.asset.fluid}
+          headingSplit={mobileHeading}
         />
       </div>
       <div className="w-full bg-white tracking-wider z-10 relative">
@@ -42,12 +46,13 @@ const Service = ({ data }) => {
           scrollTo={scrollTo}
         />
         <div className="overflow-x-hidden">
-          <div className="h-10" />
+          <div className="h-10 sm:h-0" />
           <RolesList
             image={data.rolesImg.childImageSharp.fluid}
             roles={data.allSanityServices.edges}
             id="hva-gjor-vi"
           />
+          <div className="h-10" />
           <CtaSection
             eyebrow={
               data.sanityServices.ctaEyebrow ||
@@ -88,6 +93,9 @@ export const query = graphql`
         current
       }
       heroHeading
+      headingSplit {
+        split
+      }
       heroDescription
       _rawAboutBlock
       ctaHeading

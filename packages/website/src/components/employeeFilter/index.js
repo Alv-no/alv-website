@@ -17,6 +17,7 @@ export const EmployeeFilter = ({ allTags, onChange }) => (
             onChange={onChange}
             key={sanityTag.node.id}
             {...sanityTag.node}
+            defaultChecked={false}
           >
             {sanityTag.node.tag}
           </Checkbox>

@@ -37,19 +37,8 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
             type="button"
             aria-label="show-text"
             onClick={revealText}
-            className={`font-light block sm:mb-15 sm:h-auto ${
-              showText ? 'h-auto' : 'h-80'
-            } h-80 -mb-10 relative overflow-hidden sm:overflow-visible`}
+            className={`font-light block sm:mb-15 sm:h-auto -mb-10 relative overflow-hidden sm:overflow-visible`}
           >
-            <div
-              className={`absolute ${
-                showText ? 'opacity-0' : ''
-              } sm:hidden bg-white w-full h-80 mt-15`}
-              style={{
-                background:
-                  'linear-gradient(0deg, rgba(255,255,255,1) 8%, rgba(255,255,255,0.1) 100%, rgba(0,0,0,1) 100%)',
-              }}
-            />
             <div className="cursor-text text-left z-20 relative">
               <div className="z-50 relative sm:block twelve:hidden mb-10 hidden">
                 <Image

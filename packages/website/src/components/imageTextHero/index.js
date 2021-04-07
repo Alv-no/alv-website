@@ -1,14 +1,10 @@
 import BackgroundImage from 'gatsby-background-image-es5';
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'gatsby-link';
 import * as Button from '../button';
 import { Title } from '../title';
 
 export const ImageTextListHero = ({ image, openPositions }) => {
-  const [fadeOut, setFadeOut] = useState(true);
-  const handleClick = () => {
-    setFadeOut(!fadeOut);
-  };
   return (
     <div className="bg-navy">
       <div
@@ -43,21 +39,6 @@ export const ImageTextListHero = ({ image, openPositions }) => {
                 testere, funksjonelle arkitekter og prosjektledere. Hvis du tror
                 du kan være rett for Alv, håper vi du sender oss en CV og
                 søknad.
-                <span
-                  className={`absolute w-full sm:hidden inset-y-0 left-0 bottom-0 transition pointer-cursor duration-300 ${
-                    !fadeOut && 'opacity-0'
-                  }`}
-                  style={{
-                    background:
-                      'linear-gradient(0deg, rgba(6,24,56,1) 20%, rgba(6,24,56,0.5) 100%, rgba(6,24,56,1) 100%)',
-                  }}
-                >
-                  <input
-                    type="button"
-                    className="h-full w-full opacity-0"
-                    onClick={handleClick}
-                  />
-                </span>
               </p>
             </div>
           </div>

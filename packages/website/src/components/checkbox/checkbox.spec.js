@@ -11,17 +11,17 @@ describe('Checkbox-component', () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole('checkbox', { name: /Hello Checkbox/ }).checked
-    ).toEqual(true);
+    ).toEqual(false);
   });
 
   it('with defaultValue should render as checked', () => {
-    render(<Checkbox defaultValue={true}>Hello Checkbox</Checkbox>);
+    render(<Checkbox defaultValue={false}>Hello Checkbox</Checkbox>);
     expect(
       screen.getByRole('checkbox', { name: /Hello Checkbox/ })
     ).toBeInTheDocument();
     expect(
       screen.getByRole('checkbox', { name: /Hello Checkbox/ }).checked
-    ).toEqual(true);
+    ).toEqual(false);
   });
 
   it('onChange should fire when clicking the checkbox', () => {
