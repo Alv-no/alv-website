@@ -8,6 +8,7 @@ export const EmployeeGroup = ({
   updateActiveBio,
   fallbackImg,
   employees,
+  width,
 }) => {
   // Update activeBio state with employee object corresponding to card clicked
   const handleCardClick = (e) => {
@@ -28,7 +29,11 @@ export const EmployeeGroup = ({
   return (
     <>
       <div>
-        <div className="grid xs:gap-4 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg">
+        <div
+          className={`${
+            width < 500 && 'grid-cols-1 gap-y-5'
+          } grid xs:gap-4 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg`}
+        >
           {group.map((employee) => (
             <EmployeeCard
               {...employee}

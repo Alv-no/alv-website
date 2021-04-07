@@ -35,12 +35,12 @@ const Contact = ({ location }) => {
           style={{ gridTemplateColumns: '50% 50%' }}
         >
           <div className="flex-1 mt-12 sm:px-10 xl:block sm:grid grid-cols-fifty sm:-ml-12 xl:ml-0">
-            <div className="">
-              <div className="opacity-60 w-full xl:h-full h-50vh">
+            <div>
+              <div className="opacity-60 w-full xl:h-full h-40vh mt-8 xl:mt-0">
                 <Image fluid={fluid} className="h-full" alt="kontakt" />
               </div>
             </div>
-            <div className="2xl:ml-15 ml-5">
+            <div className="2xl:ml-15 ml-5 sm:mt-8 xl:mt-0">
               <div className="z-20 relative -mt-15 sm:w-100 sm:mt-5 xl:-mt-15 sm:-ml-20 xl:ml-0">
                 <Title align="left sm:text-cta-lg">Kontakt Oss</Title>
                 <div className="sm:h-6 h-6" />

@@ -214,6 +214,7 @@ module.exports = {
         '6/7': '85.7142857%',
       },
       screens: {
+        '2xs': '360px',
         'xs': '480px',
         'five': '550px',
         'sm': '640px',

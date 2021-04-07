@@ -36,7 +36,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   }, [activeBio, width, cardClick]);
 
   useEffect(() => {
-    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 1);
+    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 2);
     setRows(Math.ceil(filteredContent.length / columnsNr));
   }, [filteredContent, columnsNr, width]);
 
@@ -81,6 +81,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
                   updateActiveBio={updateActiveBio}
                   group={group}
                   fallbackImg={fallbackImg}
+                  width={width}
                 />
               );
             }

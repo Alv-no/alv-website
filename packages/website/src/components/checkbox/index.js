@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const Checkbox = ({ children, onChange, tag, defaultChecked }) => {
-  if (defaultChecked === undefined) defaultChecked = true;
+  if (defaultChecked === undefined) defaultChecked = false;
   const [value, setValue] = useState(defaultChecked);
 
   const handleClick = (e) => {

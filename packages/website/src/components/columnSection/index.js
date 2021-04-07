@@ -20,14 +20,7 @@ export const ColumnSection = ({
             gridTemplateColumns: 'minmax(610px, 740px) minmax(320px, 400px)',
           }}
         >
-          <div className="h-100 sm:h-auto overflow-hidden lg:mx-12">
-            <div
-              className="absolute mt-10 h-100 w-full sm:hidden"
-              style={{
-                background:
-                  'linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%, rgba(0,0,0,1) 100%)',
-              }}
-            />
+          <div className="sm:h-auto overflow-hidden lg:mx-12">
             <div>
               <h4 className="text-lg mb-2">{eyebrow}</h4>
               <h3 className="text-4xl uppercase font-semibold mb-0">{title}</h3>
