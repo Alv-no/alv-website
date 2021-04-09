@@ -5,9 +5,6 @@ import * as Logo from '../logo';
 import { LargeLink, Subtitle, ListLink, List } from '../navItems';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-const ConditionalWrapper = ({ condition, wrapper, children }) =>
-  condition ? wrapper(children) : children;
-
 export const Navigation = ({
   open,
   toggleClose,
@@ -55,10 +52,7 @@ export const Navigation = ({
         </div>
       </div>
       <div className="eight:flex eight:mx-auto eight:-mt-10 justify-center max-w-1000 -mx-6 sm:-mx-8 eight:pr-8">
-        <ConditionalWrapper
-          condition={width >= 800}
-          wrapper={(children) => <div>{children}</div>}
-        >
+        <div>
           <LargeLink margin="eight:mb-10 2xl:mb-12" link="/vi-tilbyr">
             Vi Tilbyr
           </LargeLink>
@@ -97,12 +91,9 @@ export const Navigation = ({
                 </div>
               );
             })}
-        </ConditionalWrapper>
+        </div>
         <div className="eight:w-10 lg:w-15 xl:w-20 2xl:w-32" />
-        <ConditionalWrapper
-          condition={width >= 800}
-          wrapper={(children) => <div>{children}</div>}
-        >
+        <div>
           <div className="eight:mt-20 eight:pt-7 xl:pt-10" />
           {categoryPages &&
             categoryPages.slice(2, categoryPages.length).map((categoryPage) => {
@@ -146,15 +137,12 @@ export const Navigation = ({
                 </div>
               );
             })}
-        </ConditionalWrapper>
+        </div>
         <div className="eight:w-12 lg:w-15 xl:w-20 2xl:w-32" />
-        <ConditionalWrapper
-          condition={width >= 800}
-          wrapper={(children) => (
-            <div className="eight:relative absolute w-screen eight:w-auto">
-              {children}
-            </div>
-          )}
+        <div
+          className={
+            width >= 800 && `eight:relative absolute w-screen eight:w-auto`
+          }
         >
           <LargeLink
             link="/jobbe-i-alv"
@@ -182,7 +170,7 @@ export const Navigation = ({
           <LargeLink link="/kontakt-oss" margin="eight:mt-1≤0 2xl:mt-12">
             Kontakt Oss
           </LargeLink>
-        </ConditionalWrapper>
+        </div>
       </div>
       <div className="eight:relative eight:flex eight:m-0 justify-center eight:mr-0 absolute z-40 top-0 right-0 mt-5 sm:mr-7 sm:mr-0 mr-4 sm:mt-8 transform scale-70">
         <button
