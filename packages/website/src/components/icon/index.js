@@ -506,3 +506,13 @@ export const Cv = () => (
     </g>
   </svg>
 );
+
+export const TransitionArrow = ({ open }) => (
+  <span
+    className={`absolute right-0 mr-7 sm:mr-10 mt-4 eight:hidden transform transition duration-300 ${
+      open && 'rotate-90'
+    }`}
+  >
+    <DropdownArrow />
+  </span>
+);

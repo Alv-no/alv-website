@@ -84,6 +84,12 @@ module.exports = {
         80: '0.80',
         90: '0.90',
       },
+      zIndex: {
+        60: 60,
+        70: 70,
+        80: 80,
+        90: 90,
+      },
       gridTemplateColumns: {
         'slider-md': '75% 25%',
         'fifty': '50% 50%',
