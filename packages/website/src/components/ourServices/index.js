@@ -3,8 +3,6 @@ import Link from 'gatsby-link';
 import * as Button from '../button';
 import BackgroundImage from 'gatsby-background-image-es5';
 
-const dummyLink = '/kontakt-oss';
-
 export const OurServices = ({ image }) => {
   const [activeItem, setActiveItem] = useState('1');
 
@@ -31,9 +29,7 @@ export const OurServices = ({ image }) => {
           <div className="lg:block flex justify-between">
             <div />
             <div>
-              <Link to="/om-oss">
-                <Button.CtaArrow>Les Mer</Button.CtaArrow>
-              </Link>
+              <Button.CtaArrow path="/vi-tilbyr">Les Mer</Button.CtaArrow>
             </div>
           </div>
         </div>
@@ -54,7 +50,7 @@ export const OurServices = ({ image }) => {
             >
               <p className="uppercase pointer-events-none">Prosjektleder</p>
               {activeItem === '1' && (
-                <ListContent link={dummyLink}>
+                <ListContent link="/vi-tilbyr/prosjektledelse">
                   Kunden kjenner domenet, kravene og behovene, mens vi vet
                   hvordan vi raskest og best kan utvikle systemene som gir
                   høyest verdi, raskest mulig.
@@ -68,23 +64,10 @@ export const OurServices = ({ image }) => {
             >
               <p className="uppercase pointer-events-none">Systemutvikling</p>
               {activeItem === '2' && (
-                <ListContent link={dummyLink}>
+                <ListContent link="/vi-tilbyr/systemutvikling">
                   Systemutvikling er kjernen i det vi driver med. Det er jo der
                   vi faktisk lager noe. Det er kode som skaper systemene vi
                   utvikler for og sammen med kundene våre.
-                </ListContent>
-              )}
-            </li>
-            <li
-              className="tracking-wider font-semibold mb-8 cursor-pointer"
-              id="3"
-              onClick={handleClick}
-            >
-              <p className="uppercase pointer-events-none">Digitalisering</p>
-              {activeItem === '3' && (
-                <ListContent link={dummyLink}>
-                  Digitalisering er blitt et buzzword. Alle ønsker å
-                  digitalisere, men hva betyr det egentlig?
                 </ListContent>
               )}
             </li>
@@ -95,7 +78,7 @@ export const OurServices = ({ image }) => {
             >
               <p className="uppercase pointer-events-none">Data & Analyse</p>
               {activeItem === '4' && (
-                <ListContent link={dummyLink}>
+                <ListContent link="/vi-tilbyr/data-og-analyse">
                   I Alv tilbyr vi tjenester i spekteret fra rådgivning og
                   strategi til implementering og oppfølging, slik at enda flere
                   kan bli bedre på å utnytte de dataene de sitter på til sitt
@@ -112,7 +95,7 @@ export const OurServices = ({ image }) => {
                 Informasjons<span className="xs:hidden">-</span>sikkerhet
               </p>
               {activeItem === '5' && (
-                <ListContent link={dummyLink}>
+                <ListContent link="/vi-tilbyr/informasjonssikkerhet">
                   Konsulentene innen informasjonssikkerhet hos Alv har god
                   erfaring med å både vurdere, teste og utvikle
                   sikkerhetstiltak.

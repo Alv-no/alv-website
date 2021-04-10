@@ -47,7 +47,7 @@ const ArticleTemplate = (props) => {
   return (
     <>
       <SEO
-        title={socialTitle || title}
+        title={title}
         description={socialSubtitle || description}
         metaImage={metaImage || ''}
       />
