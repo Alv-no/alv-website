@@ -11,7 +11,7 @@ export const LargeLink = ({ children, link }) => {
   return (
     <>
       {link ? (
-        <Link link={link}>
+        <Link to={link}>
           <h2
             className={`text-white font-bold tracking-widest eight:mt-10 2xl:mt-12 uppercase text-nav my-15 eight:my-8 w-full ml-6 sm:ml-8 eight:ml-0 z-50`}
           >
@@ -28,7 +28,7 @@ export const LargeLink = ({ children, link }) => {
           />
 
           <h2
-            className={`text-white font-bold tracking-widest eight:mt-10 2xl:mt-12 uppercase text-nav my-15 eight:my-8 w-full ml-6 sm:ml-8 eight:ml-0 z-50`}
+            className={`text-white font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-15 eight:my-8 w-full ml-6 sm:ml-8 eight:ml-0 z-50`}
           >
             {children}
             <span className="text-yellow">.</span>

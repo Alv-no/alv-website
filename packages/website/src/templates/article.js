@@ -27,7 +27,7 @@ const ArticleTemplate = (props) => {
   } = props.data.sanityArticle;
 
   const socialObj = socials || {};
-  const { socialTitle, socialSubtitle, socialImage } = socialObj;
+  const { socialSubtitle, socialImage } = socialObj;
 
   let authorSlug;
   if (author && author.firstname && author.lastname) {
@@ -66,7 +66,7 @@ const ArticleTemplate = (props) => {
             <div className="mb-5">
               <SocialShare
                 url={window.location.href}
-                title={socialTitle}
+                title={title}
                 subtitle={socialSubtitle}
                 tags={socialTags}
               />

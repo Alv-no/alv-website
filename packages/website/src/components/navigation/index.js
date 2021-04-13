@@ -31,7 +31,7 @@ export const Navigation = ({
           </div>
         </div>
         <div
-          className={`fixed z-70 left-0 top-0 flex flex-col h-full w-full overflow-y-scroll eight:justify-center eight:items-center mt-20 eight:mt-5  ${
+          className={`fixed z-70 left-0 top-0 flex flex-col h-full w-full overflow-y-scroll overflow-x-hidden eight:justify-center eight:items-center mt-20 eight:mt-5  ${
             open ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
