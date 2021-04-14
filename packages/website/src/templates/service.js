@@ -21,10 +21,7 @@ const Service = ({ data }) => {
   const {
     sanityServices: { pageDescription } = { pageDescription: false },
     sanityServices: { pageTitle } = { pageTitle: false },
-    sanityServices: { headingSplit } = { headingSplit: {} },
   } = data;
-
-  const mobileHeading = headingSplit ? headingSplit.split : false;
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -34,7 +31,6 @@ const Service = ({ data }) => {
           description={data.sanityServices.heroDescription}
           internalLink="/kontakt-oss"
           image={data.sanityServices.heroImage.asset.fluid}
-          headingSplit={mobileHeading}
         />
       </div>
       <div className="w-full bg-white tracking-wider z-10 relative">
@@ -93,9 +89,6 @@ export const query = graphql`
         current
       }
       heroHeading
-      headingSplit {
-        split
-      }
       heroDescription
       _rawAboutBlock
       ctaHeading

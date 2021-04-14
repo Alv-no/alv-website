@@ -24,7 +24,6 @@ import socials from './socials';
 import videoseriesPage from './videoseriesPage';
 import imageAndText from './imageAndText';
 import blogPage from './blogPage';
-import splitWord from './splitWord';
 import categoryPage from './categoryPage';
 import testimonial from './testimonial';
 import servicePage from './servicePage';
@@ -63,6 +62,5 @@ export default createSchema({
     whatWeDo,
     imageAndText,
     socials,
-    splitWord,
   ]),
 });

@@ -4,13 +4,7 @@ import { Description } from '../description';
 import Link from 'gatsby-link';
 import Image from 'gatsby-image';
 
-export const NavyIntroImage = ({
-  title,
-  description,
-  image,
-  internalLink,
-  headingSplit,
-}) => (
+export const NavyIntroImage = ({ title, description, image, internalLink }) => (
   <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative">
     <div
       className="max-w-1200 mx-auto twelve:grid relative"
@@ -18,14 +12,9 @@ export const NavyIntroImage = ({
     >
       <div className="transform sm:-translate-x-5 sm:px-0 px-12 flex sm:block justify-center items-center flex-col">
         <Title align={`center twelve:text-left`}>
-          <span
-            className={`${
-              headingSplit && 'hidden'
-            } xs:inline sm:text-3xl lg:text-4xl`}
-          >
+          <span className={`xs:inline sm:text-3xl lg:text-4xl hyphenate`}>
             {title}
           </span>
-          {headingSplit && <span className="xs:hidden">{headingSplit}</span>}
         </Title>
         <div className="sm:h-8 h-4" />
         <div className="mb-10 flex twelve:block justify-center">

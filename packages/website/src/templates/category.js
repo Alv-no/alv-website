@@ -27,10 +27,7 @@ const Category = ({ data }) => {
   const {
     sanityCategoryPage: { pageDescription } = { pageDescription: false },
     sanityCategoryPage: { pageTitle } = { pageTitle: false },
-    sanityCategoryPage: { headingSplit } = { headingSplit: {} },
   } = data;
-
-  const mobileHeading = headingSplit ? headingSplit.split : false;
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -38,7 +35,6 @@ const Category = ({ data }) => {
         title={sanityCategoryPage.heroHeading}
         description={sanityCategoryPage.heroDescription}
         button=""
-        headingSplit={mobileHeading}
       />
       <div className="w-full bg-white sm:pb-20 pb-12 overflow-hidden tracking-wider overflow-hidden">
         <ServicesNav nav={nav} scrollTo={scrollTo} />
@@ -87,9 +83,6 @@ export const query = graphql`
       }
       heroDescription
       heroHeading
-      headingSplit {
-        split
-      }
       pageDescription
       pageTitle
       heroImage {

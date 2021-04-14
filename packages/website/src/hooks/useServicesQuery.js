@@ -8,9 +8,6 @@ export const useServicesQuery = () => {
             node {
               heroDescription
               heroHeading
-              headingSplit {
-                split
-              }
               id
               slug {
                 current
@@ -33,15 +30,9 @@ export const useServicesQuery = () => {
               current
             }
             heroHeading
-            headingSplit {
-              split
-            }
           }
           section6link {
             heroHeading
-            headingSplit {
-              split
-            }
             slug {
               current
             }
@@ -51,27 +42,18 @@ export const useServicesQuery = () => {
               current
             }
             heroHeading
-            headingSplit {
-              split
-            }
           }
           section4link {
             slug {
               current
             }
             heroHeading
-            headingSplit {
-              split
-            }
           }
           section3link {
             slug {
               current
             }
             heroHeading
-            headingSplit {
-              split
-            }
           }
           section3description
           section2Title
