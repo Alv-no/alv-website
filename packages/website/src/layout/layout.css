@@ -10,5 +10,8 @@
     .filter-grayscale {
       filter: grayscale(100%);
     }
+    .hyphenate {
+      hyphens: auto;
+    }
   }
 }

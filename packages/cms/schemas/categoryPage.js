@@ -37,11 +37,6 @@ export default {
       type: 'string',
     },
     {
-      name: 'headingSplit',
-      title: 'Split Heading',
-      type: 'splitWord',
-    },
-    {
       name: 'heroDescription',
       title: 'Hero Description',
       type: 'string',
