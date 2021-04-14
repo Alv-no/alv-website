@@ -19,17 +19,6 @@ stages:
       - job: githash
         displayName: Build
         steps:
-          - task: Bash@3
-            name: createHash
-            displayName: Create hash
-            inputs:
-              targetType: inline
-              script: |
-                ## At least 7 digits, more if needed for uniqueness
-                SHORT_HASH=`git rev-parse --short=7 HEAD`
-                echo "Short hash set to $SHORT_HASH"
-                echo "##vso[task.setvariable variable=git-short-hash;isOutput=true]$SHORT_HASH"
-
           - template: ../../packages/infrastructure/build-steps.yaml
 
   - stage: test
@@ -42,7 +31,6 @@ stages:
           serviceConnection: AlvNo-Dev
           hostname: "dev.alv.no"
           envFileName: '.env.production'
-          git-short-hash: $[ stageDependencies.build.githash.outputs['createHash.git-short-hash'] ]
         displayName: Test
         environment: Test
         strategy:
@@ -61,7 +49,6 @@ stages:
           serviceConnection: AlvNo-Prod(98aa1177-a37b-4349-a01f-8f1d325064c3)
           hostname: "alv.no"
           envFileName: '.env.production'
-          git-short-hash: $[ stageDependencies.build.githash.outputs['createHash.git-short-hash'] ]
         displayName: Prod
         environment: Prod
         strategy:
