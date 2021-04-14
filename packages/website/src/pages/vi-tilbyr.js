@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from '../layout';
-import useWindowDimensions from '../hooks/useWindowDimensions';
 import { ServicesHero } from '../components/servicesHero';
 import { Title } from '../components/title';
 import { Description } from '../components/description';
@@ -14,7 +13,6 @@ import { ImageTextCards } from '../components/imageTextCards';
 const Services = () => {
   const data = useServicesQuery();
   const cards = data.allSanityServices.edges.map((edge) => edge.node);
-  const { width } = useWindowDimensions();
 
   const {
     sanityOurServicesPage: {
@@ -77,7 +75,6 @@ const Services = () => {
                   return (
                     <ServicesCard
                       title={card.heroHeading}
-                      width={width}
                       description={card.heroDescription}
                       link={`${card.parentPage.slug.current}/${card.slug.current}`}
                       headingSplit={
@@ -123,7 +120,6 @@ const Services = () => {
                     <ServicesCard
                       title={card.heroHeading}
                       description={card.heroDescription}
-                      width={width}
                       link={`${card.parentPage.slug.current}/${card.slug.current}`}
                       headingSplit={
                         card.headingSplit ? card.headingSplit.split : ''
@@ -144,7 +140,6 @@ const Services = () => {
                 <ServicesCard
                   title={card.heroHeading}
                   description={card.heroDescription}
-                  width={width}
                   link={`${data.sanityOurServicesPage.section7link.slug.current}/${card.slug.current}`}
                   headingSplit={
                     card.headingSplit ? card.headingSplit.split : ''

@@ -1,32 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import * as Button from '../button';
 import Link from 'gatsby-link';
 
-export const ServicesCard = ({
-  title,
-  description,
-  link,
-  headingSplit,
-  width,
-}) => {
-  const containerRef = useRef(null);
-  const titleRef = useRef(null);
-  const [split, setSplit] = useState(true);
-  useEffect(() => {
-    containerRef.current.offsetWidth > titleRef.current.offsetWidth
-      ? setSplit(false)
-      : setSplit(true);
-  }, [width, title]);
+export const ServicesCard = ({ title, description, link, headingSplit }) => {
   return (
     <div className="h-full bg-white relative">
       <Link to={link}>
-        <div className="p-10 bg-white" ref={containerRef}>
-          <h4 className="uppercase font-semibold text-lg mb-6px" ref={titleRef}>
-            {split ? (
-              <span>{headingSplit || title}</span>
-            ) : (
-              <span>{title}</span>
-            )}
+        <div className="p-10 bg-white">
+          <h4 className="uppercase font-semibold text-lg mb-6px">
+            <SplitWord titleSplit={headingSplit} title={title} />
           </h4>
           <div className="w-12 h-3px bg-yellow" />
           <p className="font-light mt-6 mb-10 tracking-normal">{description}</p>
@@ -40,3 +22,20 @@ export const ServicesCard = ({
 };
 
 export default ServicesCard;
+
+const SplitWord = ({ titleSplit, title }) => (
+  <>
+    {titleSplit &&
+      titleSplit.length > 15 &&
+      titleSplit.split('-').map((el, i) => (
+        <div className="four:hidden five:block">
+          {el}
+          {i === 0 && '-'}
+        </div>
+      ))}
+    {titleSplit && (
+      <span className="hidden four:inline five:hidden">{title}</span>
+    )}
+    {!titleSplit && <span>{title}</span>}
+  </>
+);
