@@ -12,7 +12,10 @@ const Category = ({ data }) => {
   const { sanityCategoryPage } = data;
 
   const nav = [
-    { label: 'Oversikt', id: 'oversikt' },
+    {
+      label: sanityCategoryPage.overviewTitle || 'Oversikt',
+      id: sanityCategoryPage.overviewTitle || 'oversikt',
+    },
     { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
     { label: 'Tjenester', id: 'tjenester' },
     { label: 'Vårt Team', id: 'our-team' },
@@ -59,6 +62,7 @@ const Category = ({ data }) => {
               : null
           }
           blockContent={sanityCategoryPage._rawText || null}
+          id={sanityCategoryPage.overviewTitle || 'oversikt'}
         />
         {sanityCategoryPage.servicesListText && (
           <div className="mt-12">
@@ -111,6 +115,7 @@ export const query = graphql`
           url
         }
       }
+      overviewTitle
       featuredTeam {
         firstname
         lastname
