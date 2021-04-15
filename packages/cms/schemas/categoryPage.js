@@ -32,6 +32,12 @@ export default {
         Rule.required().warning('This field cannot be empty'),
     },
     {
+      name: 'categoryTag',
+      title: 'Category Tag',
+      type: 'reference',
+      to: { type: 'employeeTag' },
+    },
+    {
       name: 'heroHeading',
       title: 'Hero Heading',
       type: 'string',
