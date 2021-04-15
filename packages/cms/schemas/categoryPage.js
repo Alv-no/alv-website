@@ -56,6 +56,11 @@ export default {
       },
     },
     {
+      name: 'overviewTitle',
+      title: 'Title - Overview',
+      type: 'string',
+    },
+    {
       name: 'text',
       title: 'Block content - Overview',
       type: 'blockContent',
