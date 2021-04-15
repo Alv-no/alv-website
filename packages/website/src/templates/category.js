@@ -27,7 +27,21 @@ const Category = ({ data }) => {
   const {
     sanityCategoryPage: { pageDescription } = { pageDescription: false },
     sanityCategoryPage: { pageTitle } = { pageTitle: false },
+    sanityCategoryPage: { categoryTag } = { categoryTag: '' },
+    sanityCategoryPage: { featuredTeam },
   } = data;
+
+  let topFour = data.allSanityEmployee.nodes
+    .filter((el) => el.tags.some((el) => el.tag === categoryTag.tag))
+    .sort((a, b) => {
+      if (a.experience > b.experience) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+
+  topFour = topFour.slice(0, topFour.length > 4 ? 4 : topFour.length);
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -55,14 +69,15 @@ const Category = ({ data }) => {
             />
           </div>
         )}
-        {sanityCategoryPage.whatWeDo && (
-          <WhatWeDo data={sanityCategoryPage.whatWeDo.process} />
-        )}
+        {sanityCategoryPage.whatWeDo &&
+          sanityCategoryPage.whatWeDo.process[0] && (
+            <WhatWeDo data={sanityCategoryPage.whatWeDo.process} />
+          )}
         <div className="sm:mt-12 lg:mt-20" />
         <div className="max-w-1200 mx-auto">
           {sanityCategoryPage.featuredTeam && (
             <FeaturedTeam
-              team={sanityCategoryPage.featuredTeam}
+              team={featuredTeam[0] ? featuredTeam : topFour}
               notransparent
             />
           )}
@@ -85,6 +100,9 @@ export const query = graphql`
       heroHeading
       pageDescription
       pageTitle
+      categoryTag {
+        tag
+      }
       heroImage {
         asset {
           fluid {
@@ -145,6 +163,26 @@ export const query = graphql`
           }
           slug {
             current
+          }
+        }
+      }
+    }
+    allSanityEmployee {
+      nodes {
+        firstname
+        lastname
+        experience
+        title
+        id
+        tags {
+          tag
+        }
+        image {
+          asset {
+            url
+            fluid {
+              ...GatsbySanityImageFluid
+            }
           }
         }
       }
