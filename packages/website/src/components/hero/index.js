@@ -13,7 +13,7 @@ export const Hero = ({
 }) => {
   const { width } = useWindowDimensions();
   return (
-    <div className="bg-navy pb-4 eight:pb-0">
+    <div className="bg-navy pb-4 sm:pb-0 sm:-mb-10">
       <div className="w-full flex justify-center h-screen relative flex-col sm:pb-24 sm:z-40 -mt-20 sm:-mt-24 eight:-mt-25">
         {width < 800 && (
           <Title
@@ -35,10 +35,12 @@ export const Hero = ({
           </video>
         )}
         <div className="sm:h-3 h-4" />
-        <div className="max-w-3xl w-full mx-auto absolute bottom-0 right-0 flex justify-end inset-x-0">
+        <div className="max-w-3xl w-full mx-auto absolute bottom-0 flex right-0 justify-end inset-x-0 z-40 transform lg:-translate-y-7">
           <div
             className={`relative z-30 transform ${
-              routeUpdate ? 'translate-y-8' : 'translate-y-2'
+              routeUpdate
+                ? 'translate-y-12 sm:translate-y-15'
+                : 'translate-y-8 eight:translate-y-9'
             }`}
           >
             <Icon.ScrollToContinue />

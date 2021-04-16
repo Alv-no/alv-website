@@ -38,7 +38,7 @@ export const BlogSection = ({ allArticles }) => {
             onChange={updateArticles}
           />
         )}
-        <div className="max-w-1200 mx-auto flex justify-center px-6">
+        <div className="max-w-1200 mx-auto flex justify-center px-6 min-h-screen">
           <div className="w-full mb-4 grid justify-center five:gap-y-12 gap-y-4 xs:gap-4 xs:max-w-570 seven:max-w-none nine:max-w-1200 grid-cols-blog-xs five:grid-cols-blog-sm nine:grid-cols-blog-nine twelve:grid-cols-employees-lg">
             {articles.slice(0, visibleRows).map((article) => {
               return (
@@ -53,7 +53,7 @@ export const BlogSection = ({ allArticles }) => {
         <div
           className="max-w-1200 mx-auto flex justify-center sm:mt-15 xs:mt-12 mt-10 twelve:px-6 mb-20"
           style={{
-            opacity: visibleRows && visibleRows > allArticles.length ? 0 : 1,
+            opacity: visibleRows && visibleRows > articles.length ? 0 : 1,
           }}
         >
           <Button.OvalSimple onClick={handleViewMoreClick}>
