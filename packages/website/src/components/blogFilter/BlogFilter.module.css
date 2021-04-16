@@ -48,6 +48,14 @@
   pointer-events: all;
 }
 
+.filterCheckbox:checked {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+
 .dot {
   transition: 0.1s ease opacity;
   opacity: 0;
