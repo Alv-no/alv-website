@@ -19,6 +19,7 @@ const ArticleTemplate = (props) => {
   const {
     title,
     author,
+    guestAuthor,
     mainImage,
     _rawBody,
     tags,
@@ -29,13 +30,22 @@ const ArticleTemplate = (props) => {
   const socialObj = socials || {};
   const { socialSubtitle, socialImage, socialTitle } = socialObj;
 
+  const postAuthor =
+    author && author.firstname
+      ? author
+      : guestAuthor
+      ? guestAuthor.guestAuthor
+      : null;
+
   let authorSlug;
   let authorFullname;
-  if (author && author.firstname && author.lastname) {
-    authorFullname = author.firstname.concat(' ').concat(author.lastname);
-    authorSlug = author.firstname
+  if (postAuthor && postAuthor.firstname && postAuthor.lastname) {
+    authorFullname = postAuthor.firstname
+      .concat(' ')
+      .concat(postAuthor.lastname);
+    authorSlug = postAuthor.firstname
       .split(' ')
-      .concat(author.lastname.split(' '))
+      .concat(postAuthor.lastname.split(' '))
       .map((name) => name.toLowerCase());
     authorSlug = authorSlug.join('-');
   }
@@ -58,7 +68,8 @@ const ArticleTemplate = (props) => {
       />
       <span className="lg:block hidden">
         <Sidebar
-          {...author}
+          {...postAuthor}
+          isEmployee={!guestAuthor}
           authorSlug={authorSlug}
           fallbackImg={props.data.fallbackImg.childImageSharp.fluid}
           servicePages={servicePages}
@@ -214,6 +225,22 @@ export const query = graphql`
           fluid {
             ...GatsbySanityImageFluid
           }
+        }
+      }
+      guestAuthor {
+        guestAuthor {
+          image {
+            asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+              url
+            }
+          }
+          firstname
+          lastname
+          title
+          id
         }
       }
       socials {

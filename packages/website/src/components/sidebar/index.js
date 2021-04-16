@@ -13,6 +13,7 @@ const Sidebar = ({
   categoryPages,
   firstname,
   lastname,
+  isEmployee,
   authorSlug,
   fallbackImg,
   title,
@@ -68,11 +69,15 @@ const Sidebar = ({
                   alt="author"
                 />
                 <div className="absolute transform scale-60 -translate-y-8">
-                  <White />
+                  {isEmployee && <White />}
                 </div>
               </Link>
             </div>
-            <div className="text-white tracking-wider flex flex-col justify-between">
+            <div
+              className={`text-white tracking-wider flex flex-col ${
+                isEmployee ? 'justify-between' : 'justify-end'
+              }`}
+            >
               <div>
                 <h4 className="text-xl font-semibold leading-snug">
                   {firstname}
@@ -80,20 +85,22 @@ const Sidebar = ({
                 <h4 className="text-xl font-light leading-tight">{lastname}</h4>
               </div>
               <p className="font-light mb-1 w-5/6">{title}</p>
-              <div className="flex items-center font-semibold text-sm mb-2">
-                <Link
-                  to={`/ansatte#${authorSlug}`}
-                  state={{ activeCard: id, employee: authorSlug }}
-                >
-                  <div className="uppercase">Se intro</div>
-                </Link>
-                {pdfLink && (
-                  <a href={pdfLink} className="flex items-center">
-                    <div className="h-2px w-8 bg-yellow ml-6 mr-3" />
-                    <div className="uppercase">Se CV</div>
-                  </a>
-                )}
-              </div>
+              {isEmployee && (
+                <div className="flex items-center font-semibold text-sm mb-2">
+                  <Link
+                    to={`/ansatte#${authorSlug}`}
+                    state={{ activeCard: id, employee: authorSlug }}
+                  >
+                    <div className="uppercase">Se intro</div>
+                  </Link>
+                  {pdfLink && (
+                    <a href={pdfLink} className="flex items-center">
+                      <div className="h-2px w-8 bg-yellow ml-6 mr-3" />
+                      <div className="uppercase">Se CV</div>
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -58,6 +58,11 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: { type: 'articleTag' } }],
     },
+    {
+      name: 'guestAuthor',
+      title: 'Guest Author',
+      type: 'guestAuthor',
+    },
   ],
 
   preview: {

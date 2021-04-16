@@ -38,6 +38,23 @@ export const useBlogQuery = () => {
                 firstname
                 lastname
               }
+
+              guestAuthor {
+                guestAuthor {
+                  image {
+                    asset {
+                      fluid {
+                        ...GatsbySanityImageFluid
+                      }
+                      url
+                    }
+                  }
+                  firstname
+                  lastname
+                  title
+                  id
+                }
+              }
               publishedAt(formatString: "DD MMM, YYYY")
               rawDate: publishedAt
             }

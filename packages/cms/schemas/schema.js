@@ -9,6 +9,7 @@ import blockContent from './blockContent';
 import employee from './employee';
 import employeeTag from './employeeTag';
 import article from './article';
+import guestAuthor from './guestAuthor';
 import articleTag from './articleTag';
 import redirects from './redirects';
 import landingPage from './landingPage';
@@ -18,9 +19,9 @@ import careerPage from './careerPage';
 import whatWeDo from './whatWeDo';
 import contactPage from './contactPage';
 import ourServicesPage from './ourServicesPage';
-// import featuredTeam from './featuredTeam';
 import openPositionPage from './openPositionPage';
 import socials from './socials';
+import externalProfiles from './externalProfiles';
 import videoseriesPage from './videoseriesPage';
 import imageAndText from './imageAndText';
 import blogPage from './blogPage';
@@ -55,12 +56,14 @@ export default createSchema({
     employee,
     employeeTag,
     testimonial,
+    externalProfiles,
     redirects,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
     whatWeDo,
     imageAndText,
+    guestAuthor,
     socials,
   ]),
 });
