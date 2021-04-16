@@ -35,7 +35,7 @@ const Breadcrumb = ({ path }) => {
 
             return (
               <div key={i}>
-                <Link to={link} className="last:font-bold font-thin">
+                <Link to={link} className="last:font-bold font-extralight">
                   <span className="mr-3 -ml-1 font-light">/</span>
                   {item}
                 </Link>

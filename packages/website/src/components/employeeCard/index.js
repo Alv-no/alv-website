@@ -58,7 +58,7 @@ export const EmployeeCard = ({
         <div className="text-xl tracking-wider uppercase leading-sm font-bold">
           {firstname}
         </div>
-        <div className="text-xl tracking-wider uppercase leading-sm pb-2 font-thin">
+        <div className="text-xl tracking-wider uppercase leading-sm pb-2 font-extralight">
           {lastname}
         </div>
         <div className="text-sm tracking-wider px-2">{title}</div>

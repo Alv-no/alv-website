@@ -15,7 +15,7 @@ export const Title = ({
 }) => {
   const classNames = classnames(
     'w-full tracking-wider uppercase text-blog sm:text-4xl',
-    bold ? 'font-bold' : 'font-thin',
+    bold ? 'font-bold' : 'font-extralight',
     align ? `text-${align}` : 'text-center',
     color || 'text-white',
     underline ? 'text-blog' : 'text-4xl',
@@ -35,7 +35,7 @@ export const Title = ({
 
 export const Subtitle = ({ children }) => {
   return (
-    <h3 className="text-about-xl text-white font-thin tracking-wider uppercase">
+    <h3 className="text-about-xl text-white font-extralight tracking-wider uppercase">
       {children}
     </h3>
   );

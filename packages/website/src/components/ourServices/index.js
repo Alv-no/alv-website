@@ -128,7 +128,7 @@ const ListContent = ({ children, link }) => (
   <div>
     <div className="w-12 mt-2 mb-8 h-2px bg-yellow" />
     <div className="sm:pl-10 pl-5 mb-15">
-      <p className="tracking-wider text-footer sm:text-lg leading-snug font-thin mb-4 sm:w-4/6 w-full lg:w-full">
+      <p className="tracking-wider text-footer sm:text-lg leading-snug font-extralight mb-4 sm:w-4/6 w-full lg:w-full">
         {children}
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">

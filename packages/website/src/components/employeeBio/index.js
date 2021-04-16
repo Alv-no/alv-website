@@ -60,11 +60,11 @@ export const EmployeeBio = ({
             <div className="mx-auto flex-1 lg:pr-15">
               <div className="flex-1 px-5 sm:px-0 sm:hidden">
                 {/* ---- Underneath: Visible on Mobile only ---- */}
-                <h4 className="text-4xl leading-none font-thin mb-4 uppercase tracking-wider">
+                <h4 className="text-4xl leading-none font-extralight mb-4 uppercase tracking-wider">
                   <span className="font-bold block">{firstname}</span>
                   {lastname}
                 </h4>
-                <h5 className="text-lg font-thin tracking-wider mb-8">
+                <h5 className="text-lg font-extralight tracking-wider mb-8">
                   {title}
                 </h5>
               </div>
@@ -93,7 +93,7 @@ export const EmployeeBio = ({
                 </Link>
               </div>
             </div>
-            <p className="tracking-wider font-thin px-6 sm:hidden">
+            <p className="tracking-wider font-extralight px-6 sm:hidden">
               {_rawBio && (
                 <PortableText
                   blocks={_rawBio}
@@ -103,11 +103,13 @@ export const EmployeeBio = ({
               )}
             </p>
             <div className="flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left">
-              <h4 className="text-4xl leading-none font-thin mb-4 uppercase tracking-wider">
+              <h4 className="text-4xl leading-none font-extralight mb-4 uppercase tracking-wider">
                 <span className="font-bold block">{firstname}</span>
                 {lastname}
               </h4>
-              <h5 className="text-lg font-thin tracking-wider mb-8">{title}</h5>
+              <h5 className="text-lg font-extralight tracking-wider mb-8">
+                {title}
+              </h5>
               <p className="tracking-wider lg:px-0 sm:px-10">
                 {_rawBio && (
                   <PortableText
