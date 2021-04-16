@@ -289,40 +289,30 @@ export const Twitter = () => (
 );
 
 export const ScrollArrow = () => (
-  <svg width="17.661" height="99.998" viewBox="0 0 17.661 99.998">
-    <g id="Group_3279" transform="translate(1204.427 -1054.215) rotate(90)">
-      <path
-        id="Path_306"
-        data-name="Path 306"
-        d="M-13935.02,2339.291h98.453"
-        transform="translate(14989.734 -1144)"
-        fill="none"
-        stroke="#fff"
-        stroke-linecap="round"
-        stroke-width="1"
+  <div className="flex transform translate-y-3 mt-6px sm:mt-px">
+    <div className="w-25 h-px bg-white transform translate-x-px"></div>
+    <div className="transform rotate-135 mt-px -translate-x-3">
+      <div
+        className="w-3 h-px bg-white transform rotate-45 -translate-y-6px"
+        style={{ transform: 'rotate(45deg) translateY(-6px) translateX(-1px)' }}
       />
-      <path
-        id="Path_307"
-        data-name="Path 307"
-        d="M-13902.462,2330.474l8.176,7.967-8.176,8.28"
-        transform="translate(15048 -1143)"
-        fill="none"
-        stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1"
+      <div
+        className="w-3 h-px bg-white"
+        style={{ transform: 'rotate(-45deg) translateY(4px) translateX(1px)' }}
       />
-    </g>
-  </svg>
+    </div>
+  </div>
 );
 
 export const ScrollToContinue = () => (
-  <div className="text-white sm:text-base text-sm tracking-wider font-thin flex relative z-20 transform -rotate-90 sm:-translate-y-20 -translate-y-6 translate-x-20 sm:mr-0 -mr-4">
-    <div className="transform rotate-90 -translate-x-12 sm:-translate-x-15 -translate-y-10 sm:-translate-y-9">
-      <ScrollArrow />
-    </div>{' '}
-    <span className="font-semibold">SCROLL</span>
-    <span className="opacity-0">-</span>TO CONTINUE{' '}
+  <div className="h-7 w-5 border-white relative transform -rotate-90 -translate-x-8 translate-y-20 sm:translate-y-12 lg:translate-y-20 ">
+    <div className="absolute w-80 text-white sm:text-base text-sm tracking-wider font-thin flex absolute z-20 sm:mr-0 -mr-4 h-7 transform">
+      <div className="mr-4 transform rotate-180">
+        <ScrollArrow />
+      </div>{' '}
+      <span className="font-semibold">SCROLL</span>
+      <span className="opacity-0">-</span>TO CONTINUE{' '}
+    </div>
   </div>
 );
 export const Chart = () => (
