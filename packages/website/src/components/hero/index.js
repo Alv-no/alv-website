@@ -35,7 +35,7 @@ export const Hero = ({
           </video>
         )}
         <div className="sm:h-3 h-4" />
-        <div className="max-w-3xl w-full mx-auto absolute bottom-0 flex right-0 justify-end inset-x-0 z-40 transform lg:-translate-y-7">
+        <div className="w-full mx-auto absolute bottom-0 flex right-0 justify-end inset-x-0 z-40 transform lg:-translate-y-7">
           <div
             className={`relative z-30 transform ${
               routeUpdate
