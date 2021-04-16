@@ -15,7 +15,7 @@ export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
                 {subtitle}
               </h4>
 
-              <h5 className="text-lg font-thin text-center tracking-wider mb-0">
+              <h5 className="text-lg font-extralight text-center tracking-wider mb-0">
                 {description}
               </h5>
             </div>

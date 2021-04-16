@@ -29,7 +29,7 @@ export const VideoCategory = ({
                 {subtitle}
               </h4>
 
-              <h5 className="font-thin tracking-wider mb-8 text-base">
+              <h5 className="font-extralight tracking-wider mb-8 text-base">
                 {description}
               </h5>
             </div>

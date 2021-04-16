@@ -39,12 +39,12 @@ const Index = ({ data, location }) => {
               </VideoIntro>
               <WhoWeAre title="Hvem er vi">
                 {' '}
-                <p className="text-footer sm:text-xl tracking-wider mb-8 font-thin">
+                <p className="text-footer sm:text-xl tracking-wider mb-8 font-extralight">
                   Alv er produktet av alle konsulentene som jobber i selskapet.
                   Dyktige konsulenter gjør Alv til et bra produkt. En dyktig
                   konsulent er en konsulent som er mer en bare faglig sterk.
                 </p>
-                <p className="text-footer sm:text-xl tracking-wider mb-8 font-thin">
+                <p className="text-footer sm:text-xl tracking-wider mb-8 font-extralight">
                   I Alv har vi tro på at dyktige konsulenter er de som hele
                   tiden ønsker å utvikle seg selv, og de rundt seg. Dette er
                   grunnpilarene for hvordan vi bygger Alv. Følg gjerne

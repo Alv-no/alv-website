@@ -1,5 +1,4 @@
 module.exports = {
-  future: {},
   purge: ['./src/**/*.js', './src/**/*.jsx'],
   theme: {
     letterSpacing: {
