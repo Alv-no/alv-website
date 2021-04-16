@@ -49,12 +49,21 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
       allArticles.forEach((article) => articles.push(article));
       filteredArticles = articles.filter((article) => {
         let test = false;
-        if (article.author)
-          test =
-            article.tags.some((tag) => activeTags.includes(tag.tag)) ||
-            activeAuthors.includes(
-              `${article.author.firstname} ${article.author.lastname}`
-            );
+        if (article.author) {
+          if (activeTags.length > 0 && activeAuthors.length > 0) {
+            test =
+              article.tags.some((tag) => activeTags.includes(tag.tag)) &&
+              activeAuthors.includes(
+                `${article.author.firstname} ${article.author.lastname}`
+              );
+          } else {
+            test =
+              article.tags.some((tag) => activeTags.includes(tag.tag)) ||
+              activeAuthors.includes(
+                `${article.author.firstname} ${article.author.lastname}`
+              );
+          }
+        }
         return test;
       });
     } else {
@@ -119,7 +128,10 @@ export const FilterField = ({
   authorClick,
 }) => {
   return (
-    <div className="flex relative tracking-wider h-full border border-bordergray items-center pl-2 pr-3 mx-2 rounded-md flex-grow">
+    <div
+      className="grid relative tracking-wider h-full border border-bordergray items-center pl-2 mx-2 rounded-md flex-grow"
+      style={{ gridTemplateColumns: '50px 50px auto' }}
+    >
       <input
         className={`${styles.filterCheckbox} absolute left-0 ml-2 w-full h-6 transform cursor-pointer`}
         type="checkbox"
@@ -156,7 +168,7 @@ export const FilterField = ({
             Forfattere
           </div>
           <div className={`${styles.line} bg-yellow w-7 mb-5`} />
-          <ul>
+          <ul className="">
             {authors.map((author) => (
               <li className={styles.listItem}>
                 <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
@@ -181,12 +193,12 @@ export const FilterField = ({
       </span>
       {''}
       <span className="mr-3 -ml-1">Filter</span>
-      <div className="overflow-hidden">
+      <div className="overflow-x-scroll">
         <div
           className="whitespace-pre w-full pl-2 rounded-full -ml-2 relative"
           style={{ scrollbarWidth: 'thin' }}
         >
-          <span className="five:flex hidden">
+          <div className="five:flex hidden w-full">
             {activeTags !== undefined
               ? activeTags.map((tag) => (
                   <div
@@ -217,7 +229,7 @@ export const FilterField = ({
                 </div>
               </>
             ) : null}
-          </span>
+          </div>
         </div>
       </div>
       <span className="right-0 absolute mr-4 five:hidden">

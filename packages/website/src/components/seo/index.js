@@ -2,7 +2,16 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-export const SEO = ({ description, lang, meta, title, metaImage }) => {
+export const SEO = ({
+  description,
+  lang,
+  meta,
+  title,
+  metaImage,
+  socialSubtitle,
+  socialTitle,
+  author,
+}) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -16,6 +25,7 @@ export const SEO = ({ description, lang, meta, title, metaImage }) => {
       }
     `
   );
+  const metaAuthor = author || site.siteMetadata.author;
   const metaDescription = description || site.siteMetadata.description;
   const metaTitle = title || site.siteMetadata.title;
   const metaArr = meta || [];
@@ -31,6 +41,10 @@ export const SEO = ({ description, lang, meta, title, metaImage }) => {
           content: metaDescription,
         },
         {
+          name: `author`,
+          content: metaAuthor,
+        },
+        {
           property: `og:title`,
           content: metaTitle,
         },
@@ -44,23 +58,23 @@ export const SEO = ({ description, lang, meta, title, metaImage }) => {
         },
         {
           property: 'og:image',
-          content: metaImage || '',
+          content: metaImage,
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: metaAuthor,
         },
         {
           name: `twitter:title`,
-          content: metaTitle,
+          content: socialTitle || title,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: socialSubtitle || description,
         },
       ].concat(metaArr)}
     >

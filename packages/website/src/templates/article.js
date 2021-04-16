@@ -27,10 +27,12 @@ const ArticleTemplate = (props) => {
   } = props.data.sanityArticle;
 
   const socialObj = socials || {};
-  const { socialSubtitle, socialImage } = socialObj;
+  const { socialSubtitle, socialImage, socialTitle } = socialObj;
 
   let authorSlug;
+  let authorFullname;
   if (author && author.firstname && author.lastname) {
+    authorFullname = author.firstname.concat(' ').concat(author.lastname);
     authorSlug = author.firstname
       .split(' ')
       .concat(author.lastname.split(' '))
@@ -48,8 +50,11 @@ const ArticleTemplate = (props) => {
     <>
       <SEO
         title={title}
-        description={socialSubtitle || description}
+        description={description}
         metaImage={metaImage || ''}
+        socialTitle={socialTitle}
+        socialSubtitle={socialSubtitle}
+        author={authorFullname}
       />
       <span className="lg:block hidden">
         <Sidebar
@@ -66,8 +71,8 @@ const ArticleTemplate = (props) => {
             <div className="mb-5">
               <SocialShare
                 url={window.location.href}
-                title={title}
-                subtitle={socialSubtitle}
+                title={socialTitle || title}
+                subtitle={socialSubtitle || description}
                 tags={socialTags}
               />
             </div>
@@ -94,7 +99,8 @@ const ArticleTemplate = (props) => {
             <div className="mt-6 relative z-20">
               <SocialShare
                 url={window.location.href}
-                title={title}
+                title={socialTitle || title}
+                subtitle={socialSubtitle || description}
                 tags={socialTags}
               />
             </div>
