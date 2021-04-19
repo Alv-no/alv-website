@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../templates/Service.module.css';
+import styles from '../../templates/Blockcontent.module.css';
 import { Title } from '../title';
 import * as Button from '../button';
 import PortableText from '@sanity/block-content-to-react';

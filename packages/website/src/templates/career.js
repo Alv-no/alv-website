@@ -1,7 +1,7 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import Layout from '../layout';
-import styles from './Article.module.css';
+import styles from './Blockcontent.module.css';
 import { graphql } from 'gatsby';
 import { NavyIntro } from '../components/navyIntro';
 

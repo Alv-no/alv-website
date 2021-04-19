@@ -52,6 +52,15 @@
   background: #eabb26;
 }
 
+.body h6:after {
+  content: '';
+  display: block;
+  margin-top: 5px;
+  height: 3px;
+  width: 50px;
+  background: #eabb26;
+}
+
 .mainImg > div {
   opacity: 0.99 !important;
 }
