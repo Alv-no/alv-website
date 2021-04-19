@@ -8,7 +8,7 @@ import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { Footer } from '../components/footer';
 import { SEO } from '../components/seo';
 import Link from 'gatsby-link';
-import styles from './Article.module.css';
+import styles from './Blockcontent.module.css';
 import * as Icon from '../components/icon';
 import { SocialShare } from '../components/socialShare';
 import { window } from 'browser-monads';

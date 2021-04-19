@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'gatsby-image';
 import PortableText from '@sanity/block-content-to-react';
-import styles from '../../templates/Category.module.css';
+import styles from '../../templates/Blockcontent.module.css';
 import { Title } from '../title';
 
 export const Overview = ({ image, blockContent, id }) => {
