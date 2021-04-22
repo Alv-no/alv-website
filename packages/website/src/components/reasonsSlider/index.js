@@ -3,7 +3,7 @@ import * as Icon from '../icon';
 import Image from 'gatsby-image';
 import Slider from 'react-slick';
 
-export const ReasonsSlider = ({ image }) => {
+export const ReasonsSlider = ({ mainHeading, slides }) => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -22,62 +22,59 @@ export const ReasonsSlider = ({ image }) => {
     ],
   };
   return (
-    <div className="pb-12">
+    <div className="pb-12 twelve:pb-0">
       <Slider {...settings}>
-        <ArticleSlider image={image} />
-        <ArticleSlider image={image} />
-        <ArticleSlider image={image} />
+        {slides.map((el, index) => (
+          <ArticleSlide
+            key={index}
+            mainHeading={mainHeading}
+            heading={el.heading}
+            description={el.description}
+            image={el.image.asset.fluid}
+            slideNr={index + 1}
+          />
+        ))}
       </Slider>
     </div>
   );
 };
 
-export const ArticleSlider = ({ image }) => (
+export const ArticleSlide = ({
+  image,
+  mainHeading,
+  slideNr,
+  heading,
+  description,
+}) => (
   <div
     className="max-w-1440 mx-auto twelve:grid tracking-wider"
     style={{ gridTemplateColumns: '65% auto' }}
   >
     <div className="twelve:px-30 sm:px-12 px-5">
-      <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-8 -ml-2px">
-        10 Gode grunner til å jobbe i Alv
+      <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-10 -ml-2px">
+        {mainHeading}
       </h3>
       <div className="pl-32 pr-18 hidden twelve:block">
         <div className="flex mt-10">
           <div className="text-4xl mr-5 text-white py-0 flex items-center px-12 bg-navy">
-            1
+            {slideNr}
           </div>
-          <h4 className="uppercase text-2xl font-semibold w-100">
-            10 Gode grunner til å jobbe i Alv
-          </h4>
+          <h4 className="uppercase text-2xl font-semibold w-100">{heading}</h4>
         </div>
-        <p className="font-light mt-12">
-          I Alv har du som medarbeider direkte innflytelse på den kulturen vi
-          bygger og du kan dermed skape din egen drømmearbeidsplass. Alv skal
-          være et sted medarbeidere ønsker å jobbe lenge. Det er en arbeidsplass
-          hvor man utfordres og utvikles, og samtidig et sted hvor vi har det
-          morsomt på veien. Vi bygger en kultur i Alv på verdiene våre om
-          ærlighet, råskap og engasjement.
-        </p>
+        <div className="h-40 my-10">
+          <p className="font-light mt-12">{description}</p>
+        </div>
       </div>
     </div>
     <Image fluid={image} className="twelve:h-auto h-60vh" />
     <div className="sm:px-12 px-5 twelve:hidden mb-12">
       <div className="flex mt-12">
         <div className="text-4xl mr-5 text-white py-0 flex items-center px-12 bg-navy">
-          1
+          {slideNr}
         </div>
-        <h4 className="uppercase text-2xl font-semibold w-100">
-          10 Gode grunner til å jobbe i Alv
-        </h4>
+        <h4 className="uppercase text-2xl font-semibold w-100">{heading}</h4>
       </div>
-      <p className="font-light mt-8">
-        I Alv har du som medarbeider direkte innflytelse på den kulturen vi
-        bygger og du kan dermed skape din egen drømmearbeidsplass. Alv skal være
-        et sted medarbeidere ønsker å jobbe lenge. Det er en arbeidsplass hvor
-        man utfordres og utvikles, og samtidig et sted hvor vi har det morsomt
-        på veien. Vi bygger en kultur i Alv på verdiene våre om ærlighet, råskap
-        og engasjement.
-      </p>
+      <p className="font-light mt-8">{description}</p>
     </div>
   </div>
 );
