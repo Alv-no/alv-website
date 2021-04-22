@@ -15,32 +15,33 @@ export const PostCard = ({
   fallbackImg,
 }) => {
   let newDescription = description;
-  if (description.length > 300) {
-    const wordArr = description.split(' ').slice(0, 40);
-    wordArr.push('...');
-    newDescription = wordArr.join(' ');
-    newDescription =
-      newDescription.slice(0, newDescription.length - 4) +
-      newDescription.slice(newDescription.length - 3);
+  if (description.length > 200) {
+    newDescription = description
+      .split(' ')
+      .slice(0, 30)
+      .join(' ')
+      .concat('...');
   }
   return (
     <Link
-      to={slug.current}
+      to={`/blogg/${slug.current}`}
       className={`${styles.container} group relative pb-6`}
     >
       <div>
         <div className="flex justify-end text-sm absolute bottom-0 z-40 mb-2 w-full px-6 text-navy transform -translate-y-3">
           <div className="font-semibold uppercase w-32 text-right justify-end items-end tracking-wider group-hover:text-white w-full">
-            <div className={styles.button}>
+            <div
+              className={`${styles.button} flex justify-end transform translate-x-2`}
+            >
               Les mer{' '}
-              <span className="ml-2 transform scale-80">
+              <div className="ml-2 transform scale-80">
                 <Icon.Arrow />
-              </span>
+              </div>
             </div>
           </div>
         </div>
         <div className={styles.container}>
-          <div className="text-white h-3/4 bg-navy bottom-0 absolute z-10 p-6 tracking-wider transition duration-300 opacity-0 group-hover:opacity-100">
+          <div className="text-white h-auto bg-navy bottom-0 absolute z-10 p-6 tracking-wider transition duration-300 opacity-0 group-hover:opacity-100">
             <h3 className="text-lg font-semibold mb-3 -mx-2px">{title}</h3>
             <div className="font-light mb-8">{newDescription}</div>
           </div>
