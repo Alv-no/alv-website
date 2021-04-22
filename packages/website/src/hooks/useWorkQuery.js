@@ -6,6 +6,21 @@ export const useWorkQuery = () => {
         sanityCareerPage {
           pageDescription
           pageTitle
+          reasonsCarousel {
+            mainHeading
+            process {
+              heading
+              description
+              image {
+                asset {
+                  url
+                  fluid {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+            }
+          }
         }
         allSanityOpenPostionPage {
           nodes {

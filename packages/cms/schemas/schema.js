@@ -29,6 +29,8 @@ import categoryPage from './categoryPage';
 import testimonial from './testimonial';
 import servicePage from './servicePage';
 import siteSettings from './siteSettings';
+import reasonsCard from './reasonsCard';
+import reasonsCarousel from './reasonsCarousel';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -65,5 +67,7 @@ export default createSchema({
     imageAndText,
     guestAuthor,
     socials,
+    reasonsCard,
+    reasonsCarousel,
   ]),
 });

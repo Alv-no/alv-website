@@ -20,5 +20,10 @@ export default {
         maxLength: 160,
       },
     },
+    {
+      name: 'reasonsCarousel',
+      title: 'Reasons Carousel',
+      type: 'reasonsCarousel',
+    },
   ],
 };
