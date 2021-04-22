@@ -55,12 +55,6 @@ resource "null_resource" "docker_build" {
   ]
 }
 
-resource "azurerm_app_service_custom_hostname_binding" "this" {
-  hostname            = var.hostname
-  app_service_name    = azurerm_app_service.as.name
-  resource_group_name = azurerm_resource_group.rg.name
-}
-
 resource "azurerm_app_service_plan" "asp" {
   name                = "${azurerm_resource_group.rg.name}-asp"
   location            = azurerm_resource_group.rg.location
