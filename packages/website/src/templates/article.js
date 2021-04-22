@@ -7,9 +7,8 @@ import { MobileHeader } from '../components/header';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { Footer } from '../components/footer';
 import { SEO } from '../components/seo';
-import Link from 'gatsby-link';
+import { AlsoRead } from '../components/alsoRead';
 import styles from './Blockcontent.module.css';
-import * as Icon from '../components/icon';
 import { SocialShare } from '../components/socialShare';
 import { window } from 'browser-monads';
 
@@ -76,7 +75,7 @@ const ArticleTemplate = (props) => {
           categoryPages={categoryPages}
         >
           <div
-            className="min-h-screen flex flex-col m-15 xl:m-20 2xl:m-25 text-navy 2xl:ml-1/2"
+            className="min-h-screen flex flex-col m-15 xl:m-20 xl:mb-15 2xl:m-25 2xl:mb-15 text-navy 2xl:ml-1/2"
             style={{ maxWidth: '770px' }}
           >
             <div className="mb-5">
@@ -115,16 +114,11 @@ const ArticleTemplate = (props) => {
                 tags={socialTags}
               />
             </div>
-            <div className="flex justify-between flex-col">
-              <Link className="relative z-50" to="/blogg">
-                <div className="flex items-center font-semibold uppercase transform -translate-y-5">
-                  Se alle artikler
-                  <span className="transform text-navy ml-3">
-                    <Icon.Arrow />
-                  </span>
-                </div>
-              </Link>
-            </div>
+            <AlsoRead
+              articles={props.data.articles}
+              currentTags={socialTags}
+              currentAuthor={authorFullname}
+            />
           </div>
         </Sidebar>
       </span>
@@ -155,7 +149,7 @@ const ArticleTemplate = (props) => {
               dataset="production"
             />
           </span>
-          <div className="flex justify-between items-center mb-12">
+          <div className="flex justify-end items-center mb-8">
             <div className="relative z-20">
               <SocialShare
                 url={window.location.href}
@@ -163,14 +157,13 @@ const ArticleTemplate = (props) => {
                 tags={socialTags}
               />
             </div>
-            <div className="flex justify-end items-center font-semibold uppercase">
-              <Link className="relative z-50" to="/blogg">
-                Se alle artikler
-              </Link>
-              <span className="transform text-navy ml-3">
-                <Icon.Arrow />
-              </span>
-            </div>
+          </div>
+          <div className="mb-12">
+            <AlsoRead
+              articles={props.data.articles}
+              currentTags={socialTags}
+              currentAuthor={authorFullname}
+            />
           </div>
         </div>
         <Footer />
@@ -252,6 +245,57 @@ export const query = graphql`
               src
             }
           }
+        }
+      }
+    }
+    articles: allSanityArticle(sort: { fields: publishedAt }) {
+      edges {
+        node {
+          id
+          description
+          slug {
+            current
+          }
+          title
+          tags {
+            tag
+          }
+          mainImage {
+            asset {
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+          author {
+            image {
+              asset {
+                fluid {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            firstname
+            lastname
+          }
+          guestAuthor {
+            guestAuthor {
+              image {
+                asset {
+                  fluid {
+                    ...GatsbySanityImageFluid
+                  }
+                  url
+                }
+              }
+              firstname
+              lastname
+              title
+              id
+            }
+          }
+          publishedAt(formatString: "DD MMM, YYYY")
+          rawDate: publishedAt
         }
       }
     }
