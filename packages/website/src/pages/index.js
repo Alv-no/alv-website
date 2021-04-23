@@ -5,6 +5,7 @@ import { WhoWeAre } from '../components/whoWeAre';
 import { OwnedByStaff } from '../components/ownedByStaff';
 import { OurServices } from '../components/ourServices';
 import { Hire, HireAlt } from '../components/hire';
+import { BlogSlider } from '../components/blogSlider';
 import { VideoIntro } from '../components/videoIntro';
 import { graphql } from 'gatsby';
 
@@ -61,6 +62,7 @@ const Index = ({ data, location }) => {
             </OurServices>
             <div className="lg:h-40  h-5" />
             <HireAlt data={data} />
+            <BlogSlider />
             <OwnedByStaff>
               Alv AS er 100% eid av våre ansatte. Det betyr at du vil få
               mulighet til å kjøpe deg inn på eiersiden av selskapet når du blir
