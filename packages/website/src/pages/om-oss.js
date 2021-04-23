@@ -4,6 +4,7 @@ import { useAboutUsQuery } from '../hooks/useAboutUsQuery';
 import { Subtitle } from '../components/title';
 import { OurServices } from '../components/ourServices';
 import { Metrics } from '../components/metrics';
+import { BlogSlider } from '../components/blogSlider';
 import { AboutIntro } from '../components/aboutIntro';
 import { FeaturedTeam } from '../components/featuredTeam';
 
@@ -39,6 +40,9 @@ const About = () => {
           <Subtitle>Ansatte</Subtitle>
         </div>
         <FeaturedTeam notitle team={team} color="navy" />
+        <div className="max-w-1440 mx-auto">
+          <BlogSlider />
+        </div>
       </div>
     </Layout>
   );

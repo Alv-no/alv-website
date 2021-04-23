@@ -5,6 +5,7 @@ import { NavyIntro } from '../components/navyIntro';
 import { RolesList } from '../components/rolesList';
 import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
+import { BlogSlider } from '../components/blogSlider';
 import { FeaturedTeam } from '../components/featuredTeam';
 import { WhatWeDo } from '../components/whatWeDo';
 
@@ -86,6 +87,7 @@ const Category = ({ data }) => {
             />
           )}
         </div>
+        <BlogSlider blueText color={'navy'} />
       </div>
     </Layout>
   );

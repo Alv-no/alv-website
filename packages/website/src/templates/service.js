@@ -3,6 +3,7 @@ import Layout from '../layout';
 import { graphql } from 'gatsby';
 import { ServiceNavList } from '../components/serviceNavList';
 import { RolesList } from '../components/rolesList';
+import { BlogSlider } from '../components/blogSlider';
 import { NavyIntroImage } from '../components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
 
@@ -61,6 +62,9 @@ const Service = ({ data }) => {
             buttonText="Ta Kontakt"
             internalLink="/kontakt-oss"
           />
+        </div>
+        <div className="max-w-1440 mx-auto sm:my-15 mt-10">
+          <BlogSlider blueText color="navy" />
         </div>
       </div>
     </Layout>
