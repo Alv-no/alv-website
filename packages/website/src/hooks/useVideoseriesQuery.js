@@ -34,6 +34,8 @@ export const useVideoseriesQuery = () => {
               formattedPublishedAt
               id
               playlistId
+              playlistSlug
+              playlistName
               position
               publishedAt
               title
