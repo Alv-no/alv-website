@@ -95,6 +95,8 @@ module.exports = {
         'fifty': '50% 50%',
         'videos-lg': '20% 80%',
         'videos-hero': '25% 75%',
+        'videos-sidebar': 'auto 278px',
+        'sidebar-item': '30px 33% 66%',
         'videos': 'repeat(4, minmax(220px, 278px))',
         'blog-xs': 'minmax(180px, 300px)',
         'employees-xs': '1fr',
@@ -164,6 +166,7 @@ module.exports = {
         '130c': '130%',
         '177c': '177%',
         '60c': '60%',
+        '56c': '56.25%',
       },
       scale: {
         10: '0.1',

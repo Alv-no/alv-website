@@ -6,29 +6,33 @@ import {
   LinkedinShareButton,
 } from 'react-share';
 
-export const SocialShare = ({ url, title, tags, subtitle }) => {
+export const SocialShare = ({ url, title, tags, subtitle, white }) => {
   const twitterHandle = 'Alvnoas';
   return (
-    <div className="w-full flex justify-end uppercase text-navy text-sm font-semibold items-center">
+    <div
+      className={`w-full flex justify-end uppercase ${
+        white ? 'text-white' : 'text-navy'
+      } text-sm font-semibold items-center`}
+    >
       Share{' '}
-      <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+      <span className="ml-3 filter-invert cursor-pointer transition hover:opacity-75">
         <FacebookShareButton url={url} quote={title} hashtag={tags}>
-          <Icon.CircleFacebook />
+          <Icon.CircleFacebook white={white} />
         </FacebookShareButton>
       </span>
-      <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+      <span className="ml-3 filter-invert cursor-pointer transition hover:opacity-75">
         <TwitterShareButton
           url={url}
           title={title}
           via={twitterHandle}
           hashtags={tags}
         >
-          <Icon.CircleTwitter />
+          <Icon.CircleTwitter white={white} />
         </TwitterShareButton>
       </span>
-      <span className="ml-3 text-navy filter-invert cursor-pointer transition hover:opacity-75">
+      <span className="ml-3 filter-invert cursor-pointer transition hover:opacity-75">
         <LinkedinShareButton url={url} summary={subtitle}>
-          <Icon.CircleLinkedIn />
+          <Icon.CircleLinkedIn white={white} />
         </LinkedinShareButton>
       </span>
     </div>
