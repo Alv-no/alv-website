@@ -8,7 +8,7 @@ const Breadcrumb = ({ path }) => {
     crumbs = filteredPath.map((el) => {
       let formattedEl = el[0].toUpperCase() + el.slice(1);
       if (formattedEl.includes('-')) {
-        if (path[0] !== 'vi-tilbyr') {
+        if (path[0] !== 'vi-tilbyr' && path[0] !== 'videoserie') {
           formattedEl.length > 35
             ? (formattedEl = ['Blogginnlegg'])
             : (formattedEl = formattedEl.split('-').join(' '));

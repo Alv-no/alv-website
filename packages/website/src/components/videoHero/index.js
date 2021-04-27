@@ -12,7 +12,7 @@ export const VideoHero = ({
   playlist,
 }) => {
   return (
-    <div className="bg-navy w-full pt-2 twelve:pb-10">
+    <div className="bg-navy w-full pt-2 twelve:pb-10 -mt-5 mb-30 twelve:mb-0">
       <div className="twelve:grid grid-cols-videos-hero mx-auto twelve:mb-24">
         <div />
         <span
@@ -20,7 +20,7 @@ export const VideoHero = ({
         >
           <Image
             fluid={backgroundImage}
-            className={`-mx-12 h-screen w-screen sm:mx-0  ${styles.bgImage}`}
+            className={`-mx-12 h-screen sm:mx-0 transform scale-130 twelve:translate-x-10 -translate-y-5  ${styles.bgImage}`}
           />
           <div
             className={`absolute -translate-y-32 w-full text-white top-1/2 transform sm:-translate-y-1/2 sm:-translate-x-40 md:m-0 sm:ml-15 ${styles.cta}`}
@@ -49,13 +49,13 @@ export const VideoHero = ({
                 </button>
               </Link>
             </div>
-          </div>
-          <div className="twelve:absolute hidden twelve:block relative mt-10 twelve:mt-0 bottom-0 right-0 w-7/12 2xl:w-4/6 mr-10 2xl:mr-4 -mb-12 2xl:-mb-15">
-            <FeaturedVideo
-              fallbackImg={fallbackImg}
-              video={video}
-              playlist={playlist}
-            />
+            <div className="twelve:absolute hidden twelve:block relative -mt-40 transform translate-x-28 w-7/12 right-0">
+              <FeaturedVideo
+                fallbackImg={fallbackImg}
+                video={video}
+                playlist={playlist}
+              />
+            </div>
           </div>
         </span>
       </div>

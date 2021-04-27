@@ -265,7 +265,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
       playlist.videos.forEach((video) => {
         const slug = slugify(video.title.replace(' |', ''), {
-          remove: /[*+~.()|#'"!:@]/,
+          remove: /[*+~.()|#'"!:@?]/,
           lower: true,
         });
 

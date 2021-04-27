@@ -25,7 +25,7 @@ const Videoseries = () => {
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
-        <div className="max-w-1200 mx-auto">
+        <div className="max-w-1200 mx-auto overflow-hidden">
           {lists && (
             <VideoHero
               video={lists[0][0]}
