@@ -18,7 +18,9 @@ export const VideoCard = ({
   };
   return (
     <Link
-      to={`/videoserie/${video.playlistSlug || 'videoserie'}/${video.slug}`}
+      to={`/videoserie/${
+        video.playlistSlug || 'videoserie'
+      }/${video.slug.replace('?', '')}`}
       state={{ playlist, video, id: video.videoId }}
       className="w-full"
       onClick={noLink ? handleClick : null}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'gatsby-link';
 import Layout from '../layout';
 import { window } from 'browser-monads';
@@ -7,9 +7,17 @@ import { VideoEpisode } from '../components/videoEpisode';
 import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
 
 const VideoTemplate = ({ pageContext }) => {
-  const video = pageContext.video;
+  const { video, list, playlistName, playlistSlug } = pageContext;
+  const [playlist, setPlaylist] = useState(null);
   const data = useVideoseriesQuery();
-  const [playlist] = useState(data.playlists[0]);
+
+  useEffect(() => {
+    const list = data.playlists.find((list) =>
+      list.some((el) => el.playlistSlug === playlistSlug)
+    );
+
+    setPlaylist(list);
+  }, [data, list, playlistName, playlistSlug]);
 
   return (
     <Layout>
@@ -39,7 +47,13 @@ const VideoTemplate = ({ pageContext }) => {
                 white
               />
             </span>
-            <Sidebar playlist={playlist} video={video} />
+            {playlist && (
+              <Sidebar
+                playlist={playlist}
+                playlistName={playlistName}
+                video={video}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -69,7 +83,9 @@ const Sidebar = ({ playlist }) => (
           <Link
             className="lg:h-20 grid mb-5 lg:mb-2 block grid-cols-2 xs:grid-cols-sidebar-item transform -translate-x-2"
             key={i}
-            to={`/${el.playlistSlug || 'videoserie'}/${el.slug}`}
+            to={`/videoserie/${
+              el.playlistSlug || 'videoserie'
+            }/${el.slug.replace('?', '')}`}
           >
             <div className="h-full flex items-center justify-center xs:flex hidden">
               <div className="lg:-mt-2">{i + 1}</div>

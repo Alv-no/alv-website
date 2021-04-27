@@ -35,6 +35,12 @@ if (process.env.YT_API) {
         }
         playlistSlug = playlistSlug.toLowerCase();
 
+        playlistSlug = slugify(playlistSlug.replace(' |', ''), {
+          remove: /[*+~.()|#'"!:@?]/,
+          lower: true,
+        });
+        if (playlistSlug.includes('videoserie')) playlistSlug = 'videoserie';
+
         const apiCall = await fetch(
           `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&key=${process.env.YT_API}`
         );
@@ -274,6 +280,9 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `videoserie/${listSlug}/${slug}`,
           context: {
             video: video,
+            playlistSlug: playlist.playlistSlug,
+            playlistName: playlist.playlistName,
+            list: playlist.videos,
           },
         });
       });
