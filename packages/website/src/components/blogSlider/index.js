@@ -62,11 +62,11 @@ export const BlogSlider = ({ dot, color, blueText }) => {
                   active={activeSlide === index}
                   prevPos={
                     activeSlide - 1 === index ||
-                    (activeSlide === 0 && index === article.length - 1)
+                    (activeSlide === 0 && index === articles.length - 1)
                   }
                   nextPos={
                     activeSlide + 1 === index ||
-                    (activeSlide === article.length - 1 && index === 0)
+                    (activeSlide === articles.length - 1 && index === 0)
                   }
                 />
               );
@@ -125,7 +125,7 @@ const Slide = ({
 }) => {
   return (
     <>
-      <Link to={`/blogg/${article.slug.current}`}>
+      <Link to={`/blogg/${article.slug.current}`} className="w-full pb-56c">
         <div
           className={`${active && ''}  transform ${prevPos && 'scale-80'} ${
             nextPos && 'scale-80'
