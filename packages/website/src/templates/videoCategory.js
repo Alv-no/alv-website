@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import { graphql } from 'gatsby';
 import Layout from '../layout';
 import { EpisodeCards } from '../components/episodeCards';
+import slugify from 'slugify';
 
-const VideoCategoryTemplate = ({ data, pageContext }) => {
-  const { title } = pageContext;
+const VideoCategoryTemplate = ({ pageContext }) => {
+  const { title, videos, slug } = pageContext;
   const [playlist, setPlaylist] = useState(null);
 
   useState(() => {
-    setPlaylist(data.allYtVideo.nodes);
+    const formattedVideos = videos.map((video) => {
+      video.playlistSlug = slug;
+      video.playlistName = title;
+      video.slug = slugify(video.title.replace(' |', ''), {
+        remove: /[*+~.()|#'"!:@?]/,
+        lower: true,
+      });
+      return video;
+    });
+    setPlaylist(formattedVideos);
   }, []);
 
   //
@@ -26,28 +35,3 @@ const VideoCategoryTemplate = ({ data, pageContext }) => {
 };
 
 export default VideoCategoryTemplate;
-
-// GraphQL Query for article content
-export const query = graphql`
-  query($slug: String!) {
-    allYtVideo(filter: { playlistSlug: { eq: $slug } }) {
-      nodes {
-        id
-        description
-        formattedPublishedAt
-        title
-        slug
-        publishedAt
-        position
-        playlistSlug
-        playlistName
-        playlistId
-        thumbnails {
-          standard {
-            url
-          }
-        }
-      }
-    }
-  }
-`;
