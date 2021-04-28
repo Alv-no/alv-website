@@ -11,7 +11,9 @@ export const BlogSlider = ({ dot, color, blueText }) => {
   const data = useBlogQuery();
   const articles = data.articles.edges
     .map((edge) => edge.node)
-    .sort((a, b) => (a.rawDate < b.rawDate ? 1 : -1));
+    .sort((a, b) => (a.rawDate > b.rawDate ? 1 : -1))
+    .sort((a) => (a.rawDate ? -1 : 1));
+
   const [activeSlide, setActiveSlide] = useState(0);
   const updateActive = (next) => {
     setActiveSlide(next);
