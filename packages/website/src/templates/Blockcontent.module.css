@@ -5,6 +5,8 @@
 
 .body {
   color: #061838;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .body strong {
