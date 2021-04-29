@@ -4,17 +4,19 @@ trigger:
 pr: none
 
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers?view=azure-devops&tabs=yaml#cron-syntax
-#schedules:
-#- cron: "30 10 * * 2"
-#  displayName: Thusdays at 1030
-#  branches:
-#    include:
-#    - prod
-#- cron: "0 16 * * 4"
-#  displayName: Thursday at 1600
-#  branches:
-#    include:
-#    - prod
+schedules:
+- cron: "30 10 * * 2"
+  displayName: Thusdays at 1030
+  branches:
+    include:
+    - prod
+  always: true
+- cron: "0 16 * * 4"
+  displayName: Thursday at 1600
+  branches:
+    include:
+    - prod
+  always: true
 
 pool:
   vmImage: ubuntu-latest
