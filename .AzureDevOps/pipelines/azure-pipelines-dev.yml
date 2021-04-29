@@ -1,0 +1,40 @@
+trigger:
+  - master
+
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  subscriptionId: '32547ca3-abba-45c8-b76e-46a590958b5e'
+  serviceName: alvnodev
+  serviceConnection: AlvNo-Dev
+  envFileName: '.env.production'
+
+stages:
+  - stage: build
+    displayName: Build and test
+    jobs:
+      - job: githash
+        displayName: Build
+        steps:
+          - template: ../../packages/infrastructure/build-steps.yaml
+
+  - stage: test
+    displayName: Deploy to Test
+    jobs:
+      - deployment: Test
+        variables:
+          subscriptionId: '32547ca3-abba-45c8-b76e-46a590958b5e'
+          serviceName: alvnodev
+          serviceConnection: AlvNo-Dev
+          hostname: "dev.alv.no"
+          envFileName: '.env.production'
+        displayName: Test
+        environment: Test
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../../packages/infrastructure/deploy-steps.yaml

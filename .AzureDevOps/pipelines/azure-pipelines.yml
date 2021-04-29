@@ -1,7 +1,20 @@
 trigger:
-  - master
+  - prod
 
 pr: none
+
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers?view=azure-devops&tabs=yaml#cron-syntax
+#schedules:
+#- cron: "30 10 * * 2"
+#  displayName: Thusdays at 1030
+#  branches:
+#    include:
+#    - prod
+#- cron: "0 16 * * 4"
+#  displayName: Thursday at 1600
+#  branches:
+#    include:
+#    - prod
 
 pool:
   vmImage: ubuntu-latest
@@ -10,7 +23,7 @@ variables:
   subscriptionId: '32547ca3-abba-45c8-b76e-46a590958b5e'
   serviceName: alvnodev
   serviceConnection: AlvNo-Dev
-  envFileName: '.env.development'
+  envFileName: '.env.production'
 
 stages:
   - stage: build
@@ -20,24 +33,6 @@ stages:
         displayName: Build
         steps:
           - template: ../../packages/infrastructure/build-steps.yaml
-
-  - stage: test
-    displayName: Deploy to Test
-    jobs:
-      - deployment: Test
-        variables:
-          subscriptionId: '32547ca3-abba-45c8-b76e-46a590958b5e'
-          serviceName: alvnodev
-          serviceConnection: AlvNo-Dev
-          hostname: "dev.alv.no"
-          envFileName: '.env.production'
-        displayName: Test
-        environment: Test
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - template: ../../packages/infrastructure/deploy-steps.yaml
 
   - stage: prod
     displayName: Deploy to Production
