@@ -23,7 +23,9 @@ export const ColumnSection = ({
           <div className="sm:h-auto overflow-hidden lg:mx-12">
             <div>
               <h4 className="text-lg mb-2">{eyebrow}</h4>
-              <h3 className="text-4xl uppercase font-semibold mb-0">{title}</h3>
+              <h3 className="text-4xl uppercase font-semibold mb-0 hyphenate">
+                {title}
+              </h3>
             </div>
             <div className={styles.body}>
               <PortableText

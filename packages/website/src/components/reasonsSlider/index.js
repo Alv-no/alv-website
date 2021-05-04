@@ -51,7 +51,7 @@ export const ArticleSlide = ({
     style={{ gridTemplateColumns: '65% auto' }}
   >
     <div className="twelve:px-30 sm:px-12 px-5">
-      <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-10 -ml-2px">
+      <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-10 -ml-2px hyphenate">
         {mainHeading}
       </h3>
       <div className="pl-32 pr-18 hidden twelve:block">
@@ -69,10 +69,12 @@ export const ArticleSlide = ({
     <Image fluid={image} className="twelve:h-auto h-60vh" />
     <div className="sm:px-12 px-5 twelve:hidden mb-12">
       <div className="flex mt-12">
-        <div className="text-4xl mr-5 text-white py-0 flex items-center px-12 bg-navy">
+        <div className="sm:text-4xl text-2xl mr-5 text-white py-0 flex items-center sm:px-12 px-6 bg-navy">
           {slideNr}
         </div>
-        <h4 className="uppercase text-2xl font-semibold w-100">{heading}</h4>
+        <h4 className="uppercase text-2xl font-semibold w-100 hyphenate">
+          {heading}
+        </h4>
       </div>
       <p className="font-light mt-8">{description}</p>
     </div>
