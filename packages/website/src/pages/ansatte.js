@@ -33,8 +33,8 @@ const Employees = ({ location }) => {
         <div className="flex justify-center">
           <span className="px-6">
             <Description align="center">
-              Alv produktet av alle konsulentene som jobber i selskapet. Utforsk
-              våre konsulenter - alle med Alv i genene
+              Alv er produktet av alle konsulentene som jobber i selskapet.
+              Utforsk våre konsulenter - alle med Alv i genene
             </Description>
           </span>
         </div>
