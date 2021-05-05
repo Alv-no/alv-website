@@ -4,6 +4,7 @@ import Link from 'gatsby-link';
 import { isIOS, isSafari } from 'react-device-detect';
 import PortableText from '@sanity/block-content-to-react';
 import fallback from '../../assets/bioVideoFallback.png';
+import slugify from 'slugify';
 
 export const EmployeeBio = ({
   handleCloseClick,
@@ -37,7 +38,7 @@ export const EmployeeBio = ({
   }, [slug, youtube, webM, supportWebM]);
 
   return (
-    <div id={slug.slice(1, slug.length)}>
+    <div id={slugify(slug)}>
       <section
         className="bg-darkblue text-white lg:py-18 pb-15 pt-20 xs:-mx-6 sm:mt-12 my-8 sm:px-5 xs:mt-8 -mt-4"
         id={id}
