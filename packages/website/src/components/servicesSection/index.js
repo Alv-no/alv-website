@@ -11,7 +11,7 @@ export const ServicesSection = ({ children, title, description, link }) => {
             className="lg:grid w-full justify-center text-navy gap-x-6"
             style={{ gridTemplateColumns: 'auto auto 13%' }}
           >
-            <Title align="left lg:mb-0 mb-3" color="text-navy">
+            <Title align="left lg:mb-0 mb-3 hyphenate" color="text-navy">
               {title}
             </Title>
             <div className="font-light ml-10">{description}</div>

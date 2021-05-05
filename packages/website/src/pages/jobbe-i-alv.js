@@ -14,7 +14,7 @@ const WorkForAlv = () => {
   return (
     <>
       <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-        <div className="">
+        <div className="overflow-hidden">
           <ImageTextListHero
             image={data.stairs.childImageSharp.fluid}
             openPositions={data.allSanityOpenPostionPage.nodes}

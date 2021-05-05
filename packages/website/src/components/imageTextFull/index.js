@@ -26,7 +26,7 @@ export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
             <div className="px-5 sm:px-0">
               <Title
                 align="left"
-                classes="text-nav sm:text-3xl"
+                classes="text-nav sm:text-3xl hyphenate"
                 color="text-navy"
               >
                 {title}
