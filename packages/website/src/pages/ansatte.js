@@ -5,6 +5,7 @@ import { Description } from '../components/description';
 import { EmployeeSection } from '../components/employeeSection';
 import { Cta } from '../components/cta';
 import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
+import slugify from 'slugify';
 
 const Employees = ({ location }) => {
   const data = useEmployeeQuery();
@@ -17,13 +18,11 @@ const Employees = ({ location }) => {
   let activeCard;
   if (location.state) {
     activeCard = location.state.activeCard;
-  } else {
-    if (location.hash) {
-      const card = allEmployees.find((el) => {
-        return el.slug === location.hash;
-      });
-      activeCard = card.id;
-    }
+  } else if (location.hash) {
+    const card = allEmployees.find((el) => {
+      return el.slug === slugify(location.hash);
+    });
+    activeCard = card.id;
   }
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>

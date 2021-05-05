@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { createSlugForEmployee } from '../components/createSlugForEmployee';
 export const useEmployeeQuery = () => {
   const data = useStaticQuery(
     graphql`
@@ -75,11 +76,10 @@ export const useEmployeeQuery = () => {
   );
   data.allEmployees = data.allSanityEmployee.edges.map((el) => {
     const employee = el.node;
-    let slug =
-      employee.firstname &&
-      employee.firstname.split(' ').concat(employee.lastname.split(' '));
-    slug = '#' + slug.join('-').toLowerCase();
-    employee.slug = slug;
+    employee.slug = createSlugForEmployee(
+      employee.firstname,
+      employee.lastname
+    );
     return employee;
   });
   return data;

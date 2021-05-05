@@ -25,7 +25,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   useEffect(() => {
     if (activeBio && cardClick) {
       const element = document.getElementById(
-        activeBio.slug.slice(1, activeBio.slug.length)
+        activeBio.slug.slice(activeBio.slug)
       );
       const top =
         window.scrollY +

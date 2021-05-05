@@ -3,11 +3,16 @@ import { EmployeeCard } from '../employeeCard';
 import Link from 'gatsby-link';
 import { Title } from '../title';
 import * as Button from '../button';
+import { createSlugForEmployee } from '../createSlugForEmployee';
 
 export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
   const handleClick = (e) => {
     return e;
   };
+  const linkableTeam = team.map((el) => {
+    el.slug = createSlugForEmployee(el.firstname, el.lastname);
+    return el;
+  });
   return (
     <div className="mb-4 mt-10" id="our-team">
       <div className="max-w-1440 px-5 sm:px-12 mx-auto">
@@ -18,8 +23,11 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
         )}
         <div className="h-12" />
         <div className="grid xs:gap-4 mb-12 xs:max-w-570 seven:max-w-none grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-team-lg nine:justify-between gap-y-6">
-          {team.map((employee) => (
-            <Link to="/ansatte">
+          {linkableTeam.map((employee) => (
+            <Link
+              to={`/ansatte#${employee.slug}`}
+              state={{ activeCard: employee.id, employee: employee.slug }}
+            >
               <EmployeeCard
                 {...employee}
                 handleClick={handleClick}
