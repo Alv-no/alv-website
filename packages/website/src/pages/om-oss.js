@@ -3,7 +3,6 @@ import Layout from '../layout';
 import { useAboutUsQuery } from '../hooks/useAboutUsQuery';
 import { Subtitle } from '../components/title';
 import { OurServices } from '../components/ourServices';
-import { Metrics } from '../components/metrics';
 import { BlogSlider } from '../components/blogSlider';
 import { AboutIntro } from '../components/aboutIntro';
 import { FeaturedTeam } from '../components/featuredTeam';
@@ -27,7 +26,6 @@ const About = () => {
             topImg={data.aboutUsTop.childImageSharp.fluid}
             bottomImg={data.aboutUsLower.childImageSharp.fluid}
           />
-          <Metrics />
           <div className="sm:h-10 lg:h-20" />
         </div>
         <div className="h-10 lg:h-0" />
