@@ -11,6 +11,7 @@ import { AlsoRead } from '../components/alsoRead';
 import styles from './Blockcontent.module.css';
 import { SocialShare } from '../components/socialShare';
 import { window } from 'browser-monads';
+import { createSlugForEmployee } from '../components/createSlugForEmployee';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
@@ -39,14 +40,9 @@ const ArticleTemplate = (props) => {
   let authorSlug;
   let authorFullname;
   if (postAuthor && postAuthor.firstname && postAuthor.lastname) {
-    authorFullname = postAuthor.firstname
-      .concat(' ')
-      .concat(postAuthor.lastname);
-    authorSlug = postAuthor.firstname
-      .split(' ')
-      .concat(postAuthor.lastname.split(' '))
-      .map((name) => name.toLowerCase());
-    authorSlug = authorSlug.join('-');
+    const { firstname, lastname } = postAuthor;
+    authorFullname = `${firstname} ${lastname}`;
+    authorSlug = createSlugForEmployee(firstname, lastname);
   }
 
   const socialTags = (tags && tags.map((tag) => tag.tag)) || '';

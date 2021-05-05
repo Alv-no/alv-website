@@ -20,6 +20,7 @@ export const EmployeeGroup = ({
       (employee) => employee.id === e.target.id
     );
     updateActiveBio(currentBio);
+    window.location.href = window.window.origin + '/ansatte#' + currentBio.slug;
   };
 
   // Close employee bio section by clearing activeBio state

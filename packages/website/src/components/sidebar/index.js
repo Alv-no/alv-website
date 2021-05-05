@@ -5,7 +5,6 @@ import Link from 'gatsby-link';
 import Image from 'gatsby-image';
 import * as Icon from '../icon';
 import { White } from '../logo';
-// import '../../layout.css';
 
 const Sidebar = ({
   children,
