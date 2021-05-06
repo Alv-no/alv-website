@@ -1,6 +1,6 @@
 trigger:
   - master
-  - pull/391/head
+  - alvfan:azure-pipeline-stuff
 
 pr: none
 
