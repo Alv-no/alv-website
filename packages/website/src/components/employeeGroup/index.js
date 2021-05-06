@@ -38,28 +38,43 @@ export const EmployeeGroup = ({
         >
           {group.map((employee) => (
             <>
-              <EmployeeCard
-                {...employee}
-                handleClick={handleCardClick}
-                key={employee.id}
-                activeBio={activeBio}
-                fallbackImg={fallbackImg}
-              />
-              <p className="absolute opacity-0 pointer-events-none">
-                {employee._rawBio && (
-                  <PortableText
-                    blocks={employee._rawBio}
-                    projectId="mnr37rl0"
-                    dataset="production"
-                  />
+              <div>
+                <EmployeeCard
+                  {...employee}
+                  handleClick={handleCardClick}
+                  key={employee.id}
+                  activeBio={activeBio}
+                  fallbackImg={fallbackImg}
+                />
+                <p className="absolute opacity-0 pointer-events-none">
+                  {employee._rawBio && (
+                    <PortableText
+                      blocks={employee._rawBio}
+                      projectId="mnr37rl0"
+                      dataset="production"
+                    />
+                  )}
+                </p>
+                {width < 480 && (
+                  <div className="xs:hidden">
+                    {activeBio &&
+                    activeBio.id === employee.id &&
+                    group.some((el) => el.id === activeBio.id) ? (
+                      <EmployeeBio
+                        {...activeBio}
+                        handleCloseClick={handleCloseClick}
+                      />
+                    ) : null}
+                  </div>
                 )}
-              </p>
+              </div>
             </>
           ))}
         </div>
-        {activeBio && group.some((el) => el.id === activeBio.id) ? (
-          <EmployeeBio {...activeBio} handleCloseClick={handleCloseClick} />
-        ) : null}
+        {width > 480 &&
+          (activeBio && group.some((el) => el.id === activeBio.id) ? (
+            <EmployeeBio {...activeBio} handleCloseClick={handleCloseClick} />
+          ) : null)}
       </div>
     </>
   );
