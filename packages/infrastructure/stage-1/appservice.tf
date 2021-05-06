@@ -75,6 +75,8 @@ resource "azurerm_app_service" "as" {
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.asp.id
 
+  https_only = var.hostname == "alv.no" ? true : false
+
   app_settings = {
     DOCKER_REGISTRY_SERVER_URL      = "https://${azurerm_container_registry.acr.login_server}"
     DOCKER_REGISTRY_SERVER_USERNAME = azurerm_container_registry.acr.admin_username
