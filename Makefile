@@ -7,11 +7,6 @@ build-cms: ## Builds cms docker image
 docker-compose-up: build-website build-cms ## Run docker compose up
 	docker-compose up
 
-prod-deploy: ## Deploy to prod
-	az acr login --name AlvNoProd --expose-token|jq .accessToken -r|docker login AlvNoProd.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password-stdin
-	docker tag website AlvNoProd.azurecr.io/website
-	docker push AlvNoProd.azurecr.io/website
-
 .PHONY: help
 
 .DEFAULT_GOAL := help
