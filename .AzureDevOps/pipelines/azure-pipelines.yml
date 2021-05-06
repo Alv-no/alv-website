@@ -31,7 +31,7 @@ stages:
   - stage: prod
     displayName: Deploy to Production
     jobs:
-      - job: Prod
+      - deployment: Prod
         displayName: Prod
         variables:
           subscriptionId: '98aa1177-a37b-4349-a01f-8f1d325064c3'
@@ -39,5 +39,9 @@ stages:
           serviceConnection: AlvNo-Prod(98aa1177-a37b-4349-a01f-8f1d325064c3)
           hostname: "alv.no"
           envFileName: '.env.production'
-        steps:
-          - template: ../../packages/infrastructure/deploy-steps.yaml
+        environment: Prod
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ../../packages/infrastructure/deploy-steps.yaml
