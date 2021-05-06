@@ -64,7 +64,7 @@ const VideoTemplate = ({ pageContext }) => {
 export default VideoTemplate;
 
 const Sidebar = ({ playlist }) => (
-  <div className="pl-5 pr-10 seven:px-0 mb-10">
+  <div className="pl-5 pr-10 seven:px-0 mb-10 lg:block sm:grid block grid-cols-sidebar">
     <div className="lg:pl-5">
       <div className="uppercase text-lg tracking-wider font-semibold pb-px">
         Video playlist
@@ -91,9 +91,7 @@ const Sidebar = ({ playlist }) => (
               <div className="lg:-mt-2">{i + 1}</div>
             </div>
             <img src={el.thumbnails.standard.url} alt={el.title} className="" />
-            <div className="pl-3 sm:text-lg lg:text-sm tracking-widest">
-              {el.title}
-            </div>
+            <div className="pl-3 lg:text-sm tracking-widest">{el.title}</div>
           </Link>
         ))}
     </div>

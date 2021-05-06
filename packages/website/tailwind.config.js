@@ -95,6 +95,7 @@ module.exports = {
         'fifty': '50% 50%',
         'videos-lg': '20% 80%',
         'videos-hero': '25% 75%',
+        'sidebar': '35% auto',
         'videos-sidebar': 'auto 278px',
         'sidebar-item': '30px 33% 66%',
         'videos': 'repeat(4, minmax(220px, 278px))',
