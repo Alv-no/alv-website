@@ -1,6 +1,6 @@
 trigger:
   - master
-  - hei
+  - alvfan:azure-pipeline-stuff
 
 pr: none
 
