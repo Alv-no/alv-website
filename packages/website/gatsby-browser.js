@@ -8,7 +8,7 @@ export const onClientEntry = () => {
 const scrollTo = (id) => () => {
   let el;
   if (id) el = document.querySelector(id);
-  if (el) return window.scrollTo(0, el.offsetTop - 400);
+  if (el) return window.scrollTo(0, el.offsetTop);
   return false;
 };
 
