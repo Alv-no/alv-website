@@ -64,5 +64,9 @@ export default {
       type: 'image',
       options: { hotspot: true },
     },
+    {
+      title: 'CTA',
+      type: 'cta',
+    },
   ],
 };
