@@ -5344,6 +5344,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sanity/image-url@npm:^0.140.22":
+  version: 0.140.22
+  resolution: "@sanity/image-url@npm:0.140.22"
+  checksum: d44125a4f229431d1142d5fcf0e0d2c3df01a02b57862220c021471930f13f694af24f29b1da3db1c9320a415998707c13cd2a1090461452f28730be6f886c18
+  languageName: node
+  linkType: hard
+
 "@sanity/imagetool@npm:2.0.9":
   version: 2.0.9
   resolution: "@sanity/imagetool@npm:2.0.9"
@@ -31988,6 +31995,7 @@ typescript@^4.0.5:
     "@babel/core": ^7.12.10
     "@mdx-js/react": ^1.6.22
     "@sanity/block-content-to-react": ^2.0.7
+    "@sanity/image-url": ^0.140.22
     "@storybook/addon-actions": ^6.3.0-alpha.12
     "@storybook/addon-controls": ^6.3.0-alpha.12
     "@storybook/addon-docs": ^6.3.0-alpha.12

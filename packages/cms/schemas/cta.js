@@ -23,9 +23,14 @@ export default {
       },
     },
     {
-      title: 'Video Link',
-      name: 'videoLink',
-      type: 'string',
+      name: 'videoMp4',
+      title: 'Video Mp4',
+      type: 'file',
+    },
+    {
+      name: 'videoWebM',
+      title: 'Video WebM',
+      type: 'file',
     },
     {
       title: 'Link (url)',

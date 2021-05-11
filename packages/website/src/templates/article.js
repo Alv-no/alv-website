@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import Image from 'gatsby-image';
 import PortableText from '@sanity/block-content-to-react';
+import { richTextTypes } from '../components/richTextTypes';
 import { MobileHeader } from '../components/header';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { Footer } from '../components/footer';
@@ -100,6 +101,7 @@ const ArticleTemplate = (props) => {
                 blocks={_rawBody}
                 projectId="mnr37rl0"
                 dataset="production"
+                serializers={richTextTypes}
               />
             </span>
             <div className="mt-6 relative z-20">
@@ -143,6 +145,7 @@ const ArticleTemplate = (props) => {
               blocks={_rawBody}
               projectId="mnr37rl0"
               dataset="production"
+              serializers={richTextTypes}
             />
           </span>
           <div className="flex justify-end items-center mb-8">

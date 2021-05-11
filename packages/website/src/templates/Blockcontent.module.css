@@ -72,6 +72,15 @@
   padding: 0 50px;
 }
 
+.body div div img {
+  margin: 0;
+  padding: 0;
+}
+
+.body div div img {
+  margin: 0;
+}
+
 .body p {
   margin: 40px 0;
   line-height: 26px;
