@@ -21,6 +21,9 @@ import contactPage from './contactPage';
 import ourServicesPage from './ourServicesPage';
 import openPositionPage from './openPositionPage';
 import socials from './socials';
+import playlists from './playlists';
+import playlist from './playlist';
+import videoseries from './videoseries';
 import externalProfiles from './externalProfiles';
 import videoseriesPage from './videoseriesPage';
 import imageAndText from './imageAndText';
@@ -44,6 +47,7 @@ export default createSchema({
     siteSettings,
     landingPage,
     videoseriesPage,
+    videoseries,
     servicePage,
     categoryPage,
     openPositionPage,
@@ -69,5 +73,7 @@ export default createSchema({
     socials,
     reasonsCard,
     reasonsCarousel,
+    playlists,
+    playlist,
   ]),
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './index.module.css';
+import * as css from './index.module.css';
 
 const Logo: React.FC = () => (
   <div className={css.logo}>
