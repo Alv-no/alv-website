@@ -34,6 +34,7 @@ import servicePage from './servicePage';
 import siteSettings from './siteSettings';
 import reasonsCard from './reasonsCard';
 import reasonsCarousel from './reasonsCarousel';
+import cta from './cta';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -75,5 +76,6 @@ export default createSchema({
     reasonsCarousel,
     playlists,
     playlist,
+    cta,
   ]),
 });
