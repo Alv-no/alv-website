@@ -3,6 +3,7 @@ import PortableText from '@sanity/block-content-to-react';
 import BackgroundImage from 'gatsby-background-image-es5';
 import styles from '../../templates/Blockcontent.module.css';
 import * as Icon from '../icon';
+import { richTextTypes } from '../richTextTypes';
 
 export const ColumnSection = ({
   title,
@@ -32,6 +33,7 @@ export const ColumnSection = ({
                 blocks={blockContent}
                 projectId="mnr37rl0"
                 dataset="production"
+                serializers={richTextTypes}
               />
             </div>
           </div>

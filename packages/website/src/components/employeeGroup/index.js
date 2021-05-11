@@ -2,6 +2,7 @@ import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import { EmployeeCard } from '../employeeCard';
 import { EmployeeBio } from '../employeeBio';
+import { richTextTypes } from '../richTextTypes';
 
 export const EmployeeGroup = ({
   group,
@@ -52,6 +53,7 @@ export const EmployeeGroup = ({
                       blocks={employee._rawBio}
                       projectId="mnr37rl0"
                       dataset="production"
+                      serializers={richTextTypes}
                     />
                   )}
                 </p>

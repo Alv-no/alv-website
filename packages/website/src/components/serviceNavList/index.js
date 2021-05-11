@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'gatsby-image';
 import { Title } from '../title';
+import { richTextTypes } from '../richTextTypes';
 import PortableText from '@sanity/block-content-to-react';
 import styles from './ServiceNavList.module.css';
 
@@ -52,6 +53,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
                   blocks={raw}
                   projectId="mnr37rl0"
                   dataset="production"
+                  serializers={richTextTypes}
                 />
               </div>
             </div>

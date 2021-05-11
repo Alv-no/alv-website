@@ -1,0 +1,68 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 50% auto;
+}
+
+.videoWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper,
+.videoWrapper {
+  margin: 40px 60px;
+}
+
+.video {
+  max-height: 100%;
+}
+
+.textWrapper {
+  background: #061838;
+  color: white;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.img {
+  background-size: cover;
+  background-position: center;
+}
+
+.heading {
+  font-size: 20px;
+  margin: 0 0 14px 0 !important;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.description {
+  margin: 0 !important;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.buttonWrapper {
+  font-size: 17px;
+  margin-top: 14px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkbox {
+  position: absolute;
+}
+
+input[type='checkbox']:checked ~ .videoWrapper {
+  display: none !important;
+}
+
+@media only screen and (max-width: 639px) {
+  .wrapper,
+  .videoWrapper {
+    margin: 30px 0px;
+  }
+}

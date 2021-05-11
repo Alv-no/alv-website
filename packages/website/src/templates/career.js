@@ -4,6 +4,7 @@ import Layout from '../layout';
 import styles from './Blockcontent.module.css';
 import { graphql } from 'gatsby';
 import { NavyIntro } from '../components/navyIntro';
+import { richTextTypes } from '../components/richTextTypes';
 
 const Career = ({ data }) => {
   const { sanityOpenPostionPage } = data;
@@ -32,6 +33,7 @@ const Career = ({ data }) => {
             blocks={sanityOpenPostionPage._rawJobDescription}
             projectId="mnr37rl0"
             dataset="production"
+            serializers={richTextTypes}
           />
         </span>
         <div>

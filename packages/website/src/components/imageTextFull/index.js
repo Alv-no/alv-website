@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../templates/Blockcontent.module.css';
 import { Title } from '../title';
+import { richTextTypes } from '../richTextTypes';
 import * as Button from '../button';
 import PortableText from '@sanity/block-content-to-react';
 import Image from 'gatsby-image';
@@ -36,6 +37,7 @@ export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
                   blocks={blockContent}
                   projectId="mnr37rl0"
                   dataset="production"
+                  serializers={richTextTypes}
                 />
               </div>
             </div>

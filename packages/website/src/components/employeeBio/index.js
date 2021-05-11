@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
 import { isIOS, isSafari } from 'react-device-detect';
+import { richTextTypes } from '../richTextTypes';
 import PortableText from '@sanity/block-content-to-react';
 import fallback from '../../assets/bioVideoFallback.png';
 import slugify from 'slugify';
@@ -100,6 +101,7 @@ export const EmployeeBio = ({
                   blocks={_rawBio}
                   projectId="mnr37rl0"
                   dataset="production"
+                  serializers={richTextTypes}
                 />
               )}
             </p>
@@ -117,6 +119,7 @@ export const EmployeeBio = ({
                     blocks={_rawBio}
                     projectId="mnr37rl0"
                     dataset="production"
+                    serializers={richTextTypes}
                   />
                 )}
               </p>
