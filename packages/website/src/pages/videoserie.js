@@ -24,15 +24,15 @@ const Videoseries = () => {
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-      <div className="bg-navy text-white seven:px-10 overflow-hidden">
+      <div className="bg-navy text-white md:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto overflow-hidden">
           {lists && (
             <VideoHero
               video={lists[0][0]}
               backgroundImage={data.videoserieBg.childImageSharp.fluid}
               fallbackImg={data.fallbackImg.childImageSharp.fluid}
-              title=""
-              description=""
+              title={pageTitle}
+              description={pageDescription}
               playlist={lists[0]}
             />
           )}
