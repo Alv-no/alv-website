@@ -1,249 +1,46 @@
 const path = require(`path`);
-const fetch = require('node-fetch');
 const crypto = require('crypto');
 const slugify = require('slugify');
+const fetch = require('node-fetch');
 
-// Fetch videos with Youtube API
-const playlistNames = [];
-let playlists;
-if (process.env.YT_API) {
-  exports.sourceNodes = async ({ actions }) => {
-    const playlistData = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/playlists?part=localizations&maxResults=20&channelId=UCLaJhfc1tFmHzP4usj1LKfA&key=${process.env.YT_API}`
-    )
-      .then((res) => res.json())
-      .then((result) => result);
+const videoTemplate = path.resolve(`./src/templates/video.js`);
+const careerTemplate = path.resolve(`./src/templates/career.js`);
+const articleTemplate = path.resolve(`./src/templates/article.js`);
+const serviceTemplate = path.resolve(`./src/templates/service.js`);
+const categoryTemplate = path.resolve(`./src/templates/category.js`);
+const videoCategoryTemplate = path.resolve(`./src/templates/videoCategory.js`);
 
-    playlists = await Promise.all(
-      playlistData.items.map(async (el) => {
-        let playlistName = '';
-        let playlistSlug = '';
-        await fetch(
-          `https://www.googleapis.com/youtube/v3/playlists?part=snippet%2Clocalizations&id=${el.id}&fields=items(localizations%2Csnippet%2Flocalized%2Ftitle)&key=${process.env.YT_API}`
-        )
-          .then((res) => res.json())
-          .then(
-            (data) => (playlistName = data.items[0].snippet.localized.title)
-          );
-
-        playlistSlug = playlistName.split(' ');
-        const titleCutOff = playlistSlug.indexOf('|');
-        if (titleCutOff > -1) {
-          playlistSlug = playlistSlug.slice(0, titleCutOff).join('-');
-        } else {
-          playlistSlug = playlistSlug.join('-');
-        }
-        playlistSlug = playlistSlug.toLowerCase();
-
-        playlistSlug = slugify(playlistSlug.replace(' |', ''), {
-          remove: /[*+~.()|#'"!:@?]/,
-          lower: true,
-        });
-        if (playlistSlug.includes('videoserie')) playlistSlug = 'videoserie';
-
-        const apiCall = await fetch(
-          `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&key=${process.env.YT_API}`
-        );
-        const list = await apiCall.json();
-        let formattedItems = await list.items.map((item) => {
-          item.snippet.formattedPublishedAt = new Date(
-            item.snippet.publishedAt
-          ).toUTCString();
-          item.snippet.videoId = item.snippet.resourceId.videoId;
-          item.snippet.playlistName = playlistName;
-          item.snippet.playlistSlug = playlistSlug;
-          return item.snippet;
-        });
-        if (list.pageInfo.totalResults > 50) {
-          let nextPageToken = list.nextPageToken;
-          while (nextPageToken) {
-            const apiCall = await fetch(
-              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&pageToken=${nextPageToken}&key=${process.env.YT_API}`
-            );
-            const nextPageList = await apiCall.json();
-            const nextPageItems = await nextPageList.items.map((item) => {
-              item.snippet.formattedPublishedAt = new Date(
-                item.snippet.publishedAt
-              ).toUTCString();
-              item.snippet.videoId = item.snippet.resourceId.videoId;
-              return item.snippet;
-            });
-            formattedItems = formattedItems.concat(nextPageItems);
-            nextPageToken = nextPageList.nextPageToken || false;
-          }
-        }
-
-        playlistNames.push({ playlistName, playlistSlug });
-
-        const videos = formattedItems.sort((a, b) =>
-          a.position > b.position ? -1 : 1
-        );
-
-        const playlist = { playlistName, playlistSlug, videos };
-
-        return playlist;
-      })
-    );
-
-    // build Gatsby nodes from fetch result
-    const makeNode = (node) => {
-      node.internal.contentDigest = crypto
-        .createHash('md5')
-        .update(JSON.stringify(node))
-        .digest('hex');
-      actions.createNode(node);
-    };
-    playlists.forEach((list) =>
-      list.videos.forEach(
-        ({
-          title,
-          description,
-          videoId,
-          thumbnails,
-          position,
-          publishedAt,
-          formattedPublishedAt,
-          playlistId,
-          playlistName,
-          playlistSlug,
-        }) => {
-          const slug = slugify(title.replace(' |', ''), {
-            remove: /[*+~.()|#'"!:@]/,
-            lower: true,
-          });
-          makeNode({
-            id: `ytVideo-${videoId}`,
-            slug,
-            title,
-            description,
-            thumbnails,
-            videoId,
-            position,
-            publishedAt,
-            formattedPublishedAt,
-            playlistId,
-            playlistName,
-            playlistSlug,
-            internal: {
-              type: 'ytVideo',
-            },
-            parent: 'playlist',
-            children: [],
-          });
-        }
-      )
-    );
-
-    makeNode({
-      id: 'playlist',
-      parent: 'ytPlaylists',
-      children: [],
-      internal: {
-        type: 'ytPlaylist',
-      },
-    });
-  };
-} else {
-  exports.sourceNodes = async ({ actions }) => {
-    const makeNode = (node) => {
-      node.internal.contentDigest = crypto
-        .createHash('md5')
-        .update(JSON.stringify(node))
-        .digest('hex');
-      actions.createNode(node);
-    };
-
-    const videoId = '';
-    makeNode({
-      id: `ytVideo-${videoId}`,
-      title: '',
-      description: '',
-      videoId,
-      slug: '',
-      thumbnails: { standard: { url: '' } },
-      position: 0,
-      publishedAt: '',
-      formattedPublishedAt: '',
-      playlistId: '',
-      playlistName: '',
-      playlistSlug: '',
-      internal: {
-        type: 'ytVideo',
-      },
-      parent: 'playlist',
-      children: [],
-    });
-
-    makeNode({
-      id: 'playlist',
-      parent: 'ytPlaylists',
-      children: [],
-      internal: {
-        type: 'ytPlaylist',
-      },
-    });
-  };
-}
+let videos = [];
+let allSeasons = [];
+let videoCategories = [];
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
-  const articleTemplate = path.resolve(`./src/templates/article.js`);
-  const serviceTemplate = path.resolve(`./src/templates/service.js`);
-  const categoryTemplate = path.resolve(`./src/templates/category.js`);
-  const careerTemplate = path.resolve(`./src/templates/career.js`);
-  const videoTemplate = path.resolve(`./src/templates/video.js`);
-  const videoCategoryTemplate = path.resolve(
-    `./src/templates/videoCategory.js`
-  );
   const res = await graphql(
     `
       {
-        allSanityArticle {
-          edges {
-            node {
-              slug {
-                current
+        allSanityVideoseries {
+          nodes {
+            id
+            description
+            featuredVideo
+            videoseriesTitle
+            slug {
+              current
+            }
+            playlists {
+              process {
+                description
+                id
+                title
               }
             }
-          }
-        }
-        allSanityCategoryPage {
-          edges {
-            node {
-              slug {
-                current
-              }
-            }
-          }
-        }
-        allSanityOpenPostionPage {
-          edges {
-            node {
-              slug {
-                current
-              }
-            }
-          }
-        }
-        allSanityServices {
-          edges {
-            node {
-              slug {
-                current
-              }
-              parentPage {
-                slug {
-                  current
+            heroImage {
+              asset {
+                url
+                fluid {
+                  src
                 }
               }
-            }
-          }
-        }
-        allYtVideo {
-          edges {
-            node {
-              slug
-              playlistSlug
             }
           }
         }
@@ -251,84 +48,291 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   );
 
-  // create playlist and episode pages
-  playlists &&
-    playlists.forEach((playlist) => {
-      const listSlug =
-        playlist.playlistSlug.indexOf('videoserie-') > -1
-          ? 'videoserie'
-          : playlist.playlistSlug;
+  videoCategories = res.data.allSanityVideoseries.nodes;
 
-      createPage({
-        component: videoCategoryTemplate,
-        path: `videoserie/${listSlug}`,
-        context: {
-          slug: playlist.playlistSlug,
-          videos: playlist.videos,
-          title: playlist.playlistName,
-        },
-      });
+  // fetch videos from playlists (seasons)
+  new Promise(() => {
+    videoCategories &&
+      videoCategories.forEach(async (category) => {
+        const categorySlug = category.slug.current;
 
-      playlist.videos.forEach((video) => {
-        const slug = slugify(video.title.replace(' |', ''), {
-          remove: /[*+~.()|#'"!:@?]/,
-          lower: true,
+        category.playlists.process.forEach(async (el) => {
+          await fetch(
+            `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&key=${process.env.YT_API}`
+          )
+            .then((res) => res.json())
+            .then((list) => {
+              let seasonVideos = list.items;
+
+              // more than 50 videos in a playlist (season)
+              if (list.pageInfo.totalResults > 50) {
+                let nextPageToken = list.nextPageToken;
+                while (nextPageToken) {
+                  const nextPageList = fetch(
+                    `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${el.id}&pageToken=${nextPageToken}&key=${process.env.YT_API}`
+                  ).then((res) => res.json());
+
+                  seasonVideos = seasonVideos.concat(nextPageList.items);
+                  nextPageToken = nextPageList.nextPageToken || false;
+                }
+              }
+
+              // format season video data
+              seasonVideos = seasonVideos.map((el) => {
+                const video = el.snippet;
+                video.season = seasonVideos;
+                video.playlistSlug = categorySlug;
+                video.videoId = video.resourceId.videoId;
+                video.playlistName = category.videoseriesTitle;
+                video.slug = slugify(video.title.replace(' |', ''), {
+                  remove: /[*+~.()|#'"!:@?]/,
+                  lower: true,
+                });
+                video.formattedPublishedAt = new Date(
+                  video.publishedAt
+                ).toUTCString();
+                return video;
+              });
+
+              seasonVideos.sort((a, b) => (a.position > b.position ? -1 : 1));
+              videos = videos.concat(seasonVideos);
+              allSeasons = allSeasons.concat(seasonVideos);
+              return seasonVideos;
+            })
+            .then((season) => {
+              if (process.env.YT_API) {
+                exports.sourceNodes = async ({ actions }) => {
+                  // build Gatsby nodes from fetch result
+                  const makeNode = (node) => {
+                    node.internal.contentDigest = crypto
+                      .createHash('md5')
+                      .update(JSON.stringify(node))
+                      .digest('hex');
+                    actions.createNode(node);
+                  };
+                  console.log(season);
+                  season.forEach(
+                    ({
+                      title,
+                      description,
+                      videoId,
+                      thumbnails,
+                      position,
+                      publishedAt,
+                      formattedPublishedAt,
+                      playlistId,
+                      categoryName,
+                      categorySlug,
+                      slug,
+                    }) => {
+                      makeNode({
+                        id: `ytVideo-${videoId}`,
+                        slug,
+                        title,
+                        description,
+                        thumbnails,
+                        videoId,
+                        position,
+                        publishedAt,
+                        formattedPublishedAt,
+                        playlistId,
+                        categoryName,
+                        categorySlug,
+                        internal: {
+                          type: 'ytVideo',
+                        },
+                        parent: 'playlist',
+                        children: [],
+                      });
+                    }
+                  );
+                  makeNode({
+                    id: 'playlist',
+                    parent: 'ytPlaylists',
+                    children: [],
+                    internal: {
+                      type: 'ytPlaylist',
+                    },
+                  });
+                };
+              } else {
+                exports.sourceNodes = async ({ actions }) => {
+                  const makeNode = (node) => {
+                    node.internal.contentDigest = crypto
+                      .createHash('md5')
+                      .update(JSON.stringify(node))
+                      .digest('hex');
+                    actions.createNode(node);
+                  };
+
+                  const videoId = '';
+                  makeNode({
+                    id: `ytVideo-${videoId}`,
+                    title: '',
+                    description: '',
+                    videoId: '',
+                    slug: '',
+                    thumbnails: { standard: { url: '' } },
+                    position: 0,
+                    publishedAt: '',
+                    formattedPublishedAt: '',
+                    playlistId: '',
+                    categoryName: '',
+                    categorySlug: '',
+                    internal: {
+                      type: 'ytVideo',
+                    },
+                    parent: 'playlist',
+                    children: [],
+                  });
+
+                  makeNode({
+                    id: 'playlist',
+                    parent: 'ytPlaylists',
+                    children: [],
+                    internal: {
+                      type: 'ytPlaylist',
+                    },
+                  });
+                };
+              }
+            });
         });
-
+      });
+  })
+    // Fetch videos with Youtube API
+    .then(() =>
+      graphql(
+        `
+          {
+            allSanityArticle {
+              edges {
+                node {
+                  slug {
+                    current
+                  }
+                }
+              }
+            }
+            allSanityCategoryPage {
+              edges {
+                node {
+                  slug {
+                    current
+                  }
+                }
+              }
+            }
+            allSanityOpenPostionPage {
+              edges {
+                node {
+                  slug {
+                    current
+                  }
+                }
+              }
+            }
+            allSanityServices {
+              edges {
+                node {
+                  slug {
+                    current
+                  }
+                  parentPage {
+                    slug {
+                      current
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `
+      )
+    )
+    .then((response) => {
+      const { createPage } = actions;
+      videos.forEach((video) => {
+        const { slug, playlistSlug } = video;
         createPage({
           component: videoTemplate,
-          path: `videoserie/${listSlug}/${slug}`,
+          path: `videoserie/${playlistSlug}/${slug}`,
           context: {
-            video: video,
-            playlistSlug: playlist.playlistSlug,
-            playlistName: playlist.playlistName,
-            list: playlist.videos,
+            slug,
+          },
+        });
+      });
+
+      // create videoCategory pages
+      videoCategories &&
+        videoCategories.forEach((category) => {
+          createPage({
+            component: videoCategoryTemplate,
+            path: `videoserie/${category.slug.current}`,
+            context: {
+              slug: category.slug.current,
+            },
+          });
+        });
+
+      // create episode pages
+      // category.seasons.forEach((season) => {
+      //   season.forEach((video) => {
+      //     createPage({
+      //       component: videoTemplate,
+      //       path: `videoserie/${category.slug.current}/${video.slug}`,
+      //       context: {
+      //         video: video,
+      //         playlistSlug: video.categorySlug,
+      //         playlistName: video.categoryName,
+      //         list: video.season,
+      //       },
+      //     });
+      //   });
+      // });
+
+      // Create blog posts pages.
+      response.data.allSanityArticle.edges.forEach((edge) => {
+        createPage({
+          component: articleTemplate,
+          path: `/blogg/${edge.node.slug.current}`,
+          context: {
+            slug: edge.node.slug.current,
+          },
+        });
+      });
+
+      // Create services pages.
+      response.data.allSanityServices.edges.forEach((edge) => {
+        createPage({
+          component: serviceTemplate,
+          path: `/vi-tilbyr/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`,
+          context: {
+            slug: edge.node.slug.current,
+          },
+        });
+      });
+
+      // Create category pages.
+      response.data.allSanityCategoryPage.edges.forEach((edge) => {
+        createPage({
+          component: categoryTemplate,
+          path: `/vi-tilbyr/${edge.node.slug.current}`,
+          context: {
+            slug: edge.node.slug.current,
+          },
+        });
+      });
+
+      // Create career pages.
+      response.data.allSanityOpenPostionPage.edges.forEach((edge) => {
+        createPage({
+          component: careerTemplate,
+          path: `/jobbe-i-alv/${edge.node.slug.current}`,
+          context: {
+            slug: edge.node.slug.current,
           },
         });
       });
     });
-
-  // Create blog posts pages.
-  res.data.allSanityArticle.edges.forEach((edge) => {
-    createPage({
-      component: articleTemplate,
-      path: `/blogg/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-  });
-
-  // Create services pages.
-  res.data.allSanityServices.edges.forEach((edge) => {
-    createPage({
-      component: serviceTemplate,
-      path: `/vi-tilbyr/${edge.node.parentPage.slug.current}/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-  });
-
-  // Create category pages.
-  res.data.allSanityCategoryPage.edges.forEach((edge) => {
-    createPage({
-      component: categoryTemplate,
-      path: `/vi-tilbyr/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-  });
-
-  // Create career pages.
-  res.data.allSanityOpenPostionPage.edges.forEach((edge) => {
-    createPage({
-      component: careerTemplate,
-      path: `/jobbe-i-alv/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-  });
 };
