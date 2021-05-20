@@ -37,7 +37,7 @@ export const VideoSection = ({ fallbackImg, playlist }) => {
                       title={video.title}
                       video={video}
                       playlist={sortedVideos}
-                      thumbnail={video.thumbnails.standard.url}
+                      thumbnail={video.thumbnail}
                       key={video.videoId}
                     />
                   );

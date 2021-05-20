@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './videoEpisode.module.css';
 
-export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
+export const VideoEpisode = ({
+  title,
+  description,
+  subtitle,
+  videoId,
+  formattedPublishedAt,
+}) => {
   return (
     <div>
       <div>
@@ -23,6 +29,9 @@ export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
           <h2 className="text-lg tracking-wider font-light">{title}</h2>
           <h4 className="leading-none mt-4 mb-2 text-blog leading-tight tracking-wider">
             {subtitle}
+          </h4>
+          <h4 className="leading-none mt-4 mb-2 text-sm font-thin leading-tight tracking-wider">
+            Publisert: {formattedPublishedAt}
           </h4>
           <p className="tracking-wider">{description}</p>
         </div>

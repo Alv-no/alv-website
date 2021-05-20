@@ -7,20 +7,19 @@ import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
 
 const Videoseries = () => {
   const data = useVideoseriesQuery();
-  let { playlists } = data;
 
   const {
     sanityVideoseriesPage: { pageDescription } = { pageDescription: false },
     sanityVideoseriesPage: { pageTitle } = { pageTitle: false },
   } = data;
 
-  const [lists] = useState(playlists);
+  const [lists] = useState('');
 
-  playlists = playlists.forEach((list) => {
-    list.filter((video) => {
-      return video.videoId !== 'gvwW89PV5Jw';
-    });
-  });
+  // playlists = playlists.forEach((list) => {
+  //   list.filter((video) => {
+  //     return video.videoId !== 'gvwW89PV5Jw';
+  //   });
+  // });
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
