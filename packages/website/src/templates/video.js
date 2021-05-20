@@ -4,20 +4,14 @@ import Layout from '../layout';
 import { window } from 'browser-monads';
 import { SocialShare } from '../components/socialShare';
 import { VideoEpisode } from '../components/videoEpisode';
-import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
 
 const VideoTemplate = ({ pageContext }) => {
-  const { video, list, playlistName, playlistSlug } = pageContext;
+  const { video, season, playlistName } = pageContext;
   const [playlist, setPlaylist] = useState(null);
-  const data = useVideoseriesQuery();
 
   useEffect(() => {
-    const list = data.playlists.find((list) =>
-      list.some((el) => el.playlistSlug === playlistSlug)
-    );
-
-    setPlaylist(list);
-  }, [data, list, playlistName, playlistSlug]);
+    setPlaylist(season);
+  }, [season]);
 
   return (
     <Layout>
@@ -35,6 +29,7 @@ const VideoTemplate = ({ pageContext }) => {
             </div>
             <div className="" />
             <VideoEpisode
+              {...video}
               title={video.title}
               subtitle=""
               description=""
@@ -63,37 +58,40 @@ const VideoTemplate = ({ pageContext }) => {
 
 export default VideoTemplate;
 
-const Sidebar = ({ playlist }) => (
+const Sidebar = ({ playlist, playlistName }) => (
   <div className="pl-5 pr-10 seven:px-0 mb-10 lg:block sm:grid block grid-cols-sidebar">
     <div className="lg:pl-5">
       <div className="uppercase text-lg tracking-wider font-semibold pb-px">
         Video playlist
       </div>
       <div className="h-3px w-12 bg-yellow mt-2 mb-4" />
-      <p className="tracking-widest">
-        {playlist.find((el) => el.playlistName).playlistName}
-      </p>
+      <p className="tracking-widest">{playlistName}</p>
       <div className="tracking-wider opacity-50 mt-2">
         {playlist.length} videoer
       </div>
     </div>
     <div className="mt-10 h-60vh overflow-y-scroll overflow-x-hidden">
       {playlist &&
-        playlist.map((el, i) => (
-          <Link
-            className="lg:h-20 grid mb-5 lg:mb-2 block grid-cols-2 xs:grid-cols-sidebar-item transform -translate-x-2"
-            key={i}
-            to={`/videoserie/${
-              el.playlistSlug || 'videoserie'
-            }/${el.slug.replace('?', '')}`}
-          >
-            <div className="h-full flex items-center justify-center xs:flex hidden">
-              <div className="lg:-mt-2">{i + 1}</div>
-            </div>
-            <img src={el.thumbnails.standard.url} alt={el.title} className="" />
-            <div className="pl-3 lg:text-sm tracking-widest">{el.title}</div>
-          </Link>
-        ))}
+        playlist.map((el, i) => {
+          console.log(el);
+          return (
+            <Link
+              className="lg:h-20 grid mb-5 lg:mb-2 block grid-cols-2 xs:grid-cols-sidebar-item transform -translate-x-2"
+              key={i}
+              to={`/videoserie/${el.playlistSlug}/${el.slug}`}
+            >
+              <div className="h-full flex items-center justify-center xs:flex hidden">
+                <div className="lg:-mt-2">{i + 1}</div>
+              </div>
+              <img
+                src={el.thumbnails.standard.url}
+                alt={el.title}
+                className=""
+              />
+              <div className="pl-3 lg:text-sm tracking-widest">{el.title}</div>
+            </Link>
+          );
+        })}
     </div>
   </div>
 );

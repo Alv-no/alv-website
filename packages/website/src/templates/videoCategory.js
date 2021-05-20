@@ -3,25 +3,16 @@ import Layout from '../layout';
 import { graphql } from 'gatsby';
 import { EpisodeCards } from '../components/episodeCards';
 import { VideoHero } from '../components/videoHero';
-import slugify from 'slugify';
 
-const VideoCategoryTemplate = ({ pageContext, data }) => {
-  const { title, videos, slug } = pageContext;
+const VideoCategoryTemplate = ({ pageContext }) => {
+  console.log(pageContext);
   const [playlist, setPlaylist] = useState(null);
-  const image = data.allSanityVideoseries.nodes[0].heroImage.asset.fluid;
-  const { description } = data.allSanityVideoseries.nodes[0];
+  const {
+    category: { videoseriesTitle, seasons, description, heroImage },
+  } = pageContext;
 
   useState(() => {
-    const formattedVideos = videos.map((video) => {
-      video.playlistSlug = slug;
-      video.playlistName = title;
-      video.slug = slugify(video.title.replace(' |', ''), {
-        remove: /[*+~.()|#'"!:@?]/,
-        lower: true,
-      });
-      return video;
-    });
-    setPlaylist(formattedVideos);
+    setPlaylist(seasons);
   }, []);
 
   //
@@ -31,15 +22,14 @@ const VideoCategoryTemplate = ({ pageContext, data }) => {
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto">
           <VideoHero
-            video={videos[0]}
-            backgroundImage={image}
-            fallbackImg={image}
-            title={title}
+            video={seasons[0][0]}
+            backgroundImage={heroImage.asset.fluid}
+            title={videoseriesTitle}
             description={description}
             playlist={playlist}
           />
           <div className="mt-5" />
-          {playlist && <EpisodeCards playlist={playlist} tabs={false} />}
+          {playlist && <EpisodeCards playlist={playlist[0]} tabs={false} />}
         </div>
       </div>
     </Layout>
