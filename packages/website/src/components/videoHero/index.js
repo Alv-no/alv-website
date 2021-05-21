@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'gatsby-image';
-import Link from 'gatsby-link';
 import { Title } from '../title';
 import { FeaturedVideo } from '../featuredVideo';
 import styles from './VideoHero.module.css';
@@ -22,33 +21,16 @@ export const VideoHero = ({
         >
           <Image
             fluid={backgroundImage}
-            className={`-mx-12 h-screen lg:mx-0 transform scale-130 twelve:translate-x-10 -translate-y-5  ${styles.bgImage}`}
+            className={`-mx-12 h-screen lg:mx-0 transform scale-130 twelve:translate-x-10 sm:-translate-y-5  ${styles.bgImage}`}
           />
           <div
-            className={`absolute -translate-y-32 w-full text-white top-1/2 transform sm:-translate-y-1/2 md:-translate-x-40 md:m-0 sm:ml-15  ${styles.cta}`}
+            className={`absolute sm:-translate-y-32 w-full -translate-y-12 text-white top-1/2 transform sm:-translate-y-1/2 md:-translate-y-40 md:-translate-x-48 md:m-0 sm:ml-15  ${styles.cta}`}
           >
             <Title classes="sm:text-left text-center w-full">{title}</Title>
             <div className="pt-7 sm:pt-9 sm:ml-10">
               <h2 className="sm:text-blog text-center text-xl sm:text-left mx-auto sm:mx-0 sm:w-100 sm:pr-12 w-5/6 tracking-wider">
                 {description}
               </h2>
-            </div>
-            <div className="flex mt-12 items-center justify-center sm:justify-start">
-              {/* <span className="mr-4">
-                <button className="rounded-full font-semibold tracking-wider text-base py-2 uppercase px-10 focus:outline-none border border-white bg-transparent">
-                  Meld deg på
-                </button>
-              </span> */}
-
-              <Link to="/videoserie">
-                <button
-                  type="button"
-                  aria-label="link"
-                  className="font-semibold tracking-wider text-base uppercase bg-transparent focus:outline-none"
-                >
-                  Se miniserier
-                </button>
-              </Link>
             </div>
           </div>
           <div className="twelve:absolute hidden twelve:block relative -mt-40 transform translate-x-28 w-7/12 right-40 -translate-y-10">
