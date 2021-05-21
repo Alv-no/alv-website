@@ -22,6 +22,46 @@ yarn
 yarn workspace website run dev
 ```
 
+### Workaround for Apple m1
+``` shell
+brew install vips
+yarn rebuild sharp
+yarn set resolution sharp@npm:0.28.2
+```
+
+Then remove `"gatsby-plugin-favicon": "^3.1.6",` from `package.json` under website and remove
+ ``` json
+     {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './src/favicons/favicon-32x32.png',
+
+        // WebApp Manifest Configuration
+        dir: 'auto',
+        lang: 'en-US',
+        background: '#fff',
+        themeColor: '#fff',
+        display: 'standalone',
+        orientation: 'any',
+        version: '1.0',
+
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
+ ```
+from `gatsby-config.json`.
+
+Try to run `yarn` again
+
 ## Docker
 
 For production we use Docker, you can build and test the Docker images locally.
