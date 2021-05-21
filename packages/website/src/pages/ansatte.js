@@ -4,7 +4,7 @@ import { Title } from '../components/title';
 import { Description } from '../components/description';
 import { EmployeeSection } from '../components/employeeSection';
 import { Cta } from '../components/cta';
-import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
+import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import slugify from 'slugify';
 
 const Employees = ({ location }) => {

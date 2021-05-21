@@ -6,7 +6,7 @@ import { Description } from '../components/description';
 import { ServicesSection } from '../components/servicesSection';
 import { ColumnSection } from '../components/columnSection';
 import { ImageTextFull } from '../components/imageTextFull';
-import { useServicesQuery } from '../hooks/useServicesQuery';
+import { useServicesQuery } from '../hookspages/useServicesQuery';
 import { ServicesCard } from '../components/servicesCard';
 import { ImageTextCards } from '../components/imageTextCards';
 

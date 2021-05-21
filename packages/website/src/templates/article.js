@@ -5,7 +5,7 @@ import Image from 'gatsby-image';
 import PortableText from '@sanity/block-content-to-react';
 import { richTextTypes } from '../components/richTextTypes';
 import { MobileHeader } from '../components/header';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { useLayoutQuery } from '../layout/useLayoutQuery';
 import { Footer } from '../components/footer';
 import { SEO } from '../components/seo';
 import { AlsoRead } from '../components/alsoRead';
