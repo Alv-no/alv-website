@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import Layout from '../layout';
 import { graphql } from 'gatsby';
-import { EpisodeCards } from '../components/episodeCards';
 import { VideoHero } from '../components/videoHero';
+import { VideoFilter } from '../components/videoFilter';
+import { VideoSection } from '../components/videoSection';
 
 const VideoCategoryTemplate = ({ pageContext }) => {
-  console.log(pageContext);
-  const [playlist, setPlaylist] = useState(null);
   const {
     category: { videoseriesTitle, seasons, description, heroImage },
   } = pageContext;
 
-  useState(() => {
-    setPlaylist(seasons);
-  }, []);
+  const [sortedVideos, setSortedVideos] = useState(seasons[0]);
 
-  //
+  const sortedList = (list) => {
+    setSortedVideos(list);
+  };
 
   return (
     <Layout>
@@ -26,10 +25,11 @@ const VideoCategoryTemplate = ({ pageContext }) => {
             backgroundImage={heroImage.asset.fluid}
             title={videoseriesTitle}
             description={description}
-            playlist={playlist}
+            playlist={seasons}
           />
           <div className="mt-5" />
-          {playlist && <EpisodeCards playlist={playlist[0]} tabs={false} />}
+          <VideoFilter seasons={seasons} onChange={sortedList} />
+          <VideoSection playlist={sortedVideos} />
         </div>
       </div>
     </Layout>

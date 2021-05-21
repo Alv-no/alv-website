@@ -8,6 +8,7 @@ export const VideoCategory = ({
   description,
   subtitle,
   playlist,
+  slug,
 }) => {
   const [loaded, setLoaded] = useState(false);
 
@@ -28,7 +29,6 @@ export const VideoCategory = ({
               <h4 className="leading-none mt-6 mb-7 leading-tight tracking-wider text-xl">
                 {subtitle}
               </h4>
-
               <h5 className="font-extralight tracking-wider mb-8 text-base">
                 {description}
               </h5>
@@ -54,29 +54,7 @@ export const VideoCategory = ({
                     <div className="w-full z-50 h-full p-8 flex flex-col justify-between">
                       <div />
 
-                      <div className="flex text-white justify-between tracking-wider">
-                        {/* <div className="pl-1">
-                      {title && (
-                        <>
-                          <div className="uppercase sm:block hidden text-base font-bold ">
-                            Vår nyeste video
-                          </div>
-                          <div className="w-12 h-2px sm:block hidden bg-yellow mb-4 mt-3" />
-                        </>
-                      )}
-                      <div className="text-nav font-bold mt-4 mb-3">
-                        {title}
-                      </div>
-                    </div> */}
-                        {/* <div className="flex flex-col justify-between">
-                      <div />
-                      <div className="font-semibold uppercase w-32 flex text-right justify-end items-center">
-                        <span className="ml-2">
-                          <Icon.VideoPlay color="#fff" />
-                        </span>
-                      </div>
-                    </div> */}
-                      </div>
+                      <div className="flex text-white justify-between tracking-wider"></div>
                     </div>
                   </div>
                 </Link>
@@ -94,6 +72,10 @@ export const VideoCategory = ({
               <p className="tracking-wider lg:px-0 sm:px-10 font-light">
                 {description}
               </p>
+              <div className="mt-10" />
+              <div className="tracking-wider uppercase py-2 px-5 border-white border-2 rounded-full inline-block">
+                <Link to={`/videoserie/${slug}`}>Vis miniserie</Link>
+              </div>
             </div>
           </div>
         </div>

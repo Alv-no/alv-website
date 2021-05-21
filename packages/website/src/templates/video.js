@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'gatsby-link';
 import Layout from '../layout';
 import { window } from 'browser-monads';
@@ -7,11 +7,6 @@ import { VideoEpisode } from '../components/videoEpisode';
 
 const VideoTemplate = ({ pageContext }) => {
   const { video, season, playlistName } = pageContext;
-  const [playlist, setPlaylist] = useState(null);
-
-  useEffect(() => {
-    setPlaylist(season);
-  }, [season]);
 
   return (
     <Layout>
@@ -42,9 +37,9 @@ const VideoTemplate = ({ pageContext }) => {
                 white
               />
             </span>
-            {playlist && (
+            {season && (
               <Sidebar
-                playlist={playlist}
+                playlist={season}
                 playlistName={playlistName}
                 video={video}
               />
@@ -73,7 +68,6 @@ const Sidebar = ({ playlist, playlistName }) => (
     <div className="mt-10 h-60vh overflow-y-scroll overflow-x-hidden">
       {playlist &&
         playlist.map((el, i) => {
-          console.log(el);
           return (
             <Link
               className="lg:h-20 grid mb-5 lg:mb-2 block grid-cols-2 xs:grid-cols-sidebar-item transform -translate-x-2"
