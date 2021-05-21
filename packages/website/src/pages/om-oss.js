@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../layout';
-import { useAboutUsQuery } from '../hooks/useAboutUsQuery';
+import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
 import { Subtitle } from '../components/title';
 import { OurServices } from '../components/ourServices';
 import { BlogSlider } from '../components/blogSlider';

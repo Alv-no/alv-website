@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../layout';
 import { ImageTextListHero } from '../components/imageTextHero';
 import { ReasonsSlider } from '../components/reasonsSlider';
-import { useWorkQuery } from '../hooks/useWorkQuery';
+import { useWorkQuery } from '../hookspages/useWorkQuery';
 
 const WorkForAlv = () => {
   const data = useWorkQuery();

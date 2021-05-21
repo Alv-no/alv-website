@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../layout';
 import { Title } from '../components/title';
 import * as Icon from '../components/icon';
-import { useContactQuery } from '../hooks/useContactQuery';
+import { useContactQuery } from '../hookspages/useContactQuery';
 import { Description } from '../components/description';
 import Image from 'gatsby-image';
 import * as Form from '../components/form';
