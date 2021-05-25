@@ -6,6 +6,11 @@ export const useVideoseriesQuery = () => {
         sanityVideoseriesPage {
           pageDescription
           pageTitle
+          videoseries {
+            slug {
+              current
+            }
+          }
         }
         fallbackImg: file(name: { eq: "featuredFallback" }) {
           childImageSharp {

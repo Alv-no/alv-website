@@ -10,6 +10,17 @@ const Videoseries = ({ pageContext }) => {
   const { videoseries } = pageContext;
   const data = useVideoseriesQuery();
 
+  const sortingArr = data.sanityVideoseriesPage.videoseries.map(
+    (el) => el.slug.current
+  );
+
+  const filteredVideoseries = videoseries
+    .filter((el) => sortingArr.includes(el.slug.current))
+    .sort(
+      (a, b) =>
+        sortingArr.indexOf(a.slug.current) - sortingArr.indexOf(b.slug.current)
+    );
+
   const pageDescription = data.sanityVideoSeriesPage?.pageDescription || false;
   const pageTitle = data.sanityVideoSeriesPage?.pageTitle || false;
 
@@ -17,18 +28,18 @@ const Videoseries = ({ pageContext }) => {
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy text-white md:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto overflow-hidden">
-          {videoseries && (
+          {filteredVideoseries && (
             <VideoHero
-              video={videoseries[0].seasons[0][0]}
-              backgroundImage={videoseries[0].heroImage.asset.fluid}
+              video={filteredVideoseries[0].seasons[0][0]}
+              backgroundImage={filteredVideoseries[0].heroImage.asset.fluid}
               fallbackImg={data.fallbackImg.childImageSharp.fluid}
-              title={videoseries[0].videoseriesTitle}
-              description={videoseries[0].description}
-              playlist={videoseries[0]}
+              title={filteredVideoseries[0].videoseriesTitle}
+              description={filteredVideoseries[0].description}
+              playlist={filteredVideoseries[0]}
             />
           )}
           <div className="my-10" />
-          {(videoseries || []).map((videoserie, i) => (
+          {(filteredVideoseries || []).map((videoserie, i) => (
             <Videoserie index={i} videoserie={videoserie} data={data} />
           ))}
         </div>
