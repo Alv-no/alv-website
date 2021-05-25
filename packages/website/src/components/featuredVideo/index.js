@@ -8,11 +8,6 @@ export const FeaturedVideo = ({ video, playlist }) => {
       {video && (
         <>
           <div className="px-5">
-            {/* THIS CODE IS REQUIRED TO MATCH SPEC */}
-            {/* COMMENTED OUT BECAUSE IT LOOKS TOO BUSY ON TOP OF THUMBNAIL */}
-            {/* <div className="uppercase sm:hidden tracking-wider text-base font-bold ">
-              Vår nyeste video
-            </div> */}
             <div className="w-12 h-2px sm:hidden bg-yellow mb-6 mt-6px" />
           </div>
         </>

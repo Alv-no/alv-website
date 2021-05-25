@@ -12,8 +12,6 @@ export const VideoCategory = ({
 }) => {
   const [loaded, setLoaded] = useState(false);
 
-  const { thumbnails } = featuredVideo;
-
   useEffect(() => {
     if (!loaded && featuredVideo) setLoaded(true);
   }, [loaded, featuredVideo]);
@@ -46,7 +44,8 @@ export const VideoCategory = ({
                       backgroundColor:
                         'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
                       backgroundImage:
-                        loaded && `url("${thumbnails.standard.url}")`,
+                        loaded &&
+                        `url("${featuredVideo.thumbnails.standard.url}")`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                     }}

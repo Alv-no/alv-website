@@ -41,6 +41,12 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        imageSharp(fixed: { originalName: { eq: "bioVideoFallback.png" } }) {
+          id
+          fixed(width: 335, height: 250) {
+            src
+          }
+        }
         allSanityArticle {
           edges {
             node {
@@ -120,6 +126,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 video.playlistSlug = category.slug.current;
                 video.videoId = video.resourceId.videoId;
                 video.playlistName = category.videoseriesTitle;
+                video.thumbnail =
+                  video.thumbnails?.standard?.url ||
+                  res.data.imageSharp.fixed.src;
                 video.slug = slugify(video.title.replace(' |', ''), {
                   remove: /[*+~.()|#'"!:@?]/,
                   lower: true,

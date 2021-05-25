@@ -40,7 +40,7 @@ export const EpisodeCards = ({ fallbackImg, playlist }) => {
                       title={video.title}
                       video={video}
                       playlist={sortedVideos}
-                      thumbnail={video.thumbnails.standard.url}
+                      thumbnail={video.thumbnail}
                       noLink={true}
                       key={video.videoId}
                     />
