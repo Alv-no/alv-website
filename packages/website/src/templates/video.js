@@ -77,11 +77,7 @@ const Sidebar = ({ playlist, playlistName }) => (
               <div className="h-full flex items-center justify-center xs:flex hidden">
                 <div className="lg:-mt-2">{i + 1}</div>
               </div>
-              <img
-                src={el.thumbnails.standard.url}
-                alt={el.title}
-                className=""
-              />
+              <img src={el.thumbnail} alt={el.title} className="" />
               <div className="pl-3 lg:text-sm tracking-widest">{el.title}</div>
             </Link>
           );
