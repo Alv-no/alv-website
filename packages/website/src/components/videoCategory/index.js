@@ -60,11 +60,9 @@ export const VideoCategory = ({
               </div>
             </div>
           </div>
-          <div className="sm:pr-10 xl:pr-20 xl:pl-10">
-            <div className="flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left">
-              <Title classes="sm:text-center lg:text-left mt-16 sm:mt-15">
-                {title}
-              </Title>
+          <div className="sm:pr-10 xl:pr-20 xl:pl-10 flex items-center">
+            <div className="flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left flex-col justify-center flex">
+              <Title classes="sm:text-center lg:text-left">{title}</Title>
               <h4 className="leading-none mt-5 mb-8 text-blog leading-tight tracking-wider">
                 {subtitle}
               </h4>
