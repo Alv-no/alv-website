@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { SortField } from '../blogFilter';
 
 export const VideoFilter = ({ seasons, onChange }) => {
-  const [sort, setSort] = useState(null);
+  const [sort, setSort] = useState('oldest');
   const [activeSeasonIndex, setActiveSeasonIndex] = useState(0);
 
   useEffect(() => {
     const sortedActive = [...seasons[activeSeasonIndex]];
     if (sort === 'oldest') {
-      sortedActive.sort((a, b) => (a.publishedAt < b.publishedAt ? -1 : 1));
+      sortedActive.sort((a, b) => (a.position < b.position ? -1 : 1));
     } else if (sort === 'newest') {
-      sortedActive.sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1));
+      sortedActive.sort((a, b) => (a.position > b.position ? -1 : 1));
     }
 
     onChange(sortedActive);
