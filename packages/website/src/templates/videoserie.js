@@ -21,8 +21,6 @@ const Videoseries = ({ pageContext }) => {
         sortingArr.indexOf(a.slug.current) - sortingArr.indexOf(b.slug.current)
     );
 
-  console.log(filteredVideoseries);
-
   const pageDescription = data.sanityVideoSeriesPage?.pageDescription || false;
   const pageTitle = data.sanityVideoSeriesPage?.pageTitle || false;
 

@@ -45,7 +45,10 @@ export const VideoCategory = ({
                         'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
                       backgroundImage:
                         loaded &&
-                        `url("${featuredVideo.thumbnails.standard.url}")`,
+                        `url("${
+                          featuredVideo?.thumbnails?.standard?.url ||
+                          featuredVideo.thumbnail
+                        }")`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                     }}
