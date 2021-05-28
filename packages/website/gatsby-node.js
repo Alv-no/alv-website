@@ -128,6 +128,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 video.playlistName = category.videoseriesTitle;
                 video.thumbnail =
                   video.thumbnails?.standard?.url ||
+                  video.thumbnails?.medium?.url ||
                   res.data.imageSharp.fixed.src;
                 video.slug = slugify(video.title.replace(' |', ''), {
                   remove: /[*+~.()|#'"!:@?]/,
@@ -152,7 +153,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // // create videoCategory pages
   videoseries &&
-    videoseries.forEach((category) => {
+    videoseries.forEach((category, i) => {
       createPage({
         component: videoCategoryTemplate,
         path: `videoserie/${category.slug.current}`,
@@ -161,8 +162,18 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       });
 
+      const sortingArr = res.data.allSanityVideoseries.nodes[
+        i
+      ].playlists.process.map((season) => season.id);
+
+      const sortedSeasons = category.seasons.sort(
+        (a, b) =>
+          sortingArr.indexOf(a[0].playlistId) -
+          sortingArr.indexOf(b[0].playlistId)
+      );
+
       // create episode pages
-      category.seasons.forEach((season) => {
+      sortedSeasons.forEach((season) => {
         season.forEach((video) => {
           createPage({
             component: videoTemplate,
