@@ -21,7 +21,7 @@ export const VideoHero = ({
         >
           <Image
             fluid={backgroundImage}
-            className={`-mx-12 h-screen lg:mx-0 transform scale-130 twelve:translate-x-10 sm:-translate-y-5  ${styles.bgImage}`}
+            className={`-mx-12 h-screen lg:mx-0 transform scale-130 twelve:translate-x-10 sm:-translate-y-5 ${styles.bgImage}`}
           />
           <div
             className={`absolute sm:-translate-y-32 w-full -translate-y-12 text-white top-1/2 transform sm:-translate-y-1/2 md:-translate-y-40 md:-translate-x-48 md:m-0 sm:ml-15  ${styles.cta}`}

@@ -20,9 +20,7 @@ export const FeaturedVideo = ({ video, playlist }) => (
         style={{
           background:
             'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
-          backgroundImage:
-            video &&
-            `url("${video?.thumbnails?.standard?.url || video.thumbnail}")`,
+          backgroundImage: video && `url("${video.thumbnail}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
