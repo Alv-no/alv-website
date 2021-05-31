@@ -23,6 +23,9 @@ const Videoseries = ({ pageContext }) => {
 
   const pageDescription = data.sanityVideoSeriesPage?.pageDescription || false;
   const pageTitle = data.sanityVideoSeriesPage?.pageTitle || false;
+  const featuredVideo = filteredVideoseries[0];
+  const featuredVideoSeason =
+    featuredVideo.seasons[featuredVideo.seasons.length - 1];
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -30,12 +33,12 @@ const Videoseries = ({ pageContext }) => {
         <div className="max-w-1200 mx-auto overflow-hidden">
           {filteredVideoseries && (
             <VideoHero
-              backgroundImage={filteredVideoseries[0].heroImage.asset.fluid}
+              backgroundImage={featuredVideo.heroImage.asset.fluid}
               fallbackImg={data.fallbackImg.childImageSharp.fluid}
-              description={filteredVideoseries[0].description}
-              title={filteredVideoseries[0].videoseriesTitle}
-              video={filteredVideoseries[0].seasons[0][0]}
-              playlist={filteredVideoseries[0]}
+              description={featuredVideo.description}
+              title={featuredVideo.videoseriesTitle}
+              video={featuredVideoSeason[0]}
+              playlist={featuredVideo}
             />
           )}
           <div className="my-10" />
