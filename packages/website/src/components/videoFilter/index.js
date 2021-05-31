@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SortField } from '../blogFilter';
 
 export const VideoFilter = ({ seasons, onChange }) => {
-  const [sort, setSort] = useState('oldest');
+  const [sort, setSort] = useState('newest');
   const [activeSeasonIndex, setActiveSeasonIndex] = useState(
     seasons.length - 1
   );
