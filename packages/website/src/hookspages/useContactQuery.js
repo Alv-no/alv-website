@@ -1,31 +1,28 @@
 import { useStaticQuery, graphql } from 'gatsby';
 export const useContactQuery = () => {
   const data = useStaticQuery(
-    graphql`
-      query {
-        sanityContactPage {
-          pageDescription
-          pageTitle
-        }
-        contactUsImg: file(name: { eq: "contact_us_img" }) {
-          childImageSharp {
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        allSanitySiteSettings {
-          edges {
-            node {
-              address
-              phone
-              email
-              org
-            }
-          }
-        }
+    graphql`{
+  sanityContactPage {
+    pageDescription
+    pageTitle
+  }
+  contactUsImg: file(name: {eq: "contact_us_img"}) {
+    childImageSharp {
+      gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+    }
+  }
+  allSanitySiteSettings {
+    edges {
+      node {
+        address
+        phone
+        email
+        org
       }
-    `
+    }
+  }
+}
+`
   );
   const {
     address,

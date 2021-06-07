@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useWorkQuery = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         sanityCareerPage {
           pageDescription
           pageTitle
@@ -14,9 +14,7 @@ export const useWorkQuery = () => {
               image {
                 asset {
                   url
-                  fluid {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
                 }
               }
             }
@@ -32,23 +30,17 @@ export const useWorkQuery = () => {
         }
         stairs: file(name: { eq: "stairs" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         street: file(name: { eq: "jobbeialv_1" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         interview: file(name: { eq: "interview" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }

@@ -1,6 +1,6 @@
 import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
-import styles from './Serializers.module.css';
+import * as styles from './Serializers.module.css';
 import * as Button from '../button';
 import * as Icon from '../icon';
 

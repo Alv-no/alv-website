@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './videoEpisode.module.css';
+import * as styles from './videoEpisode.module.css';
 
 export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
   return (

@@ -10,7 +10,7 @@ export const Hire = ({ data }) => {
         className="sm:pr-12 sm:grid max-w-1440 mx-auto"
         style={{ gridTemplateColumns: '50% auto' }}
       >
-        <BackgroundImage fluid={data.interview.childImageSharp.fluid}>
+        <BackgroundImage fluid={data.interview.childImageSharp.gatsbyImageData}>
           <div className="flex justify-end items-center bg-black bg-opacity-25 h-60vh sm:h-auto lg:p-0 p-10 lg:h-715">
             <div className="twelve:-mr-64 sm:block hidden sm:-mr-0 md:-mr-20 lg:-mr-48 w-full transform sm:translate-x-64 2xl:translate-x-80 px-0">
               <Fade>
@@ -89,7 +89,7 @@ export const HireAlt = ({ data }) => {
         >
           <div />
           <BackgroundImage
-            fluid={data.cta.childImageSharp.fluid}
+            fluid={data.cta.childImageSharp.gatsbyImageData}
             style={{ backgroundPosition: 'right center' }}
           >
             <div className="bg-navy bg-opacity-25 pr-56 lg:h-715 h-450 flex items-center">

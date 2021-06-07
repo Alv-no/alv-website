@@ -34,9 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
             heroImage {
               asset {
                 url
-                fluid {
-                  src
-                }
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
           }

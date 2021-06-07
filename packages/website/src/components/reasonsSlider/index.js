@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icon from '../icon';
-import Image from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import Slider from 'react-slick';
 
 export const ReasonsSlider = ({ mainHeading, slides }) => {
@@ -66,7 +66,7 @@ export const ArticleSlide = ({
         </div>
       </div>
     </div>
-    <Image fluid={image} className="twelve:h-auto h-60vh" />
+    <GatsbyImage image={image} className="twelve:h-auto h-60vh" />
     <div className="sm:px-12 px-5 twelve:hidden mb-12">
       <div className="flex mt-12">
         <div className="sm:text-4xl text-2xl mr-5 text-white py-0 flex items-center sm:px-12 px-6 bg-navy">

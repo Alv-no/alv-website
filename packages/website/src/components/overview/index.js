@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import PortableText from '@sanity/block-content-to-react';
-import styles from '../../templates/Blockcontent.module.css';
+import * as styles from '../../templates/Blockcontent.module.css';
 import { Title } from '../title';
 import { richTextTypes } from '../richTextTypes';
 
@@ -18,7 +18,10 @@ export const Overview = ({ image, blockContent, id }) => {
           }}
         >
           {image && (
-            <Image fluid={image} className="h-80 lg:mt-2 sm:-mt-2 -mt-7" />
+            <GatsbyImage
+              image={image}
+              className="h-80 lg:mt-2 sm:-mt-2 -mt-7"
+            />
           )}
           <div className="lg:px-0 lg:mt-0 mt-10 font-light flex flex-col justify-between h-full sm:px-12 px-5">
             <div>

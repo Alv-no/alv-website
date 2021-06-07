@@ -21,6 +21,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
     'gatsby-background-image-es5',
+    'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-sitemap`,
     {
@@ -47,32 +48,32 @@ module.exports = {
         path: `${__dirname}/src/assets/`,
       },
     },
-    {
-      resolve: `gatsby-plugin-favicon`,
-      options: {
-        logo: './src/favicons/favicon-32x32.png',
+    // {
+    //   resolve: `gatsby-plugin-favicon`,
+    //   options: {
+    //     logo: './src/favicons/favicon-32x32.png',
 
-        // WebApp Manifest Configuration
-        dir: 'auto',
-        lang: 'en-US',
-        background: '#fff',
-        themeColor: '#fff',
-        display: 'standalone',
-        orientation: 'any',
-        version: '1.0',
+    //     // WebApp Manifest Configuration
+    //     dir: 'auto',
+    //     lang: 'en-US',
+    //     background: '#fff',
+    //     themeColor: '#fff',
+    //     display: 'standalone',
+    //     orientation: 'any',
+    //     version: '1.0',
 
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          yandex: false,
-          windows: false,
-        },
-      },
-    },
+    //     icons: {
+    //       android: true,
+    //       appleIcon: true,
+    //       appleStartup: true,
+    //       coast: false,
+    //       favicons: true,
+    //       firefox: true,
+    //       yandex: false,
+    //       windows: false,
+    //     },
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {

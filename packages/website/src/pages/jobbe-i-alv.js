@@ -11,28 +11,26 @@ const WorkForAlv = () => {
     sanityCareerPage: { pageTitle } = { pageTitle: false },
     sanityCareerPage: { reasonsCarousel } = { reasonsCarousel: false },
   } = data;
-  return (
-    <>
-      <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-        <div className="overflow-hidden">
-          <ImageTextListHero
-            image={data.stairs.childImageSharp.fluid}
-            openPositions={data.allSanityOpenPostionPage.nodes}
+  return <>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+      <div className="overflow-hidden">
+        <ImageTextListHero
+          image={data.stairs.childImageSharp.gatsbyImageData}
+          openPositions={data.allSanityOpenPostionPage.nodes}
+        />
+      </div>
+      <div className="py-15 twelve:py-25">
+        {reasonsCarousel && (
+          <ReasonsSlider
+            image={data.street.childImageSharp.gatsbyImageData}
+            mainHeading={reasonsCarousel.mainHeading}
+            slides={reasonsCarousel.process}
           />
-        </div>
-        <div className="py-15 twelve:py-25">
-          {reasonsCarousel && (
-            <ReasonsSlider
-              image={data.street.childImageSharp.fluid}
-              mainHeading={reasonsCarousel.mainHeading}
-              slides={reasonsCarousel.process}
-            />
-          )}
-        </div>
-        {/* <ImageTextShifted image={data.interview.childImageSharp.fluid} /> */}
-      </Layout>
-    </>
-  );
+        )}
+      </div>
+      {/* <ImageTextShifted image={data.interview.childImageSharp.fluid} /> */}
+    </Layout>
+  </>;
 };
 
 export default WorkForAlv;

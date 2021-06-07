@@ -42,11 +42,11 @@ const Employees = ({ location }) => {
           allTags={data.allSanityEmployeeTag.edges}
           allEmployees={allEmployees}
           linkedId={activeCard}
-          fallbackImg={data.fallbackImg.childImageSharp.fluid}
+          fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
         />
         <Cta
-          image={data.cta.childImageSharp.fluid}
-          fallback={data.ctaFallback.childImageSharp.fluid}
+          image={data.cta.childImageSharp.gatsbyImageData}
+          fallback={data.ctaFallback.childImageSharp.gatsbyImageData}
           heading="Bli en av oss"
           internalLink="/jobbe-i-alv"
           buttonText="Bli en alv"
