@@ -15,7 +15,7 @@ const About = () => {
   } = data;
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
   employees.map(
-    (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.fluid)
+    (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData)
   );
   const team = employees.slice(0, 4);
   return (
@@ -23,13 +23,13 @@ const About = () => {
       <div className="w-full bg-navy text-white sm:pb-20 pb-4 overflow-hidden tracking-wider">
         <div className="w-full">
           <AboutIntro
-            topImg={data.aboutUsTop.childImageSharp.fluid}
-            bottomImg={data.aboutUsLower.childImageSharp.fluid}
+            topImg={data.aboutUsTop.childImageSharp.gatsbyImageData}
+            bottomImg={data.aboutUsLower.childImageSharp.gatsbyImageData}
           />
           <div className="sm:h-10 lg:h-20" />
         </div>
         <div className="h-10 lg:h-0" />
-        <OurServices image={data.services.childImageSharp.fluid}>
+        <OurServices image={data.services.childImageSharp.gatsbyImageData}>
           Alv er produktet av alle konsulentene som jobber i selskapet. Dyktige
           konsulenter gjør Alv til et bra produkt.
         </OurServices>

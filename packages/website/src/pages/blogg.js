@@ -11,11 +11,11 @@ const Blog = () => {
     .map((article) => article.node)
     .sort((a, b) => (a.rawDate > b.rawDate ? -1 : 1));
   articles.map(
-    (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.fluid)
+    (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData)
   );
   const featuredArticle = articles[0];
   articles.shift();
-  featuredArticle.fallbackImg = data.fallbackImg.childImageSharp.fluid;
+  featuredArticle.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData;
   return (
     <Layout
       pageTitle={data.sanityBlogPage.pageTitle}

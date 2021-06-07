@@ -1,7 +1,7 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import BackgroundImage from 'gatsby-background-image-es5';
-import styles from '../../templates/Blockcontent.module.css';
+import * as styles from '../../templates/Blockcontent.module.css';
 import * as Icon from '../icon';
 import { richTextTypes } from '../richTextTypes';
 

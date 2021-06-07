@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useBlogQuery = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         sanityBlogPage {
           pageDescription
           pageTitle
@@ -22,30 +22,23 @@ export const useBlogQuery = () => {
               _rawBody
               mainImage {
                 asset {
-                  fluid(maxWidth: 800) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
                 }
               }
               author {
                 image {
                   asset {
-                    fluid {
-                      ...GatsbySanityImageFluid
-                    }
+                    gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
                   }
                 }
                 firstname
                 lastname
               }
-
               guestAuthor {
                 guestAuthor {
                   image {
                     asset {
-                      fluid {
-                        ...GatsbySanityImageFluid
-                      }
+                      gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
                       url
                     }
                   }
@@ -70,18 +63,14 @@ export const useBlogQuery = () => {
             }
             mainImage {
               asset {
-                fluid(maxWidth: 700) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
           }
         }
         fallbackImg: file(name: { eq: "featuredFallback" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }

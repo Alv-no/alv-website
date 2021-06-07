@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Image from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const VideoCard = ({
   title,
@@ -29,7 +29,7 @@ export const VideoCard = ({
             {thumbnail ? (
               <img src={thumbnail} alt={title} />
             ) : (
-              <Image fluid={fallbackImg} />
+              <GatsbyImage image={fallbackImg} />
             )}
           </div>
         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
 import { FeaturedVideo } from '../featuredVideo';
-import styles from './VideoHero.module.css';
+import * as styles from './VideoHero.module.css';
 
 export const VideoHero = ({
   backgroundImage,
@@ -19,8 +19,8 @@ export const VideoHero = ({
         <span
           className={`relative twelve:-ml-20 twelve:pr-40 2xl:ml-0 2xl:pr-0 transform md:translate-x-2/7 twelve:translate-x-0 block ${styles.card}`}
         >
-          <Image
-            fluid={backgroundImage}
+          <GatsbyImage
+            image={backgroundImage}
             className={`-mx-12 h-screen lg:mx-0 transform scale-130 twelve:translate-x-10 sm:-translate-y-5 ${styles.bgImage}`}
           />
           <div

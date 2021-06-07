@@ -10,7 +10,7 @@ export const Hire = ({ data }) => {
         className="pr-12 grid max-w-1440 mx-auto"
         style={{ gridTemplateColumns: '50% auto' }}
       >
-        <BackgroundImage fluid={data.interview.childImageSharp.fluid}>
+        <BackgroundImage fluid={data.interview.childImageSharp.gatsbyImageData}>
           <div
             className="flex justify-end items-center bg-black bg-opacity-25"
             style={{ height: '715px' }}

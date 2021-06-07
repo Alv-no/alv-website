@@ -34,7 +34,7 @@ const Videoseries = ({ pageContext }) => {
           {filteredVideoseries && (
             <VideoHero
               backgroundImage={featuredVideo.heroImage.asset.fluid}
-              fallbackImg={data.fallbackImg.childImageSharp.fluid}
+              fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
               description={featuredVideo.description}
               title={featuredVideo.videoseriesTitle}
               video={featuredVideoSeason[0]}
@@ -63,7 +63,7 @@ const Videoserie = ({ videoserie, data, index }) => {
           title={videoserie.videoseriesTitle}
           description={videoserie.description}
           featuredVideo={videoserie.seasons[0][0]}
-          fallbackImg={data.digitaliseringImg.childImageSharp.fluid}
+          fallbackImg={data.digitaliseringImg.childImageSharp.gatsbyImageData}
           playlist={videoserie}
           slug={videoserie.slug.current}
         />
@@ -72,7 +72,7 @@ const Videoserie = ({ videoserie, data, index }) => {
         <VideoFilter seasons={videoserie.seasons} onChange={sortedList} />
         <VideoSection
           playlist={sortedVideos}
-          fallbackImg={data.fallbackImg.childImageSharp.fluid}
+          fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
         />
       </div>
     </div>

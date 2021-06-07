@@ -111,9 +111,7 @@ export const query = graphql`
       }
       heroImage {
         asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           url
         }
       }
@@ -127,18 +125,14 @@ export const query = graphql`
         image {
           asset {
             url
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }
       servicesListImage {
         asset {
           url
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }
       servicesListText
@@ -149,9 +143,7 @@ export const query = graphql`
           heroImage {
             asset {
               url
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
             }
           }
         }
@@ -187,9 +179,7 @@ export const query = graphql`
         image {
           asset {
             url
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }

@@ -64,40 +64,30 @@ export const useServicesQuery = () => {
           mainImage {
             asset {
               url
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
             }
           }
           section1Image {
             asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               url
             }
           }
           section4Image {
             asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               url
             }
           }
           section5Image {
             asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               url
             }
           }
           section7Image {
             asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               url
             }
           }

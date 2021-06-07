@@ -2,7 +2,7 @@ import React from 'react';
 import { Title } from '../title';
 import { Description } from '../description';
 import Link from 'gatsby-link';
-import Image from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const NavyIntroImage = ({ title, description, image, internalLink }) => (
   <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative">
@@ -38,7 +38,7 @@ export const NavyIntroImage = ({ title, description, image, internalLink }) => (
         }}
         className="twelve:absolute twelve:block right-0 bottom-0 transform hidden translate-y-8"
       >
-        <Image fluid={image} />
+        <GatsbyImage image={image} />
       </div>
     </div>
   </div>

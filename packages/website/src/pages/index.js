@@ -56,7 +56,7 @@ const Index = ({ data, location }) => {
             </div>
             <Hire data={data} />
             <div className="bg-navy h-10 lg:h-32" />
-            <OurServices image={data.services.childImageSharp.fluid}>
+            <OurServices image={data.services.childImageSharp.gatsbyImageData}>
               Kjernen i det vi driver med og kan er koding, men for å skape gode
               løsninger av kode, trengs det også en rekke støttefunksjoner.
             </OurServices>
@@ -77,82 +77,69 @@ const Index = ({ data, location }) => {
 
 export default Index;
 
-export const query = graphql`
-  query {
-    sanityLandingPage {
-      pageDescription
-      pageTitle
-    }
-    video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
-      id
-      pageTitle
-      videoMp4 {
-        asset {
-          url
-        }
-      }
-      heroVideoWebm {
-        asset {
-          url
-        }
-      }
-      heroVideoMp4 {
-        asset {
-          url
-        }
-      }
-      videoWebm {
-        asset {
-          url
-        }
-      }
-      videoMp4 {
-        asset {
-          url
-        }
+export const query = graphql`{
+  sanityLandingPage {
+    pageDescription
+    pageTitle
+  }
+  video: sanityLandingPage(videoMp4: {asset: {url: {ne: ""}}}) {
+    id
+    pageTitle
+    videoMp4 {
+      asset {
+        url
       }
     }
-    stairs: file(name: { eq: "stairs" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+    heroVideoWebm {
+      asset {
+        url
       }
     }
-    street: file(name: { eq: "street" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+    heroVideoMp4 {
+      asset {
+        url
       }
     }
-    services: file(name: { eq: "vitilbyr_header" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+    videoWebm {
+      asset {
+        url
       }
     }
-    cta: file(name: { eq: "Alv_fredag" }) {
-      childImageSharp {
-        fluid(maxWidth: 1500) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    sliderImg: file(name: { eq: "systemutvikling_img" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    interview: file(name: { eq: "interview" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+    videoMp4 {
+      asset {
+        url
       }
     }
   }
+  stairs: file(name: {eq: "stairs"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+  street: file(name: {eq: "street"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+  services: file(name: {eq: "vitilbyr_header"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+  cta: file(name: {eq: "Alv_fredag"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+  sliderImg: file(name: {eq: "systemutvikling_img"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+  interview: file(name: {eq: "interview"}) {
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+    }
+  }
+}
 `;

@@ -2,44 +2,34 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useAboutUsQuery = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         sanityAboutPage {
           pageDescription
           pageTitle
         }
         aboutUsTop: file(name: { eq: "contact_us_img2" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         aboutUsLower: file(name: { eq: "about_us_img2" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         sliderImg: file(name: { eq: "systemutvikling_img" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         services: file(name: { eq: "about_us_img2" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         fallbackImg: file(name: { eq: "fallback" }) {
           childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 600, layout: CONSTRAINED)
           }
         }
         allSanityEmployee {
@@ -60,9 +50,7 @@ export const useAboutUsQuery = () => {
               }
               image {
                 asset {
-                  fluid(maxWidth: 600) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
                 }
               }
               bio {

@@ -3,7 +3,7 @@ import { createSlugForEmployee } from '../components/createSlugForEmployee';
 export const useEmployeeQuery = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         sanityEmployeePage {
           pageDescription
           pageTitle
@@ -34,9 +34,7 @@ export const useEmployeeQuery = () => {
               _rawBio
               image {
                 asset {
-                  fluid(maxWidth: 600) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
                 }
               }
             }
@@ -44,23 +42,17 @@ export const useEmployeeQuery = () => {
         }
         fallbackImg: file(name: { eq: "fallback" }) {
           childImageSharp {
-            fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 600, layout: CONSTRAINED)
           }
         }
         cta: file(name: { eq: "Alv_fredag" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         ctaFallback: file(name: { eq: "featuredFallback" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         allSanityEmployeeTag {

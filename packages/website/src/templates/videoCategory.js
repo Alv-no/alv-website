@@ -59,9 +59,7 @@ export const query = graphql`
         heroImage {
           asset {
             url
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }

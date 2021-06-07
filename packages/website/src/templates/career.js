@@ -1,7 +1,7 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import Layout from '../layout';
-import styles from './Blockcontent.module.css';
+import * as styles from './Blockcontent.module.css';
 import { graphql } from 'gatsby';
 import { NavyIntro } from '../components/navyIntro';
 import { richTextTypes } from '../components/richTextTypes';
@@ -64,9 +64,7 @@ export const query = graphql`
       heroImage {
         asset {
           url
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }
     }

@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useVideoseriesQuery = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         sanityVideoseriesPage {
           pageDescription
           pageTitle
@@ -14,23 +14,17 @@ export const useVideoseriesQuery = () => {
         }
         fallbackImg: file(name: { eq: "featuredFallback" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         videoserieBg: file(name: { eq: "videoserieBg" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         digitaliseringImg: file(name: { eq: "vitilbyr_digitalisering" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         allSanityVideoseries {
@@ -52,9 +46,7 @@ export const useVideoseriesQuery = () => {
             heroImage {
               asset {
                 url
-                fluid {
-                  src
-                }
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
           }

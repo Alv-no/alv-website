@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Image from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Description } from '../description';
 import { CtaButton } from '../ctaButton';
 
@@ -30,11 +30,10 @@ export const Cta = ({
           </div>
           <Link to={internalLink} className="lg:flex-1 sm:-mr-5 xl:mr-0">
             <div className="lg:pl-12 w-full">
-              <Image
-                fluid={image || fallback}
+              <GatsbyImage
+                image={image || fallback}
                 alt="cta"
-                className="object-cover lg:transform h-54 sm:h-100 mb-10 w-full lg:w-full lg:ml-3 lg:scale-95"
-              />
+                className="object-cover lg:transform h-54 sm:h-100 mb-10 w-full lg:w-full lg:ml-3 lg:scale-95" />
             </div>
           </Link>
         </div>

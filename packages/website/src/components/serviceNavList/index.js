@@ -1,9 +1,9 @@
 import React from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
 import { richTextTypes } from '../richTextTypes';
 import PortableText from '@sanity/block-content-to-react';
-import styles from './ServiceNavList.module.css';
+import * as styles from './ServiceNavList.module.css';
 
 export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
   return (
@@ -23,8 +23,8 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
             ))}
           </ul>
           <div className="z-50 relative mb-10 sm:hidden">
-            <Image
-              fluid={heroImage}
+            <GatsbyImage
+              image={heroImage}
               className="relative z-50 sm:-mr-12 sm:h-20vh h-30vh h-30vh -mx-5"
             />
           </div>
@@ -33,8 +33,8 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
           >
             <div className="cursor-text text-left z-20 relative">
               <div className="z-50 relative sm:block twelve:hidden mb-10 hidden">
-                <Image
-                  fluid={heroImage}
+                <GatsbyImage
+                  image={heroImage}
                   className="-mt-32 relative z-50 sm:-mr-12 sm:h-25vh md:h-30vh -mr-5"
                 />
               </div>

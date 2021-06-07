@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as Icon from '../icon';
-import styles from './BlogFilter.module.css';
+import * as styles from './BlogFilter.module.css';
 import { FilterContainer } from '../filterContainer';
 
 // Input: content array and filter elements

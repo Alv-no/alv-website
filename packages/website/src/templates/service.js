@@ -45,7 +45,7 @@ const Service = ({ data }) => {
         <div className="overflow-x-hidden">
           <div className="h-10 sm:h-0" />
           <RolesList
-            image={data.rolesImg.childImageSharp.fluid}
+            image={data.rolesImg.childImageSharp.gatsbyImageData}
             roles={data.allSanityServices.edges}
             id="hva-gjor-vi"
           />
@@ -84,9 +84,7 @@ export const query = graphql`
       id
       heroImage {
         asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }
       slug {
@@ -120,16 +118,12 @@ export const query = graphql`
     }
     rolesImg: file(name: { eq: "vitilbyr_digitalisering" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
     cUtvikler: file(name: { eq: "vitilbyr_header" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }
