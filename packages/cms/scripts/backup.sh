@@ -24,4 +24,4 @@ yarn workspace cms sanity dataset export production backupfolder/$BACKUP_FILE_DA
 #Terraform?
 #azcopy make "https://alvnobackup.blob.core.windows.net/alvnobackup?$SAS_TOKEN"
 
-azcopy copy "../cms/backupfolder/$BACKUP_FILE_DATE_NAME" "https://alvnobackup.blob.core.windows.net/alvnobackup/$BACKUP_FILE_DATE_NAME?$SAS_TOKEN"
+azcopy copy "../backupfolder/$BACKUP_FILE_DATE_NAME" "https://alvnobackup.blob.core.windows.net/alvnobackup/$BACKUP_FILE_DATE_NAME?$SAS_TOKEN"
