@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-
-set -e
+#!/usr/bin/env -S bash -e
 
 KEY_VAULT="alvnoprodkv"
 SUBSCRIPTION="AlvNo-Dev"
@@ -20,12 +18,10 @@ export SANITY_AUTH_TOKEN="$(getSecret sanity-api-export-auth-token)"
 SAS_TOKEN="$(getSasToken $STORAGE_ACCOUNT $SUBSCRIPTION)"
 DATETIME=$(date "+%Y-%m-%d_%H%M")
 BACKUP_FILE_DATE_NAME="$DATETIME-production.tar.gz"
-BACKUP_FILE_NAME="../cms/backupfolder/production.tar.gz"
 
-RM -f "$BACKUP_FILE_NAME"
-yarn workspace cms sanity dataset export production backupfolder
+yarn workspace cms sanity dataset export production backupfolder/$BACKUP_FILE_DATE_NAME
 
 #Terraform?
 #azcopy make "https://alvnobackup.blob.core.windows.net/alvnobackup?$SAS_TOKEN"
 
-azcopy copy "$BACKUP_FILE_NAME" "https://alvnobackup.blob.core.windows.net/alvnobackup/$BACKUP_FILE_DATE_NAME?$SAS_TOKEN"
+azcopy copy "../cms/backupfolder/$BACKUP_FILE_DATE_NAME" "https://alvnobackup.blob.core.windows.net/alvnobackup/$BACKUP_FILE_DATE_NAME?$SAS_TOKEN"
