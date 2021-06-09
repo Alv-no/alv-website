@@ -65,7 +65,7 @@ const Contact = ({ location }) => {
               <div className="hidden xl:block">
                 <div className="text-lg tracking-wider 2xl:ml-30 mb-20">
                   <div className="mb-3">
-                    <a href="tel:822704042" className="flex">
+                    <a href="tel:91530363" className="flex">
                       <span className="mr-3">
                         <Icon.Phone />
                       </span>{' '}
@@ -88,7 +88,7 @@ const Contact = ({ location }) => {
             <div>
               <div className="text-lg tracking-wider">
                 <div className="mb-3">
-                  <a href="tel:822704042" className="flex">
+                  <a href="tel:91530363" className="flex">
                     <span className="mr-3">
                       <Icon.Phone />
                     </span>{' '}
