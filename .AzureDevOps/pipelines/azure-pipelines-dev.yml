@@ -1,5 +1,6 @@
 trigger:
   - master
+  - webhook
 
 pr: none
 
