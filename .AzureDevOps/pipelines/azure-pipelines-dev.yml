@@ -1,6 +1,5 @@
 trigger:
   - master
-  - webhook
 
 pr: none
 
@@ -9,8 +8,8 @@ pool:
 
 resources:
   webhooks:
-      - webhook: SanityPublish
-        connection: WebhookConnections
+  - webhook: SanityPublish
+    connection: WebhookConnections
 
 variables:
   subscriptionId: '32547ca3-abba-45c8-b76e-46a590958b5e'
