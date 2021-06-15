@@ -13,13 +13,14 @@ function getSasToken() {
   az storage account generate-sas --permissions cw --account-name $1 --services b --resource-types sco --expiry $SAS_EXPIRY --subscription $2 | jq -r
 }
 
-export SANITY_AUTH_TOKEN="$(getSecret sanity-api-export-auth-token)"
+export SANITY_AUTH_TOKEN="$(getSecret sanity-api-export-import-auth-token)"
 
 SAS_TOKEN="$(getSasToken $STORAGE_ACCOUNT $SUBSCRIPTION)"
 DATETIME=$(date "+%Y-%m-%d_%H%M")
 BACKUP_FILE_DATE_NAME="$DATETIME-production.tar.gz"
 
 yarn workspace cms sanity dataset export production backupfolder/$BACKUP_FILE_DATE_NAME
+yarn workspace cms sanity dataset import backupfolder/$BACKUP_FILE_DATE_NAME development --replace
 
 #Terraform?
 #azcopy make "https://alvnobackup.blob.core.windows.net/alvnobackup?$SAS_TOKEN"
