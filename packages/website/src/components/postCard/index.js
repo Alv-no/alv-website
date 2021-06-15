@@ -47,7 +47,9 @@ export const PostCard = ({
           </div>
           <div className="overflow-hidden h-50">
             <GatsbyImage
-              image={(mainImage && mainImage.asset.fluid) || fallbackImg}
+              image={
+                (mainImage && mainImage.asset.gatsbyImageData) || fallbackImg
+              }
               className="transform group-hover:scale-110 object-cover duration-300 transition h-full"
             />
           </div>
@@ -66,7 +68,9 @@ export const PostCard = ({
               <div className="h-6 w-6 rounded-full overflow-hidden mr-2 filter-grayscale">
                 <GatsbyImage
                   image={
-                    (author && author.image && author.image.asset.fluid) ||
+                    (author &&
+                      author.image &&
+                      author.image.asset.gatsbyImageData) ||
                     fallbackImg
                   }
                 />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Title } from '../title';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export const WhatWeDo = ({ data }) => {
   return (
@@ -14,7 +14,9 @@ export const WhatWeDo = ({ data }) => {
           </div>
           <div className="lg:ml-15 grid sm:grid-cols-2 gap-10 grid-cols-1">
             {data.map((el) => (
-              <Service image={el.heroImage.asset.fluid}>{el.text}</Service>
+              <Service image={el.heroImage.asset.gatsbyImageData}>
+                {el.text}
+              </Service>
             ))}
           </div>
         </div>

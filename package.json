@@ -31,8 +31,5 @@
       "pre-commit": "run-s -s lint"
     }
   },
-  "prettier": "@blueberrypie/prettier-config",
-  "dependencies": {
-    "gatsby-plugin-image": "^1.6.0"
-  }
+  "prettier": "@blueberrypie/prettier-config"
 }

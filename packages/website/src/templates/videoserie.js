@@ -33,7 +33,7 @@ const Videoseries = ({ pageContext }) => {
         <div className="max-w-1200 mx-auto overflow-hidden">
           {filteredVideoseries && (
             <VideoHero
-              backgroundImage={featuredVideo.heroImage.asset.fluid}
+              backgroundImage={featuredVideo.heroImage.asset.gatsbyImageData}
               fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
               description={featuredVideo.description}
               title={featuredVideo.videoseriesTitle}

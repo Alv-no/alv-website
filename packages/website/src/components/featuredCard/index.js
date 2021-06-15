@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import BackgroundImage from 'gatsby-background-image-es5';
 import * as Icon from '../icon';
+import { BgImage } from 'gbimage-bridge';
 
 export const FeaturedCard = ({
   mainImage,
@@ -26,7 +26,9 @@ export const FeaturedCard = ({
       className="relative"
       style={{ position: 'relative' }}
     >
-      <BackgroundImage fluid={mainImage ? mainImage.asset.fluid : fallbackImg}>
+      <BgImage
+        image={mainImage ? mainImage.asset.gatsbyImageData : fallbackImg}
+      >
         <div className="h-featured xs:hidden" />
         <div
           className="xs:block hidden h-featured"
@@ -58,7 +60,7 @@ export const FeaturedCard = ({
             </div>
           </div>
         </div>
-      </BackgroundImage>
+      </BgImage>
       <div
         className="xs:hidden"
         style={{

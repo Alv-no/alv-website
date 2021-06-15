@@ -46,7 +46,7 @@ const Services = () => {
     <div className="overflow-hidden">
       <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
         <div className="overflow-hidden w-screen">
-          <ServicesHero backgroundImage={mainImage.asset.fluid}>
+          <ServicesHero backgroundImage={mainImage.asset.gatsbyImageData}>
             <Title>{heading}</Title>
             <div className="h-8" />
             <Description align="center">{description}</Description>
@@ -57,7 +57,7 @@ const Services = () => {
               title={section2Title}
               blockContent={_rawSection2Block}
               imageText={section2ImageText}
-              image={section1Image.asset.fluid}
+              image={section1Image.asset.gatsbyImageData}
             />
           </div>
           <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
@@ -88,7 +88,7 @@ const Services = () => {
                 link={data.sanityOurServicesPage.section4link.slug.current}
                 title={data.sanityOurServicesPage.section4link.heroHeading}
                 blockContent={_rawSection4Block}
-                image={section4Image.asset.fluid}
+                image={section4Image.asset.gatsbyImageData}
               />
             )}
             {_rawSection5Block && (
@@ -96,7 +96,7 @@ const Services = () => {
                 link={data.sanityOurServicesPage.section5link.slug.current}
                 title={data.sanityOurServicesPage.section5link.heroHeading}
                 blockContent={_rawSection5Block}
-                image={section5Image.asset.fluid}
+                image={section5Image.asset.gatsbyImageData}
                 flip
               />
             )}
@@ -125,7 +125,7 @@ const Services = () => {
           </div>
           <ImageTextCards
             title={data.sanityOurServicesPage.section7link.heroHeading}
-            image={section7Image.asset.fluid}
+            image={section7Image.asset.gatsbyImageData}
             description={section7description}
             link={data.sanityOurServicesPage.section7link.slug.current}
           >

@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import PortableText from '@sanity/block-content-to-react';
 import { richTextTypes } from '../components/richTextTypes';
 import { MobileHeader } from '../components/header';
@@ -49,8 +49,8 @@ const ArticleTemplate = (props) => {
   const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
   const metaImage =
     socials && socials.socialImage
-      ? socialImage.asset.fixed.src
-      : mainImage.asset.fluid.src;
+      ? getSrc(socialImage.asset.gatsbyImageData)
+      : null;
 
   return (
     <>
@@ -90,7 +90,7 @@ const ArticleTemplate = (props) => {
                   className={` ${styles.mainImg} relative z-0 fixed opacity-90`}
                 >
                   <GatsbyImage
-                    image={mainImage.childImageSharp.gatsbyImageData}
+                    image={mainImage.asset.gatsbyImageData}
                     style={{ zIndex: '0', position: 'relative' }}
                   />
                 </span>
@@ -137,7 +137,7 @@ const ArticleTemplate = (props) => {
           <h1 className="text-blog font-bold mb-8">{title}</h1>
           {mainImage && (
             <div className="w-full mb-3">
-              <GatsbyImage image={mainImage.childImageSharp.gatsbyImageData} />
+              <GatsbyImage image={mainImage.asset.gatsbyImageData} />
             </div>
           )}
           <span className={styles.body}>

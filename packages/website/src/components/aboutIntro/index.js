@@ -1,5 +1,5 @@
 import React from 'react';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
 
 export const AboutIntro = ({ topImg, bottomImg }) => {
@@ -14,7 +14,8 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
         <GatsbyImage
           image={topImg}
           style={{ height: '600px', width: '100%' }}
-          className="md:pl-56 lg:pl-0 pl-0" />
+          className="md:pl-56 lg:pl-0 pl-0"
+        />
         <div className="sm:ml-12 lg:ml-30 mx-5 tracking-wider font-light text-xl -mt-30">
           <h2 className="text-white font-semibold uppercase text-4xl w-80 relative z-30">
             ÆRLIG. RÅ. ENGASJERT.
@@ -60,7 +61,10 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
             </p>
           </div>
 
-          <GatsbyImage image={bottomImg} className="opacity-70 lg:block hidden " />
+          <GatsbyImage
+            image={bottomImg}
+            className="opacity-70 lg:block hidden "
+          />
         </div>
       </div>
     </div>

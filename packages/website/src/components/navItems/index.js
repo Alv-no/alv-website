@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import * as styles from './LargeLink.module.css';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
-import * as styles from './NavItems.module.css';
 
 export const LargeLink = ({ children, link }) => {
   const [open, setOpen] = useState(false);

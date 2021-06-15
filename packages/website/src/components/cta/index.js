@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Description } from '../description';
 import { CtaButton } from '../ctaButton';
 
@@ -33,7 +33,8 @@ export const Cta = ({
               <GatsbyImage
                 image={image || fallback}
                 alt="cta"
-                className="object-cover lg:transform h-54 sm:h-100 mb-10 w-full lg:w-full lg:ml-3 lg:scale-95" />
+                className="object-cover lg:transform h-54 sm:h-100 mb-10 w-full lg:w-full lg:ml-3 lg:scale-95"
+              />
             </div>
           </Link>
         </div>

@@ -4,7 +4,7 @@ import { Title } from '../components/title';
 import * as Icon from '../components/icon';
 import { useContactQuery } from '../hookspages/useContactQuery';
 import { Description } from '../components/description';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 import * as Form from '../components/form';
 import { FormSelect } from '../components/button';
 
@@ -17,7 +17,7 @@ const Contact = ({ location }) => {
   const {
     address,
     phone,
-    fluid,
+    image,
     email,
     org,
     pageTitle,
@@ -37,7 +37,7 @@ const Contact = ({ location }) => {
           <div className="flex-1 mt-12 sm:px-10 xl:block sm:grid grid-cols-fifty sm:-ml-12 xl:ml-0">
             <div>
               <div className="opacity-60 w-full xl:h-full h-40vh mt-8 xl:mt-0">
-                <GatsbyImage image={fluid} className="h-full" alt="kontakt" />
+                <GatsbyImage image={image} className="h-full" alt="kontakt" />
               </div>
             </div>
             <div className="2xl:ml-15 ml-5 sm:mt-8 xl:mt-0">
