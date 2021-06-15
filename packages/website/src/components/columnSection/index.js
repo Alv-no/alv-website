@@ -1,6 +1,6 @@
 import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
-import BackgroundImage from 'gatsby-background-image-es5';
+import { BgImage } from 'gbimage-bridge';
 import * as styles from '../../templates/Blockcontent.module.css';
 import * as Icon from '../icon';
 import { richTextTypes } from '../richTextTypes';
@@ -38,7 +38,7 @@ export const ColumnSection = ({
             </div>
           </div>
           <div className="pt-8 lg:ml-5 -mx-5 sm:mx-0">
-            <BackgroundImage fluid={image} className="h-full w-full">
+            <BgImage image={image} className="h-full w-full">
               <div
                 className="absolute inset-0 bg-navy text-white cursor-pointer"
                 style={{ opacity: '0.3' }}
@@ -55,7 +55,7 @@ export const ColumnSection = ({
                   </div>
                 </div>
               </div>
-            </BackgroundImage>
+            </BgImage>
           </div>
         </div>
       </div>

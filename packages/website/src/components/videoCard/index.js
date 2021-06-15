@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export const VideoCard = ({
   title,

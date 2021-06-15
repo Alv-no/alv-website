@@ -15,7 +15,8 @@ const Blog = () => {
   );
   const featuredArticle = articles[0];
   articles.shift();
-  featuredArticle.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData;
+  featuredArticle.fallbackImg =
+    data.fallbackImg.childImageSharp.gatsbyImageData;
   return (
     <Layout
       pageTitle={data.sanityBlogPage.pageTitle}

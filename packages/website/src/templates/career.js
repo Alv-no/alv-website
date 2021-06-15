@@ -21,7 +21,7 @@ const Career = ({ data }) => {
           title={pageTitle}
           description={pageDescription}
           button=""
-          image={sanityOpenPostionPage.heroImage.asset.fluid}
+          image={sanityOpenPostionPage.heroImage.asset.gatsbyImageData}
         />
       </div>
       <div

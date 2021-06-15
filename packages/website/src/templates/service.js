@@ -31,13 +31,13 @@ const Service = ({ data }) => {
           title={data.sanityServices.heroHeading}
           description={data.sanityServices.heroDescription}
           internalLink="/kontakt-oss"
-          image={data.sanityServices.heroImage.asset.fluid}
+          image={data.sanityServices.heroImage.asset.gatsbyImageData}
         />
       </div>
       <div className="w-full bg-white tracking-wider z-10 relative">
         <ServiceNavList
           nav={nav}
-          heroImage={data.sanityServices.heroImage.asset.fluid}
+          heroImage={data.sanityServices.heroImage.asset.gatsbyImageData}
           raw={data.sanityServices._rawAboutBlock}
           heading={data.sanityServices.aboutSection}
           scrollTo={scrollTo}
@@ -116,9 +116,9 @@ export const query = graphql`
         }
       }
     }
-    rolesImg: file(name: { eq: "vitilbyr_digitalisering" }) {
+    rolesImg: file(name: { eq: "interview" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData
       }
     }
     cUtvikler: file(name: { eq: "vitilbyr_header" }) {

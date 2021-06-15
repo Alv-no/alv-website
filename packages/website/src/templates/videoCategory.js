@@ -22,7 +22,7 @@ const VideoCategoryTemplate = ({ pageContext }) => {
         <div className="max-w-1200 mx-auto">
           <VideoHero
             video={seasons[0][0]}
-            backgroundImage={heroImage.asset.fluid}
+            backgroundImage={heroImage.asset.gatsbyImageData}
             title={videoseriesTitle}
             description={description}
             playlist={seasons}

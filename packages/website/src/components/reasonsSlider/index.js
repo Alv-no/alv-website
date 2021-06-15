@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icon from '../icon';
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Slider from 'react-slick';
 
 export const ReasonsSlider = ({ mainHeading, slides }) => {
@@ -30,7 +30,7 @@ export const ReasonsSlider = ({ mainHeading, slides }) => {
             mainHeading={mainHeading}
             heading={el.heading}
             description={el.description}
-            image={el.image.asset.fluid}
+            image={el.image.asset.gatsbyImageData}
             slideNr={index + 1}
           />
         ))}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Title } from '../title';
 import * as Button from '../button';
-import BackgroundImage from 'gatsby-background-image-es5';
+import { BgImage } from 'gbimage-bridge';
 
 export const ImageTextShifted = ({ image, flip }) => {
   return (
@@ -14,12 +14,12 @@ export const ImageTextShifted = ({ image, flip }) => {
           }}
         >
           <span className="relative z-0">
-            <BackgroundImage fluid={image}>
+            <BgImage image={image}>
               <div
                 className="h-full w-full bg-white opacity-50 h-100"
                 style={{ height: '560px' }}
               />
-            </BackgroundImage>
+            </BgImage>
           </span>
           <div className="px-5 sm:px-12 py-12 lg:pr-20 font-light flex flex-col h-full justify-center tracking-wider">
             <div className="font-light">

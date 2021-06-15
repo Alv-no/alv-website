@@ -59,7 +59,7 @@ const Category = ({ data }) => {
         <Overview
           image={
             sanityCategoryPage.heroImage
-              ? sanityCategoryPage.heroImage.asset.fluid
+              ? sanityCategoryPage.heroImage.asset.gatsbyImageData
               : null
           }
           blockContent={sanityCategoryPage._rawText || null}
@@ -69,7 +69,7 @@ const Category = ({ data }) => {
           <div className="mt-12">
             <RolesList
               text={sanityCategoryPage.servicesListText}
-              image={sanityCategoryPage.servicesListImage.asset.fluid}
+              image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
               roles={data.allSanityServices.edges}
             />
           </div>

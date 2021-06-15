@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Link from 'gatsby-link';
 import * as Button from '../button';
-import BackgroundImage from 'gatsby-background-image-es5';
+import { BgImage } from 'gbimage-bridge';
 
-export const OurServices = ({ image }) => {
+export const OurServices = ({ text, image, title }) => {
   const [activeItem, setActiveItem] = useState('1');
 
   const handleClick = (e) => {
@@ -20,12 +20,12 @@ export const OurServices = ({ image }) => {
         <div />
         <div className="px-5 sm:pl-0 sm:mx-12 lg:ml-0">
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
-            Våre Tjenester
+            {title}
           </h2>
           <p className="mb-5 sm:pr-15  font-light text-xl w-full text-footer sm:text-xl tracking-wider">
-            Kjernen i det vi driver med og kan er koding, men for å skape gode
-            løsninger av kode, trengs det også en rekke støttefunksjoner.
+            {text}
           </p>
+
           <div className="lg:block flex justify-between">
             <div />
             <div>
@@ -106,7 +106,7 @@ export const OurServices = ({ image }) => {
         </div>
         <div className="font-light flex flex-col justify-between h-full text-xl">
           <div>
-            <BackgroundImage fluid={image} style={{ height: '530px' }}>
+            <BgImage image={image} style={{ height: '530px' }}>
               <div
                 className="flex sm:justify-end items-center p-5 sm:p-16 bg-black bg-opacity-50"
                 style={{ height: '530px' }}
@@ -116,7 +116,7 @@ export const OurServices = ({ image }) => {
                   <span className="">-</span>prosessen
                 </div>
               </div>
-            </BackgroundImage>
+            </BgImage>
           </div>
         </div>
       </div>
