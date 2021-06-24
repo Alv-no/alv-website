@@ -22896,6 +22896,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"mail-api@workspace:packages/mail-api":
+  version: 0.0.0-use.local
+  resolution: "mail-api@workspace:packages/mail-api"
+  dependencies:
+    body-parser: ^1.19.0
+    express: ^4.17.1
+  languageName: unknown
+  linkType: soft
+
 "make-dir@npm:^1.0.0, make-dir@npm:^1.2.0":
   version: 1.3.0
   resolution: "make-dir@npm:1.3.0"
