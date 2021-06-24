@@ -52,12 +52,12 @@ const Contact = ({ location }) => {
                 </span>
               </div>
               <div className="text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
-                {/* <FormSelect id="offer" onClick={formChange} active={active}>
+                <FormSelect id="offer" onClick={formChange} active={active}>
                   Be om et tilbud
                 </FormSelect>
                 <FormSelect id="call" onClick={formChange} active={active}>
                   Ring meg tilbake
-                </FormSelect> */}
+                </FormSelect>
                 <FormSelect id="visit" onClick={formChange} active={active}>
                   Besøk
                 </FormSelect>
