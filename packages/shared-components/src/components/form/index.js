@@ -1,6 +1,32 @@
 import React, { useState } from 'react';
-import Link from 'gatsby-link';
 import * as Icon from '../icon';
+/*import Link from 'gatsby-link'; */
+
+let isSent = false;
+
+const submitForm = (e) => {
+  e.preventDefault();
+  document.getElementById('error-message').className = 'hidden';
+  if (isSent) return false;
+
+  const form = e.target;
+  const data = new URLSearchParams(new FormData(form).entries());
+
+  const xhr = new XMLHttpRequest();
+  xhr.open(form.method, form.action, true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function () {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      document.querySelectorAll('button[type=submit]')[0].textContent =
+        'Takk for din henvendelse';
+      isSent = true;
+    } else if (this.readyState === XMLHttpRequest.DONE && this.status === 500) {
+      document.getElementById('error-message').className = '';
+    }
+  };
+  xhr.send(data);
+  return false;
+};
 
 export const Call = () => {
   const [open, setOpen] = useState(false);
@@ -15,7 +41,12 @@ export const Call = () => {
 
   return (
     <div className="">
-      <form className="text-white w-full tracking-wider text-mobile">
+      <form
+        className="text-white w-full tracking-wider text-mobile"
+        method="POST"
+        action="http://mail-api.localhost/send"
+        onSubmit={submitForm}
+      >
         {/* DROPDOWN */}
         <label>Er du en kunde eller en ansatt?</label>
         <div className="my-5 relative">
@@ -48,28 +79,39 @@ export const Call = () => {
             </ul>
           </div>
         </div>
+        <input
+          type="hidden"
+          name="subject"
+          value="Kontaktskjema: Ring meg tilbake"
+        />
         <label className="mb-5">Ditt navn*</label>
         <div className="flex my-5">
           <input
             type="text"
             className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
             placeholder="Fornavn"
+            name="firstname"
+            required
           />
           <input
             type="text"
             className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
             placeholder="Etternavn"
+            name="lastname"
+            required
           />
         </div>
-        <label className="my-5">Telefon</label>
+        <label className="my-5">Telefon*</label>
         <div className="my-5">
           <input
             type="number"
             className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
-            placeholder="Eg. +00 000 0000"
+            placeholder="Eg. +00 000 00 000"
+            name="phone"
+            required
           />
         </div>
-        <p className="font-light text-sm leading-loose">
+        {/* <p className="font-light text-sm leading-loose">
           Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått våre{' '}
           <Link to="/kontakt-oss">
             <span className="font-semibold hover:text-theme-accent duration-300 transition cursor-pointer">
@@ -83,7 +125,7 @@ export const Call = () => {
             </span>
           </Link>
           .
-        </p>
+          </p> */}
         <div className="flex justify-center mt-10">
           <button
             className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
@@ -92,6 +134,11 @@ export const Call = () => {
           >
             Send inn
           </button>
+        </div>
+        <div className="flex justify-center mt-10">
+          <span id="error-message" className="hidden">
+            Beklager, det oppstod en feil.
+          </span>
         </div>
       </form>
     </div>
@@ -110,7 +157,12 @@ export const Offer = () => {
   const dropdownOptions = ['Jeg er en kunde', 'Jeg er en ansatt'];
 
   return (
-    <form className="text-white w-full tracking-wider text-mobile">
+    <form
+      className="text-white w-full tracking-wider text-mobile"
+      method="POST"
+      action="http://mail-api.localhost/send"
+      onSubmit={submitForm}
+    >
       {/* DROPDOWN */}
       <label>Er du en kunde eller en ansatt?</label>
       <div className="my-5 relative">
@@ -143,17 +195,26 @@ export const Offer = () => {
           </ul>
         </div>
       </div>
+      <input
+        type="hidden"
+        name="subject"
+        value="Kontaktskjema: Gi meg et tilbud"
+      />
       <label className="mb-5">Ditt navn*</label>
       <div className="flex my-5">
         <input
           type="text"
           className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
           placeholder="Fornavn"
+          name="firstname"
+          required
         />
         <input
           type="text"
           className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
           placeholder="Etternavn"
+          name="lastname"
+          required
         />
       </div>
       <label className="my-5">E-post*</label>
@@ -162,6 +223,8 @@ export const Offer = () => {
           type="email"
           className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
           placeholder="Eg. example@gmail.com"
+          name="email"
+          required
         />
       </div>
       <label className="my-5">Beskjed*</label>
@@ -171,6 +234,8 @@ export const Offer = () => {
           className="focus:outline-none bg-transparent border rounded-sm p-4 w-full rounded-md"
           placeholder="Skriv meldingen din her"
           rows="4"
+          name="text"
+          required
         />
       </div>
       <label className="my-5">Telefon</label>
@@ -178,10 +243,11 @@ export const Offer = () => {
         <input
           type="text"
           className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
-          placeholder="Eg. +00 000 0000"
+          placeholder="Eg. +00 000 00 000"
+          name="phone"
         />
       </div>
-      <p className="font-light text-sm leading-loose">
+      {/* <p className="font-light text-sm leading-loose">
         Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått
         gjeldende{' '}
         <Link to="/kontakt-oss">
@@ -196,7 +262,7 @@ export const Offer = () => {
           </span>
         </Link>
         .
-      </p>
+      </p> */}
       <div className="flex justify-center mt-10">
         <button
           className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
@@ -205,6 +271,11 @@ export const Offer = () => {
         >
           Send inn
         </button>
+      </div>
+      <div className="flex justify-center mt-10">
+        <span id="error-message" className="hidden">
+          Beklager, det oppstod en feil.
+        </span>
       </div>
     </form>
   );
