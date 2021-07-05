@@ -2,29 +2,6 @@ import React, { useState } from 'react';
 import Link from 'gatsby-link';
 import * as Icon from '../icon';
 
-let isSent = false;
-
-const submitForm = (e) => {
-  e.preventDefault();
-  if (isSent) return false;
-
-  const form = e.target;
-  const data = new URLSearchParams(new FormData(form).entries());
-
-  const xhr = new XMLHttpRequest();
-  xhr.open(form.method, form.action, true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function () {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      document.querySelectorAll('button[type=submit]')[0].textContent =
-        'Takk for din henvendelse';
-      isSent = true;
-    }
-  };
-  xhr.send(data);
-  return false;
-};
-
 export const Call = () => {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState('Jeg er en kunde');
@@ -38,12 +15,7 @@ export const Call = () => {
 
   return (
     <div className="">
-      <form
-        className="text-white w-full tracking-wider text-mobile"
-        method="POST"
-        action="http://mail-api.localhost/send"
-        onSubmit={submitForm}
-      >
+      <form className="text-white w-full tracking-wider text-mobile">
         {/* DROPDOWN */}
         <label>Er du en kunde eller en ansatt?</label>
         <div className="my-5 relative">
@@ -76,24 +48,17 @@ export const Call = () => {
             </ul>
           </div>
         </div>
-        <input
-          type="hidden"
-          name="subject"
-          value="Kontaktskjema: Ring meg tilbake"
-        />
         <label className="mb-5">Ditt navn*</label>
         <div className="flex my-5">
           <input
             type="text"
             className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
             placeholder="Fornavn"
-            name="firstname"
           />
           <input
             type="text"
             className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
             placeholder="Etternavn"
-            name="lastname"
           />
         </div>
         <label className="my-5">Telefon</label>
@@ -102,7 +67,6 @@ export const Call = () => {
             type="number"
             className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
             placeholder="Eg. +00 000 0000"
-            name="phone"
           />
         </div>
         <p className="font-light text-sm leading-loose">
@@ -146,12 +110,7 @@ export const Offer = () => {
   const dropdownOptions = ['Jeg er en kunde', 'Jeg er en ansatt'];
 
   return (
-    <form
-      className="text-white w-full tracking-wider text-mobile"
-      method="POST"
-      action="http://mail-api.localhost/send"
-      onSubmit={submitForm}
-    >
+    <form className="text-white w-full tracking-wider text-mobile">
       {/* DROPDOWN */}
       <label>Er du en kunde eller en ansatt?</label>
       <div className="my-5 relative">
@@ -184,24 +143,17 @@ export const Offer = () => {
           </ul>
         </div>
       </div>
-      <input
-        type="hidden"
-        name="subject"
-        value="Kontaktskjema: Gi meg et tilbud"
-      />
       <label className="mb-5">Ditt navn*</label>
       <div className="flex my-5">
         <input
           type="text"
           className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
           placeholder="Fornavn"
-          name="firstname"
         />
         <input
           type="text"
           className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
           placeholder="Etternavn"
-          name="lastname"
         />
       </div>
       <label className="my-5">E-post*</label>
@@ -210,7 +162,6 @@ export const Offer = () => {
           type="email"
           className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
           placeholder="Eg. example@gmail.com"
-          name="email"
         />
       </div>
       <label className="my-5">Beskjed*</label>
@@ -220,7 +171,6 @@ export const Offer = () => {
           className="focus:outline-none bg-transparent border rounded-sm p-4 w-full rounded-md"
           placeholder="Skriv meldingen din her"
           rows="4"
-          name="text"
         />
       </div>
       <label className="my-5">Telefon</label>
@@ -229,7 +179,6 @@ export const Offer = () => {
           type="text"
           className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
           placeholder="Eg. +00 000 0000"
-          name="phone"
         />
       </div>
       <p className="font-light text-sm leading-loose">

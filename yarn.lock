@@ -6637,6 +6637,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sendgrid/client@npm:^7.4.3":
+  version: 7.4.3
+  resolution: "@sendgrid/client@npm:7.4.3"
+  dependencies:
+    "@sendgrid/helpers": ^7.4.3
+    axios: ^0.21.1
+  checksum: 657418b9d34f5dfe9e60c2972a9354d73b0457578961e115e1138bcaff5491bc357242e794be4cc55b7f76d3d779449f02e10d76ef957b4995fd4540054232e2
+  languageName: node
+  linkType: hard
+
+"@sendgrid/helpers@npm:^7.4.3":
+  version: 7.4.3
+  resolution: "@sendgrid/helpers@npm:7.4.3"
+  dependencies:
+    deepmerge: ^4.2.2
+  checksum: 1528ff0a19c60e3a0219c28c693a8746b9090387a2971dd9c0a6f78b451b563ea4de6f5d3a53978278146f02db9d4064bb1ccb944a48ec811f280d445f8ca70e
+  languageName: node
+  linkType: hard
+
+"@sendgrid/mail@npm:^7.4.5":
+  version: 7.4.5
+  resolution: "@sendgrid/mail@npm:7.4.5"
+  dependencies:
+    "@sendgrid/client": ^7.4.3
+    "@sendgrid/helpers": ^7.4.3
+  checksum: 8536db1c1d5b450091dfb3593177b99580d4d8db973121088fbdb833c72274295ff12570a6ffcf6d28df736bb20df3973bd8d26dda8b51009eef7117eda452ea
+  languageName: node
+  linkType: hard
+
 "@sideway/address@npm:^4.1.0":
   version: 4.1.2
   resolution: "@sideway/address@npm:4.1.2"
@@ -14493,6 +14522,13 @@ __metadata:
   peerDependencies:
     webpack: ^1 || ^2 || ^3 || ^4
   checksum: a4ef436b38ed99f0dca297e8e0aafca47cebf8fc4b30027f1d14607f782db296640600cbec3bbd3fb382d54542534b98628ec24d6dd7bbb8bafe06282d11133f
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "dotenv@npm:10.0.0"
+  checksum: 9c45712e213de63bdb646b8e5344749b7566e25a67bbd3f03711d54e40eff10066c1f23eff0081d0949fda7c8efcc6e9e8bf18d0f023a8274f55f5d5f97bb6db
   languageName: node
   linkType: hard
 
@@ -22900,7 +22936,10 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "mail-api@workspace:packages/mail-api"
   dependencies:
+    "@sendgrid/mail": ^7.4.5
     body-parser: ^1.19.0
+    cors: ^2.8.5
+    dotenv: ^10.0.0
     express: ^4.17.1
   languageName: unknown
   linkType: soft
