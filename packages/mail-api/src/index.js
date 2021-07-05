@@ -2,17 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sgMail = require('@sendgrid/mail');
+const dotenv = require('dotenv');
 const app = express();
 const port = 80;
 
-const corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200,
-};
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
+app.use(cors());
+
+dotenv.config({
+  path: `.env`,
+});
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-app.post('/send', cors(corsOptions), (req, res) => {
+app.post('/send', (req, res) => {
   const email = req.body.email;
   const subject = req.body.subject;
   const body = req.body.text;
@@ -39,7 +39,7 @@ app.post('/send', cors(corsOptions), (req, res) => {
   if (body) mailbody += '\n\n' + body;
 
   const msg = {
-    to: 'tommy@alv.no',
+    to: process.env.MAILTO,
     from: 'itadmin@alv.no',
     subject: subject,
     text: mailbody,
@@ -48,12 +48,13 @@ app.post('/send', cors(corsOptions), (req, res) => {
   sgMail
     .send(msg)
     .then(() => {
-      console.log('Email sent');
+      console.log('Email sent to ' + process.env.MAILTO);
+      res.sendStatus(200);
     })
     .catch((error) => {
       console.error(error);
+      res.sendStatus(500);
     });
-  res.sendStatus(200);
 });
 
 app.listen(port, () => {

@@ -16,7 +16,7 @@
       }
     },
     {
-      "files": ["packages/mail-api/*"],
+      "files": ["packages/mail-api/src/*"],
       "rules": {
         "@typescript-eslint/no-var-requires": "off",
         "no-console": "off"

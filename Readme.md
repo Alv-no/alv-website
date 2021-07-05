@@ -37,7 +37,7 @@ You can either build and start all services by using docker-compose:
 
 
 ```
-make build-website build-cms
+make build-website build-cms build-mail-api
 docker-compose up -d
 ```
 
@@ -59,4 +59,5 @@ Package                       | Description
 -------                       | -----------
 [website](./packages/website) | Gatsby-powered website
 [cms](./packages/cms)         | Sanity CMS
+[mail-api](./packages/mail-api) | Mail API backend for contact form
 [infrastructure](./packages/infrastructure) | Terraform Infrastructure as Code for Azure
