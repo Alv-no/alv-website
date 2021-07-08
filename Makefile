@@ -4,7 +4,10 @@ build-website: ## Builds website docker image
 build-cms: ## Builds cms docker image
 	docker build -f cms.Dockerfile -t cms .
 
-docker-compose-up: build-website build-cms ## Run docker compose up
+build-mail-api:
+	docker build -f mail-api.Dockerfile -t mail-api .
+
+docker-compose-up: build-website build-cms build-mail-api ## Run docker compose up
 	docker-compose up
 
 .PHONY: help

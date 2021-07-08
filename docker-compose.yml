@@ -16,13 +16,22 @@ services:
       - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-
+  dave:
+    image: theknarf/dave
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dave.rule=Host(`localhost`)"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    
   website:
     image: website
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.website.rule=Host(`website.localhost`)"
-      - "traefik.dashboard.port=80"
+      - "traefik.website.port=80"
+      - "dave.relativeSubdomain=website"
     restart: unless-stopped
 
   cms:
@@ -30,5 +39,15 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.cms.rule=Host(`cms.localhost`)"
-      - "traefik.dashboard.port=80"
+      - "traefik.cms.port=80"
+      - "dave.relativeSubdomain=cms"
+    restart: unless-stopped
+
+  mail-api:
+    image: mail-api
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mail-api.rule=Host(`mail-api.localhost`)"
+      - "traefik.mail-api.port=80"
+      - "dave.relativeSubdomain=mail-api"
     restart: unless-stopped
