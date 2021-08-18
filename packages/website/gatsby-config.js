@@ -30,7 +30,6 @@ module.exports = {
         dataset: `production`,
         token: process.env.SANITY_TOKEN,
         graphqlTag: 'default',
-        overlayDrafts: true,
       },
     },
     {
