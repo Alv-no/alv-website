@@ -53,6 +53,14 @@ docker run -it -p 8080:80 website
 
 And then browse it using a web browser at `localhost:8080`.
 
+## Deploy to k8s locally
+
+```
+az login
+
+./run deploy <test | prod> <build-id>
+```
+
 ## Packages
 
 Package                       | Description
