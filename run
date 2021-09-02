@@ -3,13 +3,14 @@
 set -e
 
 SHORT_HASH=`git rev-parse --short=7 HEAD`
-BUILD_ID="$3"
+BUILD_ID="$4"
 TAG="$SHORT_HASH-$BUILD_ID"
 ENV=$(echo "$2" | awk '{print tolower($0)}')
 KEY_VAULT="alvtime$ENV"
 RESOURCE_GROUP_NAME="rg-alvtime-$ENV-westeurope"
 KUBERNETES_CLUSTER_NAME="aks-alvtime-$ENV-westeurope"
 CONTAINER_REGISTRY=acralvtime.azurecr.io
+SERVICE_TO_BUILD="$3"
 
 function getSecret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
@@ -17,6 +18,7 @@ function getSecret() {
 
 function getSecrets() {
   HOSTNAME="$(getSecret alv-hostname)"
+  MAIL_API_HOSTNAME="$(getSecret alv-mail-api-hostname)"
   SP_ALVTIME_ADMIN_RBAC_SECRET="$(getSecret sp-alvtime-admin-rbac-secret)"
   SP_ALVTIME_ADMIN_CLIENT_ID="$(getSecret sp-alvtime-admin-client-id)"
   SANITY_AUTH_TOKEN="$(getSecret sanity-auth-token)"
@@ -25,19 +27,44 @@ function getSecrets() {
 }
 
 function buildServices() {
-  if [ ! -f packages/website/.env.production ]; then
-    echo "SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN" >> packages/website/.env.production
-    echo "SANITY_TOKEN=$SANITY_TOKEN" >> packages/website/.env.production
-    echo "YT_API=$YT_API" >> packages/website/.env.production
+  if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "building website"
+
+    if [ ! -f packages/website/.env.production ]; then
+      echo "SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN" >> packages/website/.env.production
+      echo "SANITY_TOKEN=$SANITY_TOKEN" >> packages/website/.env.production
+      echo "YT_API=$YT_API" >> packages/website/.env.production
+    fi
+
+    docker build . \
+      --file website.Dockerfile \
+      --tag "$CONTAINER_REGISTRY/website:$TAG" \
+      --no-cache
   fi
-  docker build . \
-    --file website.Dockerfile \
-    --tag "$CONTAINER_REGISTRY/website:$TAG" \
-    --no-cache
+
+  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "building mail api"
+    if [ ! -f packages/mail-api/.env ]; then
+      echo "SENDGRID_API_KEY=$SENDGRID_API_KEY" >> packages/mail-api/.env
+      echo "MAILTO=$MAILTO" >> packages/mail-api/.env
+    fi
+    docker build . \
+      --file mail-api.Dockerfile \
+      --tag "$CONTAINER_REGISTRY/mail-api:$TAG" \
+      --no-cache
+  fi
 }
 
 function pushServices() {
-  docker push "$CONTAINER_REGISTRY/website:$TAG"
+  if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD"  ]] ; then
+    echo "pushing website"
+    docker push "$CONTAINER_REGISTRY/website:$TAG"
+  fi
+
+  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]] ; then
+    echo "pushing mail api"
+    docker push "$CONTAINER_REGISTRY/mail-api:$TAG"
+  fi
 }
 
 function deployServices() {
@@ -57,15 +84,29 @@ function deployServices() {
     --resource-group "$RESOURCE_GROUP_NAME" \
     --name "$KUBERNETES_CLUSTER_NAME"
 
-  helm upgrade website ./chart \
-    --install \
-    --set image.repository="$CONTAINER_REGISTRY/website" \
-    --set image.tag="$TAG" \
-    --set "hosts={$HOSTNAME}" \
-    --namespace "alv-no"
+  if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]] ; then
+    echo "helm website"
+    helm upgrade website ./chart \
+      --install \
+      --set image.repository="$CONTAINER_REGISTRY/website" \
+      --set image.tag="$TAG" \
+      --set "hosts={$HOSTNAME}" \
+      --namespace "alv-no"
+    sleep 20
+    curl "https://$HOSTNAME"
+  fi
 
-  sleep 20
-  curl "https://$HOSTNAME"
+  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]] ; then
+    echo "helm mail api"
+    helm upgrade mail-api ./chart \
+      --install \
+      --set image.repository="$CONTAINER_REGISTRY/mail-api" \
+      --set image.tag="$TAG" \
+      --set "hosts={$MAIL_API_HOSTNAME}" \
+      --namespace "alv-no"
+    sleep 20
+    curl "https://$MAIL_API_HOSTNAME"
+  fi
 }
 
 if [ "deploy" = "$1" ]; then
