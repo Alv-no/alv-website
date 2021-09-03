@@ -10,8 +10,6 @@ COPY .yarn/releases /app/.yarn/releases/
 COPY .yarn/plugins /app/.yarn/plugins/
 COPY packages/mail-api /app/packages/mail-api/
 
-RUN test -f "/app/packages/mail-api/.env"
-
 RUN yarn
 
 WORKDIR /app/packages/mail-api
