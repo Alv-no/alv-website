@@ -9,7 +9,8 @@ ENV=$(echo "$2" | awk '{print tolower($0)}')
 KEY_VAULT="alvtime$ENV"
 RESOURCE_GROUP_NAME="rg-alvtime-$ENV-westeurope"
 KUBERNETES_CLUSTER_NAME="aks-alvtime-$ENV-westeurope"
-CONTAINER_REGISTRY=acralvtime.azurecr.io
+CONTAINER_REGISTRY_NAME=acralvtime
+CONTAINER_REGISTRY="$CONTAINER_REGISTRY_NAME.azurecr.io"
 SERVICE_TO_BUILD="$3"
 
 function getSecret() {
@@ -18,12 +19,13 @@ function getSecret() {
 
 function getSecrets() {
   HOSTNAME="$(getSecret alv-hostname)"
-  MAIL_API_HOSTNAME="$(getSecret alv-mail-api-hostname)"
   SP_ALVTIME_ADMIN_RBAC_SECRET="$(getSecret sp-alvtime-admin-rbac-secret)"
   SP_ALVTIME_ADMIN_CLIENT_ID="$(getSecret sp-alvtime-admin-client-id)"
   SANITY_AUTH_TOKEN="$(getSecret sanity-auth-token)"
   SANITY_TOKEN="$(getSecret sanity-token)"
   YT_API="$(getSecret youtube-api-token)"
+  SENDGRID_API_KEY="$(getSecret sendgrid-api-key)"
+  MAILTO="$(getSecret mail-api-recipient)"
 }
 
 function buildServices() {
@@ -43,15 +45,21 @@ function buildServices() {
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "building mail api"
-    if [ ! -f packages/mail-api/.env ]; then
-      echo "SENDGRID_API_KEY=$SENDGRID_API_KEY" >> packages/mail-api/.env
-      echo "MAILTO=$MAILTO" >> packages/mail-api/.env
+    EXISTING_HASH=$(az acr repository show-tags \
+      --name $CONTAINER_REGISTRY_NAME \
+      --repository mail-api \
+      --query "[?@ == \`$SHORT_HASH\`] \
+      | [0]"\
+    )
+    if [ -n "$EXISTING_HASH" ]; then
+      echo "Build $SHORT_HASH already exists in $CONTAINER_REGISTRY"
+    else
+      echo "building mail api"
+      docker build . \
+        --file mail-api.Dockerfile \
+        --tag "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH" \
+        --no-cache
     fi
-    docker build . \
-      --file mail-api.Dockerfile \
-      --tag "$CONTAINER_REGISTRY/mail-api:$TAG" \
-      --no-cache
   fi
 }
 
@@ -61,9 +69,9 @@ function pushServices() {
     docker push "$CONTAINER_REGISTRY/website:$TAG"
   fi
 
-  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]] ; then
+  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" && -n "$EXISTING_HASH" ]] ; then
     echo "pushing mail api"
-    docker push "$CONTAINER_REGISTRY/mail-api:$TAG"
+    docker push "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH"
   fi
 }
 
@@ -101,18 +109,20 @@ function deployServices() {
     helm upgrade mail-api ./chart \
       --install \
       --set image.repository="$CONTAINER_REGISTRY/mail-api" \
-      --set image.tag="$TAG" \
-      --set "hosts={$MAIL_API_HOSTNAME}" \
+      --set image.tag="$SHORT_HASH" \
+      --set "hosts={mail-api.$HOSTNAME}" \
+      --set secrets.MAILTO="$MAILTO" \
+      --set secrets.SENDGRID_API_KEY="$SENDGRID_API_KEY" \
       --namespace "alv-no"
     sleep 20
-    curl "https://$MAIL_API_HOSTNAME"
+    curl "https://mail-api.$HOSTNAME"
   fi
 }
 
 if [ "deploy" = "$1" ]; then
   getSecrets
+  az acr login --name $CONTAINER_REGISTRY_NAME
   buildServices
-  az acr login --name acralvtime
   pushServices
   deployServices
 fi
