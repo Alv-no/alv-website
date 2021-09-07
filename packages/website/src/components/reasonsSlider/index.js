@@ -84,15 +84,15 @@ export const ArticleSlide = ({
 const PrevArrowLine = ({ onClick }) => {
   return (
     <div
-      className="absolute justify-between twelve:block hidden h-5 text-navy top-2/4"
+      className="bg-navy bg-opacity-90 pr-3 absolute justify-between twelve:block hidden h-8 text-navy top-2/4"
       style={{ top: '50%' }}
     >
       <div
-        className="flex items-center cursor-pointer relative z-10"
+        className="h-full flex items-center cursor-pointer relative z-10"
         onClick={onClick}
       >
-        <div className="w-20 bg-navy h-2px" />{' '}
-        <div className="uppercase tracking-wider text-navy ml-5 font-semibold text-base">
+        <div className="w-20 bg-white h-2px" />{' '}
+        <div className="uppercase tracking-wider text-white ml-5 font-semibold text-base">
           Tilbake
         </div>
       </div>
@@ -104,15 +104,13 @@ const PrevArrowLine = ({ onClick }) => {
 const NextArrowLine = ({ onClick }) => {
   return (
     <div
-      className="absolute flex justify-between h-5 text-navy inset-0 w-full"
+      className="bg-navy bg-opacity-90 pl-3 absolute flex justify-between h-8 text-navy right-0"
       style={{ top: '50%' }}
+      onClick={onClick}
     >
       <div />
       <div className="flex items-center cursor-pointer">
-        <div
-          className="uppercase tracking-wider text-white mr-5 font-semibold text-base"
-          onClick={onClick}
-        >
+        <div className="uppercase tracking-wider text-white mr-5 font-semibold text-base">
           Neste
         </div>
         <div className="w-20 bg-white h-2px" />{' '}
