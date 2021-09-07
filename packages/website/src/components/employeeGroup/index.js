@@ -1,8 +1,7 @@
 import React from 'react';
-import PortableText from '@sanity/block-content-to-react';
 import { EmployeeCard } from '../employeeCard';
 import { EmployeeBio } from '../employeeBio';
-import { richTextTypes } from '../richTextTypes';
+import { BlockContent } from '../blockContent';
 
 export const EmployeeGroup = ({
   group,
@@ -49,12 +48,7 @@ export const EmployeeGroup = ({
                 />
                 <p className="absolute opacity-0 pointer-events-none">
                   {employee._rawBio && (
-                    <PortableText
-                      blocks={employee._rawBio}
-                      projectId="mnr37rl0"
-                      dataset="production"
-                      serializers={richTextTypes}
-                    />
+                    <BlockContent blocks={employee._rawBio} />
                   )}
                 </p>
                 {width < 480 && (

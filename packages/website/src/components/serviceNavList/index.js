@@ -1,9 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
-import { richTextTypes } from '../richTextTypes';
-import PortableText from '@sanity/block-content-to-react';
-import * as styles from './ServiceNavList.module.css';
+import { BlockContent } from '../blockContent';
 
 export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
   return (
@@ -48,14 +46,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
                   {heading}
                 </Title>
               </div>
-              <div className={styles.body}>
-                <PortableText
-                  blocks={raw}
-                  projectId="mnr37rl0"
-                  dataset="production"
-                  serializers={richTextTypes}
-                />
-              </div>
+              <BlockContent blocks={raw} />
             </div>
           </div>
         </nav>

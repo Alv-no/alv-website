@@ -1,10 +1,8 @@
 import React from 'react';
-import * as styles from '../../templates/Blockcontent.module.css';
 import { Title } from '../title';
-import { richTextTypes } from '../richTextTypes';
 import * as Button from '../button';
-import PortableText from '@sanity/block-content-to-react';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { BlockContent } from '../blockContent';
 
 export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
   return (
@@ -35,14 +33,7 @@ export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
               >
                 {title}
               </Title>
-              <div className={styles.body}>
-                <PortableText
-                  blocks={blockContent}
-                  projectId="mnr37rl0"
-                  dataset="production"
-                  serializers={richTextTypes}
-                />
-              </div>
+              <BlockContent blocks={blockContent} />
             </div>
             <div
               className={`w-full flex justify-end sm:relative px-5 sm:px-0 lg:justify-${

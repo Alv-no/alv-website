@@ -41,6 +41,35 @@ export default {
       type: 'file',
     },
     {
+      name: 'videoTextOverlay',
+      title: 'Video Text Overlay',
+      type: 'string',
+      options: {
+        maxLength: 60,
+      },
+    },
+    {
+      name: 'aboutTitle',
+      title: 'About Title',
+      type: 'string',
+      options: {
+        maxLength: 60,
+      },
+    },
+    {
+      name: 'aboutText',
+      title: 'About Text',
+      type: 'array',
+      of: [
+        {
+          title: 'Block',
+          type: 'block',
+          styles: [{ title: 'Normal', value: 'normal' }],
+          lists: [],
+        },
+      ],
+    },
+    {
       name: 'flipSection1Image',
       title: 'Flip section 1 - image',
       type: 'image',

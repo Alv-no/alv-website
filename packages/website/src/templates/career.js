@@ -1,10 +1,8 @@
 import React from 'react';
-import PortableText from '@sanity/block-content-to-react';
 import Layout from '../layout';
-import * as styles from './Blockcontent.module.css';
 import { graphql } from 'gatsby';
 import { NavyIntro } from '../components/navyIntro';
-import { richTextTypes } from '../components/richTextTypes';
+import { BlockContent } from '../components/blockContent';
 
 const Career = ({ data }) => {
   const { sanityOpenPostionPage } = data;
@@ -28,14 +26,7 @@ const Career = ({ data }) => {
         className="bg-white max-w-1200 mx-auto lg:grid xl:pl-25 sm:px-12 lg:pr-0 px-5 pt-8 pb-18 gap-x-12"
         style={{ gridTemplateColumns: '60% auto' }}
       >
-        <span className={styles.body}>
-          <PortableText
-            blocks={sanityOpenPostionPage._rawJobDescription}
-            projectId="mnr37rl0"
-            dataset="production"
-            serializers={richTextTypes}
-          />
-        </span>
+        <BlockContent blocks={sanityOpenPostionPage._rawJobDescription} />
         <div>
           <div
             className="lg:mt-10 mt-20"

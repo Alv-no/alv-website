@@ -1,9 +1,7 @@
 import React from 'react';
-import PortableText from '@sanity/block-content-to-react';
 import { BgImage } from 'gbimage-bridge';
-import * as styles from '../../templates/Blockcontent.module.css';
 import * as Icon from '../icon';
-import { richTextTypes } from '../richTextTypes';
+import { BlockContent } from '../blockContent';
 
 export const ColumnSection = ({
   title,
@@ -28,14 +26,7 @@ export const ColumnSection = ({
                 {title}
               </h3>
             </div>
-            <div className={styles.body}>
-              <PortableText
-                blocks={blockContent}
-                projectId="mnr37rl0"
-                dataset="production"
-                serializers={richTextTypes}
-              />
-            </div>
+            <BlockContent blocks={blockContent} />
           </div>
           <div className="pt-8 lg:ml-5 -mx-5 sm:mx-0">
             <BgImage image={image} className="h-full w-full">
