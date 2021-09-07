@@ -21,7 +21,7 @@ const VideoCategoryTemplate = ({ pageContext }) => {
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto">
           <VideoHero
-            video={seasons[0][0]}
+            video={seasons[seasons.length - 1][0]}
             backgroundImage={heroImage.asset.gatsbyImageData}
             title={videoseriesTitle}
             description={description}
