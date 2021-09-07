@@ -27,7 +27,7 @@ const Employees = ({ location }) => {
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
-        <Title>Ansatte</Title>
+        <Title>Våre Konsulenter</Title>
         <div className="sm:h-8 h-4" />
         <div className="flex justify-center">
           <span className="px-6">
