@@ -12,7 +12,7 @@ export const ImageTextListHero = ({ image, openPositions }) => {
         style={{ gridTemplateColumns: '25% auto' }}
       >
         <div className="h-full sm:pt-25 sm:-ml-12 flex -ml-5 items-end sm:mt-32 twelve:mt-0">
-          <BgImage fluid={image}>
+          <BgImage image={image}>
             <div className="bg-black bg-opacity-30 flex sm:justify-end justify-start sm:items-center items-end px-5 py-7 sm:p-0 twelve:h-620 sm:h-60vh lg:w-386 sm:w-277 w-screen h-50vh">
               <div className="font-semibold twelve:hidden text-4xl w-5/6 sm:w-auto uppercase sm:hidden md:block absolute tracking-wider transform sm:translate-x-64 sm:translate-y-20">
                 Alv søker medarbeidere
