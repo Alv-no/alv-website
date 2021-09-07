@@ -56,6 +56,9 @@ const Videoserie = ({ videoserie, data, index }) => {
   const sortedList = (list) => {
     setSortedVideos(list);
   };
+
+  const seasonTitles = videoserie.playlists.process.map((el) => el.title);
+
   return (
     <div key={`videoserie-${index}`}>
       {index !== 0 && (
@@ -69,7 +72,11 @@ const Videoserie = ({ videoserie, data, index }) => {
         />
       )}
       <div className="sm:mx-12 md:mx-0">
-        <VideoFilter seasons={videoserie.seasons} onChange={sortedList} />
+        <VideoFilter
+          seasonTitles={seasonTitles}
+          seasons={videoserie.seasons}
+          onChange={sortedList}
+        />
         <VideoSection
           playlist={sortedVideos}
           fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}

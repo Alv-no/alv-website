@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SortField } from '../blogFilter';
 
-export const VideoFilter = ({ seasons, onChange }) => {
+export const VideoFilter = ({ seasons, onChange, seasonTitles }) => {
   const [sort, setSort] = useState('newest');
   const [activeSeasonIndex, setActiveSeasonIndex] = useState(
     seasons.length - 1
@@ -35,6 +35,7 @@ export const VideoFilter = ({ seasons, onChange }) => {
         <div className="flex tracking-wider items-center h-8 pt-6px sm:my-0 mt-4 mb-5">
           <Seasons
             seasons={seasons}
+            seasonTitles={seasonTitles}
             activeSeasonIndex={activeSeasonIndex}
             onClick={seasonClick}
           />
@@ -49,9 +50,9 @@ export const VideoFilter = ({ seasons, onChange }) => {
   );
 };
 
-const Seasons = ({ seasons, onClick, activeSeasonIndex }) => (
+const Seasons = ({ seasons, onClick, activeSeasonIndex, seasonTitles }) => (
   <>
-    {seasons.map((season, i) => (
+    {seasons.map((_, i) => (
       <button
         className={`font-semibold mr-6 pb-1 border-b-2 focus:outline-none ${
           activeSeasonIndex === i ? 'border-yellow' : 'border-navy'
@@ -60,7 +61,7 @@ const Seasons = ({ seasons, onClick, activeSeasonIndex }) => (
         type="button"
         id={i}
       >
-        Sesong {i + 1}
+        {seasonTitles[i]}
       </button>
     ))}
   </>
