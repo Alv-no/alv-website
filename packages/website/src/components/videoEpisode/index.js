@@ -1,7 +1,11 @@
 import React from 'react';
 import * as styles from './videoEpisode.module.css';
+import ReactMarkdown from 'react-markdown';
 
 export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
+  const formattedMarkdown = description.includes('____')
+    ? description.slice(0, description.indexOf('____'))
+    : description;
   return (
     <div>
       <div>
@@ -20,11 +24,18 @@ export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
       </div>
       <div className="mt-6 px-5 seven:px-0">
         <div className="">
-          <h2 className="text-lg tracking-wider font-light">{title}</h2>
+          <div className="uppercase text-lg tracking-wider font-semibold pb-px">
+            {title}
+          </div>
+          <div className="h-3px w-12 bg-yellow mt-2 mb-4" />
           <h4 className="leading-none mt-4 mb-2 text-blog leading-tight tracking-wider">
             {subtitle}
           </h4>
-          <p className="tracking-wider">{description}</p>
+          <p className="tracking-wider mb-25">
+            <span className={styles.md}>
+              <ReactMarkdown children={formattedMarkdown} />
+            </span>
+          </p>
         </div>
       </div>
     </div>
