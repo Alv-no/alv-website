@@ -1,9 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import PortableText from '@sanity/block-content-to-react';
-import * as styles from '../../templates/Blockcontent.module.css';
 import { Title } from '../title';
-import { richTextTypes } from '../richTextTypes';
+import { BlockContent } from '../blockContent';
 
 export const Overview = ({ image, blockContent, id }) => {
   return (
@@ -28,14 +26,7 @@ export const Overview = ({ image, blockContent, id }) => {
               <Title underline align="left" color="text-navy">
                 Oversikt
               </Title>
-              <div className={styles.body}>
-                <PortableText
-                  blocks={blockContent}
-                  projectId="mnr37rl0"
-                  dataset="production"
-                  serializers={richTextTypes}
-                />
-              </div>
+              <BlockContent blocks={blockContent} />
             </div>
           </div>
         </div>

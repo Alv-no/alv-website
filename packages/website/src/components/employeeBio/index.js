@@ -2,10 +2,9 @@ import React, { useMemo } from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
 import { isIOS, isSafari } from 'react-device-detect';
-import { richTextTypes } from '../richTextTypes';
-import PortableText from '@sanity/block-content-to-react';
 import fallback from '../../assets/bioVideoFallback.png';
 import slugify from 'slugify';
+import { BlockContent } from '../blockContent';
 
 export const EmployeeBio = ({
   handleCloseClick,
@@ -96,14 +95,7 @@ export const EmployeeBio = ({
               </div>
             </div>
             <p className="tracking-wider font-extralight px-6 sm:hidden">
-              {_rawBio && (
-                <PortableText
-                  blocks={_rawBio}
-                  projectId="mnr37rl0"
-                  dataset="production"
-                  serializers={richTextTypes}
-                />
-              )}
+              {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
             </p>
             <div className="flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left">
               <h4 className="text-4xl leading-none font-extralight mb-4 uppercase tracking-wider">
@@ -114,14 +106,7 @@ export const EmployeeBio = ({
                 {title}
               </h5>
               <p className="tracking-wider lg:px-0 sm:px-10">
-                {_rawBio && (
-                  <PortableText
-                    blocks={_rawBio}
-                    projectId="mnr37rl0"
-                    dataset="production"
-                    serializers={richTextTypes}
-                  />
-                )}
+                {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
               </p>
             </div>
           </div>

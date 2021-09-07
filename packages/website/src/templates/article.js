@@ -2,17 +2,16 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
-import PortableText from '@sanity/block-content-to-react';
-import { richTextTypes } from '../components/richTextTypes';
 import { MobileHeader } from '../components/header';
 import { useLayoutQuery } from '../layout/useLayoutQuery';
 import { Footer } from '../components/footer';
 import { SEO } from '../components/seo';
 import { AlsoRead } from '../components/alsoRead';
-import * as styles from './Blockcontent.module.css';
+import * as styles from '../components/blockContent/Blockcontent.module.css';
 import { SocialShare } from '../components/socialShare';
 import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../components/createSlugForEmployee';
+import { BlockContent } from '../components/blockContent';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
@@ -96,14 +95,7 @@ const ArticleTemplate = (props) => {
                 </span>
               </div>
             )}
-            <span className={styles.body}>
-              <PortableText
-                blocks={_rawBody}
-                projectId="mnr37rl0"
-                dataset="production"
-                serializers={richTextTypes}
-              />
-            </span>
+            <BlockContent blocks={_rawBody} />
             <div className="mt-6 relative z-20">
               <SocialShare
                 url={window.location.href}
@@ -140,14 +132,7 @@ const ArticleTemplate = (props) => {
               <GatsbyImage image={mainImage.asset.gatsbyImageData} />
             </div>
           )}
-          <span className={styles.body}>
-            <PortableText
-              blocks={_rawBody}
-              projectId="mnr37rl0"
-              dataset="production"
-              serializers={richTextTypes}
-            />
-          </span>
+          <BlockContent blocks={_rawBody} />
           <div className="flex justify-end items-center mb-8">
             <div className="relative z-20">
               <SocialShare

@@ -8,6 +8,7 @@ import { Hire, HireAlt } from '../components/hire';
 import { BlogSlider } from '../components/blogSlider';
 import { VideoIntro } from '../components/videoIntro';
 import { graphql } from 'gatsby';
+import { BlockContent } from '../components/blockContent';
 
 const Index = ({ data, location }) => {
   const linesAndClasses = [
@@ -37,21 +38,10 @@ const Index = ({ data, location }) => {
               videoMp4={data.video.videoMp4.asset.url}
               videoWebm={data.video.videoWebm.asset.url}
             >
-              FØLG OSS GJENNOM VÅR UKENTLIGE VIDEOSERIE
+              {landingPage.videoTextOverlay}
             </VideoIntro>
             <WhoWeAre title="Hvem er vi">
-              <p className="text-footer sm:text-xl tracking-wider mb-8 font-extralight">
-                Alv er produktet av alle konsulentene som jobber i selskapet.
-                Dyktige konsulenter gjør Alv til et bra produkt. En dyktig
-                konsulent er en konsulent som er mer en bare faglig sterk.
-              </p>
-              <p className="text-footer sm:text-xl tracking-wider mb-8 font-extralight">
-                I Alv har vi tro på at dyktige konsulenter er de som hele tiden
-                ønsker å utvikle seg selv, og de rundt seg. Dette er
-                grunnpilarene for hvordan vi bygger Alv. Følg gjerne videoserien
-                vår for å få et bedre innblikk i hvordan vi bygger Alv som
-                selskap.
-              </p>
+              <BlockContent blocks={landingPage._rawAboutText} />
             </WhoWeAre>
           </div>
           <Hire
@@ -91,6 +81,8 @@ export const query = graphql`
       pageDescription
       pageTitle
 
+      videoTextOverlay
+
       flipSection1Image {
         asset {
           gatsbyImageData
@@ -116,6 +108,8 @@ export const query = graphql`
       flipSection3Text
       flipSection3TextOverImage
       flipSection3Title
+      _rawAboutText
+      aboutTitle
     }
     video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
       id
