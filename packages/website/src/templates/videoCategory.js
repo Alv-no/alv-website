@@ -16,6 +16,10 @@ const VideoCategoryTemplate = ({ pageContext }) => {
     setSortedVideos(list);
   };
 
+  const seasonTitles = pageContext.category.playlists.process.map(
+    (el) => el.title
+  );
+
   return (
     <Layout>
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
@@ -28,7 +32,11 @@ const VideoCategoryTemplate = ({ pageContext }) => {
             playlist={seasons}
           />
           <div className="mt-5" />
-          <VideoFilter seasons={seasons} onChange={sortedList} />
+          <VideoFilter
+            seasonTitles={seasonTitles}
+            seasons={seasons}
+            onChange={sortedList}
+          />
           <VideoSection playlist={sortedVideos} />
         </div>
       </div>
