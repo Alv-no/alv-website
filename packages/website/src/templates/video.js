@@ -27,7 +27,7 @@ const VideoTemplate = ({ pageContext }) => {
               {...video}
               title={video.title}
               subtitle=""
-              description=""
+              description={video.description}
               videoId={video.videoId}
             />
             <span className="lg:hidden block px-5">
