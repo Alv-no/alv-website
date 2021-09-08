@@ -5,31 +5,30 @@ import { ReasonsSlider } from '../components/reasonsSlider';
 import { useWorkQuery } from '../hookspages/useWorkQuery';
 
 const WorkForAlv = () => {
-  const data = useWorkQuery();
-  const {
-    sanityCareerPage: { pageDescription } = { pageDescription: false },
-    sanityCareerPage: { pageTitle } = { pageTitle: false },
-    sanityCareerPage: { reasonsCarousel } = { reasonsCarousel: false },
-  } = data;
+  const { sanityCareerPage, stairs, street } = useWorkQuery();
+
   return (
     <>
-      <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+      <Layout
+        pageTitle={sanityCareerPage.pageTitle}
+        pageDescription={sanityCareerPage.pageDescription}
+      >
         <div className="overflow-hidden">
           <ImageTextListHero
-            image={data.stairs.childImageSharp.gatsbyImageData}
-            openPositions={data.allSanityOpenPostionPage.nodes}
+            image={stairs.childImageSharp.gatsbyImageData}
+            positionsListLeft={sanityCareerPage.positionsListLeft}
+            positionsListRight={sanityCareerPage.positionsListRight}
           />
         </div>
         <div className="py-15 twelve:py-25">
-          {reasonsCarousel && (
+          {sanityCareerPage.reasonsCarousel && (
             <ReasonsSlider
-              image={data.street.childImageSharp.gatsbyImageData}
-              mainHeading={reasonsCarousel.mainHeading}
-              slides={reasonsCarousel.process}
+              image={street.childImageSharp.gatsbyImageData}
+              mainHeading={sanityCareerPage.reasonsCarousel.mainHeading}
+              slides={sanityCareerPage.reasonsCarousel.process}
             />
           )}
         </div>
-        {/* <ImageTextShifted image={data.interview.childImageSharp.gatsbyImageData} /> */}
       </Layout>
     </>
   );

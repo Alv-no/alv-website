@@ -21,6 +21,18 @@ export default {
       },
     },
     {
+      name: 'positionsListLeft',
+      title: 'Positions List Left',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'openPostionPage' } }],
+    },
+    {
+      name: 'positionsListRight',
+      title: 'Positions List Right',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'openPostionPage' } }],
+    },
+    {
       name: 'reasonsCarousel',
       title: 'Reasons Carousel',
       type: 'reasonsCarousel',
