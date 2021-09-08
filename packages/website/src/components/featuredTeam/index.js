@@ -18,7 +18,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
       <div className="max-w-1440 px-5 sm:px-12 mx-auto">
         {!notitle && (
           <Title underline align="left" color="text-navy">
-            Vårt Team
+            Konsulenter
           </Title>
         )}
         <div className="h-12" />
@@ -40,7 +40,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
         </div>
         <div className="w-full flex justify-end mt-10 font-semibold pr-2">
           <Link to="/ansatte">
-            <Button.Line>Se Mer</Button.Line>
+            <Button.Line>Se alle konsulentene</Button.Line>
           </Link>
         </div>
       </div>
