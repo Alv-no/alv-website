@@ -6,6 +6,18 @@ export const useWorkQuery = () => {
         sanityCareerPage {
           pageDescription
           pageTitle
+          positionsListLeft {
+            slug {
+              current
+            }
+            pageTitle
+          }
+          positionsListRight {
+            pageTitle
+            slug {
+              current
+            }
+          }
           reasonsCarousel {
             mainHeading
             process {
@@ -18,14 +30,6 @@ export const useWorkQuery = () => {
                 }
               }
             }
-          }
-        }
-        allSanityOpenPostionPage {
-          nodes {
-            slug {
-              current
-            }
-            pageTitle
           }
         }
         stairs: file(name: { eq: "stairs" }) {
@@ -46,5 +50,6 @@ export const useWorkQuery = () => {
       }
     `
   );
-  return data;
+  const { sanityCareerPage, stairs, street, interview, reasonsCarousel } = data;
+  return { sanityCareerPage, stairs, street, interview, reasonsCarousel };
 };
