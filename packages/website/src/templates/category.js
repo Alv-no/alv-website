@@ -17,9 +17,9 @@ const Category = ({ data }) => {
       label: sanityCategoryPage.overviewTitle || 'Oversikt',
       id: sanityCategoryPage.overviewTitle || 'oversikt',
     },
-    { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
+    { label: 'Hva gjør vi', id: 'hva-gjor-vi' },
     { label: 'Tjenester', id: 'tjenester' },
-    { label: 'Vårt Team', id: 'our-team' },
+    { label: 'Konsulenter', id: 'our-team' },
   ];
 
   const scrollTo = (e) => {

@@ -10,7 +10,7 @@ import { CtaSection } from '../components/ctaSection';
 const Service = ({ data }) => {
   const nav = [
     { label: 'Oversikt', id: 'oversikt' },
-    { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
+    { label: 'Hva gjør vi', id: 'hva-gjor-vi' },
   ];
 
   const scrollTo = (e) => {
