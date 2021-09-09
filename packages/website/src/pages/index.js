@@ -41,7 +41,7 @@ const Index = ({ data, location }) => {
               {landingPage.videoTextOverlay}
             </VideoIntro>
             <WhoWeAre title="Hvem er vi">
-              <BlockContent blocks={landingPage._rawAboutText} />
+              <BlockContent whiteText blocks={landingPage._rawAboutText} />
             </WhoWeAre>
           </div>
           <Hire
