@@ -15,7 +15,7 @@ export const RolesList = ({ image, roles, text }) => {
         >
           <div>
             <div className="relative" />
-            <div className="hidden sm:block sm:absolute transform -translate-y-7 translate-x-56">
+            <div className="hidden sm:block sm:absolute transform -translate-y-7 translate-x-56 z-40">
               <h3
                 className="text-4xl leading-tight font-semibold uppercase w-100"
                 style={{ lineHeight: '1.05' }}
