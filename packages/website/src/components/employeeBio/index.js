@@ -11,7 +11,7 @@ export const EmployeeBio = ({
   firstname,
   lastname,
   slug,
-  videoLink,
+  ytVideoId,
   video,
   cv,
   title,
@@ -22,8 +22,8 @@ export const EmployeeBio = ({
     return video ? video.asset.url : false;
   }, [video]);
   const youtube = useMemo(() => {
-    return videoLink || false;
-  }, [videoLink]);
+    return ytVideoId || false;
+  }, [ytVideoId]);
 
   const supportWebM = !isIOS && !isSafari;
 
@@ -31,11 +31,11 @@ export const EmployeeBio = ({
     return supportWebM && webM ? (
       <Webm src={webM} />
     ) : youtube ? (
-      <Youtube src={youtube} title={slug} />
+      <Youtube ytVideoId={ytVideoId} title={slug} />
     ) : (
       <Fallback src={fallback} alt={slug} />
     );
-  }, [slug, youtube, webM, supportWebM]);
+  }, [supportWebM, webM, youtube, ytVideoId, slug]);
 
   return (
     <div id={slugify(slug)}>
@@ -126,13 +126,14 @@ const Webm = ({ src }) => (
     <source type="video/webm" src={src} />
   </video>
 );
-const Youtube = ({ src, slug }) => (
+const Youtube = ({ slug, ytVideoId }) => (
   <iframe
     className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
     title={slug}
-    src={`${src}?autoplay=1&mute=0&enablejsapi=1`}
+    src={`https://www.youtube.com/embed/${ytVideoId}
+      `}
     frameBorder="0"
-    allow="accelerometer; autoplay;"
+    allow="accelerometer; autoplay; encrypted-media; fullscreen"
     allowFullScreen
   />
 );

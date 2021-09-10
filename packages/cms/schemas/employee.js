@@ -50,8 +50,8 @@ export default {
       type: 'file',
     },
     {
-      name: 'videoLink',
-      title: 'Video link',
+      name: 'ytVideoId',
+      title: 'YouTube Video ID',
       type: 'string',
     },
     {
