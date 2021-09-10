@@ -7,7 +7,6 @@ import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
 import { BlogSlider } from '../components/blogSlider';
 import { FeaturedTeam } from '../components/featuredTeam';
-import { WhatWeDo } from '../components/whatWeDo';
 
 const Category = ({ data }) => {
   const { sanityCategoryPage } = data;
@@ -17,7 +16,6 @@ const Category = ({ data }) => {
       label: sanityCategoryPage.overviewTitle || 'Oversikt',
       id: sanityCategoryPage.overviewTitle || 'oversikt',
     },
-    { label: 'Hva gjør vi', id: 'hva-gjor-vi' },
     { label: 'Tjenester', id: 'tjenester' },
     { label: 'Konsulenter', id: 'our-team' },
   ];
@@ -74,10 +72,6 @@ const Category = ({ data }) => {
             />
           </div>
         )}
-        {sanityCategoryPage.whatWeDo &&
-          sanityCategoryPage.whatWeDo.process[0] && (
-            <WhatWeDo data={sanityCategoryPage.whatWeDo.process} />
-          )}
         <div className="sm:mt-12 lg:mt-20" />
         <div className="max-w-1200 mx-auto">
           {sanityCategoryPage.featuredTeam && (
@@ -137,17 +131,6 @@ export const query = graphql`
       }
       servicesListText
       _rawText
-      whatWeDo {
-        process {
-          text
-          heroImage {
-            asset {
-              url
-              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-            }
-          }
-        }
-      }
     }
     allSanityServices(
       filter: { parentPage: { slug: { current: { eq: $slug } } } }

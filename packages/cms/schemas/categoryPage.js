@@ -66,11 +66,6 @@ export default {
       type: 'blockContent',
     },
     {
-      name: 'whatWeDo',
-      title: 'What We Do (add in pairs)',
-      type: 'whatWeDo',
-    },
-    {
       name: 'servicesListText',
       title: 'Text (over image) - Services List',
       type: 'string',
