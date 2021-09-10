@@ -16,7 +16,7 @@ export const FeaturedVideo = ({ video, playlist }) => (
       state={{ playlist, video, id: video.videoId }}
     >
       <div
-        className="w-full pb-56c"
+        className="w-full pb-56c shadow-card"
         style={{
           background:
             'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',

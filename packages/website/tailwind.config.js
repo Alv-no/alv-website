@@ -57,6 +57,7 @@ module.exports = {
       },
       boxShadow: {
         filter: '0px 0px 20px #00000015',
+        card: '8px 7px 16px 2px rgba(0,0,0,0.32)',
       },
       width: {
         50: '200px',
