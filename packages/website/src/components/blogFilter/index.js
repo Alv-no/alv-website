@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as Icon from '../icon';
-import styles from './BlogFilter.module.css';
+import * as styles from './BlogFilter.module.css';
 import { FilterContainer } from '../filterContainer';
 
 // Input: content array and filter elements
@@ -157,7 +157,7 @@ export const FilterField = ({
                   <div
                     className={`${styles.dot} h-2 w-2 bg-yellow rounded-full mr-2 absolute mt-px`}
                   />
-                  <span className={styles.itemSpan}>{tag}</span>
+                  <span>{tag}</span>
                 </div>
               </li>
             ))}
@@ -181,7 +181,7 @@ export const FilterField = ({
                   <div
                     className={`${styles.dot} h-2 w-2 bg-yellow rounded-full mr-2 absolute mt-px`}
                   />
-                  <span className={styles.itemSpan}>{author}</span>
+                  <span>{author}</span>
                 </div>
               </li>
             ))}
@@ -262,7 +262,7 @@ export const SortField = ({ sort, sortClick, light }) => {
         }}
       >
         <span
-          className={`${styles.sortSelected} block font-light ${
+          className={`block font-light ${
             open && 'font-bold'
           } text-sm flex items-center transition duration-100 justify-between w-full`}
         >
@@ -281,7 +281,7 @@ export const SortField = ({ sort, sortClick, light }) => {
           </span>
         </span>
         <input
-          className={`${styles.sortCheckbox} absolute left-0 w-full h-6 transform cursor-pointer opacity-0`}
+          className={`absolute left-0 w-full h-6 transform cursor-pointer opacity-0`}
           type="checkbox"
           onClick={toggleOpen}
         />

@@ -1,9 +1,7 @@
 import React from 'react';
-import PortableText from '@sanity/block-content-to-react';
-import BackgroundImage from 'gatsby-background-image-es5';
-import styles from '../../templates/Blockcontent.module.css';
+import { BgImage } from 'gbimage-bridge';
 import * as Icon from '../icon';
-import { richTextTypes } from '../richTextTypes';
+import { BlockContent } from '../blockContent';
 
 export const ColumnSection = ({
   title,
@@ -28,17 +26,10 @@ export const ColumnSection = ({
                 {title}
               </h3>
             </div>
-            <div className={styles.body}>
-              <PortableText
-                blocks={blockContent}
-                projectId="mnr37rl0"
-                dataset="production"
-                serializers={richTextTypes}
-              />
-            </div>
+            <BlockContent blocks={blockContent} />
           </div>
           <div className="pt-8 lg:ml-5 -mx-5 sm:mx-0">
-            <BackgroundImage fluid={image} className="h-full w-full">
+            <BgImage image={image} className="h-full w-full">
               <div
                 className="absolute inset-0 bg-navy text-white cursor-pointer"
                 style={{ opacity: '0.3' }}
@@ -55,7 +46,7 @@ export const ColumnSection = ({
                   </div>
                 </div>
               </div>
-            </BackgroundImage>
+            </BgImage>
           </div>
         </div>
       </div>

@@ -17,9 +17,9 @@ const Category = ({ data }) => {
       label: sanityCategoryPage.overviewTitle || 'Oversikt',
       id: sanityCategoryPage.overviewTitle || 'oversikt',
     },
-    { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
+    { label: 'Hva gjør vi', id: 'hva-gjor-vi' },
     { label: 'Tjenester', id: 'tjenester' },
-    { label: 'Vårt Team', id: 'our-team' },
+    { label: 'Konsulenter', id: 'our-team' },
   ];
 
   const scrollTo = (e) => {
@@ -59,7 +59,7 @@ const Category = ({ data }) => {
         <Overview
           image={
             sanityCategoryPage.heroImage
-              ? sanityCategoryPage.heroImage.asset.fluid
+              ? sanityCategoryPage.heroImage.asset.gatsbyImageData
               : null
           }
           blockContent={sanityCategoryPage._rawText || null}
@@ -69,7 +69,7 @@ const Category = ({ data }) => {
           <div className="mt-12">
             <RolesList
               text={sanityCategoryPage.servicesListText}
-              image={sanityCategoryPage.servicesListImage.asset.fluid}
+              image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
               roles={data.allSanityServices.edges}
             />
           </div>
@@ -111,9 +111,7 @@ export const query = graphql`
       }
       heroImage {
         asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           url
         }
       }
@@ -127,18 +125,14 @@ export const query = graphql`
         image {
           asset {
             url
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }
       servicesListImage {
         asset {
           url
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }
       servicesListText
@@ -149,9 +143,7 @@ export const query = graphql`
           heroImage {
             asset {
               url
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
             }
           }
         }
@@ -187,9 +179,7 @@ export const query = graphql`
         image {
           asset {
             url
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }

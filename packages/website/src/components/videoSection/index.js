@@ -18,10 +18,6 @@ export const VideoSection = ({ fallbackImg, playlist }) => {
   return (
     <>
       <div className="w-full px-5 sm:px-0">
-        {/* Commented out for now */}
-        {/* {sortedVideos !== [] && (
-          <VideoFilter videos={playlist} onChange={() => console.log('Sort')} />
-        )} */}
         <div className="flex justify-center">
           <div
             className="grid gap-x-4 gap-y-10 w-full"
@@ -37,7 +33,7 @@ export const VideoSection = ({ fallbackImg, playlist }) => {
                       title={video.title}
                       video={video}
                       playlist={sortedVideos}
-                      thumbnail={video.thumbnails.standard.url}
+                      thumbnail={video.thumbnail}
                       key={video.videoId}
                     />
                   );

@@ -20,5 +20,11 @@ export default {
         maxLength: 160,
       },
     },
+    {
+      name: 'videoseries',
+      title: 'Videoseries',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'videoseries' } }],
+    },
   ],
 };

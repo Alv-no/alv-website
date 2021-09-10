@@ -2,50 +2,51 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useVideoseriesQuery = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         sanityVideoseriesPage {
           pageDescription
           pageTitle
+          videoseries {
+            slug {
+              current
+            }
+          }
         }
         fallbackImg: file(name: { eq: "featuredFallback" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         videoserieBg: file(name: { eq: "videoserieBg" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         digitaliseringImg: file(name: { eq: "vitilbyr_digitalisering" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
-        allYtVideo {
-          edges {
-            node {
-              formattedPublishedAt
-              id
-              playlistId
-              playlistSlug
-              playlistName
-              position
-              publishedAt
-              title
-              description
-              videoId
-              slug
-              thumbnails {
-                standard {
-                  url
-                }
+        allSanityVideoseries {
+          nodes {
+            id
+            description
+            featuredVideo
+            videoseriesTitle
+            slug {
+              current
+            }
+            playlists {
+              process {
+                description
+                id
+                title
+              }
+            }
+            heroImage {
+              asset {
+                url
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
           }
@@ -53,27 +54,6 @@ export const useVideoseriesQuery = () => {
       }
     `
   );
-
-  // Sort videos into playlists, and in order of "position" property asc.
-  const allVideos = data.allYtVideo.edges.map((edge) => edge.node);
-  data.playlists = [...new Set(allVideos.map((video) => video.playlistId))]
-    .map(
-      (id) =>
-        (id = allVideos
-          .filter(
-            (video) =>
-              video.playlistId === id && video.thumbnails.standard !== null
-          )
-          .sort((a, b) => (a.position > b.position ? -1 : 1)))
-    )
-    .filter(
-      (list) =>
-        !list.some(
-          (video) =>
-            video.title.includes('#PROMO') || video.title.includes('#ANSATTE')
-        )
-    )
-    .sort((a, b) => (a.length > b.length ? -1 : 1));
 
   return data;
 };

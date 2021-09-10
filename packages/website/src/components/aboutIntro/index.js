@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
 
 export const AboutIntro = ({ topImg, bottomImg }) => {
@@ -11,8 +11,8 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
       }}
     >
       <div className="w-full">
-        <Image
-          fluid={topImg}
+        <GatsbyImage
+          image={topImg}
           style={{ height: '600px', width: '100%' }}
           className="md:pl-56 lg:pl-0 pl-0"
         />
@@ -61,7 +61,10 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
             </p>
           </div>
 
-          <Image fluid={bottomImg} className="opacity-70 lg:block hidden " />
+          <GatsbyImage
+            image={bottomImg}
+            className="opacity-70 lg:block hidden "
+          />
         </div>
       </div>
     </div>

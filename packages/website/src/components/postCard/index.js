@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import * as Icon from '../icon';
-import styles from './PostCard.module.css';
+import * as styles from './PostCard.module.css';
 
 export const PostCard = ({
   slug,
@@ -46,8 +46,10 @@ export const PostCard = ({
             <div className="font-light mb-8">{newDescription}</div>
           </div>
           <div className="overflow-hidden h-50">
-            <Image
-              fluid={(mainImage && mainImage.asset.fluid) || fallbackImg}
+            <GatsbyImage
+              image={
+                (mainImage && mainImage.asset.gatsbyImageData) || fallbackImg
+              }
               className="transform group-hover:scale-110 object-cover duration-300 transition h-full"
             />
           </div>
@@ -64,9 +66,11 @@ export const PostCard = ({
             </div>
             <div className="flex items-center mb-3">
               <div className="h-6 w-6 rounded-full overflow-hidden mr-2 filter-grayscale">
-                <Image
-                  fluid={
-                    (author && author.image && author.image.asset.fluid) ||
+                <GatsbyImage
+                  image={
+                    (author &&
+                      author.image &&
+                      author.image.asset.gatsbyImageData) ||
                     fallbackImg
                   }
                 />

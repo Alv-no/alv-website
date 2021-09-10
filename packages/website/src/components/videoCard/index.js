@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export const VideoCard = ({
   title,
@@ -18,9 +18,7 @@ export const VideoCard = ({
   };
   return (
     <Link
-      to={`/videoserie/${
-        video.playlistSlug || 'videoserie'
-      }/${video.slug.replace('?', '')}`}
+      to={`/videoserie/${video.playlistSlug}/${video.slug}`}
       state={{ playlist, video, id: video.videoId }}
       className="w-full"
       onClick={noLink ? handleClick : null}
@@ -31,7 +29,7 @@ export const VideoCard = ({
             {thumbnail ? (
               <img src={thumbnail} alt={title} />
             ) : (
-              <Image fluid={fallbackImg} />
+              <GatsbyImage image={fallbackImg} />
             )}
           </div>
         </div>

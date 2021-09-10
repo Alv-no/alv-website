@@ -1,18 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
-import Image from 'gatsby-image';
-import PortableText from '@sanity/block-content-to-react';
-import { richTextTypes } from '../components/richTextTypes';
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import { MobileHeader } from '../components/header';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { useLayoutQuery } from '../layout/useLayoutQuery';
 import { Footer } from '../components/footer';
 import { SEO } from '../components/seo';
 import { AlsoRead } from '../components/alsoRead';
-import styles from './Blockcontent.module.css';
+import * as styles from '../components/blockContent/Blockcontent.module.css';
 import { SocialShare } from '../components/socialShare';
 import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../components/createSlugForEmployee';
+import { BlockContent } from '../components/blockContent';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
@@ -49,8 +48,8 @@ const ArticleTemplate = (props) => {
   const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
   const metaImage =
     socials && socials.socialImage
-      ? socialImage.asset.fixed.src
-      : mainImage.asset.fluid.src;
+      ? getSrc(socialImage.asset.gatsbyImageData)
+      : null;
 
   return (
     <>
@@ -67,7 +66,7 @@ const ArticleTemplate = (props) => {
           {...postAuthor}
           isEmployee={!guestAuthor}
           authorSlug={authorSlug}
-          fallbackImg={props.data.fallbackImg.childImageSharp.fluid}
+          fallbackImg={props.data.fallbackImg.childImageSharp.gatsbyImageData}
           servicePages={servicePages}
           categoryPages={categoryPages}
         >
@@ -89,21 +88,14 @@ const ArticleTemplate = (props) => {
                 <span
                   className={` ${styles.mainImg} relative z-0 fixed opacity-90`}
                 >
-                  <Image
-                    fluid={mainImage.asset.fluid}
+                  <GatsbyImage
+                    image={mainImage.asset.gatsbyImageData}
                     style={{ zIndex: '0', position: 'relative' }}
                   />
                 </span>
               </div>
             )}
-            <span className={styles.body}>
-              <PortableText
-                blocks={_rawBody}
-                projectId="mnr37rl0"
-                dataset="production"
-                serializers={richTextTypes}
-              />
-            </span>
+            <BlockContent blocks={_rawBody} />
             <div className="mt-6 relative z-20">
               <SocialShare
                 url={window.location.href}
@@ -137,17 +129,10 @@ const ArticleTemplate = (props) => {
           <h1 className="text-blog font-bold mb-8">{title}</h1>
           {mainImage && (
             <div className="w-full mb-3">
-              <Image fluid={mainImage.asset.fluid} />
+              <GatsbyImage image={mainImage.asset.gatsbyImageData} />
             </div>
           )}
-          <span className={styles.body}>
-            <PortableText
-              blocks={_rawBody}
-              projectId="mnr37rl0"
-              dataset="production"
-              serializers={richTextTypes}
-            />
-          </span>
+          <BlockContent blocks={_rawBody} />
           <div className="flex justify-end items-center mb-8">
             <div className="relative z-20">
               <SocialShare
@@ -178,9 +163,7 @@ export const query = graphql`
   query($slug: String!) {
     fallbackImg: file(name: { eq: "fallback" }) {
       childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 300, layout: CONSTRAINED)
       }
     }
     sanityArticle(slug: { current: { eq: $slug } }) {
@@ -198,9 +181,7 @@ export const query = graphql`
         title
         image {
           asset {
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }
@@ -214,18 +195,14 @@ export const query = graphql`
       }
       mainImage {
         asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }
       guestAuthor {
         guestAuthor {
           image {
             asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               url
             }
           }
@@ -240,9 +217,7 @@ export const query = graphql`
         socialTitle
         socialImage {
           asset {
-            fixed(height: 630, width: 1200) {
-              src
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }
@@ -261,17 +236,13 @@ export const query = graphql`
           }
           mainImage {
             asset {
-              fluid(maxWidth: 800) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
             }
           }
           author {
             image {
               asset {
-                fluid {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
             firstname
@@ -281,9 +252,7 @@ export const query = graphql`
             guestAuthor {
               image {
                 asset {
-                  fluid {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
                   url
                 }
               }

@@ -1,10 +1,8 @@
 import React from 'react';
-import styles from '../../templates/Blockcontent.module.css';
 import { Title } from '../title';
-import { richTextTypes } from '../richTextTypes';
 import * as Button from '../button';
-import PortableText from '@sanity/block-content-to-react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { BlockContent } from '../blockContent';
 
 export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
   return (
@@ -21,7 +19,10 @@ export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
           }}
         >
           {!flip && (
-            <Image fluid={image} className="sm:h-40vh lg:h-auto mb-5 lg:mb-0" />
+            <GatsbyImage
+              image={image}
+              className="sm:h-40vh lg:h-auto mb-5 lg:mb-0"
+            />
           )}
           <div className="font-light flex flex-col justify-between sm:h-full overflow-hidden">
             <div className="px-5 sm:px-0">
@@ -32,14 +33,7 @@ export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
               >
                 {title}
               </Title>
-              <div className={styles.body}>
-                <PortableText
-                  blocks={blockContent}
-                  projectId="mnr37rl0"
-                  dataset="production"
-                  serializers={richTextTypes}
-                />
-              </div>
+              <BlockContent blocks={blockContent} />
             </div>
             <div
               className={`w-full flex justify-end sm:relative px-5 sm:px-0 lg:justify-${
@@ -49,7 +43,9 @@ export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
               <Button.CtaArrow path={link}>Lær Mer</Button.CtaArrow>
             </div>
           </div>
-          {flip && <Image fluid={image} className="sm:h-40vh lg:h-auto" />}
+          {flip && (
+            <GatsbyImage image={image} className="sm:h-40vh lg:h-auto" />
+          )}
         </div>
       </div>
     </>

@@ -1,45 +1,43 @@
 import React, { useState } from 'react';
 import Layout from '../layout';
 import { graphql } from 'gatsby';
-import { EpisodeCards } from '../components/episodeCards';
 import { VideoHero } from '../components/videoHero';
-import slugify from 'slugify';
+import { VideoFilter } from '../components/videoFilter';
+import { VideoSection } from '../components/videoSection';
 
-const VideoCategoryTemplate = ({ pageContext, data }) => {
-  const { title, videos, slug } = pageContext;
-  const [playlist, setPlaylist] = useState(null);
-  const image = data.allSanityVideoseries.nodes[0].heroImage.asset.fluid;
-  const { description } = data.allSanityVideoseries.nodes[0];
+const VideoCategoryTemplate = ({ pageContext }) => {
+  const {
+    category: { videoseriesTitle, seasons, description, heroImage },
+  } = pageContext;
 
-  useState(() => {
-    const formattedVideos = videos.map((video) => {
-      video.playlistSlug = slug;
-      video.playlistName = title;
-      video.slug = slugify(video.title.replace(' |', ''), {
-        remove: /[*+~.()|#'"!:@?]/,
-        lower: true,
-      });
-      return video;
-    });
-    setPlaylist(formattedVideos);
-  }, []);
+  const [sortedVideos, setSortedVideos] = useState(seasons[0]);
 
-  //
+  const sortedList = (list) => {
+    setSortedVideos(list);
+  };
+
+  const seasonTitles = pageContext.category.playlists.process.map(
+    (el) => el.title
+  );
 
   return (
     <Layout>
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto">
           <VideoHero
-            video={videos[0]}
-            backgroundImage={image}
-            fallbackImg={image}
-            title={title}
+            video={seasons[seasons.length - 1][0]}
+            backgroundImage={heroImage.asset.gatsbyImageData}
+            title={videoseriesTitle}
             description={description}
-            playlist={playlist}
+            playlist={seasons}
           />
           <div className="mt-5" />
-          {playlist && <EpisodeCards playlist={playlist} tabs={false} />}
+          <VideoFilter
+            seasonTitles={seasonTitles}
+            seasons={seasons}
+            onChange={sortedList}
+          />
+          <VideoSection playlist={sortedVideos} />
         </div>
       </div>
     </Layout>
@@ -69,9 +67,7 @@ export const query = graphql`
         heroImage {
           asset {
             url
-            fluid {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }

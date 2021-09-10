@@ -23,7 +23,7 @@ export const EpisodeCards = ({ fallbackImg, playlist }) => {
     <>
       <div className="w-full px-5 sm:px-0">
         {sortedVideos !== [] && (
-          <VideoFilter videos={playlist} onChange={sortedList} />
+          <VideoFilter seasons={playlist} onChange={sortedList} />
         )}
         <div className="flex justify-center">
           <div
@@ -40,7 +40,7 @@ export const EpisodeCards = ({ fallbackImg, playlist }) => {
                       title={video.title}
                       video={video}
                       playlist={sortedVideos}
-                      thumbnail={video.thumbnails.standard.url}
+                      thumbnail={video.thumbnail}
                       noLink={true}
                       key={video.videoId}
                     />

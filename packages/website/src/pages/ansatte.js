@@ -4,7 +4,7 @@ import { Title } from '../components/title';
 import { Description } from '../components/description';
 import { EmployeeSection } from '../components/employeeSection';
 import { Cta } from '../components/cta';
-import { useEmployeeQuery } from '../hooks/useEmployeeQuery';
+import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import slugify from 'slugify';
 
 const Employees = ({ location }) => {
@@ -27,7 +27,7 @@ const Employees = ({ location }) => {
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
-        <Title>Ansatte</Title>
+        <Title>Våre Konsulenter</Title>
         <div className="sm:h-8 h-4" />
         <div className="flex justify-center">
           <span className="px-6">
@@ -42,11 +42,11 @@ const Employees = ({ location }) => {
           allTags={data.allSanityEmployeeTag.edges}
           allEmployees={allEmployees}
           linkedId={activeCard}
-          fallbackImg={data.fallbackImg.childImageSharp.fluid}
+          fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
         />
         <Cta
-          image={data.cta.childImageSharp.fluid}
-          fallback={data.ctaFallback.childImageSharp.fluid}
+          image={data.cta.childImageSharp.gatsbyImageData}
+          fallback={data.ctaFallback.childImageSharp.gatsbyImageData}
           heading="Bli en av oss"
           internalLink="/jobbe-i-alv"
           buttonText="Bli en alv"

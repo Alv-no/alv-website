@@ -17,10 +17,10 @@ module.exports = {
         head: true,
       },
     },
-    'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     'gatsby-plugin-postcss',
-    'gatsby-background-image-es5',
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-sitemap`,
     {
@@ -30,7 +30,6 @@ module.exports = {
         dataset: `production`,
         token: process.env.SANITY_TOKEN,
         graphqlTag: 'default',
-        overlayDrafts: true,
       },
     },
     {
@@ -47,30 +46,14 @@ module.exports = {
         path: `${__dirname}/src/assets/`,
       },
     },
+
     {
-      resolve: `gatsby-plugin-favicon`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        logo: './src/favicons/favicon-32x32.png',
-
-        // WebApp Manifest Configuration
-        dir: 'auto',
-        lang: 'en-US',
-        background: '#fff',
-        themeColor: '#fff',
-        display: 'standalone',
-        orientation: 'any',
-        version: '1.0',
-
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          yandex: false,
-          windows: false,
-        },
+        name: `Alv AS`,
+        display: `standalone`,
+        icon: 'src/favicons/favicon-32x32.png',
+        lang: `no`,
       },
     },
     {

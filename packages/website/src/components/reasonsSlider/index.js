@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icon from '../icon';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Slider from 'react-slick';
 
 export const ReasonsSlider = ({ mainHeading, slides }) => {
@@ -30,7 +30,7 @@ export const ReasonsSlider = ({ mainHeading, slides }) => {
             mainHeading={mainHeading}
             heading={el.heading}
             description={el.description}
-            image={el.image.asset.fluid}
+            image={el.image.asset.gatsbyImageData}
             slideNr={index + 1}
           />
         ))}
@@ -66,7 +66,7 @@ export const ArticleSlide = ({
         </div>
       </div>
     </div>
-    <Image fluid={image} className="twelve:h-auto h-60vh" />
+    <GatsbyImage image={image} className="twelve:h-auto h-60vh" />
     <div className="sm:px-12 px-5 twelve:hidden mb-12">
       <div className="flex mt-12">
         <div className="sm:text-4xl text-2xl mr-5 text-white py-0 flex items-center sm:px-12 px-6 bg-navy">
@@ -84,15 +84,15 @@ export const ArticleSlide = ({
 const PrevArrowLine = ({ onClick }) => {
   return (
     <div
-      className="absolute justify-between twelve:block hidden h-5 text-navy top-2/4"
+      className="bg-navy bg-opacity-90 pr-3 absolute justify-between twelve:block hidden h-8 text-navy top-2/4"
       style={{ top: '50%' }}
     >
       <div
-        className="flex items-center cursor-pointer relative z-10"
+        className="h-full flex items-center cursor-pointer relative z-10"
         onClick={onClick}
       >
-        <div className="w-20 bg-navy h-2px" />{' '}
-        <div className="uppercase tracking-wider text-navy ml-5 font-semibold text-base">
+        <div className="w-20 bg-white h-2px" />{' '}
+        <div className="uppercase tracking-wider text-white ml-5 font-semibold text-base">
           Tilbake
         </div>
       </div>
@@ -104,15 +104,13 @@ const PrevArrowLine = ({ onClick }) => {
 const NextArrowLine = ({ onClick }) => {
   return (
     <div
-      className="absolute flex justify-between h-5 text-navy inset-0 w-full"
+      className="bg-navy bg-opacity-90 pl-3 absolute flex justify-between h-8 text-navy right-0"
       style={{ top: '50%' }}
+      onClick={onClick}
     >
       <div />
       <div className="flex items-center cursor-pointer">
-        <div
-          className="uppercase tracking-wider text-white mr-5 font-semibold text-base"
-          onClick={onClick}
-        >
+        <div className="uppercase tracking-wider text-white mr-5 font-semibold text-base">
           Neste
         </div>
         <div className="w-20 bg-white h-2px" />{' '}

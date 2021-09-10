@@ -1,8 +1,8 @@
 import React from 'react';
 import * as Button from '../button';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Link from 'gatsby-link';
-import BackgroundImage from 'gatsby-background-image-es5';
+import { BgImage } from 'gbimage-bridge';
 
 export const RolesList = ({ image, roles, text }) => {
   return (
@@ -23,13 +23,13 @@ export const RolesList = ({ image, roles, text }) => {
                 {text || 'Andre tjenester fra Alv'}
               </h3>
             </div>
-            <Image
-              fluid={image}
+            <GatsbyImage
+              image={image}
               className="relative h-100 opacity-35 sm:block hidden md:-ml-10"
             />
           </div>
           <span className="sm:hidden">
-            <BackgroundImage fluid={image}>
+            <BgImage image={image}>
               <div className="bg-navy bg-opacity-20">
                 <h3
                   className="text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase w-100"
@@ -38,7 +38,7 @@ export const RolesList = ({ image, roles, text }) => {
                   {text || 'Andre tjenester fra Alv'}
                 </h3>
               </div>
-            </BackgroundImage>
+            </BgImage>
           </span>
 
           <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end px-5 sm:px-0">

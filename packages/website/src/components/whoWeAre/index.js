@@ -7,7 +7,7 @@ export const WhoWeAre = ({ title, children }) => {
   return (
     <>
       <div
-        className="mx-5 sm:mx-16 twelve::px-12 twelve:grid text-white twelve:mt-20 mt-8 sm:mt-10 tracking-wider gap-x-10 max-w-1440 twleve:mx-auto"
+        className="mx-5 sm:mx-16 twelve:px-12 twelve:grid twelve:mx-auto text-white twelve:mt-20 mt-8 sm:mt-10 tracking-wider gap-x-10 max-w-1440 twleve:mx-auto"
         style={{ gridTemplateColumns: '1fr 1fr' }}
       >
         <div className="twelve:flex justify-end w-full ">

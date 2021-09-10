@@ -10,7 +10,7 @@ import { CtaSection } from '../components/ctaSection';
 const Service = ({ data }) => {
   const nav = [
     { label: 'Oversikt', id: 'oversikt' },
-    { label: 'Hva Gjør Vi', id: 'hva-gjor-vi' },
+    { label: 'Hva gjør vi', id: 'hva-gjor-vi' },
   ];
 
   const scrollTo = (e) => {
@@ -31,13 +31,13 @@ const Service = ({ data }) => {
           title={data.sanityServices.heroHeading}
           description={data.sanityServices.heroDescription}
           internalLink="/kontakt-oss"
-          image={data.sanityServices.heroImage.asset.fluid}
+          image={data.sanityServices.heroImage.asset.gatsbyImageData}
         />
       </div>
       <div className="w-full bg-white tracking-wider z-10 relative">
         <ServiceNavList
           nav={nav}
-          heroImage={data.sanityServices.heroImage.asset.fluid}
+          heroImage={data.sanityServices.heroImage.asset.gatsbyImageData}
           raw={data.sanityServices._rawAboutBlock}
           heading={data.sanityServices.aboutSection}
           scrollTo={scrollTo}
@@ -45,7 +45,7 @@ const Service = ({ data }) => {
         <div className="overflow-x-hidden">
           <div className="h-10 sm:h-0" />
           <RolesList
-            image={data.rolesImg.childImageSharp.fluid}
+            image={data.rolesImg.childImageSharp.gatsbyImageData}
             roles={data.allSanityServices.edges}
             id="hva-gjor-vi"
           />
@@ -84,9 +84,7 @@ export const query = graphql`
       id
       heroImage {
         asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }
       slug {
@@ -118,18 +116,14 @@ export const query = graphql`
         }
       }
     }
-    rolesImg: file(name: { eq: "vitilbyr_digitalisering" }) {
+    rolesImg: file(name: { eq: "interview" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData
       }
     }
     cUtvikler: file(name: { eq: "vitilbyr_header" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }

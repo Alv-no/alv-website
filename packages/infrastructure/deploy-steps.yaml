@@ -52,7 +52,7 @@ steps:
       environmentServiceNameAzureRM: '$(serviceConnection)'
       workingDirectory: packages/infrastructure/stage-1
       commandOptions: >
-        -var "docker_tag=$(git-short-hash)"
+        -var "docker_tag=$(git-short-hash)-$(Build.BuildId)"
         -var "subscription_id=$(subscriptionId)"
         -var "service_name=$(serviceName)"
         -var "hostname=$(hostname)"

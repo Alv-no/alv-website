@@ -2,7 +2,7 @@ import React from 'react';
 import { MobileHeader, BlogHeader } from '../header';
 import { Title } from '../title';
 import Link from 'gatsby-link';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import * as Icon from '../icon';
 import { White } from '../logo';
 
@@ -62,8 +62,8 @@ const Sidebar = ({
                 to={`/ansatte#${authorSlug}`}
                 state={{ activeCard: id, employee: authorSlug }}
               >
-                <Image
-                  fluid={(image && image.asset.fluid) || fallbackImg}
+                <GatsbyImage
+                  image={(image && image.asset.gatsbyImageData) || fallbackImg}
                   className="w-32 h-40 object-contain filter-grayscale opacity-70 transition duration-300 hover:opacity-100 hover:filter-grayscale-0"
                   alt="author"
                 />

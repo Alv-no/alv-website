@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import * as Button from '../button';
 import * as Icon from '../icon';
 import { Title } from '../title';
-import BackgroundImage from 'gatsby-background-image-es5';
+import { BgImage } from 'gbimage-bridge';
 import { useBlogQuery } from '../../hooks/useBlogQuery';
 import Slider from 'react-slick';
 
@@ -57,7 +57,7 @@ export const BlogSlider = ({ dot, color, blueText }) => {
             {articles.map((article, index) => {
               return (
                 <Slide
-                  fallbackImg={data.fallbackImg.childImageSharp.fluid}
+                  fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
                   article={article}
                   key={index}
                   blueText={blueText}
@@ -141,9 +141,9 @@ const Slide = ({
               !active && 'bg-opacity-60 bg-navy'
             }`}
           />
-          <BackgroundImage
-            fluid={
-              (article.mainImage && article.mainImage.asset.fluid) ||
+          <BgImage
+            image={
+              (article.mainImage && article.mainImage.asset.gatsbyImageData) ||
               fallbackImg
             }
             className="lg:max-w-685 mx-auto"
@@ -160,7 +160,7 @@ const Slide = ({
                 {active && <Button.CtaArrow>Les mer</Button.CtaArrow>}
               </div>
             </div>
-          </BackgroundImage>
+          </BgImage>
           <div
             className={`grid ${blueText ? 'text-navy' : 'text-white'}`}
             style={{ gridTemplateColumns: '80% auto' }}

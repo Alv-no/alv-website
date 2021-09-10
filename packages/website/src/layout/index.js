@@ -2,7 +2,7 @@ import React from 'react';
 import { Footer } from '../components/footer';
 import { Header, MobileHeader } from '../components/header';
 import { SEO } from '../components/seo';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { useLayoutQuery } from './useLayoutQuery';
 import './layout.css';
 
 const Layout = ({ children, path, pageDescription, pageTitle }) => {

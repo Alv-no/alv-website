@@ -22,6 +22,14 @@ yarn
 yarn workspace website run dev
 ```
 
+### Workaround for Apple m1
+
+``` shell
+brew install vips
+yarn rebuild sharp
+yarn set resolution sharp@npm:0.28.2
+```
+
 ## Docker
 
 For production we use Docker, you can build and test the Docker images locally.
@@ -29,7 +37,7 @@ You can either build and start all services by using docker-compose:
 
 
 ```
-make build-website build-cms
+make build-website build-cms build-mail-api
 docker-compose up -d
 ```
 
@@ -51,4 +59,5 @@ Package                       | Description
 -------                       | -----------
 [website](./packages/website) | Gatsby-powered website
 [cms](./packages/cms)         | Sanity CMS
+[mail-api](./packages/mail-api) | Mail API backend for contact form
 [infrastructure](./packages/infrastructure) | Terraform Infrastructure as Code for Azure

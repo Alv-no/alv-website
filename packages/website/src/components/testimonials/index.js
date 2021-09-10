@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
 import Slider from 'react-slick';
 
@@ -74,7 +74,10 @@ export const Testimonials = ({ image }) => {
 const HappyCustomer = ({ name, company, testimonial, image }) => (
   <div className="w-full flex flex-col justify-center items-center text-center text-lg sm:px-15 mt-4 lg:px-32 lg:pb-0 pb-2">
     <div className="lg:mt-15">
-      <Image fluid={image} className="rounded rounded-full h-20 w-20 mb-4" />
+      <GatsbyImage
+        image={image}
+        className="rounded rounded-full h-20 w-20 mb-4"
+      />
     </div>
     <div className="font-semibold">{name}</div>
     <div className="mb-4 font-light">{company}</div>
