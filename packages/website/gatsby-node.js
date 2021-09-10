@@ -125,9 +125,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 video.videoId = video.resourceId.videoId;
                 video.playlistName = category.videoseriesTitle;
                 video.thumbnail =
-                  video.thumbnails?.standard?.url ||
-                  video.thumbnails?.medium?.url ||
-                  res.data.imageSharp.fixed.src;
+                  video.thumbnails?.high?.url || res.data.imageSharp.fixed.src;
                 video.slug = slugify(video.title.replace(' |', ''), {
                   remove: /[*+~.()|#'"!:@?]/,
                   lower: true,
