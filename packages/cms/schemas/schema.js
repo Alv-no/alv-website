@@ -16,7 +16,6 @@ import landingPage from './landingPage';
 import aboutPage from './aboutPage';
 import employeePage from './employeePage';
 import careerPage from './careerPage';
-import whatWeDo from './whatWeDo';
 import contactPage from './contactPage';
 import ourServicesPage from './ourServicesPage';
 import openPositionPage from './openPositionPage';
@@ -68,7 +67,6 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
-    whatWeDo,
     imageAndText,
     guestAuthor,
     socials,

@@ -8,10 +8,7 @@ import { NavyIntroImage } from '../components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
 
 const Service = ({ data }) => {
-  const nav = [
-    { label: 'Oversikt', id: 'oversikt' },
-    { label: 'Hva gjør vi', id: 'hva-gjor-vi' },
-  ];
+  const nav = [{ label: 'Oversikt', id: 'oversikt' }];
 
   const scrollTo = (e) => {
     const element = document.getElementById(e.target.name);
