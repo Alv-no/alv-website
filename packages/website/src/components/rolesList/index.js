@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import Link from 'gatsby-link';
 import { BgImage } from 'gbimage-bridge';
 
-export const RolesList = ({ image, roles, text }) => {
+export const RolesList = ({ image, roles, categoryName }) => {
   return (
     <>
       <div className="w-full" id="hva-gjor-vi">
@@ -15,12 +15,12 @@ export const RolesList = ({ image, roles, text }) => {
         >
           <div>
             <div className="relative" />
-            <div className="hidden sm:block sm:absolute transform -translate-y-7 translate-x-56 z-40">
+            <div className="hidden sm:block sm:absolute transform translate-y-4 translate-x-56 z-40">
               <h3
-                className="text-4xl leading-tight font-semibold uppercase w-100"
+                className="text-4xl leading-tight font-semibold uppercase"
                 style={{ lineHeight: '1.05' }}
               >
-                {text || 'Andre tjenester fra Alv'}
+                Tjenester innenfor <br /> {categoryName}
               </h3>
             </div>
             <GatsbyImage
@@ -32,10 +32,10 @@ export const RolesList = ({ image, roles, text }) => {
             <BgImage image={image}>
               <div className="bg-navy bg-opacity-20">
                 <h3
-                  className="text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase w-100"
+                  className="text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase"
                   style={{ lineHeight: '1.05' }}
                 >
-                  {text || 'Andre tjenester fra Alv'}
+                  Tjenester innenfor <br /> {categoryName}
                 </h3>
               </div>
             </BgImage>

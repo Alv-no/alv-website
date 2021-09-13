@@ -6,6 +6,7 @@ import { RolesList } from '../components/rolesList';
 import { BlogSlider } from '../components/blogSlider';
 import { NavyIntroImage } from '../components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
+import { window } from 'browser-monads';
 
 const Service = ({ data }) => {
   const nav = [{ label: 'Oversikt', id: 'oversikt' }];
@@ -20,6 +21,10 @@ const Service = ({ data }) => {
     sanityServices: { pageDescription } = { pageDescription: false },
     sanityServices: { pageTitle } = { pageTitle: false },
   } = data;
+
+  const relatedServices = data.allSanityServices.edges.filter((service) =>
+    window.location.href.includes(service.node.parentPage.slug.current)
+  );
 
   return (
     <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -43,7 +48,8 @@ const Service = ({ data }) => {
           <div className="h-10 sm:h-0" />
           <RolesList
             image={data.rolesImg.childImageSharp.gatsbyImageData}
-            roles={data.allSanityServices.edges}
+            roles={relatedServices}
+            categoryName={relatedServices[0].node.parentPage.slug.current}
             id="hva-gjor-vi"
           />
           <div className="h-10" />

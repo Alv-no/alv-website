@@ -66,7 +66,7 @@ const Category = ({ data }) => {
         {sanityCategoryPage.servicesListText && (
           <div className="mt-12">
             <RolesList
-              text={sanityCategoryPage.servicesListText}
+              categoryName={sanityCategoryPage.heroHeading}
               image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
               roles={data.allSanityServices.edges}
             />
