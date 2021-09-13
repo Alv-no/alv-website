@@ -9,7 +9,10 @@ import { CtaSection } from '../components/ctaSection';
 import { window } from 'browser-monads';
 
 const Service = ({ data }) => {
-  const nav = [{ label: 'Oversikt', id: 'oversikt' }];
+  const nav = [
+    { label: 'Oversikt', id: 'oversikt' },
+    { label: 'Tjenester', id: 'tjenester' },
+  ];
 
   const scrollTo = (e) => {
     const element = document.getElementById(e.target.name);
@@ -50,7 +53,7 @@ const Service = ({ data }) => {
             image={data.rolesImg.childImageSharp.gatsbyImageData}
             roles={relatedServices}
             categoryName={relatedServices[0].node.parentPage.slug.current}
-            id="hva-gjor-vi"
+            id="tjenester"
           />
           <div className="h-10" />
           <CtaSection

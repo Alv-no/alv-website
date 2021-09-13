@@ -17,7 +17,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
                 onClick={scrollTo}
                 name={el.id}
               >
-                <span className="flex justify-between items-center">
+                <span className="flex justify-between items-center pointer-events-none">
                   {el.label}
                   <span className="scale-90 transform">
                     <Icon.Arrow />
