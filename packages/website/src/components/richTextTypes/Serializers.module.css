@@ -1,16 +1,15 @@
+.ctaContainer {
+  margin: 40px 60px;
+  position: relative;
+}
+
 .wrapper {
   display: grid;
-  grid-template-columns: 50% auto;
 }
 
 .videoWrapper {
   display: flex;
   flex-direction: column;
-}
-
-.wrapper,
-.videoWrapper {
-  margin: 40px 60px;
 }
 
 .video {
@@ -23,6 +22,7 @@
   padding: 22px;
   display: flex;
   flex-direction: column;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -33,7 +33,7 @@
 
 .heading {
   font-size: 20px;
-  margin: 0 0 14px 0 !important;
+  margin: 0 !important;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -52,17 +52,68 @@
   justify-content: flex-end;
 }
 
+.iconWrapper {
+  display: block;
+  top: 12px;
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  cursor: pointer;
+  transform: scale(0.7);
+  z-index: 30;
+}
+
+.crossIcon {
+  display: block;
+}
+
 .checkbox {
   position: absolute;
 }
 
-input[type='checkbox']:checked ~ .videoWrapper {
-  display: none !important;
+.expandIcon {
+  transform: scale(2.3) translateY(12px) translateX(-5px) rotate(-90deg);
+  display: none;
+}
+
+.checkbox:checked ~ .mediaWrapper {
+  display: none;
+}
+
+.checkbox:checked ~ .iconWrapper > .crossIcon {
+  display: none;
+}
+
+.checkbox:checked ~ .wrapper .heading {
+  width: 80%;
+}
+
+.checkbox:checked ~ .iconWrapper > .expandIcon {
+  display: block;
+}
+
+.checkbox {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  height: 40px;
+  width: 40px;
+  transform: scale(0.7);
+  z-index: 20;
+  opacity: 0;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 639px) {
-  .wrapper,
-  .videoWrapper {
+  .ctaContainer {
     margin: 30px 0px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 507px) {
+  .expandIcon {
+    transform: scale(2.3) translateY(20px) translateX(-5px) rotate(-90deg);
+    display: none;
   }
 }
