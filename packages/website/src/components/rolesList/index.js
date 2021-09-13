@@ -7,7 +7,7 @@ import { BgImage } from 'gbimage-bridge';
 export const RolesList = ({ image, roles, categoryName }) => {
   return (
     <>
-      <div className="w-full" id="hva-gjor-vi">
+      <div className="w-full" id="tjenester">
         <div
           className="max-w-1200 mx-auto sm:grid py-8 lg:gap-x-15 sm:gap-x-0 justify-between sm:pr-12"
           style={{ gridTemplateColumns: '30% 30% 30%' }}
