@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { window, document } from 'browser-monads';
-import * as Button from '../button';
-import { EmployeeGroup } from '../employeeGroup';
+import * as Button from '../../../../shared-components/button';
+import { EmployeeGroup } from '../../../../shared-components/employeeGroup';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {

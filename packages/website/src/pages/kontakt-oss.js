@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Layout from '../layout';
-import { Title } from '../components/title';
-import * as Icon from '../components/icon';
-import { useContactQuery } from '../hookspages/useContactQuery';
-import { Description } from '../components/description';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as Form from '../components/form';
-import { FormSelect } from '../components/button';
+import { Layout } from '../components/layout';
+import { Title, Description } from 'shared-components';
+import { FormSelect } from '../../../shared-components/src/components/button';
+import * as Icon from '../../../shared-components/src/components/icon';
+import { useContactQuery } from '../hookspages/useContactQuery';
+import * as Form from '../../../shared-components/src/components/form';
 
 const Contact = ({ location }) => {
   const [active, setActive] = useState('visit');
@@ -34,7 +33,7 @@ const Contact = ({ location }) => {
           className="bg-navy w-full -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto xl:grid xl:pb-20"
           style={{ gridTemplateColumns: '50% 50%' }}
         >
-          <div className="flex-1 mt-12 sm:px-10 xl:block sm:grid grid-cols-fifty sm:-ml-12 xl:ml-0">
+          <div className="flex-1 mt-6 sm:px-10 xl:block sm:grid grid-cols-fifty sm:-ml-12 xl:ml-0">
             <div>
               <div className="opacity-60 w-full xl:h-full h-40vh mt-8 xl:mt-0">
                 <GatsbyImage image={image} className="h-full" alt="kontakt" />

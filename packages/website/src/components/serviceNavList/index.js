@@ -1,8 +1,8 @@
 import React from 'react';
-import * as Icon from '../icon';
+import * as Icon from '../../../../shared-components/src/components/icon';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../title';
-import { BlockContent } from '../blockContent';
+import { Title } from '../../../../shared-components/src/components/title';
+import { StyledBlockContent } from '../styledBlockContent';
 
 export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
   return (
@@ -46,7 +46,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
                   {heading}
                 </Title>
               </div>
-              <BlockContent blocks={raw} />
+              <StyledBlockContent blocks={raw} />
             </div>
           </div>
         </nav>

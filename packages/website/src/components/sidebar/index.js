@@ -1,10 +1,13 @@
 import React from 'react';
-import { MobileHeader, BlogHeader } from '../header';
-import { Title } from '../title';
+import {
+  MobileHeader,
+  BlogHeader,
+} from '../../../../shared-components/src/components/header';
+import { Title } from '../../../../shared-components/src/components/title';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as Icon from '../icon';
-import { White } from '../logo';
+import * as Icon from '../../../../shared-components/src/components/icon';
+import { White } from '../../../../shared-components/src/components/logo';
 
 const Sidebar = ({
   children,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SortField } from '../blogFilter';
+import { SortField } from '../../../../shared-components/src/components/blogFilter';
 
 export const VideoFilter = ({ seasons, onChange, seasonTitles }) => {
   const [sort, setSort] = useState('newest');
