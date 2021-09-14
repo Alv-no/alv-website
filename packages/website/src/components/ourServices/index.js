@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'gatsby-link';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 import { BgImage } from 'gbimage-bridge';
 
 export const OurServices = ({ text, image, title }) => {

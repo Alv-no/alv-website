@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../layout';
 import { Hero } from '../components/hero';
-import { WhoWeAre } from '../components/whoWeAre';
+import { WhoWeAre } from '../../../shared-components/whoWeAre';
 import { OwnedByStaff } from '../components/ownedByStaff';
 import { OurServices } from '../components/ourServices';
 import { Hire, HireAlt } from '../components/hire';
@@ -37,7 +37,6 @@ const Index = ({ data, location }) => {
             <VideoIntro
               videoMp4={data.video.videoMp4.asset.url}
               videoWebm={data.video.videoWebm.asset.url}
-              textColor={'navy'}
             >
               {landingPage.videoTextOverlay}
             </VideoIntro>

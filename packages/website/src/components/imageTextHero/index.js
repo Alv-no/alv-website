@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 import { Title } from '../title';
 import { BgImage } from 'gbimage-bridge';
 

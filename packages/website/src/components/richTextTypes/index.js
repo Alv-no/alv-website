@@ -1,7 +1,7 @@
 import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import * as styles from './Serializers.module.css';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 import * as Icon from '../icon';
 
 const projectId = 'mnr37rl0';

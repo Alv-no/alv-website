@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../icon';
+import * as Icon from '../../website/src/components/icon';
 import Link from 'gatsby-link';
 
 export const Line = ({ children }) => (
