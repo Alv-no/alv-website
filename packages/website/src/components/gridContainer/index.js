@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { window, document } from 'browser-monads';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 import { EmployeeGroup } from '../employeeGroup';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { EmployeeCard } from '../employeeCard';
 import Link from 'gatsby-link';
 import { Title } from '../title';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 import { createSlugForEmployee } from '../createSlugForEmployee';
 
 export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {

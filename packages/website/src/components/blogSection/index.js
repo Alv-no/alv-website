@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BlogFilter } from '../blogFilter';
 import { PostCard } from '../postCard';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 
 export const BlogSection = ({ allArticles }) => {
   const [articles, setArticles] = useState(allArticles);

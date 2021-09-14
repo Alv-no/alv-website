@@ -6,7 +6,7 @@ import { useContactQuery } from '../hookspages/useContactQuery';
 import { Description } from '../components/description';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import * as Form from '../components/form';
-import { FormSelect } from '../components/button';
+import { FormSelect } from '../../../shared-components/button';
 
 const Contact = ({ location }) => {
   const [active, setActive] = useState('visit');

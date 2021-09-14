@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 import Link from 'gatsby-link';
 
 export const ServicesCard = ({ title, description, link }) => {

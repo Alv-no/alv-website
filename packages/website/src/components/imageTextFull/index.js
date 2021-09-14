@@ -1,6 +1,6 @@
 import React from 'react';
 import { Title } from '../title';
-import * as Button from '../button';
+
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { BlockContent } from '../blockContent';
 

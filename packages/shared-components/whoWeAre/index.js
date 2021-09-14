@@ -3,14 +3,14 @@ import Link from 'gatsby-link';
 import * as Button from '../button';
 import Fade from 'react-reveal/Fade';
 
-export const WhoWeAre = ({ title, children }) => {
+export const WhoWeAre = ({ title, children, textColor = 'white' }) => {
   return (
     <>
       <div
-        className="mx-5 sm:mx-16 twelve:px-12 twelve:grid twelve:mx-auto text-white twelve:mt-20 mt-8 sm:mt-10 tracking-wider gap-x-10 max-w-1440 twleve:mx-auto"
+        className={`mx-5 sm:mx-16 twelve:px-12 twelve:grid twelve:mx-auto twelve:mt-20 mt-8 sm:mt-10 tracking-wider gap-x-10 max-w-1440 twleve:mx-auto text-${textColor}`}
         style={{ gridTemplateColumns: '1fr 1fr' }}
       >
-        <div className="twelve:flex justify-end w-full ">
+        <div className="twelve:flex justify-end w-full">
           <Fade>
             <div>
               <h4 className="uppercase tracking-wider font-semibold mt-2 text-footer sm:text-about">

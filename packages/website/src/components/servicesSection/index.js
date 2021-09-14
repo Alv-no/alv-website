@@ -1,6 +1,6 @@
 import React from 'react';
 import { Title } from '../title';
-import * as Button from '../button';
+import * as Button from '../../../../shared-components/button';
 
 export const ServicesSection = ({ children, title, description, link }) => {
   return (
