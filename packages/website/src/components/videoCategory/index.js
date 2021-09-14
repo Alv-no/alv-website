@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Title } from '../title';
+import { Title } from '../../../../shared-components/src/components/title';
 import Link from 'gatsby-link';
 
 export const VideoCategory = ({

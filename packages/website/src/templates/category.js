@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../layout';
+import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
-import { NavyIntro } from '../components/navyIntro';
+import { NavyIntro, FeaturedTeam } from 'shared-components';
 import { RolesList } from '../components/rolesList';
 import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
-import { BlogSlider } from '../components/blogSlider';
-import { FeaturedTeam } from '../components/featuredTeam';
+import { BlogCarousel } from '../components/blogCarousel';
+import { StyledBlockContent } from '../components/styledBlockContent';
 
 const Category = ({ data }) => {
   const { sanityCategoryPage } = data;
@@ -60,9 +60,10 @@ const Category = ({ data }) => {
               ? sanityCategoryPage.heroImage.asset.gatsbyImageData
               : null
           }
-          blockContent={sanityCategoryPage._rawText || null}
           id={sanityCategoryPage.overviewTitle || 'oversikt'}
-        />
+        >
+          <StyledBlockContent blocks={sanityCategoryPage._rawText || null} />
+        </Overview>
         {sanityCategoryPage.servicesListText && (
           <div className="mt-12">
             <RolesList
@@ -81,7 +82,7 @@ const Category = ({ data }) => {
             />
           )}
         </div>
-        <BlogSlider blueText color={'navy'} />
+        <BlogCarousel blue={true} />
       </div>
     </Layout>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../icon';
+import * as Icon from '../../../../shared-components/src/components/icon';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Slider from 'react-slick';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../title';
+import { Title } from '../../../../shared-components/src/components/title';
 
 export const AboutIntro = ({ topImg, bottomImg }) => {
   return (

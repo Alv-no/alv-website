@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../layout';
+import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
 import { ServiceNavList } from '../components/serviceNavList';
 import { RolesList } from '../components/rolesList';
-import { BlogSlider } from '../components/blogSlider';
 import { NavyIntroImage } from '../components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
 import { window } from 'browser-monads';
+import { BlogCarousel } from '../components/blogCarousel';
 
 const Service = ({ data }) => {
   const nav = [
@@ -70,7 +70,7 @@ const Service = ({ data }) => {
           />
         </div>
         <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-          <BlogSlider blueText color="navy" />
+          <BlogCarousel blue />
         </div>
       </div>
     </Layout>

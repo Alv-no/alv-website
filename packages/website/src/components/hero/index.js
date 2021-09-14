@@ -1,7 +1,7 @@
 import React from 'react';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import * as Icon from '../icon';
-import { Title } from '../title';
+import * as Icon from '../../../../shared-components/src//components/icon';
+import { Title } from 'shared-components';
 import { Typewriter } from '../typewriter';
 
 export const Hero = ({

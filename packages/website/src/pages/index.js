@@ -1,72 +1,76 @@
 import React from 'react';
-import Layout from '../layout';
-import { Hero } from '../components/hero';
-import { WhoWeAre } from '../components/whoWeAre';
-import { OwnedByStaff } from '../components/ownedByStaff';
-import { OurServices } from '../components/ourServices';
-import { Hire, HireAlt } from '../components/hire';
-import { BlogSlider } from '../components/blogSlider';
-import { VideoIntro } from '../components/videoIntro';
 import { graphql } from 'gatsby';
-import { BlockContent } from '../components/blockContent';
+import { useBlogQuery } from '../hooks/useBlogQuery';
+import { Hero } from '../components/hero';
+import { Layout } from '../components/layout';
+import {
+  WhoWeAre,
+  OurServices,
+  BlogSlider,
+  VideoIntro,
+  Hire,
+  HireAlt,
+} from 'shared-components';
 
 const Index = ({ data, location }) => {
+  const pageTitle = data.sanityLandingPage.pageTitle || false;
+  const pageDescription = data.sanityLandingPage.pageDescription || false;
+
+  const landingPage = data.sanityLandingPage;
+
   const linesAndClasses = [
     { line: 'Vi bygger', classes: '' },
     { line: 'Norges mest attraktive', classes: 'font-black' },
     { line: 'konsulentselskap', classes: '', dot: true },
   ];
 
-  const pageTitle = data.sanityLandingPage.pageTitle || false;
-  const pageDescription = data.sanityLandingPage.pageDescription || false;
-
-  const landingPage = data.sanityLandingPage;
-
   return (
     <div className="overflow-hidden">
       <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-        <Hero
-          linesAndClasses={linesAndClasses}
-          delay={90}
-          videoMp4={data.video.heroVideoMp4.asset.url}
-          videoWebm={data.video.heroVideoWebm.asset.url}
-          routeUpdate={location.action}
-        />
         <div className="bg-navy">
           <div className="bg-navy w-full pb-15 sm:pt-0 pt-10">
+            <Hero
+              linesAndClasses={linesAndClasses}
+              delay={90}
+              videoMp4={data.video.heroVideoMp4.asset.url}
+              videoWebm={data.video.heroVideoWebm.asset.url}
+              routeUpdate={location.action}
+            />
             <VideoIntro
               videoMp4={data.video.videoMp4.asset.url}
               videoWebm={data.video.videoWebm.asset.url}
             >
               {landingPage.videoTextOverlay}
             </VideoIntro>
-            <WhoWeAre title="Hvem er vi">
-              <BlockContent whiteText blocks={landingPage._rawAboutText} />
-            </WhoWeAre>
+            <WhoWeAre
+              title="Hvem er vi"
+              whiteText
+              blocks={landingPage._rawAboutText}
+            />
           </div>
           <Hire
+            darkFade
             title={landingPage.flipSection1Title}
             text={landingPage.flipSection1Text}
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
           />
           <div className="bg-navy h-10 lg:h-32" />
           <OurServices
+            darkFade
             title={landingPage.flipSection2Title}
             text={landingPage.flipSection2Text}
             image={landingPage.flipSection2Image.asset.gatsbyImageData}
           />
           <div className="lg:h-40  h-5" />
           <HireAlt
+            darkFade
             title={landingPage.flipSection3Title}
             text={landingPage.flipSection3Text}
             image={landingPage.flipSection3Image.asset.gatsbyImageData}
             imageText={landingPage.flipSection3ImageText}
           />
-          <BlogSlider />
-          <OwnedByStaff>
-            Alv AS er 100% eid av våre ansatte. Det betyr at du vil få mulighet
-            til å kjøpe deg inn på eiersiden av selskapet når du blir ansatt.
-          </OwnedByStaff>
+          <BlogSlider useBlogQuery={useBlogQuery} />
+          <div className="lg:h-20  h-5" />
         </div>
       </Layout>
     </div>

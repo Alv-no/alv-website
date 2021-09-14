@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as Icon from '../icon';
+import * as Icon from '../../../../shared-components/src/components/icon';
 import * as styles from './PostCard.module.css';
 
 export const PostCard = ({

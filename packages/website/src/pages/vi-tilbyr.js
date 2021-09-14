@@ -1,14 +1,17 @@
 import React from 'react';
-import Layout from '../layout';
-import { ServicesHero } from '../components/servicesHero';
-import { Title } from '../components/title';
-import { Description } from '../components/description';
-import { ServicesSection } from '../components/servicesSection';
-import { ColumnSection } from '../components/columnSection';
-import { ImageTextFull } from '../components/imageTextFull';
+import { Layout } from '../components/layout';
 import { useServicesQuery } from '../hookspages/useServicesQuery';
-import { ServicesCard } from '../components/servicesCard';
-import { ImageTextCards } from '../components/imageTextCards';
+import {
+  ServicesHero,
+  Title,
+  Description,
+  ServicesSection,
+  ColumnSection,
+  ImageTextCards,
+  ImageTextFull,
+  ServicesCard,
+} from 'shared-components';
+import { StyledBlockContent } from '../components/styledBlockContent';
 
 const Services = () => {
   const data = useServicesQuery();
@@ -87,18 +90,20 @@ const Services = () => {
               <ImageTextFull
                 link={data.sanityOurServicesPage.section4link.slug.current}
                 title={data.sanityOurServicesPage.section4link.heroHeading}
-                blockContent={_rawSection4Block}
                 image={section4Image.asset.gatsbyImageData}
-              />
+              >
+                <StyledBlockContent blocks={_rawSection4Block} />
+              </ImageTextFull>
             )}
             {_rawSection5Block && (
               <ImageTextFull
                 link={data.sanityOurServicesPage.section5link.slug.current}
                 title={data.sanityOurServicesPage.section5link.heroHeading}
-                blockContent={_rawSection5Block}
                 image={section5Image.asset.gatsbyImageData}
                 flip
-              />
+              >
+                <StyledBlockContent blocks={_rawSection5Block} />
+              </ImageTextFull>
             )}
           </div>
           <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">

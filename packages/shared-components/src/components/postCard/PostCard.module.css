@@ -1,0 +1,16 @@
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container:hover .button {
+  color: white;
+}
+
+.container h3 {
+  line-height: 26px;
+}
+
+.container {
+  overflow: hidden;
+}
