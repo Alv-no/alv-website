@@ -6,7 +6,7 @@ import { OwnedByStaff } from '../components/ownedByStaff';
 import { OurServices } from '../components/ourServices';
 import { Hire, HireAlt } from '../components/hire';
 import { BlogSlider } from '../components/blogSlider';
-import { VideoIntro } from '../components/videoIntro';
+import { VideoIntro } from '../../../shared-components/videoIntro';
 import { graphql } from 'gatsby';
 import { BlockContent } from '../components/blockContent';
 
@@ -37,6 +37,7 @@ const Index = ({ data, location }) => {
             <VideoIntro
               videoMp4={data.video.videoMp4.asset.url}
               videoWebm={data.video.videoWebm.asset.url}
+              textColor={'navy'}
             >
               {landingPage.videoTextOverlay}
             </VideoIntro>
