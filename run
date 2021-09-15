@@ -2,7 +2,7 @@
 
 set -e
 
-SHORT_HASH=`git rev-parse --short=7 HEAD`
+SHORT_HASH=$(git rev-parse --short=7 HEAD)
 BUILD_ID="$4"
 TAG="$SHORT_HASH-$BUILD_ID"
 ENV=$(echo "$2" | awk '{print tolower($0)}')
@@ -12,6 +12,12 @@ KUBERNETES_CLUSTER_NAME="aks-alvtime-$ENV-westeurope"
 CONTAINER_REGISTRY_NAME=acralvtime
 CONTAINER_REGISTRY="$CONTAINER_REGISTRY_NAME.azurecr.io"
 SERVICE_TO_BUILD="$3"
+if [[ "test" = "$ENV" ]]; then
+  SUBSCRIPTION='Dev-Alv'
+fi
+if [[ "prod" = "$ENV" ]]; then
+  SUBSCRIPTION='Production-Alv'
+fi
 
 function getSecret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
@@ -45,11 +51,12 @@ function buildServices() {
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    EXISTING_HASH=$(az acr repository show-tags \
-      --name $CONTAINER_REGISTRY_NAME \
-      --repository mail-api \
-      --query "[?@ == \`$SHORT_HASH\`] \
-      | [0]"\
+    EXISTING_HASH=$(
+      az acr repository show-tags \
+        --name $CONTAINER_REGISTRY_NAME \
+        --repository mail-api \
+        --query "[?@ == \`$SHORT_HASH\`] \
+      | [0]"
     )
     if [ -n "$EXISTING_HASH" ]; then
       echo "Build $SHORT_HASH already exists in $CONTAINER_REGISTRY"
@@ -64,12 +71,12 @@ function buildServices() {
 }
 
 function pushServices() {
-  if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD"  ]] ; then
+  if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "pushing website"
     docker push "$CONTAINER_REGISTRY/website:$TAG"
   fi
 
-  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" && -n "$EXISTING_HASH" ]] ; then
+  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" && -n "$EXISTING_HASH" ]]; then
     echo "pushing mail api"
     docker push "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH"
   fi
@@ -89,10 +96,11 @@ function deployServices() {
 
   # Retrieve the access credentials for your cluster and automatically configure kubectl
   az aks get-credentials \
+    --subscription "$SUBSCRIPTION" \
     --resource-group "$RESOURCE_GROUP_NAME" \
     --name "$KUBERNETES_CLUSTER_NAME"
 
-  if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]] ; then
+  if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "helm website"
     helm upgrade website ./chart \
       --install \
@@ -104,7 +112,7 @@ function deployServices() {
     curl "https://$HOSTNAME"
   fi
 
-  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]] ; then
+  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "helm mail api"
     helm upgrade mail-api ./chart \
       --install \
