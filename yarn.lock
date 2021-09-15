@@ -29016,6 +29016,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"react@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react@npm:17.0.2"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+  checksum: 7d0dfebafe1d297503157abb2e9acdb49852185deb8700c16f4a6faad87642f84903ab18cfc16f40b9a0dfe97540f99834982ee953e6d48b39c41608dc3e4b29
+  languageName: node
+  linkType: hard
+
 "read-cache@npm:^1.0.0":
   version: 1.0.0
   resolution: "read-cache@npm:1.0.0"
@@ -30715,6 +30725,8 @@ resolve@^2.0.0-next.3:
 "shared-components@workspace:packages/shared-components":
   version: 0.0.0-use.local
   resolution: "shared-components@workspace:packages/shared-components"
+  dependencies:
+    react: ^17.0.2
   languageName: unknown
   linkType: soft
 
@@ -34609,6 +34621,7 @@ typescript@^4.0.5:
     react-share: ^4.3.1
     react-slick: ^0.28.0
     react-three-fiber: ^5.3.17
+    shared-components: "workspace:packages/shared-components"
     slugify: ^1.4.7
     tailwindcss: latest
     three: ^0.124.0
