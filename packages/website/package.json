@@ -33,6 +33,7 @@
     "react-share": "^4.3.1",
     "react-slick": "^0.28.0",
     "react-three-fiber": "^5.3.17",
+    "shared-components": "workspace:packages/shared-components",
     "slugify": "^1.4.7",
     "tailwindcss": "latest",
     "three": "^0.124.0",
