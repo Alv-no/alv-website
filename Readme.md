@@ -69,3 +69,4 @@ Package                       | Description
 [cms](./packages/cms)         | Sanity CMS
 [mail-api](./packages/mail-api) | Mail API backend for contact form
 [infrastructure](./packages/infrastructure) | Terraform Infrastructure as Code for Azure
+[shared-components](./packages/shared-components) | Component library to share components between different gatsby sites
