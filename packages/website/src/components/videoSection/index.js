@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { VideoCard } from '../videoCard';
-import * as Button from '../../../../shared-components/button';
+import * as Button from '../../../../shared-components/src/components/button';
 
 export const VideoSection = ({ fallbackImg, playlist }) => {
   const [sortedVideos, setSortedVideos] = useState(playlist);

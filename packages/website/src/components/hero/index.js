@@ -1,5 +1,5 @@
 import React from 'react';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useWindowDimensions from '../../../../shared-components/src/components/useWindowDimensions';
 import * as Icon from '../icon';
 import { Title } from '../title';
 import { Typewriter } from '../typewriter';

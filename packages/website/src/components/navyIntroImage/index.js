@@ -1,6 +1,6 @@
 import React from 'react';
-import { Title } from '../title';
-import { Description } from '../description';
+import { Title } from '../../../../shared-components/src/components/title';
+import { Description } from '../../../../shared-components/src/components/description';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
 

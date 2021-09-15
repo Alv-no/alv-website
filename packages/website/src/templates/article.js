@@ -2,15 +2,15 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
-import { MobileHeader } from '../components/header';
-import { useLayoutQuery } from '../layout/useLayoutQuery';
-import { Footer } from '../components/footer';
-import { SEO } from '../components/seo';
-import { AlsoRead } from '../components/alsoRead';
+import { MobileHeader } from '../../../shared-components/src/components/header';
+import { useLayoutQuery } from '../../../shared-components/src/components/layout/useLayoutQuery';
+import { Footer } from '../../../shared-components/src/components/footer';
+import { SEO } from '../../../shared-components/src/components/seo';
+import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
 import * as styles from '../components/blockContent/Blockcontent.module.css';
-import { SocialShare } from '../components/socialShare';
+import { SocialShare } from '../../../shared-components/src/components/socialShare';
 import { window } from 'browser-monads';
-import { createSlugForEmployee } from '../components/createSlugForEmployee';
+import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
 import { BlockContent } from '../components/blockContent';
 
 // Template for how articles are rendered.

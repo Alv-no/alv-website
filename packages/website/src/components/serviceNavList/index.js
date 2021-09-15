@@ -1,7 +1,7 @@
 import React from 'react';
-import * as Icon from '../icon';
+import * as Icon from '../../../../shared-components/src/components/icon';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../title';
+import { Title } from '../../../../shared-components/src/components/title';
 import { BlockContent } from '../blockContent';
 
 export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {

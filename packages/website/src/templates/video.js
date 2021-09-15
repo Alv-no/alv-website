@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Layout from '../layout';
+import Layout from '../../../shared-components/src/components/layout';
 import { window } from 'browser-monads';
-import { SocialShare } from '../components/socialShare';
+import { SocialShare } from '../../../shared-components/src/components/socialShare';
 import { VideoEpisode } from '../components/videoEpisode';
 
 const VideoTemplate = ({ pageContext }) => {

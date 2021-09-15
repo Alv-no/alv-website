@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from '../layout';
-import { Title } from '../components/title';
-import { Description } from '../components/description';
-import { EmployeeSection } from '../components/employeeSection';
-import { Cta } from '../components/cta';
+import Layout from '../../../shared-components/src/components/layout';
+import { Title } from '../../../shared-components/src/components/title';
+import { Description } from '../../../shared-components/src/components/description';
+import { EmployeeSection } from '../../../shared-components/src/components/employeeSection';
+import { Cta } from '../../../shared-components/src/components/cta';
 import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import slugify from 'slugify';
 

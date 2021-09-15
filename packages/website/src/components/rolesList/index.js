@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Button from '../../../../shared-components/button';
+import * as Button from '../../../../shared-components/src/components/button';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Link from 'gatsby-link';
 import { BgImage } from 'gbimage-bridge';

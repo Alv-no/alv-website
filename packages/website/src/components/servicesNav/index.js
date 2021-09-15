@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../icon';
+import * as Icon from '../../../../shared-components/src/components/icon';
 
 export const ServicesNav = ({ nav, scrollTo }) => {
   return (

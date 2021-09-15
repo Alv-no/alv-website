@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../layout';
+import Layout from '../../../shared-components/src/components/layout';
 import { graphql } from 'gatsby';
-import { NavyIntro } from '../components/navyIntro';
+import { NavyIntro } from '../../../shared-components/src/components/navyIntro';
 import { BlockContent } from '../components/blockContent';
 
 const Career = ({ data }) => {

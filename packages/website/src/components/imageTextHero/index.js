@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import * as Button from '../../../../shared-components/button';
-import { Title } from '../title';
+import * as Button from '../../../../shared-components/src/components/button';
+import { Title } from '../../../../shared-components/src/components/title';
 import { BgImage } from 'gbimage-bridge';
 
 export const ImageTextListHero = ({

@@ -1,14 +1,14 @@
 import React from 'react';
-import Layout from '../layout';
-import { ServicesHero } from '../components/servicesHero';
-import { Title } from '../components/title';
-import { Description } from '../components/description';
-import { ServicesSection } from '../components/servicesSection';
-import { ColumnSection } from '../components/columnSection';
-import { ImageTextFull } from '../components/imageTextFull';
+import Layout from '../../../shared-components/src/components/layout';
+import { ServicesHero } from '../../../shared-components/src/components/servicesHero';
+import { Title } from '../../../shared-components/src/components/title';
+import { Description } from '../../../shared-components/src/components/description';
+import { ServicesSection } from '../../../shared-components/src/components/servicesSection';
+import { ColumnSection } from '../../../shared-components/src/components/columnSection';
+import { ImageTextFull } from '../../../shared-components/src/components/imageTextFull';
 import { useServicesQuery } from '../hookspages/useServicesQuery';
-import { ServicesCard } from '../components/servicesCard';
-import { ImageTextCards } from '../components/imageTextCards';
+import { ServicesCard } from '../../../shared-components/src/components/servicesCard';
+import { ImageTextCards } from '../../../shared-components/src/components/imageTextCards';
 
 const Services = () => {
   const data = useServicesQuery();

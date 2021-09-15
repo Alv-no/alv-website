@@ -1,6 +1,6 @@
 import React from 'react';
 import * as styles from './Blockcontent.module.css';
-import { richTextTypes } from '../richTextTypes';
+import { richTextTypes } from '../../../../shared-components/src/components/richTextTypes';
 import PortableText from '@sanity/block-content-to-react';
 
 export const BlockContent = ({ blocks, noStyle, whiteText }) => (

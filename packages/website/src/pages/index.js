@@ -1,22 +1,14 @@
 import React from 'react';
-import Layout from '../layout';
-import { Hero } from '../components/hero';
-import { WhoWeAre } from '../../../shared-components/whoWeAre';
-import { OwnedByStaff } from '../components/ownedByStaff';
-import { OurServices } from '../components/ourServices';
-import { Hire, HireAlt } from '../components/hire';
-import { BlogSlider } from '../components/blogSlider';
-import { VideoIntro } from '../../../shared-components/videoIntro';
+import Layout from '../../../shared-components/src/components/layout';
+import { WhoWeAre } from '../../../shared-components/src/components/whoWeAre';
+import { OurServices } from '../../../shared-components/src/components/ourServices';
+import { Hire, HireAlt } from '../../../shared-components/src/components/hire';
+import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
+import { VideoIntro } from '../../../shared-components/src/components/videoIntro';
 import { graphql } from 'gatsby';
-import { BlockContent } from '../components/blockContent';
+import { BlockContent } from '../../../shared-components/src/components/blockContent';
 
-const Index = ({ data, location }) => {
-  const linesAndClasses = [
-    { line: 'Vi bygger', classes: '' },
-    { line: 'Norges mest attraktive', classes: 'font-black' },
-    { line: 'konsulentselskap', classes: '', dot: true },
-  ];
-
+const Index = ({ data }) => {
   const pageTitle = data.sanityLandingPage.pageTitle || false;
   const pageDescription = data.sanityLandingPage.pageDescription || false;
 
@@ -25,15 +17,15 @@ const Index = ({ data, location }) => {
   return (
     <div className="overflow-hidden">
       <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-        <Hero
-          linesAndClasses={linesAndClasses}
-          delay={90}
-          videoMp4={data.video.heroVideoMp4.asset.url}
-          videoWebm={data.video.heroVideoWebm.asset.url}
-          routeUpdate={location.action}
-        />
         <div className="bg-navy">
           <div className="bg-navy w-full pb-15 sm:pt-0 pt-10">
+            {/* <Hero
+              linesAndClasses={linesAndClasses}
+              delay={90}
+              videoMp4={data.video.heroVideoMp4.asset.url}
+              videoWebm={data.video.heroVideoWebm.asset.url}
+              routeUpdate={location.action}
+            /> */}
             <VideoIntro
               videoMp4={data.video.videoMp4.asset.url}
               videoWebm={data.video.videoWebm.asset.url}
@@ -62,11 +54,7 @@ const Index = ({ data, location }) => {
             image={landingPage.flipSection3Image.asset.gatsbyImageData}
             imageText={landingPage.flipSection3ImageText}
           />
-          <BlogSlider />
-          <OwnedByStaff>
-            Alv AS er 100% eid av våre ansatte. Det betyr at du vil få mulighet
-            til å kjøpe deg inn på eiersiden av selskapet når du blir ansatt.
-          </OwnedByStaff>
+          {/* <BlogSlider /> */}
         </div>
       </Layout>
     </div>

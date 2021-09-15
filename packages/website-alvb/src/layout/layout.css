@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants hover, focus {
+    .filter-grayscale-0 {
+      filter: grayscale(0);
+    }
+    .filter-grayscale {
+      filter: grayscale(100%);
+    }
+    .hyphenate {
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+    }
+  }
+}

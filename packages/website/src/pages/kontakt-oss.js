@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Layout from '../layout';
-import { Title } from '../components/title';
-import * as Icon from '../components/icon';
+import Layout from '../../../shared-components/src/components/layout';
+import { Title } from '../../../shared-components/src/components/title';
+import * as Icon from '../../../shared-components/src/components/icon';
 import { useContactQuery } from '../hookspages/useContactQuery';
-import { Description } from '../components/description';
+import { Description } from '../../../shared-components/src/components/description';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as Form from '../components/form';
-import { FormSelect } from '../../../shared-components/button';
+import * as Form from '../../../shared-components/src/components/form';
+import { FormSelect } from '../../../shared-components/src/components/button';
 
 const Contact = ({ location }) => {
   const [active, setActive] = useState('visit');

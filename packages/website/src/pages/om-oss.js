@@ -1,11 +1,11 @@
 import React from 'react';
-import Layout from '../layout';
+import Layout from '../../../shared-components/src/components/layout';
 import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
-import { Subtitle } from '../components/title';
-import { OurServices } from '../components/ourServices';
-import { BlogSlider } from '../components/blogSlider';
+import { Subtitle } from '../../../shared-components/src/components/title';
+import { OurServices } from '../../../shared-components/src/components/ourServices';
+import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
 import { AboutIntro } from '../components/aboutIntro';
-import { FeaturedTeam } from '../components/featuredTeam';
+import { FeaturedTeam } from '../../../shared-components/src/components/featuredTeam';
 
 const About = () => {
   const data = useAboutUsQuery();

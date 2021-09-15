@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../layout';
+import Layout from '../../../shared-components/src/components/layout';
 import { graphql } from 'gatsby';
-import { NavyIntro } from '../components/navyIntro';
+import { NavyIntro } from '../../../shared-components/src/components/navyIntro';
 import { RolesList } from '../components/rolesList';
 import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
-import { BlogSlider } from '../components/blogSlider';
-import { FeaturedTeam } from '../components/featuredTeam';
+import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
+import { FeaturedTeam } from '../../../shared-components/src/components/featuredTeam';
 
 const Category = ({ data }) => {
   const { sanityCategoryPage } = data;

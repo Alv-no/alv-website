@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from '../layout';
+import Layout from '../../../shared-components/src/components/layout';
 import { graphql } from 'gatsby';
 import { ServiceNavList } from '../components/serviceNavList';
 import { RolesList } from '../components/rolesList';
-import { BlogSlider } from '../components/blogSlider';
+import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
 import { NavyIntroImage } from '../components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
 import { window } from 'browser-monads';

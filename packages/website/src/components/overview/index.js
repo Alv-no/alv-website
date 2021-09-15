@@ -1,7 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../title';
-import { BlockContent } from '../blockContent';
+import { Title } from '../../../../shared-components/src/components/title';
+import { BlockContent } from '../../../../shared-components/src/components/blockContent';
 
 export const Overview = ({ image, blockContent, id }) => {
   return (
