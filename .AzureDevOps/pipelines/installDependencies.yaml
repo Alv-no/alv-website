@@ -1,0 +1,10 @@
+steps:
+  - task: HelmInstaller@0
+    inputs:
+      helmVersion: "3.5.3"
+      checkLatestHelmVersion: false
+      installKubectl: true
+
+  - task: DockerInstaller@0
+    inputs:
+      dockerVersion: "20.10.5"
