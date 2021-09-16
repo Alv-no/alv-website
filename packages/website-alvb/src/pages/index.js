@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../../../shared-components/src/components/layout';
+import { useBlogQuery } from '../hooks/useBlogQuery';
+import { Layout } from '../../../shared-components/src/components/layout';
 import { WhoWeAre } from '../../../shared-components/src/components/whoWeAre';
 import { OurServices } from '../../../shared-components/src/components/ourServices';
-import { Hire, HireAlt } from '../../../shared-components/src/components/hire';
-// import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
+import { Hire } from '../../../shared-components/src/components/hire';
+import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
 import { VideoIntro } from '../../../shared-components/src/components/videoIntro';
 import { BlockContent } from '../../../shared-components/src/components/blockContent';
 
@@ -13,8 +14,6 @@ const Index = ({ data }) => {
   const pageDescription = data.sanityLandingPage.pageDescription || false;
 
   const landingPage = data.sanityLandingPage;
-
-  console.log(data);
 
   return (
     <div className="overflow-hidden">
@@ -32,28 +31,20 @@ const Index = ({ data }) => {
             </WhoWeAre>
           </div>
           <Hire
+            blue={true}
             title={landingPage.flipSection1Title}
             text={landingPage.flipSection1Text}
-            blue={true}
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
           />
           <div className="bg-theme-bg h-10 lg:h-32" />
           <OurServices
             blue={true}
-            darkFade={false}
             title={landingPage.flipSection2Title}
             text={landingPage.flipSection2Text}
             image={landingPage.flipSection2Image.asset.gatsbyImageData}
           />
           <div className="lg:h-40  h-5" />
-          <HireAlt
-            blue={true}
-            title={landingPage.flipSection3Title}
-            text={landingPage.flipSection3Text}
-            image={landingPage.flipSection3Image.asset.gatsbyImageData}
-            imageText={landingPage.flipSection3ImageText}
-          />
-          {/* <BlogSlider /> */}
+          <BlogSlider useBlogQuery={useBlogQuery} />
         </div>
       </Layout>
     </div>

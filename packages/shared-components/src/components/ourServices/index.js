@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import * as Button from '../button';
 import { BgImage } from 'gbimage-bridge';
 
-export const OurServices = ({ text, image, title, darkFade = true }) => {
+export const OurServices = ({ text, image, title, darkFade }) => {
   const [activeItem, setActiveItem] = useState('1');
 
   const handleClick = (e) => {
@@ -22,7 +22,7 @@ export const OurServices = ({ text, image, title, darkFade = true }) => {
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
             {title}
           </h2>
-          <p className="mb-5 sm:pr-15  font-light text-xl w-full text-footer sm:text-xl tracking-wider">
+          <p className="mb-5 sm:pr-15  font-light text-xl w-full text-theme-text sm:text-xl tracking-wider">
             {text}
           </p>
 
@@ -48,7 +48,9 @@ export const OurServices = ({ text, image, title, darkFade = true }) => {
               id="1"
               onClick={handleClick}
             >
-              <p className="uppercase pointer-events-none">Prosjektleder</p>
+              <p className="uppercase pointer-events-none text-theme-text">
+                Prosjektleder
+              </p>
               {activeItem === '1' && (
                 <ListContent link="/vi-tilbyr/prosjektledelse">
                   Kunden kjenner domenet, kravene og behovene, mens vi vet
@@ -62,7 +64,9 @@ export const OurServices = ({ text, image, title, darkFade = true }) => {
               id="2"
               onClick={handleClick}
             >
-              <p className="uppercase pointer-events-none">Systemutvikling</p>
+              <p className="uppercase pointer-events-none text-theme-text">
+                Systemutvikling
+              </p>
               {activeItem === '2' && (
                 <ListContent link="/vi-tilbyr/systemutvikling">
                   Systemutvikling er kjernen i det vi driver med. Det er jo der
@@ -76,7 +80,9 @@ export const OurServices = ({ text, image, title, darkFade = true }) => {
               id="4"
               onClick={handleClick}
             >
-              <p className="uppercase pointer-events-none">Data & Analyse</p>
+              <p className="uppercase pointer-events-none text-theme-text">
+                Data & Analyse
+              </p>
               {activeItem === '4' && (
                 <ListContent link="/vi-tilbyr/data-og-analyse">
                   I Alv tilbyr vi tjenester i spekteret fra rådgivning og
@@ -91,7 +97,7 @@ export const OurServices = ({ text, image, title, darkFade = true }) => {
               id="5"
               onClick={handleClick}
             >
-              <p className="uppercase pointer-events-none">
+              <p className="uppercase pointer-events-none text-theme-text">
                 Informasjons<span className="xs:hidden">-</span>sikkerhet
               </p>
               {activeItem === '5' && (
@@ -121,7 +127,7 @@ const TextFadeImage = ({ darkFade, image }) => (
         }`}
         style={{ height: '530px' }}
       >
-        <div className="sm:text-slider text-blog uppercase text-left font-semibold tracking-wider leading-tighter w-5/6 sm:text-right">
+        <div className="text-theme-text sm:text-slider text-blog uppercase  text-left font-semibold tracking-wider leading-tighter w-5/6 sm:text-right">
           Bygget rundt systemutviklings
           <span className="">-</span>prosessen
         </div>
@@ -134,11 +140,11 @@ const ListContent = ({ children, link }) => (
   <div>
     <div className="w-12 mt-2 mb-8 h-2px bg-yellow" />
     <div className="sm:pl-10 pl-5 mb-15">
-      <p className="tracking-wider text-footer sm:text-lg leading-snug font-extralight mb-4 sm:w-4/6 w-full lg:w-full">
+      <p className="tracking-wider text-theme-text sm:text-lg leading-snug font-extralight mb-4 sm:w-4/6 w-full lg:w-full">
         {children}
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">
-        <p className="font-semibold tracking-wider uppercase text-base w-40">
+        <p className="font-semibold tracking-wider uppercase text-base w-40 text-theme-text">
           <Link to={link}>Finn ut mer</Link>
         </p>
         <div className="h-2px bg-white sm:opacity-0 twelve:opacity-100 mt-1 w-1/2 lg:w-full hidden sm:block" />

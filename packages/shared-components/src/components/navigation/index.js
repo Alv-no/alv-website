@@ -20,7 +20,6 @@ export const Navigation = ({
           open ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
-        {console.log('hello')}
         <div className="eight:flex justify-center z-90 relative mx-auto auto eight:mb-0 eight:mb-25 eight:mx-auto max-w-1200 items-center mb-12 eight:mb-0">
           <div className="inline-block">
             <Link to="/">

@@ -150,7 +150,7 @@ export const SliderArrow = () => (
   </svg>
 );
 
-export const Dropdown = ({ white }) => (
+export const Dropdown = () => (
   <div className="flex flex-col justify-center items-center h-7">
     <div className={`w-7 bg-theme-text h-px mb-2`} />
     <div className="w-7 bg-theme-text h-px" />

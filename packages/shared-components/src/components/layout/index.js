@@ -2,10 +2,16 @@ import React from 'react';
 import { Footer } from '../footer';
 import { Header, MobileHeader } from '../header';
 import { SEO } from '../seo';
-import { useLayoutQuery } from './useLayoutQuery';
+// import { useLayoutQuery } from './useLayoutQuery';
 import './layout.css';
 
-const Layout = ({ children, path, pageDescription, pageTitle, white }) => {
+export const Layout = ({
+  children,
+  path,
+  // pageDescription,
+  // pageTitle,
+  white,
+}) => {
   // const {
   //   address,
   //   org,
@@ -35,6 +41,7 @@ const Layout = ({ children, path, pageDescription, pageTitle, white }) => {
       },
     },
   ];
+
   return (
     <>
       <SEO description={'pageDescription'} title={'pageTitle'} />
@@ -44,11 +51,10 @@ const Layout = ({ children, path, pageDescription, pageTitle, white }) => {
         servicePages={servicePages}
         categoryPages={categoryPages}
       />
+
       <MobileHeader servicePages={servicePages} categoryPages={categoryPages} />
       <div>{children}</div>
       <Footer address={'address'} org={'org'} email={'email'} phone={'phone'} />
     </>
   );
 };
-
-export default Layout;

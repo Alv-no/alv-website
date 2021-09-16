@@ -1,7 +1,17 @@
-import React from 'react';
-
-export const test = 'dette er en test';
-
-export const TextComponent = () => {
-  return <div> hei hei </div>;
-};
+export { Title } from './components/title';
+export { BlockContent } from './components/blockContent';
+export { Description } from './components/description';
+export { SEO } from './components/seo';
+export { PostCard } from './components/postCard';
+export { SocialShare } from './components/socialShare';
+export { Navigation } from './components/navigation';
+export * as Logo from './components/logo';
+export * as Form from './components/form';
+export { GridContainer } from './components/gridContainer';
+export { Hire } from './components/hire';
+export { CtaButton } from './components/ctaButton';
+export { NavyIntro } from './components/navyIntro';
+export { OurServices } from './components/ourServices';
+export { WhoWeAre } from './components/whoWeAre';
+export { WhatWeDo } from './components/whatWeDo';
+export { Layout } from './components/layout';

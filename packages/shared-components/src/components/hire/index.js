@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade';
 import { CtaButton } from '../ctaButton';
 import { BgImage } from 'gbimage-bridge';
 
-export const Hire = ({ title, text, image, blue }) => {
+export const Hire = ({ title, text, image, blue, darkFade }) => {
   return (
     <div className="bg-theme-bg w-full text-theme-text">
       <div
@@ -11,7 +11,11 @@ export const Hire = ({ title, text, image, blue }) => {
         style={{ gridTemplateColumns: '50% auto' }}
       >
         <BgImage image={image}>
-          <div className="flex justify-end items-center bg-black bg-opacity-25 h-60vh sm:h-auto lg:p-0 p-10 lg:h-715">
+          <div
+            className={`flex justify-end items-center ${
+              darkFade && 'bg-black bg-opacity-25'
+            } h-60vh sm:h-auto lg:p-0 p-10 lg:h-715`}
+          >
             <div className="twelve:-mr-64 sm:block hidden sm:-mr-0 md:-mr-20 lg:-mr-48 w-full transform sm:translate-x-64 2xl:translate-x-80 px-0">
               <Fade>
                 <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider sm:w-5/6 lg:w-4/6">
