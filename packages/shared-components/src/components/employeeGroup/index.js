@@ -1,7 +1,6 @@
 import React from 'react';
 import { EmployeeCard } from '../employeeCard';
 import { EmployeeBio } from '../employeeBio';
-import { BlockContent } from '../blockContent';
 
 export const EmployeeGroup = ({
   group,
@@ -10,6 +9,7 @@ export const EmployeeGroup = ({
   fallbackImg,
   employees,
   width,
+  children,
 }) => {
   // Update activeBio state with employee object corresponding to card clicked
   const handleCardClick = (e) => {
@@ -47,9 +47,7 @@ export const EmployeeGroup = ({
                   fallbackImg={fallbackImg}
                 />
                 <p className="absolute opacity-0 pointer-events-none">
-                  {employee._rawBio && (
-                    <BlockContent blocks={employee._rawBio} />
-                  )}
+                  {{ children }}
                 </p>
                 {width < 480 && (
                   <div className="xs:hidden">

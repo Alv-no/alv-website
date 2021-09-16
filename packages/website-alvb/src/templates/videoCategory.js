@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Layout from '../../../shared-components/src/components/layout';
+import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
 import { VideoHero } from '../components/videoHero';
 import { VideoFilter } from '../components/videoFilter';

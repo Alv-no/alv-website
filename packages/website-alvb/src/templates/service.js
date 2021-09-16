@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../../../shared-components/src/components/layout';
+import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
 import { ServiceNavList } from '../components/serviceNavList';
 import { RolesList } from '../components/rolesList';

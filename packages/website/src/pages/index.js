@@ -1,14 +1,16 @@
 import React from 'react';
-import { Layout } from '../../../shared-components/src/components/layout';
-import { Hero } from '../components/hero';
-import { useBlogQuery } from '../hooks/useBlogQuery';
-import { WhoWeAre } from '../../../shared-components/src/components/whoWeAre';
-import { OurServices } from '../../../shared-components/src/components/ourServices';
-import { Hire, HireAlt } from '../../../shared-components/src/components/hire';
-import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
-import { VideoIntro } from '../../../shared-components/src/components/videoIntro';
 import { graphql } from 'gatsby';
-import { BlockContent } from '../../../shared-components/src/components/blockContent';
+import { useBlogQuery } from '../hooks/useBlogQuery';
+import { Hero } from '../components/hero';
+import { Layout } from '../components/layout';
+import {
+  WhoWeAre,
+  OurServices,
+  BlogSlider,
+  VideoIntro,
+  Hire,
+  HireAlt,
+} from 'shared-components';
 
 const Index = ({ data, location }) => {
   const pageTitle = data.sanityLandingPage.pageTitle || false;
@@ -40,9 +42,11 @@ const Index = ({ data, location }) => {
             >
               {landingPage.videoTextOverlay}
             </VideoIntro>
-            <WhoWeAre title="Hvem er vi">
-              <BlockContent whiteText blocks={landingPage._rawAboutText} />
-            </WhoWeAre>
+            <WhoWeAre
+              title="Hvem er vi"
+              whiteText
+              blocks={landingPage._rawAboutText}
+            />
           </div>
           <Hire
             darkFade

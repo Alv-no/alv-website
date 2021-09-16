@@ -6,7 +6,7 @@ import { Title } from '../title';
 import { BgImage } from 'gbimage-bridge';
 import Slider from 'react-slick';
 
-export const BlogSlider = ({ dot, color, blueText, useBlogQuery }) => {
+export const BlogSlider = ({ dot, blueText, useBlogQuery, blue }) => {
   const data = useBlogQuery();
   const articles = data.articles.edges
     .map((edge) => edge.node)
@@ -45,9 +45,14 @@ export const BlogSlider = ({ dot, color, blueText, useBlogQuery }) => {
   };
   return (
     <div className="w-full">
-      <div className="px-5 sm:px-12 max-w-1440 mx-auto">
-        <Title underline align="left" color={color || 'text-white'} nodot={dot}>
-          Blogg
+      <div className="max-w-1200 px-5 xl:px-0 sm:px-12 mx-auto">
+        <Title
+          underline
+          align="left"
+          color={blue ? '#000' : 'text-white'}
+          nodot={dot}
+        >
+          <span className={`text-${blue ? 'navy' : 'white'}`}>Blogg</span>
         </Title>
       </div>
       <div className="pt-12 sm:pb-10 max-w-fourteen mx-auto">
@@ -145,7 +150,7 @@ const Slide = ({
               (article.mainImage && article.mainImage.asset.gatsbyImageData) ||
               fallbackImg
             }
-            className="lg:max-w-685 mx-auto"
+            className="w-full"
           >
             <div
               className={`px-5 sm:px-10 w-full bg-navy bg-opacity-20 relative sm:h-full grid grid-cols-slider-md`}

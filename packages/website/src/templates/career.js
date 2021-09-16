@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../../../shared-components/src/components/layout';
+import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
 import { NavyIntro } from '../../../shared-components/src/components/navyIntro';
-import { BlockContent } from '../components/blockContent';
+import { StyledBlockContent } from '../components/styledBlockContent';
 
 const Career = ({ data }) => {
   const { sanityOpenPostionPage } = data;
@@ -26,7 +26,7 @@ const Career = ({ data }) => {
         className="bg-white max-w-1200 mx-auto lg:grid xl:pl-25 sm:px-12 lg:pr-0 px-5 pt-8 pb-18 gap-x-12"
         style={{ gridTemplateColumns: '60% auto' }}
       >
-        <BlockContent blocks={sanityOpenPostionPage._rawJobDescription} />
+        <StyledBlockContent blocks={sanityOpenPostionPage._rawJobDescription} />
         <div>
           <div
             className="lg:mt-10 mt-20"

@@ -20,5 +20,3 @@ export const ServicesCard = ({ title, description, link }) => {
     </div>
   );
 };
-
-export default ServicesCard;

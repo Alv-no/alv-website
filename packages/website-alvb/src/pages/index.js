@@ -1,13 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { useBlogQuery } from '../hooks/useBlogQuery';
-import { Layout } from '../../../shared-components/src/components/layout';
-import { WhoWeAre } from '../../../shared-components/src/components/whoWeAre';
-import { OurServices } from '../../../shared-components/src/components/ourServices';
-import { Hire } from '../../../shared-components/src/components/hire';
-import { BlogSlider } from '../../../shared-components/src/components/blogSlider';
-import { VideoIntro } from '../../../shared-components/src/components/videoIntro';
-import { BlockContent } from '../../../shared-components/src/components/blockContent';
+import { Layout } from '../components/layout';
+import { BlogCarousel } from '../components/blogCarousel';
+import { WhoWeAre, OurServices, VideoIntro, Hire } from 'shared-components';
 
 const Index = ({ data }) => {
   const pageTitle = data.sanityLandingPage.pageTitle || false;
@@ -26,10 +21,13 @@ const Index = ({ data }) => {
             >
               {landingPage.videoTextOverlay}
             </VideoIntro>
-            <WhoWeAre title="Hvem er vi">
-              <BlockContent whiteText blocks={landingPage._rawAboutText} />
-            </WhoWeAre>
+            <WhoWeAre
+              title="Hvem er vi"
+              darkText
+              blocks={landingPage._rawAboutText}
+            />
           </div>
+
           <Hire
             blue={true}
             title={landingPage.flipSection1Title}
@@ -44,7 +42,7 @@ const Index = ({ data }) => {
             image={landingPage.flipSection2Image.asset.gatsbyImageData}
           />
           <div className="lg:h-40  h-5" />
-          <BlogSlider useBlogQuery={useBlogQuery} />
+          <BlogCarousel />
         </div>
       </Layout>
     </div>

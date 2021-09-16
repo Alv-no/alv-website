@@ -44,7 +44,7 @@ export const Header = ({ path, categoryPages, servicePages, white }) => {
               </button>
               <span className="transform ">
                 <Link to="/">
-                  {logo ? (
+                  {white ? (
                     <img alt="logo" style={{ width: '74px' }} src={logo} />
                   ) : (
                     <Logo.White />

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import { MobileHeader } from '../../../shared-components/src/components/header';
-import { useLayoutQuery } from '../../../shared-components/src/components/layout/useLayoutQuery';
+import { useLayoutQuery } from '../components/layout/useLayoutQuery';
 import { Footer } from '../../../shared-components/src/components/footer';
 import { SEO } from '../../../shared-components/src/components/seo';
 import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
@@ -11,7 +11,7 @@ import * as styles from '../components/blockContent/Blockcontent.module.css';
 import { SocialShare } from '../../../shared-components/src/components/socialShare';
 import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
-import { BlockContent } from '../components/blockContent';
+import { StyledBlockContent } from '../components/styledBlockContent';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
@@ -95,7 +95,7 @@ const ArticleTemplate = (props) => {
                 </span>
               </div>
             )}
-            <BlockContent blocks={_rawBody} />
+            <StyledBlockContent blocks={_rawBody} />
             <div className="mt-6 relative z-20">
               <SocialShare
                 url={window.location.href}
@@ -132,7 +132,7 @@ const ArticleTemplate = (props) => {
               <GatsbyImage image={mainImage.asset.gatsbyImageData} />
             </div>
           )}
-          <BlockContent blocks={_rawBody} />
+          <StyledBlockContent blocks={_rawBody} />
           <div className="flex justify-end items-center mb-8">
             <div className="relative z-20">
               <SocialShare

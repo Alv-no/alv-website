@@ -1,9 +1,7 @@
 import React from 'react';
-import Layout from '../../../shared-components/src/components/layout';
-import { Title } from '../../../shared-components/src/components/title';
-import { IntroContainer } from '../../../shared-components/src/components/introContainer';
+import { Layout } from '../components/layout';
+import { Title, IntroContainer, BlogSection } from 'shared-components';
 import { useBlogQuery } from '../hooks/useBlogQuery';
-import { BlogSection } from '../../../shared-components/src/components/blogSection';
 
 const Blog = () => {
   const data = useBlogQuery();

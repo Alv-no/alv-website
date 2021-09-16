@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.alv.no`,
-    title: `Alv Konsulentselskap`,
-    description: `Vi bygger Norges mest attraktive konsulentselskap`,
+    siteUrl: `https://www.alvb.no`,
+    title: `Eksperimentell kreftbehandling for hund & katt`,
+    description: `Vi ønsker å skape et globalt ‘center of excellence’ gjennom vår forskning på eksperimentell kreftbehandling for hund & katt.`,
     author: `Alv`,
   },
   plugins: [

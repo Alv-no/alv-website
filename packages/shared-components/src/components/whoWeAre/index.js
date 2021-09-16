@@ -2,8 +2,9 @@ import React from 'react';
 import Link from 'gatsby-link';
 import * as Button from '../button';
 import Fade from 'react-reveal/Fade';
+import { BlockContent } from '../blockContent';
 
-export const WhoWeAre = ({ title, children }) => {
+export const WhoWeAre = ({ title, children, blocks, whiteText, darkText }) => {
   return (
     <>
       <div
@@ -21,7 +22,12 @@ export const WhoWeAre = ({ title, children }) => {
           </Fade>
         </div>
         <Fade>
-          <div className="max-w-seven text-footer sm:text-about">
+          <div className="max-w-seven text-theme-footer sm:text-about">
+            <BlockContent
+              whiteText={whiteText}
+              darkText={darkText}
+              blocks={blocks}
+            />
             {children}
             <div className="twelve:block hidden">
               <Link to="/om-oss">

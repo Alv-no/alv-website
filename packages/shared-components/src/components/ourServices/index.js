@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import * as Button from '../button';
 import { BgImage } from 'gbimage-bridge';
 
-export const OurServices = ({ text, image, title, darkFade }) => {
+export const OurServices = ({ text, image, title, darkFade, children }) => {
   const [activeItem, setActiveItem] = useState('1');
 
   const handleClick = (e) => {
@@ -12,18 +12,18 @@ export const OurServices = ({ text, image, title, darkFade }) => {
   return (
     <>
       <div
-        className="max-w-1440 mx-auto lg:grid gap-x-10 lg:pb-12 pb-5 bg-theme-bg text-theme-text"
+        className="max-w-1440 sm:px-12 xl:px-0 mx-auto lg:grid xl:gap-x-10 lg:pb-12 pb-5 bg-theme-bg text-theme-text"
         style={{
           gridTemplateColumns: '1fr 1fr',
         }}
       >
         <div />
-        <div className="px-5 sm:pl-0 sm:mx-12 lg:ml-0">
+        <div className="sm:pl-0 lg:ml-0">
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
-            {title}
+            {title || 'Våre Tjenester'}
           </h2>
-          <p className="mb-5 sm:pr-15  font-light text-xl w-full text-theme-text sm:text-xl tracking-wider">
-            {text}
+          <p className="mb-5 sm:pr-15 font-light text-xl w-full text-theme-text sm:text-xl tracking-wider">
+            {children || text}
           </p>
 
           <div className="lg:block flex justify-between">
@@ -35,13 +35,14 @@ export const OurServices = ({ text, image, title, darkFade }) => {
         </div>
       </div>
       <div
-        className="max-w-1440 mx-auto lg:grid flex flex-col-reverse gap-x-10"
+        className="mx-auto lg:grid flex flex-col-reverse gap-x-10"
         style={{
           gridTemplateColumns: '1fr 1fr',
+          maxWidth: '1300px',
         }}
       >
         {/* Map from array of list items */}
-        <div className="w-full px-5 sm:mx-12 lg:mx-0 lg:pl-12 mt-9 text-lg sm:text-nav">
+        <div className="w-full sm:mx-12 lg:mx-0 lg:pl-12 mt-9 text-lg sm:text-nav">
           <ul>
             <li
               className="tracking-wider font-semibold mb-8 cursor-pointer"
@@ -122,7 +123,7 @@ const TextFadeImage = ({ darkFade, image }) => (
   <div>
     <BgImage image={image} style={{ height: '530px' }}>
       <div
-        className={`flex sm:justify-end items-center p-5 sm:p-16 ${
+        className={`flex sm:justify-end items-center p-5 lg:pr-24 sm:p-16 ${
           darkFade && 'bg-black bg-opacity-50'
         }`}
         style={{ height: '530px' }}

@@ -1,14 +1,13 @@
 import React from 'react';
 import { BgImage } from 'gbimage-bridge';
 import * as Icon from '../icon';
-import { BlockContent } from '../blockContent';
 
 export const ColumnSection = ({
   title,
   eyebrow,
   image,
-  blockContent,
   imageText,
+  children,
 }) => {
   return (
     <>
@@ -26,7 +25,7 @@ export const ColumnSection = ({
                 {title}
               </h3>
             </div>
-            <BlockContent blocks={blockContent} />
+            {children}
           </div>
           <div className="pt-8 lg:ml-5 -mx-5 sm:mx-0">
             <BgImage image={image} className="h-full w-full">

@@ -9,7 +9,7 @@ export const RolesList = ({ image, roles, categoryName }) => {
     <>
       <div className="w-full" id="tjenester">
         <div
-          className="max-w-1200 mx-auto sm:grid py-8 lg:gap-x-15 sm:gap-x-0 justify-between sm:pr-12"
+          className="max-w-1200 mx-auto sm:grid py-8 lg:gap-x-15 sm:gap-x-0 justify-between sm:pr-12 xl:pr-1"
           style={{ gridTemplateColumns: '30% 30% 30%' }}
           id="tjenester"
         >

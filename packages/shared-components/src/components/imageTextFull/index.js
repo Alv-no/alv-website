@@ -2,9 +2,8 @@ import React from 'react';
 import { Title } from '../title';
 import * as Button from '../button';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { BlockContent } from '../blockContent';
 
-export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
+export const ImageTextFull = ({ image, flip, title, link, children }) => {
   return (
     <>
       <div className="w-full bg-white">
@@ -33,7 +32,7 @@ export const ImageTextFull = ({ image, flip, blockContent, title, link }) => {
               >
                 {title}
               </Title>
-              <BlockContent blocks={blockContent} />
+              {children}
             </div>
             <div
               className={`w-full flex justify-end sm:relative px-5 sm:px-0 lg:justify-${

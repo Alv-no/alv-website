@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Layout from '../../../shared-components/src/components/layout';
+import { Layout } from '../components/layout';
 import { VideoCategory } from '../components/videoCategory';
 import { VideoSection } from '../components/videoSection';
 import { VideoHero } from '../components/videoHero';
