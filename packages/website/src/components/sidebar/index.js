@@ -7,7 +7,6 @@ import { Title } from '../../../../shared-components/src/components/title';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import * as Icon from '../../../../shared-components/src/components/icon';
-import { White } from '../../../../shared-components/src/components/logo';
 
 const Sidebar = ({
   children,
@@ -21,12 +20,17 @@ const Sidebar = ({
   title,
   image,
   id,
+  logo,
   cv,
 }) => {
   const pdfLink = cv ? cv.asset.url : false;
   return (
     <>
-      <MobileHeader servicePages={servicePages} categoryPages={categoryPages} />
+      <MobileHeader
+        servicePages={servicePages}
+        categoryPages={categoryPages}
+        logo={logo}
+      />
       <div
         className="hidden sm:grid"
         style={{ gridTemplateColumns: 'minmax(430px, 33%) auto' }}
@@ -40,6 +44,7 @@ const Sidebar = ({
             <BlogHeader
               servicePages={servicePages}
               categoryPages={categoryPages}
+              logo={logo}
             />
             <div className="ml-6 lg:ml-10">
               <div className="uppercase text-base tracking-wider font-semibold my-10">
@@ -71,7 +76,7 @@ const Sidebar = ({
                   alt="author"
                 />
                 <div className="absolute transform scale-60 -translate-y-8">
-                  {isEmployee && <White />}
+                  {isEmployee && logo.White()}
                 </div>
               </Link>
             </div>

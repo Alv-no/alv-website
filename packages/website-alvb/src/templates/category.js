@@ -1,20 +1,23 @@
 import React from 'react';
 import { Layout } from '../components/layout';
 import { graphql } from 'gatsby';
-import { NavyIntro, FeaturedTeam } from 'shared-components';
+import { NavyIntro } from '../components/navyIntro';
 import { RolesList } from '../components/rolesList';
 import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
-import { BlogCarousel } from '../components/blogCarousel';
-import { StyledBlockContent } from '../components/styledBlockContent';
+import { BlogSlider } from '../components/blogSlider';
+import { FeaturedTeam } from '../components/featuredTeam';
 
 const Category = ({ data }) => {
   const { sanityCategoryPage } = data;
 
   const nav = [
-    { label: 'Oversikt', id: 'oversikt' },
+    {
+      label: sanityCategoryPage.overviewTitle || 'Oversikt',
+      id: sanityCategoryPage.overviewTitle || 'oversikt',
+    },
     { label: 'Tjenester', id: 'tjenester' },
-    { label: 'Konsulenter', id: 'konsulentene' },
+    { label: 'Konsulenter', id: 'our-team' },
   ];
 
   const scrollTo = (e) => {
@@ -57,10 +60,9 @@ const Category = ({ data }) => {
               ? sanityCategoryPage.heroImage.asset.gatsbyImageData
               : null
           }
-          id={'oversikt'}
-        >
-          <StyledBlockContent blocks={sanityCategoryPage._rawText || null} />
-        </Overview>
+          blockContent={sanityCategoryPage._rawText || null}
+          id={sanityCategoryPage.overviewTitle || 'oversikt'}
+        />
         {sanityCategoryPage.servicesListText && (
           <div className="mt-12">
             <RolesList
@@ -79,7 +81,7 @@ const Category = ({ data }) => {
             />
           )}
         </div>
-        <BlogCarousel blue={true} />
+        <BlogSlider blueText color={'navy'} />
       </div>
     </Layout>
   );

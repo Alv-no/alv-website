@@ -121,7 +121,7 @@ const Webm = ({ src }) => (
     key={src}
     autoplay="true"
     controls="true"
-    className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0 focus:outline-none"
+    className="h-60vw sm:h-80 w-full sm:w-140 seven:w-140 mr-0 focus:outline-none"
   >
     <source type="video/webm" src={src} />
   </video>

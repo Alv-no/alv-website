@@ -8,7 +8,6 @@ export const EmployeeGroup = ({
   updateActiveBio,
   fallbackImg,
   employees,
-  width,
   children,
 }) => {
   // Update activeBio state with employee object corresponding to card clicked
@@ -31,11 +30,7 @@ export const EmployeeGroup = ({
   return (
     <>
       <div>
-        <div
-          className={`${
-            width < 500 && 'grid-cols-1 gap-y-5'
-          } grid xs:gap-4 justify-center xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg`}
-        >
+        <div className="grid xs:gap-4 justify-center gap-y-4 five:gap-y-0 xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg">
           {group.map((employee) => (
             <>
               <div>
@@ -49,26 +44,25 @@ export const EmployeeGroup = ({
                 <p className="absolute opacity-0 pointer-events-none">
                   {children}
                 </p>
-                {width < 480 && (
-                  <div className="xs:hidden">
-                    {activeBio &&
-                    activeBio.id === employee.id &&
-                    group.some((el) => el.id === activeBio.id) ? (
-                      <EmployeeBio
-                        {...activeBio}
-                        handleCloseClick={handleCloseClick}
-                      />
-                    ) : null}
-                  </div>
-                )}
+                <div className="xs:hidden">
+                  {activeBio &&
+                  activeBio.id === employee.id &&
+                  group.some((el) => el.id === activeBio.id) ? (
+                    <EmployeeBio
+                      {...activeBio}
+                      handleCloseClick={handleCloseClick}
+                    />
+                  ) : null}
+                </div>
               </div>
             </>
           ))}
         </div>
-        {width > 480 &&
-          (activeBio && group.some((el) => el.id === activeBio.id) ? (
+        <span className="xs:block hidden">
+          {activeBio && group.some((el) => el.id === activeBio.id) ? (
             <EmployeeBio {...activeBio} handleCloseClick={handleCloseClick} />
-          ) : null)}
+          ) : null}
+        </span>
       </div>
     </>
   );

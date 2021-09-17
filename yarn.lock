@@ -11207,7 +11207,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"buffer-equal-constant-time@npm:^1.0.1":
+"buffer-equal-constant-time@npm:1.0.1, buffer-equal-constant-time@npm:^1.0.1":
   version: 1.0.1
   resolution: "buffer-equal-constant-time@npm:1.0.1"
   checksum: a38a6fead170594b97894658d0e62e3686ccaecea480051c0bf69ba29274eca87203452590c3b6a1b589a7da1baef89420da00a8f08c010675c1dbc25f58edf9
@@ -14705,7 +14705,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ecdsa-sig-formatter@npm:^1.0.0":
+"ecdsa-sig-formatter@npm:1.0.11, ecdsa-sig-formatter@npm:^1.0.0":
   version: 1.0.11
   resolution: "ecdsa-sig-formatter@npm:1.0.11"
   dependencies:
@@ -22175,6 +22175,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"jwa@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "jwa@npm:1.4.1"
+  dependencies:
+    buffer-equal-constant-time: 1.0.1
+    ecdsa-sig-formatter: 1.0.11
+    safe-buffer: ^5.0.1
+  checksum: e3a6234a3a33b0390c35cc7393890b1ca1bac22382755035ad252f6df9e1272dcf0ff0a717c7865657fc30e04b8d5ab07ea27e26f0763c60c557946963402752
+  languageName: node
+  linkType: hard
+
 "jwa@npm:~1.0.0":
   version: 1.0.2
   resolution: "jwa@npm:1.0.2"
@@ -22186,7 +22197,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"jws@npm:^3.0.0, jws@npm:~3.0.0":
+"jws@npm:^3.0.0":
+  version: 3.2.2
+  resolution: "jws@npm:3.2.2"
+  dependencies:
+    jwa: ^1.4.1
+    safe-buffer: ^5.0.1
+  checksum: 3990b26ebb6f368bf6c53bf580cd327f207052adedeb7900dde665e143fff9ea5d96d0b4282e85a631a6e3af76ada281a1ccc450b1916d579d07e9d36b564a19
+  languageName: node
+  linkType: hard
+
+"jws@npm:~3.0.0":
   version: 3.0.0
   resolution: "jws@npm:3.0.0"
   dependencies:
@@ -23787,6 +23808,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"mime-db@npm:1.49.0":
+  version: 1.49.0
+  resolution: "mime-db@npm:1.49.0"
+  checksum: c5ac8ff35fad969136dd07da73dc5d13a121a9e444954a9f4afb7ebf988989f5a502e35c29ac8a590276f7d0443330d0014cfbbc98eaffc487c3b7c5b005af60
+  languageName: node
+  linkType: hard
+
 "mime-db@npm:>= 1.43.0 < 2, mime-db@npm:^1.28.0":
   version: 1.45.0
   resolution: "mime-db@npm:1.45.0"
@@ -23794,7 +23822,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.1.11, mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:~2.1.17, mime-types@npm:~2.1.19, mime-types@npm:~2.1.24, mime-types@npm:~2.1.7":
+"mime-types@npm:^2.1.11, mime-types@npm:~2.1.7":
+  version: 2.1.32
+  resolution: "mime-types@npm:2.1.32"
+  dependencies:
+    mime-db: 1.49.0
+  checksum: 91addbdc0c2a91bb142ecfe13bffe6b1d41f2ec12931756c54c9d85737f022f507d1e5a441ec50c21d59ae8e6f2a118a55a7f6d8467d49fe06ef6d25151d9657
+  languageName: node
+  linkType: hard
+
+"mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:~2.1.17, mime-types@npm:~2.1.19, mime-types@npm:~2.1.24":
   version: 2.1.27
   resolution: "mime-types@npm:2.1.27"
   dependencies:
@@ -34565,6 +34602,64 @@ typescript@^4.0.5:
   checksum: c6bc39fc5880782d9eb9f2a1621fb03f8ce5071a6078e216118702446061440d42bbf845fe1ad7318ca91b117f8dd1bd53a3beafa3c9942002af99d7e5398ad2
   languageName: node
   linkType: hard
+
+"website-alvb@workspace:packages/website-alvb":
+  version: 0.0.0-use.local
+  resolution: "website-alvb@workspace:packages/website-alvb"
+  dependencies:
+    "@babel/core": ^7.12.10
+    "@mdx-js/react": ^1.6.22
+    "@sanity/block-content-to-react": ^2.0.7
+    "@sanity/image-url": ^0.140.22
+    "@storybook/addon-actions": ^6.3.0-alpha.12
+    "@storybook/addon-controls": ^6.3.0-alpha.12
+    "@storybook/addon-docs": ^6.3.0-alpha.12
+    "@storybook/addon-essentials": ^6.3.0-alpha.12
+    "@storybook/addon-links": ^6.3.0-alpha.12
+    "@storybook/addon-postcss": latest
+    "@storybook/react": ^6.3.0-alpha.12
+    "@testing-library/jest-dom": ^5.11.5
+    "@testing-library/react": ^11.1.1
+    autoprefixer: latest
+    babel-jest: ^26.6.3
+    babel-loader: ^8.2.2
+    babel-preset-gatsby: ^0.11.0
+    browser-monads: ^1.0.0
+    classnames: ^2.2.6
+    gatsby: 3.7.1
+    gatsby-background-image: ^1.5.3
+    gatsby-image: ^3.6.0
+    gatsby-plugin-google-analytics: ^3.6.0
+    gatsby-plugin-google-fonts: ^1.0.1
+    gatsby-plugin-image: ^1.7.1
+    gatsby-plugin-manifest: ^3.7.1
+    gatsby-plugin-postcss: ^4.6.0
+    gatsby-plugin-react-helmet: ^4.7.1
+    gatsby-plugin-sharp: ^3.7.1
+    gatsby-plugin-sitemap: ^4.3.1
+    gatsby-plugin-webpack-bundle-analyzer: ^1.0.5
+    gatsby-source-filesystem: ^3.6.0
+    gatsby-source-sanity: ^7.0.7
+    gatsby-transformer-sharp: ^3.7.1
+    gbimage-bridge: ^0.1.4
+    intersection-observer: ^0.11.0
+    jest: ^26.6.3
+    node-fetch: ^2.6.1
+    postcss: latest
+    react: ^17.0.1
+    react-device-detect: ^1.15.0
+    react-dom: ^17.0.1
+    react-headroom: ^3.1.0
+    react-helmet: ^6.1.0
+    react-is: ^17.0.1
+    react-markdown: ^7.0.1
+    react-reveal: ^1.2.2
+    react-share: ^4.3.1
+    react-slick: ^0.28.0
+    slugify: ^1.4.7
+    tailwindcss: latest
+  languageName: unknown
+  linkType: soft
 
 "website@workspace:packages/website":
   version: 0.0.0-use.local

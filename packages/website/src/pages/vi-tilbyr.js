@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout } from '../components/layout';
 import { useServicesQuery } from '../hookspages/useServicesQuery';
+import { StyledBlockContent } from '../components/styledBlockContent';
 import {
   ServicesHero,
   Title,
@@ -11,7 +12,6 @@ import {
   ImageTextFull,
   ServicesCard,
 } from 'shared-components';
-import { StyledBlockContent } from '../components/styledBlockContent';
 
 const Services = () => {
   const data = useServicesQuery();
@@ -61,7 +61,9 @@ const Services = () => {
               blockContent={_rawSection2Block}
               imageText={section2ImageText}
               image={section1Image.asset.gatsbyImageData}
-            />
+            >
+              <StyledBlockContent blocks={_rawSection2Block} />
+            </ColumnSection>
           </div>
           <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
             <ServicesSection
