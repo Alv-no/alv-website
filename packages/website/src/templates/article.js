@@ -51,16 +51,24 @@ const ArticleTemplate = (props) => {
       ? getSrc(socialImage.asset.gatsbyImageData)
       : null;
 
+  const metaArr = socialTags;
+  const metaLang = { lang: 'no' };
+  const metaDescription = description;
+  const metaAuthor = authorFullname;
+  const metaTitle = title;
+
+  const metaData = {
+    metaAuthor,
+    metaDescription,
+    metaTitle,
+    metaArr,
+    metaLang,
+    metaImage,
+  };
+
   return (
     <>
-      <SEO
-        title={title}
-        description={description}
-        metaImage={metaImage || ''}
-        socialTitle={socialTitle}
-        socialSubtitle={socialSubtitle}
-        author={authorFullname}
-      />
+      <SEO {...metaData} />
       <span className="lg:block hidden">
         <Sidebar
           {...postAuthor}
