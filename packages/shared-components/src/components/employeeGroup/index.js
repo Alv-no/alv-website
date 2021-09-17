@@ -47,7 +47,7 @@ export const EmployeeGroup = ({
                   fallbackImg={fallbackImg}
                 />
                 <p className="absolute opacity-0 pointer-events-none">
-                  {{ children }}
+                  {children}
                 </p>
                 {width < 480 && (
                   <div className="xs:hidden">

@@ -18,7 +18,7 @@ export const OurServices = ({ text, image, title, darkFade, children }) => {
         }}
       >
         <div />
-        <div className="sm:pl-0 lg:ml-0">
+        <div className="sm:pl-0 lg:ml-0 pl-5">
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
             {title || 'Våre Tjenester'}
           </h2>
@@ -46,7 +46,7 @@ export const OurServices = ({ text, image, title, darkFade, children }) => {
         }}
       >
         {/* Map from array of list items */}
-        <div className="w-full sm:mx-12 lg:mx-0 lg:pl-12 mt-9 text-lg sm:text-nav">
+        <div className="w-full px-5 sm:px-0 sm:mx-12 lg:mx-0 lg:pl-12 mt-9 text-lg sm:text-nav">
           <ul>
             <li
               className="tracking-wider font-semibold mb-8 cursor-pointer"
