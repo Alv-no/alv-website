@@ -1,4 +1,3 @@
-export * as Logo from './components/logo';
 export * as Form from './components/form';
 export * as Button from './components/ctaButton';
 export { CtaButton } from './components/ctaButton';

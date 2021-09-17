@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import Link from 'gatsby-link';
-import * as Logo from '../logo';
 import * as Icon from '../icon';
 import Breadcrumbs from '../breadcrumb';
 import CTA from '../calltoaction';
 import Headroom from 'react-headroom';
-import logo from './logo.png';
 import { Navigation } from '../navigation';
 import { window } from 'browser-monads';
 
-export const Header = ({ path, categoryPages, servicePages, white }) => {
+export const Header = ({ path, categoryPages, servicePages, logo, white }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -29,6 +27,7 @@ export const Header = ({ path, categoryPages, servicePages, white }) => {
         servicePages={servicePages}
         white={white}
         categoryPages={categoryPages}
+        logo={logo}
       />
       <div className="bg-theme-bg hidden sm:block sm:pt-7 py-5 px-10">
         <div className="max-w-1200 mx-auto relative z-50">
@@ -40,16 +39,10 @@ export const Header = ({ path, categoryPages, servicePages, white }) => {
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white={white} />
+                <Icon.Dropdown />
               </button>
               <span className="transform ">
-                <Link to="/">
-                  {white ? (
-                    <img alt="logo" style={{ width: '74px' }} src={logo} />
-                  ) : (
-                    <Logo.White />
-                  )}
-                </Link>
+                <Link to="/">{logo.White()}</Link>
               </span>
             </div>
             {!path || !path.includes('/kontakt-oss') ? (
@@ -74,6 +67,7 @@ export const MobileHeader = ({
   categoryPages,
   servicePages,
   white,
+  logo,
 }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
@@ -90,12 +84,13 @@ export const MobileHeader = ({
         servicePages={servicePages}
         categoryPages={categoryPages}
         white={white}
+        logo={logo}
       />
       <Headroom>
         <div
           className={`bg-navy block ${
             viewport || 'sm'
-          }:hidden py-5 px-6 five:px-10`}
+          }:hidden py-5 px-6 fivefifty:px-10`}
         >
           <div className="max-w-1600 mx-auto">
             <div className="flex flex-row-reverse justify-between">
@@ -108,9 +103,7 @@ export const MobileHeader = ({
                 <Icon.Dropdown />
               </button>
               <span className="transform ">
-                <Link to="/">
-                  <Logo.White />
-                </Link>
+                <Link to="/">{logo.White()}</Link>
               </span>
             </div>
           </div>
@@ -120,7 +113,13 @@ export const MobileHeader = ({
   );
 };
 
-export const BlogHeader = ({ categoryPages, servicePages }) => {
+export const BlogHeader = ({
+  categoryPages,
+  servicePages,
+  children,
+  white,
+  logo,
+}) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -137,6 +136,8 @@ export const BlogHeader = ({ categoryPages, servicePages }) => {
         toggleClose={toggleClose}
         servicePages={servicePages}
         categoryPages={categoryPages}
+        white={white}
+        logo={logo}
       />
       <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
         <div className="max-w-1600 mx-auto">
@@ -151,9 +152,7 @@ export const BlogHeader = ({ categoryPages, servicePages }) => {
                 <Icon.Dropdown />
               </button>
               <span className="transform ">
-                <Link to="/">
-                  <Logo.White />
-                </Link>
+                <Link to="/">{children}</Link>
               </span>
             </div>
           </div>

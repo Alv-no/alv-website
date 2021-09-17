@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, MobileHeader, Footer, SEO } from 'shared-components';
-import * as Logo from '../logo';
 import { useLayoutQuery } from './useLayoutQuery';
+import * as Logo from '../logo';
 import './layout.css';
 
 export const Layout = ({

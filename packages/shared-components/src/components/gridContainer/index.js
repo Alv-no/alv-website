@@ -81,7 +81,6 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
                   updateActiveBio={updateActiveBio}
                   group={group}
                   fallbackImg={fallbackImg}
-                  width={width}
                 />
               );
             }

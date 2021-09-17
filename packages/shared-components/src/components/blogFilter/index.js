@@ -198,7 +198,7 @@ export const FilterField = ({
           className="whitespace-pre w-full pl-2 rounded-full -ml-2 relative"
           style={{ scrollbarWidth: 'thin' }}
         >
-          <div className="five:flex hidden w-full">
+          <div className="fivefifty:flex hidden w-full">
             {activeTags !== undefined
               ? activeTags.map((tag) => (
                   <div
@@ -232,7 +232,7 @@ export const FilterField = ({
           </div>
         </div>
       </div>
-      <span className="right-0 absolute mr-4 five:hidden">
+      <span className="right-0 absolute mr-4 fivefifty:hidden">
         <Icon.DropdownMini />
       </span>
     </div>
@@ -252,8 +252,8 @@ export const SortField = ({ sort, sortClick, light }) => {
   };
 
   return (
-    <div className="flex items-center h-full five:w-60 pr-2 pl-4 five:px-0">
-      <span className="five:w-25 five:text-right">Sorter</span>
+    <div className="flex items-center h-full fivefifty:w-60 pr-2 pl-4 fivefifty:px-0">
+      <span className="fivefifty:w-25 fivefifty:text-right">Sorter</span>
       <div
         className="relative h-full border border-bordergray flex items-center px-4 rounded-md ml-3 w-full"
         style={{

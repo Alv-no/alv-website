@@ -14,7 +14,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
     return el;
   });
   return (
-    <div className="mb-4 mt-10" id="our-team">
+    <div className="mb-4 mt-10" id="konsulentene">
       <div className="max-w-1440 xl:max-w-1200 px-5 xl:px-0 sm:px-12 mx-auto">
         {!notitle && (
           <Title underline align="left" color="text-navy">

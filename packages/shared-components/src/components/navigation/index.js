@@ -1,30 +1,26 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import * as Icon from '../icon';
-import * as Logo from '../logo';
 import { LargeLink, Subtitle, ListLink, List } from '../navItems';
 import { SocialLinks } from '../socialShare';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export const Navigation = ({
   open,
   toggleClose,
   servicePages,
   categoryPages,
+  logo,
 }) => {
-  const { width } = useWindowDimensions();
   return (
     <>
       <nav
-        className={`text-white tracking-wider fixed overflow-y-scroll overflow-x-hidden z-70 w-full h-full bg-navy p-6 sm:p-8 left-0 top-0 transition duration-300 ${
+        className={`text-theme-text tracking-wider fixed overflow-y-scroll overflow-x-hidden z-70 w-full h-full bg-theme-bg p-6 sm:p-8 left-0 top-0 transition duration-300 ${
           open ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
         <div className="eight:flex justify-center z-90 relative mx-auto auto eight:mb-0 eight:mb-25 eight:mx-auto max-w-1200 items-center mb-12 eight:mb-0">
           <div className="inline-block">
-            <Link to="/">
-              <Logo.White />
-            </Link>
+            <Link to="/">{logo.White()}</Link>
           </div>
           <div className="absolute right-0 transform -translate-x-20 eight:flex hidden">
             <SocialLinks />
@@ -41,10 +37,9 @@ export const Navigation = ({
           >
             <div>
               <LargeLink link="/vi-tilbyr">Vi Tilbyr</LargeLink>
-              {categoryPages &&
-                categoryPages
-                  .slice(0, width < 800 ? categoryPages.length : 2)
-                  .map((categoryPage) => {
+              <span className="hidden eight:block">
+                {categoryPages &&
+                  categoryPages.slice(0, 2).map((categoryPage) => {
                     return (
                       <div
                         className="eight:max-w-68"
@@ -81,6 +76,49 @@ export const Navigation = ({
                       </div>
                     );
                   })}
+              </span>
+              <span className="eight:hidden">
+                {categoryPages &&
+                  categoryPages
+                    .slice(0, categoryPages.length)
+                    .map((categoryPage) => {
+                      return (
+                        <div
+                          className="eight:max-w-68"
+                          key={categoryPage.slug.current}
+                        >
+                          <Subtitle
+                            link={`/vi-tilbyr/${categoryPage.slug.current}`}
+                          >
+                            {categoryPage.heroHeading}
+                          </Subtitle>
+                          {servicePages.some(
+                            (page) =>
+                              page.parentPage.slug.current ===
+                              categoryPage.slug.current
+                          ) && (
+                            <List>
+                              {servicePages
+                                .filter(
+                                  (page) =>
+                                    page.parentPage.slug.current ===
+                                    categoryPage.slug.current
+                                )
+                                .map((page) => (
+                                  <ListLink
+                                    link={`/vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
+                                    margin="eight:mb-5 2xl:mb-6"
+                                    key={page.slug.current}
+                                  >
+                                    {page.heroHeading}
+                                  </ListLink>
+                                ))}
+                            </List>
+                          )}
+                        </div>
+                      );
+                    })}
+              </span>
             </div>
             <div>
               <div className="eight:mt-10 eight:pt-8 2xl:pt-10 xl:pt-10" />
@@ -125,11 +163,7 @@ export const Navigation = ({
                     );
                   })}
             </div>
-            <div
-              className={
-                width >= 800 && `eight:relative absolute w-screen eight:w-auto`
-              }
-            >
+            <div className="eight:relative eight:absolute eight:w-screen eight:w-auto">
               <LargeLink link="/jobbe-i-alv">Jobbe i Alv</LargeLink>
               <div className="eight:w-64">
                 <LargeLink>Selskapet</LargeLink>

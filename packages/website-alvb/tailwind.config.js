@@ -12,7 +12,6 @@ module.exports = {
     screens: {
       '2xs': '360px',
       'xs': '480px',
-      'four': '450px',
       'five': '500px',
       'fivefifty': '550px',
       'sm': '640px',
@@ -29,9 +28,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        'theme-footer': '#051531',
-        'theme-bg': 'rgb(6, 24, 56)',
-        'theme-text': '#fff',
+        'theme-footer': '#fff',
+        'theme-bg': '#fff',
+        'theme-text': '#061838',
         'navy': '#061838',
         'lightnavy': 'rgba(6, 24, 56, 0.3)',
         'tag': '#83959F',
