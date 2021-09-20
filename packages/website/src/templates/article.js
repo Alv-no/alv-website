@@ -7,7 +7,7 @@ import { useLayoutQuery } from '../components/layout/useLayoutQuery';
 import { Footer } from '../../../shared-components/src/components/footer';
 import { SEO } from '../../../shared-components/src/components/seo';
 import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
-import * as styles from '../components/blockContent/Blockcontent.module.css';
+import * as styles from '../components/styledBlockContent/StyledBlockContent.module.css';
 import { SocialShare } from '../../../shared-components/src/components/socialShare';
 import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
@@ -94,7 +94,7 @@ const ArticleTemplate = (props) => {
             {mainImage && (
               <div className="w-full mb-3">
                 <span
-                  className={` ${styles.mainImg} relative z-0 fixed opacity-90`}
+                  className={`${styles.mainImg} relative z-0 fixed opacity-90`}
                 >
                   <GatsbyImage
                     image={mainImage.asset.gatsbyImageData}
