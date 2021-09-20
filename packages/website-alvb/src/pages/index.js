@@ -31,7 +31,7 @@ const Index = ({ data }) => {
               blue={true}
               title={landingPage.flipSection1Title}
               text={landingPage.flipSection1Text}
-              image={landingPage.flipSection1Image.asset.gatsbyImageData}
+              image={landingPage.section1Image.asset.gatsbyImageData}
             />
             <div className="bg-theme-bg h-10 lg:h-32" />
             <OurServices
@@ -59,31 +59,31 @@ export const query = graphql`
 
       videoTextOverlay
 
-      flipSection1Image {
+      section1Image {
         asset {
           gatsbyImageData
           url
         }
       }
-      flipSection1Text
-      flipSection1Title
-      flipSection2Image {
+      section1Text
+      section1Title
+      section2Image {
         asset {
           gatsbyImageData
           url
         }
       }
-      flipSection2Text
-      flipSection2Title
-      flipSection3Image {
+      section2Text
+      section2Title
+      section3Image {
         asset {
           gatsbyImageData
           url
         }
       }
-      flipSection3Text
-      flipSection3TextOverImage
-      flipSection3Title
+      section3Text
+      section3TextOverImage
+      section3Title
       _rawAboutText
       aboutTitle
     }

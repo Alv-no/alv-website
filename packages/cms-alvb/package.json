@@ -1,0 +1,26 @@
+{
+  "name": "cms-alvb",
+  "scripts": {
+    "start": "sanity start",
+    "graphql-deploy": "sanity graphql deploy --playground",
+    "deploy": "sanity deploy",
+    "build": "sanity build",
+    "test": "sanity check"
+  },
+  "dependencies": {
+    "@sanity/base": "^2.0.9",
+    "@sanity/components": "^2.0.9",
+    "@sanity/core": "^2.0.9",
+    "@sanity/default-layout": "^2.0.9",
+    "@sanity/default-login": "^2.0.9",
+    "@sanity/desk-tool": "^2.0.9",
+    "@sanity/vision": "^2.0.9",
+    "prop-types": "^15.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.3.1"
+  },
+  "devDependencies": {
+    "@sanity/cli": "^2.1.4"
+  }
+}
