@@ -1,6 +1,6 @@
-# Alv.no
+# Alv websites
 
-This is the code repo for development of the new websites for Alv.no
+This is the code repo for development of the new websites for Alv.no and Alvb.no
 
 ## Development setup
 
@@ -65,8 +65,10 @@ az login
 
 Package                       | Description
 -------                       | -----------
-[website](./packages/website) | Gatsby-powered website
-[cms](./packages/cms)         | Sanity CMS
+[website](./packages/website) | Gatsby-powered website: Alv.no
+[website-alvb](./packages/website-alvb) | Gatsby-powered website: AlvB.no
+[cms](./packages/cms)         | Sanity CMS: Alv.no
+[cms-alvb](./packages/cms-alvb)    | Sanity CMS: AlvB.no
 [mail-api](./packages/mail-api) | Mail API backend for contact form
 [infrastructure](./packages/infrastructure) | Terraform Infrastructure as Code for Azure
 [shared-components](./packages/shared-components) | Component library to share components between different gatsby sites

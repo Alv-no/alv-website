@@ -18,7 +18,7 @@ export const useContactQuery = () => {
               address
               phone
               email
-              org
+              hours
             }
           }
         }

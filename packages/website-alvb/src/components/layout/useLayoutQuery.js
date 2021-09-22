@@ -7,33 +7,9 @@ export const useLayoutQuery = () => {
           id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }
         ) {
           email
-          org
+          hours
           phone
           address
-        }
-        allSanityCategoryPage {
-          nodes {
-            slug {
-              current
-            }
-            heroHeading
-          }
-        }
-        allSanityServices {
-          edges {
-            node {
-              id
-              slug {
-                current
-              }
-              parentPage {
-                slug {
-                  current
-                }
-              }
-              heroHeading
-            }
-          }
         }
         site {
           siteMetadata {

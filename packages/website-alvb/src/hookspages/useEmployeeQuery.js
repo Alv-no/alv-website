@@ -11,9 +11,6 @@ export const useEmployeeQuery = () => {
         allSanityEmployee {
           edges {
             node {
-              tags {
-                tag
-              }
               firstname
               lastname
               ytVideoId
@@ -22,14 +19,8 @@ export const useEmployeeQuery = () => {
                   url
                 }
               }
-              cv {
-                asset {
-                  url
-                }
-              }
               id
               title
-              experience
               _rawBio
               image {
                 asset {
@@ -42,24 +33,6 @@ export const useEmployeeQuery = () => {
         fallbackImg: file(name: { eq: "fallback" }) {
           childImageSharp {
             gatsbyImageData(width: 600, layout: CONSTRAINED)
-          }
-        }
-        cta: file(name: { eq: "Alv_fredag" }) {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
-          }
-        }
-        ctaFallback: file(name: { eq: "featuredFallback" }) {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
-          }
-        }
-        allSanityEmployeeTag {
-          edges {
-            node {
-              tag
-              id
-            }
           }
         }
       }
