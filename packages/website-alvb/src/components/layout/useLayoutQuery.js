@@ -21,9 +21,7 @@ export const useLayoutQuery = () => {
       }
     `
   );
-  const servicePages = data.allSanityServices.edges.map((edge) => edge.node);
-  const categoryPages = data.allSanityCategoryPage.nodes;
   const { site } = data;
-  const { address, phone, org, email } = data.sanitySiteSettings;
-  return { address, phone, org, email, servicePages, categoryPages, site };
+  const { address, phone, hours, email } = data.sanitySiteSettings;
+  return { address, phone, hours, email, site };
 };
