@@ -44,6 +44,8 @@ const ArticleTemplate = (props) => {
     const { firstname, lastname } = postAuthor;
     authorFullname = `${firstname} ${lastname}`;
     authorSlug = createSlugForEmployee(firstname, lastname);
+  } else {
+    authorFullname = 'Alv B';
   }
 
   const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
@@ -73,7 +75,7 @@ const ArticleTemplate = (props) => {
       <span className="lg:block hidden">
         <Sidebar
           {...postAuthor}
-          isEmployee={!guestAuthor}
+          isEmployee
           authorSlug={authorSlug}
           fallbackImg={props.data.fallbackImg.childImageSharp.gatsbyImageData}
           servicePages={servicePages}
@@ -183,11 +185,6 @@ export const query = graphql`
       author {
         firstname
         lastname
-        cv {
-          asset {
-            url
-          }
-        }
         id
         title
         image {
@@ -207,20 +204,6 @@ export const query = graphql`
       mainImage {
         asset {
           gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-        }
-      }
-      guestAuthor {
-        guestAuthor {
-          image {
-            asset {
-              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-              url
-            }
-          }
-          firstname
-          lastname
-          title
-          id
         }
       }
       socials {
@@ -258,20 +241,6 @@ export const query = graphql`
             }
             firstname
             lastname
-          }
-          guestAuthor {
-            guestAuthor {
-              image {
-                asset {
-                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-                  url
-                }
-              }
-              firstname
-              lastname
-              title
-              id
-            }
           }
           publishedAt(formatString: "DD MMM, YYYY")
           rawDate: publishedAt

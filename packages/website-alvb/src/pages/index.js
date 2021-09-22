@@ -52,68 +52,29 @@ const Index = ({ data }) => {
 export default Index;
 
 export const query = graphql`
-  {
-    sanityLandingPage {
-      pageDescription
-      pageTitle
-
-      videoTextOverlay
-
-      section1Image {
-        asset {
-          gatsbyImageData
-          url
+  query LandingPageQuery {
+    allSanityLandingPage {
+      nodes {
+        section2Title
+        section3Text
+        section3Title
+        videoTextOverlay
+        videoMp4 {
+          asset {
+            url
+          }
         }
-      }
-      section1Text
-      section1Title
-      section2Image {
-        asset {
-          gatsbyImageData
-          url
+        videoWebm {
+          asset {
+            url
+          }
         }
-      }
-      section2Text
-      section2Title
-      section3Image {
-        asset {
-          gatsbyImageData
-          url
-        }
-      }
-      section3Text
-      section3TextOverImage
-      section3Title
-      _rawAboutText
-      aboutTitle
-    }
-    video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
-      id
-      pageTitle
-      videoMp4 {
-        asset {
-          url
-        }
-      }
-      heroVideoWebm {
-        asset {
-          url
-        }
-      }
-      heroVideoMp4 {
-        asset {
-          url
-        }
-      }
-      videoWebm {
-        asset {
-          url
-        }
-      }
-      videoMp4 {
-        asset {
-          url
-        }
+        pageDescription
+        pageTitle
+        _rawSection2Text
+        _rawSection3Image
+        _rawSection5Founder
+        _rawImageHero
       }
     }
   }
