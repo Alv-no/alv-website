@@ -28,7 +28,6 @@ module.exports = {
       'twelve': '1200px',
       'xl': '1280px',
       '2xl': '1440px',
-      '3xl': '1700px',
       '1600': '1600px',
     },
     extend: {
