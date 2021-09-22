@@ -50,7 +50,7 @@ export const Header = ({
                 <Icon.Dropdown />
               </button>
               <span className="transform ">
-                <Link to="/">{logo.White()}</Link>
+                <Link to="/">{white ? logo.Colored() : logo.White()}</Link>
               </span>
             </div>
             {!path || !path.includes('/kontakt-oss') ? (
