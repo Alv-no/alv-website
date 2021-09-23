@@ -28,14 +28,15 @@ const Index = ({ data, location }) => {
     <div className="overflow-hidden">
       <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
         <div className="bg-navy">
-          <div className="bg-navy w-full pb-15 sm:pt-0 pt-10">
-            <Hero
-              linesAndClasses={linesAndClasses}
-              delay={90}
-              videoMp4={data.video.heroVideoMp4.asset.url}
-              videoWebm={data.video.heroVideoWebm.asset.url}
-              routeUpdate={location.action}
-            />
+          <Hero
+            linesAndClasses={linesAndClasses}
+            delay={90}
+            videoMp4={data.video.heroVideoMp4.asset.url}
+            videoWebm={data.video.heroVideoWebm.asset.url}
+            routeUpdate={location.action}
+            heroCta={landingPage.heroCta}
+          />
+          <div className="bg-navy w-full pb-15">
             <VideoIntro
               videoMp4={data.video.videoMp4.asset.url}
               videoWebm={data.video.videoWebm.asset.url}
@@ -86,6 +87,12 @@ export const query = graphql`
       pageTitle
 
       videoTextOverlay
+
+      heroCta {
+        eyebrow
+        link
+        title
+      }
 
       flipSection1Image {
         asset {

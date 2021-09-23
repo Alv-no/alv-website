@@ -14,6 +14,7 @@ import articleTag from './articleTag';
 import redirects from './redirects';
 import landingPage from './landingPage';
 import aboutPage from './aboutPage';
+import heroCta from './heroCta';
 import employeePage from './employeePage';
 import careerPage from './careerPage';
 import contactPage from './contactPage';
@@ -66,14 +67,15 @@ export default createSchema({
     redirects,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
+    reasonsCarousel,
     blockContent,
     imageAndText,
     guestAuthor,
-    socials,
     reasonsCard,
-    reasonsCarousel,
     playlists,
     playlist,
+    socials,
+    heroCta,
     cta,
   ]),
 });

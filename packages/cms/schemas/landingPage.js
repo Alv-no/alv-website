@@ -31,6 +31,11 @@ export default {
       type: 'file',
     },
     {
+      name: 'heroCta',
+      title: 'Hero Cta',
+      type: 'heroCta',
+    },
+    {
       name: 'videoWebm',
       title: 'Video Introduction - webm',
       type: 'file',
