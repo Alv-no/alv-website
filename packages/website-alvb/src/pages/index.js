@@ -4,6 +4,7 @@ import { Layout } from '../components/layout';
 import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
 import { WhoWeAre, VideoIntro, Hire } from 'shared-components';
+import { Founder } from '../components/founder';
 
 const Index = ({ data }) => {
   const pageTitle = data.sanityLandingPage.pageTitle || false;
@@ -37,6 +38,7 @@ const Index = ({ data }) => {
             text={landingPage.section3Text}
             image={landingPage.section3Image.asset.gatsbyImageData}
           />
+          <Founder {...landingPage.section5Founder} />
           <div className="bg-theme-bg h-10 lg:h-32" />
           <div className="lg:h-40 h-5" />
           <BlogCarousel blue />
@@ -73,7 +75,22 @@ export const query = graphql`
           gatsbyImageData
         }
       }
-      _rawSection5Founder
+      section5Founder {
+        title
+        role
+        quote
+        name
+        founderImage {
+          asset {
+            gatsbyImageData
+          }
+        }
+        signatureImage {
+          asset {
+            gatsbyImageData
+          }
+        }
+      }
       imageHero {
         image {
           asset {
