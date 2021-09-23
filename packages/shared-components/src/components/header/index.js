@@ -7,7 +7,15 @@ import Headroom from 'react-headroom';
 import { Navigation } from '../navigation';
 import { window } from 'browser-monads';
 
-export const Header = ({ path, categoryPages, servicePages, logo, white }) => {
+export const Header = ({
+  path,
+  categoryPages,
+  servicePages,
+  logo,
+  white,
+  headerCtaText,
+  headerCtaLink,
+}) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -29,8 +37,8 @@ export const Header = ({ path, categoryPages, servicePages, logo, white }) => {
         categoryPages={categoryPages}
         logo={logo}
       />
-      <div className="bg-theme-bg hidden sm:block sm:pt-7 py-5 px-10">
-        <div className="max-w-1200 mx-auto relative z-50">
+      <div className="bg-theme-bg hidden sm:block sm:pt-7 py-5 px-10 -mb-2px">
+        <div className="max-w-1200 mx-auto relative z-50 h-8">
           <div className="flex justify-between sm:mb-7">
             <div className="flex relative z-50">
               <button
@@ -48,7 +56,7 @@ export const Header = ({ path, categoryPages, servicePages, logo, white }) => {
             {!path || !path.includes('/kontakt-oss') ? (
               <div className="text-theme-text flex hidden sm:block relative z-50">
                 <Link to="/kontakt-oss">
-                  <CTA internalLink="/kontakt-oss">Ta kontakt</CTA>
+                  <CTA internalLink={headerCtaLink}>{headerCtaText}</CTA>
                 </Link>
               </div>
             ) : null}
@@ -90,7 +98,7 @@ export const MobileHeader = ({
         <div
           className={`bg-navy block ${
             viewport || 'sm'
-          }:hidden py-5 px-6 fivefifty:px-10`}
+          }:hidden py-5 px-6 fivefifty:px-10 `}
         >
           <div className="max-w-1600 mx-auto">
             <div className="flex flex-row-reverse justify-between">

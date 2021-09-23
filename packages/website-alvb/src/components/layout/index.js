@@ -44,6 +44,8 @@ export const Layout = ({
         servicePages={servicePages}
         categoryPages={categoryPages}
         logo={Logo}
+        headerCtaText="Ta kontakt"
+        headerCtaLink="/kontakt-oss"
       />
       <MobileHeader
         servicePages={servicePages}
