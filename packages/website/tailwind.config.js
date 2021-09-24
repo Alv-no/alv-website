@@ -1,5 +1,10 @@
 module.exports = {
-  purge: ['./src/**/*.js', './src/**/*.jsx'],
+  purge: [
+    './src/**/*.js',
+    './src/**/*.jsx',
+    '../shared-components/src/**/*.js',
+    '../shared-components/src/**/*.jsx',
+  ],
   theme: {
     letterSpacing: {
       tighter: '-.05em',
