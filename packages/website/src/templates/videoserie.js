@@ -22,7 +22,7 @@ const Videoseries = ({ pageContext }) => {
     );
 
   const pageDescription = data.sanityVideoSeriesPage?.pageDescription || false;
-  const pageTitle = data.sanityVideoSeriesPage?.pageTitle || false;
+  const pageTitle = data.sanityVideoSeriesPage?.pageTitle || 'Videoserie';
   const featuredVideo = filteredVideoseries[0];
   const featuredVideoSeason =
     featuredVideo.seasons[featuredVideo.seasons.length - 1];
