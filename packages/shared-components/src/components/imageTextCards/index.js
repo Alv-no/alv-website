@@ -46,7 +46,7 @@ export const ImageTextCards = ({
           <div className="bg-servicesgray flex">
             <div className="lg:flex max-w-1200 mx-auto">
               <div className="flex-1" />
-              <div className="flex-1 grid grid-cols-2 gap-x-6 p-12 lg:pt-12 pt-2">
+              <div className="flex-1 grid grid-cols-1 gap-y-4 sm:grid-cols-2 gap-x-6 p-12 lg:pt-12 pt-2">
                 {children}
               </div>
             </div>
