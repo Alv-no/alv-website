@@ -54,7 +54,7 @@ const Services = () => {
             <div className="h-8" />
             <Description align="center">{description}</Description>
           </ServicesHero>
-          <div className="bg-white text-navy px-5 sm:px-12 lg:px-0 sm:-mt-20 -mt-5 overflow-hidden max-w-1200 mx-auto w-full">
+          <div className="bg-white text-navy px-5 sm:px-12 lg:px-0 -mt-5 overflow-hidden max-w-1200 mx-auto w-full">
             <ColumnSection
               eyebrow={section2Eyebrow}
               title={section2Title}
