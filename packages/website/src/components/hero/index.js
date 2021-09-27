@@ -33,10 +33,10 @@ export const Hero = ({
 
 const MobileAnimation = ({ linesAndClasses, delay }) => (
   <div className="h-full flex items-center justify-center px-5">
-    <span className="transform xs:scale-100 scale-90">
+    <span className="transform xs:scale-100 scale-90 -mt-5">
       <Title
         bold={false}
-        size="lg:text-5xl sm:text-hero-tablet text-hero-sm leading-tight mt-5 eight:hidden"
+        size="lg:text-5xl sm:text-hero-tablet text-hero-sm leading-tight eight:hidden"
         noDot
       >
         <Typewriter linesAndClasses={linesAndClasses} delay={delay} />
@@ -57,7 +57,7 @@ const GradientLayer = () => (
 
 const HeroCta = ({ link, eyebrow, title }) => (
   <Link
-    className="block absolute bottom-5 w-full uppercase text-white px-5 sm:px-10 z-30"
+    className="block absolute bottom-12 sm:bottom-5 w-full uppercase text-white px-5 sm:px-10 z-30"
     to={link}
   >
     <div className="flex items-center lg:justify-end w-full max-w-1200 mx-auto sm:mb-5 lg:mb-12">
