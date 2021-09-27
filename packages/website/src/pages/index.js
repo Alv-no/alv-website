@@ -71,7 +71,7 @@ const Index = ({ data, location }) => {
             imageText={landingPage.flipSection3ImageText}
           />
           <BlogSlider useBlogQuery={useBlogQuery} />
-          <div className="lg:h-20  h-5" />
+          <div className="lg:h-20 h-5" />
         </div>
       </Layout>
     </div>

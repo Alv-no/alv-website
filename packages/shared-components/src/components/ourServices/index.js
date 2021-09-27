@@ -103,7 +103,7 @@ export const OurServices = ({ text, image, title, darkFade, children }) => {
               onClick={handleClick}
             >
               <p className="uppercase pointer-events-none text-theme-text">
-                Informasjons<span className="xs:hidden">-</span>sikkerhet
+                Informasjonssikkerhet
               </p>
               {activeItem === '5' && (
                 <ListContent link="/vi-tilbyr/informasjonssikkerhet">
@@ -125,14 +125,13 @@ export const OurServices = ({ text, image, title, darkFade, children }) => {
 
 const TextFadeImage = ({ darkFade, image }) => (
   <div>
-    <BgImage image={image} style={{ height: '530px' }}>
+    <BgImage image={image} className="h-133">
       <div
         className={`flex sm:justify-end items-center p-5 lg:pr-24 sm:p-16 ${
-          darkFade && 'bg-black bg-opacity-50'
+          darkFade && 'bg-black bg-opacity-50 h-133'
         }`}
-        style={{ height: '530px' }}
       >
-        <div className="text-theme-text sm:text-slider text-blog uppercase  text-left font-semibold tracking-wider leading-tighter w-5/6 sm:text-right">
+        <div className="text-theme-text sm:text-slider text-blog uppercase  text-left font-semibold tracking-wider leading-tighter sm:text-right">
           Bygget rundt systemutviklings
           <span className="">-</span>prosessen
         </div>
