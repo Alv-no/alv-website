@@ -66,7 +66,7 @@ const HeroCta = ({ link, eyebrow, title }) => (
         <h1 className={styles.ctaTitle}>{title}</h1>
       </div>
       <span className={styles.ctaButton}>
-        <Button.CtaButton />
+        <Button.CtaButton internalLink={link} />
       </span>
     </div>
   </Link>

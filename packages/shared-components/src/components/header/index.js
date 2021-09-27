@@ -8,7 +8,6 @@ import { Navigation } from '../navigation';
 import { window } from 'browser-monads';
 
 export const Header = ({
-  path,
   categoryPages,
   servicePages,
   logo,
@@ -53,13 +52,11 @@ export const Header = ({
                 <Link to="/">{white ? logo.Colored() : logo.White()}</Link>
               </span>
             </div>
-            {!path || !path.includes('/kontakt-oss') ? (
-              <div className="text-theme-text flex hidden sm:block relative z-50">
-                <Link to="/kontakt-oss">
-                  <CTA internalLink={headerCtaLink}>{headerCtaText}</CTA>
-                </Link>
-              </div>
-            ) : null}
+            <div className="text-theme-text flex hidden sm:block relative z-50">
+              <Link to={headerCtaLink}>
+                <CTA>{headerCtaText}</CTA>
+              </Link>
+            </div>
           </div>
           <span className="sm:block hidden relative z-50">
             <Breadcrumbs path={crumbs} />
