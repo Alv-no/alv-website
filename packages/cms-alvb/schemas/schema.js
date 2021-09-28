@@ -14,7 +14,6 @@ import servicesIntro from './servicesIntro';
 import landingPage from './landingPage';
 import founder from './founder';
 import serviceItem from './serviceItem';
-import servicesList from './servicesList';
 import employeePage from './employeePage';
 import ourProjectsPage from './ourProjects';
 import heroBlockContent from './heroBlockContent';
@@ -50,9 +49,8 @@ export default createSchema({
     servicesIntro,
     blockContent,
     imageAndText,
-    servicesList,
-    serviceItem,
     ourProjectsPage,
+    serviceItem,
     imageHero,
     founder,
     socials,

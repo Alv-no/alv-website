@@ -32,6 +32,25 @@ export const useAboutUsQuery = () => {
             gatsbyImageData(width: 600, layout: CONSTRAINED)
           }
         }
+        sanityLandingPage {
+          section2Services {
+            description
+            heading
+            link
+            textOverImage
+            servicesList {
+              link
+              subtitle
+              text
+              title
+            }
+            image {
+              asset {
+                gatsbyImageData
+              }
+            }
+          }
+        }
         allSanityEmployee {
           edges {
             node {

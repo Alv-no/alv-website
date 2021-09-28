@@ -56,12 +56,7 @@ const Index = ({ data, location }) => {
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
           />
           <div className="bg-navy h-10 lg:h-32" />
-          <OurServices
-            darkFade
-            title={landingPage.flipSection2Title}
-            text={landingPage.flipSection2Text}
-            image={landingPage.flipSection2Image.asset.gatsbyImageData}
-          />
+          <OurServices darkFade {...landingPage.section2Services} />
           <div className="lg:h-40  h-5" />
           <HireAlt
             darkFade
@@ -102,14 +97,23 @@ export const query = graphql`
       }
       flipSection1Text
       flipSection1Title
-      flipSection2Image {
-        asset {
-          gatsbyImageData
-          url
+      section2Services {
+        description
+        heading
+        link
+        textOverImage
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+        servicesList {
+          link
+          subtitle
+          text
+          title
         }
       }
-      flipSection2Text
-      flipSection2Title
       flipSection3Image {
         asset {
           gatsbyImageData

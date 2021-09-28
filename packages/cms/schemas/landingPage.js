@@ -20,14 +20,15 @@ export default {
         maxLength: 160,
       },
     },
+    // Hero section
     {
       name: 'heroVideoWebm',
-      title: 'Hero Video - webm',
+      title: 'Hero Video: webm',
       type: 'file',
     },
     {
       name: 'heroVideoMp4',
-      title: 'Hero Video - mp4',
+      title: 'Hero Video: mp4',
       type: 'file',
     },
     {
@@ -37,12 +38,12 @@ export default {
     },
     {
       name: 'videoWebm',
-      title: 'Video Introduction - webm',
+      title: 'Video Introduction: webm',
       type: 'file',
     },
     {
       name: 'videoMp4',
-      title: 'Video Introduction - mp4',
+      title: 'Video Introduction: mp4',
       type: 'file',
     },
     {
@@ -74,9 +75,10 @@ export default {
         },
       ],
     },
+    // Section 1
     {
       name: 'flipSection1Image',
-      title: 'Flip section 1 - image',
+      title: 'Section 1: image',
       type: 'image',
       options: {
         hotspot: true,
@@ -84,7 +86,7 @@ export default {
     },
     {
       name: 'flipSection1Title',
-      title: 'Flip section 1 - title',
+      title: 'Section 1: title',
       type: 'string',
       options: {
         maxLength: 60,
@@ -92,41 +94,23 @@ export default {
     },
     {
       name: 'flipSection1Text',
-      title: 'Flip section 1 - text',
+      title: 'Section 1: text',
       type: 'text',
       rows: 2,
       options: {
         maxLength: 160,
       },
     },
+    // Section 2
     {
-      name: 'flipSection2Image',
-      title: 'Flip section 2 - image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'section2Services',
+      title: 'Section 2: Services',
+      type: 'servicesIntro',
     },
-    {
-      name: 'flipSection2Title',
-      title: 'Flip section 2 - title',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
-    },
-    {
-      name: 'flipSection2Text',
-      title: 'Flip section 2 - text',
-      type: 'text',
-      rows: 2,
-      options: {
-        maxLength: 160,
-      },
-    },
+    // Section 3
     {
       name: 'flipSection3Image',
-      title: 'Flip section 3 - image',
+      title: 'Section 3: image',
       type: 'image',
       options: {
         hotspot: true,
@@ -134,7 +118,7 @@ export default {
     },
     {
       name: 'flipSection3Title',
-      title: 'Flip section 3 - title',
+      title: 'Section 3: title',
       type: 'string',
       options: {
         maxLength: 60,
@@ -142,7 +126,7 @@ export default {
     },
     {
       name: 'flipSection3Text',
-      title: 'Flip section 3 - text',
+      title: 'Section 3: text',
       type: 'text',
       rows: 2,
       options: {
@@ -151,7 +135,7 @@ export default {
     },
     {
       name: 'flipSection3TextOverImage',
-      title: 'Flip section 3 - text over image',
+      title: 'Section 3: text over image',
       type: 'string',
       options: {
         maxLength: 60,

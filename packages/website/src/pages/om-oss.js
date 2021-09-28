@@ -32,13 +32,7 @@ const About = () => {
           <div className="sm:h-10 lg:h-20" />
         </div>
         <div className="h-10 lg:h-0" />
-        <OurServices
-          darkFade
-          image={data.services.childImageSharp.gatsbyImageData}
-        >
-          Alv er produktet av alle konsulentene som jobber i selskapet. Dyktige
-          konsulenter gjør Alv til et bra produkt.
-        </OurServices>
+        <OurServices darkFade {...data.sanityLandingPage.section2Services} />
         <div className="px-12 lg:h-5"></div>
         <div className="max-w-1200 mx-auto xl:px-0 sm:px-12 px-5 -mb-10 mt-12">
           <Title align="left">Ansatte</Title>
