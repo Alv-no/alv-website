@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
-import { WhoWeAre, VideoIntro, Hire } from 'shared-components';
+import { WhoWeAre, VideoIntro, Hire, OurServices } from 'shared-components';
 import { Founder } from '../components/founder';
 
 const Index = ({ data }) => {
@@ -38,9 +38,10 @@ const Index = ({ data }) => {
             text={landingPage.section3Text}
             image={landingPage.section3Image.asset.gatsbyImageData}
           />
+          <div className="h-15" />
+          <OurServices {...landingPage.section4Services} />
           <Founder {...landingPage.section5Founder} />
           <div className="bg-theme-bg h-10 lg:h-32" />
-          <div className="lg:h-40 h-5" />
           <BlogCarousel blue />
         </div>
       </Layout>
@@ -73,6 +74,23 @@ export const query = graphql`
       section3Image {
         asset {
           gatsbyImageData
+        }
+      }
+      section4Services {
+        description
+        heading
+        textOverImage
+        link
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+        servicesList {
+          subtitle
+          text
+          title
+          link
         }
       }
       section5Founder {

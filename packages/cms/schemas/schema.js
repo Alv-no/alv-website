@@ -14,6 +14,7 @@ import articleTag from './articleTag';
 import redirects from './redirects';
 import landingPage from './landingPage';
 import aboutPage from './aboutPage';
+import servicesIntro from './servicesIntro';
 import heroCta from './heroCta';
 import employeePage from './employeePage';
 import careerPage from './careerPage';
@@ -31,6 +32,7 @@ import blogPage from './blogPage';
 import categoryPage from './categoryPage';
 import testimonial from './testimonial';
 import servicePage from './servicePage';
+import serviceItem from './serviceItem';
 import siteSettings from './siteSettings';
 import reasonsCard from './reasonsCard';
 import reasonsCarousel from './reasonsCarousel';
@@ -71,7 +73,9 @@ export default createSchema({
     blockContent,
     imageAndText,
     guestAuthor,
+    servicesIntro,
     reasonsCard,
+    serviceItem,
     playlists,
     playlist,
     socials,

@@ -3,11 +3,18 @@ import Link from 'gatsby-link';
 import * as Button from '../button';
 import { BgImage } from 'gbimage-bridge';
 
-export const OurServices = ({ text, image, title, darkFade, children }) => {
-  const [activeItem, setActiveItem] = useState('1');
+export const OurServices = ({
+  description,
+  heading,
+  image,
+  textOverImage,
+  servicesList,
+  darkFade,
+}) => {
+  const [activeItem, setActiveItem] = useState(0);
 
   const handleClick = (e) => {
-    setActiveItem(e.target.id);
+    setActiveItem(Number(e.target.id));
   };
   return (
     <>
@@ -20,10 +27,10 @@ export const OurServices = ({ text, image, title, darkFade, children }) => {
         <div />
         <div className="sm:pl-0 lg:ml-0 pl-5">
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
-            {title || 'Våre Tjenester'}
+            {heading || 'Våre Tjenester'}
           </h2>
           <p className="mb-5 sm:pr-15 font-light text-xl w-full text-theme-text sm:text-xl tracking-wider">
-            {children || text}
+            {description}
           </p>
 
           <div className="lg:block flex justify-between">
@@ -48,82 +55,40 @@ export const OurServices = ({ text, image, title, darkFade, children }) => {
         {/* Map from array of list items */}
         <div className="w-full px-5 sm:px-0 sm:mx-12 lg:mx-0 lg:pl-12 mt-9 text-lg sm:text-nav">
           <ul>
-            <li
-              className="tracking-wider font-semibold mb-8 cursor-pointer"
-              id="1"
-              onClick={handleClick}
-            >
-              <p className="uppercase pointer-events-none text-theme-text">
-                Prosjektleder
-              </p>
-              {activeItem === '1' && (
-                <ListContent link="/vi-tilbyr/prosjektledelse">
-                  Kunden kjenner domenet, kravene og behovene, mens vi vet
-                  hvordan vi raskest og best kan utvikle systemene som gir
-                  høyest verdi, raskest mulig.
-                </ListContent>
-              )}
-            </li>
-            <li
-              className="tracking-wider font-semibold mb-8 cursor-pointer"
-              id="2"
-              onClick={handleClick}
-            >
-              <p className="uppercase pointer-events-none text-theme-text">
-                Systemutvikling
-              </p>
-              {activeItem === '2' && (
-                <ListContent link="/vi-tilbyr/systemutvikling">
-                  Systemutvikling er kjernen i det vi driver med. Det er jo der
-                  vi faktisk lager noe. Det er kode som skaper systemene vi
-                  utvikler for og sammen med kundene våre.
-                </ListContent>
-              )}
-            </li>
-            <li
-              className="tracking-wider font-semibold mb-8 cursor-pointer"
-              id="4"
-              onClick={handleClick}
-            >
-              <p className="uppercase pointer-events-none text-theme-text">
-                Data & Analyse
-              </p>
-              {activeItem === '4' && (
-                <ListContent link="/vi-tilbyr/data-og-analyse">
-                  I Alv tilbyr vi tjenester i spekteret fra rådgivning og
-                  strategi til implementering og oppfølging, slik at enda flere
-                  kan bli bedre på å utnytte de dataene de sitter på til sitt
-                  fulle potensiale.
-                </ListContent>
-              )}
-            </li>
-            <li
-              className="tracking-wider font-semibold mb-8 cursor-pointer"
-              id="5"
-              onClick={handleClick}
-            >
-              <p className="uppercase pointer-events-none text-theme-text">
-                Informasjonssikkerhet
-              </p>
-              {activeItem === '5' && (
-                <ListContent link="/vi-tilbyr/informasjonssikkerhet">
-                  Konsulentene innen informasjonssikkerhet hos Alv har god
-                  erfaring med å både vurdere, teste og utvikle
-                  sikkerhetstiltak.
-                </ListContent>
-              )}
-            </li>
+            {servicesList.map((el, i) => (
+              <li
+                className="tracking-wider font-semibold mb-8 cursor-pointer"
+                id={i}
+                onClick={handleClick}
+              >
+                <p className="uppercase pointer-events-none text-theme-text">
+                  {el.title}
+                </p>
+                {el.subtitle && (
+                  <p className="text-base font-normal pointer-events-none">
+                    {el.subtitle}
+                  </p>
+                )}
+                {activeItem === i && (
+                  <ListContent link={el.link}>{el.text}</ListContent>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="font-light flex flex-col justify-between h-full text-xl">
-          <TextFadeImage image={image} darkFade={darkFade} />
+          <TextFadeImage
+            image={image.asset.gatsbyImageData}
+            darkFade={darkFade}
+            textOverImage={textOverImage}
+          />
         </div>
       </div>
     </>
   );
 };
 
-const TextFadeImage = ({ darkFade, image }) => (
+const TextFadeImage = ({ darkFade, image, textOverImage }) => (
   <div>
     <BgImage image={image} className="h-133">
       <div
@@ -131,9 +96,8 @@ const TextFadeImage = ({ darkFade, image }) => (
           darkFade && 'bg-black bg-opacity-50 h-133'
         }`}
       >
-        <div className="text-theme-text sm:text-slider text-blog uppercase  text-left font-semibold tracking-wider leading-tighter sm:text-right">
-          Bygget rundt systemutviklings
-          <span className="">-</span>prosessen
+        <div className="text-theme-text sm:text-slider text-blog uppercase text-left font-semibold tracking-wider leading-tighter sm:text-right">
+          {textOverImage}
         </div>
       </div>
     </BgImage>
@@ -142,7 +106,7 @@ const TextFadeImage = ({ darkFade, image }) => (
 
 const ListContent = ({ children, link }) => (
   <div>
-    <div className="w-12 mt-2 mb-8 h-2px bg-yellow" />
+    <div className="w-12 mt-1 mb-8 h-2px bg-yellow" />
     <div className="sm:pl-10 pl-5 mb-15">
       <p className="tracking-wider text-theme-text sm:text-lg leading-snug font-extralight mb-4 sm:w-4/6 w-full lg:w-full">
         {children}
@@ -151,7 +115,7 @@ const ListContent = ({ children, link }) => (
         <p className="font-semibold tracking-wider uppercase text-base w-40 text-theme-text">
           <Link to={link}>Finn ut mer</Link>
         </p>
-        <div className="h-2px bg-white sm:opacity-0 twelve:opacity-100 mt-1 w-1/2 lg:w-full hidden sm:block" />
+        <div className="h-2px bg-theme-text sm:opacity-0 twelve:opacity-100 mt-1 w-1/2 lg:w-full hidden sm:block" />
       </div>
     </div>
   </div>
