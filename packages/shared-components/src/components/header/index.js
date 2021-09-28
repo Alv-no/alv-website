@@ -105,7 +105,7 @@ export const MobileHeader = ({
                 className="cursor-pointer focus:outline-none"
                 onClick={handleClick}
               >
-                <Icon.Dropdown />
+                <Icon.Dropdown white={white && !open} />
               </button>
               <span className="transform ">
                 <Link to="/">{logo.White()}</Link>
