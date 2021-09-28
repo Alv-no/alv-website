@@ -38,16 +38,16 @@ export const VideoPlay = () => (
   </svg>
 );
 
-export const Cross = () => (
+export const Cross = ({ white }) => (
   <svg width="30.557" height="30.557" viewBox="0 0 30.557 30.557">
     <path
       d="M15.278,18.056l-12.5,12.5L0,27.778l12.5-12.5L0,2.777,2.777,0l12.5,12.5L27.778,0l2.779,2.777-12.5,12.5,12.5,12.5-2.779,2.779Z"
-      fill="#fff"
+      fill={white ? '#061838' : '#fff'}
     />
   </svg>
 );
 
-export const DropdownArrow = () => (
+export const DropdownArrow = ({ white }) => (
   <svg
     width="10.958"
     height="6.49"
@@ -60,7 +60,7 @@ export const DropdownArrow = () => (
       d="M7526.707-4437.99l4.141,4.076,3.988-4.076"
       transform="translate(-7525.292 4439.404)"
       fill="none"
-      stroke="#fff"
+      stroke={white ? '#061838' : '#fff'}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"
@@ -152,8 +152,8 @@ export const SliderArrow = () => (
 
 export const Dropdown = () => (
   <div className="flex flex-col justify-center items-center h-7">
-    <div className={`w-7 bg-theme-text h-px mb-2`} />
-    <div className="w-7 bg-theme-text h-px" />
+    <div className={`w-7 bg-white eight:bg-theme-text h-px mb-2`} />
+    <div className="w-7 bg-white eight:bg-theme-text h-px" />
   </div>
 );
 
@@ -498,12 +498,12 @@ export const Cv = () => (
   </svg>
 );
 
-export const TransitionArrow = ({ open }) => (
+export const TransitionArrow = ({ open, white }) => (
   <span
     className={`absolute right-0 mr-7 sm:mr-10 mt-4 eight:hidden transform transition duration-300 ${
       open && 'rotate-90'
     }`}
   >
-    <DropdownArrow />
+    <DropdownArrow white={white} />
   </span>
 );

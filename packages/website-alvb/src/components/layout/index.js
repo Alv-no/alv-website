@@ -4,13 +4,7 @@ import { useLayoutQuery } from './useLayoutQuery';
 import * as Logo from '../logo';
 import './layout.css';
 
-export const Layout = ({
-  children,
-  path,
-  pageDescription,
-  pageTitle,
-  white,
-}) => {
+export const Layout = ({ children, path, pageDescription, pageTitle }) => {
   const {
     address,
     org,
@@ -39,7 +33,7 @@ export const Layout = ({
     <>
       <SEO description={pageDescription} title={pageTitle} {...metaData} />
       <Header
-        white={white}
+        white
         path={path}
         servicePages={servicePages}
         categoryPages={categoryPages}
@@ -48,6 +42,7 @@ export const Layout = ({
         headerCtaLink="/kontakt-oss"
       />
       <MobileHeader
+        white
         servicePages={servicePages}
         categoryPages={categoryPages}
         logo={Logo}
