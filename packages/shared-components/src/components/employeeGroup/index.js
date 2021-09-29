@@ -8,6 +8,7 @@ export const EmployeeGroup = ({
   updateActiveBio,
   fallbackImg,
   employees,
+  bioRefContainer,
   children,
 }) => {
   // Update activeBio state with employee object corresponding to card clicked
@@ -19,7 +20,6 @@ export const EmployeeGroup = ({
       (employee) => employee.id === e.target.id
     );
     updateActiveBio(currentBio);
-    window.location.href = window.window.origin + '/ansatte#' + currentBio.slug;
   };
 
   // Close employee bio section by clearing activeBio state
@@ -44,25 +44,29 @@ export const EmployeeGroup = ({
                 <p className="absolute opacity-0 pointer-events-none">
                   {children}
                 </p>
-                <div className="xs:hidden">
-                  {activeBio &&
-                  activeBio.id === employee.id &&
-                  group.some((el) => el.id === activeBio.id) ? (
-                    <EmployeeBio
-                      {...activeBio}
-                      handleCloseClick={handleCloseClick}
-                    />
-                  ) : null}
-                </div>
+                {activeBio && window.innerWidth < 480 && (
+                  <div>
+                    {activeBio.id === employee.id &&
+                      group.some((el) => el.id === activeBio.id) && (
+                        <EmployeeBio
+                          {...activeBio}
+                          handleCloseClick={handleCloseClick}
+                          bioRefContainer={bioRefContainer}
+                        />
+                      )}
+                  </div>
+                )}
               </div>
             </>
           ))}
         </div>
-        <span className="xs:block hidden">
-          {activeBio && group.some((el) => el.id === activeBio.id) ? (
-            <EmployeeBio {...activeBio} handleCloseClick={handleCloseClick} />
-          ) : null}
-        </span>
+        {window.innerWidth >= 480 && (
+          <span>
+            {activeBio && group.some((el) => el.id === activeBio.id) ? (
+              <EmployeeBio {...activeBio} handleCloseClick={handleCloseClick} />
+            ) : null}
+          </span>
+        )}
       </div>
     </>
   );
