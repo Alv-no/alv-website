@@ -1,0 +1,18 @@
+.text p {
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.text p {
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.text strong {
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 600;
+  text-align: left;
+}

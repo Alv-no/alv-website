@@ -32,6 +32,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        'gray': '#F7F7F7',
+        'lightgray': '#FBFBFB',
         'theme-footer': '#fff',
         'theme-bg': '#fff',
         'theme-text': '#061838',
