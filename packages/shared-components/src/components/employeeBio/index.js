@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useEffect } from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
 import { isIOS, isSafari } from 'react-device-detect';
 import fallback from './bioVideoFallback.png';
-import slugify from 'slugify';
 import { BlockContent } from '../blockContent';
 
 export const EmployeeBio = ({
@@ -18,27 +17,24 @@ export const EmployeeBio = ({
   _rawBio,
   id,
 }) => {
-  const webM = useMemo(() => {
-    return video ? video.asset.url : false;
-  }, [video]);
-  const youtube = useMemo(() => {
-    return ytVideoId || false;
-  }, [ytVideoId]);
+  const bioRefContainer = useRef(null);
 
-  const supportWebM = !isIOS && !isSafari;
-
-  const validatedVideo = useMemo(() => {
-    return supportWebM && webM ? (
-      <Webm src={webM} />
-    ) : youtube ? (
-      <Youtube ytVideoId={ytVideoId} title={slug} />
-    ) : (
-      <Fallback src={fallback} alt={slug} />
-    );
-  }, [supportWebM, webM, youtube, ytVideoId, slug]);
+  // Scroll to bio section on card click. Scroll destination depends on browser innerWidth.
+  useEffect(() => {
+    bioRefContainer.current.offsetTop !== 0 &&
+      window.scrollTo({
+        top:
+          bioRefContainer.current.offsetTop -
+          (window.innerWidth > 1024
+            ? window.innerWidth > 480
+              ? 430
+              : 100
+            : 0),
+      });
+  }, []);
 
   return (
-    <div id={slugify(slug)}>
+    <div ref={bioRefContainer}>
       <section
         className="bg-darkblue text-white lg:py-18 pb-15 pt-20 xs:-mx-6 sm:mt-12 my-8 sm:px-5 xs:mt-8 -mt-4"
         id={id}
@@ -59,7 +55,7 @@ export const EmployeeBio = ({
           </div>
           <div className="flex lg:flex-row flex-col sm:px-0">
             <div className="mx-auto flex-1 lg:pr-15">
-              <div className="flex-1 px-5 sm:px-0 sm:hidden">
+              <div className="flex-1 px-6 sm:px-0 sm:hidden">
                 {/* ---- Underneath: Visible on Mobile only ---- */}
                 <h4 className="text-4xl leading-none font-extralight mb-4 uppercase tracking-wider">
                   <span className="font-bold block">{firstname}</span>
@@ -71,7 +67,11 @@ export const EmployeeBio = ({
               </div>
               {/* ---- Above: Visible on Mobile only ---- */}
               <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
-                {validatedVideo}
+                <ValidatedVideo
+                  video={video}
+                  ytVideoId={ytVideoId}
+                  slug={slug}
+                />
               </div>
               <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">
                 {cv !== null && (
@@ -94,7 +94,7 @@ export const EmployeeBio = ({
                 </Link>
               </div>
             </div>
-            <p className="tracking-wider font-extralight px-6 sm:hidden">
+            <p className="tracking-wider font-extralight px-10 sm:hidden">
               {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
             </p>
             <div className="flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left">
@@ -116,16 +116,35 @@ export const EmployeeBio = ({
   );
 };
 
+// Source video file types based on browser type
+const ValidatedVideo = ({ video, ytVideoId, slug }) => {
+  const webM = useMemo(() => {
+    return video ? video.asset.url : false;
+  }, [video]);
+  const youtube = useMemo(() => {
+    return ytVideoId || false;
+  }, [ytVideoId]);
+
+  const supportWebM = !isIOS && !isSafari;
+  return supportWebM && webM ? (
+    <Webm src={webM} />
+  ) : youtube ? (
+    <Youtube ytVideoId={ytVideoId} title={slug} />
+  ) : (
+    <Fallback src={fallback} alt={slug} />
+  );
+};
+
 const Webm = ({ src }) => (
   <video
     key={src}
-    autoplay="true"
+    autoPlay
     controls="true"
     className="h-60vw sm:h-80 w-full sm:w-140 seven:w-140 mr-0 focus:outline-none"
-  >
-    <source type="video/webm" src={src} />
-  </video>
+    src={src}
+  />
 );
+
 const Youtube = ({ slug, ytVideoId }) => (
   <iframe
     className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"
@@ -137,6 +156,7 @@ const Youtube = ({ slug, ytVideoId }) => (
     allowFullScreen
   />
 );
+
 const Fallback = ({ src, slug }) => (
   <img
     className="h-60vw sm:h-80 w-screen sm:w-140 seven:w-140 mr-0"

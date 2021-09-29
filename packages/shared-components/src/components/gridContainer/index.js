@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { window, document } from 'browser-monads';
+import React, { useState, useEffect, useRef } from 'react';
 import * as Button from '../button';
 import { EmployeeGroup } from '../employeeGroup';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
@@ -11,6 +10,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
   const [contentGroups, setContentGroups] = useState(null);
   const [visibleRows, setVisibleRows] = useState(20);
   const [cardClick, setCardClick] = useState(false);
+  const bioRefContainer = useRef(null);
 
   // Set active bio on route update
   const [activeBio, setActiveBio] = useState(() => {
@@ -20,20 +20,6 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
     }
     return null;
   });
-
-  // Scroll to active bio section on card click
-  useEffect(() => {
-    if (activeBio && cardClick) {
-      const element = document.getElementById(
-        activeBio.slug.slice(activeBio.slug)
-      );
-      const top =
-        window.scrollY +
-        element.getBoundingClientRect().top -
-        (width > 1024 ? 430 : width > 500 ? 100 : 0);
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  }, [activeBio, width, cardClick]);
 
   useEffect(() => {
     setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 2);
@@ -101,6 +87,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
               contentGroups && visibleRows > contentGroups.length ? 0 : 1,
           }}
         >
+          <div ref={bioRefContainer} />
           <Button.Line>Se Mer</Button.Line>
         </div>
       </div>
