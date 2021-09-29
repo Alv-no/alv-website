@@ -31,7 +31,8 @@
   background-position: center;
 }
 
-.heading {
+p.heading {
+  color: white;
   font-size: 20px;
   margin: 0 !important;
   font-weight: 700;
