@@ -1,6 +1,7 @@
 import React from 'react';
 import { EmployeeCard } from '../employeeCard';
 import { EmployeeBio } from '../employeeBio';
+import { window } from 'browser-monads';
 
 export const EmployeeGroup = ({
   group,
@@ -20,6 +21,7 @@ export const EmployeeGroup = ({
       (employee) => employee.id === e.target.id
     );
     updateActiveBio(currentBio);
+    window.history.replaceState({}, '', `/ansatte#${currentBio.slug}`);
   };
 
   // Close employee bio section by clearing activeBio state
