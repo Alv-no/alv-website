@@ -88,7 +88,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
           }}
         >
           <div ref={bioRefContainer} />
-          <Button.Line>Se Mer</Button.Line>
+          <Button.Line navy>Se Mer</Button.Line>
         </div>
       </div>
     </>

@@ -15,6 +15,7 @@ export { WhoWeAre } from './components/whoWeAre';
 export { WhatWeDo } from './components/whatWeDo';
 export { Layout } from '../../website/src/components/layout';
 export { BlogSlider } from './components/blogSlider';
+export { NoTagsEmployeeSection } from './components/noTagsEmployeeSection';
 export { VideoIntro } from './components/videoIntro';
 export { Hire, HireAlt } from './components/hire';
 export { Header, MobileHeader } from './components/header';

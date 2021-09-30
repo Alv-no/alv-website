@@ -2,10 +2,14 @@ import React from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
 
-export const Line = ({ children }) => (
+export const Line = ({ children, navy }) => (
   <div className="flex cursor-pointer">
     <div className="w-8 h-2px bg-yellow mr-4 transform translate-y-1 font-semibold" />
-    <span className="transform -translate-y-2 uppercase">{children}</span>
+    <span
+      className={`transform -translate-y-2 uppercase ${navy && 'text-navy'}`}
+    >
+      {children}
+    </span>
   </div>
 );
 

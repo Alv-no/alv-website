@@ -7,6 +7,15 @@ export const useEmployeeQuery = () => {
         sanityEmployeePage {
           pageDescription
           pageTitle
+          section1Title
+          section1Description
+          section2Title
+          section2Text
+          section2Image {
+            asset {
+              gatsbyImageData
+            }
+          }
         }
         allSanityEmployee {
           edges {
@@ -28,11 +37,6 @@ export const useEmployeeQuery = () => {
                 }
               }
             }
-          }
-        }
-        fallbackImg: file(name: { eq: "fallback" }) {
-          childImageSharp {
-            gatsbyImageData(width: 600, layout: CONSTRAINED)
           }
         }
       }
