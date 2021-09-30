@@ -10,9 +10,10 @@ export const Cta = ({
   description,
   image,
   fallback,
+  white,
 }) => {
   return (
-    <section className="text-white mt-12">
+    <section className="text-theme-text mt-12">
       <div className="max-w-1200 mx-auto lg:px-5">
         <div className="flex lg:flex-row flex-col-reverse xl:-mr-35">
           <div className="lg:flex-1 px-6 lg:px-0">
@@ -20,11 +21,15 @@ export const Cta = ({
               Bli med oss
             </h2>
             <div className="xl:ml-16 lg:ml-0 sm:ml-18 lg:mb-0 mb-10">
-              <Description align="left">{description}</Description>
+              <Description align="left text-theme-text">
+                {description}
+              </Description>
               <div className="h-8 lg:h-12" />
               <div className="w-full flex justify-between sm:block">
                 <div />
-                <CtaButton internalLink={internalLink}>{buttonText}</CtaButton>
+                <CtaButton blue={white} internalLink={internalLink}>
+                  {buttonText}
+                </CtaButton>
               </div>
             </div>
           </div>

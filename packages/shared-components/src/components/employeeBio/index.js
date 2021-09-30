@@ -74,7 +74,7 @@ export const EmployeeBio = ({
                 />
               </div>
               <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">
-                {cv !== null && (
+                {cv && (
                   <a href={cv.asset.url} target="_blank" rel="noreferrer">
                     <div className="flex">
                       <span className="mr-3">

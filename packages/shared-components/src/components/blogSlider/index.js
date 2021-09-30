@@ -61,7 +61,9 @@ export const BlogSlider = ({ dot, blueText, useBlogQuery, blue }) => {
             {articles.map((article, index) => {
               return (
                 <Slide
-                  fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
+                  fallbackImg={
+                    data.fallbackImg?.childImageSharp.gatsbyImageData
+                  }
                   article={article}
                   key={index}
                   blueText={blueText}

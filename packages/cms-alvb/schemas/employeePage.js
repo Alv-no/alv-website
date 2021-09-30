@@ -48,5 +48,13 @@ export default {
       rows: 3,
       type: 'text',
     },
+    {
+      name: 'section2Image',
+      title: 'Section 2: Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
 };
