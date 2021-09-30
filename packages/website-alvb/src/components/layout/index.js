@@ -49,7 +49,7 @@ export const Layout = ({ children, path, pageDescription, pageTitle }) => {
         logo={Logo}
       />
       <div>{children}</div>
-      <Footer address={address} org={org} email={email} phone={phone} />
+      <Footer gray address={address} org={org} email={email} phone={phone} />
     </>
   );
 };

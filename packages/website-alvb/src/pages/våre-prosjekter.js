@@ -4,7 +4,7 @@ import { useOurServicesQuery } from '../hookspages/useOurServicesQuery';
 import { ServicesHero, Title, Description } from 'shared-components';
 import { RichtextAndImage } from '../components/richtextAndImage';
 
-const Services = () => {
+const Projects = () => {
   const data = useOurServicesQuery();
 
   const {
@@ -52,4 +52,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Projects;
