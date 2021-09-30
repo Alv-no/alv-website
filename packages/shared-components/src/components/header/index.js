@@ -14,6 +14,7 @@ export const Header = ({
   white,
   headerCtaText,
   headerCtaLink,
+  whiteIcons,
 }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
@@ -46,13 +47,19 @@ export const Header = ({
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown />
+                <Icon.Dropdown white={whiteIcons} />
               </button>
               <span className="transform ">
-                <Link to="/">{white ? logo.Colored() : logo.White()}</Link>
+                <Link to="/">
+                  {white && !whiteIcons ? logo.Colored() : logo.White()}
+                </Link>
               </span>
             </div>
-            <div className="text-theme-text flex hidden sm:block relative z-50">
+            <div
+              className={`${
+                !white && 'eight:text-theme-text'
+              } flex hidden sm:block relative z-50`}
+            >
               <Link to={headerCtaLink}>
                 <CTA>{headerCtaText}</CTA>
               </Link>

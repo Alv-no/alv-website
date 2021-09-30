@@ -40,6 +40,7 @@ export const Layout = ({ children, path, pageDescription, pageTitle }) => {
         logo={Logo}
         headerCtaText="Ta kontakt"
         headerCtaLink="/kontakt-oss"
+        whiteIcons
       />
       <MobileHeader
         white
