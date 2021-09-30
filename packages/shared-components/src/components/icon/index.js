@@ -150,10 +150,12 @@ export const SliderArrow = () => (
   </svg>
 );
 
-export const Dropdown = () => (
+export const Dropdown = ({ white }) => (
   <div className="flex flex-col justify-center items-center h-7">
-    <div className={`w-7 bg-white eight:bg-theme-text h-px mb-2`} />
-    <div className="w-7 bg-white eight:bg-theme-text h-px" />
+    <div
+      className={`w-7 bg-white ${!white && 'eight:bg-theme-text'} h-px mb-2`}
+    />
+    <div className={`w-7 bg-white ${!white && 'eight:bg-theme-text'} h-px`} />
   </div>
 );
 
