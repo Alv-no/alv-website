@@ -80,9 +80,7 @@ export const query = graphql`
     sanityLandingPage {
       pageDescription
       pageTitle
-
       videoTextOverlay
-
       heroCta {
         eyebrow
         link
