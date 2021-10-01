@@ -72,13 +72,13 @@ export const Call = () => {
         <p className="font-light text-sm leading-loose">
           Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått våre{' '}
           <Link to="/kontakt-oss">
-            <span className="font-semibold hover:text-yellow duration-300 transition cursor-pointer">
+            <span className="font-semibold hover:text-theme-accent duration-300 transition cursor-pointer">
               vedtekter
             </span>
           </Link>{' '}
           og{' '}
           <Link to="/kontakt-oss">
-            <span className="font-semibold  hover:text-yellow duration-300 transition cursor-pointer">
+            <span className="font-semibold  hover:text-theme-accent duration-300 transition cursor-pointer">
               personvernsregler
             </span>
           </Link>
@@ -185,13 +185,13 @@ export const Offer = () => {
         Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått
         gjeldende{' '}
         <Link to="/kontakt-oss">
-          <span className="font-semibold hover:text-yellow duration-300 transition cursor-pointer">
+          <span className="font-semibold hover:text-theme-accent duration-300 transition cursor-pointer">
             vedtekter
           </span>
         </Link>{' '}
         og{' '}
         <Link to="/kontakt-oss">
-          <span className="font-semibold  hover:text-yellow duration-300 transition cursor-pointer">
+          <span className="font-semibold  hover:text-theme-accent duration-300 transition cursor-pointer">
             personvernsregler
           </span>
         </Link>
@@ -210,7 +210,7 @@ export const Offer = () => {
   );
 };
 
-export const Visit = ({ address, org }) => (
+export const Visit = ({ address, org, phone, email, hours }) => (
   <div>
     <div className="filter-grayscale">
       <iframe
@@ -234,15 +234,37 @@ export const Visit = ({ address, org }) => (
         i hva vi driver med. Vi håper å se deg.
       </p>
     </div>
-    <div className="sm:flex">
-      <div className="sm:px-8 mb-5 sm:mb-0">
-        <h4 className="text-lg font-semibold mb-1 uppercase">ADRESSE</h4>
-        <p className="text-mobile leading-relaxed font-light">{address}</p>
-      </div>
-      <div className="sm:px-8">
-        <h4 className="text-lg font-semibold mb-1 uppercase">ORG. NR.</h4>
-        <p className="text-mobile leading-relaxed font-light">{org}</p>
-      </div>
+    <div className="sm:grid grid-cols-2 gap-y-10">
+      {address && (
+        <div className="sm:px-8 mb-5 sm:mb-0">
+          <h4 className="text-lg font-semibold mb-1 uppercase">ADRESSE</h4>
+          <p className="text-mobile leading-relaxed font-light">{address}</p>
+        </div>
+      )}
+      {org && (
+        <div className="sm:px-8">
+          <h4 className="text-lg font-semibold mb-1 uppercase">ORG. NR.</h4>
+          <p className="text-mobile leading-relaxed font-light">{org}</p>
+        </div>
+      )}
+      {phone && (
+        <div className="sm:px-8 mb-5">
+          <h4 className="text-lg font-semibold mb-1 uppercase">Telefon</h4>
+          <p className="text-mobile leading-relaxed font-light">{phone}</p>
+        </div>
+      )}
+      {email && (
+        <div className="sm:px-8 mb-5">
+          <h4 className="text-lg font-semibold mb-1 uppercase">Email</h4>
+          <p className="text-mobile leading-relaxed font-light">{email}</p>
+        </div>
+      )}
+      {hours && (
+        <div className="sm:px-8">
+          <h4 className="text-lg font-semibold mb-1 uppercase">Arbeidstid</h4>
+          <p className="text-mobile leading-relaxed font-light">{hours}</p>
+        </div>
+      )}
     </div>
   </div>
 );

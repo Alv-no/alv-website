@@ -27,7 +27,7 @@ export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
           <div className="uppercase text-lg tracking-wider font-semibold pb-px">
             {title}
           </div>
-          <div className="h-3px w-12 bg-yellow mt-2 mb-4" />
+          <div className="h-3px w-12 bg-theme-accent mt-2 mb-4" />
           <h4 className="leading-none mt-4 mb-2 text-blog leading-tight tracking-wider">
             {subtitle}
           </h4>

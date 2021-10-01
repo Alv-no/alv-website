@@ -31,7 +31,7 @@ export const AlsoRead = ({ articles, currentTags, currentAuthor }) => {
           <div className="uppercase text-navy text-lg font-semibold mb-2 tracking-wider">
             Also Read
           </div>
-          <div className="w-12 h-3px bg-yellow" />
+          <div className="w-12 h-3px bg-theme-accent" />
         </div>
         <div className="">
           <Link className="relative z-50" to="/blogg">

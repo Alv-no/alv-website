@@ -33,7 +33,7 @@ const Employees = ({ location }) => {
   }
 
   return (
-    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout white pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-white w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
         <Title>{section1Title}</Title>
         <div className="sm:h-8 h-4" />

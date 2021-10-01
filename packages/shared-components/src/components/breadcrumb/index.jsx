@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-const Breadcrumb = ({ path }) => {
+const Breadcrumb = ({ path, white }) => {
   const formatCrumbs = (crumbs) =>
     crumbs
       .filter((el) => el.length > 0)
@@ -11,7 +11,10 @@ const Breadcrumb = ({ path }) => {
           if (crumbs[0] === 'blogg' && formattedEl.length > 35) {
             formattedEl = ['Blogginnlegg'];
           } else {
-            formattedEl = formattedEl.split('-').join(' ');
+            formattedEl = formattedEl
+              .split('-')
+              .join(' ')
+              .replace('%C3%A5', 'å');
           }
         }
         if (el === 'jobbe-i-alv') formattedEl = 'Jobbe i Alv';
@@ -23,7 +26,11 @@ const Breadcrumb = ({ path }) => {
   return (
     <div className="overflow-hidden">
       {filteredPath.length > 1 && (
-        <div className="flex space-x-4 text-white -ml-3 tracking-wider relative z-20">
+        <div
+          className={`flex space-x-4 text-${
+            white ? 'navy' : 'white'
+          } -ml-3 tracking-wider relative z-20`}
+        >
           {(filteredPath || []).map((item, i) => {
             let link;
             if (i === 0) {

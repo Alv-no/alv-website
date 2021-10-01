@@ -47,7 +47,11 @@ const Services = () => {
 
   return (
     <div className="overflow-hidden">
-      <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+      <Layout
+        whiteIcons
+        pageTitle={pageTitle}
+        pageDescription={pageDescription}
+      >
         <div className="overflow-hidden w-screen">
           <ServicesHero backgroundImage={mainImage.asset.gatsbyImageData}>
             <Title>{heading}</Title>

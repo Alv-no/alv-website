@@ -361,12 +361,12 @@ export const Chart = () => (
   </svg>
 );
 
-export const ContactArrow = () => (
+export const ContactArrow = ({ white }) => (
   <svg width="14.309" height="26.468" viewBox="0 0 14.309 26.468">
     <path
       d="M-13902.461,2330.474l11.895,11.592-11.895,12.047"
       transform="translate(13903.875 -2329.06)"
-      className="stroke-current text-theme-text"
+      className={`stroke-current ${white ? 'text-white' : 'text-theme-text'}`}
       fill="none"
       stroke="#fff"
       strokeLinecap="round"

@@ -106,7 +106,7 @@ const TextFadeImage = ({ darkFade, image, textOverImage }) => (
 
 const ListContent = ({ children, link }) => (
   <div>
-    <div className="w-12 mt-1 mb-8 h-2px bg-yellow" />
+    <div className={`w-12 mt-1 mb-8 h-2px bg-theme-accent`} />
     <div className="sm:pl-10 pl-5 mb-15">
       <p className="tracking-wider text-theme-text sm:text-lg leading-snug font-extralight mb-4 sm:w-4/6 w-full lg:w-full">
         {children}

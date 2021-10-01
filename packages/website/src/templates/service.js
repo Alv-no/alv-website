@@ -30,7 +30,7 @@ const Service = ({ data }) => {
   );
 
   return (
-    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="z-0 twelve:z-20 relative">
         <NavyIntroImage
           title={data.sanityServices.heroHeading}

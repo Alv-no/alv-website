@@ -3,7 +3,12 @@ import * as Button from '../button';
 import { EmployeeGroup } from '../employeeGroup';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
+export const GridContainer = ({
+  filteredContent,
+  linkedId,
+  fallbackImg,
+  white,
+}) => {
   const { width } = useWindowDimensions();
   const [columnsNr, setColumnsNr] = useState(null);
   const [rows, setRows] = useState(null);
@@ -67,6 +72,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
                   updateActiveBio={updateActiveBio}
                   group={group}
                   fallbackImg={fallbackImg}
+                  white={white}
                 />
               );
             }
@@ -88,7 +94,7 @@ export const GridContainer = ({ filteredContent, linkedId, fallbackImg }) => {
           }}
         >
           <div ref={bioRefContainer} />
-          <Button.Line navy>Se Mer</Button.Line>
+          <Button.Line navy={white}>Se Mer</Button.Line>
         </div>
       </div>
     </>

@@ -6,6 +6,8 @@ export const useBlogQuery = () => {
         sanityBlogPage {
           pageDescription
           pageTitle
+          section1Description
+          section1Title
         }
         articles: allSanityArticle(sort: { fields: publishedAt }) {
           edges {
@@ -52,11 +54,6 @@ export const useBlogQuery = () => {
                 gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
-          }
-        }
-        fallbackImg: file(name: { eq: "featuredFallback" }) {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }

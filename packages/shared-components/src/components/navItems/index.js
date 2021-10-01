@@ -16,7 +16,7 @@ export const LargeLink = ({ children, link, white }) => {
             className={`text-theme-text font-bold tracking-widest eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full ml-0 sm:ml-8 eight:ml-0 z-50`}
           >
             {children}
-            <span className="text-yellow">.</span>
+            <span className="text-theme-accent">.</span>
           </h2>
         </Link>
       ) : (
@@ -31,7 +31,7 @@ export const LargeLink = ({ children, link, white }) => {
             className={`text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full ml-0 sm:ml-8 eight:ml-0 z-50`}
           >
             {children}
-            <span className="text-yellow">.</span>
+            <span className="text-theme-accent">.</span>
             <Icon.TransitionArrow white={white} open={open} />
           </h2>
         </>

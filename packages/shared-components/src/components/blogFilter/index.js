@@ -143,7 +143,7 @@ export const FilterField = ({
           <div className="tracking-wider uppercase mb-2 text-base">
             Kategorier
           </div>
-          <div className={`${styles.line} bg-yellow w-7 mb-5`} />
+          <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
           <ul>
             {tags.map((tag) => (
               <li className={styles.listItem}>
@@ -155,7 +155,7 @@ export const FilterField = ({
                     type="checkbox"
                   />
                   <div
-                    className={`${styles.dot} h-2 w-2 bg-yellow rounded-full mr-2 absolute mt-px`}
+                    className={`${styles.dot} h-2 w-2 bg-theme-accent rounded-full mr-2 absolute mt-px`}
                   />
                   <span>{tag}</span>
                 </div>
@@ -167,7 +167,7 @@ export const FilterField = ({
           <div className="tracking-wider uppercase mb-2 text-base">
             Forfattere
           </div>
-          <div className={`${styles.line} bg-yellow w-7 mb-5`} />
+          <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
           <ul className="">
             {authors.map((author) => (
               <li className={styles.listItem}>
@@ -179,7 +179,7 @@ export const FilterField = ({
                     type="checkbox"
                   />
                   <div
-                    className={`${styles.dot} h-2 w-2 bg-yellow rounded-full mr-2 absolute mt-px`}
+                    className={`${styles.dot} h-2 w-2 bg-theme-accent rounded-full mr-2 absolute mt-px`}
                   />
                   <span>{author}</span>
                 </div>

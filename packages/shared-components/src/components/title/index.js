@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const Dot = () => <span className="text-yellow font-bold">.</span>;
+const Dot = () => <span className={`text-theme-accent font-bold`}>.</span>;
 
 export const Title = ({
   children,
@@ -28,7 +28,7 @@ export const Title = ({
         <span className={`${size || ''}`}>{children}</span>
         {!noDot && <Dot />}
       </h2>
-      {underline && <div className="w-12 h-3px bg-yellow mt-6px" />}
+      {underline && <div className="w-12 h-3px bg-theme-accent mt-6px" />}
     </>
   );
 };

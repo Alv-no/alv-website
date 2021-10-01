@@ -22,7 +22,7 @@ const About = () => {
   const team = employees.slice(0, 4);
 
   return (
-    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="w-full bg-navy text-white sm:pb-20 pb-4 overflow-hidden tracking-wider">
         <div className="w-full">
           <AboutIntro

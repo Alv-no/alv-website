@@ -3,35 +3,23 @@ export const useContactQuery = () => {
   const data = useStaticQuery(
     graphql`
       {
+        sanitySiteSettings {
+          address
+          phone
+          email
+          hours
+        }
         sanityContactPage {
-          pageDescription
-          pageTitle
-        }
-        contactUsImg: file(name: { eq: "contact_us_img2" }) {
-          childImageSharp {
-            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-          }
-        }
-        allSanitySiteSettings {
-          edges {
-            node {
-              address
-              phone
-              email
-              hours
+          contactImage {
+            asset {
+              gatsbyImageData
             }
           }
         }
       }
     `
   );
-  const {
-    address,
-    phone,
-    org,
-    email,
-  } = data.allSanitySiteSettings.edges[0].node;
-  const { pageDescription, pageTitle } = data.sanityContactPage;
-  const image = data.contactUsImg.childImageSharp.gatsbyImageData;
-  return { address, phone, org, email, image, pageDescription, pageTitle };
+  const { address, phone, email, hours } = data.sanitySiteSettings;
+  const { contactImage } = data.sanityContactPage;
+  return { address, phone, hours, email, contactImage };
 };

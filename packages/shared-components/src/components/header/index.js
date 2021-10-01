@@ -15,6 +15,7 @@ export const Header = ({
   headerCtaText,
   headerCtaLink,
   whiteIcons,
+  navyHeader,
 }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
@@ -37,7 +38,11 @@ export const Header = ({
         categoryPages={categoryPages}
         logo={logo}
       />
-      <div className="bg-theme-bg hidden sm:block sm:pt-7 py-5 px-10 -mb-2px">
+      <div
+        className={`${
+          navyHeader ? 'bg-navy' : 'bg-theme-bg'
+        } hidden sm:block sm:pt-7 py-5 px-10 -mb-2px`}
+      >
         <div className="max-w-1200 mx-auto relative z-50 h-8">
           <div className="flex justify-between sm:mb-7">
             <div className="flex relative z-50">
@@ -47,11 +52,11 @@ export const Header = ({
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white={whiteIcons} />
+                <Icon.Dropdown white={whiteIcons || navyHeader} />
               </button>
               <span className="transform ">
                 <Link to="/">
-                  {white && !whiteIcons ? logo.Colored() : logo.White()}
+                  {!whiteIcons && !navyHeader ? logo.Colored() : logo.White()}
                 </Link>
               </span>
             </div>
@@ -60,13 +65,17 @@ export const Header = ({
                 !white && 'eight:text-theme-text'
               } flex hidden sm:block relative z-50`}
             >
-              <Link to={headerCtaLink}>
-                <CTA>{headerCtaText}</CTA>
-              </Link>
+              {!window.location.href.includes(headerCtaLink) && (
+                <Link to={headerCtaLink}>
+                  <CTA whiteIcons={whiteIcons || navyHeader}>
+                    {headerCtaText}
+                  </CTA>
+                </Link>
+              )}
             </div>
           </div>
           <span className="sm:block hidden relative z-50">
-            <Breadcrumbs path={crumbs} />
+            <Breadcrumbs path={crumbs} white={!whiteIcons} />
           </span>
         </div>
       </div>
@@ -155,9 +164,9 @@ export const BlogHeader = ({ categoryPages, servicePages, white, logo }) => {
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown />
+                <Icon.Dropdown white />
               </button>
-              <span className="transform ">
+              <span className="transform text-white">
                 <Link to="/">{logo.White()}</Link>
               </span>
             </div>

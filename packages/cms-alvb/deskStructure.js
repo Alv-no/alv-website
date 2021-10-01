@@ -33,6 +33,13 @@ export default () =>
                   S.document().schemaType('bioBank').documentId('bioBank')
                 ),
               S.listItem()
+                .title('Investment page')
+                .child(
+                  S.document()
+                    .schemaType('investmentPage')
+                    .documentId('investmentPage')
+                ),
+              S.listItem()
                 .title('Employee Page')
                 .child(
                   S.document()
@@ -60,6 +67,7 @@ export default () =>
             'siteSettings',
             'landingPage',
             'employeePage',
+            'investmentPage',
             'bioBank',
             'blogPage',
             'contactPage',

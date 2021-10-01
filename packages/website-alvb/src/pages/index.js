@@ -27,19 +27,18 @@ const Index = ({ data }) => {
               {landingPage.videoTextOverlay}
             </VideoIntro>
             <WhoWeAre
-              title={landingPage.section2Title}
               darkText
+              title={landingPage.section2Title}
               blocks={landingPage._rawSection2Text}
             />
           </div>
           <Hire
-            blue={true}
             title={landingPage.section3Title}
             text={landingPage.section3Text}
             image={landingPage.section3Image.asset.gatsbyImageData}
           />
           <div className="h-15" />
-          <OurServices {...landingPage.section4Services} />
+          <OurServices {...landingPage.section4Services} blueLine />
           <Founder {...landingPage.section5Founder} />
           <div className="bg-theme-bg h-10 lg:h-32" />
           <BlogCarousel blue />

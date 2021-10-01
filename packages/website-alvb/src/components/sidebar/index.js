@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  MobileHeader,
-  BlogHeader,
-} from 'shared-components/src/components/header';
-import { Title } from 'shared-components/src/components/title';
+import { MobileHeader, BlogHeader, Title } from 'shared-components';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as Icon from 'shared-components/src/components/icon';
 
 const Sidebar = ({
   children,
@@ -22,6 +17,7 @@ const Sidebar = ({
   id,
   logo,
   cv,
+  white,
 }) => {
   const pdfLink = cv ? cv.asset.url : false;
   return (
@@ -30,6 +26,7 @@ const Sidebar = ({
         servicePages={servicePages}
         categoryPages={categoryPages}
         logo={logo}
+        white={white}
       />
       <div
         className="hidden sm:grid"
@@ -45,19 +42,22 @@ const Sidebar = ({
               servicePages={servicePages}
               categoryPages={categoryPages}
               logo={logo}
+              white={white}
             />
             <div className="ml-6 lg:ml-10">
               <div className="uppercase text-base tracking-wider font-semibold my-10">
                 <Link to="/blogg">
                   <div className="flex">
                     <span className="transform rotate-180 -translate-y-1 text-theme-accent mr-3">
-                      <Icon.Arrow />
+                      {/* <Icon.Arrow /> */}
                     </span>
                     Se alle artikler
                   </div>
                 </Link>
               </div>
-              <Title align="left">BLOGG</Title>
+              <Title align="left">
+                <span className="text-white">BLOGG</span>
+              </Title>
             </div>
           </div>
           {/* AUTHOR SECTION */}

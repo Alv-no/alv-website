@@ -26,7 +26,11 @@ const Index = ({ data, location }) => {
 
   return (
     <div className="overflow-hidden">
-      <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+      <Layout
+        whiteIcons
+        pageTitle={pageTitle}
+        pageDescription={pageDescription}
+      >
         <div className="bg-navy">
           <Hero
             linesAndClasses={linesAndClasses}

@@ -32,6 +32,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'theme-accent': '#1F96D3',
         'gray': '#F7F7F7',
         'theme-footer': '#FBFBFB',
         'theme-bg': '#fff',

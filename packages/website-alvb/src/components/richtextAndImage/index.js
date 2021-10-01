@@ -10,6 +10,7 @@ export const RichtextAndImage = ({
   flip,
   leftColSize,
   backgroundColor,
+  maxWidth,
 }) => (
   <section
     className={`w-full px-5 sm:px-10 ${
@@ -19,7 +20,7 @@ export const RichtextAndImage = ({
     }`}
   >
     <div
-      className={`max-w-1200 mx-auto ${
+      className={`max-w-${maxWidth || '1200'} mx-auto ${
         image && 'lg:grid'
       } justify-between xl:gap-x-20 lg:gap-x-15 gap-x-10`}
       style={{ gridTemplateColumns: `${leftColSize} auto` }}
