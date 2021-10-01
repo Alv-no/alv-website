@@ -3,13 +3,13 @@ import { BgImage } from 'gbimage-bridge';
 import { Title } from '../title';
 import { Description } from '../description';
 
-export const NavyIntro = ({ title, description, image, white }) => (
+export const NavyIntro = ({ title, description, image, white, blueDot }) => (
   <>
     {image ? (
-      <div className="sm:z-40 -mt-35 -mb-2">
+      <div className="sm:z-40 -mt-20 -mb-2">
         <BgImage image={image}>
-          <div className="bg-navy bg-opacity-75 w-full px-5 pt-10 sm:h-620 h-screen flex flex-col justify-center items-center sm:pt-16 sm:pb-16 pb-4">
-            <Title blueDot={white}>
+          <div className="bg-navy bg-opacity-75 w-full px-5 py-10 sm:h-620 h-screen flex flex-col justify-center items-center sm:py-16">
+            <Title blueDot={blueDot}>
               <span
                 className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
                   white && 'text-white'
@@ -29,8 +29,8 @@ export const NavyIntro = ({ title, description, image, white }) => (
         </BgImage>
       </div>
     ) : (
-      <div className="z-50 -mt-20 bg-navy w-full pt-10 sm:h-auto h-screen sm:block flex justify-center items-center flex-col sm:py-32 pb-4 overflow-hidden">
-        <Title>
+      <div className="z-50 -mt-20 bg-navy w-full pt-10 sm:h-auto h-screen sm:block flex justify-center items-center flex-col sm:py-40 pb-4 overflow-hidden">
+        <Title blueDot={blueDot}>
           <span
             className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
               white && 'text-white'

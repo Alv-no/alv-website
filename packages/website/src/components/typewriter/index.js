@@ -47,7 +47,11 @@ const LineTyper = ({ lineToType, delay, callback, classes, dot }) => {
   return (
     <div className={classes}>
       {text}
-      {dot && completed ? <span className="text-yellow font-bold">.</span> : ''}
+      {dot && completed ? (
+        <span className="text-theme-accent font-bold">.</span>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

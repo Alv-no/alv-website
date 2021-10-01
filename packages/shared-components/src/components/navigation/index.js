@@ -74,9 +74,7 @@ const AlvBNav = ({ open, toggleClose, logo, white }) => (
           <Subtitle link="/samarbeid-med-oss/investering">Investering</Subtitle>
         </div>
         <LargeLink link="/vårt-team">Vårt team</LargeLink>
-        <LargeLink link="/kunngjøringer-og-blogg">
-          Kunngjøringer og blogg
-        </LargeLink>
+        <LargeLink link="/blogg">Kunngjøringer og blogg</LargeLink>
         <LargeLink link="/kontakt-oss">Kontakt oss</LargeLink>
       </div>
     </div>

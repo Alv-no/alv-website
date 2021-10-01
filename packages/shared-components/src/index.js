@@ -1,6 +1,7 @@
 export * as Form from './components/form';
 export * as Button from './components/ctaButton';
 export { CtaButton } from './components/ctaButton';
+export { Arrow } from './components/icon';
 export { Title, Subtitle } from './components/title';
 export { BlockContent } from './components/blockContent';
 export { Description } from './components/description';
@@ -18,7 +19,7 @@ export { BlogSlider } from './components/blogSlider';
 export { NoTagsEmployeeSection } from './components/noTagsEmployeeSection';
 export { VideoIntro } from './components/videoIntro';
 export { Hire, HireAlt } from './components/hire';
-export { Header, MobileHeader } from './components/header';
+export { Header, MobileHeader, BlogHeader } from './components/header';
 export { Footer } from './components/footer';
 export { Cta } from './components/cta';
 export { ServicesHero } from './components/servicesHero';

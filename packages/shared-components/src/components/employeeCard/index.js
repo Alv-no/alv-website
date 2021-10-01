@@ -14,13 +14,14 @@ export const EmployeeCard = ({
   contrast,
   fallbackImg,
   notransparent,
+  white,
 }) => {
   return (
     <button
       className={`text-white relative group flex cursor-pointer w-full overflow-hidden ${
         activeBio && id === activeBio.id
           ? 'filter-grayscale-0'
-          : 'filter-grayscale'
+          : !white && 'filter-grayscale'
       } hover:filter-grayscale-0 pb-130c h-0`}
       onClick={handleClick}
       key={id}

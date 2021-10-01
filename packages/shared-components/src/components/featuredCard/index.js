@@ -44,7 +44,7 @@ export const FeaturedCard = ({
                 <div className="uppercase text-base font-bold">
                   Vår nyeste artikkel
                 </div>
-                <div className="w-12 h-2px bg-yellow mb-4 mt-3" />
+                <div className="w-12 h-2px bg-theme-accent mb-4 mt-3" />
                 <div className="text-nav font-bold mt-4 mb-3">{title}</div>
                 <div className="max-w-100">{newDescription}</div>
               </div>
@@ -75,7 +75,7 @@ export const FeaturedCard = ({
               <div className="uppercase text-base font-bold">
                 Vår nyeste artikkel
               </div>
-              <div className="w-12 h-2px bg-yellow mb-4 mt-1" />
+              <div className="w-12 h-2px bg-theme-accent mb-4 mt-1" />
               <div className="text-nav font-bold mt-4 mb-3">{title}</div>
               <div className="max-w-100 font-light text-sm">{description}</div>
             </div>

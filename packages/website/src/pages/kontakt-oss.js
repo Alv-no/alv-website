@@ -24,13 +24,14 @@ const Contact = ({ location }) => {
   } = useContactQuery();
   return (
     <Layout
+      whiteIcons
       path={location.pathname}
       pageTitle={pageTitle}
       pageDescription={pageDescription}
     >
       <div className="bg-navy xl:pt-5">
         <div
-          className="bg-navy w-full -mt-16 lg:-mt-8 text-white max-w-1440 mx-auto xl:grid xl:pb-20"
+          className="bg-navy w-full -mt-16 lg:mt-8 text-white max-w-1440 mx-auto xl:grid xl:pb-20"
           style={{ gridTemplateColumns: '50% 50%' }}
         >
           <div className="flex-1 mt-6 sm:px-10 xl:block sm:grid grid-cols-fifty sm:-ml-12 xl:ml-0">

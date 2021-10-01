@@ -17,7 +17,7 @@ export const WhoWeAre = ({ title, children, blocks, whiteText, darkText }) => {
               <h4 className="uppercase tracking-wider font-semibold mt-2 text-footer sm:text-about">
                 {title}
               </h4>
-              <div className="w-10 h-2px bg-yellow mt-2 mb-4" />
+              <div className="w-10 h-2px bg-theme-accent mt-2 mb-4" />
             </div>
           </Fade>
         </div>

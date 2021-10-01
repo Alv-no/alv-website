@@ -13,7 +13,7 @@ const Career = ({ data }) => {
   } = data;
 
   return (
-    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy">
         <NavyIntro
           title={pageTitle}

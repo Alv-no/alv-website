@@ -19,6 +19,7 @@ import ourProjectsPage from './ourProjects';
 import heroBlockContent from './heroBlockContent';
 import contactPage from './contactPage';
 import imageHero from './imageHero';
+import investmentPage from './investmentPage';
 import socials from './socials';
 import imageAndText from './imageAndText';
 import blogPage from './blogPage';
@@ -52,6 +53,7 @@ export default createSchema({
     ourProjectsPage,
     serviceItem,
     imageHero,
+    investmentPage,
     founder,
     socials,
     cta,

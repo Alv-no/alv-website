@@ -48,12 +48,17 @@ const Biobank = () => {
 
   return (
     <div className="overflow-hidden">
-      <Layout white pageTitle={pageTitle} pageDescription={pageDescription}>
+      <Layout
+        white
+        whiteIcons
+        pageTitle={pageTitle}
+        pageDescription={pageDescription}
+      >
         <NavyIntro title={heading} description={description} white />
         <RichtextAndImage
           image={section2Image.asset.gatsbyImageData}
           blocks={_rawSection2Block}
-          leftColSize={'35%'}
+          leftColSize={'30%'}
           title={section2Title}
           flip
         />

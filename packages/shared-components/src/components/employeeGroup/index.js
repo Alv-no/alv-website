@@ -11,6 +11,7 @@ export const EmployeeGroup = ({
   employees,
   bioRefContainer,
   children,
+  white,
 }) => {
   // Update activeBio state with employee object corresponding to card clicked
   const handleCardClick = (e) => {
@@ -42,6 +43,7 @@ export const EmployeeGroup = ({
                   key={employee.id}
                   activeBio={activeBio}
                   fallbackImg={fallbackImg}
+                  white={white}
                 />
                 <p className="absolute opacity-0 pointer-events-none">
                   {children}

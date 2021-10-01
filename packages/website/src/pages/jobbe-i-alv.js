@@ -10,6 +10,7 @@ const WorkForAlv = () => {
   return (
     <>
       <Layout
+        whiteIcons
         pageTitle={sanityCareerPage.pageTitle}
         pageDescription={sanityCareerPage.pageDescription}
       >

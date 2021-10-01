@@ -59,7 +59,7 @@ const Sidebar = ({ playlist, playlistName }) => (
       <div className="uppercase text-lg tracking-wider font-semibold pb-px">
         Video playlist
       </div>
-      <div className="h-3px w-12 bg-yellow mt-2 mb-4" />
+      <div className="h-3px w-12 bg-theme-accent mt-2 mb-4" />
       <p className="tracking-widest">{playlistName}</p>
       <div className="tracking-wider opacity-50 mt-2">
         {playlist.length} videoer

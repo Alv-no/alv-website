@@ -77,10 +77,10 @@ const ArticleTemplate = (props) => {
           {...postAuthor}
           isEmployee
           authorSlug={authorSlug}
-          fallbackImg={props.data.fallbackImg.childImageSharp.gatsbyImageData}
           servicePages={servicePages}
           categoryPages={categoryPages}
           logo={Logo}
+          white
         >
           <div
             className="min-h-screen flex flex-col m-15 xl:m-20 xl:mb-15 2xl:m-25 2xl:mb-15 text-navy 2xl:ml-1/2"

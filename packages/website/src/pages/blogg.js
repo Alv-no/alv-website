@@ -17,6 +17,7 @@ const Blog = () => {
     data.fallbackImg.childImageSharp.gatsbyImageData;
   return (
     <Layout
+      whiteIcons
       pageTitle={data.sanityBlogPage.pageTitle}
       pageDescription={data.sanityBlogPage.pageDescription}
     >

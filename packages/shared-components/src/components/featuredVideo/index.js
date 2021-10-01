@@ -7,7 +7,7 @@ export const FeaturedVideo = ({ video, playlist }) => (
     {video && (
       <>
         <div className="px-5">
-          <div className="w-12 h-2px sm:hidden bg-yellow mb-6 mt-6px" />
+          <div className="w-12 h-2px sm:hidden bg-theme-accent mb-6 mt-6px" />
         </div>
       </>
     )}

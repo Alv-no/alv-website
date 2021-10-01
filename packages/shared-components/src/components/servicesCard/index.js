@@ -12,7 +12,7 @@ export const ServicesCard = ({ title, description, link }) => {
               <h4 className="uppercase font-semibold text-lg mb-6px">
                 <span className="hyphenate">{title}</span>
               </h4>
-              <div className="w-12 h-3px bg-yellow" />
+              <div className="w-12 h-3px bg-theme-accent" />
               <p className="font-light mt-6 mb-10 tracking-normal">
                 {description}
               </p>
@@ -27,7 +27,7 @@ export const ServicesCard = ({ title, description, link }) => {
           <h4 className="uppercase font-semibold text-lg mb-6px">
             <span className="hyphenate">{title}</span>
           </h4>
-          <div className="w-12 h-3px bg-yellow" />
+          <div className="w-12 h-3px bg-theme-accent" />
           <p className="font-light mt-6 mb-10 tracking-normal">{description}</p>
         </div>
       )}

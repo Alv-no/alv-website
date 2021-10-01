@@ -55,7 +55,7 @@ const Seasons = ({ seasons, onClick, activeSeasonIndex, seasonTitles }) => (
     {seasons.map((_, i) => (
       <button
         className={`font-semibold mr-6 pb-1 border-b-2 focus:outline-none ${
-          activeSeasonIndex === i ? 'border-yellow' : 'border-navy'
+          activeSeasonIndex === i ? 'border-theme-accent' : 'border-navy'
         } cursor-pointer`}
         onClick={onClick}
         type="button"

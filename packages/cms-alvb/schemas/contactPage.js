@@ -20,5 +20,13 @@ export default {
         maxLength: 160,
       },
     },
+    {
+      name: 'contactImage',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
 };

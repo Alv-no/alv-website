@@ -9,6 +9,7 @@ export const Layout = ({
   path,
   pageDescription,
   pageTitle,
+  whiteIcons,
   white,
 }) => {
   const {
@@ -46,6 +47,7 @@ export const Layout = ({
       <Header
         white={white}
         path={path}
+        whiteIcons={whiteIcons}
         servicePages={servicePages}
         categoryPages={categoryPages}
         logo={Logo}
@@ -58,7 +60,13 @@ export const Layout = ({
         logo={Logo}
       />
       <div>{children}</div>
-      <Footer address={address} org={org} email={email} phone={phone} />
+      <Footer
+        address={address}
+        org={org}
+        email={email}
+        phone={phone}
+        companyName="Alv"
+      />
     </>
   );
 };

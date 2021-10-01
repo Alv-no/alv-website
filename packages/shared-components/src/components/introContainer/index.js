@@ -3,7 +3,7 @@ import { FeaturedCard } from '../featuredCard';
 
 export const IntroContainer = ({ article, children }) => {
   return (
-    <div className="bg-navy w-full pt-5 nine:px-10 twelve:pl-4">
+    <div className="bg-navy w-full relative pt-5 nine:px-10 twelve:pl-4">
       <div className="max-w-1200 mx-auto flex twelve:flex-row flex-col nine:justify-center twelve:justify-start">
         <div className="twelve:flex-1">
           <div className="twelve:pl-8 twelve:pb-10 twelve:mr-10 twelve:pr-32 twelve:pt-20 text-center twelve:text-left">

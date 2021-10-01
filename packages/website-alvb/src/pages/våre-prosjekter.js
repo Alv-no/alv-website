@@ -24,7 +24,12 @@ const Projects = () => {
 
   return (
     <div className="overflow-hidden">
-      <Layout white pageTitle={pageTitle} pageDescription={pageDescription}>
+      <Layout
+        white
+        whiteIcons
+        pageTitle={pageTitle}
+        pageDescription={pageDescription}
+      >
         <ServicesHero backgroundImage={mainImage.asset.gatsbyImageData}>
           <Title>
             <span className="text-white">{heading}</span>

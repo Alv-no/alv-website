@@ -4,7 +4,7 @@ import Link from 'gatsby-link';
 
 export const Line = ({ children, navy }) => (
   <div className="flex cursor-pointer">
-    <div className="w-8 h-2px bg-yellow mr-4 transform translate-y-1 font-semibold" />
+    <div className="w-8 h-2px bg-theme-accent mr-4 transform translate-y-1 font-semibold" />
     <span
       className={`transform -translate-y-2 uppercase ${navy && 'text-navy'}`}
     >
@@ -52,8 +52,8 @@ export const FormSelect = ({ id, active, children, onClick }) => (
     <div
       onClick={onClick}
       className={`flex items-center font-semibold uppercase mb-3 ${
-        active === id && 'text-yellow'
-      } transition duration-300 hover:text-yellow cursor-pointer`}
+        active === id && 'text-theme-accent'
+      } transition duration-300 hover:text-theme-accent cursor-pointer`}
       id={id}
     >
       {children}

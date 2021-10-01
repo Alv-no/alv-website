@@ -4,7 +4,16 @@ import { useLayoutQuery } from './useLayoutQuery';
 import * as Logo from '../logo';
 import './layout.css';
 
-export const Layout = ({ children, path, pageDescription, pageTitle }) => {
+export const Layout = ({
+  children,
+  path,
+  pageDescription,
+  pageTitle,
+  white,
+  whiteIcons,
+  navyHeader,
+  noCta,
+}) => {
   const {
     address,
     org,
@@ -33,14 +42,16 @@ export const Layout = ({ children, path, pageDescription, pageTitle }) => {
     <>
       <SEO description={pageDescription} title={pageTitle} {...metaData} />
       <Header
-        white
+        noCta={noCta}
+        navyHeader={navyHeader}
+        white={white}
         path={path}
         servicePages={servicePages}
         categoryPages={categoryPages}
         logo={Logo}
         headerCtaText="Ta kontakt"
         headerCtaLink="/kontakt-oss"
-        whiteIcons
+        whiteIcons={whiteIcons}
       />
       <MobileHeader
         white
@@ -49,7 +60,14 @@ export const Layout = ({ children, path, pageDescription, pageTitle }) => {
         logo={Logo}
       />
       <div>{children}</div>
-      <Footer gray address={address} org={org} email={email} phone={phone} />
+      <Footer
+        gray
+        address={address}
+        org={org}
+        email={email}
+        phone={phone}
+        companyName="Alv B"
+      />
     </>
   );
 };
