@@ -125,13 +125,7 @@ export const MobileHeader = ({
   );
 };
 
-export const BlogHeader = ({
-  categoryPages,
-  servicePages,
-  children,
-  white,
-  logo,
-}) => {
+export const BlogHeader = ({ categoryPages, servicePages, white, logo }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -164,7 +158,7 @@ export const BlogHeader = ({
                 <Icon.Dropdown />
               </button>
               <span className="transform ">
-                <Link to="/">{children}</Link>
+                <Link to="/">{logo.White()}</Link>
               </span>
             </div>
           </div>
