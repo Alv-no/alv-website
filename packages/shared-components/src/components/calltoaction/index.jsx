@@ -8,7 +8,7 @@ const CallToAction = ({ children, onClick, disabled = false }) => (
     aria-label={children}
     className="uppercase text-xl font-extralight flex tracking-wider"
   >
-    <div className="mr-5">{children}</div>
+    <div className="mr-5 text-theme-text">{children}</div>
     <span className="block transform translate-y-1 translate-x-1">
       <Icon.ContactArrow />
     </span>
