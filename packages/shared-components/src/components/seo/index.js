@@ -12,6 +12,7 @@ export const SEO = ({
   metaTitle,
   metaArr,
   metaLang,
+  fbPixel,
 }) => {
   return (
     <Helmet
@@ -76,6 +77,9 @@ export const SEO = ({
         media="none"
         onload="if(media!='all')media='all'"
       />
+      {fbPixel && (
+        <meta name="facebook-domain-verification" content={fbPixel} />
+      )}
     </Helmet>
   );
 };
