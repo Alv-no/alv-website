@@ -69,7 +69,7 @@ const ArticleTemplate = (props) => {
 
   return (
     <>
-      <SEO {...metaData} />
+      <SEO {...metaData} fbPixel="rhudpmoc7esp0y6ydpr6kp0tbuncrg" />
       <span className="lg:block hidden">
         <Sidebar
           {...postAuthor}
