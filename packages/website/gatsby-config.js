@@ -17,6 +17,12 @@ module.exports = {
         head: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: 'rhudpmoc7esp0y6ydpr6kp0tbuncrg',
+      },
+    },
     'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
