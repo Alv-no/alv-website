@@ -37,12 +37,7 @@ export const Layout = ({
 
   return (
     <>
-      <SEO
-        description={pageDescription}
-        title={pageTitle}
-        {...metaData}
-        fbPixel="rhudpmoc7esp0y6ydpr6kp0tbuncrg"
-      />
+      <SEO description={pageDescription} title={pageTitle} {...metaData} />
       <Header
         white={white}
         path={path}

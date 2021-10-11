@@ -17800,6 +17800,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-facebook-pixel@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "gatsby-plugin-facebook-pixel@npm:1.0.8"
+  checksum: 6684e0c77434bc8239315f141b0f2d74e6384ed6b43eb8a8ff55eade0a80b77a58d790e943b61ee5e83aa076cfc9d8ac732568039d78e9e07316eded28667052
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-google-analytics@npm:^3.6.0":
   version: 3.6.0
   resolution: "gatsby-plugin-google-analytics@npm:3.6.0"
@@ -34900,6 +34907,7 @@ typescript@^4.0.5:
     gatsby: 3.7.1
     gatsby-background-image: ^1.5.3
     gatsby-image: ^3.6.0
+    gatsby-plugin-facebook-pixel: ^1.0.8
     gatsby-plugin-google-analytics: ^3.6.0
     gatsby-plugin-google-fonts: ^1.0.1
     gatsby-plugin-image: ^1.7.1
