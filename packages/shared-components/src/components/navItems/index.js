@@ -10,7 +10,7 @@ export const LargeLink = ({ children, link, white }) => {
   };
   return (
     <>
-      {link ? (
+      {link && !children && (
         <Link to={link}>
           <h2
             className={`text-theme-text font-bold tracking-widest eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full ml-0 sm:ml-8 eight:ml-0 z-50`}
@@ -19,7 +19,8 @@ export const LargeLink = ({ children, link, white }) => {
             <span className="text-theme-accent">.</span>
           </h2>
         </Link>
-      ) : (
+      )}
+      {!children && !link && (
         <>
           <input
             type="checkbox"
@@ -34,6 +35,25 @@ export const LargeLink = ({ children, link, white }) => {
             <span className="text-theme-accent">.</span>
             <Icon.TransitionArrow white={white} open={open} />
           </h2>
+        </>
+      )}
+      {children && link && (
+        <>
+          <Link to={link}>
+            <input
+              type="checkbox"
+              className={styles.largeTitleInput}
+              onChange={toggleDropdown}
+            />
+
+            <h2
+              className={`text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full ml-0 sm:ml-8 eight:ml-0 z-50`}
+            >
+              {children}
+              <span className="text-yellow">.</span>
+              <Icon.TransitionArrow white={white} open={open} />
+            </h2>
+          </Link>
         </>
       )}
     </>

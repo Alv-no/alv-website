@@ -19,6 +19,7 @@ export const Layout = ({
     phone,
     servicePages,
     categoryPages,
+    companyPages,
     site,
   } = useLayoutQuery();
 
@@ -46,11 +47,13 @@ export const Layout = ({
         servicePages={servicePages}
         categoryPages={categoryPages}
         logo={Logo}
+        companyPages={companyPages}
         headerCtaText="jobbe i alv"
         headerCtaLink="/jobbe-i-alv"
       />
       <MobileHeader
         servicePages={servicePages}
+        companyPages={companyPages}
         categoryPages={categoryPages}
         logo={Logo}
       />

@@ -35,6 +35,16 @@ export const useLayoutQuery = () => {
             }
           }
         }
+        allSanityCompany {
+          edges {
+            node {
+              heroHeading
+              slug {
+                current
+              }
+            }
+          }
+        }
         site {
           siteMetadata {
             title
@@ -47,7 +57,17 @@ export const useLayoutQuery = () => {
   );
   const servicePages = data.allSanityServices.edges.map((edge) => edge.node);
   const categoryPages = data.allSanityCategoryPage.nodes;
+  const companyPages = data.allSanityCompany.edges;
   const { site } = data;
   const { address, phone, org, email } = data.sanitySiteSettings;
-  return { address, phone, org, email, servicePages, categoryPages, site };
+  return {
+    address,
+    phone,
+    org,
+    email,
+    servicePages,
+    categoryPages,
+    companyPages,
+    site,
+  };
 };

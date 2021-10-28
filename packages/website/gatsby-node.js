@@ -6,6 +6,7 @@ const videoTemplate = path.resolve(`./src/templates/video.js`);
 const careerTemplate = path.resolve(`./src/templates/career.js`);
 const articleTemplate = path.resolve(`./src/templates/article.js`);
 const serviceTemplate = path.resolve(`./src/templates/service.js`);
+const companyTemplate = path.resolve(`./src/templates/company.js`);
 const categoryTemplate = path.resolve(`./src/templates/category.js`);
 const videoCategoryTemplate = path.resolve(`./src/templates/videoCategory.js`);
 const videoserieTemplate = path.resolve(`./src/templates/videoserie.js`);
@@ -64,6 +65,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
         allSanityOpenPostionPage {
+          edges {
+            node {
+              slug {
+                current
+              }
+            }
+          }
+        }
+        allSanityCompany {
           edges {
             node {
               slug {
@@ -190,6 +200,17 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       component: articleTemplate,
       path: `/blogg/${edge.node.slug.current}`,
+      context: {
+        slug: edge.node.slug.current,
+      },
+    });
+  });
+
+  // Create company pages.
+  res.data.allSanityCompany.edges.forEach((edge) => {
+    createPage({
+      component: companyTemplate,
+      path: `/selskapet/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },

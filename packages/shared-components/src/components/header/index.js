@@ -9,6 +9,7 @@ import { window } from 'browser-monads';
 
 export const Header = ({
   categoryPages,
+  companyPages,
   servicePages,
   logo,
   white,
@@ -33,6 +34,7 @@ export const Header = ({
       <Navigation
         open={open}
         toggleClose={toggleClose}
+        companyPages={companyPages}
         servicePages={servicePages}
         white={white}
         categoryPages={categoryPages}
