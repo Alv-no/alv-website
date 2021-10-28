@@ -11,12 +11,14 @@ import employeeTag from './employeeTag';
 import article from './article';
 import guestAuthor from './guestAuthor';
 import articleTag from './articleTag';
+import companyPage from './companyPage';
 import redirects from './redirects';
 import landingPage from './landingPage';
 import aboutPage from './aboutPage';
 import servicesIntro from './servicesIntro';
 import heroCta from './heroCta';
 import employeePage from './employeePage';
+import linkableBlockContent from './linkableBlockContent';
 import careerPage from './careerPage';
 import contactPage from './contactPage';
 import ourServicesPage from './ourServicesPage';
@@ -36,6 +38,7 @@ import serviceItem from './serviceItem';
 import siteSettings from './siteSettings';
 import reasonsCard from './reasonsCard';
 import reasonsCarousel from './reasonsCarousel';
+import linkableHeading from './linkableHeading';
 import cta from './cta';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -52,6 +55,7 @@ export default createSchema({
     videoseriesPage,
     videoseries,
     servicePage,
+    companyPage,
     categoryPage,
     openPositionPage,
     article,
@@ -64,6 +68,8 @@ export default createSchema({
     articleTag,
     employee,
     employeeTag,
+    linkableBlockContent,
+    linkableHeading,
     testimonial,
     externalProfiles,
     redirects,
