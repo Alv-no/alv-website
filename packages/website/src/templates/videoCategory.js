@@ -21,7 +21,7 @@ const VideoCategoryTemplate = ({ pageContext }) => {
   );
 
   return (
-    <Layout>
+    <Layout whiteIcons>
       <div className="bg-navy text-white seven:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto">
           <VideoHero

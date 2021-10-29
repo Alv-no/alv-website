@@ -9,7 +9,7 @@ const VideoTemplate = ({ pageContext }) => {
   const { video, season, playlistName } = pageContext;
 
   return (
-    <Layout pageTitle={playlistName}>
+    <Layout whiteIcons pageTitle={playlistName}>
       <div className="bg-navy text-white seven:px-10 overflow-hidden min-h-screen">
         <div className="max-w-1200 mx-auto">
           <div className="lg:grid gap-y-6 gap-x-2 grid-cols-videos-sidebar">

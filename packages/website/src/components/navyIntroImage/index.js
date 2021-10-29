@@ -4,7 +4,13 @@ import { Description } from '../../../../shared-components/src/components/descri
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-export const NavyIntroImage = ({ title, description, image, internalLink }) => (
+export const NavyIntroImage = ({
+  title,
+  description,
+  image,
+  internalLink,
+  buttonText,
+}) => (
   <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative">
     <div
       className="max-w-1200 mx-auto twelve:grid relative"
@@ -23,7 +29,7 @@ export const NavyIntroImage = ({ title, description, image, internalLink }) => (
           </Description>
         </div>
         <div className="w-full flex justify-center twelve:justify-start">
-          <Outline link={internalLink}>Få et tilbud</Outline>
+          <Outline link={internalLink}>{buttonText || 'Få et tilbud'}</Outline>
         </div>
         <div className="h-30 twelve:h-20" />
       </div>
