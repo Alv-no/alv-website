@@ -15,17 +15,9 @@ export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
       let formattedId = el.Heading.split(' ').join('-');
       formattedId = formattedId.toLowerCase();
 
-      // capitalise first letter of words in heading longer than 2 characters
-
-      const formattedHeading = el.Heading.split(' ')
-        .map((word) => {
-          if (word.length > 2) return word[0].toUpperCase() + word.slice(1);
-          return word;
-        })
-        .join(' ');
       const navElement = {
         id: formattedId,
-        text: formattedHeading,
+        text: el.Heading,
       };
       return navElement;
     });
@@ -41,7 +33,7 @@ export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
                 onClick={scrollTo}
                 name={el.id}
               >
-                <span className="flex justify-between items-center pointer-events-none text-left text-base font-bold">
+                <span className="flex justify-between items-center pointer-events-none text-left text-base font-bold uppercase">
                   {el.text}
                   <span className="scale-90 transform">
                     <Icon.Arrow />
