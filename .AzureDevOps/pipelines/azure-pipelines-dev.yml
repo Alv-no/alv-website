@@ -4,11 +4,13 @@ trigger:
 pr: none
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-20.04
 
 stages:
   - stage: test
     displayName: Deploy to Test
+    variables:
+      - group: azure-credentials-test
     jobs:
       - job: Test
         displayName: Test
@@ -18,19 +20,27 @@ stages:
 
           - template: installDependencies.yaml
 
-          - task: AzureCLI@2
-            displayName: Run build.sh test ---no-input
+          - task: Bash@3
+            displayName: ./run deploy test website $BUILD_BUILDID
+            env:
+              AZURE_SERVICE_PRINCIPAL_USERNAME: $(azure-service-principal-username)
+              AZURE_SERVICE_PRINCIPAL_PASSWORD: $(azure-service-principal-password)
+              AZURE_TENANT_ID: $(azure-tenant-id)
+              AZURE_SUBSCRIPTION_ID: $(azure-subscription-id)
             inputs:
-              azureSubscription: AlvNo-Dev
-              addSpnToEnvironment: true
-              workingDirectory: "$(System.DefaultWorkingDirectory)"
-              scriptType: bash
-              scriptLocation: inlineScript
-              inlineScript: |
+              targetType: "inline"
+              script: |
+                az login --service-principal \
+                  --username "$AZURE_SERVICE_PRINCIPAL_USERNAME" \
+                  --password "$AZURE_SERVICE_PRINCIPAL_PASSWORD" \
+                  --tenant "$AZURE_TENANT_ID"
+
+                az account set --subscription $AZURE_SUBSCRIPTION_ID
+
                 # Authenticate Acure container registry
-                docker login acralvtime.azurecr.io \
-                  --username $servicePrincipalId \
-                  --password $servicePrincipalKey
+                docker login alvkubernetesclustertestacr.azurecr.io \
+                  --username $AZURE_SERVICE_PRINCIPAL_USERNAME \
+                  --password $AZURE_SERVICE_PRINCIPAL_PASSWORD
 
                 # Run scripts to build for test environment
                 ./run deploy test website $BUILD_BUILDID

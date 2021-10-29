@@ -6,18 +6,13 @@ SHORT_HASH=$(git rev-parse --short=7 HEAD)
 BUILD_ID="$4"
 TAG="$SHORT_HASH-$BUILD_ID"
 ENV=$(echo "$2" | awk '{print tolower($0)}')
-KEY_VAULT="alvtime$ENV"
+KEY_VAULT="k8sconfig-$ENV-kv"
 RESOURCE_GROUP_NAME="k8scluster-$ENV-rg"
 KUBERNETES_CLUSTER_NAME="k8scluster-$ENV-aks"
-CONTAINER_REGISTRY_NAME=alvk8sclustertestacr
+CONTAINER_REGISTRY_NAME=alvkubernetesclustertestacr
 CONTAINER_REGISTRY="$CONTAINER_REGISTRY_NAME.azurecr.io"
 SERVICE_TO_BUILD="$3"
-if [[ "test" = "$ENV" ]]; then
-  SUBSCRIPTION='Dev-Alv'
-fi
-if [[ "prod" = "$ENV" ]]; then
-  SUBSCRIPTION='Production-Alv'
-fi
+SUBSCRIPTION="k8s-$ENV-subscription"
 
 function getSecret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
