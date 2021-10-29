@@ -29,7 +29,8 @@ const Company = ({ data }) => {
         <NavyIntroImage
           title={data.sanityCompany.heroHeading}
           description={data.sanityCompany.heroDescription}
-          internalLink="/kontakt-oss"
+          internalLink="/videoserie"
+          buttonText="Se videoserien vår"
           image={data.sanityCompany.heroImage.asset.gatsbyImageData}
         />
       </div>

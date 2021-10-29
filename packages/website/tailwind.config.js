@@ -41,6 +41,7 @@ module.exports = {
         'lightnavy': 'rgba(6, 24, 56, 0.3)',
         'tag': '#83959F',
         'tagbg': '#F5F7F8',
+        'yellow': '#EABB26',
         'orange': '#F39123',
         'navynav': '#061838',
         'divide': 'rgba(255,255,255,0.4)',

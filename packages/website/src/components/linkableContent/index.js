@@ -16,9 +16,8 @@ export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
       formattedId = formattedId.toLowerCase();
 
       // capitalise first letter of words in heading longer than 2 characters
-      let formattedHeading = el.Heading.toLowerCase();
-      formattedHeading = formattedHeading
-        .split(' ')
+
+      const formattedHeading = el.Heading.split(' ')
         .map((word) => {
           if (word.length > 2) return word[0].toUpperCase() + word.slice(1);
           return word;
