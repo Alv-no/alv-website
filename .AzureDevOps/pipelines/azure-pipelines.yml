@@ -19,13 +19,7 @@ schedules:
   always: true
 
 pool:
-  vmImage: ubuntu-latest
-
-variables:
-  subscriptionId: '32547ca3-abba-45c8-b76e-46a590958b5e'
-  serviceName: alvnodev
-  serviceConnection: AlvNo-Dev
-  envFileName: '.env.production'
+  vmImage: ubuntu-20.04
 
 stages:
   - stage: prod
@@ -33,15 +27,37 @@ stages:
     jobs:
       - deployment: Prod
         displayName: Prod
-        variables:
-          subscriptionId: '98aa1177-a37b-4349-a01f-8f1d325064c3'
-          serviceName: alvno
-          serviceConnection: AlvNo-Prod(98aa1177-a37b-4349-a01f-8f1d325064c3)
-          hostname: "alv.no"
-          envFileName: '.env.production'
         environment: Prod
         strategy:
           runOnce:
             deploy:
               steps:
-                - template: ../../packages/infrastructure/deploy-steps.yaml
+                - checkout: self
+                  fetchDepth: 1
+
+                - template: installDependencies.yaml
+
+                - task: Bash@3
+                  displayName: ./run deploy prod website $BUILD_BUILDID
+                  env:
+                    AZURE_SERVICE_PRINCIPAL_USERNAME: $(azure-service-principal-username)
+                    AZURE_SERVICE_PRINCIPAL_PASSWORD: $(azure-service-principal-password)
+                    AZURE_TENANT_ID: $(azure-tenant-id)
+                    AZURE_SUBSCRIPTION_ID: $(azure-subscription-id)
+                  inputs:
+                    targetType: "inline"
+                    script: |
+                      az login --service-principal \
+                        --username "$AZURE_SERVICE_PRINCIPAL_USERNAME" \
+                        --password "$AZURE_SERVICE_PRINCIPAL_PASSWORD" \
+                        --tenant "$AZURE_TENANT_ID"
+
+                      az account set --subscription $AZURE_SUBSCRIPTION_ID
+
+                      # Authenticate Acure container registry
+                      docker login acralvtime.azurecr.io \
+                        --username $AZURE_SERVICE_PRINCIPAL_USERNAME \
+                        --password $AZURE_SERVICE_PRINCIPAL_PASSWORD
+
+                      # Run scripts to build for prod environment
+                      ./run deploy prod website $BUILD_BUILDID
