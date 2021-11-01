@@ -62,10 +62,10 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
               <ReadMoreLink link="/selskapet/livet-i-alv">
                 Les om livet i Alv.
               </ReadMoreLink>
-              <ReadMoreLink link="/selskapet/personalvhåndboka">
+              <ReadMoreLink link="/selskapet/personalvhandboka">
                 Bli kjent med PersonAlvHåndboka.
               </ReadMoreLink>
-              <ReadMoreLink link="/videoserien">
+              <ReadMoreLink link="/videoserie">
                 Se vår ukentlige videoserie.
               </ReadMoreLink>
             </div>
