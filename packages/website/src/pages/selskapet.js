@@ -29,7 +29,6 @@ const About = () => {
             topImg={data.aboutUsTop.childImageSharp.gatsbyImageData}
             bottomImg={data.aboutUsLower.childImageSharp.gatsbyImageData}
           />
-          <div className="sm:h-10 lg:h-20" />
         </div>
         <div className="h-10 lg:h-0" />
         <OurServices darkFade {...data.sanityLandingPage.section2Services} />

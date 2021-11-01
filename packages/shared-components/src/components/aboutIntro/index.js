@@ -1,6 +1,8 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
+import * as Icon from '../icon';
+import Link from 'gatsby-link';
 
 export const AboutIntro = ({ topImg, bottomImg }) => {
   return (
@@ -41,17 +43,10 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
       </div>
       <div className="font-light flex flex-col justify-between h-full text-xl">
         <div>
-          <div className="pr-5 sm:pr-12 md:pl-64 lg:pl-0 sm:pl-12 pl-5">
-            <div className="sm:h-auto h-screen w-4/6 sm:mt-20 md:mt-5 lg:mt-0 sm:w-full mx-auto sm:mx-0 sm:block flex justify-center items-center flex-col text-center sm:text-left">
+          <div className="pr-5 sm:pr-12 lg:pl-0 sm:pl-12 pl-5 mb-10">
+            <div className="sm:h-auto h-screen w-4/6 sm:mt-20 lg:mt-0 mb-8 sm:w-full mx-auto sm:mx-0 sm:block flex justify-center items-center flex-col text-center sm:text-left">
               <Title classes="sm:text-left text-center">Om oss</Title>
-              <p className="mb-8 mt-6 sm:pr-15 text-footer sm:text-xl">
-                Alv er produktet av alle konsulentene som jobber i selskapet.
-                Dyktige konsulenter gjør Alv til et bra produkt.{' '}
-              </p>
             </div>
-            <p className="uppercase font-semibold text-lg mb-7 sm:pr-20 text-about leading-snug text-footer sm:text-xl">
-              VI BYGGER NORGES MEST ATTRAKTIVE KONSULENTSELSKAP
-            </p>
             <p className="mb-15 text-footer sm:text-xl">
               I Alv har vi tro på at dyktige konsulenter er de som hele tiden
               ønsker å utvikle seg selv, og de rundt seg. Dette er grunnpilarene
@@ -59,6 +54,21 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
               attraktive konsulentselskap både for potensielle ansatte og
               kunder.
             </p>
+            <h3 className="uppercase text-lg font-bold tracking-wider">
+              Bli bedre kjent med oss
+            </h3>
+            <div className="w-14 h-3px bg-yellow mt-6px mb-4" />
+            <div className="divide-y-2">
+              <ReadMoreLink link="/selskapet/livet-i-alv">
+                Les om livet i Alv.
+              </ReadMoreLink>
+              <ReadMoreLink link="/selskapet/personalvhåndboka">
+                Bli kjent med PersonAlvHåndboka.
+              </ReadMoreLink>
+              <ReadMoreLink link="/videoserien">
+                Se vår ukentlige videoserie.
+              </ReadMoreLink>
+            </div>
           </div>
 
           <GatsbyImage
@@ -70,3 +80,15 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
     </div>
   );
 };
+
+const ReadMoreLink = ({ link, children }) => (
+  <Link
+    to={link}
+    className="font-normal flex text-lg py-3 items-center justify-between"
+  >
+    <span className="inline">{children}</span>
+    <span className="ml-3">
+      <Icon.Arrow />
+    </span>
+  </Link>
+);

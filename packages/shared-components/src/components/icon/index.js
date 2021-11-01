@@ -16,6 +16,8 @@ export const Shade = () => (
   </svg>
 );
 
+export const Dot = () => <span className="text-theme-accent">.</span>;
+
 export const VideoPlay = () => (
   <svg width="70" height="70" viewBox="0 0 70 70" className="text-theme-text">
     <path
@@ -502,7 +504,7 @@ export const Cv = () => (
 
 export const TransitionArrow = ({ open, white }) => (
   <span
-    className={`absolute right-0 mr-7 sm:mr-10 mt-4 eight:hidden transform transition duration-300 ${
+    className={`absolute right-0 sm:right-4 top-3 eight:hidden transform transition duration-300 ${
       open && 'rotate-90'
     }`}
   >
