@@ -134,6 +134,7 @@ module.exports = {
         'employees-lg': 'repeat(4, minmax(216px, 1fr))',
         'team-lg': 'repeat(4, minmax(216px, 270px))',
         'blog-nine': 'repeat(3, minmax(250px, 270px))',
+        'main-nav': '270px 270px 210px',
         'navlist': '35% auto',
         'navlist-sm': '25% auto',
         'filter-lg': 'auto 240px',

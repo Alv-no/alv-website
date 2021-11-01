@@ -15,7 +15,6 @@ export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
       let formattedId = el.Heading.split(' ').join('-');
       formattedId = formattedId.toLowerCase();
 
-      // capitalise first letter of words in heading longer than 2 characters
       const navElement = {
         id: formattedId,
         text: el.Heading,
@@ -26,7 +25,7 @@ export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
     <div className="px-5 sm:px-12 relative z-10">
       <div className="max-w-1200 mx-auto pt-5 sm:pt-16 w-full tracking-wider relative z-0">
         <nav className="mx-auto sm:grid sm:gap-x-4 sm:grid-cols-navlist-sm">
-          <ul className="text-lg sm:mt-24 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
+          <ul className="text-lg sm:mt-20 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
             {navElements.map((el) => (
               <button
                 aria-label="Scroll Link"

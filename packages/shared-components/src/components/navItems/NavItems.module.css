@@ -26,8 +26,8 @@
   .largeTitleInput:not(:checked) ~ div ul,
   .largeTitleInput:not(:checked) ~ div a,
   .subTitleInput:not(:checked) ~ ul,
-  .subTitleInput:not(:checked) ~ a,
-  .subTitleInput:not(:checked) ~ li {
+  .subTitleInput:not(:checked) ~ div,
+  .subTitleInput:not(:checked) ~ a {
     display: none;
   }
   .largeTitleInput:checked ~ div li,
