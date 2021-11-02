@@ -89,6 +89,7 @@ export const MobileHeader = ({
   viewport,
   categoryPages,
   servicePages,
+  companyPages,
   white,
   logo,
 }) => {
@@ -105,6 +106,7 @@ export const MobileHeader = ({
         open={open}
         toggleClose={toggleClose}
         servicePages={servicePages}
+        companyPages={companyPages}
         categoryPages={categoryPages}
         white={white}
         logo={logo}
