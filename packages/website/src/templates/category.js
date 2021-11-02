@@ -47,7 +47,6 @@ const Category = ({ data }) => {
       <NavyIntro
         title={sanityCategoryPage.heroHeading}
         description={sanityCategoryPage.heroDescription}
-        button=""
       />
       <div className="w-full bg-white sm:pb-20 pb-12 overflow-hidden tracking-wider overflow-hidden">
         <ServicesNav nav={nav} scrollTo={scrollTo} />

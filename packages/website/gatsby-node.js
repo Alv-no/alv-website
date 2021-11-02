@@ -210,7 +210,7 @@ exports.createPages = async ({ graphql, actions }) => {
   res.data.allSanityCompany.edges.forEach((edge) => {
     createPage({
       component: companyTemplate,
-      path: `/selskapet/${edge.node.slug.current}`,
+      path: `/om-oss/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },
