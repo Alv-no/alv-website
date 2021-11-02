@@ -29,7 +29,7 @@ export const NavyIntro = ({ title, description, image, white, blueDot }) => (
         </BgImage>
       </div>
     ) : (
-      <div className="z-50 -mt-20 bg-navy w-full pt-10 sm:h-auto h-screen sm:block flex justify-center items-center flex-col sm:py-40 pb-4 overflow-hidden">
+      <div className="z-50 bg-navy sm:-mt-20 w-full sm:h-auto h-screen sm:block flex justify-center items-center flex-col sm:py-40 overflow-hidden">
         <Title blueDot={blueDot}>
           <span
             className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${

@@ -118,13 +118,13 @@ const AlvNav = ({
             <div className="eight:relative eight:absolute eight:w-auto">
               <LargeLink link="/jobbe-i-alv">Jobbe i Alv</LargeLink>
               <div className="eight:w-64">
-                <LargeLink link="/selskapet" mobileDropdown>
+                <LargeLink link="/om-oss" mobileDropdown>
                   Selskapet
                 </LargeLink>
                 <div>
                   {companyPages &&
                     companyPages.map((page) => (
-                      <Subtitle link={`/selskapet/${page.node.slug.current}`}>
+                      <Subtitle link={`/om-oss/${page.node.slug.current}`}>
                         {page.node.heroHeading}
                       </Subtitle>
                     ))}

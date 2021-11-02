@@ -1,13 +1,14 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
+import { Description } from '../description';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
 
 export const AboutIntro = ({ topImg, bottomImg }) => {
   return (
     <div
-      className="max-w-1440 mx-auto lg:grid flex flex-col-reverse gap-x-20 lg:py-15"
+      className="max-w-1440 mx-auto lg:grid flex flex-col-reverse gap-x-20 lg:py-15 -mt-16 sm:mt-0"
       style={{
         gridTemplateColumns: '1fr 1fr',
       }}
@@ -44,10 +45,17 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
       <div className="font-light flex flex-col justify-between h-full text-xl">
         <div>
           <div className="pr-5 sm:pr-12 lg:pl-0 sm:pl-12 pl-5 mb-10">
-            <div className="sm:h-auto h-screen w-4/6 sm:mt-20 lg:mt-0 mb-8 sm:w-full mx-auto sm:mx-0 sm:block flex justify-center items-center flex-col text-center sm:text-left">
+            <div className="sm:h-auto h-screen xs:w-5/6 sm:w-4/6 sm:mt-20 lg:mt-0 mb-8 sm:w-full mx-auto sm:mx-0 sm:block flex justify-center items-center flex-col text-center sm:text-left">
               <Title classes="sm:text-left text-center">Om oss</Title>
+              <Description className="mt-5 sm:hidden">
+                I Alv har vi tro på at dyktige konsulenter er de som hele tiden
+                ønsker å utvikle seg selv, og de rundt seg. Dette er
+                grunnpilarene for hvordan vi bygger Alv. Gjennom dette vil vi
+                bygge Norges mest attraktive konsulentselskap både for
+                potensielle ansatte og kunder.
+              </Description>
             </div>
-            <p className="mb-15 text-footer sm:text-xl">
+            <p className="mb-15 text-footer sm:text-xl hidden sm:block">
               I Alv har vi tro på at dyktige konsulenter er de som hele tiden
               ønsker å utvikle seg selv, og de rundt seg. Dette er grunnpilarene
               for hvordan vi bygger Alv. Gjennom dette vil vi bygge Norges mest
@@ -59,10 +67,10 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
             </h3>
             <div className="w-14 h-3px bg-yellow mt-6px mb-4" />
             <div className="divide-y-2">
-              <ReadMoreLink link="/selskapet/livet-i-alv">
+              <ReadMoreLink link="/om-oss/livet-i-alv">
                 Les om livet i Alv.
               </ReadMoreLink>
-              <ReadMoreLink link="/selskapet/personalvhandboka">
+              <ReadMoreLink link="/om-oss/personalvhandboka">
                 Bli kjent med PersonAlvHåndboka.
               </ReadMoreLink>
               <ReadMoreLink link="/videoserie">

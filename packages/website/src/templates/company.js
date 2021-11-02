@@ -13,7 +13,7 @@ const Company = ({ data }) => {
     window.history.replaceState(
       {},
       '',
-      `/selskapet/${data.sanityCompany.slug.current}#${e.target.name}`
+      `/om-oss/${data.sanityCompany.slug.current}#${e.target.name}`
     );
     window.scrollTo({ top, behavior: 'smooth' });
   };
