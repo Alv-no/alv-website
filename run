@@ -101,7 +101,7 @@ function deployServices() {
       --install \
       --set image.repository="$CONTAINER_REGISTRY/website" \
       --set image.tag="$TAG" \
-      --set "hosts={$HOSTNAME}" \
+      --set "hosts={$HOSTNAME,www.$HOSTNAME}" \
       --namespace "alv-no"
     sleep 20
     curl "https://$HOSTNAME"
