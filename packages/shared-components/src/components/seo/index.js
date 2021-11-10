@@ -10,6 +10,7 @@ export const SEO = ({
   metaAuthor,
   metaDescription,
   metaTitle,
+  titleTemplate,
   metaArr,
   metaLang,
 }) => {
@@ -17,7 +18,7 @@ export const SEO = ({
     <Helmet
       htmlAttributes={metaLang}
       title={metaTitle}
-      titleTemplate={`%s | ${title}`}
+      titleTemplate={titleTemplate || `%s | ${title}`}
       meta={[
         {
           name: `description`,
