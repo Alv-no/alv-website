@@ -16,7 +16,7 @@ import * as Logo from '../components/logo';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
-  const { servicePages, categoryPages } = useLayoutQuery();
+  const { servicePages, categoryPages, companyPages } = useLayoutQuery();
   const {
     title,
     author,
@@ -78,6 +78,7 @@ const ArticleTemplate = (props) => {
           fallbackImg={props.data.fallbackImg.childImageSharp.gatsbyImageData}
           servicePages={servicePages}
           categoryPages={categoryPages}
+          companyPages={companyPages}
           logo={Logo}
         >
           <div
@@ -126,6 +127,7 @@ const ArticleTemplate = (props) => {
         viewport="lg"
         servicePages={servicePages}
         categoryPages={categoryPages}
+        companyPages={companyPages}
         logo={Logo}
       />
       <div className="lg:hidden">

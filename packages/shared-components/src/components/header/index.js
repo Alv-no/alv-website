@@ -138,7 +138,13 @@ export const MobileHeader = ({
   );
 };
 
-export const BlogHeader = ({ categoryPages, servicePages, white, logo }) => {
+export const BlogHeader = ({
+  categoryPages,
+  servicePages,
+  companyPages,
+  white,
+  logo,
+}) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(true);
@@ -155,6 +161,7 @@ export const BlogHeader = ({ categoryPages, servicePages, white, logo }) => {
         toggleClose={toggleClose}
         servicePages={servicePages}
         categoryPages={categoryPages}
+        companyPages={companyPages}
         white={white}
         logo={logo}
       />

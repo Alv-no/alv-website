@@ -12,6 +12,7 @@ const Sidebar = ({
   children,
   servicePages,
   categoryPages,
+  companyPages,
   firstname,
   lastname,
   isEmployee,
@@ -29,6 +30,7 @@ const Sidebar = ({
       <MobileHeader
         servicePages={servicePages}
         categoryPages={categoryPages}
+        companyPages={companyPages}
         logo={logo}
       />
       <div
@@ -44,6 +46,7 @@ const Sidebar = ({
             <BlogHeader
               servicePages={servicePages}
               categoryPages={categoryPages}
+              companyPages={companyPages}
               logo={logo}
             />
             <div className="ml-6 lg:ml-10">
