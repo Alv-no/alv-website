@@ -57,6 +57,7 @@ const ArticleTemplate = (props) => {
   const metaDescription = description;
   const metaAuthor = authorFullname;
   const metaTitle = title;
+  const titleTemplate = `${title} | Alv`;
 
   const metaData = {
     metaAuthor,
@@ -69,7 +70,11 @@ const ArticleTemplate = (props) => {
 
   return (
     <>
-      <SEO {...metaData} fbPixel="rhudpmoc7esp0y6ydpr6kp0tbuncrg" />
+      <SEO
+        {...metaData}
+        titleTemplate={titleTemplate}
+        fbPixel="rhudpmoc7esp0y6ydpr6kp0tbuncrg"
+      />
       <span className="lg:block hidden">
         <Sidebar
           {...postAuthor}
