@@ -1,6 +1,9 @@
 build-website: ## Builds website docker image
 	docker build -f website.Dockerfile -t website .
 
+build-website-alvb: ## Builds website-alvb docker image
+	docker build -f website-alvb.Dockerfile -t website-alvb .
+
 build-cms: ## Builds cms docker image
 	docker build -f cms.Dockerfile -t cms .
 
