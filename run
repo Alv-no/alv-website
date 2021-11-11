@@ -46,22 +46,12 @@ function buildServices() {
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    EXISTING_HASH=$(
-      az acr repository show-tags \
-        --name $CONTAINER_REGISTRY_NAME \
-        --repository mail-api \
-        --query "[?@ == \`$SHORT_HASH\`] \
-      | [0]"
-    )
-    if [ -n "$EXISTING_HASH" ]; then
-      echo "Build $SHORT_HASH already exists in $CONTAINER_REGISTRY"
-    else
+
       echo "building mail api"
       docker build . \
         --file mail-api.Dockerfile \
         --tag "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH" \
         --no-cache
-    fi
   fi
 }
 
