@@ -58,7 +58,7 @@ And then browse it using a web browser at `localhost:8080`.
 ```
 az login
 
-./run deploy <test | prod> <build-id>
+./run deploy <test | prod> <package> <build-id>
 ```
 
 ## Packages
