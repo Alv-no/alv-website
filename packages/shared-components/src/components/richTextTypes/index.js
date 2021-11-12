@@ -13,14 +13,10 @@ const urlFor = (source) =>
 
 const Image = ({ props, link }) => (
   <a href={link} className={styles.wrapper}>
-    <div
+    <img
       alt={props.node.heading}
       className={styles.img}
-      style={{
-        backgroundImage: `url(${urlFor(props.node.image.asset)
-          .width(700)
-          .url()})`,
-      }}
+      src={urlFor(props.node.image.asset).width(700).url()}
     />
   </a>
 );
@@ -38,7 +34,7 @@ const TextSection = ({ props, link }) => (
       </div>
       {props.node.image && (
         <div className={styles.buttonWrapper}>
-          <Button.CtaArrow>Learn More</Button.CtaArrow>
+          <Button.CtaArrow>Se mer</Button.CtaArrow>
         </div>
       )}
     </div>
