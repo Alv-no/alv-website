@@ -1,5 +1,5 @@
 # Stage 1 - Building the website
-FROM node:14
+FROM node:16 as dev
 
 WORKDIR /app
 RUN mkdir -p /app/packages/website
@@ -12,6 +12,8 @@ COPY packages/website /app/packages/website/
 COPY packages/shared-components /app/packages/shared-components/
 
 RUN yarn
+
+FROM dev as build
 
 RUN yarn workspace website run disable-telemetry
 

@@ -119,3 +119,22 @@ if [ "deploy" = "$1" ]; then
   pushServices
   deployServices
 fi
+
+if [ "build-website-dev-container" = "$1" ]; then
+  docker build . \
+    --file=website.Dockerfile \
+    --target=dev \
+    --tag=alv-no-website-dev-container
+fi
+
+if [ "run-website-dev-container" = "$1" ]; then
+  docker run \
+    -it \
+    --rm \
+    -v $(pwd):/app \
+    -v /app/node_modules \
+    -v packages/website/node_modules \
+    -p 8000:8000 \
+    alv-no-website-dev-container \
+    yarn workspace website run dev
+fi
