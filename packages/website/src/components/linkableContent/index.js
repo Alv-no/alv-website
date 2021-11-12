@@ -25,23 +25,25 @@ export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
     <div className="px-5 sm:px-12 relative z-10">
       <div className="max-w-1200 mx-auto pt-5 sm:pt-16 w-full tracking-wider relative z-0">
         <nav className="mx-auto sm:grid sm:gap-x-4 sm:grid-cols-navlist-sm">
-          <ul className="text-lg sm:mt-20 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
-            {navElements.map((el) => (
-              <button
-                aria-label="Scroll Link"
-                className="py-3 block sm:mr-0 mr-4 w-full focus:outline-none"
-                onClick={scrollTo}
-                name={el.id}
-              >
-                <span className="flex justify-between items-center pointer-events-none text-left text-base font-bold">
-                  {el.text}
-                  <span className="scale-90 transform">
-                    <Icon.Arrow />
+          <div>
+            <ul className="sticky top-10 max-h-90vh overflow-y-scroll text-lg sm:mt-20 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
+              {navElements.map((el) => (
+                <button
+                  aria-label="Scroll Link"
+                  className="py-3 block sm:mr-0 mr-4 w-full focus:outline-none"
+                  onClick={scrollTo}
+                  name={el.id}
+                >
+                  <span className="flex justify-between items-center pointer-events-none text-left text-base font-bold">
+                    {el.text}
+                    <span className="scale-90 transform">
+                      <Icon.Arrow />
+                    </span>
                   </span>
-                </span>
-              </button>
-            ))}
-          </ul>
+                </button>
+              ))}
+            </ul>
+          </div>
           <div className="z-50 relative mb-10 sm:hidden">
             <GatsbyImage
               image={heroImage}
