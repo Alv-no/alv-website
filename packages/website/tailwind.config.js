@@ -111,6 +111,9 @@ module.exports = {
         80: '0.80',
         90: '0.90',
       },
+      maxHeight: {
+        '90vh': '90vh',
+      },
       zIndex: {
         60: 60,
         70: 70,
