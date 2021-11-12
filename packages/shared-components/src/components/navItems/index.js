@@ -68,7 +68,7 @@ const LargeLinkContent = ({ children, arrow, open }) => (
 export const Subtitle = ({ children, link }) => (
   <Link to={link}>
     <h3
-      className={`uppercase text-lg tracking-widest mt-7 eight:mt-12 eight:mb-4 eight:ml-0 sm:ml-6 ml-6`}
+      className={`uppercase text-md tracking-widest mt-7 eight:mt-4 eight:mb-4 eight:ml-0 sm:ml-6 ml-6`}
     >
       {children}
     </h3>

@@ -504,7 +504,7 @@ export const Cv = () => (
 
 export const TransitionArrow = ({ open, white }) => (
   <span
-    className={`absolute right-0 sm:right-4 top-3 eight:hidden transform transition duration-300 ${
+    className={`absolute right-1 sm:right-3 top-3 eight:hidden transform transition duration-300 ${
       open && 'rotate-90'
     }`}
   >
