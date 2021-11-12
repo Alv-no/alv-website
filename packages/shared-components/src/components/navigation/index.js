@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import * as Icon from '../icon';
-import { LargeLink, Subtitle, ListLink, List } from '../navItems';
+import { LargeLink, Subtitle } from '../navItems';
 import { SocialLinks } from '../socialShare';
 
 export const Navigation = ({
@@ -43,19 +43,27 @@ const NavLayout = ({ open, logo, children, toggleClose, white }) => (
       open ? 'opacity-100' : 'opacity-0 pointer-events-none'
     }`}
   >
-    <div className="eight:flex justify-center z-90 relative mx-auto auto eight:mb-0 eight:mb-25 eight:mx-auto max-w-1200 items-center mb-12 eight:mb-0">
-      <div className="inline-block">
-        <Link to="/">{white ? logo.Colored() : logo.White()}</Link>
-      </div>
-      <div className="absolute right-0 transform -translate-x-20 eight:flex hidden">
-        <SocialLinks white={white} />
-      </div>
-    </div>
+    <button
+      className="h-screen w-screen fixed left-0 top-0 z-70"
+      onClick={toggleClose}
+    />
+    <NavHeader white={white} toggleClose={toggleClose} logo={logo} />
     {children}
-    <div className="fixed top-4 right-4 eight:relative eight:flex eight:m-0 eight:mt-10 justify-center eight:mr-0 z-90 top-0 right-0 sm:mr-5 sm:mt-3 transform scale-70">
+  </nav>
+);
+
+const NavHeader = ({ white, logo, toggleClose }) => (
+  <div className="flex items-center relative z-90 justify-between flex-row-reverse eight:flex-row max-w-1000 mx-auto">
+    <div className="transform scale-70 translate-x-2 sm:translate-x-0">
       <CloseButton toggleClose={toggleClose} white={white} />
     </div>
-  </nav>
+    <div className="inline-block eight:absolute right-1/2 eight:transform translate-x-1/2">
+      <Link to="/">{white ? logo.Colored() : logo.White()}</Link>
+    </div>
+    <div className="right-0 transform eight:flex hidden relative">
+      <SocialLinks white={white} />
+    </div>
+  </div>
 );
 
 const CloseButton = ({ toggleClose, white }) => (
@@ -87,97 +95,43 @@ const AlvBNav = ({ open, toggleClose, logo, white }) => (
   </NavLayout>
 );
 
-const AlvNav = ({
-  open,
-  toggleClose,
-  servicePages,
-  categoryPages,
-  logo,
-  companyPages,
-}) => {
+const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
   return (
-    <>
-      <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
-        <div className="eight:flex eight:items-center h-4/6 eight:justify-center w-full">
-          <div className="eight:grid grid-cols-main-nav eight:gap-x-5 twelve:gap-x-10 2xl:gap-x-16 text-theme-text grid-cols-3 transition duration-300">
-            <div className="col-span-2">
-              <LargeLink link="/vi-tilbyr" mobileDropdown>
-                Vi Tilbyr
-              </LargeLink>
-              <div className="eight:flex justify-between eight:-mt-9 px-3">
-                <CategoryPageLinks
-                  categoryPages={categoryPages.slice(0, 2)}
-                  servicePages={servicePages}
-                />
-                <CategoryPageLinks
-                  categoryPages={categoryPages.slice(2, categoryPages.length)}
-                  servicePages={servicePages}
-                />
-              </div>
-            </div>
-            <div className="eight:relative eight:absolute eight:w-auto">
-              <LargeLink link="/jobbe-i-alv">Jobbe i Alv</LargeLink>
-              <div className="eight:w-64">
-                <LargeLink link="/om-oss" mobileDropdown>
-                  Selskapet
-                </LargeLink>
-                <div>
-                  {companyPages &&
-                    companyPages.map((page) => (
-                      <Subtitle link={`/om-oss/${page.node.slug.current}`}>
-                        {page.node.heroHeading}
-                      </Subtitle>
-                    ))}
-                  <Subtitle link="/ansatte">Ansatte</Subtitle>
-                </div>
-              </div>
-              <LargeLink link="/videoserie">Videoserie</LargeLink>
-              <LargeLink link="/blogg">Blogg</LargeLink>
-              <LargeLink link="/kontakt-oss">Kontakt Oss</LargeLink>
-            </div>
-          </div>
+    <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
+      <div className="flex eight:justify-center h-full eight:items-center relative eight:-top-16">
+        <div className="eight:flex transition duration-300 gap-x-16 justify-center w-full">
+          <GenerateLinks
+            title="Hva vi tilbyr"
+            linksArr={categoryPages}
+            parentPage="/vi-tilbyr"
+          />
+          <GenerateLinks
+            title="Hvem vi er"
+            linksArr={companyPages}
+            parentPage="/om-oss"
+          />
+          <GenerateLinks title="Mer om alv">
+            <Subtitle link="/jobbe-i-alv">Ledige stillinger</Subtitle>
+            <Subtitle link="/videoserie">Videoserien</Subtitle>
+            <Subtitle link="/blogg">Blogg</Subtitle>
+            <Subtitle link="/kontakt-oss">Kontakt oss</Subtitle>
+          </GenerateLinks>
         </div>
-      </NavLayout>
-    </>
+      </div>
+    </NavLayout>
   );
 };
 
-const CategoryPageLinks = ({ categoryPages, servicePages }) => {
-  return (
-    <div>
-      {categoryPages.map((categoryPage) => {
-        return (
-          <div
-            className="eight:max-w-68 eight:-ml-3 transform eight:translate-y-2px 2xl:translate-y-3"
-            key={categoryPage.slug.current}
-          >
-            <Subtitle link={`/vi-tilbyr/${categoryPage.slug.current}`}>
-              {categoryPage.heroHeading}
-            </Subtitle>
-            {servicePages.some(
-              (page) =>
-                page.parentPage.slug.current === categoryPage.slug.current
-            ) && (
-              <List>
-                {servicePages
-                  .filter(
-                    (page) =>
-                      page.parentPage.slug.current === categoryPage.slug.current
-                  )
-                  .map((page) => (
-                    <ListLink
-                      link={`/vi-tilbyr/${page.parentPage.slug.current}/${page.slug.current}`}
-                      margin="eight:mb-5 2xl:mb-6"
-                      key={page.slug.current}
-                    >
-                      {page.heroHeading}
-                    </ListLink>
-                  ))}
-              </List>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+const GenerateLinks = ({ linksArr, title, parentPage, children }) => (
+  <div className="relative z-70">
+    <LargeLink mobileDropdown>{title}</LargeLink>
+    <ul>
+      {children}
+      {linksArr?.map((link) => (
+        <Subtitle link={`${parentPage}/${link.slug.current}`}>
+          {link.heroHeading}
+        </Subtitle>
+      ))}
+    </ul>
+  </div>
+);
