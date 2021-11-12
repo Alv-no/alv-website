@@ -14,7 +14,7 @@ export const SocialShare = ({ url, title, tags, subtitle, white }) => {
         white ? 'text-white' : 'text-navy'
       } text-sm font-semibold items-center`}
     >
-      Share
+      Del
       <span className="ml-3 filter-invert cursor-pointer transition hover:opacity-75">
         <FacebookShareButton url={url} quote={title} hashtag={tags}>
           <Icon.CircleFacebook white={white} />
