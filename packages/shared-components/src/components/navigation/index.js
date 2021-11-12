@@ -96,6 +96,9 @@ const AlvBNav = ({ open, toggleClose, logo, white }) => (
 );
 
 const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
+  const filteredCompanyPages = companyPages.filter(
+    (page) => page.slug.current !== 'kunder-og-prosjekter'
+  );
   return (
     <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
       <div className="flex eight:justify-center h-full eight:items-center relative eight:-top-16">
@@ -107,12 +110,18 @@ const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
           />
           <GenerateLinks
             title="Hvem vi er"
-            linksArr={companyPages}
+            linksArr={filteredCompanyPages}
             parentPage="/om-oss"
-          />
+            mainLinkText="Om oss"
+          >
+            <Subtitle link="/ansatte">Ansatte</Subtitle>
+          </GenerateLinks>
           <GenerateLinks title="Mer om alv">
             <Subtitle link="/jobbe-i-alv">Ledige stillinger</Subtitle>
             <Subtitle link="/videoserie">Videoserien</Subtitle>
+            <Subtitle link="/om-oss/kunder-og-prosjekter">
+              Kunder og prosjekter
+            </Subtitle>
             <Subtitle link="/blogg">Blogg</Subtitle>
             <Subtitle link="/kontakt-oss">Kontakt oss</Subtitle>
           </GenerateLinks>
@@ -122,16 +131,23 @@ const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
   );
 };
 
-const GenerateLinks = ({ linksArr, title, parentPage, children }) => (
+const GenerateLinks = ({
+  linksArr,
+  title,
+  parentPage,
+  mainLinkText,
+  children,
+}) => (
   <div className="relative z-70">
     <LargeLink mobileDropdown>{title}</LargeLink>
     <ul>
-      {children}
+      {mainLinkText && <Subtitle link={parentPage}>{mainLinkText}</Subtitle>}
       {linksArr?.map((link) => (
         <Subtitle link={`${parentPage}/${link.slug.current}`}>
           {link.heroHeading}
         </Subtitle>
       ))}
+      {children}
     </ul>
   </div>
 );
