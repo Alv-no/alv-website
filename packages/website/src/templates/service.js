@@ -37,6 +37,7 @@ const Service = ({ data }) => {
           description={data.sanityServices.heroDescription}
           internalLink="/kontakt-oss"
           image={data.sanityServices.heroImage.asset.gatsbyImageData}
+          buttonText="kontakt oss"
         />
       </div>
       <div className="w-full bg-white tracking-wider z-10 relative">

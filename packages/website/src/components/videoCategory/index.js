@@ -70,7 +70,7 @@ export const VideoCategory = ({
               </p>
               <div className="mt-10" />
               <div className="tracking-wider uppercase py-2 px-5 border-white border-2 rounded-full inline-block">
-                <Link to={`/videoserie/${slug}`}>Vis miniserie</Link>
+                <Link to={`/videoserie/${slug}`}>Se alle</Link>
               </div>
             </div>
           </div>

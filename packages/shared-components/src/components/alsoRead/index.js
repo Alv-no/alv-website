@@ -29,7 +29,7 @@ export const AlsoRead = ({ articles, currentTags, currentAuthor }) => {
       <div className="flex justify-between mb-5">
         <div className="mb-4">
           <div className="uppercase text-navy text-lg font-semibold mb-2 tracking-wider">
-            Also Read
+            Les også
           </div>
           <div className="w-12 h-3px bg-theme-accent" />
         </div>

@@ -48,7 +48,7 @@ export const Layout = ({
         categoryPages={categoryPages}
         logo={Logo}
         companyPages={companyPages}
-        headerCtaText="jobbe i alv"
+        headerCtaText="jobbe i alv?"
         headerCtaLink="/jobbe-i-alv"
       />
       <MobileHeader

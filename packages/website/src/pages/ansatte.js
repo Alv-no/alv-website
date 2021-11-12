@@ -30,7 +30,7 @@ const Employees = ({ location }) => {
           <span className="px-6">
             <Description align="center">
               Alv er produktet av alle konsulentene som jobber i selskapet.
-              Utforsk våre konsulenter - alle med Alv i genene
+              Utforsk våre konsulenter - alle med Alv i genene.
             </Description>
           </span>
         </div>
