@@ -29,20 +29,20 @@ export const WhoWeAre = ({ title, children, blocks, whiteText, darkText }) => {
               blocks={blocks}
             />
             {children}
-            <div className="twelve:block hidden">
+            <div className="twelve:block hidden text-theme-text">
               <Link to="/om-oss">
                 <Button.CtaArrow>
-                  <span className="text-theme-text">Les Mer</span>
+                  <span>Les Mer</span>
                 </Button.CtaArrow>
               </Link>
             </div>
           </div>
         </Fade>
-        <div className="twelve:hidden sm:block flex justify-between">
+        <div className="twelve:hidden sm:block flex justify-between text-theme-text">
           <div />
           <Link to="/om-oss">
             <Button.Arrow>
-              <span className="text-theme-text">Les Mer</span>
+              <span>Les Mer</span>
             </Button.Arrow>
           </Link>
         </div>
