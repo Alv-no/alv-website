@@ -101,6 +101,22 @@ export default {
         maxLength: 160,
       },
     },
+    {
+      name: 'flipSection1ButtonText',
+      title: 'Section 1: button text',
+      type: 'string',
+      options: {
+        maxLength: 60,
+      },
+    },
+    {
+      name: 'flipSection1ButtonLink',
+      title: 'Section 1: button link',
+      type: 'string',
+      options: {
+        maxLength: 60,
+      },
+    },
     // Section 2
     {
       name: 'section2Services',
