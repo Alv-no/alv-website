@@ -48,9 +48,13 @@ export const SocialLinks = () => (
     >
       <Icon.Instagram />
     </a>
-    <span className="mr-4 ml-6">
-      <a href="https://twitter.com/alvnoas/" target="_blank" rel="noreferrer">
-        <Icon.Twitter />
+    <span className="mr-4 ml-5 pl-2px">
+      <a
+        href="https://www.linkedin.com/company/alvnorge"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Icon.Linkedin />
       </a>
     </span>
     <a
