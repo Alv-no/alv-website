@@ -3,7 +3,15 @@ import Fade from 'react-reveal/Fade';
 import { CtaButton } from '../ctaButton';
 import { BgImage } from 'gbimage-bridge';
 
-export const Hire = ({ title, text, image, blue, darkFade }) => {
+export const Hire = ({
+  title,
+  text,
+  image,
+  blue,
+  darkFade,
+  buttonLink,
+  buttonText,
+}) => {
   return (
     <div className="bg-theme-bg w-full text-theme-text">
       <div
@@ -26,8 +34,8 @@ export const Hire = ({ title, text, image, blue, darkFade }) => {
                 </p>
                 <div className="w-full flex justify-end">
                   <div className="twelve:mr-0 lg:-ml-10 -mt-10">
-                    <CtaButton internalLink="/ansatte" blue={blue}>
-                      Våre konsulenter
+                    <CtaButton internalLink={buttonLink} blue={blue}>
+                      {buttonText}
                     </CtaButton>
                   </div>
                 </div>
@@ -38,16 +46,14 @@ export const Hire = ({ title, text, image, blue, darkFade }) => {
         <div className="px-5 sm:hidden -mt-20 xs:-mt-15 ">
           <Fade>
             <h2 className="uppercase text-blog sm:text-slider mb-8 font-semibold tracking-wider">
-              HILS PÅ KONSULENTENE I ALV
+              {title}
             </h2>
             <p className="text-footer sm:text-xl tracking-wider mb-16 font-light">
-              Vi har et bredt spekter av kompetanseområder innenfor
-              systemutvikling. Utforsk våre konsulenter, og bli bedre kjent med
-              dine potensielle kolleger eller problemløsere.
+              {text}
             </p>
             <div className="w-full flex justify-end">
               <div className="twelve:-mr-40 eight:-mr-20 sm:-mr-8 -mt-10">
-                <CtaButton internalLink="/ansatte">Våre konsulenter</CtaButton>
+                <CtaButton internalLink={buttonLink}>{buttonText}</CtaButton>
               </div>
             </div>
           </Fade>
