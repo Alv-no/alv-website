@@ -34,7 +34,7 @@ const TextSection = ({ props, link }) => (
       </div>
       {props.node.image && (
         <div className={styles.buttonWrapper}>
-          <Button.CtaArrow>Se mer</Button.CtaArrow>
+          <Button.CtaArrow path={link}>Se mer</Button.CtaArrow>
         </div>
       )}
     </div>
