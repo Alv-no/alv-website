@@ -6,8 +6,10 @@ import { BgImage } from 'gbimage-bridge';
 export const OurServices = ({
   description,
   heading,
+  button,
   image,
   textOverImage,
+  title,
   servicesList,
   darkFade,
 }) => {
@@ -27,7 +29,8 @@ export const OurServices = ({
         <div />
         <div className="sm:pl-0 lg:ml-0 pl-5">
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
-            {heading || 'Våre Tjenester'}
+            {/* update alv sanity to use "title" naming convention */}
+            {heading || title || 'Våre Tjenester'}
           </h2>
           <p className="mb-5 sm:pr-15 font-light text-xl w-full text-theme-text sm:text-xl tracking-wider">
             {description}
@@ -36,9 +39,9 @@ export const OurServices = ({
           <div className="lg:block flex justify-between">
             <div />
             <div>
-              <Link to="/vi-tilbyr">
+              <Link to={button?.link || '/vi-tilbyr'}>
                 <Button.Arrow>
-                  <span className="">Les Mer</span>
+                  <span className="">{button?.text || 'Les Mer'}</span>
                 </Button.Arrow>
               </Link>
             </div>
@@ -70,7 +73,9 @@ export const OurServices = ({
                   </p>
                 )}
                 {activeItem === i && (
-                  <ListContent link={el.link}>{el.text}</ListContent>
+                  <ListContent button={el.button} link={el.link}>
+                    {el.text}
+                  </ListContent>
                 )}
               </li>
             ))}
@@ -104,7 +109,7 @@ const TextFadeImage = ({ darkFade, image, textOverImage }) => (
   </div>
 );
 
-const ListContent = ({ children, link }) => (
+const ListContent = ({ children, link, button }) => (
   <div>
     <div className={`w-12 mt-1 mb-8 h-2px bg-theme-accent`} />
     <div className="sm:pl-10 pl-5 mb-15">
@@ -113,7 +118,7 @@ const ListContent = ({ children, link }) => (
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">
         <p className="font-semibold tracking-wider uppercase text-base w-40 text-theme-text">
-          <Link to={link}>Finn ut mer</Link>
+          <Link to={button?.link || link}>{button?.text || 'Finn ut mer'}</Link>
         </p>
         <div className="h-2px bg-theme-text sm:opacity-0 twelve:opacity-100 mt-1 w-1/2 lg:w-full hidden sm:block" />
       </div>
