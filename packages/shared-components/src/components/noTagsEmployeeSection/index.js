@@ -1,7 +1,11 @@
 import React from 'react';
 import { GridContainer } from '../gridContainer';
 
-export const NoTagsEmployeeSection = ({ allEmployees, linkedId }) => {
+export const NoTagsEmployeeSection = ({
+  allEmployees,
+  linkedId,
+  isEnLocale,
+}) => {
   return (
     <div className="w-full text-white xs:px-6 overflow-hidden">
       {allEmployees && (
@@ -9,6 +13,7 @@ export const NoTagsEmployeeSection = ({ allEmployees, linkedId }) => {
           white
           filteredContent={allEmployees}
           linkedId={linkedId}
+          isEnLocale={isEnLocale}
         />
       )}
     </div>

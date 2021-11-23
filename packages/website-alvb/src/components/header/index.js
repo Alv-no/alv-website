@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'gatsby-link';
-import * as Icon from '../icon';
+import { Breadcrumb, CallToAction, Navigation } from 'shared-components';
 import Headroom from 'react-headroom';
-import { CallToAction } from '../calltoaction';
-import { Breadcrumb } from '../breadcrumb';
-import { Navigation } from '../navigation';
 import { window } from 'browser-monads';
 
 export const Header = ({
@@ -17,6 +14,7 @@ export const Header = ({
   headerCtaLink,
   whiteIcons,
   navyHeader,
+  isEnLocale,
 }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
@@ -54,10 +52,10 @@ export const Header = ({
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white={whiteIcons || navyHeader} />
+                <DropdownIcon white={whiteIcons || navyHeader} />
               </button>
               <span className="transform ">
-                <Link to="/">
+                <Link to={isEnLocale ? '/en' : '/'}>
                   {!whiteIcons && !navyHeader ? logo.Colored() : logo.White()}
                 </Link>
               </span>
@@ -84,6 +82,15 @@ export const Header = ({
     </>
   );
 };
+
+const DropdownIcon = ({ white }) => (
+  <div className="flex flex-col justify-center items-center h-7">
+    <div
+      className={`w-7 bg-white ${!white && 'eight:bg-theme-text'} h-px mb-2`}
+    />
+    <div className={`w-7 bg-white ${!white && 'eight:bg-theme-text'} h-px`} />
+  </div>
+);
 
 export const MobileHeader = ({
   viewport,
@@ -125,7 +132,7 @@ export const MobileHeader = ({
                 className="cursor-pointer focus:outline-none"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white={white && !open} />
+                <DropdownIcon white={white && !open} />
               </button>
               <span className="transform ">
                 <Link to="/">{logo.White()}</Link>
@@ -165,7 +172,7 @@ export const BlogHeader = ({
         white={white}
         logo={logo}
       />
-      <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
+      <div className="bg-navy hidden sm:block sm:pt-7 py-5">
         <div className="max-w-1600 mx-auto">
           <div className="flex justify-between sm:mb-7 ">
             <div className="flex">
@@ -175,7 +182,7 @@ export const BlogHeader = ({
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white />
+                <DropdownIcon white />
               </button>
               <span className="transform text-white">
                 <Link to="/">{logo.White()}</Link>

@@ -4,19 +4,6 @@ export const useEmployeeQuery = () => {
   const data = useStaticQuery(
     graphql`
       {
-        sanityEmployeePage {
-          pageDescription
-          pageTitle
-          section1Title
-          section1Description
-          section2Title
-          section2Text
-          section2Image {
-            asset {
-              gatsbyImageData
-            }
-          }
-        }
         allSanityEmployee {
           edges {
             node {
@@ -42,7 +29,7 @@ export const useEmployeeQuery = () => {
       }
     `
   );
-  data.allEmployees = data.allSanityEmployee.edges.map((el) => {
+  const allEmployees = data.allSanityEmployee.edges.map((el) => {
     const employee = el.node;
     employee.slug = createSlugForEmployee(
       employee.firstname,
@@ -50,5 +37,5 @@ export const useEmployeeQuery = () => {
     );
     return employee;
   });
-  return data;
+  return allEmployees;
 };

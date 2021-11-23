@@ -4,7 +4,15 @@ import * as Button from '../button';
 import Fade from 'react-reveal/Fade';
 import { BlockContent } from '../blockContent';
 
-export const WhoWeAre = ({ title, children, blocks, whiteText, darkText }) => {
+export const WhoWeAre = ({
+  title,
+  children,
+  blocks,
+  whiteText,
+  darkText,
+  buttonText,
+  buttonLink,
+}) => {
   return (
     <>
       <div
@@ -30,9 +38,9 @@ export const WhoWeAre = ({ title, children, blocks, whiteText, darkText }) => {
             />
             {children}
             <div className="twelve:block hidden text-theme-text">
-              <Link to="/om-oss">
+              <Link to={buttonLink || '/om-oss'}>
                 <Button.CtaArrow>
-                  <span>Les Mer</span>
+                  <span>{buttonText || 'Les Mer'}</span>
                 </Button.CtaArrow>
               </Link>
             </div>
@@ -40,9 +48,9 @@ export const WhoWeAre = ({ title, children, blocks, whiteText, darkText }) => {
         </Fade>
         <div className="twelve:hidden sm:block flex justify-between text-theme-text">
           <div />
-          <Link to="/om-oss">
+          <Link to={buttonLink || '/om-oss'}>
             <Button.Arrow>
-              <span>Les Mer</span>
+              <span>{buttonText || 'Les Mer'}</span>
             </Button.Arrow>
           </Link>
         </div>

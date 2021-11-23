@@ -5,98 +5,104 @@ import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
 import { WhoWeAre, VideoIntro, Hire, OurServices } from 'shared-components';
 import { Founder } from '../components/founder';
+import localize from '../components/localize/index';
 
-const Index = ({ data }) => {
-  const pageTitle = data.sanityLandingPage.pageTitle || false;
-  const pageDescription = data.sanityLandingPage.pageDescription || false;
-  const landingPage = data.sanityLandingPage;
+const Index = ({ data, location }) => {
+  const {
+    section1,
+    section2,
+    section4,
+    section5,
+    section6,
+    _rawMeta,
+    _rawSection1,
+    _rawSection2,
+    _rawSection3,
+    _rawSection4,
+    _rawSection5,
+    _rawSection6,
+  } = data.sanityLandingPage;
+
+  const isEnLocale = location.pathname === '/en';
 
   return (
     <div className="overflow-hidden">
-      <Layout white pageTitle={pageTitle} pageDescription={pageDescription}>
+      <Layout
+        white
+        pageTitle={_rawMeta.metaTitle}
+        pageDescription={_rawMeta.metaTitle}
+      >
         <div className="bg-theme-bg">
           <Hero
-            blocks={landingPage.imageHero._rawHeroText}
-            image={landingPage.imageHero.image.asset.gatsbyImageData}
+            blocks={_rawSection1.heroText}
+            image={section1.image.asset.gatsbyImageData}
           />
           <div className="bg-theme-bg w-full pb-15 sm:pt-24">
             <VideoIntro
-              videoMp4={landingPage.videoMp4.asset.url}
-              videoWebm={landingPage.videoWebm.asset.url}
+              videoMp4={section2.videoMp4.asset.url}
+              videoWebm={section2.videoWebm.asset.url}
             >
-              {landingPage.videoTextOverlay}
+              {_rawSection2.videoTextOverlay}
             </VideoIntro>
             <WhoWeAre
               darkText
-              title={landingPage.section2Title}
-              blocks={landingPage._rawSection2Text}
+              title={_rawSection3.title}
+              blocks={_rawSection3.block}
+              buttonText={_rawSection3.button.text}
+              buttonLink={_rawSection3.button.link}
             />
           </div>
           <Hire
-            title={landingPage.section3Title}
-            text={landingPage.section3Text}
-            image={landingPage.section3Image.asset.gatsbyImageData}
+            title={_rawSection4.title}
+            text={_rawSection4.text}
+            image={section4.image.asset.gatsbyImageData}
           />
           <div className="h-15" />
-          <OurServices {...landingPage.section4Services} blueLine />
-          <Founder {...landingPage.section5Founder} />
+          <OurServices {..._rawSection5} image={section5.image} blueLine />
+          <Founder {..._rawSection6} {...section6} />
           <div className="bg-theme-bg h-10 lg:h-32" />
-          <BlogCarousel blue />
+          <BlogCarousel blue isEnLocale={isEnLocale} />
         </div>
       </Layout>
     </div>
   );
 };
 
-export default Index;
+export default localize(Index);
 
 export const query = graphql`
   query LandingPageQuery {
     sanityLandingPage {
-      section2Title
-      section3Text
-      section3Title
-      videoTextOverlay
-      videoMp4 {
-        asset {
-          url
-        }
-      }
-      videoWebm {
-        asset {
-          url
-        }
-      }
-      pageDescription
-      pageTitle
-      _rawSection2Text
-      section3Image {
-        asset {
-          gatsbyImageData
-        }
-      }
-      section4Services {
-        description
-        heading
-        textOverImage
-        link
+      _rawMeta
+      _rawSection6
+      _rawSection5
+      _rawSection4
+      _rawSection3
+      _rawSection2
+      _rawSection1
+      # media
+      section1 {
         image {
           asset {
             gatsbyImageData
           }
         }
-        servicesList {
-          subtitle
-          text
-          title
-          link
+      }
+      section4 {
+        image {
+          asset {
+            gatsbyImageData
+          }
         }
       }
-      section5Founder {
-        title
-        role
-        quote
-        name
+      section5 {
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+      }
+      section6 {
         founderImage {
           asset {
             gatsbyImageData
@@ -108,13 +114,17 @@ export const query = graphql`
           }
         }
       }
-      imageHero {
-        image {
+      section2 {
+        videoMp4 {
           asset {
-            gatsbyImageData(placeholder: BLURRED)
+            url
           }
         }
-        _rawHeroText
+        videoWebm {
+          asset {
+            url
+          }
+        }
       }
     }
   }

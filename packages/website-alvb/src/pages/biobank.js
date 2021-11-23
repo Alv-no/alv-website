@@ -1,70 +1,33 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
-import { useBiobankQuery } from '../hookspages/useBiobankQuery';
 import { RichtextAndImage } from '../components/richtextAndImage';
 import { Services } from '../components/services';
 import { NavyIntro, ServicesCard } from 'shared-components';
+import localize from '../components/localize/index';
 
-const cards = [
-  {
-    title: 'Loom',
-    text: 'We normally biobank tissues and solid tumors from dogs and cats.',
-  },
-  {
-    title: 'Organoids',
-    text: 'Organoids are prepared from the tumor tissue of dogs and cats.',
-  },
-  {
-    title: 'Primary patient cell cultures',
-    text:
-      'We biobank early passages of dog and cat patient cell material, such as normal cell cultures and various cancer cultures.',
-  },
-  {
-    title: 'Loom',
-    text: 'We normally biobank tissues and solid tumors from dogs and cats.',
-  },
-  {
-    title: 'Organoids',
-    text: 'Organoids are prepared from the tumor tissue of dogs and cats.',
-  },
-  {
-    title: 'Primary patient cell cultures',
-    text:
-      'We biobank early passages of dog and cat patient cell material, such as normal cell cultures and various cancer cultures.',
-  },
-];
-
-const Biobank = () => {
-  const data = useBiobankQuery();
-  const {
-    pageTitle,
-    pageDescription,
-    heading,
-    description,
-    section2Image,
-    section2Title,
-    _rawSection2Block,
-  } = data.sanityBioBank;
+const Biobank = ({ data }) => {
+  const { meta, section1, section2, section3 } = data.sanityBioBank;
 
   return (
     <div className="overflow-hidden">
       <Layout
         white
         whiteIcons
-        pageTitle={pageTitle}
-        pageDescription={pageDescription}
+        pageTitle={meta.metaTitle}
+        pageDescription={meta.metaDescription}
       >
-        <NavyIntro title={heading} description={description} white />
+        <NavyIntro title={section1.title} description={section1.text} white />
         <RichtextAndImage
-          image={section2Image.asset.gatsbyImageData}
-          blocks={_rawSection2Block}
+          image={section2.image.asset.gatsbyImageData}
+          blocks={section2.block}
           leftColSize={'30%'}
-          title={section2Title}
+          title={section2.title}
           flip
         />
         <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
-          <Services title="Categories">
-            {cards.map((card) => {
+          <Services title={section3.title}>
+            {section3.categoryList.map((card) => {
               return (
                 <ServicesCard title={card.title} description={card.text} />
               );
@@ -76,4 +39,66 @@ const Biobank = () => {
   );
 };
 
-export default Biobank;
+export default localize(Biobank);
+
+export const query = graphql`
+  query BioBankQuery {
+    sanityBioBank {
+      meta {
+        en {
+          metaDescription
+          metaTitle
+          _type
+        }
+        no {
+          _type
+          metaDescription
+          metaTitle
+        }
+      }
+      section1 {
+        text {
+          _type
+          en
+          no
+        }
+        title {
+          _type
+          en
+          no
+        }
+      }
+      section2 {
+        block {
+          _type
+          _rawEn
+          _rawNo
+        }
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+      }
+      section3 {
+        title {
+          _type
+          en
+          no
+        }
+        categoryList {
+          text {
+            _type
+            en
+            no
+          }
+          title {
+            _type
+            en
+            no
+          }
+        }
+      }
+    }
+  }
+`;

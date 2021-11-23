@@ -11,6 +11,7 @@ export const PostCard = ({
   title,
   tags,
   author,
+  isEnLocale,
   publishedAt,
   fallbackImg,
 }) => {
@@ -33,7 +34,7 @@ export const PostCard = ({
             <div
               className={`${styles.button} flex justify-end transform translate-x-2`}
             >
-              Les mer{' '}
+              {isEnLocale ? 'Read more' : 'Les mer'}{' '}
               <div className="ml-2 transform scale-80">
                 <Icon.Arrow />
               </div>

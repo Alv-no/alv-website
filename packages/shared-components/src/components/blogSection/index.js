@@ -3,7 +3,7 @@ import { BlogFilter } from '../blogFilter';
 import { PostCard } from '../postCard';
 import * as Button from '../button';
 
-export const BlogSection = ({ allArticles }) => {
+export const BlogSection = ({ allArticles, isEnLocale }) => {
   const [articles, setArticles] = useState(allArticles);
   const [visibleRows, setVisibleRows] = useState(12);
   const handleViewMoreClick = () => {
@@ -36,6 +36,7 @@ export const BlogSection = ({ allArticles }) => {
             allAuthors={allAuthors}
             allArticles={allArticles}
             onChange={updateArticles}
+            isEnLocale={isEnLocale}
           />
         )}
         <div className="max-w-1200 mx-auto flex justify-center px-6">
@@ -43,7 +44,11 @@ export const BlogSection = ({ allArticles }) => {
             {articles.slice(0, visibleRows).map((article) => {
               return (
                 <>
-                  <PostCard {...article} key={article.id} />
+                  <PostCard
+                    isEnLocale={isEnLocale}
+                    {...article}
+                    key={article.id}
+                  />
                 </>
               );
             })}

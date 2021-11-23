@@ -1,7 +1,12 @@
 import React from 'react';
 import * as Icon from '../icon';
 
-const CallToAction = ({ children, onClick, disabled = false, whiteIcons }) => (
+export const CallToAction = ({
+  children,
+  onClick,
+  disabled = false,
+  whiteIcons,
+}) => (
   <button
     onClick={onClick}
     disabled={disabled}
@@ -18,5 +23,3 @@ const CallToAction = ({ children, onClick, disabled = false, whiteIcons }) => (
     </span>
   </button>
 );
-
-export default CallToAction;

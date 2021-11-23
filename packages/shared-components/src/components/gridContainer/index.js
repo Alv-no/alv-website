@@ -7,6 +7,7 @@ export const GridContainer = ({
   filteredContent,
   linkedId,
   fallbackImg,
+  isEnLocale,
   white,
 }) => {
   const { width } = useWindowDimensions();
@@ -94,7 +95,9 @@ export const GridContainer = ({
           }}
         >
           <div ref={bioRefContainer} />
-          <Button.Line navy={white}>Se Mer</Button.Line>
+          <Button.Line navy={white}>
+            {isEnLocale ? 'See more' : 'Se Mer'}
+          </Button.Line>
         </div>
       </div>
     </>

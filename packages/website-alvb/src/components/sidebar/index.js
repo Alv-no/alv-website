@@ -12,6 +12,7 @@ const Sidebar = ({
   isEmployee,
   authorSlug,
   fallbackImg,
+  isEnLocale,
   title,
   image,
   id,
@@ -46,17 +47,30 @@ const Sidebar = ({
             />
             <div className="ml-6 lg:ml-10">
               <div className="uppercase text-base tracking-wider font-semibold my-10">
-                <Link to="/blogg">
+                <Link to={isEnLocale ? '/en/blog' : '/blogg'}>
                   <div className="flex">
-                    <span className="transform rotate-180 -translate-y-1 text-theme-accent mr-3">
-                      {/* <Icon.Arrow /> */}
+                    See all articles
+                    <span className="transform translate-y-1 pt-px text-theme-accent ml-3">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        className="fill-current"
+                      >
+                        <g transform="translate(-1061 -2240.344)">
+                          <path
+                            d="M8,0,6.545,1.455l5.506,5.506H0V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                            transform="translate(1061 2240.344)"
+                            className="fill-current"
+                          />
+                        </g>
+                      </svg>
                     </span>
-                    Se alle artikler
                   </div>
                 </Link>
               </div>
               <Title align="left">
-                <span className="text-white">BLOGG</span>
+                <span className="text-white">Blog</span>
               </Title>
             </div>
           </div>
@@ -67,7 +81,9 @@ const Sidebar = ({
           >
             <div className="mr-5">
               <Link
-                to={`/ansatte#${authorSlug}`}
+                to={`${
+                  isEnLocale ? '/en/our-team' : '/vårt-team'
+                }#${authorSlug}`}
                 state={{ activeCard: id, employee: authorSlug }}
               >
                 <GatsbyImage
@@ -98,12 +114,12 @@ const Sidebar = ({
                     to={`/ansatte#${authorSlug}`}
                     state={{ activeCard: id, employee: authorSlug }}
                   >
-                    <div className="uppercase">Se intro</div>
+                    <div className="uppercase">See intro</div>
                   </Link>
                   {pdfLink && (
                     <a href={pdfLink} className="flex items-center">
                       <div className="h-2px w-8 bg-theme-accent ml-6 mr-3" />
-                      <div className="uppercase">Se CV</div>
+                      <div className="uppercase">See CV</div>
                     </a>
                   )}
                 </div>
