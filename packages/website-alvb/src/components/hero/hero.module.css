@@ -1,17 +1,17 @@
-.heroHeading p {
+.heroHeading * {
   font-size: 24px;
   line-height: 32px;
 }
 
-.heroHeading p {
+.heroHeading * {
   font-weight: 200;
 }
-.heroHeading p strong {
+.heroHeading * strong {
   font-weight: 700;
 }
 
 @media screen and (min-width: 380px) {
-  .heroHeading span p {
+  .heroHeading * {
     font-size: 32px;
     line-height: 40px;
     text-align: center;
@@ -19,7 +19,7 @@
 }
 
 @media (min-width: 640px) {
-  .heroHeading span p {
+  .heroHeading * {
     max-width: 410px;
     font-size: 40px;
     line-height: 50px;

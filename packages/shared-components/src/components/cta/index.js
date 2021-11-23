@@ -7,6 +7,7 @@ import { CtaButton } from '../ctaButton';
 export const Cta = ({
   internalLink,
   buttonText,
+  title,
   description,
   image,
   fallback,
@@ -18,7 +19,7 @@ export const Cta = ({
         <div className="flex lg:flex-row flex-col-reverse xl:-mr-35">
           <div className="lg:flex-1 px-6 lg:px-0">
             <h2 className="uppercase tracking-wider text-2xl font-bold sm:mb-15 lg:mb-16 mb-10">
-              Bli med oss
+              {title || 'Bli med oss'}
             </h2>
             <div className="xl:ml-16 lg:ml-0 sm:ml-18 lg:mb-0 mb-10">
               <Description align="left text-theme-text">

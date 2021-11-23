@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import { MobileHeader } from '../../../shared-components/src/components/header';
-import { useLayoutQuery } from '../components/layout/useLayoutQuery';
 import { Footer } from '../../../shared-components/src/components/footer';
 import { SEO } from '../../../shared-components/src/components/seo';
 import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
@@ -16,7 +15,6 @@ import * as Logo from '../components/logo';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
-  const { servicePages, categoryPages } = useLayoutQuery();
   const {
     title,
     author,
@@ -77,8 +75,6 @@ const ArticleTemplate = (props) => {
           {...postAuthor}
           isEmployee
           authorSlug={authorSlug}
-          servicePages={servicePages}
-          categoryPages={categoryPages}
           logo={Logo}
           white
         >
@@ -124,12 +120,7 @@ const ArticleTemplate = (props) => {
           </div>
         </Sidebar>
       </span>
-      <MobileHeader
-        viewport="lg"
-        servicePages={servicePages}
-        categoryPages={categoryPages}
-        logo={Logo}
-      />
+      <MobileHeader viewport="lg" logo={Logo} />
       <div className="lg:hidden">
         <div className="fivefifty:mx-10 mx-6 z-10">
           <div className="my-5 relative z-20">
@@ -160,6 +151,7 @@ const ArticleTemplate = (props) => {
               articles={props.data.articles}
               currentTags={socialTags}
               currentAuthor={authorFullname}
+              isEnLocale
             />
           </div>
         </div>

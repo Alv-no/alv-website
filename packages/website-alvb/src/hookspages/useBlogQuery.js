@@ -3,12 +3,6 @@ export const useBlogQuery = () => {
   const data = useStaticQuery(
     graphql`
       {
-        sanityBlogPage {
-          pageDescription
-          pageTitle
-          section1Description
-          section1Title
-        }
         articles: allSanityArticle(sort: { fields: publishedAt }) {
           edges {
             node {

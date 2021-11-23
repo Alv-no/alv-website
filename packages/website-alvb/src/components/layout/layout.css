@@ -15,5 +15,13 @@
       -webkit-hyphens: auto;
       -moz-hyphens: auto;
     }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      background: transparent;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

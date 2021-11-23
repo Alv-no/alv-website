@@ -5,7 +5,13 @@ import { FilterContainer } from '../filterContainer';
 
 // Input: content array and filter elements
 // Output: filtered and sorted content array
-export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
+export const BlogFilter = ({
+  allTags,
+  allAuthors,
+  allArticles,
+  onChange,
+  isEnLocale,
+}) => {
   const [active, setActive] = useState(allArticles);
   const [activeTags, setActiveTags] = useState([]);
   const [activeAuthors, setActiveAuthors] = useState([]);
@@ -38,8 +44,8 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
   }, [active, sort]);
 
   // Update sort state with selected sorting option
-  const sortClick = (e) => {
-    setSort(e.target.id);
+  const sortClick = (value) => {
+    setSort(value);
   };
 
   useEffect(() => {
@@ -109,11 +115,12 @@ export const BlogFilter = ({ allTags, allAuthors, allArticles, onChange }) => {
         noFilter={noFilter}
         authors={allAuthors}
         tagClick={tagClick}
+        isEnLocale={isEnLocale}
         authorClick={authorClick}
         activeAuthors={activeAuthors}
         activeTags={activeTags}
       />
-      <SortField sortClick={sortClick} sort={sort} />
+      <SortField sortClick={sortClick} sort={sort} isEnLocale={isEnLocale} />
     </FilterContainer>
   );
 };
@@ -124,6 +131,7 @@ export const FilterField = ({
   noFilter,
   activeTags,
   activeAuthors,
+  isEnLocale,
   tagClick,
   authorClick,
 }) => {
@@ -139,96 +147,38 @@ export const FilterField = ({
       <div
         className={`${styles.filter} absolute w-full z-40 px-12 py-8 rounded-md bg-white mt-9 left-0 top-0 flex border-b border-l border-r border-bordergray`}
       >
-        <div className="flex-1">
-          <div className="tracking-wider uppercase mb-2 text-base">
-            Kategorier
-          </div>
-          <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
-          <ul>
-            {tags.map((tag) => (
-              <li className={styles.listItem}>
-                <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
-                  <input
-                    className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
-                    id={tag}
-                    onChange={tagClick}
-                    type="checkbox"
-                  />
-                  <div
-                    className={`${styles.dot} h-2 w-2 bg-theme-accent rounded-full mr-2 absolute mt-px`}
-                  />
-                  <span>{tag}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex-1">
-          <div className="tracking-wider uppercase mb-2 text-base">
-            Forfattere
-          </div>
-          <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
-          <ul className="">
-            {authors.map((author) => (
-              <li className={styles.listItem}>
-                <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
-                  <input
-                    className={`${styles.checkbox} absolute z-30 left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
-                    id={author}
-                    onChange={authorClick}
-                    type="checkbox"
-                  />
-                  <div
-                    className={`${styles.dot} h-2 w-2 bg-theme-accent rounded-full mr-2 absolute mt-px`}
-                  />
-                  <span>{author}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <FilterOption onChange={tagClick} tags={tags}>
+          {isEnLocale ? 'Categories' : 'Kategorier'}
+        </FilterOption>
+        <FilterOption onChange={authorClick} tags={authors}>
+          {isEnLocale ? 'Authors' : 'Forfattere'}
+        </FilterOption>
       </div>
       <span className="transform scale-10 -translate-y-6px h-5 -mx-32">
         <Icon.Tag />
       </span>
       {''}
       <span className="mr-3 -ml-1">Filter</span>
-      <div className="overflow-x-scroll">
+      <div className="overflow-x-scroll hide-scrollbar">
         <div
           className="whitespace-pre w-full pl-2 rounded-full -ml-2 relative"
           style={{ scrollbarWidth: 'thin' }}
         >
           <div className="fivefifty:flex hidden w-full">
-            {activeTags !== undefined
-              ? activeTags.map((tag) => (
-                  <div
-                    className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
-                    key={tag}
-                  >
-                    {tag}
-                  </div>
-                ))
-              : null}
-            {activeAuthors !== undefined
-              ? activeAuthors.map((author) => (
-                  <div
-                    className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
-                    key={author}
-                  >
-                    {author}
-                  </div>
-                ))
-              : null}
-            {noFilter ? (
+            {activeTags && <ActiveFilterOptions activeFilters={activeTags} />}
+            {activeAuthors && (
+              <ActiveFilterOptions activeFilters={activeAuthors} />
+            )}
+            {noFilter && (
               <>
                 <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
-                  Alle kategorier
+                  {isEnLocale ? 'All categories' : 'Alle kategorier'}
                 </div>
                 <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
-                  Alle forfattere
+                  {isEnLocale ? 'All authors' : 'Alle forfattere'}
                 </div>
               </>
-            ) : null}
+            )}
           </div>
         </div>
       </div>
@@ -239,11 +189,47 @@ export const FilterField = ({
   );
 };
 
-export const SortField = ({ sort, sortClick, light }) => {
+const ActiveFilterOptions = ({ activeFilters }) => {
+  return activeFilters?.map((tag, i) => (
+    <div
+      className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600"
+      key={`${tag}-${i}`}
+    >
+      {tag}
+    </div>
+  ));
+};
+
+const FilterOption = ({ tags, onChange, children }) => (
+  <div className="flex-1">
+    <div className="tracking-wider uppercase mb-2 text-base">{children}</div>
+    <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
+    <ul>
+      {tags.map((tag) => (
+        <li className={styles.listItem}>
+          <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
+            <input
+              className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
+              id={tag}
+              onChange={onChange}
+              type="checkbox"
+            />
+            <div
+              className={`${styles.dot} h-2 w-2 bg-theme-accent rounded-full mr-2 absolute mt-px`}
+            />
+            <span>{tag}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+export const SortField = ({ sort, sortClick, light, isEnLocale }) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = (e) => {
-    sortClick(e);
+    sortClick(e.target.id);
     setOpen(!open);
   };
 
@@ -251,9 +237,22 @@ export const SortField = ({ sort, sortClick, light }) => {
     setOpen(!open);
   };
 
+  const localeSortOptions = {
+    no: {
+      oldest: 'Eldst til nyest',
+      newest: 'Nyest til eldst',
+    },
+    en: {
+      oldest: 'Oldest',
+      newest: 'Most recent',
+    },
+  };
+
   return (
     <div className="flex items-center h-full fivefifty:w-60 pr-2 pl-4 fivefifty:px-0">
-      <span className="fivefifty:w-25 fivefifty:text-right">Sorter</span>
+      <span className="fivefifty:w-25 fivefifty:text-right">
+        {isEnLocale ? 'Sort' : 'Sorter'}
+      </span>
       <div
         className="relative h-full border border-bordergray flex items-center px-4 rounded-md ml-3 w-full"
         style={{
@@ -266,15 +265,7 @@ export const SortField = ({ sort, sortClick, light }) => {
             open && 'font-bold'
           } text-sm flex items-center transition duration-100 justify-between w-full`}
         >
-          {sort
-            ? sort === 'oldest'
-              ? 'Eldst til nyest'
-              : sort === 'popular'
-              ? 'Populæritet'
-              : sort === 'newest'
-              ? 'Nyest til eldst'
-              : null
-            : 'Nyest til eldst'}{' '}
+          {localeSortOptions[isEnLocale ? 'en' : 'no'][sort || 'newest']}
           <span className="mt-2px" style={{ filter: light && 'invert(100%)' }}>
             {' '}
             <Icon.DropdownMini />
@@ -288,26 +279,38 @@ export const SortField = ({ sort, sortClick, light }) => {
         <ul
           className={`${
             open ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          } absolute top-0 left-0 mt-9 bg-white pr-1 z-30 transition duration-100 text-navy -translate-x-px -translate-y-2px transform border-t-none text-sm list-style-none border border-bordergray rounded-md font-light opacity-0 pb-6px ${
+          } absolute top-0 left-0 mt-9 bg-white pr-1 w-full z-30 transition duration-100 text-navy -translate-x-px -translate-y-2px transform border-t-none text-sm list-style-none border border-bordergray rounded-md font-light opacity-0 pb-6px ${
             light && '-mt-px'
           }`}
         >
-          <li
-            className="pb-2 pt-3 bg-white w-40 px-4 cursor-pointer"
+          <SortOption
+            onClick={handleClick}
+            isEnLocale={isEnLocale}
+            textNo={localeSortOptions.no.oldest}
+            textEn={localeSortOptions.en.oldest}
             id="oldest"
+          />
+          <SortOption
             onClick={handleClick}
-          >
-            Eldst til nyest
-          </li>
-          <li
-            className="py-2 bg-white w-full px-4 cursor-pointer"
+            isEnLocale={isEnLocale}
+            textNo={localeSortOptions.no.newest}
+            textEn={localeSortOptions.en.newest}
             id="newest"
-            onClick={handleClick}
-          >
-            Nyest til eldst
-          </li>
+          />
         </ul>
       </div>
     </div>
   );
 };
+
+const SortOption = ({ onClick, isEnLocale, textNo, textEn, id }) => (
+  <li>
+    <button
+      className="py-2 bg-white w-full px-4 cursor-pointer text-left"
+      id={id}
+      onClick={onClick}
+    >
+      {isEnLocale ? textEn : textNo}
+    </button>
+  </li>
+);

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Header, MobileHeader, Footer, SEO } from 'shared-components';
+import { Footer, SEO } from 'shared-components';
+import { window } from 'browser-monads';
+import { Header, MobileHeader } from '../header';
 import { useLayoutQuery } from './useLayoutQuery';
 import * as Logo from '../logo';
 import './layout.css';
@@ -38,6 +40,10 @@ export const Layout = ({
     metaLang,
   };
 
+  const isEnLocale =
+    window.location.pathname.includes('/en/') ||
+    window.location.pathname === '/en';
+
   return (
     <>
       <SEO description={pageDescription} title={pageTitle} {...metaData} />
@@ -46,12 +52,11 @@ export const Layout = ({
         navyHeader={navyHeader}
         white={white}
         path={path}
-        servicePages={servicePages}
-        categoryPages={categoryPages}
         logo={Logo}
-        headerCtaText="Ta kontakt"
-        headerCtaLink="/kontakt-oss"
+        headerCtaText={isEnLocale ? 'Contact us' : 'Ta kontakt'}
+        headerCtaLink={isEnLocale ? '/en/contact-us' : '/kontakt-oss'}
         whiteIcons={whiteIcons}
+        isEnLocale={isEnLocale}
       />
       <MobileHeader
         white
@@ -65,6 +70,7 @@ export const Layout = ({
         address={address}
         org={org}
         email={email}
+        contactTitle={isEnLocale ? 'Contact us' : 'Kontakt oss'}
         phone={phone}
         companyName="Alv B"
       />

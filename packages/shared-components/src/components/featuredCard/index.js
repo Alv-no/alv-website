@@ -7,6 +7,7 @@ export const FeaturedCard = ({
   mainImage,
   slug,
   title,
+  isEnLocale,
   description,
   fallbackImg,
 }) => {
@@ -42,7 +43,9 @@ export const FeaturedCard = ({
             <div className="flex text-white tracking-wider">
               <div className="pl-1">
                 <div className="uppercase text-base font-bold">
-                  Vår nyeste artikkel
+                  {isEnLocale
+                    ? 'Our most recent article'
+                    : 'Vår nyeste artikkel'}
                 </div>
                 <div className="w-12 h-2px bg-theme-accent mb-4 mt-3" />
                 <div className="text-nav font-bold mt-4 mb-3">{title}</div>
@@ -51,7 +54,7 @@ export const FeaturedCard = ({
               <div className="flex flex-col justify-between">
                 <div />
                 <div className="font-semibold uppercase w-32 flex text-right justify-end items-center">
-                  Les Mer{' '}
+                  {isEnLocale ? 'Read more' : 'Les Mer'}{' '}
                   <span className="ml-2">
                     <Icon.Arrow color="#fff" />
                   </span>

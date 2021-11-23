@@ -1,15 +1,22 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Layout } from '../components/layout';
 import { Title, Description } from 'shared-components';
-import { useContactQuery } from '../hookspages/useContactQuery';
 import * as Form from '../../../shared-components/src/components/form';
+import localize from '../components/localize';
 
-const Contact = () => {
-  const { address, phone, hours, email, contactImage } = useContactQuery();
+const Contact = ({ data }) => {
+  const { section1, meta } = data.sanityContactPage;
+  const { address, phone, hours, email } = data.sanitySiteSettings;
 
   return (
-    <Layout noCta white pageTitle="pageTitle" pageDescription="pageDescription">
+    <Layout
+      noCta
+      white
+      pageTitle={meta.metaTitle}
+      pageDescription={meta.metaDescription}
+    >
       <div className="xl:pt-10">
         <div
           className="w-full text-navy max-w-1440 mx-auto xl:grid xl:pb-20"
@@ -19,7 +26,7 @@ const Contact = () => {
             <div className="sm:hidden xl:block">
               <div className="w-full h-40vh mt-8 xl:mt-0">
                 <GatsbyImage
-                  image={contactImage.asset.gatsbyImageData}
+                  image={section1.image.asset.gatsbyImageData}
                   className="h-full"
                   alt="kontakt"
                 />
@@ -28,13 +35,12 @@ const Contact = () => {
             <div className="sm:my-8 xl:mt-0">
               <div className="z-20 relative -mt-15 sm:mt-5">
                 <Title align="left sm:text-cta-lg">
-                  <span className="text-navy">Kontakt Oss</span>
+                  <span className="text-navy">{section1.title}</span>
                 </Title>
                 <div className="sm:h-6 h-6" />
                 <span className="">
                   <Description align="left" color="navy">
-                    Vi holder til i helt nye lokaler i {address}. Ta gjerne
-                    turen innom for en hyggelig prat, eller kontakt oss
+                    {section1.text}
                   </Description>
                 </span>
               </div>
@@ -56,4 +62,46 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default localize(Contact);
+
+export const query = graphql`
+  query ContactPageQuery {
+    sanityContactPage {
+      section1 {
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+        text {
+          _type
+          en
+          no
+        }
+        title {
+          _type
+          en
+          no
+        }
+      }
+      meta {
+        en {
+          _type
+          metaDescription
+          metaTitle
+        }
+        no {
+          _type
+          metaDescription
+          metaTitle
+        }
+      }
+    }
+    sanitySiteSettings {
+      address
+      phone
+      email
+      hours
+    }
+  }
+`;

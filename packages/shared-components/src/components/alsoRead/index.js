@@ -3,7 +3,12 @@ import Link from 'gatsby-link';
 import { PostCard } from '../postCard';
 import * as Icon from '../icon';
 
-export const AlsoRead = ({ articles, currentTags, currentAuthor }) => {
+export const AlsoRead = ({
+  articles,
+  currentTags,
+  currentAuthor,
+  isEnLocale,
+}) => {
   const sortedArticles = articles.edges
     .map((el) => el.node)
     .sort((a, b) => (a.rawDate < b.rawDate ? 1 : -1))
@@ -29,14 +34,17 @@ export const AlsoRead = ({ articles, currentTags, currentAuthor }) => {
       <div className="flex justify-between mb-5">
         <div className="mb-4">
           <div className="uppercase text-navy text-lg font-semibold mb-2 tracking-wider">
-            Les også
+            {isEnLocale ? 'Also read' : 'Les også'}
           </div>
           <div className="w-12 h-3px bg-theme-accent" />
         </div>
         <div className="">
-          <Link className="relative z-50" to="/blogg">
+          <Link
+            className="relative z-50"
+            to={isEnLocale ? '/en/blog' : '/blogg'}
+          >
             <div className="flex items-center font-semibold uppercase">
-              Se alle artikler
+              {isEnLocale ? 'See all articles' : 'Se alle artikler'}
               <span className="transform text-navy ml-3">
                 <Icon.Arrow />
               </span>
@@ -46,12 +54,12 @@ export const AlsoRead = ({ articles, currentTags, currentAuthor }) => {
       </div>
       <div className="grid grid-cols-1 sm:hidden md:grid-cols-3 gap-5 md:grid lg:hidden 2xl:grid">
         {sortedArticles.slice(0, 3).map((article, i) => (
-          <PostCard {...article} key={i} />
+          <PostCard {...article} key={i} isEnLocale={isEnLocale} />
         ))}
       </div>
       <div className="hidden sm:grid grid-cols-2 gap-x-5 md:hidden lg:grid 2xl:hidden">
         {sortedArticles.slice(0, 2).map((article, i) => (
-          <PostCard {...article} key={i} />
+          <PostCard {...article} key={i} isEnLocale={isEnLocale} />
         ))}
       </div>
     </div>
