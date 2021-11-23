@@ -4,104 +4,44 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'pageTitle',
-      title: 'Page Title (meta)',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
+      title: 'Meta data',
+      name: 'meta',
+      type: 'localeMeta',
     },
+    // Section 1: Hero section
     {
-      name: 'pageDescription',
-      title: 'Page Description (meta)',
-      type: 'text',
-      rows: 2,
-      options: {
-        maxLength: 160,
-      },
-    },
-    // Hero section
-    {
-      name: 'imageHero',
-      title: 'Section 1: Hero Component',
+      title: 'Section 1: Hero component',
+      name: 'section1',
       type: 'textImageHero',
     },
     // section 2: video and block text
     {
-      name: 'videoWebm',
-      title: 'Video Introduction: webm',
-      type: 'file',
+      title: 'Section 2: Video introduction',
+      name: 'section2',
+      type: 'textOverlapVideo',
     },
+    // section 3: title, text and button
     {
-      name: 'videoMp4',
-      title: 'Video Introduction - mp4',
-      type: 'file',
+      title: 'Section 3: Title, text and button',
+      name: 'section3',
+      type: 'titleBlockCtaColumn',
     },
+    // section 4: image, title, text and button
     {
-      name: 'videoTextOverlay',
-      title: 'Video Text Overlay',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
+      title: 'Section 4: Title, text, button and image',
+      name: 'section4',
+      type: 'imageTitleTextButton',
     },
+    // section 5: title, text and services
     {
-      name: 'section2Title',
-      title: 'Section 2: Title',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
-    },
-    {
-      name: 'section2Text',
-      title: 'Section 2: Text',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
-          lists: [],
-        },
-      ],
-    },
-    // section 3: image, title and text
-    {
-      name: 'section3Image',
-      title: 'Section 3: Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'section3Title',
-      title: 'Section 3: Title',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
-    },
-    {
-      name: 'section3Text',
-      title: 'Flip section 3: Text',
-      type: 'text',
-      rows: 2,
-      options: {
-        maxLength: 160,
-      },
-    },
-    // section 4: title, text and services
-    {
-      name: 'section4Services',
-      title: 'Section 4: Services',
+      title: 'Section 5: Services',
+      name: 'section5',
       type: 'servicesIntro',
     },
-    // section 5: founder component
+    // section 6: founder component
     {
-      name: 'section5Founder',
-      title: 'Section 5: Founder',
+      title: 'Section 6: Founder',
+      name: 'section6',
       type: 'founder',
     },
   ],

@@ -5,36 +5,36 @@ export default {
   fields: [
     {
       title: 'Title',
-      rows: 1,
       name: 'title',
-      type: 'text',
+      type: 'localeString',
     },
     {
       title: 'Subtitle',
-      rows: 1,
       name: 'subtitle',
-      type: 'text',
+      type: 'localeString',
     },
     {
       name: 'text',
       title: 'Text',
-      type: 'text',
-      rows: 3,
-      options: {
-        maxLength: 180,
-      },
+      type: 'localeText',
     },
     {
-      title: 'Link',
-      name: 'link',
-      rows: 3,
-      type: 'text',
+      title: 'Button',
+      name: 'button',
+      type: 'localeButton',
     },
   ],
   preview: {
     select: {
       title: 'subtitle',
       subtitle: 'title',
+    },
+    prepare(selection) {
+      const { title, subtitle } = selection;
+      return {
+        title: subtitle.en,
+        subtitle: title.en,
+      };
     },
   },
 };

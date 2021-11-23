@@ -8,17 +8,38 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import blockContent from './blockContent';
 import employee from './employee';
 import article from './article';
+import meta from './meta';
+import button from './button';
 import articleTag from './articleTag';
 import bioBank from './bioBank';
 import servicesIntro from './servicesIntro';
+import localeText from './localeText';
+import localeString from './localeString';
+import twoImages from './twoImages';
 import landingPage from './landingPage';
+import titleBlockImage from './titleBlockImage';
 import founder from './founder';
+import blockImage from './blockImage';
+import categoryList from './categoryList';
+import titleBlock from './titleBlock';
+import titleTextButtonImage from './titleTextButtonImage';
+import titleTextImage from './titleTextImage';
+import localeButton from './localeButton';
+import textOverlapVideo from './textOverlapVideo';
+import imageTitleTextButton from './imageTitleTextButton';
+import titleText from './titleText';
 import serviceItem from './serviceItem';
+import localeMeta from './localeMeta';
 import employeePage from './employeePage';
 import ourProjectsPage from './ourProjects';
+import localeSimpleBlock from './localeSimpleBlock';
 import heroBlockContent from './heroBlockContent';
+import titleTextButton from './titleTextButton';
+import localeBlockContent from './localeBlockContent';
+import titleBlockCtaColumn from './titleBlockCtaColumn';
+import localeHeroBlockContent from './localeHeroBlockContent';
 import contactPage from './contactPage';
-import imageHero from './imageHero';
+import imageHero from './textImageHero';
 import investmentPage from './investmentPage';
 import socials from './socials';
 import imageAndText from './imageAndText';
@@ -50,10 +71,31 @@ export default createSchema({
     servicesIntro,
     blockContent,
     imageAndText,
+    titleTextButtonImage,
     ourProjectsPage,
+    localeSimpleBlock,
+    localeBlockContent,
+    localeHeroBlockContent,
+    imageTitleTextButton,
+    titleBlockImage,
+    localeMeta,
+    titleTextImage,
+    textOverlapVideo,
+    localeButton,
+    twoImages,
+    titleBlock,
+    button,
+    blockImage,
+    titleTextButton,
     serviceItem,
+    titleText,
+    categoryList,
+    meta,
     imageHero,
     investmentPage,
+    titleBlockCtaColumn,
+    localeText,
+    localeString,
     founder,
     socials,
     cta,

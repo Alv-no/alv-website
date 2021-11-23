@@ -2,19 +2,14 @@ export default {
   title: 'Hero - text/image split',
   name: 'textImageHero',
   type: 'object',
+  options: {
+    collapsible: true,
+  },
   fields: [
     {
       name: 'heroText',
       title: 'Text',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
-          lists: [],
-        },
-      ],
+      type: 'localeHeroBlockContent',
     },
     {
       name: 'image',

@@ -2,33 +2,27 @@ export default {
   title: 'Founder',
   name: 'founder',
   type: 'object',
+  options: { collapsible: true },
   fields: [
     {
       title: 'Title',
-      rows: 1,
       name: 'title',
-      type: 'string',
+      type: 'localeString',
     },
     {
-      name: 'quote',
       title: 'Quote',
-      type: 'text',
-      rows: 4,
-      options: {
-        maxLength: 350,
-      },
+      name: 'quote',
+      type: 'localeText',
     },
     {
       title: 'Name',
       name: 'name',
-      rows: 1,
       type: 'string',
     },
     {
       title: 'Role',
       name: 'role',
-      rows: 1,
-      type: 'string',
+      type: 'localeString',
     },
     {
       name: 'founderImage',
@@ -40,7 +34,7 @@ export default {
     },
     {
       name: 'signatureImage',
-      title: 'Signature PNG',
+      title: 'Signature image',
       type: 'image',
       options: {
         hotspot: true,

@@ -4,38 +4,14 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'pageTitle',
-      title: 'Page Title (meta)',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
+      title: 'Meta data',
+      name: 'meta',
+      type: 'localeMeta',
     },
     {
-      name: 'pageDescription',
-      title: 'Page Description (meta)',
-      type: 'text',
-      rows: 2,
-      options: {
-        maxLength: 160,
-      },
-    },
-    {
-      name: 'section1Title',
-      title: 'Section 1: Title',
-      type: 'string',
-      options: {
-        maxLength: 80,
-      },
-    },
-    {
-      name: 'section1Description',
-      title: 'Section 1: Description',
-      type: 'text',
-      rows: 4,
-      options: {
-        maxLength: 250,
-      },
+      title: 'Section 1: Hero',
+      name: 'section',
+      type: 'titleText',
     },
   ],
 };
