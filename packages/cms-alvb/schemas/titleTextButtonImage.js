@@ -1,37 +1,25 @@
 export default {
-  title: 'Services Intro',
-  name: 'servicesIntro',
+  title: 'Title, text, and button',
+  name: 'titleTextButtonImage',
   type: 'object',
   options: {
     collapsible: true,
   },
   fields: [
     {
-      title: 'Title',
       name: 'title',
+      title: 'Title',
       type: 'localeString',
     },
     {
-      title: 'Description',
-      name: 'description',
+      name: 'text',
+      title: 'Text',
       type: 'localeText',
     },
     {
-      title: 'Button',
       name: 'button',
+      title: 'Button',
       type: 'localeButton',
-    },
-    {
-      name: 'servicesList',
-      title: 'Services List',
-      type: 'array',
-      of: [
-        {
-          title: 'Service item',
-          name: 'serviceItem',
-          type: 'serviceItem',
-        },
-      ],
     },
     {
       name: 'image',

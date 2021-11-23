@@ -4,29 +4,14 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'pageTitle',
-      title: 'Page Title (meta)',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
+      title: 'Meta data',
+      name: 'meta',
+      type: 'localeMeta',
     },
     {
-      name: 'pageDescription',
-      title: 'Page Description (meta)',
-      type: 'text',
-      rows: 2,
-      options: {
-        maxLength: 160,
-      },
-    },
-    {
-      name: 'contactImage',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      title: 'Section 1: Content left side',
+      name: 'section1',
+      type: 'titleTextImage',
     },
   ],
 };

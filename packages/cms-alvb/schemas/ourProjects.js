@@ -4,81 +4,31 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'pageTitle',
-      title: 'Page Title (meta)',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
+      title: 'Meta data',
+      name: 'meta',
+      type: 'localeMeta',
+    },
+    // section 1: Hero
+    {
+      title: 'Section 1: Hero component',
+      name: 'section1',
+      type: 'titleTextImage',
+    },
+    // section 2: Title, block and image
+    {
+      name: 'section2',
+      title: 'Section 2: Text left, image right',
+      type: 'titleBlockImage',
     },
     {
-      name: 'pageDescription',
-      title: 'Page Description (meta)',
-      type: 'text',
-      rows: 2,
-      options: {
-        maxLength: 160,
-      },
+      name: 'section3',
+      title: 'Section 3: Image left, text right',
+      type: 'titleBlockImage',
     },
     {
-      name: 'heading',
-      title: 'Hero Heading',
-      type: 'string',
-    },
-    {
-      name: 'description',
-      title: 'Hero Description',
-      type: 'text',
-      rows: 3,
-    },
-    {
-      name: 'mainImage',
-      title: 'Hero background image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'section2Title',
-      title: 'Section 2: Title',
-      type: 'string',
-    },
-    {
-      name: 'section2Block',
-      title: 'Section 2: Text',
-      type: 'blockContent',
-    },
-    {
-      name: 'section2Image',
-      title: 'Section 2: Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'section3Title',
-      title: 'Section 3: Title',
-      type: 'string',
-    },
-    {
-      name: 'section3Block',
-      title: 'Section 3: Text',
-      type: 'blockContent',
-    },
-    {
-      name: 'section3Image',
-      title: 'Section 3: Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'section4Block',
-      title: 'Section 4: Text',
-      type: 'blockContent',
+      name: 'section4',
+      title: 'Section 4: Block',
+      type: 'localeBlockContent',
     },
   ],
 };

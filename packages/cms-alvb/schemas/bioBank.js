@@ -4,45 +4,24 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'pageTitle',
-      title: 'Page Title (meta)',
-      type: 'string',
-      options: {
-        maxLength: 60,
-      },
+      title: 'Meta data',
+      name: 'meta',
+      type: 'localeMeta',
     },
     {
-      name: 'pageDescription',
-      title: 'Page Description (meta)',
-      type: 'text',
-      rows: 2,
-      options: {
-        maxLength: 160,
-      },
+      title: 'Section 1: Hero',
+      name: 'section1',
+      type: 'titleText',
     },
     {
-      name: 'heading',
-      title: 'Hero Heading',
-      type: 'string',
+      title: 'Section 2: Image and text',
+      name: 'section2',
+      type: 'blockImage',
     },
     {
-      name: 'description',
-      title: 'Hero Description',
-      type: 'text',
-      rows: 3,
-    },
-    {
-      name: 'section2Block',
-      title: 'Section 2: Text',
-      type: 'blockContent',
-    },
-    {
-      name: 'section2Image',
-      title: 'Section 2: Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      title: 'Section 3: Category list',
+      name: 'section3',
+      type: 'categoryList',
     },
   ],
 };

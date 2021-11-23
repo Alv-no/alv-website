@@ -4,6 +4,20 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'language',
+      title: 'Language',
+      type: 'string',
+      initialValue: 'no',
+      options: {
+        list: [
+          { title: 'Norwegian', value: 'no' },
+          { title: 'English', value: 'en' },
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
