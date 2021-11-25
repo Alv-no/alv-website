@@ -1,9 +1,10 @@
-name: Build
+name: PR & Build
 
 on:
   push:
     branches:
       - master
+      - main
   pull_request:
 
 jobs:
@@ -16,10 +17,21 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: '16.x'
 
       - name: Install dependencies
         run: yarn --immutable
+
+      - name: Linting
+        run: yarn lint
+
+      - name: Tests
+        run: yarn test
+
+      - name: Sanity configcheck
+        run: yarn workspace cms run sanity configcheck
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.DEPLOY_SANITY_STUDIO }}
 
       - name: Build
         run: yarn workspace website run build

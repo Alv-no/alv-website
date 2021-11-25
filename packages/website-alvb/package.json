@@ -8,7 +8,7 @@
     "disable-telemetry": "gatsby telemetry --disable",
     "start:storybook": "start-storybook -p 6006 --no-dll",
     "build:storybook": "NODE_ENV=test build-storybook --no-dll --quiet",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
