@@ -4,7 +4,7 @@ import * as Icon from '../icon';
 const useContactForm = () => {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
-  let mailApiUrl = process.env.MAIL_API || "http://mail-api.localhost/send";
+  const mailApiUrl = process.env.MAIL_API || 'http://mail-api.localhost/send';
 
   const submitForm = (e) => {
     e.preventDefault();
