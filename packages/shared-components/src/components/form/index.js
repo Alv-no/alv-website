@@ -4,6 +4,7 @@ import * as Icon from '../icon';
 const useContactForm = () => {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
+  let mailApiUrl = process.env.MAIL_API || "http://mail-api.localhost/send";
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -30,13 +31,13 @@ const useContactForm = () => {
     return false;
   };
 
-  return { submitForm, sent, error };
+  return { submitForm, sent, error, mailApiUrl };
 };
 
 export const Call = () => {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState('Jeg er en kunde');
-  const { submitForm, sent, error } = useContactForm();
+  const { submitForm, sent, error, mailApiUrl } = useContactForm();
 
   const onClick = (e) => {
     setDropdown(e.target.id);
@@ -50,7 +51,7 @@ export const Call = () => {
       <form
         className="text-white w-full tracking-wider text-mobile"
         method="POST"
-        action={process.env.MAIL_API}
+        action={mailApiUrl}
         onSubmit={submitForm}
       >
         {/* DROPDOWN */}
@@ -154,7 +155,7 @@ export const Call = () => {
 export const Offer = () => {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState('Jeg er en kunde');
-  const { submitForm, sent, error } = useContactForm();
+  const { submitForm, sent, error, mailApiUrl } = useContactForm();
 
   const onClick = (e) => {
     setDropdown(e.target.id);
@@ -167,7 +168,7 @@ export const Offer = () => {
     <form
       className="text-white w-full tracking-wider text-mobile"
       method="POST"
-      action={process.env.MAIL_API}
+      action={mailApiUrl}
       onSubmit={submitForm}
     >
       {/* DROPDOWN */}
