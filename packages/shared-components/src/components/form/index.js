@@ -1,36 +1,42 @@
 import React, { useState } from 'react';
 import * as Icon from '../icon';
-/*import Link from 'gatsby-link'; */
 
-let isSent = false;
+const useContactForm = () => {
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
-const submitForm = (e) => {
-  e.preventDefault();
-  document.getElementById('error-message').className = 'hidden';
-  if (isSent) return false;
+  const submitForm = (e) => {
+    e.preventDefault();
+    if (sent) return false;
 
-  const form = e.target;
-  const data = new URLSearchParams(new FormData(form).entries());
+    const form = e.target;
+    const data = new URLSearchParams(new FormData(form).entries());
 
-  const xhr = new XMLHttpRequest();
-  xhr.open(form.method, form.action, true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function () {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      document.querySelectorAll('button[type=submit]')[0].textContent =
-        'Takk for din henvendelse';
-      isSent = true;
-    } else if (this.readyState === XMLHttpRequest.DONE && this.status === 500) {
-      document.getElementById('error-message').className = '';
-    }
+    const xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        setSent(true);
+      } else if (
+        this.readyState === XMLHttpRequest.DONE &&
+        this.status === 500
+      ) {
+        setError(true);
+      }
+    };
+
+    xhr.send(data);
+    return false;
   };
-  xhr.send(data);
-  return false;
+
+  return { submitForm, sent, error };
 };
 
 export const Call = () => {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState('Jeg er en kunde');
+  const { submitForm, sent, error } = useContactForm();
 
   const onClick = (e) => {
     setDropdown(e.target.id);
@@ -44,7 +50,7 @@ export const Call = () => {
       <form
         className="text-white w-full tracking-wider text-mobile"
         method="POST"
-        action="http://mail-api.localhost/send"
+        action={process.env.MAIL_API}
         onSubmit={submitForm}
       >
         {/* DROPDOWN */}
@@ -132,11 +138,11 @@ export const Call = () => {
             type="submit"
             aria-label="Send"
           >
-            Send inn
+            {sent ? 'Takk for din henvendelse' : 'Send inn'}
           </button>
         </div>
         <div className="flex justify-center mt-10">
-          <span id="error-message" className="hidden">
+          <span id="error-message" className={error ? '' : 'hidden'}>
             Beklager, det oppstod en feil.
           </span>
         </div>
@@ -148,6 +154,7 @@ export const Call = () => {
 export const Offer = () => {
   const [open, setOpen] = useState(false);
   const [dropdown, setDropdown] = useState('Jeg er en kunde');
+  const { submitForm, sent, error } = useContactForm();
 
   const onClick = (e) => {
     setDropdown(e.target.id);
@@ -160,7 +167,7 @@ export const Offer = () => {
     <form
       className="text-white w-full tracking-wider text-mobile"
       method="POST"
-      action="http://mail-api.localhost/send"
+      action={process.env.MAIL_API}
       onSubmit={submitForm}
     >
       {/* DROPDOWN */}
@@ -269,11 +276,11 @@ export const Offer = () => {
           type="submit"
           aria-label="Send"
         >
-          Send inn
+          {sent ? 'Takk for din henvendelse' : 'Send inn'}
         </button>
       </div>
       <div className="flex justify-center mt-10">
-        <span id="error-message" className="hidden">
+        <span id="error-message" className={error ? '' : 'hidden'}>
           Beklager, det oppstod en feil.
         </span>
       </div>
