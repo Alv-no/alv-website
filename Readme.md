@@ -70,5 +70,4 @@ Package                       | Description
 [cms](./packages/cms)         | Sanity CMS: Alv.no
 [cms-alvb](./packages/cms-alvb)    | Sanity CMS: AlvB.no
 [mail-api](./packages/mail-api) | Mail API backend for contact form
-[infrastructure](./packages/infrastructure) | Terraform Infrastructure as Code for Azure
 [shared-components](./packages/shared-components) | Component library to share components between different gatsby sites
