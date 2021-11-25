@@ -1,7 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as Button from '../button';
 import { EmployeeGroup } from '../employeeGroup';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { window } from 'browser-monads';
+
+// @deprecated
+const useWindowDimensions = () => {
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+};
 
 export const GridContainer = ({
   filteredContent,
