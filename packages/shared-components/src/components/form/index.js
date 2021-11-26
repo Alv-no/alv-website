@@ -41,46 +41,52 @@ export const Call = () => {
   const { submitForm, sent, error, mailApiUrl } = useContactForm();
 
   return (
-    <div className="">
-      <form
-        className="text-white w-full tracking-wider text-mobile"
-        method="POST"
-        action={mailApiUrl}
-        onSubmit={submitForm}
-      >
-        <input
-          type="hidden"
-          name="subject"
-          value="Kontaktskjema: Ring meg tilbake"
-        />
-        <label className="mb-5">Ditt navn*</label>
-        <div className="flex my-5">
+    <div>
+      <div className={sent ? '' : 'hidden'}>
+        <span className="flex text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
+          Takk for din henvendelse. Du hører fra oss snart.
+        </span>
+      </div>
+      <div className={sent ? 'hidden' : ''}>
+        <form
+          className="text-white w-full tracking-wider text-mobile"
+          method="POST"
+          action={mailApiUrl}
+          onSubmit={submitForm}
+        >
           <input
-            type="text"
-            className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
-            placeholder="Fornavn"
-            name="firstname"
-            required
+            type="hidden"
+            name="subject"
+            value="Kontaktskjema: Ring meg tilbake"
           />
-          <input
-            type="text"
-            className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
-            placeholder="Etternavn"
-            name="lastname"
-            required
-          />
-        </div>
-        <label className="my-5">Telefon*</label>
-        <div className="my-5">
-          <input
-            type="number"
-            className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
-            placeholder="Eg. +00 000 00 000"
-            name="phone"
-            required
-          />
-        </div>
-        {/* <p className="font-light text-sm leading-loose">
+          <label className="mb-5">Ditt navn*</label>
+          <div className="flex my-5">
+            <input
+              type="text"
+              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              placeholder="Fornavn"
+              name="firstname"
+              required
+            />
+            <input
+              type="text"
+              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              placeholder="Etternavn"
+              name="lastname"
+              required
+            />
+          </div>
+          <label className="my-5">Telefon*</label>
+          <div className="my-5">
+            <input
+              type="number"
+              className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
+              placeholder="Eg. +00 000 00 000"
+              name="phone"
+              required
+            />
+          </div>
+          {/* <p className="font-light text-sm leading-loose">
           Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått våre{' '}
           <Link to="/kontakt-oss">
             <span className="font-semibold hover:text-theme-accent duration-300 transition cursor-pointer">
@@ -95,21 +101,22 @@ export const Call = () => {
           </Link>
           .
           </p> */}
-        <div className="flex justify-center mt-10">
-          <button
-            className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
-            type="submit"
-            aria-label="Send"
-          >
-            {sent ? 'Takk for din henvendelse' : 'Send inn'}
-          </button>
-        </div>
-        <div className="flex justify-center mt-10">
-          <span id="error-message" className={error ? '' : 'hidden'}>
-            Beklager, det oppstod en feil.
-          </span>
-        </div>
-      </form>
+          <div className="flex justify-center mt-10">
+            <button
+              className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
+              type="submit"
+              aria-label="Send"
+            >
+              Send inn
+            </button>
+          </div>
+          <div className="flex justify-center mt-10">
+            <span id="error-message" className={error ? '' : 'hidden'}>
+              Beklager, det oppstod en feil.
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
@@ -118,65 +125,72 @@ export const Offer = () => {
   const { submitForm, sent, error, mailApiUrl } = useContactForm();
 
   return (
-    <form
-      className="text-white w-full tracking-wider text-mobile"
-      method="POST"
-      action={mailApiUrl}
-      onSubmit={submitForm}
-    >
-      <input
-        type="hidden"
-        name="subject"
-        value="Kontaktskjema: Gi meg et tilbud"
-      />
-      <label className="mb-5">Ditt navn*</label>
-      <div className="flex my-5">
-        <input
-          type="text"
-          className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
-          placeholder="Fornavn"
-          name="firstname"
-          required
-        />
-        <input
-          type="text"
-          className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
-          placeholder="Etternavn"
-          name="lastname"
-          required
-        />
+    <div>
+      <div className={sent ? '' : 'hidden'}>
+        <span className="flex text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
+          Takk for din henvendelse. Du hører fra oss snart.
+        </span>
       </div>
-      <label className="my-5">E-post*</label>
-      <div className="my-5">
-        <input
-          type="email"
-          className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
-          placeholder="Eg. example@gmail.com"
-          name="email"
-          required
-        />
-      </div>
-      <label className="my-5">Beskjed*</label>
-      <div className="my-5">
-        <textarea
-          type="text"
-          className="focus:outline-none bg-transparent border rounded-sm p-4 w-full rounded-md"
-          placeholder="Skriv meldingen din her"
-          rows="4"
-          name="text"
-          required
-        />
-      </div>
-      <label className="my-5">Telefon</label>
-      <div className="my-5">
-        <input
-          type="text"
-          className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
-          placeholder="Eg. +00 000 00 000"
-          name="phone"
-        />
-      </div>
-      {/* <p className="font-light text-sm leading-loose">
+      <div className={sent ? 'hidden' : ''}>
+        <form
+          className="text-white w-full tracking-wider text-mobile"
+          method="POST"
+          action={mailApiUrl}
+          onSubmit={submitForm}
+        >
+          <input
+            type="hidden"
+            name="subject"
+            value="Kontaktskjema: Gi meg et tilbud"
+          />
+          <label className="mb-5">Ditt navn*</label>
+          <div className="flex my-5">
+            <input
+              type="text"
+              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              placeholder="Fornavn"
+              name="firstname"
+              required
+            />
+            <input
+              type="text"
+              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              placeholder="Etternavn"
+              name="lastname"
+              required
+            />
+          </div>
+          <label className="my-5">E-post*</label>
+          <div className="my-5">
+            <input
+              type="email"
+              className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
+              placeholder="Eg. example@gmail.com"
+              name="email"
+              required
+            />
+          </div>
+          <label className="my-5">Beskjed*</label>
+          <div className="my-5">
+            <textarea
+              type="text"
+              className="focus:outline-none bg-transparent border rounded-sm p-4 w-full rounded-md"
+              placeholder="Skriv meldingen din her"
+              rows="4"
+              name="text"
+              required
+            />
+          </div>
+          <label className="my-5">Telefon</label>
+          <div className="my-5">
+            <input
+              type="text"
+              className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
+              placeholder="Eg. +00 000 00 000"
+              name="phone"
+            />
+          </div>
+          {/* <p className="font-light text-sm leading-loose">
         Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått
         gjeldende{' '}
         <Link to="/kontakt-oss">
@@ -192,21 +206,23 @@ export const Offer = () => {
         </Link>
         .
       </p> */}
-      <div className="flex justify-center mt-10">
-        <button
-          className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
-          type="submit"
-          aria-label="Send"
-        >
-          {sent ? 'Takk for din henvendelse' : 'Send inn'}
-        </button>
+          <div className="flex justify-center mt-10">
+            <button
+              className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
+              type="submit"
+              aria-label="Send"
+            >
+              Send inn
+            </button>
+          </div>
+          <div className="flex justify-center mt-10">
+            <span id="error-message" className={error ? '' : 'hidden'}>
+              Beklager, det oppstod en feil.
+            </span>
+          </div>
+        </form>
       </div>
-      <div className="flex justify-center mt-10">
-        <span id="error-message" className={error ? '' : 'hidden'}>
-          Beklager, det oppstod en feil.
-        </span>
-      </div>
-    </form>
+    </div>
   );
 };
 
