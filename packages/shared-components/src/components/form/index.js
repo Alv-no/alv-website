@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import * as Icon from '../icon';
 
 const useContactForm = () => {
   const [sent, setSent] = useState(false);
@@ -39,16 +38,7 @@ const useContactForm = () => {
 };
 
 export const Call = () => {
-  const [open, setOpen] = useState(false);
-  const [dropdown, setDropdown] = useState('Jeg er en kunde');
   const { submitForm, sent, error, mailApiUrl } = useContactForm();
-
-  const onClick = (e) => {
-    setDropdown(e.target.id);
-    setOpen(false);
-  };
-
-  const dropdownOptions = ['Jeg er en kunde', 'Jeg er en ansatt'];
 
   return (
     <div className="">
@@ -58,38 +48,6 @@ export const Call = () => {
         action={mailApiUrl}
         onSubmit={submitForm}
       >
-        {/* DROPDOWN */}
-        <label>Er du en kunde eller en ansatt?</label>
-        <div className="my-5 relative">
-          <button
-            className="border rounded-sm h-10 p-4 w-full rounded-md relative flex items-center cursor-pointer focus:outline-none"
-            onClick={() => setOpen(!open)}
-            type="button"
-            aria-label="Toggle open"
-          >
-            <span className={`${open && 'font-semibold'}`}>{dropdown}</span>
-            <span className="transform rotate-90 scale-60 translate-y-2px -translate-x-4 absolute right-0">
-              <Icon.ContactArrow />
-            </span>
-          </button>
-          <div
-            className={`absolute ${
-              open ? 'block' : 'hidden'
-            } inset-x-0 rounded-t-none transform -translate-y-1 bg-navy border border-white z-20 border-t-0 shadow-lg`}
-          >
-            <ul className="pb-2 bg-lightblue">
-              {dropdownOptions.map((el) => (
-                <li
-                  onClick={onClick}
-                  className="px-4 py-1 cursor-pointer"
-                  id={el}
-                >
-                  {el}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
         <input
           type="hidden"
           name="subject"
@@ -157,16 +115,7 @@ export const Call = () => {
 };
 
 export const Offer = () => {
-  const [open, setOpen] = useState(false);
-  const [dropdown, setDropdown] = useState('Jeg er en kunde');
   const { submitForm, sent, error, mailApiUrl } = useContactForm();
-
-  const onClick = (e) => {
-    setDropdown(e.target.id);
-    setOpen(false);
-  };
-
-  const dropdownOptions = ['Jeg er en kunde', 'Jeg er en ansatt'];
 
   return (
     <form
@@ -175,38 +124,6 @@ export const Offer = () => {
       action={mailApiUrl}
       onSubmit={submitForm}
     >
-      {/* DROPDOWN */}
-      <label>Er du en kunde eller en ansatt?</label>
-      <div className="my-5 relative">
-        <button
-          className="border rounded-sm h-10 p-4 w-full rounded-md relative flex items-center cursor-pointer focus:outline-none"
-          onClick={() => setOpen(!open)}
-          type="button"
-          aria-label="Toggle Open"
-        >
-          <span className={`${open && 'font-semibold'}`}>{dropdown}</span>
-          <span className="transform rotate-90 scale-60 translate-y-2px -translate-x-4 absolute right-0">
-            <Icon.ContactArrow />
-          </span>
-        </button>
-        <div
-          className={`absolute ${
-            open ? 'block' : 'hidden'
-          } inset-x-0 rounded-md rounded-t-none transform -translate-y-1 bg-navy border border-white border-t-0`}
-        >
-          <ul className="pb-2 bg-lightblue">
-            {dropdownOptions.map((el) => (
-              <li
-                onClick={onClick}
-                className="px-4 py-1 cursor-pointer"
-                id={el}
-              >
-                {el}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
       <input
         type="hidden"
         name="subject"
