@@ -11,6 +11,7 @@ const Contact = ({ location }) => {
   const [active, setActive] = useState('visit');
   const formChange = (e) => {
     setActive(e.target.id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const {
@@ -53,7 +54,7 @@ const Contact = ({ location }) => {
               </div>
               <div className="text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
                 <FormSelect id="offer" onClick={formChange} active={active}>
-                  Be om et tilbud
+                  Send oss en mail
                 </FormSelect>
                 <FormSelect id="call" onClick={formChange} active={active}>
                   Ring meg tilbake
