@@ -9,6 +9,7 @@ import blockContent from './blockContent';
 import employee from './employee';
 import employeeTag from './employeeTag';
 import article from './article';
+import imageTextFlip from './imageTextFlip';
 import guestAuthor from './guestAuthor';
 import articleTag from './articleTag';
 import companyPage from './companyPage';
@@ -78,6 +79,7 @@ export default createSchema({
     reasonsCarousel,
     blockContent,
     imageAndText,
+    imageTextFlip,
     guestAuthor,
     servicesIntro,
     reasonsCard,
