@@ -34,5 +34,9 @@ export default {
       title: 'Linkable heading',
       type: 'linkableHeading',
     },
+    {
+      title: 'Text image flip',
+      type: 'imageTextFlip',
+    },
   ],
 };
