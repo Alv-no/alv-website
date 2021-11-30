@@ -1,5 +1,6 @@
-import React from 'react';
+import { window } from 'browser-monads';
 import Link from 'gatsby-link';
+import React from 'react';
 import * as Icon from '../icon';
 import { LargeLink, Subtitle } from '../navItems';
 import { SocialLinks } from '../socialShare';

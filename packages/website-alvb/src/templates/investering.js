@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { NavyIntro } from 'shared-components';
 import { ImagesSideBySide } from '../components/ImagesSideBySide';
-import { RichtextAndImage } from '../components/RichtextAndImage';
+import { RichtextAndImage } from '../components/richtextAndImage';
 import { Cta } from '../components/cta';
 
 const Investering = ({ data }) => {
