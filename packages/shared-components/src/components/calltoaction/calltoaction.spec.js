@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import CallToAction from '.';
+import { CallToAction } from '.';
 
 describe('CallToAction-component', () => {
   it('should render', () => {
