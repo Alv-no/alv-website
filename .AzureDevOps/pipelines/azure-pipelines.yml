@@ -63,3 +63,4 @@ stages:
 
                       # Run scripts to build for prod environment
                       ./run deploy prod website $BUILD_BUILDID
+                      ./run deploy prod website-alvb $BUILD_BUILDID
