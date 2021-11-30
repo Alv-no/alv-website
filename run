@@ -19,10 +19,12 @@ function getSecret() {
 }
 
 function getSecrets() {
-  HOSTNAME="$(getSecret alv-hostname)"
+  ALV_HOSTNAME="$(getSecret alv-hostname)"
+  ALVB_HOSTNAME="$(getSecret alvb-hostname)"
   SP_ALVTIME_ADMIN_RBAC_SECRET="$(getSecret sp-alvtime-admin-rbac-secret)"
   SP_ALVTIME_ADMIN_CLIENT_ID="$(getSecret sp-alvtime-admin-client-id)"
   SANITY_AUTH_TOKEN="$(getSecret sanity-auth-token)"
+  SANITY_TOKEN_ALVB="$(getSecret sanity-token-alvb)"
   SANITY_TOKEN="$(getSecret sanity-token)"
   YT_API="$(getSecret youtube-api-token)"
   SENDGRID_API_KEY="$(getSecret sendgrid-api-key)"
@@ -34,7 +36,6 @@ function buildServices() {
     echo "building website"
 
     if [ ! -f packages/website/.env.production ]; then
-      echo "SANITY_AUTH_TOKEN=$SANITY_AUTH_TOKEN" >> packages/website/.env.production
       echo "SANITY_TOKEN=$SANITY_TOKEN" >> packages/website/.env.production
       echo "YT_API=$YT_API" >> packages/website/.env.production
     fi
@@ -45,13 +46,25 @@ function buildServices() {
       --no-cache
   fi
 
-  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+  if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "building website"
 
-      echo "building mail api"
-      docker build . \
-        --file mail-api.Dockerfile \
-        --tag "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH" \
-        --no-cache
+    if [ ! -f packages/website-alvb/.env.production ]; then
+      echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" >> packages/website-alvb/.env.production
+    fi
+
+    docker build . \
+      --file website-alvb.Dockerfile \
+      --tag "$CONTAINER_REGISTRY/website-alvb:$TAG" \
+      --no-cache
+  fi
+
+  if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "building mail api"
+    docker build . \
+      --file mail-api.Dockerfile \
+      --tag "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH" \
+      --no-cache
   fi
 }
 
@@ -59,6 +72,11 @@ function pushServices() {
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "pushing website"
     docker push "$CONTAINER_REGISTRY/website:$TAG"
+  fi
+
+  if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "pushing website"
+    docker push "$CONTAINER_REGISTRY/website-alvb:$TAG"
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" && -n "$EXISTING_HASH" ]]; then
@@ -91,10 +109,22 @@ function deployServices() {
       --install \
       --set image.repository="$CONTAINER_REGISTRY/website" \
       --set image.tag="$TAG" \
-      --set "hosts={$HOSTNAME,www.$HOSTNAME}" \
+      --set "hosts={$ALV_HOSTNAME,www.$ALV_HOSTNAME}" \
       --namespace "alv-no"
     sleep 20
-    curl "https://$HOSTNAME"
+    curl "https://$ALV_HOSTNAME"
+  fi
+
+  if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "helm website"
+    helm upgrade website-alvb ./chart \
+      --install \
+      --set image.repository="$CONTAINER_REGISTRY/website-alvb" \
+      --set image.tag="$TAG" \
+      --set "hosts={$ALVB_HOSTNAME,www.$ALVB_HOSTNAME}" \
+      --namespace "alvb-no"
+    sleep 20
+    curl "https://$ALVB_HOSTNAME"
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
@@ -103,12 +133,12 @@ function deployServices() {
       --install \
       --set image.repository="$CONTAINER_REGISTRY/mail-api" \
       --set image.tag="$SHORT_HASH" \
-      --set "hosts={mail-api.$HOSTNAME}" \
+      --set "hosts={mail-api.$ALV_HOSTNAME}" \
       --set secrets.MAILTO="$MAILTO" \
       --set secrets.SENDGRID_API_KEY="$SENDGRID_API_KEY" \
       --namespace "alv-no"
     sleep 20
-    curl "https://mail-api.$HOSTNAME"
+    curl "https://mail-api.$ALV_HOSTNAME"
   fi
 }
 
