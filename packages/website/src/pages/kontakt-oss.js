@@ -8,7 +8,7 @@ import { useContactQuery } from '../hookspages/useContactQuery';
 import * as Form from '../../../shared-components/src/components/form';
 
 const Contact = ({ location }) => {
-  const [active, setActive] = useState('visit');
+  const [active, setActive] = useState('offer');
   const formChange = (e) => {
     setActive(e.target.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -54,7 +54,7 @@ const Contact = ({ location }) => {
               </div>
               <div className="text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
                 <FormSelect id="offer" onClick={formChange} active={active}>
-                  Send oss en mail
+                  Send oss en e-post
                 </FormSelect>
                 <FormSelect id="call" onClick={formChange} active={active}>
                   Ring meg tilbake
