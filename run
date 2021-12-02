@@ -124,7 +124,7 @@ function deployServices() {
       --set "hosts={$ALVB_HOSTNAME,www.$ALVB_HOSTNAME}" \
       --namespace "alvb-no"
     sleep 20
-    curl "https://$ALVB_HOSTNAME"
+    #curl "https://$ALVB_HOSTNAME" # Won't test for now until certificats is correctly configured for alv-b
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
