@@ -11,7 +11,11 @@ const Contact = ({ location }) => {
   const [active, setActive] = useState('offer');
   const formChange = (e) => {
     setActive(e.target.id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('form').scrollIntoView({
+      block: 'start',
+      inline: 'nearest',
+      behavior: 'smooth',
+    });
   };
 
   const {
