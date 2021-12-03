@@ -61,17 +61,17 @@ export const Call = () => {
             value="Kontaktskjema: Ring meg tilbake"
           />
           <label className="mb-5">Ditt navn*</label>
-          <div className="flex my-5">
+          <div className="sm:flex xs:block my-5">
             <input
               type="text"
-              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 mb-4 mr-4 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Fornavn"
               name="firstname"
               required
             />
             <input
               type="text"
-              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Etternavn"
               name="lastname"
               required
@@ -145,17 +145,17 @@ export const Offer = () => {
             value="Kontaktskjema: Gi meg et tilbud"
           />
           <label className="mb-5">Ditt navn*</label>
-          <div className="flex my-5">
+          <div className="sm:flex xs:block my-5">
             <input
               type="text"
-              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 mb-4 mr-4 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Fornavn"
               name="firstname"
               required
             />
             <input
               type="text"
-              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Etternavn"
               name="lastname"
               required
