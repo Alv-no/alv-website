@@ -1,6 +1,10 @@
-# Stage 1 - Building the website
-FROM node:14
+FROM nginx:1.20.2-alpine
 
+# Stage 1 - Install node, yarn and python
+RUN apk add --update nodejs yarn
+RUN apk add --no-cache python3 make gcc g++
+
+# Stage 2 - Building the website
 WORKDIR /app
 RUN mkdir -p /app/packages/website
 RUN mkdir -p /app/.yarn/releases
@@ -24,9 +28,17 @@ ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN test -f "/app/packages/website/.env.production"
 RUN yarn workspace website run build
 
-# Stage 2 - Webserver using Ngnix
-FROM nginx:1.19-alpine
-COPY --from=0 /app/packages/website/public /usr/share/nginx/html/
+# Stage 3 - Setup nginx webserver
+RUN cp -r /app/packages/website/public/* /usr/share/nginx/html/
 COPY website.nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
+
+# Stage 4 - Setup and install Varnish
+RUN apk add --update varnish
+COPY default.vcl /etc/varnish/
+
+# Stage 5 - Setup and run supervisor
+RUN apk update && apk add --no-cache supervisor
+COPY supervisord.conf /app/supervisord.conf
+CMD ["supervisord","-c","/app/supervisord.conf"]
+
