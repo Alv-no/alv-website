@@ -1,0 +1,21 @@
+.centerText * {
+  text-align: center;
+  font-weight: 300;
+  max-width: 870px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centerText p:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.centerText h4,
+.centerText span {
+  font-weight: 700;
+}
+
+.centerText p {
+  padding-left: 24px;
+  padding-right: 24px;
+}

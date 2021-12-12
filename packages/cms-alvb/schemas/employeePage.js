@@ -1,6 +1,6 @@
 export default {
   name: 'employeePage',
-  title: 'Employee Page',
+  title: 'Our team',
   type: 'document',
   fields: [
     {
@@ -18,5 +18,30 @@ export default {
       name: 'section2',
       type: 'imageTitleTextButton',
     },
+    {
+      name: 'employees',
+      title: 'Employees',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'employee' },
+          preview: {
+            select: {
+              title: 'employee.firstname',
+              subtitle: 'employee.title',
+            },
+          },
+        },
+      ],
+      validation: (Rule) => Rule.unique(),
+    },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Pages - Our team',
+      };
+    },
+  },
 };

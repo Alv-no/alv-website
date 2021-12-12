@@ -12,7 +12,6 @@ const Biobank = ({ data }) => {
   return (
     <div className="overflow-hidden">
       <Layout
-        white
         whiteIcons
         pageTitle={meta.metaTitle}
         pageDescription={meta.metaDescription}

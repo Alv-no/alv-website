@@ -61,17 +61,17 @@ export const Call = () => {
             value="Kontaktskjema: Ring meg tilbake"
           />
           <label className="mb-5">Ditt navn*</label>
-          <div className="sm:flex xs:block my-5">
+          <div className="flex my-5">
             <input
               type="text"
-              className="flex-1 mb-4 mr-4 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Fornavn"
               name="firstname"
               required
             />
             <input
               type="text"
-              className="flex-1 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Etternavn"
               name="lastname"
               required
@@ -87,21 +87,6 @@ export const Call = () => {
               required
             />
           </div>
-          {/* <p className="font-light text-sm leading-loose">
-          Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått våre{' '}
-          <Link to="/kontakt-oss">
-            <span className="font-semibold hover:text-theme-accent duration-300 transition cursor-pointer">
-              vedtekter
-            </span>
-          </Link>{' '}
-          og{' '}
-          <Link to="/kontakt-oss">
-            <span className="font-semibold  hover:text-theme-accent duration-300 transition cursor-pointer">
-              personvernsregler
-            </span>
-          </Link>
-          .
-          </p> */}
           <div className="flex justify-center mt-10">
             <button
               className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
@@ -145,17 +130,17 @@ export const Offer = () => {
             value="Kontaktskjema: Gi meg et tilbud"
           />
           <label className="mb-5">Ditt navn*</label>
-          <div className="sm:flex xs:block my-5">
+          <div className="flex my-5">
             <input
               type="text"
-              className="flex-1 mb-4 mr-4 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Fornavn"
               name="firstname"
               required
             />
             <input
               type="text"
-              className="flex-1 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Etternavn"
               name="lastname"
               required
@@ -191,22 +176,6 @@ export const Offer = () => {
               name="phone"
             />
           </div>
-          {/* <p className="font-light text-sm leading-loose">
-        Ved å utfylle denne formen, bekrefter jeg å ha lest og forstått
-        gjeldende{' '}
-        <Link to="/kontakt-oss">
-          <span className="font-semibold hover:text-theme-accent duration-300 transition cursor-pointer">
-            vedtekter
-          </span>
-        </Link>{' '}
-        og{' '}
-        <Link to="/kontakt-oss">
-          <span className="font-semibold  hover:text-theme-accent duration-300 transition cursor-pointer">
-            personvernsregler
-          </span>
-        </Link>
-        .
-      </p> */}
           <div className="flex justify-center mt-10">
             <button
               className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
@@ -227,7 +196,7 @@ export const Offer = () => {
   );
 };
 
-export const Visit = ({ address, org, phone, email, hours }) => (
+export const Visit = ({ address, org, phone, email, hours, title, text }) => (
   <div>
     <div className="filter-grayscale">
       <iframe
@@ -243,13 +212,8 @@ export const Visit = ({ address, org, phone, email, hours }) => (
       ></iframe>
     </div>
     <div className="sm:px-8 mt-15 mb-8">
-      <h4 className="text-lg font-semibold mb-1 uppercase">
-        Ta en tur innom oss!
-      </h4>
-      <p className="text-mobile leading-relaxed font-light">
-        Vi tar gjerne en kaffe, enten du er potensiell ansatt, eller interessert
-        i hva vi driver med. Vi håper å se deg.
-      </p>
+      <h4 className="text-lg font-semibold mb-1 uppercase">{title}</h4>
+      <p className="text-mobile leading-relaxed font-light">{text}</p>
     </div>
     <div className="sm:grid grid-cols-2 gap-y-10">
       {address && (

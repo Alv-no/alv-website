@@ -7,21 +7,27 @@ export const EmployeeSection = ({
   allEmployees,
   linkedId,
   fallbackImg,
+  centerBioText,
+  filter = true,
+  showVideo,
+  greyCards = true,
 }) => {
   const [filteredContent, setFilteredContent] = useState(null);
   const [tags, setTags] = useState([]);
 
   // Filter employees based on active tags
   const filterEmployees = (tags) => {
-    if (tags.length === 0) return setFilteredContent(allEmployees);
-    const filteredEmployeeArr = allEmployees.filter((employee) => {
-      let test;
-      employee.tags.forEach((node) =>
-        !test ? (test = tags.indexOf(node.tag) > -1) : null
-      );
-      return test;
-    });
-    return setFilteredContent(filteredEmployeeArr);
+    if (showVideo) {
+      if (tags.length === 0) return setFilteredContent(allEmployees);
+      const filteredEmployeeArr = allEmployees.filter((employee) => {
+        let test;
+        employee.tags.forEach((node) =>
+          !test ? (test = tags.indexOf(node.tag) > -1) : null
+        );
+        return test;
+      });
+      return setFilteredContent(filteredEmployeeArr);
+    }
   };
 
   useEffect(() => {
@@ -46,13 +52,18 @@ export const EmployeeSection = ({
   return (
     <div className="w-full text-white xs:px-6 overflow-hidden">
       <div className="max-w-1440 mx-auto lg:px-10 2xl:px-32">
-        <EmployeeFilter allTags={allTags} onChange={handleTagClick} />
+        {filter && (
+          <EmployeeFilter allTags={allTags} onChange={handleTagClick} />
+        )}
       </div>
       {filteredContent && (
         <GridContainer
           filteredContent={filteredContent}
           linkedId={linkedId}
           fallbackImg={fallbackImg}
+          showVideo={showVideo}
+          centerBioText={centerBioText}
+          greyCards={greyCards}
         />
       )}
     </div>

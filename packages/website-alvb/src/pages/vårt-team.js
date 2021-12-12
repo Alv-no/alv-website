@@ -2,12 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
-import {
-  Title,
-  Description,
-  NoTagsEmployeeSection,
-  Cta,
-} from 'shared-components';
+import { Title, Description, EmployeeSection, Cta } from 'shared-components';
 import localize from '../components/localize';
 import slugify from 'slugify';
 
@@ -44,10 +39,14 @@ const Employees = ({ location, data }) => {
           </span>
         </div>
         <div className="h-10 sm:h-16 md:h-24 mt-3" />
-        <NoTagsEmployeeSection
+        <EmployeeSection
           allEmployees={employees}
           linkedId={activeCard}
           isEnLocale={isEnLocale}
+          filter={false}
+          showVideo={false}
+          centerBioText={true}
+          greyCards={false}
         />
         <Cta
           image={section2.image.asset.gatsbyImageData}

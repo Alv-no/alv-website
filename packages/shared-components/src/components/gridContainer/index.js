@@ -5,9 +5,12 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 export const GridContainer = ({
   filteredContent,
+  showVideo,
   linkedId,
   fallbackImg,
+  centerBioText,
   isEnLocale,
+  greyCards,
   white,
 }) => {
   const { width } = useWindowDimensions();
@@ -67,6 +70,7 @@ export const GridContainer = ({
             if (group.length > 0) {
               return (
                 <EmployeeGroup
+                  showVideo={showVideo}
                   key={contentGroups.indexOf(group)}
                   activeBio={activeBio}
                   employees={filteredContent}
@@ -74,6 +78,8 @@ export const GridContainer = ({
                   group={group}
                   fallbackImg={fallbackImg}
                   white={white}
+                  greyCards={greyCards}
+                  centerBioText={centerBioText}
                 />
               );
             }

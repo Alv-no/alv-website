@@ -4,7 +4,7 @@ import * as Icon from '../icon';
 import Headroom from 'react-headroom';
 import { CallToAction } from '../calltoaction';
 import { Breadcrumb } from '../breadcrumb';
-import { Navigation } from '../navigation';
+import { Navigation } from '../../../../website/src/components/navigation';
 import { window } from 'browser-monads';
 
 export const Header = ({

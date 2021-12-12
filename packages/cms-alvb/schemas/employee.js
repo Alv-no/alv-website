@@ -1,6 +1,9 @@
+import { IoPeopleSharp } from 'react-icons/io5';
+
 export default {
   name: 'employee',
   title: 'Employees',
+  icon: IoPeopleSharp,
   type: 'document',
   fields: [
     {

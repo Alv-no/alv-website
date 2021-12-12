@@ -1,0 +1,29 @@
+.wrapper img {
+  margin: 40px 0;
+}
+
+.wrapper * {
+  color: rgb(6, 24, 56);
+}
+
+.wrapper h6 {
+  font-size: 40px !important;
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
+  position: relative;
+  margin-bottom: 40px !important;
+}
+.wrapper h6:after {
+  content: '.';
+  font-size: 40px;
+  color: rgba(59, 130, 246);
+}
+.wrapper h6:before {
+  content: ' ';
+  position: absolute;
+  bottom: 0;
+  width: 56px;
+  height: 3px;
+  background: rgba(59, 130, 246);
+  transform: translateY(14px);
+}

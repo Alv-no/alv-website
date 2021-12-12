@@ -1,4 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder';
+import { RiPagesLine, RiSettings4Line } from 'react-icons/ri';
 
 export default () =>
   S.list()
@@ -6,6 +7,7 @@ export default () =>
     .items([
       S.listItem()
         .title('Pages')
+        .icon(RiPagesLine)
         .child(
           S.list()
             // Sets a title for our new list
@@ -28,35 +30,35 @@ export default () =>
                     .documentId('ourServicesPage')
                 ),
               S.listItem()
-                .title('Bio Bank Page')
+                .title('Biobank')
                 .child(
                   S.document().schemaType('bioBank').documentId('bioBank')
                 ),
               S.listItem()
-                .title('Investment page')
+                .title('Investment')
                 .child(
                   S.document()
                     .schemaType('investmentPage')
                     .documentId('investmentPage')
                 ),
               S.listItem()
-                .title('Employee Page')
+                .title('Our Team')
                 .child(
                   S.document()
                     .schemaType('employeePage')
                     .documentId('employeePage')
                 ),
               S.listItem()
-                .title('Contact Page')
+                .title('Blog')
+                .child(
+                  S.document().schemaType('blogPage').documentId('blogPage')
+                ),
+              S.listItem()
+                .title('Contact')
                 .child(
                   S.document()
                     .schemaType('contactPage')
                     .documentId('contactPage')
-                ),
-              S.listItem()
-                .title('Blog Page')
-                .child(
-                  S.document().schemaType('blogPage').documentId('blogPage')
                 ),
             ])
         ),
@@ -77,6 +79,7 @@ export default () =>
       S.divider(),
       S.listItem()
         .title('Settings')
+        .icon(RiSettings4Line)
         .child(
           S.document().schemaType('siteSettings').documentId('siteSettings')
         ),

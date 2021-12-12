@@ -57,6 +57,7 @@ export const Layout = ({
         headerCtaLink={isEnLocale ? '/en/contact-us' : '/kontakt-oss'}
         whiteIcons={whiteIcons}
         isEnLocale={isEnLocale}
+        localization={true}
       />
       <MobileHeader
         white

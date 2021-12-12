@@ -1,6 +1,9 @@
+import { BsTagsFill } from 'react-icons/bs';
+
 export default {
   name: 'articleTag',
   title: 'Article Tags',
+  icon: BsTagsFill,
   type: 'document',
   fields: [
     {

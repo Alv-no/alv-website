@@ -1,6 +1,6 @@
 export default {
   name: 'investmentPage',
-  title: 'Investment Page',
+  title: 'Investment',
   type: 'document',
   fields: [
     {
@@ -33,4 +33,11 @@ export default {
       type: 'titleTextButton',
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Pages - Investment',
+      };
+    },
+  },
 };

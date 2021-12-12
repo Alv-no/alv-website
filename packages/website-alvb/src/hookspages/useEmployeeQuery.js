@@ -4,24 +4,22 @@ export const useEmployeeQuery = () => {
   const data = useStaticQuery(
     graphql`
       {
-        allSanityEmployee {
-          edges {
-            node {
-              firstname
-              lastname
-              ytVideoId
-              video {
-                asset {
-                  url
-                }
+        sanityEmployeePage {
+          employees {
+            firstname
+            lastname
+            ytVideoId
+            video {
+              asset {
+                url
               }
-              id
-              title
-              _rawBio
-              image {
-                asset {
-                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-                }
+            }
+            id
+            title
+            _rawBio
+            image {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
           }
@@ -29,8 +27,7 @@ export const useEmployeeQuery = () => {
       }
     `
   );
-  const allEmployees = data.allSanityEmployee.edges.map((el) => {
-    const employee = el.node;
+  const allEmployees = data.sanityEmployeePage.employees.map((employee) => {
     employee.slug = createSlugForEmployee(
       employee.firstname,
       employee.lastname
