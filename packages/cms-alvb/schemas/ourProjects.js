@@ -1,6 +1,6 @@
 export default {
   name: 'ourServicesPage',
-  title: 'Our Services Page',
+  title: 'Our Services',
   type: 'document',
   fields: [
     {
@@ -31,4 +31,11 @@ export default {
       type: 'localeBlockContent',
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Pages - Our projects',
+      };
+    },
+  },
 };

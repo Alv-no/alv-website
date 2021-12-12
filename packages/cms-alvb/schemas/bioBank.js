@@ -24,4 +24,11 @@ export default {
       type: 'categoryList',
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Pages - Biobank',
+      };
+    },
+  },
 };

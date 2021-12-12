@@ -1,5 +1,8 @@
+import { RiSettings4Line } from 'react-icons/ri';
+
 export default {
   name: 'siteSettings',
+  icon: RiSettings4Line,
   type: 'document',
   fields: [
     {

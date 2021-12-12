@@ -45,4 +45,11 @@ export default {
       type: 'founder',
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Pages - Landing page',
+      };
+    },
+  },
 };

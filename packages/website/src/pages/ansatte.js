@@ -40,6 +40,7 @@ const Employees = ({ location }) => {
           allEmployees={allEmployees}
           linkedId={activeCard}
           fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
+          showVideo={true}
         />
         <Cta
           image={data.cta.childImageSharp.gatsbyImageData}

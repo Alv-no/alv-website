@@ -39,14 +39,14 @@ export const SocialShare = ({ url, title, tags, subtitle, white }) => {
   );
 };
 
-export const SocialLinks = () => (
+export const SocialLinks = ({ blue }) => (
   <div className="eight:flex hidden">
     <a
       href="https://www.instagram.com/alvnoas/"
       target="_blank"
       rel="noreferrer"
     >
-      <Icon.Instagram />
+      <Icon.Instagram blue={blue} />
     </a>
     <span className="mr-4 ml-5 pl-2px">
       <a
@@ -54,7 +54,7 @@ export const SocialLinks = () => (
         target="_blank"
         rel="noreferrer"
       >
-        <Icon.Linkedin />
+        <Icon.Linkedin blue={blue} />
       </a>
     </span>
     <a
@@ -62,7 +62,7 @@ export const SocialLinks = () => (
       target="_blank"
       rel="noreferrer"
     >
-      <Icon.Facebook />
+      <Icon.Facebook blue={blue} />
     </a>
   </div>
 );

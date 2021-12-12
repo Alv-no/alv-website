@@ -1,6 +1,9 @@
+import { MdArticle } from 'react-icons/md';
+
 export default {
   name: 'article',
   title: 'Articles',
+  icon: MdArticle,
   type: 'document',
   fields: [
     {

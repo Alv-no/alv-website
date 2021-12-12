@@ -4,9 +4,11 @@ import Link from 'gatsby-link';
 import { isIOS, isSafari } from 'react-device-detect';
 import fallback from './bioVideoFallback.png';
 import { BlockContent } from '../blockContent';
+import * as styles from './EmployeeBio.module.css';
 
 export const EmployeeBio = ({
   handleCloseClick,
+  centerBioText = true,
   firstname,
   lastname,
   slug,
@@ -36,7 +38,7 @@ export const EmployeeBio = ({
   return (
     <div ref={bioRefContainer}>
       <section
-        className="bg-darkblue text-white lg:py-18 pb-15 pt-20 xs:-mx-6 sm:mt-12 my-8 sm:px-5 xs:mt-8 -mt-4"
+        className="bg-darkblue text-white lg:py-18 pb-15 pt-20 xs:-mx-6 sm:mt-8 my-8 sm:px-5 xs:mt-8 -mt-4"
         id={id}
       >
         <div className="max-w-1200 mx-auto sm:px-5">
@@ -53,11 +55,15 @@ export const EmployeeBio = ({
               </button>
             </div>
           </div>
-          <div className="flex lg:flex-row flex-col sm:px-0">
+          <div className={`${video && 'flex'} lg:flex-row flex-col sm:px-0`}>
             <div className="mx-auto flex-1 lg:pr-15">
-              <div className="flex-1 px-6 sm:px-0 sm:hidden">
+              <div
+                className={`flex-1 px-12 sm:px-0 sm:hidden ${
+                  centerBioText && 'text-center'
+                }`}
+              >
                 {/* ---- Underneath: Visible on Mobile only ---- */}
-                <h4 className="text-4xl leading-none font-extralight mb-4 uppercase tracking-wider">
+                <h4 className="text-3xl leading-none font-extralight mb-4 uppercase tracking-wider">
                   <span className="font-bold block">{firstname}</span>
                   {lastname}
                 </h4>
@@ -66,48 +72,69 @@ export const EmployeeBio = ({
                 </h5>
               </div>
               {/* ---- Above: Visible on Mobile only ---- */}
-              <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
-                <ValidatedVideo
-                  video={video}
-                  ytVideoId={ytVideoId}
-                  slug={slug}
-                />
-              </div>
-              <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">
-                {cv && (
-                  <a href={cv.asset.url} target="_blank" rel="noreferrer">
-                    <div className="flex">
-                      <span className="mr-3">
-                        <Icon.Cv />
-                      </span>
-                      <span className="transform -translate-y-2">SE CV</span>
-                    </div>
-                  </a>
-                )}
-                <Link to="/kontakt-oss">
-                  <div className="flex cursor-pointer">
-                    <div className="w-8 h-2px bg-theme-accent mr-4 transform translate-y-1" />
-                    <span className="transform -translate-y-2">
-                      KONTAKT OSS
-                    </span>
+              {video && (
+                <>
+                  <div className="sm:h-80 sm:w-140 mb-8 sm:mb-5">
+                    <ValidatedVideo
+                      video={video}
+                      ytVideoId={ytVideoId}
+                      slug={slug}
+                    />
                   </div>
-                </Link>
-              </div>
+
+                  {video && (
+                    <div className="flex justify-between text-base tracking-wider sm:px-0 px-6 mb-5 lg:mb-0">
+                      {cv && (
+                        <a href={cv.asset.url} target="_blank" rel="noreferrer">
+                          <div className="flex">
+                            <span className="mr-3">
+                              <Icon.Cv />
+                            </span>
+                            <span className="transform -translate-y-2">
+                              SE CV
+                            </span>
+                          </div>
+                        </a>
+                      )}
+                      <Link to="/kontakt-oss">
+                        <div className="flex cursor-pointer">
+                          <div className="w-8 h-2px bg-theme-accent mr-4 transform translate-y-1" />
+                          <span className="transform -translate-y-2">
+                            KONTAKT OSS
+                          </span>
+                        </div>
+                      </Link>
+                    </div>
+                  )}
+                </>
+              )}
             </div>
-            <p className="tracking-wider font-extralight px-10 sm:hidden">
+            <p
+              className={`tracking-wider font-extralight px-6 sm:px-10 sm:hidden ${
+                !video && styles.centerText
+              }`}
+            >
               {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
             </p>
-            <div className="flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left">
-              <h4 className="text-4xl leading-none font-extralight mb-4 uppercase tracking-wider">
-                <span className="font-bold block">{firstname}</span>
+            <div
+              className={`flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left ${
+                !video && centerBioText && styles.centerText
+              }`}
+            >
+              <h4
+                className={`text-4xl leading-none font-extralight mb-4 uppercase tracking-wider`}
+              >
+                <span className={video && 'font-bold block'}>
+                  {firstname} {!video && centerBioText && ' '}
+                </span>
                 {lastname}
               </h4>
               <h5 className="text-lg font-extralight tracking-wider mb-8">
                 {title}
               </h5>
-              <p className="tracking-wider lg:px-0 sm:px-10">
+              <div className="tracking-wider lg:px-0 sm:px-10">
                 {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
-              </p>
+              </div>
             </div>
           </div>
         </div>

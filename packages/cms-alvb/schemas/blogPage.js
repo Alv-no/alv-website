@@ -1,6 +1,6 @@
 export default {
   name: 'blogPage',
-  title: 'Blog Page',
+  title: 'Blog',
   type: 'document',
   fields: [
     {
@@ -14,4 +14,11 @@ export default {
       type: 'titleText',
     },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Pages - Blog',
+      };
+    },
+  },
 };

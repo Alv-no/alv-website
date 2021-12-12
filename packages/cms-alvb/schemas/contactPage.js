@@ -1,6 +1,6 @@
 export default {
   name: 'contactPage',
-  title: 'Contact Page',
+  title: 'Contact',
   type: 'document',
   fields: [
     {
@@ -13,5 +13,17 @@ export default {
       name: 'section1',
       type: 'titleTextImage',
     },
+    {
+      title: 'Section 2: Content right side',
+      name: 'section2',
+      type: 'titleText',
+    },
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Pages - Contact',
+      };
+    },
+  },
 };

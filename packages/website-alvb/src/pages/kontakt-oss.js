@@ -7,9 +7,8 @@ import * as Form from '../../../shared-components/src/components/form';
 import localize from '../components/localize';
 
 const Contact = ({ data }) => {
-  const { section1, meta } = data.sanityContactPage;
+  const { section1, section2, meta } = data.sanityContactPage;
   const { address, phone, hours, email } = data.sanitySiteSettings;
-
   return (
     <Layout
       noCta
@@ -49,6 +48,8 @@ const Contact = ({ data }) => {
           <div>
             <div className=" p-5 sm:p-12 lg:mx-0 lg:pb-15 tracking-wider bg-theme-footer w-full">
               <Form.Visit
+                title={section2.title}
+                text={section2.text}
                 address={address}
                 email={email}
                 phone={phone}
@@ -73,6 +74,18 @@ export const query = graphql`
             gatsbyImageData
           }
         }
+        text {
+          _type
+          en
+          no
+        }
+        title {
+          _type
+          en
+          no
+        }
+      }
+      section2 {
         text {
           _type
           en
