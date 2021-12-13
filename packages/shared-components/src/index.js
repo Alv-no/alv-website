@@ -9,7 +9,6 @@ export { Description } from './components/description';
 export { SEO } from './components/seo';
 export { PostCard } from './components/postCard';
 export { SocialShare, SocialLinks } from './components/socialShare';
-export { Navigation } from '../../website/src/components/navigation';
 export { GridContainer } from './components/gridContainer';
 export { NavyIntro } from './components/navyIntro';
 export { OurServices } from './components/ourServices';
