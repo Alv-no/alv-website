@@ -51,6 +51,16 @@ export const Header = ({
   }, []);
 
   const handleLocaleClick = (locale) => {
+    if (pathStr === '/') {
+      setActiveLocale('en');
+      return (window.location.href = `${window.location.origin}/en`);
+    }
+
+    if (pathStr === '/en') {
+      setActiveLocale('no');
+      return (window.location.href = `${window.location.origin}/`);
+    }
+
     const newPathObj = navItems.find((el) => {
       return (
         el[activeLocale].link?.includes(pathStr) ||
@@ -114,32 +124,13 @@ export const Header = ({
                 )}
               </div>
               {localization && (
-                <div className="ml-10 pt-1">
-                  {localeList.map((locale, i) => (
-                    <span
-                      className={
-                        whiteIcons || navyHeader
-                          ? 'text-white'
-                          : 'text-theme-text'
-                      }
-                    >
-                      <button
-                        key={locale}
-                        className={`uppercase mx-6px pt-px font-thin focus:outline-none ${
-                          activeLocale === locale
-                            ? 'font-medium pointer-events-none'
-                            : 'opacity-50'
-                        }`}
-                        onClick={() => handleLocaleClick(locale)}
-                      >
-                        {locale}
-                      </button>
-                      {i !== locale.length - 1 && (
-                        <span className="opacity-50">|</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
+                <LocaleButtons
+                  localeList={localeList}
+                  whiteIcons={whiteIcons}
+                  navyHeader={navyHeader}
+                  activeLocale={activeLocale}
+                  onClick={handleLocaleClick}
+                />
               )}
             </div>
           </div>
@@ -151,6 +142,35 @@ export const Header = ({
     </>
   );
 };
+
+const LocaleButtons = ({
+  localeList,
+  whiteIcons,
+  navyHeader,
+  activeLocale,
+  onClick,
+}) => (
+  <div className="ml-10 pt-1">
+    {localeList.map((locale, i) => (
+      <span
+        className={whiteIcons || navyHeader ? 'text-white' : 'text-theme-text'}
+      >
+        <button
+          key={locale}
+          className={`uppercase mx-6px pt-px font-thin focus:outline-none ${
+            activeLocale === locale
+              ? 'font-medium pointer-events-none'
+              : 'opacity-50'
+          }`}
+          onClick={() => onClick(locale)}
+        >
+          {locale}
+        </button>
+        {i !== locale.length - 1 && <span className="opacity-50">|</span>}
+      </span>
+    ))}
+  </div>
+);
 
 const DropdownIcon = ({ white }) => (
   <div className="flex flex-col justify-center items-center h-7">

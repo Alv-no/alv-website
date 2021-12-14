@@ -13,7 +13,7 @@ export const Navigation = ({ open, toggleClose, logo, navItems }) => {
       toggleClose={toggleClose}
       isEnLocale={isEnLocale}
     >
-      <div className="flex eight:items-center h-full -mt-12">
+      <div className="flex eight:items-center h-full eight:-mt-12">
         <div className="eight:text-center items-center relative z-90 eight:mx-auto">
           <LocaleNav localeNavArr={navItems} isEnLocale={isEnLocale} />
         </div>
