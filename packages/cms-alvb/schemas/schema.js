@@ -16,6 +16,7 @@ import servicesIntro from './servicesIntro';
 import localeText from './localeText';
 import localeString from './localeString';
 import twoImages from './twoImages';
+import download from './download';
 import landingPage from './landingPage';
 import titleBlockImage from './titleBlockImage';
 import founder from './founder';
@@ -78,6 +79,7 @@ export default createSchema({
     localeHeroBlockContent,
     imageTitleTextButton,
     titleBlockImage,
+    download,
     localeMeta,
     titleTextImage,
     textOverlapVideo,
