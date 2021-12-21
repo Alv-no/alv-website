@@ -68,5 +68,9 @@ export default {
       title: 'CTA',
       type: 'cta',
     },
+    {
+      title: 'Download button',
+      type: 'download',
+    },
   ],
 };
