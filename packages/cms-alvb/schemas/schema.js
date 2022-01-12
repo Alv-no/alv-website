@@ -28,6 +28,7 @@ import titleTextImage from './titleTextImage';
 import localeButton from './localeButton';
 import textOverlapVideo from './textOverlapVideo';
 import imageTitleTextButton from './imageTitleTextButton';
+import localeCta from './localeCta';
 import titleText from './titleText';
 import serviceItem from './serviceItem';
 import localeMeta from './localeMeta';
@@ -84,6 +85,7 @@ export default createSchema({
     titleTextImage,
     textOverlapVideo,
     localeButton,
+    localeCta,
     twoImages,
     titleBlock,
     button,

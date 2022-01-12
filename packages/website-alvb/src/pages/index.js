@@ -36,6 +36,7 @@ const Index = ({ data, location }) => {
           <Hero
             blocks={_rawSection1.heroText}
             image={section1.image.asset.gatsbyImageData}
+            cta={section1.localeCta}
           />
           <div className="bg-theme-bg w-full pb-15 sm:pt-24">
             <VideoIntro
@@ -82,6 +83,23 @@ export const query = graphql`
       _rawSection1
       # media
       section1 {
+        localeCta {
+          eyebrow {
+            en
+            _type
+            no
+          }
+          link {
+            _type
+            en
+            no
+          }
+          title {
+            _type
+            en
+            no
+          }
+        }
         image {
           asset {
             gatsbyImageData
