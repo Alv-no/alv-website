@@ -19,5 +19,10 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'localeCta',
+      title: 'CTA',
+      type: 'localeCta',
+    },
   ],
 };
