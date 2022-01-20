@@ -33,7 +33,11 @@ RUN cp -r /app/packages/website/public/* /usr/share/nginx/html/
 COPY website.nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 
-# Stage 4 - Setup and run supervisor
+# Stage 4 - Setup and install Varnish
+RUN apk add --update varnish
+COPY default.vcl /etc/varnish/
+
+# Stage 5 - Setup and run supervisor
 RUN apk update && apk add --no-cache supervisor
 COPY supervisord.conf /app/supervisord.conf
 CMD ["supervisord","-c","/app/supervisord.conf"]
