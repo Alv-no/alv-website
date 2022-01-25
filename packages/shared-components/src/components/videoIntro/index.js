@@ -8,7 +8,7 @@ export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
       style={{ gridTemplateColumns: '70% auto' }}
     >
       <div className="relative lg:pl-15 lg:pr-4 w-full">
-        <video controls autoplay="true" className="h-auto mx-auto" muted>
+        <video className="h-auto mx-auto" controls autoplay defaultMuted>
           <source src={videoWebm} type="video/webm" />
           <source src={videoMp4} type="video/mp4" />
         </video>

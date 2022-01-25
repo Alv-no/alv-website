@@ -62,7 +62,7 @@ const Index = ({ data, location }) => {
           <OurServices {..._rawSection5} image={section5.image} blueLine />
           <Founder {..._rawSection6} {...section6} />
           <div className="bg-theme-bg h-10 lg:h-32" />
-          <BlogCarousel blue isEnLocale={isEnLocale} />
+          <BlogCarousel blue isEnLocale={isEnLocale} blueText />
         </div>
       </Layout>
     </div>
