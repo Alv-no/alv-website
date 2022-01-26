@@ -63,7 +63,7 @@ export const BlogSlider = ({
           </span>
         </Title>
       </div>
-      <div className="pt-12 sm:pb-10 max-w-fourteen mx-auto">
+      <div className="pt-12 sm:pb-20 max-w-fourteen mx-auto">
         <div>
           <Slider {...settings}>
             {articles.map((article, index) => {
@@ -99,7 +99,7 @@ const NextArrow = ({ onClick, blueText }) => {
   return (
     <>
       <div
-        className="transform absolute mt-20 -translate-y-25 sm:translate-y-18 -translate-x-1 ml-3 sm:ml-0 right-0 bottom-0 scale-60 cursor-pointer lg:inset-y-0 lg:mr-14 lg:translate-y-12"
+        className="transform absolute mt-20 -translate-y-10 sm:translate-y-18 -translate-x-1 ml-3 sm:ml-0 right-0 bottom-0 scale-60 cursor-pointer lg:inset-y-0 lg:mr-14 lg:translate-y-12"
         style={{ display: 'inline-block', background: '' }}
         onClick={onClick}
       >
@@ -115,7 +115,7 @@ const PrevArrow = ({ onClick, blueText }) => {
   return (
     <>
       <div
-        className="transform absolute -translate-y-25 opacity-50 sm:translate-y-18 mr-3 -translate-x-12 ml-2 right-0 mt-20 bottom-0 scale-60 cursor-pointer lg:opacity-100 lg:left-0 lg:ml-9 lg:-translate-y-48 z-30 rotate-180"
+        className="transform absolute -translate-y-10 opacity-50 sm:translate-y-18 mr-3 -translate-x-12 ml-2 right-0 mt-20 bottom-0 scale-60 cursor-pointer lg:opacity-100 lg:left-0 lg:ml-9 lg:-translate-y-48 z-30 rotate-180"
         style={{ display: 'inline-block', background: '' }}
         onClick={onClick}
       >
