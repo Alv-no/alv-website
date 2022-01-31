@@ -29,6 +29,7 @@ const Index = ({ data, location }) => {
     <div className="overflow-hidden">
       <Layout
         white
+        whiteIcons
         pageTitle={_rawMeta.metaTitle}
         pageDescription={_rawMeta.metaTitle}
       >
@@ -37,6 +38,7 @@ const Index = ({ data, location }) => {
             blocks={_rawSection1.heroText}
             image={section1.image.asset.gatsbyImageData}
             cta={section1.localeCta}
+            backgroundImage={section1.backgroundImage.asset.gatsbyImageData}
           />
           <div className="bg-theme-bg w-full pb-15 sm:pt-24">
             <VideoIntro
@@ -101,6 +103,11 @@ export const query = graphql`
           }
         }
         image {
+          asset {
+            gatsbyImageData
+          }
+        }
+        backgroundImage {
           asset {
             gatsbyImageData
           }

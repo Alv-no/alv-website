@@ -11,7 +11,7 @@
 }
 
 .ctaEyebrow {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 16px;
   line-height: 18px;
   letter-spacing: 0.03em;
@@ -34,8 +34,8 @@
 
 @media (min-width: 640px) {
   .heroHeading * {
-    max-width: 410px;
-    font-size: 40px;
+    max-width: 470px;
+    font-size: 48px;
     line-height: 50px;
     font-weight: 300;
     letter-spacing: 0.1em;
@@ -59,6 +59,6 @@
   .ctaButton svg {
     height: 80px;
     width: 80px;
-    margin-left: 40px;
+    margin-left: 30px;
   }
 }
