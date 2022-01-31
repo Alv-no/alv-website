@@ -12,17 +12,17 @@ export default {
       type: 'localeHeroBlockContent',
     },
     {
-      name: 'image',
-      title: 'Image',
+      name: 'localeCta',
+      title: 'CTA',
+      type: 'localeCta',
+    },
+    {
+      name: 'backgroundImage',
+      title: 'Background image',
       type: 'image',
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'localeCta',
-      title: 'CTA',
-      type: 'localeCta',
     },
   ],
 };
