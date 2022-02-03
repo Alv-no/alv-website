@@ -17,6 +17,14 @@ module.exports = {
         head: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-KJX5NRJ',
+        includeInDevelopment: false,
+        enableWebVitalsTracking: true,
+      },
+    },
     'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
