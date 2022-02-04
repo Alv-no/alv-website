@@ -35,10 +35,12 @@ const Index = ({ data, location }) => {
       >
         <div className="bg-theme-bg">
           <Hero
-            blocks={_rawSection1.heroText}x
+            blocks={_rawSection1.heroText}
             cta={section1.localeCta}
             backgroundImage={section1.backgroundImage.asset.gatsbyImageData}
-            backgroundImageMobile={section1.backgroundImageMobile.asset.gatsbyImageData}
+            backgroundImageMobile={
+              section1.backgroundImageMobile.asset.gatsbyImageData
+            }
           />
           <div className="bg-theme-bg w-full pb-15 sm:pt-24">
             <VideoIntro
