@@ -24,5 +24,13 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'backgroundImageMobile',
+      title: 'Background image (mobile)',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
 };
