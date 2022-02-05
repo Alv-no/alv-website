@@ -35,11 +35,9 @@ export const HeroDesktop = ({ blocks, cta, backgroundImage }) => (
     className="w-full h-screen flex flex-col justify-center -mt-20 "
   >
     <div className="grid lg:grid-cols-2 px-6 sm:px-10 lg:px-10 mt-15 max-w-1280 w-full mx-auto text-white">
-      <div className="">
-        <span className={styles.heroHeading}>
-          <BlockContent blocks={blocks} noStyle />
-        </span>
-      </div>
+      <span className={styles.heroHeading}>
+        <BlockContent blocks={blocks} noStyle />
+      </span>
     </div>
     <HeroCtaDesktop {...cta} />
   </BgImage>
@@ -65,9 +63,9 @@ const HeroCtaDesktop = ({ eyebrow, title, link }) => (
 export const HeroMobile = ({ blocks, cta, backgroundImage }) => (
   <BgImage
     image={backgroundImage}
-    className="w-full h-screen relative flex justify-center -mt-20"
+    className="w-full h-screen relative flex justify-center -mt-17"
   >
-    <div className="px-6 sm:px-10 mx-auto sm:pt-15 text-white relative transform pt-20 translate-y-25 md:translate-y-15 text-center">
+    <div className="px-6 sm:px-10 mx-auto sm:pt-15 text-white relative transform pt-20 translate-y-20 md:translate-y-15 text-center">
       <span className={styles.heroHeading}>
         <BlockContent blocks={blocks} noStyle />
       </span>
