@@ -136,6 +136,16 @@ export const EmployeeBio = ({
                 {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
               </div>
             </div>
+            {cv && !video && (
+              <a href={cv.asset.url} target="_blank" rel="noreferrer">
+                <div className="flex justify-center mt-10">
+                  <span className="mr-3">
+                    <Icon.Cv />
+                  </span>
+                  <span className="transform -translate-y-2">SE CV</span>
+                </div>
+              </a>
+            )}
           </div>
         </div>
       </section>
