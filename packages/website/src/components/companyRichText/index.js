@@ -21,7 +21,7 @@ export const companyRichTextTypes = {
         <section className="grid sm:grid-cols-2">
           <img
             alt={props.node.heading}
-            src={urlFor(props.node.image.asset).width(700).url()}
+            src={urlFor(props.node.image.asset).width(700).height(700).url()}
             className="px-0 my-0 object-cover h-full"
             style={{ padding: 0, margin: 0 }}
           />
