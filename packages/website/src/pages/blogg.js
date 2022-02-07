@@ -1,10 +1,17 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import { LayoutServerSide } from '../components/layoutServerSide';
 import { Title, IntroContainer, BlogSection } from 'shared-components';
-import { useBlogQuery } from '../hooks/useBlogQuery';
+import { graphql } from 'gatsby';
 
-const Blog = () => {
-  const data = useBlogQuery();
+const Blog = ({ data }) => {
+  const layoutData = {
+    ...data.sanitySiteSettings,
+    servicePages: data.allSanityServices.nodes,
+    sanityCompany: data.allSanityCompany.nodes,
+    categoryPages: data.allSanityCategoryPage.nodes,
+    site: data.site,
+  };
+
   const articles = data.articles.edges
     .map((article) => article.node)
     .sort((a, b) => (a.rawDate > b.rawDate ? -1 : 1));
@@ -16,10 +23,11 @@ const Blog = () => {
   featuredArticle.fallbackImg =
     data.fallbackImg.childImageSharp.gatsbyImageData;
   return (
-    <Layout
+    <LayoutServerSide
       whiteIcons
       pageTitle={data.sanityBlogPage.pageTitle}
       pageDescription={data.sanityBlogPage.pageDescription}
+      layoutData={layoutData}
     >
       <div className="overflow-hidden">
         <IntroContainer article={featuredArticle}>
@@ -34,8 +42,132 @@ const Blog = () => {
         </IntroContainer>
         <BlogSection allArticles={articles} />
       </div>
-    </Layout>
+    </LayoutServerSide>
   );
 };
 
 export default Blog;
+
+export async function getServerData() {
+  return Promise.resolve({
+    props: {},
+  });
+}
+
+export const query = graphql`
+  {
+    sanityBlogPage {
+      pageDescription
+      pageTitle
+    }
+    articles: allSanityArticle(sort: { fields: publishedAt }) {
+      edges {
+        node {
+          id
+          description
+          slug {
+            current
+          }
+          title
+          tags {
+            tag
+          }
+          mainImage {
+            asset {
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+            }
+          }
+          author {
+            image {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+              }
+            }
+            firstname
+            lastname
+          }
+          guestAuthor {
+            guestAuthor {
+              image {
+                asset {
+                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+                  url
+                }
+              }
+              firstname
+              lastname
+              title
+              id
+            }
+          }
+          publishedAt(formatString: "DD MMM, YYYY")
+          rawDate: publishedAt
+        }
+      }
+    }
+    featuredArticle: sanitySiteSettings {
+      featuredPost {
+        title
+        description
+        slug {
+          current
+        }
+        mainImage {
+          asset {
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+          }
+        }
+      }
+    }
+    fallbackImg: file(name: { eq: "featuredFallback" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
+    }
+    sanitySiteSettings(id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }) {
+      email
+      org
+      phone
+      address
+    }
+    allSanityCategoryPage {
+      nodes {
+        slug {
+          current
+        }
+        heroHeading
+      }
+    }
+    allSanityServices {
+      edges {
+        node {
+          id
+          slug {
+            current
+          }
+          parentPage {
+            slug {
+              current
+            }
+          }
+          heroHeading
+        }
+      }
+    }
+    allSanityCompany {
+      nodes {
+        heroHeading
+        slug {
+          current
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+  }
+`;

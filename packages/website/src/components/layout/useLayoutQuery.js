@@ -57,7 +57,7 @@ export const useLayoutQuery = () => {
   const categoryPages = data.allSanityCategoryPage.nodes;
   const companyPages = data.allSanityCompany.nodes;
   const { site } = data;
-  const { address, phone, org, email } = data.sanitySiteSettings;
+  const { address, phone, org, email } = data.sanitySiteSettings || {};
   return {
     address,
     phone,
