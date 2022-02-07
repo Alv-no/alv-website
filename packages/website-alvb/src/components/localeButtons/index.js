@@ -1,3 +1,4 @@
+import { window } from 'browser-monads';
 import React, { useEffect, useState } from 'react';
 import { navItems } from '../../utils/navItems';
 
