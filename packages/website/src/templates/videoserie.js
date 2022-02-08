@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { VideoCategory } from '../components/videoCategory';
 import { VideoSection } from '../components/videoSection';
 import { VideoHero } from '../components/videoHero';
 import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
 import { VideoFilter } from '../components/videoFilter';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Videoseries = ({ pageContext }) => {
   const { videoseries } = pageContext;
   const data = useVideoseriesQuery();
+  const layoutData = useLayoutQuery();
 
   const sortingArr = data.sanityVideoseriesPage.videoseries.map(
     (el) => el.slug.current
@@ -28,7 +30,7 @@ const Videoseries = ({ pageContext }) => {
     featuredVideo.seasons[featuredVideo.seasons.length - 1];
 
   return (
-    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout layoutData={layoutData} whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="bg-navy text-white md:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto overflow-hidden">
           {filteredVideoseries && (

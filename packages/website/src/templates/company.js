@@ -1,10 +1,11 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { LinkableContent } from '../components/linkableContent';
 import { NavyIntroImage } from '../components/navyIntroImage';
 import { window } from 'browser-monads';
 import { BlogCarousel } from '../components/blogCarousel';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Company = ({ data }) => {
   const scrollTo = (e) => {
@@ -17,6 +18,7 @@ const Company = ({ data }) => {
     );
     window.scrollTo({ top, behavior: 'smooth' });
   };
+  const layoutData = useLayoutQuery();
 
   const {
     sanityCompany: { pageDescription } = { pageDescription: false },
@@ -24,7 +26,7 @@ const Company = ({ data }) => {
   } = data;
 
   return (
-    <Layout pageTitle={pageTitle} pageDescription={pageDescription} whiteIcons>
+    <Layout layoutData={layoutData} pageTitle={pageTitle} pageDescription={pageDescription} whiteIcons>
       <div className="z-0 twelve:z-20 relative">
         <NavyIntroImage
           title={data.sanityCompany.heroHeading}

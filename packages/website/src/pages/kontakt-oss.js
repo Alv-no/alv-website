@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { Title, Description } from 'shared-components';
 import { FormSelect } from '../../../shared-components/src/components/button';
 import * as Icon from '../../../shared-components/src/components/icon';
 import { useContactQuery } from '../hookspages/useContactQuery';
 import * as Form from '../../../shared-components/src/components/form';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Contact = ({ location }) => {
   const [active, setActive] = useState('offer');
+  const layoutData = useLayoutQuery();
   const formChange = (e) => {
     setActive(e.target.id);
     document.querySelector('form').scrollIntoView({
@@ -29,6 +31,7 @@ const Contact = ({ location }) => {
   } = useContactQuery();
   return (
     <Layout
+      layoutData={layoutData}
       whiteIcons
       path={location.pathname}
       pageTitle={pageTitle}

@@ -1,16 +1,19 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { ImageTextListHero } from '../components/imageTextHero';
 import { ReasonsSlider } from '../components/reasonsSlider';
 import { useWorkQuery } from '../hookspages/useWorkQuery';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const WorkForAlv = () => {
   const { sanityCareerPage, stairs, street } = useWorkQuery();
+  const layoutData = useLayoutQuery();
 
   return (
     <>
       <Layout
         whiteIcons
+        layoutData={layoutData}
         pageTitle={sanityCareerPage.pageTitle}
         pageDescription={sanityCareerPage.pageDescription}
       >
