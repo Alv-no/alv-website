@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { useServicesQuery } from '../hookspages/useServicesQuery';
 import { StyledBlockContent } from '../components/styledBlockContent';
 import {
@@ -12,9 +12,11 @@ import {
   ImageTextFull,
   ServicesCard,
 } from 'shared-components';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Services = () => {
   const data = useServicesQuery();
+  const layoutData = useLayoutQuery();
   const cards = data.allSanityServices.edges.map((edge) => edge.node);
 
   const {
@@ -48,6 +50,7 @@ const Services = () => {
   return (
     <div className="overflow-hidden">
       <Layout
+        layoutData={layoutData}
         whiteIcons
         pageTitle={pageTitle}
         pageDescription={pageDescription}

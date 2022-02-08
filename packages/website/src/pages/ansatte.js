@@ -1,11 +1,13 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import  Layout  from '../components/layout';
 import { Title, Description, EmployeeSection, Cta } from 'shared-components';
 import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import slugify from 'slugify';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Employees = ({ location }) => {
   const data = useEmployeeQuery();
+  const layoutData = useLayoutQuery();
   const {
     allEmployees,
     sanityEmployeePage: { pageDescription } = { pageDescription: false },
@@ -22,7 +24,12 @@ const Employees = ({ location }) => {
     activeCard = card.id;
   }
   return (
-    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout
+      layoutData={layoutData}
+      whiteIcons
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+    >
       <div className="bg-navy w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
         <Title>Våre Konsulenter</Title>
         <div className="sm:h-8 h-4" />

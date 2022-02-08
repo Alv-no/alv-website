@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header, MobileHeader, Footer, SEO } from 'shared-components';
 import * as Logo from '../logo';
-import { useLayoutQuery } from './useLayoutQuery';
 import './layout.css';
 
-export const Layout = ({
+const Layout = ({
+  layoutData,
   children,
   path,
   pageDescription,
@@ -21,7 +21,7 @@ export const Layout = ({
     categoryPages,
     companyPages,
     site,
-  } = useLayoutQuery();
+  } = layoutData;
 
   const metaAuthor = site.siteMetadata.author;
   const metaDescription = site.siteMetadata.description;
@@ -68,3 +68,5 @@ export const Layout = ({
     </>
   );
 };
+
+export default Layout;
