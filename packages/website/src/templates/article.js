@@ -4,7 +4,8 @@ import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import { MobileHeader } from '../../../shared-components/src/components/header';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import { Footer } from '../../../shared-components/src/components/footer'; import { SEO } from '../../../shared-components/src/components/seo';
+import { Footer } from '../../../shared-components/src/components/footer';
+import { SEO } from '../../../shared-components/src/components/seo';
 import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
 import * as styles from '../components/styledBlockContent/StyledBlockContent.module.css';
 import { SocialShare } from '../../../shared-components/src/components/socialShare';
@@ -33,8 +34,8 @@ const ArticleTemplate = (props) => {
     author && author.firstname
       ? author
       : guestAuthor
-        ? guestAuthor.guestAuthor
-        : null;
+      ? guestAuthor.guestAuthor
+      : null;
 
   let authorSlug;
   let authorFullname;
@@ -173,7 +174,6 @@ const ArticleTemplate = (props) => {
 };
 
 export default ArticleTemplate;
-
 
 export async function getServerData() {
   return Promise.resolve({

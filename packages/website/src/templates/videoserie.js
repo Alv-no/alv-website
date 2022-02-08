@@ -30,7 +30,12 @@ const Videoseries = ({ pageContext }) => {
     featuredVideo.seasons[featuredVideo.seasons.length - 1];
 
   return (
-    <Layout layoutData={layoutData} whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout
+      layoutData={layoutData}
+      whiteIcons
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+    >
       <div className="bg-navy text-white md:px-10 overflow-hidden">
         <div className="max-w-1200 mx-auto overflow-hidden">
           {filteredVideoseries && (
