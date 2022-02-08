@@ -45,7 +45,12 @@ const Category = ({ data }) => {
   topFour = topFour.slice(0, topFour.length > 4 ? 4 : topFour.length);
 
   return (
-    <Layout whiteIcons layoutData={layoutData} pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout
+      whiteIcons
+      layoutData={layoutData}
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+    >
       <NavyIntro
         title={sanityCategoryPage.heroHeading}
         description={sanityCategoryPage.heroDescription}

@@ -15,7 +15,6 @@ import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Index = ({ data, location }) => {
   const layoutData = useLayoutQuery();
-  console.log(layoutData);
   const pageTitle = data.sanityLandingPage.pageTitle || false;
   const pageDescription = data.sanityLandingPage.pageDescription || false;
 

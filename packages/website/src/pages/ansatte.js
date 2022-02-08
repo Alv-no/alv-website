@@ -1,5 +1,5 @@
 import React from 'react';
-import  Layout  from '../components/layout';
+import Layout from '../components/layout';
 import { Title, Description, EmployeeSection, Cta } from 'shared-components';
 import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import slugify from 'slugify';
