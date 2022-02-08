@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { NavyIntro } from '../../../shared-components/src/components/navyIntro';
 import { StyledBlockContent } from '../components/styledBlockContent';
-import {useLayoutQuery} from '../hooks/useLayoutQuery';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Career = ({ data }) => {
   const { sanityOpenPostionPage } = data;
@@ -15,7 +15,12 @@ const Career = ({ data }) => {
   } = data;
 
   return (
-      <Layout layoutData={layoutData} whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout
+      layoutData={layoutData}
+      whiteIcons
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+    >
       <div className="bg-navy">
         <NavyIntro
           title={pageTitle}

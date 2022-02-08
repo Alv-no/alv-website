@@ -26,7 +26,12 @@ const Company = ({ data }) => {
   } = data;
 
   return (
-    <Layout layoutData={layoutData} pageTitle={pageTitle} pageDescription={pageDescription} whiteIcons>
+    <Layout
+      layoutData={layoutData}
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+      whiteIcons
+    >
       <div className="z-0 twelve:z-20 relative">
         <NavyIntroImage
           title={data.sanityCompany.heroHeading}
