@@ -3,9 +3,8 @@ import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import { MobileHeader } from '../../../shared-components/src/components/header';
-import { useLayoutQuery } from '../components/layout/useLayoutQuery';
-import { Footer } from '../../../shared-components/src/components/footer';
-import { SEO } from '../../../shared-components/src/components/seo';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { Footer } from '../../../shared-components/src/components/footer'; import { SEO } from '../../../shared-components/src/components/seo';
 import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
 import * as styles from '../components/styledBlockContent/StyledBlockContent.module.css';
 import { SocialShare } from '../../../shared-components/src/components/socialShare';
@@ -13,7 +12,6 @@ import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
 import { StyledBlockContent } from '../components/styledBlockContent';
 import * as Logo from '../components/logo';
-
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
   const { servicePages, categoryPages, companyPages } = useLayoutQuery();
@@ -35,8 +33,8 @@ const ArticleTemplate = (props) => {
     author && author.firstname
       ? author
       : guestAuthor
-      ? guestAuthor.guestAuthor
-      : null;
+        ? guestAuthor.guestAuthor
+        : null;
 
   let authorSlug;
   let authorFullname;
@@ -175,6 +173,13 @@ const ArticleTemplate = (props) => {
 };
 
 export default ArticleTemplate;
+
+
+export async function getServerData() {
+  return Promise.resolve({
+    props: {},
+  });
+}
 
 // GraphQL Query for article content
 export const query = graphql`

@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { useBlogQuery } from '../hooks/useBlogQuery';
 import { Hero } from '../components/hero';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import {
   WhoWeAre,
   OurServices,
@@ -11,8 +11,11 @@ import {
   Hire,
   HireAlt,
 } from 'shared-components';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Index = ({ data, location }) => {
+  const layoutData = useLayoutQuery();
+  console.log(layoutData);
   const pageTitle = data.sanityLandingPage.pageTitle || false;
   const pageDescription = data.sanityLandingPage.pageDescription || false;
 
@@ -30,6 +33,7 @@ const Index = ({ data, location }) => {
         whiteIcons
         pageTitle={pageTitle}
         pageDescription={pageDescription}
+        layoutData={layoutData}
       >
         <div className="bg-navy">
           <Hero

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { NavyIntro, FeaturedTeam } from 'shared-components';
 import { RolesList } from '../components/rolesList';
@@ -7,9 +7,11 @@ import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
 import { BlogCarousel } from '../components/blogCarousel';
 import { StyledBlockContent } from '../components/styledBlockContent';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Category = ({ data }) => {
   const { sanityCategoryPage } = data;
+  const layoutData = useLayoutQuery();
 
   const nav = [
     { label: 'Oversikt', id: 'oversikt' },
@@ -43,7 +45,7 @@ const Category = ({ data }) => {
   topFour = topFour.slice(0, topFour.length > 4 ? 4 : topFour.length);
 
   return (
-    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout whiteIcons layoutData={layoutData} pageTitle={pageTitle} pageDescription={pageDescription}>
       <NavyIntro
         title={sanityCategoryPage.heroHeading}
         description={sanityCategoryPage.heroDescription}

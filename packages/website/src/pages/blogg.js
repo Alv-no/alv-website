@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutServerSide } from '../components/layoutServerSide';
+import Layout from '../components/layout';
 import { Title, IntroContainer, BlogSection } from 'shared-components';
 import { graphql } from 'gatsby';
 
@@ -7,7 +7,7 @@ const Blog = ({ data }) => {
   const layoutData = {
     ...data.sanitySiteSettings,
     servicePages: data.allSanityServices.nodes,
-    sanityCompany: data.allSanityCompany.nodes,
+    companyPages: data.allSanityCompany.nodes,
     categoryPages: data.allSanityCategoryPage.nodes,
     site: data.site,
   };
@@ -23,7 +23,7 @@ const Blog = ({ data }) => {
   featuredArticle.fallbackImg =
     data.fallbackImg.childImageSharp.gatsbyImageData;
   return (
-    <LayoutServerSide
+    <Layout
       whiteIcons
       pageTitle={data.sanityBlogPage.pageTitle}
       pageDescription={data.sanityBlogPage.pageDescription}
@@ -42,7 +42,7 @@ const Blog = ({ data }) => {
         </IntroContainer>
         <BlogSection allArticles={articles} />
       </div>
-    </LayoutServerSide>
+    </Layout>
   );
 };
 
@@ -124,7 +124,7 @@ export const query = graphql`
         gatsbyImageData(layout: FULL_WIDTH)
       }
     }
-    sanitySiteSettings(id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }) {
+   sanitySiteSettings(id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }) {
       email
       org
       phone

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
 import { BlogCarousel } from '../components/blogCarousel';
 import {
@@ -8,9 +8,11 @@ import {
   AboutIntro,
   FeaturedTeam,
 } from 'shared-components';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const About = () => {
   const data = useAboutUsQuery();
+  const layoutData = useLayoutQuery();
   const {
     sanityAboutPage: { pageDescription } = { pageDescription: false },
     sanityAboutPage: { pageTitle } = { pageTitle: false },
@@ -22,7 +24,12 @@ const About = () => {
   const team = employees.slice(0, 4);
 
   return (
-    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Layout
+      layoutData={layoutData}
+      whiteIcons
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+    >
       <div className="w-full bg-navy text-white sm:pb-20 pb-4 overflow-hidden tracking-wider">
         <div className="w-full">
           <AboutIntro

@@ -1,15 +1,19 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { window } from 'browser-monads';
 import { SocialShare } from '../../../shared-components/src/components/socialShare';
 import { VideoEpisode } from '../components/videoEpisode';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const VideoTemplate = ({ pageContext }) => {
   const { video, season, playlistName } = pageContext;
 
+
+  const layoutData = useLayoutQuery();
+
   return (
-    <Layout whiteIcons pageTitle={playlistName}>
+      <Layout layoutData={layoutData} whiteIcons pageTitle={playlistName}>
       <div className="bg-navy text-white seven:px-10 overflow-hidden min-h-screen">
         <div className="max-w-1200 mx-auto">
           <div className="lg:grid gap-y-6 gap-x-2 grid-cols-videos-sidebar">

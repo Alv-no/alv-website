@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../components/layout';
+import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { ServiceNavList } from '../components/serviceNavList';
 import { RolesList } from '../components/rolesList';
@@ -7,8 +7,10 @@ import { NavyIntroImage } from '../components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
 import { window } from 'browser-monads';
 import { BlogCarousel } from '../components/blogCarousel';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Service = ({ data }) => {
+  const layoutData = useLayoutQuery();
   const nav = [
     { label: 'Oversikt', id: 'oversikt' },
     { label: 'Tjenester', id: 'tjenester' },
@@ -30,7 +32,7 @@ const Service = ({ data }) => {
   );
 
   return (
-    <Layout whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
+      <Layout layoutData={layoutData} whiteIcons pageTitle={pageTitle} pageDescription={pageDescription}>
       <div className="z-0 twelve:z-20 relative">
         <NavyIntroImage
           title={data.sanityServices.heroHeading}
