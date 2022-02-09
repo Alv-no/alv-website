@@ -1,10 +1,9 @@
-FROM nginx:1.20.2-alpine
+FROM nginx:1.20.2-alpine as dev
 
-# Stage 1 - Install node, yarn and python
-RUN apk add --update nodejs yarn
-RUN apk add --no-cache python3 make gcc g++
+# Install packages and dependencies
+RUN apk update && apk add --no-cache supervisor python3 make gcc g++ && apk add --update nodejs yarn varnish
 
-# Stage 2 - Building the website
+# Build
 WORKDIR /app
 RUN mkdir -p /app/packages/website
 RUN mkdir -p /app/.yarn/releases
@@ -16,7 +15,6 @@ COPY packages/website /app/packages/website/
 COPY packages/shared-components /app/packages/shared-components/
 
 RUN yarn
-
 RUN yarn workspace website run disable-telemetry
 
 # The build step shouldn't be cached since it's non determenistic
@@ -28,17 +26,15 @@ ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN test -f "/app/packages/website/.env.production"
 RUN yarn workspace website run build
 
-# Stage 3 - Setup nginx webserver
+# Configuring NginX
 RUN cp -r /app/packages/website/public/* /usr/share/nginx/html/
 COPY website.nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 
-# Stage 4 - Setup and install Varnish
-RUN apk add --update varnish
+# Configure varnish
 COPY default.vcl /etc/varnish/
 
-# Stage 5 - Setup and run supervisor
-RUN apk update && apk add --no-cache supervisor
+# Configure supervisor
 COPY supervisord.conf /app/supervisord.conf
 CMD ["supervisord","-c","/app/supervisord.conf"]
 
