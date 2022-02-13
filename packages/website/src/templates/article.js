@@ -1,7 +1,6 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
-import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { MobileHeader } from '../../../shared-components/src/components/header';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { Footer } from '../../../shared-components/src/components/footer';
@@ -12,9 +11,11 @@ import { SocialShare } from '../../../shared-components/src/components/socialSha
 import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
 import { StyledBlockContent } from '../components/styledBlockContent';
+import { getBlogArticleServerSide } from '../hooks/useBlogArticleServerSide';
+import { getBlogDataServerSide } from '../hooks/useBlogQueryServerSide';
 import * as Logo from '../components/logo';
 // Template for how articles are rendered.
-const ArticleTemplate = (props) => {
+const ArticleTemplate = ({ serverData: { article, articles } }) => {
   const { servicePages, categoryPages, companyPages } = useLayoutQuery();
   const {
     title,
@@ -25,7 +26,11 @@ const ArticleTemplate = (props) => {
     tags,
     description,
     socials,
-  } = props.data.sanityArticle;
+  } = article;
+
+  const wrappedArticles = {
+    edges: articles.articles.map((article) => ({ node: article })),
+  };
 
   const socialObj = socials || {};
   const { socialSubtitle, socialImage, socialTitle } = socialObj;
@@ -47,9 +52,7 @@ const ArticleTemplate = (props) => {
 
   const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
   const metaImage =
-    socials && socials.socialImage
-      ? getSrc(socialImage.asset.gatsbyImageData)
-      : null;
+    socials && socials.socialImage ? socialImage.asset.url : null;
 
   const metaArr = socialTags;
   const metaLang = { lang: 'no' };
@@ -79,7 +82,6 @@ const ArticleTemplate = (props) => {
           {...postAuthor}
           isEmployee={!guestAuthor}
           authorSlug={authorSlug}
-          fallbackImg={props.data.fallbackImg.childImageSharp.gatsbyImageData}
           servicePages={servicePages}
           categoryPages={categoryPages}
           companyPages={companyPages}
@@ -120,7 +122,7 @@ const ArticleTemplate = (props) => {
               />
             </div>
             <AlsoRead
-              articles={props.data.articles}
+              articles={wrappedArticles}
               currentTags={socialTags}
               currentAuthor={authorFullname}
             />
@@ -161,7 +163,7 @@ const ArticleTemplate = (props) => {
           </div>
           <div className="mb-12">
             <AlsoRead
-              articles={props.data.articles}
+              articles={wrappedArticles}
               currentTags={socialTags}
               currentAuthor={authorFullname}
             />
@@ -175,120 +177,18 @@ const ArticleTemplate = (props) => {
 
 export default ArticleTemplate;
 
-export async function getServerData() {
-  return Promise.resolve({
-    props: {},
-  });
-}
-
-// GraphQL Query for article content
-export const query = graphql`
-  query($slug: String!) {
-    fallbackImg: file(name: { eq: "fallback" }) {
-      childImageSharp {
-        gatsbyImageData(width: 300, layout: CONSTRAINED)
-      }
-    }
-    sanityArticle(slug: { current: { eq: $slug } }) {
-      title
-      publishedAt(formatString: "MMMM Do, YYYY")
-      author {
-        firstname
-        lastname
-        cv {
-          asset {
-            url
-          }
-        }
-        id
-        title
-        image {
-          asset {
-            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-          }
-        }
-      }
-      _rawBody
-      description
-      tags {
-        tag
-      }
-      slug {
-        current
-      }
-      mainImage {
-        asset {
-          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-        }
-      }
-      guestAuthor {
-        guestAuthor {
-          image {
-            asset {
-              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-              url
-            }
-          }
-          firstname
-          lastname
-          title
-          id
-        }
-      }
-      socials {
-        socialSubtitle
-        socialTitle
-        socialImage {
-          asset {
-            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-          }
-        }
-      }
-    }
-    articles: allSanityArticle(sort: { fields: publishedAt }) {
-      edges {
-        node {
-          id
-          description
-          slug {
-            current
-          }
-          title
-          tags {
-            tag
-          }
-          mainImage {
-            asset {
-              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-            }
-          }
-          author {
-            image {
-              asset {
-                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-              }
-            }
-            firstname
-            lastname
-          }
-          guestAuthor {
-            guestAuthor {
-              image {
-                asset {
-                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-                  url
-                }
-              }
-              firstname
-              lastname
-              title
-              id
-            }
-          }
-          publishedAt(formatString: "DD MMM, YYYY")
-          rawDate: publishedAt
-        }
-      }
-    }
+export async function getServerData(context) {
+  const slug = context.pageContext.slug;
+  try {
+    const article = await getBlogArticleServerSide(slug);
+    const articles = await getBlogDataServerSide();
+    return Promise.resolve({
+      props: { article, articles },
+      status: 200,
+    });
+  } catch {
+    return {
+      status: 500,
+    };
   }
-`;
+}

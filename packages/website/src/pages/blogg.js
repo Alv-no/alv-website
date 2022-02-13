@@ -2,8 +2,9 @@ import React from 'react';
 import Layout from '../components/layout';
 import { Title, IntroContainer, BlogSection } from 'shared-components';
 import { graphql } from 'gatsby';
+import { getBlogDataServerSide } from '../hooks/useBlogQueryServerSide';
 
-const Blog = ({ data }) => {
+const Blog = ({ data, serverData }) => {
   const layoutData = {
     ...data.sanitySiteSettings,
     servicePages: data.allSanityServices.nodes,
@@ -11,22 +12,16 @@ const Blog = ({ data }) => {
     categoryPages: data.allSanityCategoryPage.nodes,
     site: data.site,
   };
-
-  const articles = data.articles.edges
-    .map((article) => article.node)
-    .sort((a, b) => (a.rawDate > b.rawDate ? -1 : 1));
-  articles.map(
-    (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData)
+  const articles = serverData.articles.articles.sort((a, b) =>
+    a.rawDate > b.rawDate ? -1 : 1
   );
   const featuredArticle = articles[0];
   articles.shift();
-  featuredArticle.fallbackImg =
-    data.fallbackImg.childImageSharp.gatsbyImageData;
   return (
     <Layout
       whiteIcons
-      pageTitle={data.sanityBlogPage.pageTitle}
-      pageDescription={data.sanityBlogPage.pageDescription}
+      pageTitle={serverData.articles.pageMetadata.pageTitle}
+      pageDescription={serverData.articles.pageMetadata.pageDescription}
       layoutData={layoutData}
     >
       <div className="overflow-hidden">
@@ -49,81 +44,21 @@ const Blog = ({ data }) => {
 export default Blog;
 
 export async function getServerData() {
-  return Promise.resolve({
-    props: {},
-  });
+  try {
+    return {
+      props: { articles: await getBlogDataServerSide() },
+      status: 200,
+    };
+  } catch {
+    return {
+      articles: [],
+      status: 500,
+    };
+  }
 }
 
 export const query = graphql`
   {
-    sanityBlogPage {
-      pageDescription
-      pageTitle
-    }
-    articles: allSanityArticle(sort: { fields: publishedAt }) {
-      edges {
-        node {
-          id
-          description
-          slug {
-            current
-          }
-          title
-          tags {
-            tag
-          }
-          mainImage {
-            asset {
-              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-            }
-          }
-          author {
-            image {
-              asset {
-                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-              }
-            }
-            firstname
-            lastname
-          }
-          guestAuthor {
-            guestAuthor {
-              image {
-                asset {
-                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-                  url
-                }
-              }
-              firstname
-              lastname
-              title
-              id
-            }
-          }
-          publishedAt(formatString: "DD MMM, YYYY")
-          rawDate: publishedAt
-        }
-      }
-    }
-    featuredArticle: sanitySiteSettings {
-      featuredPost {
-        title
-        description
-        slug {
-          current
-        }
-        mainImage {
-          asset {
-            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-          }
-        }
-      }
-    }
-    fallbackImg: file(name: { eq: "featuredFallback" }) {
-      childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH)
-      }
-    }
     sanitySiteSettings(id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }) {
       email
       org

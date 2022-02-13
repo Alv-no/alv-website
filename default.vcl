@@ -6,8 +6,9 @@ backend default {
 }
 
 sub vcl_recv {
-    if (req.method == "PURGE") {
-        return (purge);
+    if (req.method == "PATCH") {
+        ban("req.http.host ~ .*");
+        return (synth(200, "Full cache cleared"));
     }    
 }
 
