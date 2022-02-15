@@ -11,9 +11,12 @@ import { SocialShare } from '../../../shared-components/src/components/socialSha
 import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
 import { StyledBlockContent } from '../components/styledBlockContent';
-import { getBlogArticleServerSide } from '../hooks/useBlogArticleServerSide';
 import { getBlogDataServerSide } from '../hooks/useBlogQueryServerSide';
 import * as Logo from '../components/logo';
+import { gql } from '@apollo/client';
+import { client } from '../server-side/client';
+import { createGatsbyImages } from '../server-side/imageCreator';
+
 // Template for how articles are rendered.
 const ArticleTemplate = ({ serverData: { article, articles } }) => {
   const { servicePages, categoryPages, companyPages } = useLayoutQuery();
@@ -176,6 +179,102 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
 };
 
 export default ArticleTemplate;
+
+export async function getBlogArticleServerSide(slug) {
+  const response = await client.query({
+    variables: {
+      slug,
+    },
+    fetchPolicy: 'no-cache',
+    query: gql`
+      query($slug: String!) {
+        allArticle(where: { slug: { current: { eq: $slug } } }) {
+          title
+          description
+          author {
+            firstname
+            lastname
+            cv {
+              asset {
+                url
+              }
+            }
+            id: _id
+            title
+            image {
+              asset {
+                id: _id
+                metadata {
+                  dimensions {
+                    height
+                    width
+                  }
+                }
+              }
+            }
+          }
+          _rawBody: bodyRaw
+          tags {
+            tag
+          }
+          slug {
+            current
+          }
+          mainImage {
+            asset {
+              id: _id
+              metadata {
+                dimensions {
+                  height
+                  width
+                }
+              }
+            }
+          }
+
+          guestAuthor {
+            guestAuthor {
+              image {
+                asset {
+                  id: _id
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
+              }
+              firstname
+              lastname
+              title
+              id: _id
+            }
+          }
+          socials {
+            socialSubtitle
+            socialTitle
+            socialImage {
+              asset {
+                id: _id
+                url
+                metadata {
+                  dimensions {
+                    height
+                    width
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+  });
+  const article = response.data.allArticle[0];
+  createGatsbyImages(article);
+  return article;
+}
 
 export async function getServerData(context) {
   const slug = context.pageContext.slug;

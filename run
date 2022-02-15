@@ -26,6 +26,9 @@ function getSecrets() {
   SANITY_AUTH_TOKEN="$(getSecret sanity-auth-token)"
   SANITY_TOKEN_ALVB="$(getSecret sanity-token-alvb)"
   SANITY_TOKEN="$(getSecret sanity-token)"
+  SANITY_DATASET="$(getSecret sanity-dataset)"
+  SANITY_PROJECT_ID="$(getSecret sanity-project-id)"
+  SANITY_TAG="$(getSecret sanity-tag)"
   YT_API="$(getSecret youtube-api-token)"
   SENDGRID_API_KEY="$(getSecret sendgrid-api-key)"
   MAILTO="$(getSecret mail-api-recipient)"
@@ -38,6 +41,9 @@ function buildServices() {
     if [ ! -f packages/website/.env.production ]; then
       echo "SANITY_TOKEN=$SANITY_TOKEN" >> packages/website/.env.production
       echo "YT_API=$YT_API" >> packages/website/.env.production
+      echo "SANITY_DATASET=$SANITY_DATASET" >> packages/website/.env.production
+      echo "SANITY_PROJECT_ID=$SANITY_PROJECT_ID" >> packages/website/.env.production
+      echo "SANITY_TAG=$SANITY_TAG" >> packages/website/.env.production
     fi
 
     docker build . \

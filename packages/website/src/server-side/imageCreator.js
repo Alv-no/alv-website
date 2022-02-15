@@ -23,8 +23,8 @@ function imageCreator(asset) {
   }
 
   return getGatsbyImageData(node, assets, {
-    projectId: 'mnr37rl0',
-    dataset: 'production',
+    projectId: process.env.SANITY_PROJECT_ID,
+    dataset: process.env.SANITY_DATASET,
   });
 }
 
