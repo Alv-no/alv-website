@@ -32,10 +32,10 @@ module.exports = {
     {
       resolve: `gatsby-source-sanity`,
       options: {
-        projectId: `mnr37rl0`,
-        dataset: `production`,
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
         token: process.env.SANITY_TOKEN,
-        graphqlTag: 'default',
+        graphqlTag: process.env.SANITY_TAG,
       },
     },
     {
