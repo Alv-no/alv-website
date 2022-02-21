@@ -1,4 +1,5 @@
 const path = require(`path`);
+const config = require('./src/config');
 const slugify = require('slugify');
 const fetch = require('node-fetch');
 
@@ -101,7 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
   );
 
   let videoseries;
-  if (process.env.YT_API) {
+  if (config.YT_API) {
     // fetch videos from playlists (seasons)
     videoseries = await Promise.all(
       res.data.allSanityVideoseries.nodes.map(async (category) => {
@@ -109,7 +110,7 @@ exports.createPages = async ({ graphql, actions }) => {
         await Promise.all(
           category.playlists.process.map(async ({ id }) => {
             const response = await fetch(
-              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&key=${process.env.YT_API}`
+              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&key=${config.YT_API}`
             );
             const list = await response.json();
             let seasonVideos = list.items;
@@ -119,7 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
               let nextPageToken = list.nextPageToken;
               while (nextPageToken) {
                 const response = await fetch(
-                  `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&pageToken=${nextPageToken}&key=${process.env.YT_API}`
+                  `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&pageToken=${nextPageToken}&key=${config.YT_API}`
                 );
                 const nextPageList = await response.json();
                 seasonVideos = seasonVideos.concat(nextPageList.items);

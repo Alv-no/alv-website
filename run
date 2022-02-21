@@ -13,8 +13,7 @@ CONTAINER_REGISTRY_NAME=alvkubernetesclustertestacr
 CONTAINER_REGISTRY="$CONTAINER_REGISTRY_NAME.azurecr.io"
 SERVICE_TO_BUILD="$3"
 SUBSCRIPTION="k8s-$ENV-subscription"
-
-function getSecret() {
+function getSe"bcret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
 }
 
@@ -26,9 +25,6 @@ function getSecrets() {
   SANITY_AUTH_TOKEN="$(getSecret sanity-auth-token)"
   SANITY_TOKEN_ALVB="$(getSecret sanity-token-alvb)"
   SANITY_TOKEN="$(getSecret sanity-token)"
-  SANITY_DATASET="$(getSecret sanity-dataset)"
-  SANITY_PROJECT_ID="$(getSecret sanity-project-id)"
-  SANITY_TAG="$(getSecret sanity-tag)"
   YT_API="$(getSecret youtube-api-token)"
   SENDGRID_API_KEY="$(getSecret sendgrid-api-key)"
   MAILTO="$(getSecret mail-api-recipient)"
@@ -36,14 +32,12 @@ function getSecrets() {
 
 function buildServices() {
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "building website"
+    echo "building alv website"
 
     if [ ! -f packages/website/.env.production ]; then
+      echo "ENV=$ENV" >> packages/website/.env.production
       echo "SANITY_TOKEN=$SANITY_TOKEN" >> packages/website/.env.production
       echo "YT_API=$YT_API" >> packages/website/.env.production
-      echo "SANITY_DATASET=$SANITY_DATASET" >> packages/website/.env.production
-      echo "SANITY_PROJECT_ID=$SANITY_PROJECT_ID" >> packages/website/.env.production
-      echo "SANITY_TAG=$SANITY_TAG" >> packages/website/.env.production
     fi
 
     docker build . \
@@ -53,7 +47,7 @@ function buildServices() {
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "building website"
+    echo "building alv-b website"
 
     if [ ! -f packages/website-alvb/.env.production ]; then
       echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" >> packages/website-alvb/.env.production
@@ -152,6 +146,6 @@ if [ "deploy" = "$1" ]; then
   getSecrets
   az acr login --name $CONTAINER_REGISTRY_NAME
   buildServices
-  pushServices
-  deployServices
+  #pushServices
+  #deployServices
 fi

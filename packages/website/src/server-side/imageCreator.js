@@ -1,4 +1,5 @@
 import { getGatsbyImageData } from 'gatsby-source-sanity';
+import config from '../config';
 
 function resolveNodeType(asset) {
   if (asset._ref) {
@@ -23,8 +24,8 @@ function imageCreator(asset) {
   }
 
   return getGatsbyImageData(node, assets, {
-    projectId: process.env.SANITY_PROJECT_ID,
-    dataset: process.env.SANITY_DATASET,
+    projectId: config.SANITY_PROJECT_ID,
+    dataset: config.SANITY_DATASET,
   });
 }
 
