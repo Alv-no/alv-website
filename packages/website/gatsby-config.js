@@ -2,6 +2,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const config = require('./src/config');
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://www.alv.no`,
@@ -32,10 +34,10 @@ module.exports = {
     {
       resolve: `gatsby-source-sanity`,
       options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
-        token: process.env.SANITY_TOKEN,
-        graphqlTag: process.env.SANITY_TAG,
+        projectId: config.SANITY_PROJECT_ID,
+        dataset: config.SANITY_DATASET,
+        token: config.SANITY_TOKEN,
+        graphqlTag: config.SANITY_TAG,
       },
     },
     {
