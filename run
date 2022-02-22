@@ -13,7 +13,7 @@ CONTAINER_REGISTRY_NAME=alvkubernetesclustertestacr
 CONTAINER_REGISTRY="$CONTAINER_REGISTRY_NAME.azurecr.io"
 SERVICE_TO_BUILD="$3"
 SUBSCRIPTION="k8s-$ENV-subscription"
-function getSe"bcret() {
+function getSecret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
 }
 
@@ -146,6 +146,6 @@ if [ "deploy" = "$1" ]; then
   getSecrets
   az acr login --name $CONTAINER_REGISTRY_NAME
   buildServices
-  #pushServices
-  #deployServices
+  pushServices
+  deployServices
 fi
