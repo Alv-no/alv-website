@@ -3,7 +3,8 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
-import { WhoWeAre, VideoIntro, Hire, OurServices } from 'shared-components';
+import { VideoIntro } from '../components/videoIntro';
+import { WhoWeAre, Hire, OurServices } from 'shared-components';
 import { Founder } from '../components/founder';
 import localize from '../components/localize/index';
 
