@@ -12,11 +12,19 @@ const Blog = ({ data, serverData }) => {
     categoryPages: data.allSanityCategoryPage.nodes,
     site: data.site,
   };
-  const articles = serverData.articles.articles.sort((a, b) =>
-    a.rawDate > b.rawDate ? -1 : 1
-  );
+
+  const articles = serverData.articles.articles
+    .filter((article) => article.publishedAt !== null)
+    .map((article) => ({
+      ...article,
+      date: new Date(article.publisedAt),
+    }))
+    .sort((a, b) => a.date > b.date)
+    .reverse();
+
   const featuredArticle = articles[0];
   articles.shift();
+
   return (
     <Layout
       whiteIcons
