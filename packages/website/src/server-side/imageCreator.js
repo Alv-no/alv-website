@@ -34,7 +34,16 @@ export function createGatsbyImages(element) {
   Object.keys(element).forEach((subElement) => {
     if (typeof element[subElement] === 'object') {
       createGatsbyImages(element[subElement]);
+      return;
     }
+
+    if (Array.isArray(element)) {
+      element.forEach((childElement) => {
+        createGatsbyImages(childElement);
+      });
+      return;
+    }
+
     if (
       subElement === '__typename' &&
       element[subElement] === 'Image' &&
