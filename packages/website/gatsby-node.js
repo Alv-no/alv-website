@@ -196,17 +196,6 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-  // Create blog posts pages.
-  res.data.allSanityArticle.edges.forEach((edge) => {
-    createPage({
-      component: articleTemplate,
-      path: `/blogg/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-  });
-
   // Create company pages.
   res.data.allSanityCompany.edges.forEach((edge) => {
     createPage({
