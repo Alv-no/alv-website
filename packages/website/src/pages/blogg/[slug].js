@@ -276,8 +276,8 @@ export async function getBlogArticleServerSide(slug) {
   return article;
 }
 
-export async function getServerData(context) {
-  const slug = context.pageContext.slug__current;
+export async function getServerData(props) {
+  const slug = props.params['slug'];
   try {
     const article = await getBlogArticleServerSide(slug);
     const articles = await getBlogDataServerSide();

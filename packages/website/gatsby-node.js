@@ -5,7 +5,6 @@ const fetch = require('node-fetch');
 
 const videoTemplate = path.resolve(`./src/templates/video.js`);
 const careerTemplate = path.resolve(`./src/templates/career.js`);
-const articleTemplate = path.resolve(`./src/templates/article.js`);
 const serviceTemplate = path.resolve(`./src/templates/service.js`);
 const companyTemplate = path.resolve(`./src/templates/company.js`);
 const categoryTemplate = path.resolve(`./src/templates/category.js`);
