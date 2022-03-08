@@ -1,21 +1,21 @@
 import React from 'react';
-import Sidebar from '../components/sidebar';
+import Sidebar from '../../components/sidebar';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { MobileHeader } from '../../../shared-components/src/components/header';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import { Footer } from '../../../shared-components/src/components/footer';
-import { SEO } from '../../../shared-components/src/components/seo';
-import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
-import * as styles from '../components/styledBlockContent/StyledBlockContent.module.css';
-import { SocialShare } from '../../../shared-components/src/components/socialShare';
+import { MobileHeader } from '../../../../shared-components/src/components/header';
+import { useLayoutQuery } from '../../hooks/useLayoutQuery';
+import { Footer } from '../../../../shared-components/src/components/footer';
+import { SEO } from '../../../../shared-components/src/components/seo';
+import { AlsoRead } from '../../../../shared-components/src/components/alsoRead';
+import * as styles from '../../components/styledBlockContent/StyledBlockContent.module.css';
+import { SocialShare } from '../../../../shared-components/src/components/socialShare';
 import { window } from 'browser-monads';
-import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
-import { StyledBlockContent } from '../components/styledBlockContent';
-import { getBlogDataServerSide } from '../hooks/useBlogQueryServerSide';
-import * as Logo from '../components/logo';
+import { createSlugForEmployee } from '../../../../shared-components/src/components/createSlugForEmployee';
+import { StyledBlockContent } from '../../components/styledBlockContent';
+import { getBlogDataServerSide } from '../../hooks/useBlogQueryServerSide';
+import * as Logo from '../../components/logo';
 import { gql } from '@apollo/client';
-import { client } from '../server-side/client';
-import { createGatsbyImages } from '../server-side/imageCreator';
+import { client } from '../../server-side/client';
+import { createGatsbyImages } from '../../server-side/imageCreator';
 
 // Template for how articles are rendered.
 const ArticleTemplate = ({ serverData: { article, articles } }) => {
@@ -277,7 +277,7 @@ export async function getBlogArticleServerSide(slug) {
 }
 
 export async function getServerData(context) {
-  const slug = context.pageContext.slug;
+  const slug = context.pageContext.slug__current;
   try {
     const article = await getBlogArticleServerSide(slug);
     const articles = await getBlogDataServerSide();
