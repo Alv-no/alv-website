@@ -14,7 +14,7 @@ export const companyRichTextTypes = {
     linkableHeading: (props) => {
       const formattedEl = props.node.Heading?.split(' ').join('-');
       const navElement = formattedEl?.toLowerCase();
-      return <h2 id={navElement}> {props.node.Heading}</h2>;
+      return <h2 id={navElement}>{props.node.Heading}</h2>;
     },
     imageTextFlip: (props) => {
       return (
@@ -22,23 +22,21 @@ export const companyRichTextTypes = {
           <img
             alt={props.node.heading}
             src={urlFor(props.node.image.asset).width(700).height(700).url()}
-            className="px-0 my-0 object-cover h-full"
-            style={{ padding: 0, margin: 0 }}
+            className="px-0 my-0 object-cover h-full p-0 m-0"
+            style={{ padding: 0, margin: 0, maxHeight: '383px' }}
           />
           <div
             className={`${
               props.node.flip ? 'sm:order-first sm:pr-8' : 'sm:pl-8'
-            } flex flex-col justify-center py-2`}
+            } flex flex-col font-thin`}
           >
-            <span className="font-thin">
-              <PortableText
-                blocks={props.node.linkableBlock}
-                projectId="mnr37rl0"
-                dataset="production"
-                className={styles.body}
-                serializers={companyRichTextTypes}
-              />
-            </span>
+            <PortableText
+              blocks={props.node.linkableBlock}
+              projectId="mnr37rl0"
+              dataset="production"
+              className={styles.body}
+              serializers={companyRichTextTypes}
+            />
           </div>
         </section>
       );
