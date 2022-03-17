@@ -15,10 +15,14 @@ const Blog = ({ data, serverData }) => {
 
   const articles = serverData.articles.articles
     .filter((article) => article.publishedAt !== null)
-    .map((article) => ({
-      ...article,
-      date: new Date(article.publisedAt),
-    }))
+    .map((article) => {
+      const date = new Date(article.publishedAt);
+      return {
+        ...article,
+        date,
+        publishedAt: date.toLocaleDateString('no-NB'),
+      };
+    })
     .sort((a, b) => a.date > b.date)
     .reverse();
 
