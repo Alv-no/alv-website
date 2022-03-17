@@ -3,10 +3,6 @@ export const useAboutUsQuery = () => {
   const data = useStaticQuery(
     graphql`
       {
-        sanityAboutPage {
-          pageDescription
-          pageTitle
-        }
         aboutUsTop: file(name: { eq: "contact_us_img2" }) {
           childImageSharp {
             gatsbyImageData(layout: FULL_WIDTH)
@@ -30,25 +26,6 @@ export const useAboutUsQuery = () => {
         fallbackImg: file(name: { eq: "fallback" }) {
           childImageSharp {
             gatsbyImageData(width: 600, layout: CONSTRAINED)
-          }
-        }
-        sanityLandingPage {
-          section2Services {
-            description
-            heading
-            link
-            textOverImage
-            servicesList {
-              link
-              subtitle
-              text
-              title
-            }
-            image {
-              asset {
-                gatsbyImageData
-              }
-            }
           }
         }
         allSanityEmployee {
