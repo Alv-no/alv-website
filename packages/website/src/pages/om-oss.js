@@ -9,14 +9,17 @@ import {
   FeaturedTeam,
 } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { client } from '../server-side/client';
+import { createGatsbyImages } from '../server-side/imageCreator';
+import { gql } from '@apollo/client';
 
-const About = () => {
+const About = ({ serverData }) => {
   const data = useAboutUsQuery();
   const layoutData = useLayoutQuery();
   const {
     sanityAboutPage: { pageDescription } = { pageDescription: false },
     sanityAboutPage: { pageTitle } = { pageTitle: false },
-  } = data;
+  } = serverData.aboutPage;
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
   employees.map(
     (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData)
@@ -38,7 +41,10 @@ const About = () => {
           />
         </div>
         <div className="h-10 lg:h-0" />
-        <OurServices darkFade {...data.sanityLandingPage.section2Services} />
+        <OurServices
+          darkFade
+          {...serverData.allLandingPage[0].section2Services}
+        />
         <div className="px-12 lg:h-5"></div>
         <div className="max-w-1200 mx-auto xl:px-0 sm:px-12 px-5 -mb-10 mt-12">
           <Title align="left">Ansatte</Title>
@@ -51,5 +57,69 @@ const About = () => {
     </Layout>
   );
 };
+
+async function getAboutContent() {
+  const response = await client.query({
+    query: gql`
+      {
+        aboutPage: allAboutPage {
+          pageDescription
+          pageTitle
+        }
+
+        allLandingPage {
+          section2Services {
+            description
+            heading
+            link
+            textOverImage
+            servicesList {
+              link
+              subtitle
+              text
+              title
+            }
+            image {
+              asset {
+                id: _id
+                metadata {
+                  dimensions {
+                    height
+                    width
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `,
+    fetchPolicy: 'no-cache',
+  });
+
+  const data = response.data;
+  createGatsbyImages(data);
+
+  return {
+    aboutPage: data.aboutPage[0],
+    allLandingPage: data.allLandingPage,
+  };
+}
+
+export async function getServerData() {
+  try {
+    const aboutData = await getAboutContent();
+    return {
+      status: 200,
+      props: {
+        ...aboutData,
+      },
+    };
+  } catch {
+    return {
+      status: 500,
+    };
+  }
+}
 
 export default About;
