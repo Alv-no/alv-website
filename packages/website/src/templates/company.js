@@ -10,7 +10,7 @@ import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
 import { gql } from '@apollo/client';
 
-const Company = ({ data, serverData }) => {
+const Company = ({ serverData }) => {
   const scrollTo = (e) => {
     const element = document.getElementById(e.target.name);
     const top = element && window.scrollY + element.getBoundingClientRect().top;
@@ -23,16 +23,11 @@ const Company = ({ data, serverData }) => {
   };
   const layoutData = useLayoutQuery();
 
-  const {
-    sanityCompany: { pageDescription } = { pageDescription: false },
-    sanityCompany: { pageTitle } = { pageTitle: false },
-  } = data;
-
   return (
     <Layout
       layoutData={layoutData}
-      pageTitle={pageTitle}
-      pageDescription={pageDescription}
+      pageTitle={serverData.sanityCompany.pageTitle}
+      pageDescription={serverData.sanityCompany.pageDescription}
       whiteIcons
     >
       <div className="z-0 twelve:z-20 relative">
