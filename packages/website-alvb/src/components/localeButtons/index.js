@@ -30,7 +30,7 @@ export const LocaleButtons = ({ whiteIcons, navyHeader }) => {
       return (window.location.href = `${window.location.origin}/en`);
     }
 
-    if (pathStr === '/en') {
+    if (pathStr === '/en/') {
       setActiveLocale('no');
       return (window.location.href = `${window.location.origin}/`);
     }
