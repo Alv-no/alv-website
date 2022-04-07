@@ -4,15 +4,18 @@ import { Title, Description, EmployeeSection, Cta } from 'shared-components';
 import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import slugify from 'slugify';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { client } from '../server-side/client';
+import { createGatsbyImages } from '../server-side/imageCreator';
+import { gql } from '@apollo/client';
+import { createSlugForEmployee } from 'shared-components/src/components/createSlugForEmployee';
 
-const Employees = ({ location }) => {
+const Employees = ({ location, serverData }) => {
   const data = useEmployeeQuery();
   const layoutData = useLayoutQuery();
-  const {
-    allEmployees,
-    sanityEmployeePage: { pageDescription } = { pageDescription: false },
-    sanityEmployeePage: { pageTitle } = { pageTitle: false },
-  } = data;
+  const allEmployees = serverData.allEmployee;
+  const employeeTags = serverData.allEmployeeTag;
+
+  const { pageDescription, pageTitle } = serverData.allEmployeePage[0];
 
   let activeCard;
   if (location.state) {
@@ -43,7 +46,7 @@ const Employees = ({ location }) => {
         </div>
         <div className="h-10 sm:h-16 md:h-24 mt-3" />
         <EmployeeSection
-          allTags={data.allSanityEmployeeTag.edges}
+          allTags={employeeTags}
           allEmployees={allEmployees}
           linkedId={activeCard}
           fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
@@ -64,5 +67,85 @@ const Employees = ({ location }) => {
     </Layout>
   );
 };
+
+async function getEmployeeData() {
+  const response = await client.query({
+    fetchPolicy: 'no-cache',
+    query: gql`
+      {
+        allEmployeePage {
+          pageDescription
+          pageTitle
+        }
+        allEmployee {
+          tags {
+            tag
+          }
+          firstname
+          lastname
+          ytVideoId
+          id: _id
+          video {
+            asset {
+              url
+            }
+          }
+          cv {
+            asset {
+              url
+            }
+          }
+          id: _id
+          title
+          experience
+          _rawBio: bioRaw
+          image {
+            asset {
+              id: _id
+              metadata {
+                dimensions {
+                  height
+                  width
+                }
+              }
+            }
+          }
+        }
+        allEmployeeTag {
+          tag
+          id: _id
+        }
+      }
+    `,
+  });
+  const employeeData = response.data;
+  createGatsbyImages(employeeData);
+
+  employeeData.allEmployeeTag = employeeData.allEmployeeTag.map((tag) => ({
+    node: tag,
+  }));
+
+  employeeData.allEmployee = employeeData.allEmployee.map((employee) => {
+    employee.slug = createSlugForEmployee(
+      employee.firstname,
+      employee.lastname
+    );
+    return employee;
+  });
+  return employeeData;
+}
+
+export async function getServerData() {
+  try {
+    return {
+      status: 200,
+      props: await getEmployeeData(),
+    };
+  } catch {
+    return {
+      status: 500,
+    };
+  }
+}
 
 export default Employees;
