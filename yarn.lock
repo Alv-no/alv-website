@@ -18418,6 +18418,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-linkedin-insight@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "gatsby-plugin-linkedin-insight@npm:1.0.1"
+  dependencies:
+    "@babel/runtime": ^7.0.0
+  peerDependencies:
+    gatsby: ^2.0.0
+  checksum: 9f6fefc523012d3cd945d95ed409fdc047bc7ab9db6a5525727dde9b35fec1aa8425ac895dc98f66537044f5ed78761e150229b8e32549e8aea2afc4c669aaae
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-manifest@npm:^4.1.3":
   version: 4.1.3
   resolution: "gatsby-plugin-manifest@npm:4.1.3"
@@ -35742,6 +35753,7 @@ typescript@^4.0.5:
     gatsby-plugin-google-analytics: ^4.1.0
     gatsby-plugin-google-fonts: ^1.0.1
     gatsby-plugin-image: ^2.1.2
+    gatsby-plugin-linkedin-insight: ^1.0.1
     gatsby-plugin-manifest: ^4.1.3
     gatsby-plugin-postcss: ^5.1.0
     gatsby-plugin-react-helmet: ^5.1.0
