@@ -76,5 +76,12 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    {
+      resolve: `gatsby-plugin-linkedin-insight`,
+      options: {
+        partnerId: '1500953',
+        includeInDevelopment: false,
+      },
+    },
   ],
 };
