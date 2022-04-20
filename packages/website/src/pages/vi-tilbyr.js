@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout';
+import { getAllServicesQueryServerSide } from '../hooks/useAllServicesQueryServerSide';
 import { useServicesQuery } from '../hookspages/useServicesQuery';
 import { StyledBlockContent } from '../components/styledBlockContent';
 import {
@@ -12,40 +13,45 @@ import {
   ImageTextFull,
   ServicesCard,
 } from 'shared-components';
+import { client } from '../server-side/client';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { gql } from '@apollo/client';
 
-const Services = () => {
+const Services = ({ serverData }) => {
   const data = useServicesQuery();
   const layoutData = useLayoutQuery();
-  const cards = data.allSanityServices.edges.map((edge) => edge.node);
+  const cards = serverData.allServices;
 
   const {
-    sanityOurServicesPage: {
-      heading,
-      description,
-      mainImage,
-      section2ImageText,
-      section2Eyebrow,
-      section2Title,
-      section3description,
-      section6description,
-      section7description,
-      section1Image,
-      section3link,
-      section6link,
-      section4Image,
-      section5Image,
-      section7Image,
-      _rawSection2Block,
-      _rawSection4Block,
-      _rawSection5Block,
-    },
-  } = data;
+    heading,
+    description,
+    section2ImageText,
+    section2Eyebrow,
+    section2Title,
+    section3description,
+    section6description,
+    section7description,
+    section3link,
+    section4link,
+    section6link,
+    section7link,
+    _rawSection2Block,
+    _rawSection4Block,
+    _rawSection5Block,
+  } = serverData.serviceData.OurServicesPage;
+
+  const {
+    mainImage,
+    section1Image,
+    section4Image,
+    section5Image,
+    section7Image,
+  } = data.sanityOurServicesPage;
 
   const {
     sanityOurServicesPage: { pageDescription } = { pageDescription: false },
     sanityOurServicesPage: { pageTitle } = { pageTitle: false },
-  } = data;
+  } = serverData.serviceData.OurServicesPage;
 
   return (
     <div className="overflow-hidden">
@@ -75,8 +81,8 @@ const Services = () => {
           <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
             <ServicesSection
               description={section3description}
-              title={data.sanityOurServicesPage.section3link.heroHeading}
-              link={data.sanityOurServicesPage.section3link.slug.current}
+              title={section3link.heroHeading}
+              link={section3link.slug.current}
             >
               {cards
                 .filter(
@@ -97,8 +103,8 @@ const Services = () => {
           <div className="max-w-1200 mx-auto xl:px-0 sm:px-12">
             {_rawSection4Block && (
               <ImageTextFull
-                link={data.sanityOurServicesPage.section4link.slug.current}
-                title={data.sanityOurServicesPage.section4link.heroHeading}
+                link={section4link.slug.current}
+                title={section4link.heroHeading}
                 image={section4Image.asset.gatsbyImageData}
               >
                 <StyledBlockContent blocks={_rawSection4Block} />
@@ -117,9 +123,9 @@ const Services = () => {
           </div>
           <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
             <ServicesSection
-              title={data.sanityOurServicesPage.section6link.heroHeading}
+              title={section6link.heroHeading}
               description={section6description}
-              link={data.sanityOurServicesPage.section6link.slug.current}
+              link={section6link.slug.current}
             >
               {cards
                 .filter(
@@ -138,17 +144,17 @@ const Services = () => {
             </ServicesSection>
           </div>
           <ImageTextCards
-            title={data.sanityOurServicesPage.section7link.heroHeading}
+            title={section7link.heroHeading}
             image={section7Image.asset.gatsbyImageData}
             description={section7description}
-            link={data.sanityOurServicesPage.section7link.slug.current}
+            link={section7link.slug.current}
           >
             {cards.slice(4, 6).map((card) => {
               return (
                 <ServicesCard
                   title={card.heroHeading}
                   description={card.heroDescription}
-                  link={`${data.sanityOurServicesPage.section7link.slug.current}/${card.slug.current}`}
+                  link={`${section7link.slug.current}/${card.slug.current}`}
                 />
               );
             })}
@@ -158,5 +164,87 @@ const Services = () => {
     </div>
   );
 };
+
+async function getOurServicesData() {
+  const response = await client.query({
+    fetchPolicy: 'no-cache',
+    variables: {
+      id: 'ourServicesPage',
+    },
+    query: gql`
+      query OurServicesById($id: ID!) {
+        OurServicesPage(id: $id) {
+          description
+          heading
+          pageDescription
+          pageTitle
+          section7link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section6link {
+            heroHeading
+            slug {
+              current
+            }
+          }
+          section5link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section4link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section7link {
+            heroHeading
+            slug {
+              current
+            }
+          }
+          section3link {
+            slug {
+              current
+            }
+            heroHeading
+          }
+          section3description
+          section2Title
+          section2Eyebrow
+          section2ImageText
+          section7description
+          section6description
+          _rawSection2Block: section2blockRaw
+          _rawSection4Block: section4blockRaw
+          _rawSection5Block: section5blockRaw
+        }
+      }
+    `,
+  });
+
+  return response.data;
+}
+
+export async function getServerData() {
+  try {
+    return {
+      status: 200,
+      props: {
+        serviceData: await getOurServicesData(),
+        allServices: await getAllServicesQueryServerSide(),
+      },
+    };
+  } catch (e) {
+    return {
+      status: 500,
+    };
+  }
+}
 
 export default Services;
