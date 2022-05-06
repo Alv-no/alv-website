@@ -1,7 +1,8 @@
 import { window } from 'browser-monads';
 import Link from 'gatsby-link';
 import React from 'react';
-import { SocialLinks, LargeLink, SubtitleLink, Icon } from 'shared-components';
+import { SocialLinks } from '../socialLinks';
+import { LargeLink, SubtitleLink, Icon } from 'shared-components';
 
 export const Navigation = ({ open, toggleClose, logo, navItems }) => {
   const isEnLocale = window.location.href.includes('/en');
