@@ -1,6 +1,5 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../../../../shared-components/src/components/title';
 
 export const Overview = ({ image, children, id }) => {
   return (
@@ -21,10 +20,11 @@ export const Overview = ({ image, children, id }) => {
             />
           )}
           <div className="lg:px-0 lg:mt-0 mt-10 font-light flex flex-col justify-between h-full">
-            <div>
-              <Title underline align="left" color="text-navy">
-                Oversikt
-              </Title>
+            <div
+              style={{
+                marginTop: '-40px',
+              }}
+            >
               {children}
             </div>
           </div>
