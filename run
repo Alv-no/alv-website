@@ -20,6 +20,7 @@ function getSecret() {
 function getSecrets() {
   ALV_HOSTNAME="$(getSecret alv-hostname)"
   ALVB_HOSTNAME="$(getSecret alvb-hostname)"
+  ALVBIOTECH_HOSTNAME="$(getSecret alvbiotech-hostname)"
   SP_ALVTIME_ADMIN_RBAC_SECRET="$(getSecret sp-alvtime-admin-rbac-secret)"
   SP_ALVTIME_ADMIN_CLIENT_ID="$(getSecret sp-alvtime-admin-client-id)"
   SANITY_AUTH_TOKEN="$(getSecret sanity-auth-token)"
@@ -121,7 +122,7 @@ function deployServices() {
       --install \
       --set image.repository="$CONTAINER_REGISTRY/website-alvb" \
       --set image.tag="$TAG" \
-      --set "hosts={$ALVB_HOSTNAME,www.$ALVB_HOSTNAME}" \
+      --set "hosts={$ALVB_HOSTNAME,www.$ALVB_HOSTNAME,$ALVBIOTECH_HOSTNAME,www.$ALVBIOTECH_HOSTNAME}" \
       --namespace "alvb-no"
     sleep 20
     #curl "https://$ALVB_HOSTNAME" # Won't test for now until certificats is correctly configured for alv-b
