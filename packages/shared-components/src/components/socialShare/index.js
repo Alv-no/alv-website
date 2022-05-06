@@ -6,8 +6,14 @@ import {
   LinkedinShareButton,
 } from 'react-share';
 
-export const SocialShare = ({ url, title, tags, subtitle, white }) => {
-  const twitterHandle = 'Alvnoas';
+export const SocialShare = ({
+  url,
+  title,
+  tags,
+  subtitle,
+  white,
+  twitterHandle,
+}) => {
   return (
     <div
       className={`w-full flex justify-end uppercase ${
@@ -24,7 +30,7 @@ export const SocialShare = ({ url, title, tags, subtitle, white }) => {
         <TwitterShareButton
           url={url}
           title={title}
-          via={twitterHandle}
+          via={twitterHandle || ''}
           hashtags={tags}
         >
           <Icon.CircleTwitter white={white} />
