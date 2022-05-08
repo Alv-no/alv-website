@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { ServiceNavList } from '../components/serviceNavList';
 import { RolesList } from '../components/rolesList';
-import { NavyIntroImage } from '../components/navyIntroImage';
+import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
 import { CtaSection } from '../components/ctaSection';
 import { window } from 'browser-monads';
 import { BlogCarousel } from '../components/blogCarousel';

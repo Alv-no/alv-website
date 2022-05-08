@@ -1,6 +1,7 @@
 const path = require(`path`);
 
 const articleTemplate = path.resolve(`./src/templates/article.js`);
+const companyTemplate = path.resolve(`./src/templates/company.js`);
 
 const extraLanguages = ['en'];
 const createLocalePage = (page, createPage) => {
@@ -39,9 +40,36 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        allSanityCompany {
+          edges {
+            node {
+              slug {
+                current
+              }
+            }
+          }
+        }
       }
     `
   );
+  //
+  // Create company pages.
+  res.data.allSanityCompany.edges.forEach((edge) => {
+    createPage({
+      component: companyTemplate,
+      path: `/about/${edge.node.slug.current}`,
+      context: {
+        slug: edge.node.slug.current,
+      },
+    });
+    createPage({
+      component: companyTemplate,
+      path: `/en/about/${edge.node.slug.current}`,
+      context: {
+        slug: edge.node.slug.current,
+      },
+    });
+  });
 
   // Create blog posts pages.
   res.data.allSanityArticle.nodes.forEach((node) => {

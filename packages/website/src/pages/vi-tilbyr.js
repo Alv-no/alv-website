@@ -13,6 +13,7 @@ import {
   ServicesCard,
 } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import config from '../config';
 
 const Services = () => {
   const data = useServicesQuery();
@@ -69,7 +70,7 @@ const Services = () => {
               imageText={section2ImageText}
               image={section1Image.asset.gatsbyImageData}
             >
-              <StyledBlockContent blocks={_rawSection2Block} />
+              <StyledBlockContent blocks={_rawSection2Block} config={config} />
             </ColumnSection>
           </div>
           <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">

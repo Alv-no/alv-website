@@ -1,9 +1,15 @@
 import React from 'react';
 import * as styles from './Blockcontent.module.css';
-import { richTextTypes } from '../richTextTypes';
+import { richTextTypesSerializer } from '../richTextTypes';
 import PortableText from '@sanity/block-content-to-react';
 
-export const BlockContent = ({ blocks, noStyle, whiteText, darkText }) => (
+export const BlockContent = ({
+  blocks,
+  noStyle,
+  whiteText,
+  darkText,
+  config,
+}) => (
   <span
     className={
       !noStyle &&
@@ -12,9 +18,9 @@ export const BlockContent = ({ blocks, noStyle, whiteText, darkText }) => (
   >
     <PortableText
       blocks={blocks}
-      projectId="mnr37rl0"
-      dataset="production"
-      serializers={richTextTypes}
+      projectId={config.SANITY_PROJECT_ID}
+      dataset={config.SANITY_DATASET}
+      serializers={richTextTypesSerializer(config)}
     />
   </span>
 );
