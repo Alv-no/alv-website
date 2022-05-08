@@ -12,6 +12,7 @@ import {
   HireAlt,
 } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import config from '../config';
 
 const Index = ({ data, location }) => {
   const layoutData = useLayoutQuery();
@@ -54,6 +55,7 @@ const Index = ({ data, location }) => {
               title="Hvem er vi"
               whiteText
               blocks={landingPage._rawAboutText}
+              config={config}
             />
           </div>
           <Hire

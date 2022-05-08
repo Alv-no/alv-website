@@ -12,6 +12,7 @@ export const WhoWeAre = ({
   darkText,
   buttonText,
   buttonLink,
+  config,
 }) => {
   return (
     <>
@@ -35,6 +36,7 @@ export const WhoWeAre = ({
               whiteText={whiteText}
               darkText={darkText}
               blocks={blocks}
+              config={config}
             />
             {children}
             <div className="twelve:block hidden text-theme-text">

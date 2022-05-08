@@ -1,8 +1,9 @@
 import React from 'react';
+import config from '../config';
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
-import { LinkableContent } from '../components/linkableContent';
-import { NavyIntroImage } from '../components/navyIntroImage';
+import { LinkableContent } from 'shared-components/src/components/linkableContent';
+import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
 import { window } from 'browser-monads';
 import { BlogCarousel } from '../components/blogCarousel';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
@@ -45,6 +46,7 @@ const Company = ({ serverData }) => {
           raw={serverData.sanityCompany._rawBlockText}
           heading={serverData.sanityCompany.blockHeading}
           scrollTo={scrollTo}
+          config={config}
         />
         <div className="max-w-1440 mx-auto sm:my-15 mt-10">
           <BlogCarousel blue />

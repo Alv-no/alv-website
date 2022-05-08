@@ -4,6 +4,7 @@ import { Title } from 'shared-components';
 import { BlockContent } from '../blockContent';
 import { richTextTypes } from '../richTextTypes';
 import * as styles from './richtextAndImage.module.css';
+import config from '../../config';
 
 export const RichtextAndImage = ({
   image,
@@ -30,7 +31,11 @@ export const RichtextAndImage = ({
       <div>
         {title && <Title align="left mb-2 mt-4">{title}</Title>}
         <span className={styles.text}>
-          <BlockContent blocks={blocks} serializer={richTextTypes} />
+          <BlockContent
+            blocks={blocks}
+            config={config}
+            serializer={richTextTypes}
+          />
         </span>
       </div>
       <div style={{ gridRow: flip && '1' }}>

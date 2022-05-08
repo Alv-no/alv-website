@@ -1,6 +1,6 @@
 import React from 'react';
-import { Title } from '../../../../shared-components/src/components/title';
-import { Description } from '../../../../shared-components/src/components/description';
+import { Title } from '../title';
+import { Description } from '../description';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
@@ -10,6 +10,7 @@ export const NavyIntroImage = ({
   image,
   internalLink,
   buttonText,
+  white = false,
 }) => (
   <div className="bg-navy w-full sm:pl-10 pt-10 sm:pt-16 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative">
     <div
@@ -18,7 +19,11 @@ export const NavyIntroImage = ({
     >
       <div className="transform sm:-translate-x-5 sm:px-0 px-12 flex sm:block justify-center items-center flex-col">
         <Title align={`center twelve:text-left`}>
-          <span className={`xs:inline sm:text-3xl lg:text-4xl hyphenate`}>
+          <span
+            className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
+              white ? 'text-white' : ''
+            }`}
+          >
             {title}
           </span>
         </Title>

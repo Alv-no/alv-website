@@ -48,6 +48,11 @@ import imageAndText from './imageAndText';
 import blogPage from './blogPage';
 import siteSettings from './siteSettings';
 import cta from './cta';
+// Company page dependencies
+import companyPage from './companyPage';
+import linkableBlockContent from './linkableBlockContent';
+import linkableHeading from './linkableHeading';
+import imageTextFlip from './imageTextFlip';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -103,5 +108,10 @@ export default createSchema({
     founder,
     socials,
     cta,
+    // Company page dependencies
+    linkableHeading,
+    imageTextFlip,
+    linkableBlockContent,
+    companyPage,
   ]),
 });

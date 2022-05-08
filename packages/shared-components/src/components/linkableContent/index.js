@@ -1,12 +1,18 @@
 import React from 'react';
 import * as Icon from 'shared-components/src/components/icon';
-import { companyRichTextTypes } from '../companyRichText';
+import { companyRichTextTypesSerializer } from '../companyRichText';
 import PortableText from '@sanity/block-content-to-react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from 'shared-components/src/components/title';
 import * as styles from './LinkableContent.module.css';
 
-export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
+export const LinkableContent = ({
+  heroImage,
+  raw,
+  heading,
+  scrollTo,
+  config,
+}) => {
   // create menuitems from linkable heading types used in sanity rich text
   const navElements = raw
     .filter(
@@ -54,10 +60,10 @@ export const LinkableContent = ({ heroImage, raw, heading, scrollTo }) => {
                 </div>
                 <PortableText
                   blocks={raw}
-                  projectId="mnr37rl0"
-                  dataset="production"
+                  projectId={config.SANITY_PROJECT_ID}
+                  dataset={config.SANITY_DATASET}
                   className={styles.body}
-                  serializers={companyRichTextTypes}
+                  serializers={companyRichTextTypesSerializer(config)}
                 />
               </div>
             </div>

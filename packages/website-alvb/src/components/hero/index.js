@@ -4,6 +4,7 @@ import * as styles from './hero.module.css';
 import Link from 'gatsby-link';
 import { Button } from 'shared-components';
 import { BgImage } from 'gbimage-bridge';
+import config from '../../config';
 
 export const Hero = ({
   blocks,
@@ -36,7 +37,7 @@ export const HeroDesktop = ({ blocks, cta, backgroundImage }) => (
   >
     <div className="grid lg:grid-cols-2 px-6 sm:px-10 lg:px-10 mt-15 max-w-1280 w-full mx-auto text-white">
       <span className={styles.heroHeading}>
-        <BlockContent blocks={blocks} noStyle />
+        <BlockContent config={config} blocks={blocks} noStyle />
       </span>
     </div>
     <HeroCtaDesktop {...cta} />
@@ -67,7 +68,7 @@ export const HeroMobile = ({ blocks, cta, backgroundImage }) => (
   >
     <div className="px-6 sm:px-10 mx-auto sm:pt-15 text-white relative transform pt-20 translate-y-20 md:translate-y-15 text-center">
       <span className={styles.heroHeading}>
-        <BlockContent blocks={blocks} noStyle />
+        <BlockContent config={config} blocks={blocks} noStyle />
       </span>
     </div>
     <HeroCtaMobile {...cta} />

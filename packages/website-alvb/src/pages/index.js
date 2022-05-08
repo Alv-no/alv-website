@@ -7,6 +7,7 @@ import { VideoIntro } from '../components/videoIntro';
 import { WhoWeAre, Hire, OurServices } from 'shared-components';
 import { Founder } from '../components/founder';
 import localize from '../components/localize/index';
+import config from '../config';
 
 const Index = ({ data, location }) => {
   const {
@@ -56,6 +57,7 @@ const Index = ({ data, location }) => {
               blocks={_rawSection3.block}
               buttonText={_rawSection3.button.text}
               buttonLink={_rawSection3.button.link}
+              config={config}
             />
           </div>
           <Hire
