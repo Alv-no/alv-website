@@ -26,7 +26,6 @@ export const OurServices = ({
           gridTemplateColumns: '1fr 1fr',
         }}
       >
-        <div />
         <div className="sm:pl-0 lg:ml-0 pl-5">
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
             {/* update alv sanity to use "title" naming convention */}
@@ -47,6 +46,7 @@ export const OurServices = ({
             </div>
           </div>
         </div>
+        <div />
       </div>
       <div
         className="mx-auto lg:grid flex flex-col-reverse gap-x-10"
