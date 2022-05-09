@@ -100,6 +100,7 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
                 title={socialTitle || title}
                 subtitle={socialSubtitle || description}
                 tags={socialTags}
+                twitterHandle="Alvnoas"
               />
             </div>
             <h1 className="text-blog font-bold mb-8">{title}</h1>
