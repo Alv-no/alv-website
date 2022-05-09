@@ -1,7 +1,7 @@
 export const navItems = [
   {
     no: {
-      text: 'Tjenester',
+      text: 'Produkter',
       children: [
         {
           text: 'Alvacan 1000 & 4000',
