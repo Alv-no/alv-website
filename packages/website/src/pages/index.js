@@ -56,6 +56,8 @@ const Index = ({ data, location }) => {
               blocks={landingPage._rawAboutText}
             />
           </div>
+          <OurServices darkFade {...landingPage.section2Services} />
+          <div className="lg:h-40  h-5" />
           <Hire
             darkFade
             title={landingPage.flipSection1Title}
@@ -65,8 +67,6 @@ const Index = ({ data, location }) => {
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
           />
           <div className="bg-navy h-10 lg:h-32" />
-          <OurServices darkFade {...landingPage.section2Services} />
-          <div className="lg:h-40  h-5" />
           <HireAlt
             darkFade
             title={landingPage.flipSection3Title}
