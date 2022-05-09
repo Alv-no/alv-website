@@ -13,8 +13,8 @@ export const Navigation = ({ open, toggleClose, logo, navItems }) => {
       toggleClose={toggleClose}
       isEnLocale={isEnLocale}
     >
-      <div className="flex eight:items-center h-full eight:-mt-12">
-        <div className="eight:text-center items-center relative z-90 eight:mx-auto">
+      <div className="flex eight:justify-center h-full eight:items-center relative eight:-top-16">
+        <div className="eight:flex transition duration-300 gap-x-16 justify-center w-full">
           <LocaleNav localeNavArr={navItems} isEnLocale={isEnLocale} />
         </div>
       </div>
@@ -24,7 +24,7 @@ export const Navigation = ({ open, toggleClose, logo, navItems }) => {
 
 const NavLayout = ({ open, logo, children, toggleClose, isEnLocale }) => (
   <nav
-    className={`text-theme-text bg-theme-bg tracking-wider fixed overflow-y-scroll overflow-x-hidden z-70 w-full h-full bg-theme-bg p-6 sm:p-8 left-0 top-0 transition duration-300 ${
+    className={`text-theme-text bg-theme-bg tracking-wider fixed overflow-y-auto eight:overflow-y-hidden overflow-x-hidden z-70 w-full h-full bg-theme-bg p-6 sm:p-8 left-0 top-0 transition duration-300 ${
       open ? 'opacity-100' : 'opacity-0 pointer-events-none'
     }`}
   >
@@ -64,23 +64,22 @@ const CloseButton = ({ toggleClose }) => (
 
 const LocaleNav = ({ localeNavArr, isEnLocale }) => {
   const locale = isEnLocale ? 'en' : 'no';
+
   return localeNavArr?.map((navItem) => (
-    <>
-      {
-        <LargeLink
-          link={navItem[locale].link || null}
-          white={!navItem[locale].link}
-        >
-          {navItem[locale].text}
-        </LargeLink>
-      }
-      {navItem[locale].children && (
-        <div>
-          {navItem[locale].children.map((child) => (
-            <SubtitleLink link={child.link}>{child.text}</SubtitleLink>
-          ))}
-        </div>
-      )}
-    </>
+    <div key={navItem[locale].link} className={'relative z-70'}>
+      <LargeLink
+        mobileDropdown
+        link={navItem[locale].link || null}
+        white={!navItem[locale].link}
+      >
+        {navItem[locale].text}
+      </LargeLink>
+
+      {navItem[locale].children?.map((child) => (
+        <SubtitleLink key={child.link} link={child.link}>
+          {child.text}
+        </SubtitleLink>
+      ))}
+    </div>
   ));
 };
