@@ -15,6 +15,7 @@ export const EmployeeGroup = ({
   bioRefContainer,
   children,
   white,
+  config,
 }) => {
   // Update activeBio state with employee object corresponding to card clicked
   const handleCardClick = (e) => {
@@ -65,6 +66,7 @@ export const EmployeeGroup = ({
                           bioRefContainer={bioRefContainer}
                           showVideo={showVideo}
                           centerBioText={centerBioText}
+                          config={config}
                         />
                       )}
                   </div>
@@ -80,6 +82,7 @@ export const EmployeeGroup = ({
                 {...activeBio}
                 centerBioText={centerBioText}
                 handleCloseClick={handleCloseClick}
+                config={config}
               />
             ) : null}
           </span>

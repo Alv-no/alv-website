@@ -8,6 +8,7 @@ import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
 import { gql } from '@apollo/client';
 import { createSlugForEmployee } from 'shared-components/src/components/createSlugForEmployee';
+import config from '../config';
 
 const Employees = ({ location, serverData }) => {
   const data = useEmployeeQuery();
@@ -51,6 +52,7 @@ const Employees = ({ location, serverData }) => {
           linkedId={activeCard}
           fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
           showVideo={true}
+          config={config}
         />
         <Cta
           image={data.cta.childImageSharp.gatsbyImageData}

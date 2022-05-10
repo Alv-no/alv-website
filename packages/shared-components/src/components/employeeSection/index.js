@@ -11,6 +11,7 @@ export const EmployeeSection = ({
   filter = true,
   showVideo,
   greyCards = true,
+  config,
 }) => {
   const [filteredContent, setFilteredContent] = useState(null);
   const [tags, setTags] = useState([]);
@@ -64,6 +65,7 @@ export const EmployeeSection = ({
           showVideo={showVideo}
           centerBioText={centerBioText}
           greyCards={greyCards}
+          config={config}
         />
       )}
     </div>
