@@ -35,8 +35,8 @@ const Company = ({ data }) => {
         <NavyIntroImage
           title={data.sanityCompany.heroHeading}
           description={data.sanityCompany.heroDescription}
-          internalLink="/videoserie"
-          buttonText="Se videoserien vår"
+          internalLink="/en/contact-us"
+          buttonText="Get in touch"
           image={data.sanityCompany.heroImage.asset.gatsbyImageData}
           white
         />
