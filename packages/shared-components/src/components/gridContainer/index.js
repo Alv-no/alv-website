@@ -34,6 +34,7 @@ export const GridContainer = ({
   isEnLocale,
   greyCards,
   white,
+  config,
 }) => {
   const { width } = useWindowDimensions();
   const [columnsNr, setColumnsNr] = useState(null);
@@ -102,6 +103,7 @@ export const GridContainer = ({
                   white={white}
                   greyCards={greyCards}
                   centerBioText={centerBioText}
+                  config={config}
                 />
               );
             }

@@ -18,6 +18,7 @@ export const EmployeeBio = ({
   title,
   _rawBio,
   id,
+  config,
 }) => {
   const bioRefContainer = useRef(null);
 
@@ -114,7 +115,9 @@ export const EmployeeBio = ({
                 !video && styles.centerText
               }`}
             >
-              {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
+              {_rawBio && (
+                <BlockContent noStyle blocks={_rawBio} config={config} />
+              )}
             </p>
             <div
               className={`flex-1 px-5 sm:px-0 sm:block hidden sm:text-center lg:text-left ${
@@ -133,7 +136,9 @@ export const EmployeeBio = ({
                 {title}
               </h5>
               <div className="tracking-wider lg:px-0 sm:px-10">
-                {_rawBio && <BlockContent noStyle blocks={_rawBio} />}
+                {_rawBio && (
+                  <BlockContent noStyle blocks={_rawBio} config={config} />
+                )}
               </div>
             </div>
             {cv && !video && (

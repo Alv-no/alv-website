@@ -5,7 +5,7 @@ import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import { Title, Description, EmployeeSection, Cta } from 'shared-components';
 import localize from '../components/localize';
 import slugify from 'slugify';
-
+import config from '../config';
 const Employees = ({ location, data }) => {
   const { meta, section1, _rawSection2, section2 } = data.sanityEmployeePage;
 
@@ -47,6 +47,7 @@ const Employees = ({ location, data }) => {
           showVideo={false}
           centerBioText={true}
           greyCards={false}
+          config={config}
         />
         <Cta
           image={section2.image.asset.gatsbyImageData}
