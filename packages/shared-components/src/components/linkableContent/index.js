@@ -25,8 +25,8 @@ export const LinkableContent = ({
       } else {
         heading = el.linkableBlock.find((node) => node.Heading)?.Heading;
       }
-      let formattedId = heading.split(' ').join('-');
-      formattedId = formattedId.toLowerCase();
+      let formattedId = heading?.split(' ').join('-');
+      formattedId = formattedId?.toLowerCase();
       return {
         id: formattedId,
         text: heading,
