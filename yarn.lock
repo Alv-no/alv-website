@@ -18340,7 +18340,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-config@npm:^1.0.7":
+"gatsby-plugin-config@npm:1.0.7, gatsby-plugin-config@npm:^1.0.7":
   version: 1.0.7
   resolution: "gatsby-plugin-config@npm:1.0.7"
   checksum: 61223e57ab6b7e9d708ce7f6bf875eb36d1bbcdd2ac2260c7f21a54641072b2a1795c825a9519256819c158072f48e3b4a90137ce9e39c6ad10bb099f3e62b48
@@ -35687,6 +35687,7 @@ typescript@^4.0.5:
     gatsby: 4.1.4
     gatsby-background-image: ^1.5.3
     gatsby-image: ^3.11.0
+    gatsby-plugin-config: 1.0.7
     gatsby-plugin-google-analytics: ^4.1.0
     gatsby-plugin-google-fonts: ^1.0.1
     gatsby-plugin-google-tagmanager: ^4.6.0
