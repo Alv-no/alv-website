@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-export const Breadcrumb = ({ path, white }) => {
+export const Breadcrumb = ({ path, white, locale }) => {
+  const isEnLocale = locale ? locale === 'en' : false;
   const upperCrumbCharLimit = 35;
-  const isEnLocale = path.includes('en');
 
   const formatCrumbs = (crumbs) =>
     crumbs

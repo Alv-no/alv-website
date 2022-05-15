@@ -14,7 +14,7 @@ const Company = ({ data }) => {
     window.history.replaceState(
       {},
       '',
-      `/om-oss/${data.sanityCompany.slug.current}#${e.target.name}`
+      `/about/${data.sanityCompany.slug.current}#${e.target.name}`
     );
     window.scrollTo({ top, behavior: 'smooth' });
   };
@@ -35,7 +35,7 @@ const Company = ({ data }) => {
         <NavyIntroImage
           title={data.sanityCompany.heroHeading}
           description={data.sanityCompany.heroDescription}
-          internalLink="/en/contact-us"
+          internalLink="/contact-us"
           buttonText="Get in touch"
           image={data.sanityCompany.heroImage.asset.gatsbyImageData}
           white

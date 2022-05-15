@@ -1,6 +1,7 @@
 import { window } from 'browser-monads';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { navItems } from '../../utils/navItems';
+import config from '../../config';
 
 export const LocaleButtons = ({ whiteIcons, navyHeader }) => {
   const pathStr = window.location.pathname.replace('%C3%A5', 'å');
@@ -9,44 +10,31 @@ export const LocaleButtons = ({ whiteIcons, navyHeader }) => {
 
   const localeList = ['no', 'en'];
 
-  const [activeLocale, setActiveLocale] = useState('no');
-  useEffect(() => {
-    const { pathname } = window.location;
-    if (pathname.includes('/en/') || pathname === '/en') {
-      if (activeLocale !== 'en') {
-        setActiveLocale('en');
-      }
-    } else {
-      if (activeLocale !== 'no') {
-        setActiveLocale('no');
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleLocaleClick = (locale) => {
-    if (pathStr === '/') {
-      setActiveLocale('en');
-      return (window.location.href = `${window.location.origin}/en`);
-    }
+    let domain = config.TRANSLATED_DOMAIN?.includes('://') ? '' : 'https://';
+    domain += config.TRANSLATED_DOMAIN;
 
-    if (pathStr === '/en/') {
-      setActiveLocale('no');
-      return (window.location.href = `${window.location.origin}/`);
+    if (pathStr === '/') {
+      window.location.href = domain;
+      return;
     }
 
     const newPathObj = navItems.find((el) => {
       return (
-        el[activeLocale].link?.includes(pathStr) ||
-        el[activeLocale]?.children?.[0].link.includes(pathStr)
+        el[config.LOCALE].link?.includes(pathStr) ||
+        el[config.LOCALE]?.children?.[0].link.includes(pathStr)
       );
     });
+
+    // If we cannot find an route
+    if (!newPathObj) {
+      window.location.href = domain;
+    }
 
     const newPathStr =
       newPathObj[locale]?.link || newPathObj[locale]?.children?.[0].link;
 
-    window.location.href = `${window.location.origin}${newPathStr}`;
-    setActiveLocale(locale);
+    window.location.href = `${domain}${newPathStr}`;
   };
   return (
     <div className="ml-10 sm:pt-1">
@@ -59,7 +47,7 @@ export const LocaleButtons = ({ whiteIcons, navyHeader }) => {
           <button
             key={locale}
             className={`uppercase mx-6px pt-px font-thin focus:outline-none ${
-              activeLocale === locale
+              config.LOCALE === locale
                 ? 'font-medium pointer-events-none'
                 : 'opacity-50'
             }`}

@@ -46,6 +46,7 @@ export const Header = ({
         logo={logo}
       />
       <div
+        e={{ paddingLeft: '40px' }}
         className={`${
           navyHeader ? 'bg-navy' : 'bg-theme-bg'
         } hidden sm:block sm:pt-7 py-5 px-10 -mb-2px`}
@@ -141,7 +142,7 @@ export const MobileHeader = ({
             viewport || 'sm'
           }:hidden py-5 px-6 fivefifty:px-10 `}
         >
-          <div className="max-w-1600 mx-auto">
+          <div className="max-w-1600 mx-auto" style={{ paddingLeft: '40px' }}>
             <div className="flex flex-row-reverse justify-between">
               <div className="flex items-center">
                 <LocaleButtons whiteIcons={whiteIcons} navyHeader />
@@ -195,7 +196,7 @@ export const BlogHeader = ({
         logo={logo}
       />
       <div className="bg-navy hidden sm:block sm:pt-7 py-5">
-        <div className="max-w-1600 mx-auto">
+        <div className="max-w-1600 mx-auto" style={{ paddingLeft: '40px' }}>
           <div className="flex justify-between sm:mb-7 ">
             <div className="flex">
               <button

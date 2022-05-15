@@ -48,16 +48,29 @@ function buildServices() {
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "building alv-b website"
+    echo "building alv-b website-no"
 
-    if [ ! -f packages/website-alvb/.env.production ]; then
-      echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" >> packages/website-alvb/.env.production
-    fi
+    echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" > packages/website-alvb/.env.production
+    echo "GATSBY_HOSTNAME=www.$ALVB_HOSTNAME" >> packages/website-alvb/.env.production
+    echo "GATSBY_TRANSLATED_DOMAIN=www.$ALVBIOTECH_HOSTNAME" >> packages/website-alvb/.env.production
 
     docker build . \
       --file website-alvb.Dockerfile \
-      --tag "$CONTAINER_REGISTRY/website-alvb:$TAG" \
+      --tag "$CONTAINER_REGISTRY/website-alvb-no:$TAG" \
       --no-cache
+
+    echo "building alv-b website-en"
+
+    echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" > packages/website-alvb/.env.production
+    echo "GATSBY_HOSTNAME=www.$ALVBIOTECH_HOSTNAME" >> packages/website-alvb/.env.production
+    echo "GATSBY_TRANSLATED_DOMAIN=www.$ALVB_HOSTNAME" >> packages/website-alvb/.env.production
+    echo "GATSBY_LOCALE=en" >> packages/website-alvb/.env.production
+
+    docker build . \
+      --file website-alvb.Dockerfile \
+      --tag "$CONTAINER_REGISTRY/website-alvb-en:$TAG" \
+      --no-cache
+
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
@@ -76,8 +89,13 @@ function pushServices() {
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "pushing website"
-    docker push "$CONTAINER_REGISTRY/website-alvb:$TAG"
+    echo "pushing website-no"
+    docker push "$CONTAINER_REGISTRY/website-alvb-no:$TAG"
+  fi
+
+  if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "pushing website-en"
+    docker push "$CONTAINER_REGISTRY/website-alvb-en:$TAG"
   fi
 
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" && -n "$EXISTING_HASH" ]]; then
@@ -117,12 +135,21 @@ function deployServices() {
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "helm website"
+    echo "helm website-no"
     helm upgrade website-alvb ./chart \
       --install \
-      --set image.repository="$CONTAINER_REGISTRY/website-alvb" \
+      --set image.repository="$CONTAINER_REGISTRY/website-alvb-no" \
       --set image.tag="$TAG" \
-      --set "hosts={$ALVB_HOSTNAME,www.$ALVB_HOSTNAME,$ALVBIOTECH_HOSTNAME,www.$ALVBIOTECH_HOSTNAME}" \
+      --set "hosts={$ALVB_HOSTNAME,www.$ALVB_HOSTNAME}" \
+      --namespace "alvb-no"
+    sleep 20
+
+    echo "helm website-en"
+    helm upgrade website-alvb-en ./chart \
+      --install \
+      --set image.repository="$CONTAINER_REGISTRY/website-alvb-en" \
+      --set image.tag="$TAG" \
+      --set "hosts={$ALVBIOTECH_HOSTNAME,www.$ALVBIOTECH_HOSTNAME}" \
       --namespace "alvb-no"
     sleep 20
     #curl "https://$ALVB_HOSTNAME" # Won't test for now until certificats is correctly configured for alv-b

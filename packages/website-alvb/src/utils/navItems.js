@@ -22,15 +22,15 @@ export const navItems = [
       children: [
         {
           text: 'Alvacan 1000 & 4000',
-          link: '/en/about/alvacan-1000-and-4000/',
+          link: '/about/alvacan-1000-and-4000/',
         },
         {
           text: 'Alvacan XO',
-          link: '/en/about/alvacan-xo/',
+          link: '/about/alvacan-xo/',
         },
         {
           text: 'Biobank',
-          link: '/en/about/biobank/',
+          link: '/about/biobank/',
         },
       ],
     },
@@ -54,11 +54,11 @@ export const navItems = [
       children: [
         {
           text: 'Our team',
-          link: '/en/our-team/',
+          link: '/our-team/',
         },
         {
           text: 'Announcements and articles',
-          link: '/en/blog/',
+          link: '/blog/',
         },
       ],
     },
@@ -82,11 +82,11 @@ export const navItems = [
       children: [
         {
           text: 'Contact us',
-          link: '/en/contact-us/',
+          link: '/contact-us/',
         },
         {
           text: 'Invest in Alv B',
-          link: '/en/collaborate-with-us/invest/',
+          link: '/collaborate-with-us/invest/',
         },
       ],
     },
