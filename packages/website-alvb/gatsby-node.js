@@ -3,31 +3,6 @@ const path = require(`path`);
 const articleTemplate = path.resolve(`./src/templates/article.js`);
 const companyTemplate = path.resolve(`./src/templates/company.js`);
 
-const extraLanguages = ['en'];
-const createLocalePage = (page, createPage) => {
-  const { context, ...rest } = page;
-  createPage({
-    ...rest,
-    context: {
-      ...context,
-      locale: process.env.LOCALE,
-    },
-  });
-  if (extraLanguages.length) {
-    extraLanguages.forEach((code) => {
-      const { path, context, ...rest } = page;
-      createPage({
-        ...rest,
-        path: `/${code}${path}`,
-        context: {
-          ...context,
-          locale: code,
-        },
-      });
-    });
-  }
-};
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const res = await graphql(
@@ -58,13 +33,6 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       component: companyTemplate,
       path: `/about/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-    createPage({
-      component: companyTemplate,
-      path: `/en/about/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },
@@ -118,11 +86,6 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/pages/kontakt-oss.js`),
     },
   ];
-  pages.forEach((page) => createLocalePage(page, createPage));
-};
 
-exports.onCreatePage = ({ page, actions }) => {
-  const { createPage, deletePage } = actions;
-  deletePage(page);
-  createLocalePage(page, createPage);
+  pages.forEach((page) => createPage(page));
 };

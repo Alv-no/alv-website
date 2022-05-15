@@ -6,7 +6,7 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.alvb.no`,
+    siteUrl: `https://${config.HOSTNAME}`,
     title: `Eksperimentell kreftbehandling for hund & katt`,
     description: `Vi ønsker å skape et globalt ‘center of excellence’ gjennom vår forskning på eksperimentell kreftbehandling for hund & katt.`,
     author: `Alv`,
@@ -52,10 +52,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Alv AS`,
+        name: `AlvB AS`,
         display: `standalone`,
         icon: 'src/favicons/favicon-32x32.png',
-        lang: `no`,
+        lang: `${config.LOCALE}`,
       },
     },
     {

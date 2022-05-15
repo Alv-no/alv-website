@@ -20,7 +20,7 @@ const Employees = ({ location, data }) => {
     activeCard = card.id;
   }
 
-  const isEnLocale = location.pathname.includes('/en');
+  const isEnLocale = config.LOCALE === 'en';
 
   return (
     <Layout

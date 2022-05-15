@@ -1,10 +1,10 @@
 import React from 'react';
 import { Footer, SEO } from 'shared-components';
-import { window } from 'browser-monads';
 import { Header, MobileHeader } from '../header';
 import { useLayoutQuery } from './useLayoutQuery';
 import * as Logo from '../logo';
 import './layout.css';
+import config from '../../config';
 
 export const Layout = ({
   children,
@@ -30,7 +30,7 @@ export const Layout = ({
   const metaDescription = site.siteMetadata.description;
   const metaTitle = site.siteMetadata.title;
   const metaArr = [];
-  const metaLang = { lang: 'no' };
+  const metaLang = { lang: config.LOCALE };
 
   const metaData = {
     metaAuthor,
@@ -40,9 +40,7 @@ export const Layout = ({
     metaLang,
   };
 
-  const isEnLocale =
-    window.location.pathname.includes('/en/') ||
-    window.location.pathname === '/en';
+  const isEnLocale = config.LOCALE === 'en';
 
   return (
     <>
@@ -54,9 +52,8 @@ export const Layout = ({
         path={path}
         logo={Logo}
         headerCtaText={isEnLocale ? 'Contact us' : 'Ta kontakt'}
-        headerCtaLink={isEnLocale ? '/en/contact-us' : '/kontakt-oss'}
+        headerCtaLink={isEnLocale ? '/contact-us' : '/kontakt-oss'}
         whiteIcons={whiteIcons}
-        isEnLocale={isEnLocale}
         localization={true}
       />
       <MobileHeader

@@ -9,7 +9,7 @@ import { Founder } from '../components/founder';
 import localize from '../components/localize/index';
 import config from '../config';
 
-const Index = ({ data, location }) => {
+const Index = ({ data }) => {
   const {
     section1,
     section2,
@@ -25,7 +25,7 @@ const Index = ({ data, location }) => {
     _rawSection6,
   } = data.sanityLandingPage;
 
-  const isEnLocale = location.pathname === '/en';
+  const isEnLocale = config.LOCALE === 'en';
 
   return (
     <div className="overflow-hidden">

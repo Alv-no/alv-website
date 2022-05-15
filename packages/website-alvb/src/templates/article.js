@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
-import { MobileHeader } from '../../../shared-components/src/components/header';
+import { MobileHeader } from '../components/header';
 import { Footer } from '../../../shared-components/src/components/footer';
 import { SEO } from '../../../shared-components/src/components/seo';
 import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
@@ -12,6 +12,8 @@ import { window } from 'browser-monads';
 import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
 import { StyledBlockContent } from '../components/styledBlockContent';
 import * as Logo from '../components/logo';
+import { useLayoutQuery } from '../components/layout/useLayoutQuery';
+import config from '../config';
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
@@ -26,6 +28,7 @@ const ArticleTemplate = (props) => {
     socials,
   } = props.data.sanityArticle;
 
+  const { servicePages, categoryPages } = useLayoutQuery();
   const socialObj = socials || {};
   const { socialSubtitle, socialImage, socialTitle } = socialObj;
 
@@ -53,7 +56,7 @@ const ArticleTemplate = (props) => {
       : null;
 
   const metaArr = socialTags;
-  const metaLang = { lang: 'no' };
+  const metaLang = { lang: config.LOCALE };
   const metaDescription = description;
   const metaAuthor = authorFullname;
   const metaTitle = title;
@@ -74,8 +77,11 @@ const ArticleTemplate = (props) => {
         <Sidebar
           {...postAuthor}
           isEmployee
+          isEnLocale={true}
           authorSlug={authorSlug}
           logo={Logo}
+          servicePages={servicePages}
+          categoryPages={categoryPages}
           white
         >
           <div
@@ -120,7 +126,12 @@ const ArticleTemplate = (props) => {
           </div>
         </Sidebar>
       </span>
-      <MobileHeader viewport="lg" logo={Logo} />
+      <MobileHeader
+        viewport="lg"
+        logo={Logo}
+        categoryPages={categoryPages}
+        servicePages={servicePages}
+      />
       <div className="lg:hidden">
         <div className="fivefifty:mx-10 mx-6 z-10">
           <div className="my-5 relative z-20">

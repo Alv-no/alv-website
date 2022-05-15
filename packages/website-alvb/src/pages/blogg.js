@@ -4,9 +4,10 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { Title, IntroContainer, BlogSection } from 'shared-components';
 import { useBlogQuery } from '../hookspages/useBlogQuery';
+import config from '../config';
 
-const Blog = ({ data, location }) => {
-  const isEnLocale = location.pathname.includes('/en/');
+const Blog = ({ data }) => {
+  const isEnLocale = config.LOCALE === 'en';
   const { section, meta } = data.sanityBlogPage;
 
   const articleData = useBlogQuery();
