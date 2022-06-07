@@ -11,7 +11,7 @@ export const ServicesHero = ({ backgroundImage, children }) => {
           </div>
         </BgImage>
       </div>
-      <div className="h-screen" />
+      <div className="h-screen sm:-mt-20 -mt-18" />
     </>
   );
 };
