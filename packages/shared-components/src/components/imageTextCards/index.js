@@ -14,7 +14,7 @@ export const ImageTextCards = ({
   return (
     <>
       <div className="w-full">
-        <div className="w-full h-15 bg-white" />
+        <div className="w-full h-15 bg-white lg:block hidden" />
         <div
           className="max-w-1200 mx-auto lg:flex"
           style={{
@@ -23,11 +23,7 @@ export const ImageTextCards = ({
         >
           <div className="h-full flex-1">
             {!flip && (
-              <GatsbyImage
-                image={image}
-                className="h-40vh lg:h-auto"
-                style={{ maxHeight: '' }}
-              />
+              <GatsbyImage image={image} className="h-40vh lg:h-auto" />
             )}
           </div>
           <div className="sm:px-12 px-5 pb-9 pt-10 lg:pt-0 flex-1 bg-servicesgray lg:bg-white">
@@ -35,7 +31,9 @@ export const ImageTextCards = ({
               <Title align="left" color="text-navy">
                 {title}
               </Title>
-              <p className="mb-8 mt-6">{description}</p>
+              <p className="mb-8 mt-6 font-light tracking-wider">
+                {description}
+              </p>
             </div>
             <div className={`w-full flex justify-${flip ? 'start' : 'end'}`}>
               <Button.CtaArrow path={link}>Lær Mer</Button.CtaArrow>

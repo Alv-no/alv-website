@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout';
 import { graphql } from 'gatsby';
-import { NavyIntro, FeaturedTeam } from 'shared-components';
+import { NavyIntro, FeaturedTeam, Container } from 'shared-components';
 import { RolesList } from '../components/rolesList';
 import { Overview } from '../components/overview';
 import { ServicesNav } from '../components/servicesNav';
@@ -55,8 +55,10 @@ const Category = ({ data }) => {
         title={sanityCategoryPage.heroHeading}
         description={sanityCategoryPage.heroDescription}
       />
-      <div className="w-full bg-white sm:pb-20 pb-12 overflow-hidden tracking-wider overflow-hidden">
+      <Container>
         <ServicesNav nav={nav} scrollTo={scrollTo} />
+      </Container>
+      <Container style={{ paddingTop: '0px' }}>
         <Overview
           image={
             sanityCategoryPage.heroImage
@@ -67,26 +69,26 @@ const Category = ({ data }) => {
         >
           <StyledBlockContent blocks={sanityCategoryPage._rawText || null} />
         </Overview>
-        {sanityCategoryPage.servicesListText && (
-          <div className="mt-12">
-            <RolesList
-              categoryName={sanityCategoryPage.heroHeading}
-              image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
-              roles={data.allSanityServices.edges}
-            />
-          </div>
-        )}
-        <div className="sm:mt-12 lg:mt-20" />
-        <div className="max-w-1200 mx-auto">
-          {sanityCategoryPage.featuredTeam && (
-            <FeaturedTeam
-              team={featuredTeam[0] ? featuredTeam : topFour}
-              notransparent
-            />
-          )}
-        </div>
-        <BlogCarousel blue={true} />
-      </div>
+      </Container>
+      {sanityCategoryPage.servicesListText && (
+        <Container>
+          <RolesList
+            categoryName={sanityCategoryPage.heroHeading}
+            image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
+            roles={data.allSanityServices.edges}
+          />
+        </Container>
+      )}
+      {sanityCategoryPage.featuredTeam && (
+        <Container>
+          <FeaturedTeam
+            team={featuredTeam[0] ? featuredTeam : topFour}
+            notransparent
+          />
+        </Container>
+      )}
+      <BlogCarousel blue={true} />
+      {/* </div> */}
     </Layout>
   );
 };
