@@ -9,6 +9,7 @@ export const Container = ({
   theme = 'white',
   mobileImagePos,
   style,
+  maxWidth,
 }) => {
   // determine spacing types, either padding or margin
   const spacingTypeTop = collapsibleTop || collapsible ? 'm' : 'p';
@@ -43,9 +44,9 @@ export const Container = ({
       style={style}
       className={`${className || ''} ${
         colorMapper[theme]
-      } w-full ${topSpacing} ${bottomSpacing}`}
+      } w-full ${topSpacing} ${bottomSpacing} px-5 sm:px-12`}
     >
-      <div className="px-5 sm:px-12 lg:px-0 max-w-1200 mx-auto overflow-hidden">
+      <div className={`max-w-${maxWidth || '1200'} mx-auto overflow-hidden`}>
         {children}
       </div>
     </section>

@@ -65,13 +65,13 @@ const Category = ({ data }) => {
               ? sanityCategoryPage.heroImage.asset.gatsbyImageData
               : null
           }
-          id={'oversikt'}
+          id="oversikt"
         >
           <StyledBlockContent blocks={sanityCategoryPage._rawText || null} />
         </Overview>
       </Container>
       {sanityCategoryPage.servicesListText && (
-        <Container>
+        <Container theme="gray">
           <RolesList
             categoryName={sanityCategoryPage.heroHeading}
             image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
@@ -88,7 +88,6 @@ const Category = ({ data }) => {
         </Container>
       )}
       <BlogCarousel blue={true} />
-      {/* </div> */}
     </Layout>
   );
 };

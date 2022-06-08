@@ -11,6 +11,7 @@ export const BlogSlider = ({
   blueText,
   useBlogQuery,
   blue,
+  maxWidth,
   isEnLocale,
 }) => {
   const data = useBlogQuery();
@@ -51,7 +52,9 @@ export const BlogSlider = ({
   };
   return (
     <div className="w-full">
-      <div className="max-w-1200 px-5 xl:px-0 sm:px-12 mx-auto">
+      <div
+        className={`max-w-${maxWidth || 1200} mx-auto px-5 sm:px-12 2xl:px-0`}
+      >
         <Title
           underline
           align="left"
@@ -63,7 +66,7 @@ export const BlogSlider = ({
           </span>
         </Title>
       </div>
-      <div className="pt-12 sm:pb-20 max-w-fourteen mx-auto">
+      <div className="pt-12 sm:pb-20 max-w-1440 mx-auto">
         <div>
           <Slider {...settings}>
             {articles.map((article, index) => {
@@ -145,7 +148,7 @@ const Slide = ({
     <>
       <Link to={`/blogg/${article.slug.current}`} className="w-full pb-56c">
         <div
-          className={`${active && ''}  transform ${prevPos && 'scale-80'} ${
+          className={`${active && ''} transform ${prevPos && 'scale-80'} ${
             nextPos && 'scale-80'
           }
           ${!active && ''} relativ transition duration-300 ${
