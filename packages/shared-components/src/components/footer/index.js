@@ -9,7 +9,7 @@ export const Footer = ({
   contactTitle,
 }) => (
   <footer className="bg-theme-footer seven:pt-12 seven:pb-10 seven:px-12 px-6 py-15">
-    <div className="mx-auto max-w-fourteen text-left flex flex-col seven:flex-row md:items-stretch text-theme-text">
+    <div className="mx-auto max-w-1440 text-left flex flex-col seven:flex-row md:items-stretch text-theme-text">
       <div className="tracking-wider mb-10 seven:mb-0">
         <h4 className="text-lg pb-5 font-bold tracking-wider uppercase">
           {contactTitle}

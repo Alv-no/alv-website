@@ -4,11 +4,11 @@ import * as Icon from '../../../../shared-components/src/components/icon';
 export const ServicesNav = ({ nav, scrollTo }) => {
   return (
     <nav className="mx-auto">
-      <ul className="sm:flex sm:justify-center justify-between divide-y-2 divide-lightnavy sm:divide-none text-lg list-style-none p-0">
+      <ul className="sm:grid grid-flow-col gap-x-7 auto-cols-min sm:justify-center justify-between divide-y-2 divide-lightnavy sm:divide-none text-lg list-style-none p-0">
         {nav.map((el) => (
           <button
             aria-label="Scroll Link"
-            className="sm:mr-7 focus:outline-none w-full uppercase tracking-wider font-bold sm:w-auto justify-between flex items-center pb-6px pt-2"
+            className="focus:outline-none w-full uppercase tracking-wider font-bold sm:w-auto justify-between flex items-center pb-6px pt-2"
             onClick={scrollTo}
             name={el.id}
           >
