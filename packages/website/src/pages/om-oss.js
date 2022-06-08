@@ -7,6 +7,7 @@ import {
   OurServices,
   AboutIntro,
   FeaturedTeam,
+  Container,
 } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { client } from '../server-side/client';
@@ -40,16 +41,16 @@ const About = ({ serverData }) => {
             bottomImg={data.aboutUsLower.childImageSharp.gatsbyImageData}
           />
         </div>
-        <div className="h-10 lg:h-0" />
-        <OurServices
-          darkFade
-          {...serverData.allLandingPage[0].section2Services}
-        />
-        <div className="px-12 lg:h-5"></div>
-        <div className="max-w-1200 mx-auto xl:px-0 sm:px-12 px-5 -mb-10 mt-12">
+        <Container theme="navy">
+          <OurServices
+            darkFade
+            {...serverData.allLandingPage[0].section2Services}
+          />
+        </Container>
+        <Container theme="navy">
           <Title align="left">Ansatte</Title>
-        </div>
-        <FeaturedTeam notitle team={team} color="navy" />
+          <FeaturedTeam notitle team={team} color="navy" />
+        </Container>
         <div className="max-w-1440 mx-auto">
           <BlogCarousel />
         </div>
