@@ -4,10 +4,10 @@ import Fade from 'react-reveal/Fade';
 export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
   return (
     <div
-      className={`lg:pr-12 lg:grid mx-auto max-w-1440 sm:pt-15 text-theme-text items-center`}
-      style={{ gridTemplateColumns: '70% auto' }}
+      className="lg:grid mx-auto text-theme-text relative"
+      style={{ gridTemplateColumns: '55% auto' }}
     >
-      <div className="relative w-full">
+      <div className="relative w-full" style={{ maxWidth: '866px' }}>
         <video
           className="h-auto mx-auto"
           controls
@@ -20,12 +20,14 @@ export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
         </video>
       </div>
       <Fade>
-        <h2 className="uppercase hidden lg:block top-0 right-0 lg:text-3xl xl:text-cta-lg font-semibold tracking-wider transform translate-x-20 leading-tight mt-10 lg:mt-0 lg:w-4/6 lg:pl-5">
-          {children}
-        </h2>
+        <div className="flex items-center md:pl-10 xl:pl-20">
+          <h2 className="uppercase hidden lg:block top-0 right-0 lg:text-3xl xl:text-cta-lg font-semibold tracking-wider leading-tight lg:w-3/6">
+            {children}
+          </h2>
+        </div>
       </Fade>
       <Fade>
-        <h2 className="mx-5 sm:mx-16 uppercase block lg:hidden text-index sm:text-slider font-semibold tracking-wider sm:w-7/12 leading-tight mt-5 sm:mt-10">
+        <h2 className="uppercase block lg:hidden text-index sm:text-slider font-semibold tracking-wider sm:w-7/12 leading-tight mt-5 sm:mt-10">
           {children}
         </h2>
       </Fade>
