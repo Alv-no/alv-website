@@ -3,34 +3,30 @@ import React from 'react';
 export const Container = ({
   children,
   className,
-  collapsible,
-  collapsibleTop,
-  collapsibleBottom,
-  theme = 'white',
-  mobileImagePos,
-  style,
+  removePaddingTop,
+  removePaddingBottom,
+  removePaddingMobile,
   maxWidth,
+  theme = 'white',
 }) => {
-  // determine spacing types, either padding or margin
-  const spacingTypeTop = collapsibleTop || collapsible ? 'm' : 'p';
-  const spacingTypeBottom = collapsibleBottom || collapsible ? 'm' : 'p';
-
-  // to avoid unnecessary margins on mobile when using images
-  const mobileImagePosMapper = {
-    top: `${spacingTypeTop}t-0 sm:${spacingTypeTop}t-15`,
-    bottom: `${spacingTypeBottom}b-0 sm:${spacingTypeBottom}b-15`,
+  // avoid unnecessary margins on mobile when using images
+  const removePaddingMobileMapper = {
+    top: `pt-0 sm:pt-15`,
+    bottom: `pb-0 sm:pb-15`,
   };
 
   // default classNames based on collapsible input
-  const defaultTopSpacing = `${spacingTypeTop}t-12 sm:${spacingTypeTop}t-15`;
-  const defaultBottomSpacing = `${spacingTypeBottom}b-12 sm:${spacingTypeBottom}b-15`;
+  const defaultTopSpacing = `pt-12 sm:pt-15`;
+  const defaultBottomSpacing = `pb-12 sm:pb-15`;
 
-  // calculated spacings based on mobileImagePos and collapsible input
+  // calculated spacings based on removePaddingMobile and collapsible input
   const topSpacing =
-    mobileImagePos === 'top' ? mobileImagePosMapper.top : defaultTopSpacing;
+    removePaddingMobile === 'top'
+      ? removePaddingMobileMapper.top
+      : defaultTopSpacing;
   const bottomSpacing =
-    mobileImagePos === 'bottom'
-      ? mobileImagePosMapper.bottom
+    removePaddingMobile === 'bottom'
+      ? removePaddingMobileMapper.bottom
       : defaultBottomSpacing;
 
   const colorMapper = {
@@ -41,10 +37,9 @@ export const Container = ({
 
   return (
     <section
-      style={style}
-      className={`${className || ''} ${
-        colorMapper[theme]
-      } w-full ${topSpacing} ${bottomSpacing} px-5 sm:px-12`}
+      className={`${className || ''} ${colorMapper[theme]} w-full ${
+        !removePaddingTop && topSpacing
+      } ${!removePaddingBottom && bottomSpacing} px-5 sm:px-12`}
     >
       <div className={`max-w-${maxWidth || '1200'} mx-auto overflow-hidden`}>
         {children}

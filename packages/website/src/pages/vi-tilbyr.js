@@ -63,7 +63,7 @@ const Services = () => {
             <div className="h-8" />
             <Description align="center">{description}</Description>
           </ServicesHero>
-          <Container mobileImagePos="bottom">
+          <Container removePaddingMobile="bottom">
             <ColumnSection
               eyebrow={section2Eyebrow}
               title={section2Title}
