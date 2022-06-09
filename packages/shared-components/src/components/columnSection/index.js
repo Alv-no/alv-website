@@ -1,14 +1,7 @@
 import React from 'react';
 import { BgImage } from 'gbimage-bridge';
-import * as Icon from '../icon';
 
-export const ColumnSection = ({
-  title,
-  eyebrow,
-  image,
-  imageText,
-  children,
-}) => {
+export const ColumnSection = ({ title, eyebrow, image, children }) => {
   return (
     <>
       <div
