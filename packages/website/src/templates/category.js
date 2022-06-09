@@ -55,7 +55,7 @@ const Category = ({ data }) => {
         title={sanityCategoryPage.heroHeading}
         description={sanityCategoryPage.heroDescription}
       />
-      <Container>
+      <Container style={{ paddingTop: '0px' }}>
         <ServicesNav nav={nav} scrollTo={scrollTo} />
       </Container>
       <Container style={{ paddingTop: '0px' }}>
