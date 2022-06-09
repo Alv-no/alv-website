@@ -4,7 +4,7 @@ import { Layout } from '../components/layout';
 import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
 import { VideoIntro } from '../components/videoIntro';
-import { WhoWeAre, Hire, OurServices } from 'shared-components';
+import { WhoWeAre, Hire, OurServices, Container } from 'shared-components';
 import { Founder } from '../components/founder';
 import localize from '../components/localize/index';
 import config from '../config';
@@ -35,42 +35,47 @@ const Index = ({ data }) => {
         pageTitle={_rawMeta.metaTitle}
         pageDescription={_rawMeta.metaTitle}
       >
-        <div className="bg-theme-bg">
-          <Hero
-            blocks={_rawSection1.heroText}
-            cta={section1.localeCta}
-            backgroundImage={section1.backgroundImage.asset.gatsbyImageData}
-            backgroundImageMobile={
-              section1.backgroundImageMobile.asset.gatsbyImageData
-            }
+        <Hero
+          blocks={_rawSection1.heroText}
+          cta={section1.localeCta}
+          backgroundImage={section1.backgroundImage.asset.gatsbyImageData}
+          backgroundImageMobile={
+            section1.backgroundImageMobile.asset.gatsbyImageData
+          }
+        />
+        <Container theme="white" maxWidth="1280" style={{ paddingBottom: 0 }}>
+          <VideoIntro
+            videoMp4={section2.videoMp4.asset.url}
+            videoWebm={section2.videoWebm.asset.url}
+          >
+            {_rawSection2.videoTextOverlay}
+          </VideoIntro>
+        </Container>
+        <Container theme="white" maxWidth="1280" style={{ paddingBottom: 0 }}>
+          <WhoWeAre
+            darkText
+            title={_rawSection3.title}
+            blocks={_rawSection3.block}
+            buttonText={_rawSection3.button.text}
+            buttonLink={_rawSection3.button.link}
+            config={config}
           />
-          <div className="bg-theme-bg w-full pb-15 sm:pt-24">
-            <VideoIntro
-              videoMp4={section2.videoMp4.asset.url}
-              videoWebm={section2.videoWebm.asset.url}
-            >
-              {_rawSection2.videoTextOverlay}
-            </VideoIntro>
-            <WhoWeAre
-              darkText
-              title={_rawSection3.title}
-              blocks={_rawSection3.block}
-              buttonText={_rawSection3.button.text}
-              buttonLink={_rawSection3.button.link}
-              config={config}
-            />
-          </div>
+        </Container>
+        <Container theme="white" maxWidth="1280" style={{ paddingBottom: 0 }}>
           <Hire
             title={_rawSection4.title}
             text={_rawSection4.text}
             image={section4.image.asset.gatsbyImageData}
           />
-          <div className="h-15" />
+        </Container>
+        <Container theme="white" maxWidth="1280" mobileImagePos="bottom">
           <OurServices {..._rawSection5} image={section5.image} blueLine />
+        </Container>
+        <Container maxWidth="1280" mobileImagePos="top">
           <Founder {..._rawSection6} {...section6} />
-          <div className="bg-theme-bg h-10 lg:h-32" />
-          <BlogCarousel blue isEnLocale={isEnLocale} blueText />
-        </div>
+        </Container>
+        <Container style={{ paddingTop: 0 }} />
+        <BlogCarousel blue isEnLocale={isEnLocale} blueText maxWidth="1280" />
       </Layout>
     </div>
   );

@@ -15,46 +15,63 @@ export const Hire = ({
   return (
     <div className="bg-theme-bg w-full text-theme-text">
       <div
-        className="sm:pr-12 sm:grid max-w-1440 mx-auto"
+        className="lg:grid mx-auto"
         style={{ gridTemplateColumns: '50% auto' }}
       >
         <BgImage image={image}>
-          <div
-            className={`flex justify-end items-center ${
-              darkFade && 'bg-black bg-opacity-25'
-            } h-60vh sm:h-auto lg:p-0 p-10 lg:h-715`}
-          >
-            <div className="twelve:-mr-64 sm:block hidden sm:-mr-0 md:-mr-20 lg:-mr-48 w-full transform sm:translate-x-64 2xl:translate-x-80 px-0">
-              <Fade>
-                <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider sm:w-5/6 lg:w-4/6">
-                  {title}
-                </h2>
-                <p className="text-footer sm:text-xl tracking-wider mb-16 font-light sm:w-full lg:w-4/6">
-                  {text}
-                </p>
-                <div className="w-full flex justify-end">
-                  <div className="twelve:mr-0 lg:-ml-10 -mt-10">
-                    <CtaButton internalLink={buttonLink} blue={blue}>
-                      {buttonText}
-                    </CtaButton>
+          <div className={`${darkFade && 'bg-black bg-opacity-25'}`}>
+            <div
+              className={`flex justify-end items-center h-40vh lg:p-0 p-10 lg:h-715`}
+            >
+              <div className="twelve:-mr-1/2 lg:block hidden lg:-mr-48 w-full transform sm:translate-x-64 2xl:translate-x-80 px-0">
+                <Fade>
+                  <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider lg:w-4/6">
+                    {title}
+                  </h2>
+                  <p
+                    className={`text-footer sm:text-xl tracking-wider ${
+                      buttonText && 'mb-16'
+                    } font-light lg:w-4/6`}
+                  >
+                    {text}
+                  </p>
+                  <div className="w-full flex justify-end">
+                    <div className="twelve:mr-0 lg:-ml-10 -mt-10">
+                      <CtaButton internalLink={buttonLink} blue={blue}>
+                        {buttonText}
+                      </CtaButton>
+                    </div>
                   </div>
-                </div>
-              </Fade>
+                </Fade>
+              </div>
             </div>
-          </div>
-        </BgImage>
-        <div className="px-5 sm:hidden -mt-20 xs:-mt-15 ">
-          <Fade>
-            <h2 className="uppercase text-blog sm:text-slider mb-8 font-semibold tracking-wider">
+            <h2
+              className="uppercase text-blog sm:text-blog md:text-4xl font-semibold tracking-wider px-5 pt-32 pb-2 lg:hidden"
+              style={{
+                color: 'white',
+                background:
+                  'linear-gradient(180deg, rgba(5,24,56,0) 0%, rgba(5,24,56,0.84) 80%)',
+              }}
+            >
               {title}
             </h2>
-            <p className="text-footer sm:text-xl tracking-wider mb-16 font-light">
+          </div>
+        </BgImage>
+        <div className="lg:hidden mt-3">
+          <Fade>
+            <p
+              className={`text-footer sm:text-xl tracking-wider ${
+                buttonText && 'mb-12'
+              } font-light`}
+            >
               {text}
             </p>
             <div className="w-full flex justify-end">
-              <div className="twelve:-mr-40 eight:-mr-20 sm:-mr-8 -mt-10">
-                <CtaButton internalLink={buttonLink}>{buttonText}</CtaButton>
-              </div>
+              {buttonText && (
+                <div className="twelve:-mr-40 eight:-mr-20 -mt-5">
+                  <CtaButton internalLink={buttonLink}>{buttonText}</CtaButton>
+                </div>
+              )}
             </div>
           </Fade>
         </div>

@@ -26,7 +26,7 @@ export const OurServices = ({
           gridTemplateColumns: '1fr 1fr',
         }}
       >
-        <div className="">
+        <div className="order-2">
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
             {/* update alv sanity to use "title" naming convention */}
             {heading || title || 'Våre Tjenester'}
