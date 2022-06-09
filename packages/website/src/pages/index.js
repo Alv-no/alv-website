@@ -66,7 +66,11 @@ const Index = ({ data, location }) => {
           />
         </Container>
         <Container theme="navy" maxWidth="1440">
-          <OurServices darkFade {...landingPage.section2Services} />
+          <OurServices
+            darkFade
+            {...landingPage.section2Services}
+            leftAlignTopSection
+          />
         </Container>
         <Container theme="navy" maxWidth="1440" mobileImagePos="top">
           <Hire
