@@ -38,7 +38,6 @@
     "react-slick": "^0.28.0",
     "react-three-fiber": "^5.3.17",
     "shared-components": "workspace:packages/shared-components",
-    "sharp": "^0.30.6",
     "slugify": "^1.4.7",
     "tailwindcss": "latest",
     "three": "^0.124.0",
