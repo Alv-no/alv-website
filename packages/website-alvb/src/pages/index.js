@@ -43,7 +43,7 @@ const Index = ({ data }) => {
             section1.backgroundImageMobile.asset.gatsbyImageData
           }
         />
-        <Container theme="white" maxWidth="1280" style={{ paddingBottom: 0 }}>
+        <Container maxWidth="1280" removePaddingBottom>
           <VideoIntro
             videoMp4={section2.videoMp4.asset.url}
             videoWebm={section2.videoWebm.asset.url}
@@ -51,7 +51,7 @@ const Index = ({ data }) => {
             {_rawSection2.videoTextOverlay}
           </VideoIntro>
         </Container>
-        <Container theme="white" maxWidth="1280" style={{ paddingBottom: 0 }}>
+        <Container maxWidth="1280" removePaddingBottom>
           <WhoWeAre
             darkText
             title={_rawSection3.title}
@@ -61,20 +61,20 @@ const Index = ({ data }) => {
             config={config}
           />
         </Container>
-        <Container theme="white" maxWidth="1280" style={{ paddingBottom: 0 }}>
+        <Container maxWidth="1280" removePaddingBottom>
           <Hire
             title={_rawSection4.title}
             text={_rawSection4.text}
             image={section4.image.asset.gatsbyImageData}
           />
         </Container>
-        <Container theme="white" maxWidth="1280" mobileImagePos="bottom">
+        <Container maxWidth="1280" removePaddingMobile="bottom">
           <OurServices {..._rawSection5} image={section5.image} blueLine />
         </Container>
-        <Container maxWidth="1280" mobileImagePos="top">
+        <Container maxWidth="1280" removePaddingMobile="top">
           <Founder {..._rawSection6} {...section6} />
         </Container>
-        <Container style={{ paddingTop: 0 }} />
+        <Container removePaddingBottom />
         <BlogCarousel blue isEnLocale={isEnLocale} blueText maxWidth="1280" />
       </Layout>
     </div>

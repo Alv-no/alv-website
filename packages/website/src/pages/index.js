@@ -47,8 +47,8 @@ const Index = ({ data, location }) => {
         <Container
           theme="navy"
           maxWidth="1440"
-          style={{ paddingBottom: 0 }}
-          mobileImagePos="top"
+          removePaddingBottom
+          removePaddingMobile="top"
         >
           <VideoIntro
             videoMp4={data.video.videoMp4.asset.url}
@@ -57,7 +57,7 @@ const Index = ({ data, location }) => {
             {landingPage.videoTextOverlay}
           </VideoIntro>
         </Container>
-        <Container theme="navy" maxWidth="1440" mobileImagePos="bottom">
+        <Container theme="navy" maxWidth="1440" removePaddingMobile="bottom">
           <WhoWeAre
             title="Hvem er vi"
             whiteText
@@ -72,7 +72,7 @@ const Index = ({ data, location }) => {
             leftAlignTopSection
           />
         </Container>
-        <Container theme="navy" maxWidth="1440" mobileImagePos="top">
+        <Container theme="navy" maxWidth="1440" removePaddingMobile="top">
           <Hire
             darkFade
             title={landingPage.flipSection1Title}
@@ -82,7 +82,7 @@ const Index = ({ data, location }) => {
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
           />
         </Container>
-        <Container theme="navy" maxWidth="1440" mobileImagePos="top">
+        <Container theme="navy" maxWidth="1440" removePaddingMobile="top">
           <HireAlt
             darkFade
             title={landingPage.flipSection3Title}
