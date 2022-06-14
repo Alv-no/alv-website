@@ -2,6 +2,8 @@ import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import imageUrlBuilder from '@sanity/image-url';
 import * as styles from './CompanyRichText.module.css';
+import { ProductCta } from '../button';
+import { handleEmailSubmit } from './utils';
 
 export function companyRichTextTypesSerializer(config) {
   const urlBuilder = (source) =>
@@ -15,6 +17,15 @@ export function companyRichTextTypesSerializer(config) {
         const formattedEl = props.node.Heading?.split(' ').join('-');
         const navElement = formattedEl?.toLowerCase();
         return <h2 id={navElement}>{props.node.Heading}</h2>;
+      },
+      productCta: (props) => {
+        return (
+          <ProductCta
+            productName={props.node.productName}
+            buttonText={props.node.buttonText}
+            onClick={handleEmailSubmit}
+          />
+        );
       },
       imageTextFlip: (props) => {
         return (

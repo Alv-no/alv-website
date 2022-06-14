@@ -44,6 +44,7 @@ import contactPage from './contactPage';
 import imageHero from './textImageHero';
 import investmentPage from './investmentPage';
 import socials from './socials';
+import productCta from './productCta';
 import imageAndText from './imageAndText';
 import blogPage from './blogPage';
 import siteSettings from './siteSettings';
@@ -96,6 +97,7 @@ export default createSchema({
     button,
     blockImage,
     titleTextButton,
+    productCta,
     serviceItem,
     titleText,
     categoryList,
