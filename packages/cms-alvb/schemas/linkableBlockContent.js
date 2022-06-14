@@ -38,5 +38,9 @@ export default {
       title: 'Text image flip',
       type: 'imageTextFlip',
     },
+    {
+      title: 'Product CTA',
+      type: 'productCta',
+    },
   ],
 };
