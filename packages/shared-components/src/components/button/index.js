@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
+import { window } from 'browser-monads';
 
 export const Line = ({ children, navy }) => (
   <div className="flex cursor-pointer">
@@ -32,6 +33,91 @@ export const OvalSimple = ({ children, onClick }) => (
     {children}
   </button>
 );
+
+export const ProductCta = ({ children, onClick, productName, buttonText }) => {
+  const [showInput, setShowInput] = useState(false);
+  const [email, setEmail] = useState('');
+  const [buttonWidth, setButtonWidth] = useState(null);
+
+  const inputRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  const handleRevealInput = () => {
+    setShowInput(true);
+  };
+
+  // Set initial width to facilitate for transition effect
+  useEffect(() => {
+    if (buttonRef) {
+      setButtonWidth(buttonRef.current.offsetWidth + 'px');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!showInput && buttonWidth) {
+      buttonRef.current.style.width = buttonWidth;
+      console.log(showInput, 'setting' + buttonWidth);
+    }
+    if (showInput && buttonWidth) {
+      buttonRef.current.style.width = '330px';
+      inputRef.current.focus();
+      console.log(showInput, 'setting 330px');
+    }
+  }, [buttonWidth, showInput]);
+
+  return (
+    <div className="my-6">
+      <div className="relative inline-block">
+        <button
+          ref={buttonRef}
+          className={`uppercase tracking-wider text-base px-8 py-6px text-navy border border-navy rounded-full font-semibold focus:outline-none ease-all transition duration-500 ease-all ${
+            showInput && 'pointer-events-none'
+          }`}
+          style={{
+            borderWidth: '2px',
+            transition: '0.5s ease all',
+            height: '42px',
+          }}
+          onClick={handleRevealInput}
+          aria-label={children}
+        >
+          <span
+            className={`transition duration-500 whitespace-nowrap valid:text-green invalid:text-red ${
+              showInput && 'opacity-0 '
+            } h-full`}
+          >
+            {buttonText.en}
+          </span>
+        </button>
+        <form>
+          <input
+            ref={inputRef}
+            className={`absolute left-0 bg-none bottom-1/2 transform pl-8 translate-y-1/2 w-72 focus:outline-none ${
+              !showInput && 'pointer-events-none opacity-0'
+            }`}
+            style={{ background: 'none' }}
+            placeholder="Enter your email here..."
+            value={email}
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <div
+            className={`absolute right-0 bottom-1/2 transform translate-y-1/2 w-18 bg-navy rounded-r-full h-full flex items-center transition duration-500 opacity-0 ${
+              showInput && 'opacity-100'
+            }`}
+          >
+            <button
+              onSubmit={() => onClick(productName, email)}
+              className="text-white ml-3 focus:outline-none"
+            >
+              SEND
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 export const CtaArrow = ({ children, onClick, path }) => (
   <Link to={path || ''}>
