@@ -3,7 +3,7 @@ import * as Icon from '../../../../shared-components/src/components/icon';
 
 export const ServicesNav = ({ nav, scrollTo }) => {
   return (
-    <nav className="mx-auto pt-3 sm:pt-15">
+    <nav className="mx-auto">
       <ul className="sm:grid grid-flow-col gap-x-7 auto-cols-min sm:justify-center justify-between divide-y-2 divide-lightnavy sm:divide-none text-lg list-style-none p-0">
         {nav.map((el) => (
           <button

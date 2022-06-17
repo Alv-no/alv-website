@@ -55,10 +55,10 @@ const Category = ({ data }) => {
         title={sanityCategoryPage.heroHeading}
         description={sanityCategoryPage.heroDescription}
       />
-      <Container style={{ paddingTop: '0px' }}>
+      <Container removePaddingBottom>
         <ServicesNav nav={nav} scrollTo={scrollTo} />
       </Container>
-      <Container style={{ paddingTop: '0px' }}>
+      <Container>
         <Overview
           image={
             sanityCategoryPage.heroImage
@@ -71,7 +71,7 @@ const Category = ({ data }) => {
         </Overview>
       </Container>
       {sanityCategoryPage.servicesListText && (
-        <Container theme="gray">
+        <Container theme="gray" removePaddingMobile="bottom">
           <RolesList
             categoryName={sanityCategoryPage.heroHeading}
             image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
@@ -87,7 +87,9 @@ const Category = ({ data }) => {
           />
         </Container>
       )}
-      <BlogCarousel blue={true} />
+      <div className="text-navy">
+        <BlogCarousel blueText blue={true} />
+      </div>
     </Layout>
   );
 };
