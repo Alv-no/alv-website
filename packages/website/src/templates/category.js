@@ -71,7 +71,7 @@ const Category = ({ data }) => {
         </Overview>
       </Container>
       {sanityCategoryPage.servicesListText && (
-        <Container theme="gray" removePaddingMobile="bottom">
+        <Container theme="gray">
           <RolesList
             categoryName={sanityCategoryPage.heroHeading}
             image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
