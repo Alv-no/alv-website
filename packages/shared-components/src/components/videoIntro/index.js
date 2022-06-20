@@ -4,8 +4,8 @@ import Fade from 'react-reveal/Fade';
 export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
   return (
     <div
-      className="lg:grid mx-auto text-theme-text relative"
-      style={{ gridTemplateColumns: 'minmax(400px, 866px) auto' }}
+      className="lg:grid mx-auto text-theme-text relative justify-center lg:mr-12"
+      style={{ gridTemplateColumns: 'minmax(400px, 866px) 167px' }}
     >
       <div className="relative w-full" style={{ maxWidth: '866px' }}>
         <video
@@ -21,7 +21,7 @@ export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
       </div>
       <Fade>
         <h2
-          className="uppercase hidden lg:block top-0 right-0 text-cta-lg font-semibold tracking-wider leading-tight relative top-1/6 -ml-32"
+          className="uppercase hidden lg:block top-0 right-0 text-cta-lg font-semibold tracking-wider leading-tight relative -ml-32 top-1/6"
           style={{ width: '334px', top: '23%' }}
         >
           {children}
