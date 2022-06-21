@@ -13455,6 +13455,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"common-tags@npm:^1.8.2":
+  version: 1.8.2
+  resolution: "common-tags@npm:1.8.2"
+  checksum: 767a6255a84bbc47df49a60ab583053bb29a7d9687066a18500a516188a062c4e4cd52de341f22de0b07062e699b1b8fe3cfa1cb55b241cb9301aeb4f45b4dff
+  languageName: node
+  linkType: hard
+
 "commondir@npm:^1.0.1":
   version: 1.0.1
   resolution: "commondir@npm:1.0.1"
@@ -18530,19 +18537,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sitemap@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "gatsby-plugin-sitemap@npm:5.1.1"
+"gatsby-plugin-sitemap@npm:^5.16.0":
+  version: 5.16.0
+  resolution: "gatsby-plugin-sitemap@npm:5.16.0"
   dependencies:
     "@babel/runtime": ^7.15.4
-    common-tags: ^1.8.0
-    minimatch: ^3.0.4
+    common-tags: ^1.8.2
+    minimatch: ^3.1.2
     sitemap: ^7.0.0
   peerDependencies:
     gatsby: ^4.0.0-next
-    react: ^16.9.0 || ^17.0.0
-    react-dom: ^16.9.0 || ^17.0.0
-  checksum: 9db1f4e5b0e6168f06823b9a14856f194fc1ffcdb3db092edcc85ebfb0b8a239bd54211d101059016e969bf9e90f99c53d2aa1c15e5321569998954cebc36477
+    react: ^16.9.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
+  checksum: 63e79b7f4a4c3a3535c76b45f9c474955b5a73e83f081c3449476410feb34d7f18ec1a5c2dd32145808b0dc5f214da3c3b5cc4823f0bef3443e0cdd4e4690a40
   languageName: node
   linkType: hard
 
@@ -25216,6 +25223,15 @@ fsevents@^1.2.7:
   dependencies:
     brace-expansion: ^1.1.7
   checksum: 66ac295f8a7b59788000ea3749938b0970344c841750abd96694f80269b926ebcafad3deeb3f1da2522978b119e6ae3a5869b63b13a7859a456b3408bd18a078
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "minimatch@npm:3.1.2"
+  dependencies:
+    brace-expansion: ^1.1.7
+  checksum: c154e566406683e7bcb746e000b84d74465b3a832c45d59912b9b55cd50dee66e5c4b1e5566dba26154040e51672f9aa450a9aef0c97cfc7336b78b7afb9540a
   languageName: node
   linkType: hard
 
@@ -35696,7 +35712,7 @@ typescript@^4.0.5:
     gatsby-plugin-postcss: ^5.1.0
     gatsby-plugin-react-helmet: ^5.1.0
     gatsby-plugin-sharp: ^4.1.3
-    gatsby-plugin-sitemap: ^5.1.1
+    gatsby-plugin-sitemap: ^5.16.0
     gatsby-plugin-webpack-bundle-analyzer: ^1.0.5
     gatsby-source-filesystem: ^4.1.2
     gatsby-source-sanity: ^7.1.0
@@ -35760,7 +35776,7 @@ typescript@^4.0.5:
     gatsby-plugin-react-helmet: ^5.1.0
     gatsby-plugin-robots-txt: ^1.7.0
     gatsby-plugin-sharp: ^4.1.3
-    gatsby-plugin-sitemap: ^5.1.1
+    gatsby-plugin-sitemap: ^5.16.0
     gatsby-plugin-webpack-bundle-analyzer: ^1.0.5
     gatsby-source-filesystem: ^4.1.2
     gatsby-source-sanity: ^7.1.0
