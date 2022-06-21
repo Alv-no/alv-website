@@ -32,7 +32,7 @@ const Blog = ({ data, serverData }) => {
   return (
     <Layout
       whiteIcons
-      pageTitle="Blogg"
+      pageTitle={serverData.articles.pageMetadata.pageTitle}
       pageDescription={serverData.articles.pageMetadata.pageDescription}
       layoutData={layoutData}
     >
