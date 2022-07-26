@@ -27,6 +27,7 @@ app.post('/send', (req, res) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const phone = req.body.phone;
+  const productname = req.body.productName;
 
   let mailbody = '';
   if (firstname || lastname)
@@ -37,6 +38,8 @@ app.post('/send', (req, res) => {
   if (email) mailbody += '\nEpost: ' + email;
 
   if (body) mailbody += '\n\n' + body;
+
+  if (productname) mailbody += '\n\n' + productname;
 
   const msg = {
     to: process.env.MAILTO,
