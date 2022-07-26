@@ -29,6 +29,7 @@ function getSecrets() {
   YT_API="$(getSecret youtube-api-token)"
   SENDGRID_API_KEY="$(getSecret sendgrid-api-key)"
   MAILTO="$(getSecret mail-api-recipient)"
+  MAILTO_ALVB="$(getSecret mail-api-alvb-recipient)"
 }
 
 function buildServices() {
@@ -79,7 +80,7 @@ function buildServices() {
       --file mail-api.Dockerfile \
       --tag "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH" \
       --no-cache
-  fi
+  fi 
 }
 
 function pushServices() {
@@ -167,6 +168,20 @@ function deployServices() {
       --namespace "alv-no"
     sleep 20
     curl "https://mail-api.$ALV_HOSTNAME"
+  fi
+
+  if [[ "mail-api-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "helm mail api alvb"
+    helm upgrade mail-api-alvb ./chart \
+      --install \
+      --set image.repository="$CONTAINER_REGISTRY/mail-api" \
+      --set image.tag="$SHORT_HASH" \
+      --set "hosts={mail-api.$ALVB_HOSTNAME}" \
+      --set secrets.MAILTO="$MAILTO_ALVB" \
+      --set secrets.SENDGRID_API_KEY="$SENDGRID_API_KEY" \
+      --namespace "alvb-no"
+    sleep 20
+    curl "https://mail-api.$ALVB_HOSTNAME"
   fi
 }
 
