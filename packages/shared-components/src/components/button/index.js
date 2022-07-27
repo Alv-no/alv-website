@@ -56,12 +56,12 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
   useEffect(() => {
     if (!showInput && buttonWidth) {
       buttonRef.current.style.width = buttonWidth;
-      console.log(showInput, 'setting' + buttonWidth);
+
     }
     if (showInput && buttonWidth) {
       buttonRef.current.style.width = '330px';
       inputRef.current.focus();
-      console.log(showInput, 'setting 330px');
+
     }
   }, [buttonWidth, showInput]);
 
@@ -107,7 +107,8 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
             }`}
           >
             <button
-              onSubmit={() => onClick(productName, email)}
+              type="button"
+              onClick={() => onClick(productName, email)}
               className="text-white ml-3 focus:outline-none"
             >
               SEND
