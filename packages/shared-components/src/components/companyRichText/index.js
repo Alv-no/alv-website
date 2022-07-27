@@ -5,6 +5,7 @@ import * as styles from './CompanyRichText.module.css';
 import { ProductCta } from '../button';
 import { handleEmailSubmit } from './utils';
 
+/* eslint-disable no-dupe-keys */
 export function companyRichTextTypesSerializer(config) {
   const urlBuilder = (source) =>
     imageUrlBuilder({
