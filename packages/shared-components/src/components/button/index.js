@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as Icon from '../icon';
 import Link from 'gatsby-link';
-import { window } from 'browser-monads';
 
 export const Line = ({ children, navy }) => (
   <div className="flex cursor-pointer">
