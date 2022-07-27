@@ -176,12 +176,12 @@ function deployServices() {
       --install \
       --set image.repository="$CONTAINER_REGISTRY/mail-api" \
       --set image.tag="$SHORT_HASH" \
-      --set "hosts={mail-api.$ALVB_HOSTNAME}" \
+      --set "hosts={mail-api-alvb.$ALVB_HOSTNAME}" \
       --set secrets.MAILTO="$MAILTO_ALVB" \
       --set secrets.SENDGRID_API_KEY="$SENDGRID_API_KEY" \
       --namespace "alvb-no"
     sleep 20
-    curl "https://mail-api.$ALVB_HOSTNAME"
+    curl "https://mail-api-alvb.$ALVB_HOSTNAME"
   fi
 }
 
