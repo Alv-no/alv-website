@@ -172,7 +172,7 @@ function deployServices() {
 
   if [[ "mail-api-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "helm mail api alvb"
-    helm upgrade mail-api ./chart \
+    helm upgrade mail-api-alvb ./chart \
       --install \
       --set image.repository="$CONTAINER_REGISTRY/mail-api" \
       --set image.tag="$SHORT_HASH" \
