@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import { graphql } from 'gatsby';
 import { ServiceNavList } from '../components/serviceNavList';
 import { RolesList } from '../components/rolesList';
-import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
+import { Container, NavyIntroImage } from 'shared-components';
 import { CtaSection } from '../components/ctaSection';
 import { window } from 'browser-monads';
 import { BlogCarousel } from '../components/blogCarousel';
@@ -47,7 +47,7 @@ const Service = ({ data }) => {
           buttonText="kontakt oss"
         />
       </div>
-      <div className="w-full bg-white tracking-wider z-10 relative">
+      <Container>
         <ServiceNavList
           nav={nav}
           heroImage={data.sanityServices.heroImage.asset.gatsbyImageData}
@@ -55,16 +55,19 @@ const Service = ({ data }) => {
           heading={data.sanityServices.aboutSection}
           scrollTo={scrollTo}
         />
-        <div className="overflow-x-hidden">
-          <div className="h-10 sm:h-0" />
+      </Container>
+      <div className="overflow-x-hidden">
+        <Container theme="gray">
           <RolesList
             image={data.rolesImg.childImageSharp.gatsbyImageData}
             roles={relatedServices}
             categoryName={relatedServices[0].node.parentPage.slug.current}
             id="tjenester"
           />
-          <div className="h-10" />
+        </Container>
+        <Container theme="navy">
           <CtaSection
+            navy
             eyebrow={
               data.sanityServices.ctaEyebrow ||
               'Tenker du på å kjøre i gang med et prosjekt?'
@@ -76,10 +79,10 @@ const Service = ({ data }) => {
             buttonText="Ta Kontakt"
             internalLink="/kontakt-oss"
           />
-        </div>
-        <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-          <BlogCarousel blue />
-        </div>
+        </Container>
+      </div>
+      <div className="max-w-1440 mx-auto sm:my-15 mt-10">
+        <BlogCarousel blue />
       </div>
     </Layout>
   );

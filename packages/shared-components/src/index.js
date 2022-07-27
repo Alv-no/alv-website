@@ -31,6 +31,7 @@ export { Breadcrumb } from './components/breadcrumb';
 export { ImageTextCards } from './components/imageTextCards';
 export { BlogSection } from './components/blogSection';
 export { IntroContainer } from './components/introContainer';
+export { Container } from './components/container';
 export { CallToAction } from './components/calltoaction';
 export { EmployeeSection } from './components/employeeSection';
 export { FeaturedTeam } from './components/featuredTeam';

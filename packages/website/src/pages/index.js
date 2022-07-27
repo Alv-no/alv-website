@@ -10,6 +10,7 @@ import {
   VideoIntro,
   Hire,
   HireAlt,
+  Container,
 } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import config from '../config';
@@ -28,38 +29,50 @@ const Index = ({ data, location }) => {
   ];
 
   return (
-    <div className="overflow-hidden">
-      <Layout
-        whiteIcons
-        pageTitle={pageTitle}
-        pageDescription={pageDescription}
-        layoutData={layoutData}
-      >
-        <div className="bg-navy">
-          <Hero
-            linesAndClasses={linesAndClasses}
-            delay={90}
-            videoMp4={data.video.heroVideoMp4.asset.url}
-            videoWebm={data.video.heroVideoWebm.asset.url}
-            routeUpdate={location.action}
-            heroCta={landingPage.heroCta}
+    <Layout
+      whiteIcons
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+      layoutData={layoutData}
+    >
+      <div className="bg-navy">
+        <Hero
+          linesAndClasses={linesAndClasses}
+          delay={90}
+          videoMp4={data.video.heroVideoMp4.asset.url}
+          videoWebm={data.video.heroVideoWebm.asset.url}
+          routeUpdate={location.action}
+          heroCta={landingPage.heroCta}
+        />
+        <Container
+          theme="navy"
+          maxWidth="1440"
+          removePaddingBottom
+          removePaddingMobile="top"
+        >
+          <VideoIntro
+            videoMp4={data.video.videoMp4.asset.url}
+            videoWebm={data.video.videoWebm.asset.url}
+          >
+            {landingPage.videoTextOverlay}
+          </VideoIntro>
+        </Container>
+        <Container theme="navy" maxWidth="1440" removePaddingMobile="bottom">
+          <WhoWeAre
+            title="Hvem er vi"
+            whiteText
+            blocks={landingPage._rawAboutText}
+            config={config}
           />
-          <div className="bg-navy w-full pb-15">
-            <VideoIntro
-              videoMp4={data.video.videoMp4.asset.url}
-              videoWebm={data.video.videoWebm.asset.url}
-            >
-              {landingPage.videoTextOverlay}
-            </VideoIntro>
-            <WhoWeAre
-              title="Hvem er vi"
-              whiteText
-              blocks={landingPage._rawAboutText}
-              config={config}
-            />
-          </div>
-          <OurServices darkFade {...landingPage.section2Services} />
-          <div className="lg:h-40  h-5" />
+        </Container>
+        <Container theme="navy" maxWidth="1440">
+          <OurServices
+            darkFade
+            {...landingPage.section2Services}
+            leftAlignTopSection
+          />
+        </Container>
+        <Container theme="navy" maxWidth="1440" removePaddingMobile="top">
           <Hire
             darkFade
             title={landingPage.flipSection1Title}
@@ -68,7 +81,8 @@ const Index = ({ data, location }) => {
             buttonText={landingPage.flipSection1ButtonText}
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
           />
-          <div className="bg-navy h-10 lg:h-32" />
+        </Container>
+        <Container theme="navy" maxWidth="1440" removePaddingMobile="top">
           <HireAlt
             darkFade
             title={landingPage.flipSection3Title}
@@ -76,11 +90,10 @@ const Index = ({ data, location }) => {
             image={landingPage.flipSection3Image.asset.gatsbyImageData}
             imageText={landingPage.flipSection3ImageText}
           />
-          <BlogSlider useBlogQuery={useBlogQuery} />
-          <div className="lg:h-20 h-5" />
-        </div>
-      </Layout>
-    </div>
+        </Container>
+        <BlogSlider useBlogQuery={useBlogQuery} maxWidth="1440" />
+      </div>
+    </Layout>
   );
 };
 

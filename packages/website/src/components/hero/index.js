@@ -12,7 +12,7 @@ export const Hero = ({
   heroCta,
 }) => {
   return (
-    <div className="h-screen relative sm:-mt-20 -mt-16 transform eight:-translate-y-2px">
+    <div className="h-screen relative sm:-mt-20 -mt-16 transform">
       <MobileAnimation linesAndClasses={linesAndClasses} delay={delay} />
       <GradientLayer />
       <div className={styles.videoContainer}>

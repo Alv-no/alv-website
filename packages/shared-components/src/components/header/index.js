@@ -111,7 +111,7 @@ export const MobileHeader = ({
         white={white}
         logo={logo}
       />
-      <Headroom>
+      <Headroom style={{ height: '1px' }}>
         <div
           className={`bg-navy block ${
             viewport || 'sm'

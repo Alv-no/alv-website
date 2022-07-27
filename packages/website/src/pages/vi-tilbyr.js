@@ -10,6 +10,7 @@ import {
   ColumnSection,
   ImageTextCards,
   ImageTextFull,
+  Container,
   ServicesCard,
 } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
@@ -62,7 +63,7 @@ const Services = () => {
             <div className="h-8" />
             <Description align="center">{description}</Description>
           </ServicesHero>
-          <div className="bg-white text-navy px-5 sm:px-12 lg:px-0 -mt-5 overflow-hidden max-w-1200 mx-auto w-full">
+          <Container removePaddingMobile="bottom">
             <ColumnSection
               eyebrow={section2Eyebrow}
               title={section2Title}
@@ -72,8 +73,8 @@ const Services = () => {
             >
               <StyledBlockContent blocks={_rawSection2Block} config={config} />
             </ColumnSection>
-          </div>
-          <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
+          </Container>
+          <Container theme="gray">
             <ServicesSection
               description={section3description}
               title={data.sanityOurServicesPage.section3link.heroHeading}
@@ -94,9 +95,9 @@ const Services = () => {
                   );
                 })}
             </ServicesSection>
-          </div>
-          <div className="max-w-1200 mx-auto xl:px-0 sm:px-12">
-            {_rawSection4Block && (
+          </Container>
+          {_rawSection4Block && (
+            <Container>
               <ImageTextFull
                 link={data.sanityOurServicesPage.section4link.slug.current}
                 title={data.sanityOurServicesPage.section4link.heroHeading}
@@ -104,8 +105,10 @@ const Services = () => {
               >
                 <StyledBlockContent blocks={_rawSection4Block} />
               </ImageTextFull>
-            )}
-            {_rawSection5Block && (
+            </Container>
+          )}
+          {_rawSection5Block && (
+            <Container>
               <ImageTextFull
                 link={data.sanityOurServicesPage.section5link.slug.current}
                 title={data.sanityOurServicesPage.section5link.heroHeading}
@@ -114,9 +117,9 @@ const Services = () => {
               >
                 <StyledBlockContent blocks={_rawSection5Block} />
               </ImageTextFull>
-            )}
-          </div>
-          <div className="bg-servicesgray text-navy px-5 sm:px-12 overflow-hidden">
+            </Container>
+          )}
+          <Container theme="gray">
             <ServicesSection
               title={data.sanityOurServicesPage.section6link.heroHeading}
               description={section6description}
@@ -137,7 +140,7 @@ const Services = () => {
                   );
                 })}
             </ServicesSection>
-          </div>
+          </Container>
           <ImageTextCards
             title={data.sanityOurServicesPage.section7link.heroHeading}
             image={section7Image.asset.gatsbyImageData}

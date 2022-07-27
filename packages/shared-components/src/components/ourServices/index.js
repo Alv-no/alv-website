@@ -9,6 +9,7 @@ export const OurServices = ({
   button,
   image,
   textOverImage,
+  leftAlignTopSection,
   title,
   servicesList,
   darkFade,
@@ -21,17 +22,17 @@ export const OurServices = ({
   return (
     <>
       <div
-        className="max-w-1440 sm:px-12 xl:px-0 mx-auto lg:grid xl:gap-x-10 lg:pb-12 pb-5 bg-theme-bg text-theme-text"
+        className="lg:grid lg:pb-12 pb-5 bg-theme-bg text-theme-text gap-x-10"
         style={{
           gridTemplateColumns: '1fr 1fr',
         }}
       >
-        <div className="sm:pl-0 lg:ml-0 pl-5">
+        <div className={leftAlignTopSection ? '' : 'order-2'}>
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
             {/* update alv sanity to use "title" naming convention */}
             {heading || title || 'Våre Tjenester'}
           </h2>
-          <p className="mb-5 sm:pr-15 font-light text-xl w-full text-theme-text sm:text-xl tracking-wider">
+          <p className="mb-5 sm:pr-15 font-thin text-footer sm:text-xl w-full text-theme-text sm:text-xl tracking-wider">
             {description}
           </p>
 
@@ -52,11 +53,10 @@ export const OurServices = ({
         className="mx-auto lg:grid flex flex-col-reverse gap-x-10"
         style={{
           gridTemplateColumns: '1fr 1fr',
-          maxWidth: '1300px',
         }}
       >
         {/* Map from array of list items */}
-        <div className="w-full px-5 sm:px-0 sm:mx-12 lg:mx-0 lg:pl-12 mt-9 text-lg sm:text-nav">
+        <div className="w-full mt-9 text-lg sm:text-nav">
           <ul>
             {servicesList.map((el, i) => (
               <li
@@ -68,7 +68,7 @@ export const OurServices = ({
                   {el.title}
                 </p>
                 {el.subtitle && (
-                  <p className="text-base font-normal pointer-events-none">
+                  <p className="text-base font-thin pointer-events-none ">
                     {el.subtitle}
                   </p>
                 )}
@@ -113,7 +113,7 @@ const ListContent = ({ children, link, button }) => (
   <div>
     <div className={`w-12 mt-1 mb-8 h-2px bg-theme-accent`} />
     <div className="sm:pl-10 pl-5 mb-15">
-      <p className="tracking-wider text-theme-text sm:text-lg leading-snug font-extralight mb-4 sm:w-4/6 w-full lg:w-full">
+      <p className="tracking-wider text-theme-text sm:text-lg leading-snug font-extralight mb-4 sm:w-5/6 w-full lg:w-full">
         {children}
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">

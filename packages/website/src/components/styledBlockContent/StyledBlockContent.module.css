@@ -69,6 +69,28 @@
   letter-spacing: 0.96px;
 }
 
+.body div:last-child,
+.body h2:last-child,
+.body h3:last-child,
+.body p:last-child,
+.body ol:last-child,
+.body ul:last-child,
+.body img:last-child,
+.body blockquote:last-child {
+  margin-bottom: 0px;
+}
+
+.body div:first-child,
+.body h2:first-child,
+.body h3:first-child,
+.body p:first-child,
+.body ol:first-child,
+.body ul:first-child,
+.body img:first-child,
+.body blockquote:first-child {
+  margin-top: 0px;
+}
+
 .body ol {
   list-style-type: decimal;
   margin-left: 20px;

@@ -9,31 +9,29 @@ export const Founder = ({
   name,
   role,
 }) => (
-  <section className="w-full px-5 sm:px-10 my-10 sm:my-20">
-    <div className="max-w-1200 mx-auto grid justify-between eight:grid-cols-founder">
-      <div className="flex justify-between flex-col h-full py-5">
-        <h2 className="uppercase font-thin text-cta-lg mb-6">{title}</h2>
-        <p className="text-4xl -mb-4 text-quote mt-10 lg:mt-0">“</p>
-        <quote className="italic text-footer mb-5 tracking-widest lg:my-0 my-10">
-          {quote}
-        </quote>
-        <GatsbyImage
-          image={signatureImage.asset.gatsbyImageData}
-          className="w-2/6 mb-5"
-        />
-        <div className="font-thin text-lg uppercase">
-          <span className="font-bold">
-            {name} <span className="ml-2 mr-3">|</span>
-          </span>
-          {role}
-        </div>
-      </div>
-      <div>
-        <GatsbyImage
-          image={founderImage.asset.gatsbyImageData}
-          className="h-full"
-        />
+  <div className="mx-auto grid justify-between eight:grid-cols-founder">
+    <div className="flex justify-between flex-col h-full py-5">
+      <h2 className="uppercase font-thin text-cta-lg mb-6">{title}</h2>
+      <p className="text-4xl -mb-4 text-quote mt-10 lg:mt-0">“</p>
+      <quote className="italic text-footer mb-5 tracking-widest lg:my-0 my-10">
+        {quote}
+      </quote>
+      <GatsbyImage
+        image={signatureImage.asset.gatsbyImageData}
+        className="w-2/6 mb-5"
+      />
+      <div className="font-thin text-lg uppercase">
+        <span className="font-bold">
+          {name} <span className="ml-2 mr-3">|</span>
+        </span>
+        {role}
       </div>
     </div>
-  </section>
+    <div>
+      <GatsbyImage
+        image={founderImage.asset.gatsbyImageData}
+        className="h-full"
+      />
+    </div>
+  </div>
 );

@@ -17,7 +17,7 @@ export const WhoWeAre = ({
   return (
     <>
       <div
-        className={`mx-5 sm:mx-16 twelve:px-12 twelve:grid twelve:mx-auto twelve:mt-20 mt-8 sm:mt-10 tracking-wider gap-x-10 max-w-1440 twleve:mx-auto text-theme-text`}
+        className="twelve:grid twelve:mx-auto tracking-wider gap-x-10 twleve:mx-auto text-theme-text"
         style={{ gridTemplateColumns: '1fr 1fr' }}
       >
         <div className="twelve:flex justify-end w-full">
