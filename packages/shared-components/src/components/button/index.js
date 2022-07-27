@@ -55,7 +55,6 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
   useEffect(() => {
     if (!showInput && buttonWidth) {
       buttonRef.current.style.width = buttonWidth;
-
     }
     if (showInput && buttonWidth) {
       buttonRef.current.style.width = '330px';
