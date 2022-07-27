@@ -60,7 +60,6 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
     if (showInput && buttonWidth) {
       buttonRef.current.style.width = '330px';
       inputRef.current.focus();
-
     }
   }, [buttonWidth, showInput]);
 
