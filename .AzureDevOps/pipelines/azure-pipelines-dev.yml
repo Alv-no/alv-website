@@ -46,3 +46,4 @@ stages:
                 ./run deploy test website $BUILD_BUILDID
                 ./run deploy test website-alvb $BUILD_BUILDID
                 ./run deploy test mail-api $BUILD_BUILDID
+                ./run deploy test mail-api-alvb $BUILD_BUILDID
