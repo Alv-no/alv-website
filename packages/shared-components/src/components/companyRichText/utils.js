@@ -4,7 +4,7 @@ import { window } from 'browser-monads';
 export const handleEmailSubmit = (productName, email) => {
   const mailApiUrl =
     window.location.protocol +
-    '//mail-api.' +
+    '//mail-api-alvb.' +
     window.location.hostname +
     '/send';
 
