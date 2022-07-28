@@ -1,24 +1,29 @@
 import { window } from 'browser-monads';
 
 /* eslint-disable no-console */
-export const handleEmailSubmit = (productName, email) => {
+export const handleEmailSubmit = async (productName, email) => {
+  const data = { productName, email, subject: 'Email from website' };
   const mailApiUrl =
     window.location.protocol +
     '//mail-api-alvb.' +
     window.location.hostname +
     '/send';
 
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', mailApiUrl, true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function () {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      console.log('An automated email was sent with the following details:');
-      console.log(productName, email);
-    } else if (this.readyState === XMLHttpRequest.DONE && this.status === 500) {
+  const response = await fetch(mailApiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
       console.log('COULD NOT SEND EMAIL');
-    }
-  };
-  const data = { productName, email, subject: 'Email from website' };
-    xhr.send(new URLSearchParams(data));
+      console.error('Error:', error);
+    });
+
+  return response;
 };

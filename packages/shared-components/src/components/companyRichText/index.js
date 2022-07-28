@@ -25,7 +25,7 @@ export function companyRichTextTypesSerializer(config) {
           <ProductCta
             productName={props.node.productName}
             buttonText={props.node.buttonText}
-            onClick={handleEmailSubmit}
+            sendEmailCallback={handleEmailSubmit}
           />
         );
       },

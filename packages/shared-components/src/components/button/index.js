@@ -33,10 +33,16 @@ export const OvalSimple = ({ children, onClick }) => (
   </button>
 );
 
-export const ProductCta = ({ children, onClick, productName, buttonText }) => {
+export const ProductCta = ({
+  children,
+  sendEmailCallback,
+  productName,
+  buttonText,
+}) => {
   const [showInput, setShowInput] = useState(false);
   const [email, setEmail] = useState('');
   const [buttonWidth, setButtonWidth] = useState(null);
+  const [sendSuccess, setSendSuccess] = useState(false);
 
   const inputRef = useRef(null);
   const buttonRef = useRef(null);
@@ -62,6 +68,16 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
     }
   }, [buttonWidth, showInput]);
 
+  const handleSubmitClick = async (event) => {
+    event.preventDefault();
+    console.log(event);
+    const response = await sendEmailCallback(productName, email);
+
+    setSendSuccess(true);
+
+    console.log(response);
+  };
+
   return (
     <div className="my-6">
       <div className="relative inline-block">
@@ -86,32 +102,38 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
             {buttonText.en}
           </span>
         </button>
-        <form>
-          <input
-            ref={inputRef}
-            className={`absolute left-0 bg-none bottom-1/2 transform pl-8 translate-y-1/2 w-72 focus:outline-none ${
-              !showInput && 'pointer-events-none opacity-0'
-            }`}
-            style={{ background: 'none' }}
-            placeholder="Enter your email here..."
-            value={email}
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <div
-            className={`absolute right-0 bottom-1/2 transform translate-y-1/2 w-18 bg-navy rounded-r-full h-full flex items-center transition duration-500 opacity-0 ${
-              showInput && 'opacity-100'
-            }`}
-          >
-            <button
-              type="button"
-              onClick={() => onClick(productName, email)}
-              className="text-white ml-3 focus:outline-none"
-            >
-              SEND
-            </button>
-          </div>
-        </form>
+        {sendSuccess ? (
+          <form onSubmit={(e) => handleSubmitClick(e)}>
+            <input
+              ref={inputRef}
+              className={`absolute left-0 bg-none bottom-1/2 transform pl-8 translate-y-1/2 w-72 focus:outline-none ${
+                !showInput && 'pointer-events-none opacity-0'
+              }`}
+              style={{ background: 'none' }}
+              placeholder="Enter your email here..."
+              value={email}
+              required
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {showInput && (
+              <div
+                className={`absolute right-0 bottom-1/2 transform translate-y-1/2 w-18 bg-navy rounded-r-full h-full flex items-center transition duration-500 opacity-0 ${
+                  showInput && 'opacity-100'
+                }`}
+              >
+                <button
+                  type="submit"
+                  className="text-white ml-3 focus:outline-none"
+                >
+                  SEND
+                </button>
+              </div>
+            )}
+          </form>
+        ) : (
+          <p>Success</p>
+        )}
       </div>
     </div>
   );
