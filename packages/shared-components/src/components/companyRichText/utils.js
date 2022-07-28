@@ -20,5 +20,5 @@ export const handleEmailSubmit = (productName, email) => {
     }
   };
   const data = { productName, email, subject: 'Email from website' };
-  xhr.send(data);
+    xhr.send(new URLSearchParams(data));
 };
