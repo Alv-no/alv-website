@@ -1,0 +1,51 @@
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - packages/website
+
+pool:
+  vmImage: ubuntu-20.04
+
+stages:
+  - stage: review
+    displayName: Deploy to review
+    variables:
+      - group: azure-credentials-test
+    jobs:
+      - job: Review
+        displayName: Review
+        steps:
+          - checkout: self
+            fetchDepth: 1
+
+          - template: installDependencies.yaml
+
+          - task: Bash@3
+            displayName: ./run deploy review website $BUILD_BUILDID $CI_ENVIRONMENT_SLUG
+            env:
+              AZURE_SERVICE_PRINCIPAL_USERNAME: $(azure-service-principal-username)
+              AZURE_SERVICE_PRINCIPAL_PASSWORD: $(azure-service-principal-password)
+              AZURE_TENANT_ID: $(azure-tenant-id)
+              AZURE_SUBSCRIPTION_ID: $(azure-subscription-id)
+            inputs:
+              targetType: 'inline'
+              script: |
+                az login --service-principal \
+                  --username "$AZURE_SERVICE_PRINCIPAL_USERNAME" \
+                  --password "$AZURE_SERVICE_PRINCIPAL_PASSWORD" \
+                  --tenant "$AZURE_TENANT_ID"
+
+                az account set --subscription $AZURE_SUBSCRIPTION_ID
+
+                # Authenticate Acure container registry
+                docker login alvkubernetesclustertestacr.azurecr.io \
+                  --username $AZURE_SERVICE_PRINCIPAL_USERNAME \
+                  --password $AZURE_SERVICE_PRINCIPAL_PASSWORD
+
+                CI_ENVIRONMENT_SLUG=pr-test
+
+                # Run scripts to deploy review environment
+                ./run deploy review website $BUILD_BUILDID $CI_ENVIRONMENT_SLUG
