@@ -5,7 +5,12 @@ set -e
 SHORT_HASH=$(git rev-parse --short=7 HEAD)
 BUILD_ID="$4"
 TAG="$SHORT_HASH-$BUILD_ID"
-ENV=$(echo "$2" | awk '{print tolower($0)}')
+ENV_INPUT=$(echo "$2" | awk '{print tolower($0)}')
+ENV="$ENV_INPUT"
+ENVIRONMENT_SLUG="$5"
+if [ "$ENV_INPUT" = "review" ]; then
+  ENV='test'
+fi
 KEY_VAULT="k8sconfig-$ENV-kv"
 RESOURCE_GROUP_NAME="k8scluster-$ENV-rg"
 KUBERNETES_CLUSTER_NAME="k8scluster-$ENV-aks"
@@ -124,11 +129,19 @@ function deployServices() {
 
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "helm website"
-    helm upgrade website ./chart \
+
+    CHART_NAME_SUFFIX=''
+    HOSTS="$ALV_HOSTNAME,www.$ALV_HOSTNAME"
+    if [ "$ENV_INPUT" = "review" ]; then
+      CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"
+      HOSTS="$ENVIRONMENT_SLUG.review.$ALV_HOSTNAME"
+    fi
+
+    helm upgrade "website$CHART_NAME_SUFFIX" ./chart \
       --install \
       --set image.repository="$CONTAINER_REGISTRY/website" \
       --set image.tag="$TAG" \
-      --set "hosts={$ALV_HOSTNAME,www.$ALV_HOSTNAME}" \
+      --set "hosts={$HOSTS}" \
       --namespace "alv-no"
     sleep 20
     curl "https://$ALV_HOSTNAME"
