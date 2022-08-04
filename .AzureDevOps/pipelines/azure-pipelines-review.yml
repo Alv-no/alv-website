@@ -1,10 +1,10 @@
-trigger:
+pr:
+  branches:
+    include:
+      - master
   paths:
     include:
       - packages/website/*
-
-pr:
-  - master
 
 pool:
   vmImage: ubuntu-20.04
@@ -30,11 +30,10 @@ stages:
               AZURE_SERVICE_PRINCIPAL_PASSWORD: $(azure-service-principal-password)
               AZURE_TENANT_ID: $(azure-tenant-id)
               AZURE_SUBSCRIPTION_ID: $(azure-subscription-id)
+              SYSTEM_PULLREQUEST_PULLREQUESTNUMBER: $(System.PullRequest.PullRequestNumber)
+              BUILD_SOURCEBRANCHNAME: $(Build.SourceBranchName)
             inputs:
               targetType: 'inline'
-              env:
-                SYSTEM_PULLREQUEST_PULLREQUESTNUMBER: $(System.PullRequest.PullRequestNumber)
-                BUILD_SOURCEBRANCHNAME: $(Build.SourceBranchName)
               script: |
                 az login --service-principal \
                   --username "$AZURE_SERVICE_PRINCIPAL_USERNAME" \
@@ -53,5 +52,5 @@ stages:
                 CI_ENVIRONMENT_SLUG="$TRUNCATED_BUILD_SOURCEBRANCHNAME-$TRUNCATED_SYSTEM_PULLREQUEST_PULLREQUESTNUMBER"
 
                 # Run scripts to deploy review environment
-                ./run deploy review website $BUILD_BUILDID $CI_ENVIRONMENT_SLUG
+                # ./run deploy review website $BUILD_BUILDID $CI_ENVIRONMENT_SLUG
                 echo "Review environment deployed to https://$CI_ENVIRONMENT_SLUG.review.test-alv.no"
