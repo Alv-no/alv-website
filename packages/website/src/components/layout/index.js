@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, MobileHeader, Footer, SEO } from 'shared-components';
 import * as Logo from '../logo';
 import './layout.css';
+import CookieNotice from '../cookieNotice';
 
 const Layout = ({
   layoutData,
@@ -65,6 +66,7 @@ const Layout = ({
         phone={phone}
         companyName="Alv"
       />
+      <CookieNotice />
     </>
   );
 };
