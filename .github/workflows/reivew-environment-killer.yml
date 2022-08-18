@@ -19,4 +19,4 @@ jobs:
             azure-devops-project-url: https://dev.azure.com/AlvAsDeops/AlvNo
             azure-pipeline-name: 'review-environment-killer'
             azure-devops-token: ${{ secrets.AZURE_DEVOPS_PIPELINE_TOKEN }}
-            azure-pipeline-variables:  '{"issue": "${{github.event.issue.number}}", "pr": "${{github.event.number}}"}' # optional stringified json
+            azure-pipeline-variables:  '{"sourcebranch": "${{github.head_ref}}", "prnumber": "${{github.event.number}}"}' # optional stringified json
