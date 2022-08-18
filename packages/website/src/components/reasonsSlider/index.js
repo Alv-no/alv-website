@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../../../../shared-components/src/components/icon';
+import { SliderArrowBlue } from '../../../../shared-components/src/components/icon';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Slider from 'react-slick';
 
@@ -127,7 +127,7 @@ const NextArrow = ({ onClick }) => {
         onClick={onClick}
       >
         <div className="">
-          <Icon.SliderArrowBlue />
+          <SliderArrowBlue />
         </div>
       </div>
     </>
@@ -142,7 +142,7 @@ const PrevArrow = ({ onClick }) => {
         onClick={onClick}
       >
         <div className="">
-          <Icon.SliderArrowBlue />
+          <SliderArrowBlue />
         </div>
       </div>
     </>

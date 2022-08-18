@@ -114,9 +114,9 @@ function pushServices() {
 function commentPullRequest() {
   curl \
   --header Accept: application/vnd.github+json \
-  --header Authorization: token $GITHUB_COMMENT_PR_TOKEN \
+  --header "Authorization: token $GITHUB_COMMENT_PR_TOKEN" \
   "https://api.github.com/repos/Alv-no/alv-website/issues/$2/comments" \
-  --data {"body": "💻 $1"}
+  --data "{\"body\": \"💻 $1\"}"
 }
 
 function undeployServices() {

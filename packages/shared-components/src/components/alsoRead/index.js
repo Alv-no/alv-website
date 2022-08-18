@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import { PostCard } from '../postCard';
-import * as Icon from '../icon';
+import { Arrow } from '../icon';
 
 export const AlsoRead = ({
   articles,
@@ -46,7 +46,7 @@ export const AlsoRead = ({
             <div className="flex items-center font-semibold uppercase">
               {isEnLocale ? 'See all articles' : 'Se alle artikler'}
               <span className="transform text-navy ml-3">
-                <Icon.Arrow />
+                <Arrow />
               </span>
             </div>
           </Link>

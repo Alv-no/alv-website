@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../../../../shared-components/src/components/icon';
+import { Arrow } from '../../../../shared-components/src/components/icon';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../../../../shared-components/src/components/title';
 import { StyledBlockContent } from '../styledBlockContent';
@@ -20,7 +20,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
                 <span className="flex justify-between items-center pointer-events-none">
                   {el.label}
                   <span className="scale-90 transform">
-                    <Icon.Arrow />
+                    <Arrow />
                   </span>
                 </span>
               </button>

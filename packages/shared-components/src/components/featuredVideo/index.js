@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import * as Icon from '../icon';
+import { VideoPlay } from '../icon';
 
 export const FeaturedVideo = ({ video, playlist }) => (
   <>
@@ -26,7 +26,7 @@ export const FeaturedVideo = ({ video, playlist }) => (
         }}
       >
         <div className="absolute right-5 bottom-5">
-          <Icon.VideoPlay color="#fff" />
+          <VideoPlay color="#fff" />
         </div>
       </div>
     </Link>

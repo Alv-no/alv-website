@@ -2,7 +2,7 @@ import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import * as styles from './Serializers.module.css';
 import * as Button from '../button';
-import * as Icon from '../icon';
+import { DropdownArrow, Cross } from '../icon';
 
 const Image = ({ props, link, urlBuilder }) => (
   <a href={link} className={styles.wrapper}>
@@ -104,10 +104,10 @@ const ShowMediaToggle = () => (
     <input type="checkbox" className={styles.checkbox} />
     <div className={styles.iconWrapper}>
       <div className={styles.crossIcon}>
-        <Icon.Cross />
+        <Cross />
       </div>
       <div className={styles.expandIcon}>
-        <Icon.DropdownArrow />
+        <DropdownArrow />
       </div>
     </div>
   </>

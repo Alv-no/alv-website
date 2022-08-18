@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../icon';
+import { ContactArrow } from '../icon';
 
 export const CallToAction = ({
   children,
@@ -19,7 +19,7 @@ export const CallToAction = ({
         whiteIcons && 'text-white'
       }`}
     >
-      <Icon.ContactArrow white={whiteIcons} />
+      <ContactArrow white={whiteIcons} />
     </span>
   </button>
 );

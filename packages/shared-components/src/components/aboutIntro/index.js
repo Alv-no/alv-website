@@ -2,7 +2,7 @@ import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../title';
 import { Description } from '../description';
-import * as Icon from '../icon';
+import { Arrow } from '../icon';
 import Link from 'gatsby-link';
 
 export const AboutIntro = ({ topImg, bottomImg }) => {
@@ -96,7 +96,7 @@ const ReadMoreLink = ({ link, children }) => (
   >
     <span className="inline">{children}</span>
     <span className="ml-3">
-      <Icon.Arrow />
+      <Arrow />
     </span>
   </Link>
 );

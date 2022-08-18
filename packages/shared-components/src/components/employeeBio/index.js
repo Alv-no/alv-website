@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useEffect } from 'react';
-import * as Icon from '../icon';
+import { Cv, Cross } from '../icon';
 import Link from 'gatsby-link';
 import { isIOS, isSafari } from 'react-device-detect';
 import fallback from './bioVideoFallback.png';
@@ -52,7 +52,7 @@ export const EmployeeBio = ({
                 onClick={handleCloseClick}
                 aria-label="Close"
               >
-                <Icon.Cross />
+                <Cross />
               </button>
             </div>
           </div>
@@ -89,7 +89,7 @@ export const EmployeeBio = ({
                         <a href={cv.asset.url} target="_blank" rel="noreferrer">
                           <div className="flex">
                             <span className="mr-3">
-                              <Icon.Cv />
+                              <Cv />
                             </span>
                             <span className="transform -translate-y-2">
                               SE CV
@@ -145,7 +145,7 @@ export const EmployeeBio = ({
               <a href={cv.asset.url} target="_blank" rel="noreferrer">
                 <div className="flex justify-center mt-10">
                   <span className="mr-3">
-                    <Icon.Cv />
+                    <Cv />
                   </span>
                   <span className="transform -translate-y-2">SE CV</span>
                 </div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import * as Icon from '../icon';
+import { Arrow as ArrowIcon } from '../icon';
 import Link from 'gatsby-link';
 
 export const Line = ({ children, navy }) => (
@@ -17,7 +17,7 @@ export const Arrow = ({ children, color }) => (
   <div className="font-semibold uppercase w-32 flex text-right items-center tracking-wider">
     {children}{' '}
     <span className="ml-2 transform scale-80">
-      <Icon.Arrow color={color} />
+      <ArrowIcon color={color} />
     </span>
   </div>
 );
@@ -126,7 +126,7 @@ export const CtaArrow = ({ children, onClick, path }) => (
       aria-label={children}
     >
       <span className="mr-2 block uppercase font-semibold">{children}</span>{' '}
-      <Icon.Arrow />
+      <ArrowIcon />
     </button>
   </Link>
 );
@@ -142,7 +142,7 @@ export const FormSelect = ({ id, active, children, onClick }) => (
     >
       {children}
       <span className="transform ml-3">
-        <Icon.Arrow />
+        <Arrow />
       </span>
     </div>
   </div>

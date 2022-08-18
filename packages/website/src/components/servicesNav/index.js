@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../../../../shared-components/src/components/icon';
+import { Arrow } from '../../../../shared-components/src/components/icon';
 
 export const ServicesNav = ({ nav, scrollTo }) => {
   return (
@@ -14,7 +14,7 @@ export const ServicesNav = ({ nav, scrollTo }) => {
           >
             {el.label}
             <span className="block ml-2 transform scale-80">
-              <Icon.Arrow />
+              <Arrow />
             </span>
           </button>
         ))}

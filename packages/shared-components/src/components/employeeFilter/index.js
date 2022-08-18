@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../icon';
+import { Tag } from '../icon';
 import { Checkbox } from '../checkbox';
 
 export const EmployeeFilter = ({ allTags, onChange }) => (
@@ -7,7 +7,7 @@ export const EmployeeFilter = ({ allTags, onChange }) => (
     <div className="flex mr-4 text-base tracking-wider font-bold mb-5 sm:mb-3">
       Kategorier{' '}
       <span className="transform scale-10 -translate-y-2px h-5 -mx-32">
-        <Icon.Tag />
+        <Tag />
       </span>
     </div>
     <div className="flex -ml-4 flex-wrap items-center">
