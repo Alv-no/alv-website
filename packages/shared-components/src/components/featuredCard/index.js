@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import * as Icon from '../icon';
+import { Arrow } from '../icon';
 import { BgImage } from 'gbimage-bridge';
 
 export const FeaturedCard = ({
@@ -56,7 +56,7 @@ export const FeaturedCard = ({
                 <div className="font-semibold uppercase w-32 flex text-right justify-end items-center">
                   {isEnLocale ? 'Read more' : 'Les Mer'}{' '}
                   <span className="ml-2">
-                    <Icon.Arrow color="#fff" />
+                    <Arrow color="#fff" />
                   </span>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export const FeaturedCard = ({
               <div className="font-semibold uppercase w-full mt-4 flex text-right justify-end items-center">
                 Les Mer{' '}
                 <span className="ml-2">
-                  <Icon.Arrow color="#fff" />
+                  <Arrow color="#fff" />
                 </span>
               </div>
             </div>

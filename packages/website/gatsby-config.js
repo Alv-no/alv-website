@@ -15,6 +15,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-fastify-klyngen`,
+      options: {
+        /* discussed below */
+        features: {},
+      },
+    },
+    {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleAnalytics: {

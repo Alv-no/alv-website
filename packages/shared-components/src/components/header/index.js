@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'gatsby-link';
-import * as Icon from '../icon';
+import { Dropdown } from '../icon';
 import Headroom from 'react-headroom';
 import { CallToAction } from '../calltoaction';
 import { Breadcrumb } from '../breadcrumb';
@@ -54,7 +54,7 @@ export const Header = ({
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white={whiteIcons || navyHeader} />
+                <Dropdown white={whiteIcons || navyHeader} />
               </button>
               <span className="transform ">
                 <Link to="/">
@@ -125,7 +125,7 @@ export const MobileHeader = ({
                 className="cursor-pointer focus:outline-none"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white={white && !open} />
+                <Dropdown white={white && !open} />
               </button>
               <span className="transform ">
                 <Link to="/">{logo.White()}</Link>
@@ -175,7 +175,7 @@ export const BlogHeader = ({
                 className="mr-5 cursor-pointer"
                 onClick={handleClick}
               >
-                <Icon.Dropdown white />
+                <Dropdown white />
               </button>
               <span className="transform text-white">
                 <Link to="/">{logo.White()}</Link>

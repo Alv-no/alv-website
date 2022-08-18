@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import * as Icon from '../icon';
+import { CtaArrow } from '../icon';
 import PropTypes from 'prop-types';
 
 export const CtaButton = ({ children, internalLink, blue }) => {
@@ -15,7 +15,7 @@ export const CtaButton = ({ children, internalLink, blue }) => {
           {children}
         </div>
         <div className="transform scale-70 sm:scale-100 text-theme-text stroke-current text-theme-text">
-          <Icon.CtaArrow blue={blue} />
+          <CtaArrow blue={blue} />
         </div>
       </button>
     </Link>

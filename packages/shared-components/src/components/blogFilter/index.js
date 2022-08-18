@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as Icon from '../icon';
+import { DropdownMini, Tag } from '../icon';
 import * as styles from './BlogFilter.module.css';
 import { FilterContainer } from '../filterContainer';
 
@@ -155,7 +155,7 @@ export const FilterField = ({
         </FilterOption>
       </div>
       <span className="transform scale-10 -translate-y-6px h-5 -mx-32">
-        <Icon.Tag />
+        <Tag />
       </span>
       {''}
       <span className="mr-3 -ml-1">Filter</span>
@@ -183,7 +183,7 @@ export const FilterField = ({
         </div>
       </div>
       <span className="right-0 absolute mr-4 fivefifty:hidden">
-        <Icon.DropdownMini />
+        <DropdownMini />
       </span>
     </div>
   );
@@ -268,7 +268,7 @@ export const SortField = ({ sort, sortClick, light, isEnLocale }) => {
           {localeSortOptions[isEnLocale ? 'en' : 'no'][sort || 'newest']}
           <span className="mt-2px" style={{ filter: light && 'invert(100%)' }}>
             {' '}
-            <Icon.DropdownMini />
+            <DropdownMini />
           </span>
         </span>
         <input

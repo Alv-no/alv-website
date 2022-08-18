@@ -6,7 +6,7 @@ import {
 import { Title } from 'shared-components/src/components/title';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as Icon from 'shared-components/src/components/icon';
+import { Arrow } from 'shared-components/src/components/icon';
 
 const Sidebar = ({
   children,
@@ -51,7 +51,7 @@ const Sidebar = ({
                 <Link to="/blogg">
                   <div className="flex">
                     <span className="transform rotate-180 -translate-y-1 text-theme-accent mr-3">
-                      <Icon.Arrow />
+                      <Arrow />
                     </span>
                     Se alle artikler
                   </div>

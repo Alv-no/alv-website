@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from '../icon';
+import { Chart } from '../icon';
 
 export const OwnedByStaff = ({ children }) => {
   return (
@@ -16,7 +16,7 @@ export const OwnedByStaff = ({ children }) => {
         </div>
         <div className="seven:flex-row sm:flex flex-col justify-center h-full items-center">
           <div className="h-64 mx-auto seven:mb-0 sm:mb-20 mb-5 -mt-10 sm:mt-0  scale-50 transform -translate-x-6 sm:scale-80 sm:translate-x-0 lg:scale-100 seven:-translate-y-12 seven:-translate-x-10 lg:mr-16 xl:mx-auto">
-            <Icon.Chart />
+            <Chart />
           </div>
           <div className="flex">
             <div className="tracking-wider border-r-2 sm:pr-6 pr-3">
