@@ -18,6 +18,7 @@ CONTAINER_REGISTRY_NAME=alvkubernetesclustertestacr
 CONTAINER_REGISTRY="$CONTAINER_REGISTRY_NAME.azurecr.io"
 SERVICE_TO_BUILD="$3"
 SUBSCRIPTION="k8s-$ENV-subscription"
+PULL_REQUEST_NUMBER="$6"
 function getSecret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
 }
@@ -34,6 +35,7 @@ function getSecrets() {
   SENDGRID_API_KEY="$(getSecret sendgrid-api-key)"
   MAILTO="$(getSecret mail-api-recipient)"
   MAILTO_ALVB="$(getSecret mail-api-alvb-recipient)"
+  GITHUB_COMMENT_PR_TOKEN=$(getSecret github-comment-pr-token)
 }
 
 function buildServices() {
@@ -109,6 +111,26 @@ function pushServices() {
   fi
 }
 
+function commentPullRequest() {
+  curl \
+  --header Accept: application/vnd.github+json \
+  --header Authorization: token $GITHUB_COMMENT_PR_TOKEN \
+  "https://api.github.com/repos/Alv-no/alv-website/issues/$2/comments" \
+  --data {"body": "💻 $1"}
+}
+
+function undeployServices() {
+  az aks get-credentials \
+    --subscription "$SUBSCRIPTION" \
+    --resource-group "$RESOURCE_GROUP_NAME" \
+    --name "$KUBERNETES_CLUSTER_NAME"
+
+    CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"
+
+    helm uninstall "website$CHART_NAME_SUFFIX" \
+      --namespace "alv-no"
+}
+
 function deployServices() {
   export HELM_EXPERIMENTAL_OCI=1
 
@@ -144,7 +166,12 @@ function deployServices() {
       --set "hosts={$HOSTS}" \
       --namespace "alv-no"
     sleep 20
+
     curl "https://$ALV_HOSTNAME"
+
+    if [ "$ENV_INPUT" = "review" ]; then
+      commentPullRequest "https://$HOSTS" $PULL_REQUEST_NUMBER
+    fi
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
@@ -203,4 +230,9 @@ if [ "deploy" = "$1" ]; then
   buildServices
   pushServices
   deployServices
+fi
+
+if [ "undeploy" = "$1"  ]; then
+  getSecrets
+  undeployServices
 fi
