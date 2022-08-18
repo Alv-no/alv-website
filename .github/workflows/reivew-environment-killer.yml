@@ -1,0 +1,22 @@
+name: "Review environment killer"
+
+# Run this workflow every time a commit gets pushed to main or a pull request gets opened against main
+on:
+  pull_request:
+    types:
+    - closed
+    branches:
+    - master
+
+jobs:
+    build:
+        name: Call Azure Pipeline
+        runs-on: ubuntu-latest
+        steps:
+        - name: Azure Pipelines Action
+          uses: Azure/pipelines@v1.2
+          with:
+            azure-devops-project-url: https://dev.azure.com/AlvAsDeops/AlvNo
+            azure-pipeline-name: 'review-environment-killer'
+            azure-devops-token: ${{ secrets.AZURE_DEVOPS_PIPELINE_TOKEN }}
+            azure-pipeline-variables: '{"sourcebranch": "${{github.head_ref}}", "prnumber": "${{github.event.number}}"}' # optional stringified json
