@@ -14,11 +14,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Azure Pipelines Action
-          uses: Azure/pipelines@v1
+          uses: Azure/pipelines@v1.2
           with:
             azure-devops-project-url: https://dev.azure.com/AlvAsDeops/AlvNo
             azure-pipeline-name: 'review-environment-killer'
             azure-devops-token: ${{ secrets.AZURE_DEVOPS_PIPELINE_TOKEN }}
-            azure-pipeline-variables:  '{"variable1": "value1", "variable2": "value2"}' # optional stringified json
-            
-
+            azure-pipeline-variables:  '{"issue": "${{github.event.issue.number}}", "pr": "${{github.event.number}}"}' # optional stringified json
