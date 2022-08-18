@@ -7,14 +7,48 @@ trigger: none
 pr: none
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-20.04
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: review
+    displayName: Deploy to review
+    variables:
+      - group: azure-credentials-test
+    jobs:
+      - job: Review
+        displayName: Review
+        steps:
+          - checkout: self
+            fetchDepth: 1
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo $(pr)
-    echo $(issue)
-  displayName: 'Run a multi-line script'
+          - template: installDependencies.yaml
+
+          - task: Bash@3
+            displayName: ./run deploy review website $BUILD_BUILDID $CI_ENVIRONMENT_SLUG
+            env:
+              AZURE_SERVICE_PRINCIPAL_USERNAME: $(azure-service-principal-username)
+              AZURE_SERVICE_PRINCIPAL_PASSWORD: $(azure-service-principal-password)
+              AZURE_TENANT_ID: $(azure-tenant-id)
+              AZURE_SUBSCRIPTION_ID: $(azure-subscription-id)
+              SYSTEM_PULLREQUEST_PULLREQUESTNUMBER: $(prnumber)
+              SYSTEM_PULLREQUEST_SOURCEBRANCH: $(sourcebranch)
+            inputs:
+              targetType: 'inline'
+              script: |
+                echo $(prnumber)
+                echo $(sourcebranch)
+                az login --service-principal \
+                  --username "$AZURE_SERVICE_PRINCIPAL_USERNAME" \
+                  --password "$AZURE_SERVICE_PRINCIPAL_PASSWORD" \
+                  --tenant "$AZURE_TENANT_ID"
+
+                az account set --subscription $AZURE_SUBSCRIPTION_ID
+
+                TRUNCATED_BUILD_SOURCEBRANCH=$(echo "${SYSTEM_PULLREQUEST_SOURCEBRANCH##*/}" | cut -c -10)
+                TRUNCATED_SYSTEM_PULLREQUEST_PULLREQUESTNUMBER=$(echo "$SYSTEM_PULLREQUEST_PULLREQUESTNUMBER" | cut -c -6)
+                CI_ENVIRONMENT_SLUG="$TRUNCATED_BUILD_SOURCEBRANCH-$TRUNCATED_SYSTEM_PULLREQUEST_PULLREQUESTNUMBER"
+
+                # Run scripts to deploy review environment
+                #./run deploy review website $BUILD_BUILDID $CI_ENVIRONMENT_SLUG
+                echo "Review environment deployed to https://$CI_ENVIRONMENT_SLUG.review.test-alv.no"
+                
