@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as Icon from '../icon';
+import { Arrow } from '../icon';
 import * as styles from './PostCard.module.css';
 
 export const PostCard = ({
@@ -36,7 +36,7 @@ export const PostCard = ({
             >
               {isEnLocale ? 'Read more' : 'Les mer'}{' '}
               <div className="ml-2 transform scale-80">
-                <Icon.Arrow />
+                <Arrow />
               </div>
             </div>
           </div>

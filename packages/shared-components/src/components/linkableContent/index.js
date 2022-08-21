@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from 'shared-components/src/components/icon';
+import { Arrow } from 'shared-components/src/components/icon';
 import { companyRichTextTypesSerializer } from '../companyRichText';
 import PortableText from '@sanity/block-content-to-react';
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -86,7 +86,7 @@ const ScrollToIdNav = ({ navElements, onClick }) => (
         <span className="flex justify-between items-center pointer-events-none text-left text-base font-bold">
           {el.text}
           <span className="scale-90 transform">
-            <Icon.Arrow />
+            <Arrow />
           </span>
         </span>
       </button>

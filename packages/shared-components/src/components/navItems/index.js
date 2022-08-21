@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as styles from './NavItems.module.css';
-import * as Icon from '../icon';
+import { TransitionArrow, Dot } from '../icon';
 import Link from 'gatsby-link';
 
 export const LargeLink = ({ children, link, mobileDropdown }) => {
@@ -49,7 +49,7 @@ export const LargeTitleDropdown = ({ title, mobileDropdown, children }) => {
         />
         <li className="list-none eight:block w-full">
           <LargeLinkContent>{title}</LargeLinkContent>
-          <Icon.TransitionArrow open={open} />
+          <TransitionArrow open={open} />
         </li>
         {children}
       </span>
@@ -60,8 +60,8 @@ export const LargeTitleDropdown = ({ title, mobileDropdown, children }) => {
 const LargeLinkContent = ({ children, arrow, open }) => (
   <h2 className="pointer-events-none text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full sm:ml-1 eight:ml-0 z-50 w-full">
     {children}
-    <Icon.Dot />
-    {arrow && <Icon.TransitionArrow open={open} />}
+    <Dot />
+    {arrow && <TransitionArrow open={open} />}
   </h2>
 );
 

@@ -27,7 +27,6 @@ RUN test -f "/app/packages/website/.env.production"
 RUN yarn workspace website run build
 
 # Configuring NginX
-RUN cp -r /app/packages/website/public/* /usr/share/nginx/html/
 COPY website.nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 

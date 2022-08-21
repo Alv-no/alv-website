@@ -15,7 +15,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-fastify`,
+      resolve: `gatsby-plugin-fastify-klyngen`,
       options: {
         /* discussed below */
         features: {},

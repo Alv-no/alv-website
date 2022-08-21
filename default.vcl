@@ -2,7 +2,7 @@ vcl 4.0;
 
 backend default {
     .host = "localhost";
-    .port = "9000";
+    .port = "8080";
 }
 
 sub vcl_recv {
@@ -13,5 +13,5 @@ sub vcl_recv {
 }
 
 sub vcl_backend_response {
-	set beresp.ttl = 1w;
+	set beresp.ttl = 3d;
 }	

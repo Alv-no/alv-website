@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'gatsby-link';
 import * as Button from '../button';
-import * as Icon from '../icon';
+import { SliderArrow, SliderArrowBlue } from '../icon';
 import { Title } from '../title';
 import { BgImage } from 'gbimage-bridge';
 import Slider from 'react-slick';
@@ -107,7 +107,7 @@ const NextArrow = ({ onClick, blueText }) => {
         onClick={onClick}
       >
         <div className="">
-          {blueText ? <Icon.SliderArrowBlue /> : <Icon.SliderArrow />}
+          {blueText ? <SliderArrowBlue /> : <SliderArrow />}
         </div>
       </div>
     </>
@@ -123,12 +123,12 @@ const PrevArrow = ({ onClick, blueText }) => {
         onClick={onClick}
       >
         <div className="lg:hidden">
-          {blueText ? <Icon.SliderArrowBlue /> : <Icon.SliderArrow />}
+          {blueText ? <SliderArrowBlue /> : <SliderArrow />}
         </div>
       </div>
       <div className="hidden lg:block absolute" onClick={onClick}>
         <div className="">
-          {blueText ? <Icon.SliderArrowBlue /> : <Icon.SliderArrow />}
+          {blueText ? <SliderArrowBlue /> : <SliderArrow />}
         </div>
       </div>
     </>

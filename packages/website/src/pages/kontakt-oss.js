@@ -3,7 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
 import { Title, Description } from 'shared-components';
 import { FormSelect } from '../../../shared-components/src/components/button';
-import * as Icon from '../../../shared-components/src/components/icon';
+import { Phone, Mail } from '../../../shared-components/src/components/icon';
 import { useContactQuery } from '../hookspages/useContactQuery';
 import * as Form from '../../../shared-components/src/components/form';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
@@ -75,7 +75,7 @@ const Contact = ({ location }) => {
                   <div className="mb-3">
                     <a href={'tel:' + phone} className="flex">
                       <span className="mr-3">
-                        <Icon.Phone />
+                        <Phone />
                       </span>{' '}
                       {phone}
                     </a>
@@ -83,7 +83,7 @@ const Contact = ({ location }) => {
                   <div className="mb-3">
                     <a href={'mailto:' + email} className="flex items-center">
                       <span className="mr-3">
-                        <Icon.Mail />
+                        <Mail />
                       </span>{' '}
                       {email}
                     </a>
@@ -98,7 +98,7 @@ const Contact = ({ location }) => {
                 <div className="mb-3">
                   <a href={'tel:' + phone} className="flex">
                     <span className="mr-3">
-                      <Icon.Phone />
+                      <Phone />
                     </span>{' '}
                     {phone}
                   </a>
@@ -106,7 +106,7 @@ const Contact = ({ location }) => {
                 <div className="mb-3">
                   <a href={'mailto:' + email} className="flex items-center">
                     <span className="mr-3">
-                      <Icon.Mail />
+                      <Mail />
                     </span>{' '}
                     {email}
                   </a>
