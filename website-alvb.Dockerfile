@@ -27,6 +27,6 @@ RUN yarn workspace website-alvb run build
 # Stage 2 - Webserver using Ngnix
 FROM nginx:1.19-alpine
 COPY --from=0 /app/packages/website-alvb/public /usr/share/nginx/html/
-COPY website.nginx.conf /etc/nginx/conf.d/default.conf
+COPY website-alvb.nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
