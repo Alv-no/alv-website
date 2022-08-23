@@ -1,5 +1,5 @@
 trigger:
-  - prod
+  - master
 
 pr: none
 
@@ -9,13 +9,13 @@ schedules:
   displayName: Thusdays at 1030
   branches:
     include:
-    - prod
+    - master
   always: true
 - cron: "0 16 * * 4"
   displayName: Thursday at 1600
   branches:
     include:
-    - prod
+    - master
   always: true
 
 pool:
