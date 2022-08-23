@@ -1,6 +1,12 @@
 trigger:
-  - master
+  branches:
+    include:
+      - master
 
+  paths:
+    include:
+      - packages/website
+      - packages/shared-components
 pr: none
 
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers?view=azure-devops&tabs=yaml#cron-syntax
@@ -63,6 +69,3 @@ stages:
 
                       # Run scripts to build for prod environment
                       ./run deploy prod website $BUILD_BUILDID
-                      ./run deploy prod website-alvb $BUILD_BUILDID
-                      ./run deploy prod mail-api $BUILD_BUILDID
-                      ./run deploy prod mail-api-alvb $BUILD_BUILDID
