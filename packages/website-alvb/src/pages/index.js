@@ -5,7 +5,6 @@ import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
 import { VideoIntro } from '../components/videoIntro';
 import { WhoWeAre, Hire, OurServices, Container } from 'shared-components';
-import { Founder } from '../components/founder';
 import localize from '../components/localize/index';
 import config from '../config';
 
@@ -15,14 +14,12 @@ const Index = ({ data }) => {
     section2,
     section4,
     section5,
-    section6,
     _rawMeta,
     _rawSection1,
     _rawSection2,
     _rawSection3,
     _rawSection4,
     _rawSection5,
-    _rawSection6,
   } = data.sanityLandingPage;
 
   const isEnLocale = config.LOCALE === 'en';
@@ -71,9 +68,6 @@ const Index = ({ data }) => {
         <Container maxWidth="1280" removePaddingMobile="bottom">
           <OurServices {..._rawSection5} image={section5.image} blueLine />
         </Container>
-        <Container maxWidth="1280" removePaddingMobile="top">
-          <Founder {..._rawSection6} {...section6} />
-        </Container>
         <Container removePaddingBottom />
         <BlogCarousel blue isEnLocale={isEnLocale} blueText maxWidth="1280" />
       </Layout>
@@ -87,7 +81,6 @@ export const query = graphql`
   query LandingPageQuery {
     sanityLandingPage {
       _rawMeta
-      _rawSection6
       _rawSection5
       _rawSection4
       _rawSection3
@@ -132,18 +125,6 @@ export const query = graphql`
       }
       section5 {
         image {
-          asset {
-            gatsbyImageData
-          }
-        }
-      }
-      section6 {
-        founderImage {
-          asset {
-            gatsbyImageData
-          }
-        }
-        signatureImage {
           asset {
             gatsbyImageData
           }
