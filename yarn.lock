@@ -43751,6 +43751,7 @@ typescript@^4.0.5:
     gatsby-plugin-manifest: ^4.1.3
     gatsby-plugin-postcss: ^5.1.0
     gatsby-plugin-react-helmet: ^5.1.0
+    gatsby-plugin-robots-txt: ^1.7.0
     gatsby-plugin-sharp: ^4.1.3
     gatsby-plugin-sitemap: ^5.16.0
     gatsby-plugin-webpack-bundle-analyzer: ^1.0.5
