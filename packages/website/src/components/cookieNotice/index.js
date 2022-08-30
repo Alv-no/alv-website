@@ -24,7 +24,7 @@ const CookieNoticeWrapper = () => {
             default: true,
             title: 'Google Analytics',
             text:
-              'Brukes til å forbedre seleskapets markedsføring og rekruttering',
+              'Vi bruker Google Analytics til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
           },
           {
             name: 'gatsby-gdpr-google-tagmanager',
@@ -32,21 +32,23 @@ const CookieNoticeWrapper = () => {
             default: true,
             title: 'Google TagManager',
             text:
-              'Brukes til å forbedre seleskapets markedsføring og rekruttering',
+              'Vi bruker Google Tags til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
           },
           {
             name: 'facebookPixel',
             editable: true,
             default: true,
             title: 'Facebook',
-            text: 'Trengs for å karlegge våre konverteringer',
+            text:
+              'Vi bruker Facebook Pixel til å forbedre brukeropplevelsen av Alv sin markedsføring.',
           },
           {
             name: 'linkedin',
             editable: true,
             default: true,
             title: 'Linkedin',
-            text: 'Trengs for å karlegge våre konverteringer',
+            text:
+              'Vi bruker LinkedIn til å forbedre brukeropplevelsen av Alv sin markedsføring.',
           },
         ]}
         backgroundClasses="md:flex justify-between w-full shrink-0 sm:block"
