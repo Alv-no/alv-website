@@ -13,6 +13,12 @@ build-mail-api:
 docker-compose-up: build-website build-cms build-mail-api ## Run docker compose up
 	docker-compose up
 
+sync_website-development-schema: # Download sanity production dataset and import it to development dataset
+	# Remember to set the environment variable
+	cd packages/cms; yarn workspace cmd sanity dataset export production backup.tar.gz --raw --no-asset --overwrite;
+	cd packages/cms; yarn workspace cmd sanity dataset import backup.tar.gz development --replace --allow-assets-in-different-dataset
+	rm packages/cms/backup.tar.gz;
+
 .PHONY: help
 
 .DEFAULT_GOAL := help

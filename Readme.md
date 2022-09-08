@@ -21,6 +21,16 @@ Once ready to develop the website run:
 yarn
 yarn workspace website run dev
 ```
+### Creating .env-files
+
+Ask devs for .env-files for `packages/website` and `packages/website-alvb` those thypically contains access-tokens.
+
+For `packages/cms` and `packages-cms-alvb` i recomend adding the following piece of code to a .env.development-file
+
+```env
+SANITY_STUDIO_API_DATASET=development
+SANITY_AUTH_TOKEN=some token here with access to publish schmea chages
+```
 
 ### Workaround for Apple m1
 

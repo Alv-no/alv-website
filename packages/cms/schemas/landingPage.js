@@ -1,3 +1,11 @@
+import React from 'react';
+const highlightIcon = () => <span style={{ background: '#eabb26' }}>G</span>;
+const highlightRender = (props) => (
+  <span style={{ color: '#eabb26', fontWeight: 'bold', fontSize: '35px' }}>
+    {props.children}
+  </span>
+);
+
 export default {
   name: 'landingPage',
   title: 'Landing Page',
@@ -13,13 +21,90 @@ export default {
     },
     {
       name: 'pageDescription',
-      title: 'Page Description (meta)',
+      title: 'Page Description (meta) topp-bar',
       type: 'text',
       rows: 2,
       options: {
         maxLength: 160,
       },
     },
+
+    {
+      type: 'image',
+      title: 'Bakgrunnsbilde introduksjon',
+      name: 'topBackgroundImage',
+    },
+
+    // Top page section
+    {
+      name: 'introduction',
+      title: 'Introduksjons-tekst topp-bar',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          marks: {
+            decorators: [
+              {
+                title: 'ALV-GUL',
+                value: 'alv-yellow',
+                blockEditor: {
+                  icon: highlightIcon,
+                  render: highlightRender,
+                },
+              },
+              { title: 'Strong', value: 'strong' },
+              { title: 'Emphasis', value: 'em' },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      name: 'introductionSubheader',
+      title: 'Introduksjon brødtekst topp-bar',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'Yellow', value: 'yellow' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'contactSchemaVisible',
+      title: 'Vis kontaktskjema topp-bar',
+      type: 'boolean',
+      initialValue: false,
+    },
+    {
+      name: 'showCallToAction',
+      title: 'Vis Call to action',
+      type: 'boolean',
+      initialValue: false,
+    },
+    {
+      name: 'ctaPosition',
+      title: 'CTA posisjon',
+      type: 'string',
+      options: {
+        list: ['left', 'center', 'right'],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+    },
+    {
+      name: 'callToAction',
+      title: 'Call to action topp-bar',
+      type: 'heroCta',
+      options: {
+        collapsible: false,
+      },
+    },
+
     // Hero section
     {
       name: 'heroVideoWebm',
@@ -30,11 +115,6 @@ export default {
       name: 'heroVideoMp4',
       title: 'Hero Video: mp4',
       type: 'file',
-    },
-    {
-      name: 'heroCta',
-      title: 'Hero Cta',
-      type: 'heroCta',
     },
     {
       name: 'videoWebm',

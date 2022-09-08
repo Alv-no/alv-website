@@ -64,14 +64,14 @@ export const Call = () => {
           <div className="flex my-5">
             <input
               type="text"
-              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-initial mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Fornavn"
               name="firstname"
               required
             />
             <input
               type="text"
-              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className="flex-initial ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
               placeholder="Etternavn"
               name="lastname"
               required
@@ -107,11 +107,23 @@ export const Call = () => {
   );
 };
 
-export const Offer = () => {
+export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
   const { submitForm, sent, error, mailApiUrl } = useContactForm();
+  const marginClass = compact ? 'mb-4' : 'my-5';
+  const buttonClass =
+    'uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none';
+  const transparentButtonClass =
+    'rounded-full border border-white py-2 px-20 uppercase px-8 my-1 hover:border-theme-accent';
 
+  const buttonClasses = sendButtonTransparent
+    ? transparentButtonClass
+    : buttonClass;
+
+  const nameInputClasses = `flex-1 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md ${
+    compact ? 'w-44' : 'w-fit'
+  }`;
   return (
-    <div>
+    <div className="">
       <div className={sent ? '' : 'hidden'}>
         <span className="flex text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
           Takk for din henvendelse. Du hører fra oss snart.
@@ -130,24 +142,24 @@ export const Offer = () => {
             value="Kontaktskjema: Gi meg et tilbud"
           />
           <label className="mb-5">Ditt navn*</label>
-          <div className="flex my-5">
+          <div className={`flex gap-x-2 ${marginClass}`}>
             <input
               type="text"
-              className="flex-1 mr-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className={nameInputClasses}
               placeholder="Fornavn"
               name="firstname"
               required
             />
             <input
               type="text"
-              className="flex-1 ml-2 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md"
+              className={nameInputClasses}
               placeholder="Etternavn"
               name="lastname"
               required
             />
           </div>
           <label className="my-5">E-post*</label>
-          <div className="my-5">
+          <div className={marginClass}>
             <input
               type="email"
               className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
@@ -157,18 +169,18 @@ export const Offer = () => {
             />
           </div>
           <label className="my-5">Beskjed*</label>
-          <div className="my-5">
+          <div className={marginClass}>
             <textarea
               type="text"
               className="focus:outline-none bg-transparent border rounded-sm p-4 w-full rounded-md"
               placeholder="Skriv meldingen din her"
-              rows="4"
+              rows={compact ? 2 : 4}
               name="text"
               required
             />
           </div>
           <label className="my-5">Telefon</label>
-          <div className="my-5">
+          <div className={marginClass}>
             <input
               type="text"
               className="focus:outline-none bg-transparent border rounded-sm h-10 p-4 w-full rounded-md"
@@ -177,11 +189,7 @@ export const Offer = () => {
             />
           </div>
           <div className="flex justify-center mt-10">
-            <button
-              className="uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none"
-              type="submit"
-              aria-label="Send"
-            >
+            <button className={buttonClasses} type="submit" aria-label="Send">
               Send inn
             </button>
           </div>

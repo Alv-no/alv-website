@@ -43,9 +43,9 @@ export const Header = ({
       <div
         className={`${
           navyHeader ? 'bg-navy' : 'bg-theme-bg'
-        } hidden sm:block sm:pt-7 py-5 px-10 -mb-2px`}
+        } hidden sm:pt-7 py-5 sm:flex justify-center`}
       >
-        <div className="max-w-1200 mx-auto relative z-50 h-8">
+        <div className="container max-w-screen-2xl relative z-50 h-8">
           <div className="flex justify-between sm:mb-7">
             <div className="flex relative z-50">
               <button
@@ -111,7 +111,7 @@ export const MobileHeader = ({
         white={white}
         logo={logo}
       />
-      <Headroom style={{ height: '1px' }}>
+      <Headroom style={{ height: '0px' }}>
         <div
           className={`bg-navy block ${
             viewport || 'sm'
@@ -165,27 +165,25 @@ export const BlogHeader = ({
         white={white}
         logo={logo}
       />
-      <div className="bg-navy hidden sm:block sm:pt-7 py-5 px-10">
-        <div className="max-w-1600 mx-auto">
-          <div className="flex justify-between sm:mb-7 ">
-            <div className="flex">
-              <button
-                type="button"
-                aria-label="Dropdown"
-                className="mr-5 cursor-pointer"
-                onClick={handleClick}
-              >
-                <Dropdown white />
-              </button>
-              <span className="transform text-white">
-                <Link to="/">{logo.White()}</Link>
-              </span>
-            </div>
+      <div className="container">
+        <div className="flex justify-between sm:mb-7 ">
+          <div className="flex">
+            <button
+              type="button"
+              aria-label="Dropdown"
+              className="mr-5 cursor-pointer"
+              onClick={handleClick}
+            >
+              <Dropdown white />
+            </button>
+            <span className="transform text-white">
+              <Link to="/">{logo.White()}</Link>
+            </span>
           </div>
-          <span className="sm:block hidden">
-            <Breadcrumb path={crumbs} />
-          </span>
         </div>
+        <span className="sm:block hidden">
+          <Breadcrumb path={crumbs} />
+        </span>
       </div>
     </>
   );

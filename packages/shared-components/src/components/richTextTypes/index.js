@@ -96,6 +96,13 @@ export function richTextTypesSerializer(config) {
         </div>
       ),
     },
+    marks: {
+      'alv-yellow': ({ children }) => (
+        <strong style={{ color: '#eabb26', fontSize: '120%' }}>
+          {children}
+        </strong>
+      ),
+    },
   };
 }
 

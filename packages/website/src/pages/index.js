@@ -1,32 +1,29 @@
 import React from 'react';
 import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent.js';
 import { graphql } from 'gatsby';
-import { Hero } from '../components/hero';
+import LandingPageHero from '../components/landingPageHero';
 import Layout from '../components/layout';
+import { createGatsbyImages } from '../server-side/imageCreator';
 import {
   WhoWeAre,
   OurServices,
   BlogSlider,
-  VideoIntro,
   Hire,
   HireAlt,
   Container,
 } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import config from '../config';
+import { client } from '../server-side/client';
+import { gql } from '@apollo/client';
 
-const Index = ({ data, location }) => {
+const Index = ({ data, serverData }) => {
   const layoutData = useLayoutQuery();
   const pageTitle = data.sanityLandingPage.pageTitle || false;
   const pageDescription = data.sanityLandingPage.pageDescription || false;
 
   const landingPage = data.sanityLandingPage;
 
-  const linesAndClasses = [
-    { line: 'Vi bygger', classes: '' },
-    { line: 'Norges mest attraktive', classes: 'font-black' },
-    { line: 'konsulentselskap', classes: '', dot: true },
-  ];
   return (
     <Layout
       whiteIcons
@@ -35,28 +32,20 @@ const Index = ({ data, location }) => {
       layoutData={layoutData}
     >
       <div className="bg-navy">
-        <Hero
-          linesAndClasses={linesAndClasses}
-          delay={90}
-          videoMp4={data.video.heroVideoMp4.asset.url}
-          videoWebm={data.video.heroVideoWebm.asset.url}
-          routeUpdate={location.action}
-          heroCta={landingPage.heroCta}
+        <LandingPageHero
+          backgroundImage={serverData.image}
+          callToAction={serverData.callToAction}
+          introduction={serverData.introductionRaw}
+          subHeading={serverData.introductionSubheaderRaw}
+          ctaPosition={serverData.ctaPosition}
+          showContactForm={serverData.contactSchemaVisible}
         />
         <Container
+          className="mt-12 sm:mt-2"
           theme="navy"
           maxWidth="1440"
-          removePaddingBottom
-          removePaddingMobile="top"
+          removePaddingMobile="bottom"
         >
-          <VideoIntro
-            videoMp4={data.video.videoMp4.asset.url}
-            videoWebm={data.video.videoWebm.asset.url}
-          >
-            {landingPage.videoTextOverlay}
-          </VideoIntro>
-        </Container>
-        <Container theme="navy" maxWidth="1440" removePaddingMobile="bottom">
           <WhoWeAre
             title="Hvem er vi"
             whiteText
@@ -98,18 +87,64 @@ const Index = ({ data, location }) => {
 
 export default Index;
 
+async function fetchServerSideData() {
+  const response = await client.query({
+    query: gql`
+      {
+        LandingPage(id: "landingPage") {
+          _id
+          introductionRaw
+          introductionSubheaderRaw
+          showCallToAction
+          contactSchemaVisible
+          ctaPosition
+          image: topBackgroundImage {
+            asset {
+              id: _id
+              url
+              metadata {
+                dimensions {
+                  height
+                  width
+                }
+              }
+            }
+          }
+          callToAction {
+            eyebrow
+            title
+            link
+          }
+        }
+      }
+    `,
+    fetchPolicy: 'no-cache',
+  });
+  createGatsbyImages(response.data);
+  return response.data;
+}
+
+export async function getServerData() {
+  try {
+    const pageData = await fetchServerSideData();
+
+    return {
+      props: { ...pageData.LandingPage },
+      status: 200,
+    };
+  } catch {
+    return {
+      status: 500,
+    };
+  }
+}
+
 export const query = graphql`
   {
     sanityLandingPage {
       pageDescription
       pageTitle
       videoTextOverlay
-      heroCta {
-        eyebrow
-        link
-        title
-      }
-
       flipSection1Image {
         asset {
           gatsbyImageData
@@ -148,35 +183,6 @@ export const query = graphql`
       flipSection3Title
       _rawAboutText
       aboutTitle
-    }
-    video: sanityLandingPage(videoMp4: { asset: { url: { ne: "" } } }) {
-      id
-      pageTitle
-      videoMp4 {
-        asset {
-          url
-        }
-      }
-      heroVideoWebm {
-        asset {
-          url
-        }
-      }
-      heroVideoMp4 {
-        asset {
-          url
-        }
-      }
-      videoWebm {
-        asset {
-          url
-        }
-      }
-      videoMp4 {
-        asset {
-          url
-        }
-      }
     }
   }
 `;
