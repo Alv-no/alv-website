@@ -39,7 +39,7 @@ export const GridContainer = ({
   const { width } = useWindowDimensions();
   const [columnsNr, setColumnsNr] = useState(null);
   const [rows, setRows] = useState(null);
-  const [contentGroups, setContentGroups] = useState(null);
+  const [contentGroups, setContentGroups] = useState([]);
   const [visibleRows, setVisibleRows] = useState(20);
   const [cardClick, setCardClick] = useState(false);
   const bioRefContainer = useRef(null);
@@ -54,7 +54,7 @@ export const GridContainer = ({
   });
 
   useEffect(() => {
-    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 2);
+    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 1);
     setRows(Math.ceil(filteredContent.length / columnsNr));
   }, [filteredContent, columnsNr, width]);
 
@@ -88,7 +88,7 @@ export const GridContainer = ({
 
   return (
     <>
-      {contentGroups
+      {contentGroups.length > 0
         ? contentGroups.slice(0, visibleRows).map((group) => {
             if (group.length > 0) {
               return (

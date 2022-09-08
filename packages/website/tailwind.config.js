@@ -1,11 +1,19 @@
 module.exports = {
-  purge: [
-    './src/**/*.js',
-    './src/**/*.jsx',
-    '../shared-components/src/**/*.js',
-    '../shared-components/src/**/*.jsx',
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    '../shared-components/src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    container: {
+      center: false,
+      padding: {
+        'DEFAULT': '1rem',
+        'sm': '2rem',
+        'lg': '4rem',
+        'xl': '5rem',
+        '2xl': '6rem',
+      },
+    },
     letterSpacing: {
       tighter: '-.05em',
       tight: '-.025em',

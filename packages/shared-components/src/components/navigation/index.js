@@ -33,7 +33,7 @@ const NavLayout = ({
   isEnLocale,
 }) => (
   <nav
-    className={`text-theme-text bg-theme-bg tracking-wider fixed overflow-y-scroll overflow-x-hidden z-70 w-full h-full bg-theme-bg p-6 sm:p-8 left-0 top-0 transition duration-300 ${
+    className={`text-theme-text bg-theme-bg tracking-wider fixed overflow-y-scroll overflow-x-hidden z-70 w-full h-full bg-theme-bg left-0 top-0 transition duration-300 ${
       open ? 'opacity-100' : 'opacity-0 pointer-events-none'
     }`}
   >
@@ -52,17 +52,20 @@ const NavLayout = ({
 );
 
 const NavHeader = ({ white, logo, toggleClose, isEnLocale }) => (
-  <div className="flex items-center relative z-90 justify-between flex-row-reverse eight:flex-row max-w-1000 mx-auto">
-    <div className="transform scale-70 translate-x-2 sm:translate-x-0">
-      <CloseButton toggleClose={toggleClose} white={white} />
-    </div>
-    <div className="inline-block eight:absolute left-1/2 eight:transform eight:-translate-x-1/2">
-      <Link to={isEnLocale ? '/en' : '/'}>
-        {white ? logo.Colored() : logo.White()}
-      </Link>
-    </div>
-    <div className="right-0 transform eight:flex hidden relative">
-      <SocialLinks white={white} />
+  /* container  */
+  <div className="w-full flex justify-center">
+    <div className="container w-full flex items-center relative z-90 justify-between flex-row-reverse max-w-1440 eight:flex-row pt-6">
+      <div className="transform scale-70 translate-x-2 sm:translate-x-0">
+        <CloseButton toggleClose={toggleClose} white={white} />
+      </div>
+      <div className="inline-block eight:absolute left-1/2 eight:transform eight:-translate-x-1/2">
+        <Link to={isEnLocale ? '/en' : '/'}>
+          {white ? logo.Colored() : logo.White()}
+        </Link>
+      </div>
+      <div className="right-0 transform eight:flex hidden relative">
+        <SocialLinks white={white} />
+      </div>
     </div>
   </div>
 );
@@ -85,7 +88,7 @@ const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
   return (
     <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
       <div className="flex eight:justify-center h-full eight:items-center relative eight:-top-16">
-        <div className="eight:flex transition duration-300 gap-x-16 justify-center w-full">
+        <div className="eight:flex transition duration-300 gap-x-16 justify-center">
           <GenerateLinks
             title="Hva vi tilbyr"
             linksArr={categoryPages}
