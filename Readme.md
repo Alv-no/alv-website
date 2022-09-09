@@ -10,9 +10,9 @@ As of writing this readme the newest version of node and yarn is as follows:
 
 ```
 $ node --version
- v15.0.1
+ v16.17.0
 $ yarn --version
- 2.3.3
+ 3.2.3
 ```
 
 Once ready to develop the website run:

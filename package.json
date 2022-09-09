@@ -30,5 +30,6 @@
       "pre-commit": "run-s -s lint"
     }
   },
-  "prettier": "@blueberrypie/prettier-config"
+  "prettier": "@blueberrypie/prettier-config",
+  "packageManager": "yarn@3.2.3"
 }
