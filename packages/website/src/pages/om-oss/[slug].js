@@ -1,14 +1,14 @@
 import React from 'react';
-import config from '../config';
-import Layout from '../components/layout';
+import config from '../../config';
+import Layout from '../../components/layout';
 import { graphql } from 'gatsby';
 import { LinkableContent } from 'shared-components/src/components/linkableContent';
 import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
 import { window } from 'browser-monads';
-import { BlogCarousel } from '../components/blogCarousel';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import { client } from '../server-side/client';
-import { createGatsbyImages } from '../server-side/imageCreator';
+import { BlogCarousel } from '../../components/blogCarousel';
+import { useLayoutQuery } from '../../hooks/useLayoutQuery';
+import { client } from '../../server-side/client';
+import { createGatsbyImages } from '../../server-side/imageCreator';
 import { gql } from '@apollo/client';
 
 const Company = ({ serverData }) => {
@@ -110,7 +110,7 @@ async function getCompanyDataServerSide(slug) {
 
 export async function getServerData(context) {
   try {
-    const slug = context.pageContext.slug;
+    const slug = context.params['slug'];
     const companyData = await getCompanyDataServerSide(slug);
     return {
       status: 200,
