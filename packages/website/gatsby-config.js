@@ -2,6 +2,18 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+/**
+ * @param {string} prefix
+ * @param {{}[]} routes
+ * @returns {{date: string; path: string}[]}
+ * */
+function createSiteMap(prefix, routes) {
+  return routes.nodes.map((route) => ({
+    date: route._updatedAt,
+    path: prefix + route.slug.current,
+  }));
+}
+
 const siteUrl = 'https://www.alv.no';
 
 const config = require('./src/config');
@@ -18,7 +30,9 @@ module.exports = {
       resolve: `gatsby-plugin-fastify-klyngen`,
       options: {
         /* discussed below */
-        features: {},
+        features: {
+          redirects: true,
+        },
       },
     },
     {
@@ -65,23 +79,38 @@ module.exports = {
             }
           }
         }
+        allSanityCompany {
+            nodes {
+              slug {
+                current
+              }
+            }
+        }
+        allSanityOpenPostionPage {
+            nodes {
+              slug {
+                current
+              }
+            }
+        }
       }`,
-        resolvePages: ({ allSanityArticle, allSitePage }) => {
-          const bloggPathPrefix = '/blogg/';
-
-          const allArticles = allSanityArticle.nodes.map((article) => {
-            return {
-              date: article._updatedAt,
-              path: bloggPathPrefix + article.slug.current,
-            };
-          });
-
+        resolvePages: ({
+          allSanityArticle,
+          allSitePage,
+          allSanityCompany,
+          allSanityOpenPostionPage,
+        }) => {
           const allMainPages = allSitePage.nodes;
 
           // remove unwanted /[slug] entry
           allMainPages.pop();
 
-          return [...allSitePage.nodes, ...allArticles];
+          return [
+            ...allSitePage.nodes,
+            ...createSiteMap('/blogg/', allSanityArticle),
+            ...createSiteMap('/om-oss/', allSanityCompany),
+            ...createSiteMap('/jobbe-i-alv/', allSanityOpenPostionPage),
+          ];
         },
         resolveSiteUrl: () => siteUrl,
         serialize: ({ path, date }) => {

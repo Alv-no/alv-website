@@ -4,9 +4,7 @@ const slugify = require('slugify');
 const fetch = require('node-fetch');
 
 const videoTemplate = path.resolve(`./src/templates/video.js`);
-const careerTemplate = path.resolve(`./src/templates/career.js`);
 const serviceTemplate = path.resolve(`./src/templates/service.js`);
-const companyTemplate = path.resolve(`./src/templates/company.js`);
 const categoryTemplate = path.resolve(`./src/templates/category.js`);
 const videoCategoryTemplate = path.resolve(`./src/templates/videoCategory.js`);
 const videoserieTemplate = path.resolve(`./src/templates/videoserie.js`);
@@ -195,17 +193,6 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-  // Create company pages.
-  res.data.allSanityCompany.edges.forEach((edge) => {
-    createPage({
-      component: companyTemplate,
-      path: `/om-oss/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-  });
-
   // Create services pages.
   res.data.allSanityServices.edges.forEach((edge) => {
     createPage({
@@ -222,17 +209,6 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       component: categoryTemplate,
       path: `/vi-tilbyr/${edge.node.slug.current}`,
-      context: {
-        slug: edge.node.slug.current,
-      },
-    });
-  });
-
-  // Create career pages.
-  res.data.allSanityOpenPostionPage.edges.forEach((edge) => {
-    createPage({
-      component: careerTemplate,
-      path: `/jobbe-i-alv/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },
