@@ -13,7 +13,6 @@ COPY .yarn/releases /app/.yarn/releases/
 COPY .yarn/plugins /app/.yarn/plugins/
 COPY packages/website /app/packages/website/
 COPY packages/shared-components /app/packages/shared-components/
-
 RUN yarn
 RUN yarn workspace website run disable-telemetry
 
