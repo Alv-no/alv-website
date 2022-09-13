@@ -46,7 +46,7 @@ stages:
 
                 TRUNCATED_BUILD_SOURCEBRANCH=$(echo "${SYSTEM_PULLREQUEST_SOURCEBRANCH##*/}" | cut -c -10)
                 TRUNCATED_SYSTEM_PULLREQUEST_PULLREQUESTNUMBER=$(echo "$SYSTEM_PULLREQUEST_PULLREQUESTNUMBER" | cut -c -6)
-                CI_ENVIRONMENT_SLUG=$(echo "$TRUNCATED_BUILD_SOURCEBRANCH-$TRUNCATED_SYSTEM_PULLREQUEST_PULLREQUESTNUMBER" | tr "/" "-")
+                CI_ENVIRONMENT_SLUG=$(echo "$TRUNCATED_BUILD_SOURCEBRANCH-$TRUNCATED_SYSTEM_PULLREQUEST_PULLREQUESTNUMBER" | tr "/" "-" | tr "_" "-")
 
                 # Run scripts to deploy review environment
                 ./run undeploy "" "" "" $CI_ENVIRONMENT_SLUG
