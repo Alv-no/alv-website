@@ -1,6 +1,6 @@
 const config = require('gatsby-plugin-config').default;
 let configuration;
-
+console.log(config.NODE_ENV, process.env.NODE_ENV);
 switch (config.NODE_ENV) {
   case 'development':
   case 'test':

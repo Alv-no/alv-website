@@ -56,7 +56,7 @@ module.exports = {
           cookieName: 'gatsby-gdpr-linked-in', // default
         },
       },
-      environments: ['production', 'prod'],
+      environments: ['production', 'prod', 'development'],
     },
     'gatsby-plugin-image',
     'gatsby-transformer-sharp',
