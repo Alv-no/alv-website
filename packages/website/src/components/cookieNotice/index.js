@@ -35,7 +35,7 @@ const CookieNoticeWrapper = () => {
               'Vi bruker Google Tags til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
           },
           {
-            name: 'facebookPixel',
+            name: 'gatsby-gdpr-facebook-pixel',
             editable: true,
             default: true,
             title: 'Facebook',
@@ -43,7 +43,7 @@ const CookieNoticeWrapper = () => {
               'Vi bruker Facebook Pixel til å forbedre brukeropplevelsen av Alv sin markedsføring.',
           },
           {
-            name: 'linkedin',
+            name: 'gatsby-gdpr-linked-in',
             editable: true,
             default: true,
             title: 'Linkedin',

@@ -27,7 +27,6 @@ const Index = ({ data, location }) => {
     { line: 'Norges mest attraktive', classes: 'font-black' },
     { line: 'konsulentselskap', classes: '', dot: true },
   ];
-
   return (
     <Layout
       whiteIcons
