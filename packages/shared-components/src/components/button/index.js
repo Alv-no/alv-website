@@ -50,7 +50,7 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
     if (buttonRef) {
       setButtonWidth(buttonRef.current.offsetWidth + 'px');
     }
-  }, []);
+  }, [productName]);
 
   useEffect(() => {
     if (!showInput && buttonWidth) {

@@ -2,11 +2,7 @@ import { window } from 'browser-monads';
 
 /* eslint-disable no-console */
 export const handleEmailSubmit = (productName, email) => {
-  const mailApiUrl =
-    window.location.protocol +
-    '//mail-api-alvb.' +
-    window.location.hostname +
-    '/send';
+  const mailApiUrl = window.location.protocol + '//mail-api-alvb.alvb.no/send';
 
   const xhr = new XMLHttpRequest();
   xhr.open('POST', mailApiUrl, true);
