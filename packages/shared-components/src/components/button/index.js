@@ -71,6 +71,7 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
     <div className="my-6">
       <div className="relative inline-block">
         <button
+          data-testid="mail-reveal-btn"
           ref={buttonRef}
           className={`uppercase tracking-wider text-base px-8 py-6px text-navy border border-navy rounded-full font-semibold focus:outline-none ease-all transition duration-500 ease-all ${
             showInput && 'pointer-events-none'
@@ -110,6 +111,7 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
             }`}
           >
             <button
+              data-testid="mail-submit-btn"
               type="submit"
               className="text-white ml-3 focus:outline-none"
             >
