@@ -41,6 +41,11 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
   const inputRef = useRef(null);
   const buttonRef = useRef(null);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onClick(productName, email);
+  };
+
   const handleRevealInput = () => {
     setShowInput(true);
   };
@@ -86,7 +91,7 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
             {buttonText.en}
           </span>
         </button>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             ref={inputRef}
             className={`absolute left-0 bg-none bottom-1/2 transform pl-8 translate-y-1/2 w-72 focus:outline-none ${
@@ -96,16 +101,16 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
             placeholder="Enter your email here..."
             value={email}
             type="email"
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
           <div
             className={`absolute right-0 bottom-1/2 transform translate-y-1/2 w-18 bg-navy rounded-r-full h-full flex items-center transition duration-500 opacity-0 ${
-              showInput && 'opacity-100'
+              showInput ? 'opacity-100' : 'pointer-events-none'
             }`}
           >
             <button
-              type="button"
-              onClick={() => onClick(productName, email)}
+              type="submit"
               className="text-white ml-3 focus:outline-none"
             >
               SEND
