@@ -2,7 +2,7 @@ import React from 'react';
 import PortableText from '@sanity/block-content-to-react';
 import imageUrlBuilder from '@sanity/image-url';
 import * as styles from './CompanyRichText.module.css';
-import { ProductCta } from '../button';
+import { ProductCta } from '../productCta';
 import { handleEmailSubmit } from './utils';
 
 /* eslint-disable no-dupe-keys */
