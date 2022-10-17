@@ -11,9 +11,7 @@ describe('mailApiButton-component', () => {
         handleEmailSubmit={handleEmailSubmit}
         productName="product a"
         buttonText="button text here..."
-      >
-        Children
-      </ProductCta>
+      />
     );
     expect(screen.getByTestId('mail-reveal-btn')).toBeInTheDocument();
     fireEvent(
