@@ -33,17 +33,30 @@ export const OvalSimple = ({ children, onClick }) => (
   </button>
 );
 
-export const ProductCta = ({ children, onClick, productName, buttonText }) => {
+export const ProductCta = ({
+  children,
+  handleEmailSubmit,
+  productName,
+  buttonText,
+}) => {
   const [showInput, setShowInput] = useState(false);
   const [email, setEmail] = useState('');
   const [buttonWidth, setButtonWidth] = useState(null);
+  const [statusMsg, setStatusMsg] = useState('');
 
   const inputRef = useRef(null);
   const buttonRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onClick(productName, email);
+    const response = await handleEmailSubmit(productName, email);
+    if (response?.status === 200) {
+      setEmail('');
+      setStatusMsg('success');
+      return;
+    }
+
+    setStatusMsg('error');
   };
 
   const handleRevealInput = () => {
@@ -119,6 +132,17 @@ export const ProductCta = ({ children, onClick, productName, buttonText }) => {
             </button>
           </div>
         </form>
+        <div
+          className={`${
+            statusMsg ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          } ${statusMsg === 'success' && 'bg-navy'} ${
+            statusMsg === 'error' && 'bg-red-700'
+          }   absolute h-full w-full top-0 z-20 rounded-full text-white flex items-center justify-center font-bold transition duration-300`}
+        >
+          {statusMsg === 'success'
+            ? 'Successfully sent!'
+            : 'Something went wrong!'}
+        </div>
       </div>
     </div>
   );

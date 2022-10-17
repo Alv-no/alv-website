@@ -5,10 +5,10 @@ import { ProductCta } from '.';
 
 describe('mailApiButton-component', () => {
   it('should render', () => {
-    const handleClick = jest.fn();
+    const handleEmailSubmit = jest.fn();
     render(
       <ProductCta
-        onClick={handleClick}
+        handleEmailSubmit={handleEmailSubmit}
         productName="product a"
         buttonText="button text here..."
       >
@@ -24,7 +24,7 @@ describe('mailApiButton-component', () => {
       })
     );
     expect(screen.getByTestId('mail-submit-btn')).toBeInTheDocument();
-    expect(handleClick).toHaveBeenCalledTimes(0);
+    expect(handleEmailSubmit).toHaveBeenCalledTimes(0);
     fireEvent(
       screen.getByTestId('mail-submit-btn'),
       new MouseEvent('click', {
@@ -32,6 +32,6 @@ describe('mailApiButton-component', () => {
         cancelable: true,
       })
     );
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(handleEmailSubmit).toHaveBeenCalledTimes(1);
   });
 });
