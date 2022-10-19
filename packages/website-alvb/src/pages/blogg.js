@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import localize from '../components/localize';
 import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
