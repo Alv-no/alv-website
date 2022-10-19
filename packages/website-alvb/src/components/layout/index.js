@@ -27,8 +27,8 @@ export const Layout = ({
   } = useLayoutQuery();
 
   const metaAuthor = site.siteMetadata.author;
-  const metaDescription = site.siteMetadata.description;
-  const metaTitle = site.siteMetadata.title;
+  const metaDescription = pageDescription || site.siteMetadata.description;
+  const metaTitle = pageTitle || site.siteMetadata.title;
   const metaArr = [];
   const metaLang = { lang: config.LOCALE };
 

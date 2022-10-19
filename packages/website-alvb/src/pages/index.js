@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { BlogCarousel } from '../components/blogCarousel';
@@ -29,7 +29,7 @@ const Index = ({ data }) => {
         white
         whiteIcons
         pageTitle={_rawMeta.metaTitle}
-        pageDescription={_rawMeta.metaTitle}
+        pageDescription={_rawMeta.metaDescription}
       >
         <Hero
           blocks={_rawSection1.heroText}
@@ -84,6 +84,7 @@ export const query = graphql`
       _rawSection2
       _rawSection1
       # media
+
       section1 {
         localeCta {
           eyebrow {
