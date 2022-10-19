@@ -73,7 +73,7 @@ const EmailForm = ({
     // Adding delay for better UX
     setTimeout(() => {
       response?.status === 200 ? setStatus('success') : setStatus('error');
-    }, 800);
+    }, 400);
   };
   return (
     <form onSubmit={handleSubmit}>
