@@ -16,9 +16,9 @@ export default {
     },
     // section 2: video and block text
     {
-      title: 'Section 2: Video introduction',
+      title: 'Section 2: Image and text',
       name: 'section2',
-      type: 'textOverlapVideo',
+      type: 'localeImageText',
     },
     // section 3: title, text and button
     {

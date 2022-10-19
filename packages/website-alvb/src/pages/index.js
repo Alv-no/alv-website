@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
 import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
-import { VideoIntro } from '../components/videoIntro';
+import { IntroSection } from '../components/introSection';
 import { WhoWeAre, Hire, OurServices, Container } from 'shared-components';
 import localize from '../components/localize/index';
 import config from '../config';
@@ -16,7 +16,6 @@ const Index = ({ data }) => {
     section5,
     _rawMeta,
     _rawSection1,
-    _rawSection2,
     _rawSection3,
     _rawSection4,
     _rawSection5,
@@ -41,12 +40,10 @@ const Index = ({ data }) => {
           }
         />
         <Container maxWidth="1280" removePaddingBottom>
-          <VideoIntro
-            videoMp4={section2.videoMp4.asset.url}
-            videoWebm={section2.videoWebm.asset.url}
-          >
-            {_rawSection2.videoTextOverlay}
-          </VideoIntro>
+          <IntroSection
+            image={section2.image.asset.gatsbyImageData}
+            text={section2.text}
+          />
         </Container>
         <Container maxWidth="1280" removePaddingBottom>
           <WhoWeAre
@@ -116,6 +113,18 @@ export const query = graphql`
           }
         }
       }
+      section2 {
+        image {
+          asset {
+            gatsbyImageData
+          }
+        }
+        text {
+          _type
+          en
+          no
+        }
+      }
       section4 {
         image {
           asset {
@@ -127,18 +136,6 @@ export const query = graphql`
         image {
           asset {
             gatsbyImageData
-          }
-        }
-      }
-      section2 {
-        videoMp4 {
-          asset {
-            url
-          }
-        }
-        videoWebm {
-          asset {
-            url
           }
         }
       }

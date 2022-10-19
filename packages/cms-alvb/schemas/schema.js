@@ -22,6 +22,7 @@ import titleBlockImage from './titleBlockImage';
 import founder from './founder';
 import blockImage from './blockImage';
 import categoryList from './categoryList';
+import localeImageText from './localeImageText';
 import titleBlock from './titleBlock';
 import titleTextButtonImage from './titleTextButtonImage';
 import titleTextImage from './titleTextImage';
@@ -101,6 +102,7 @@ export default createSchema({
     serviceItem,
     titleText,
     categoryList,
+    localeImageText,
     meta,
     imageHero,
     investmentPage,
