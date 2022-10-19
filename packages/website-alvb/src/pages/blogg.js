@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import localize from '../components/localize';
 import { graphql } from 'gatsby';
 import { Layout } from '../components/layout';
@@ -16,6 +16,7 @@ const Blog = ({ data }) => {
     .sort((a, b) => (a.rawDate > b.rawDate ? -1 : 1));
   const featuredArticle = articles[0];
   articles.shift();
+
   return (
     <Layout
       navyHeader
