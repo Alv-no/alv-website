@@ -22,7 +22,7 @@ export const VideoFilter = ({ seasons, onChange, seasonTitles }) => {
   }, [sort, activeSeasonIndex]);
 
   const sortClick = (e) => {
-    setSort(e.target.id);
+    setSort(e);
   };
 
   const seasonClick = (e) => {
