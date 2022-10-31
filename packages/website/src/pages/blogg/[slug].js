@@ -32,7 +32,7 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
   } = article;
 
   const wrappedArticles = {
-    edges: articles.articles.map((article) => ({ node: article })),
+    edges: articles.map((article) => ({ node: article })),
   };
 
   const socialObj = socials || {};
@@ -282,8 +282,17 @@ export async function getServerData(props) {
   try {
     const article = await getBlogArticleServerSide(slug);
     const articles = await getBlogDataServerSide();
+
+    const dedupeMap = new Map(
+      articles.articles.map((item) => [item.slug.current, item])
+    );
+
+    dedupeMap.delete(article.slug.current);
+
+    const filteredArticles = Array.from(dedupeMap.values());
+
     return Promise.resolve({
-      props: { article, articles },
+      props: { article, articles: filteredArticles },
       status: 200,
     });
   } catch {
