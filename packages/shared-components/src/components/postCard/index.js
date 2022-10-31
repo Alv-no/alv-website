@@ -23,6 +23,9 @@ export const PostCard = ({
       .join(' ')
       .concat('...');
   }
+
+  const formattedDate = new Date(publishedAt).toLocaleDateString('nb-NO');
+
   return (
     <Link
       to={`/blogg/${slug.current}`}
@@ -78,7 +81,7 @@ export const PostCard = ({
               </div>
               <div className="text-sm">
                 {author ? `${author.firstname} ${author.lastname}` : null}
-                <span className="text-postgray"> - {publishedAt}</span>
+                <span className="text-postgray"> - {formattedDate}</span>
               </div>
             </div>
           </div>
