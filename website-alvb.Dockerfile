@@ -15,11 +15,6 @@ RUN yarn
 
 RUN yarn workspace website-alvb run disable-telemetry
 
-# The build step shouldn't be cached since it's non determenistic
-# As such we add the next line to try and do a cache bust
-# Recommended by: https://stackoverflow.com/a/58801213/359825
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
-
 # Ensure that proper .env files exists before building
 RUN test -f "/app/packages/website-alvb/.env.production"
 RUN yarn workspace website-alvb run build
