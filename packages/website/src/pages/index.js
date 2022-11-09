@@ -1,6 +1,6 @@
 import React from 'react';
+import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent.js';
 import { graphql } from 'gatsby';
-import { useBlogQuery } from '../hooks/useBlogQuery';
 import { Hero } from '../components/hero';
 import Layout from '../components/layout';
 import {
@@ -90,7 +90,7 @@ const Index = ({ data, location }) => {
             imageText={landingPage.flipSection3ImageText}
           />
         </Container>
-        <BlogSlider useBlogQuery={useBlogQuery} maxWidth="1440" />
+        <BlogSlider useBlogQuery={useBlogQueryRecent} maxWidth="1440" />
       </div>
     </Layout>
   );

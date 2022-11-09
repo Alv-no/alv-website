@@ -43,13 +43,11 @@ export const BlogSection = ({ allArticles, isEnLocale }) => {
           <div className="w-full mb-4 grid justify-center fivefifty:gap-y-12 gap-y-4 xs:gap-4 xs:max-w-570 seven:max-w-none nine:max-w-1200 grid-cols-blog-xs fivefifty:grid-cols-blog-sm nine:grid-cols-blog-nine twelve:grid-cols-employees-lg">
             {articles.slice(0, visibleRows).map((article) => {
               return (
-                <>
-                  <PostCard
-                    isEnLocale={isEnLocale}
-                    {...article}
-                    key={article.id}
-                  />
-                </>
+                <PostCard
+                  isEnLocale={isEnLocale}
+                  {...article}
+                  key={article.id}
+                />
               );
             })}
           </div>

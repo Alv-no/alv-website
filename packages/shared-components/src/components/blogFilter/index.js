@@ -205,8 +205,8 @@ const FilterOption = ({ tags, onChange, children }) => (
     <div className="tracking-wider uppercase mb-2 text-base">{children}</div>
     <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
     <ul>
-      {tags.map((tag) => (
-        <li className={styles.listItem}>
+      {tags.map((tag, index) => (
+        <li key={index} className={styles.listItem}>
           <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
             <input
               className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}

@@ -13,6 +13,7 @@ export const RolesList = ({ image, roles, categoryName }) => {
     >
       <div>
         <GatsbyImage
+          alt=""
           image={image}
           className="relative h-80 opacity-35 sm:block hidden"
         />
@@ -42,9 +43,10 @@ export const RolesList = ({ image, roles, categoryName }) => {
         </div>
         <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end sm:px-0">
           {roles &&
-            roles.slice(0, Math.ceil(roles.length / 2)).map((role) => {
+            roles.slice(0, Math.ceil(roles.length / 2)).map((role, index) => {
               return (
                 <RoleItem
+                  key={index}
                   internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
                 >
                   {role.node.heroHeading}
@@ -59,15 +61,18 @@ export const RolesList = ({ image, roles, categoryName }) => {
       />
       <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end sm:px-0">
         {roles &&
-          roles.slice(Math.ceil(roles.length / 2), roles.length).map((role) => {
-            return (
-              <RoleItem
-                internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
-              >
-                {role.node.heroHeading}
-              </RoleItem>
-            );
-          })}
+          roles
+            .slice(Math.ceil(roles.length / 2), roles.length)
+            .map((role, index) => {
+              return (
+                <RoleItem
+                  key={index}
+                  internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
+                >
+                  {role.node.heroHeading}
+                </RoleItem>
+              );
+            })}
       </div>
     </div>
   );

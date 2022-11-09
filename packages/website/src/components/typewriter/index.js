@@ -9,17 +9,16 @@ export const Typewriter = ({ linesAndClasses, delay }) => {
 
   return (
     <>
-      {linesAndClasses.slice(0, linesCompleted + 1).map((el) => {
+      {linesAndClasses.slice(0, linesCompleted + 1).map((el, index) => {
         return (
-          <>
-            <LineTyper
-              lineToType={el.line}
-              delay={delay}
-              classes={el.classes}
-              callback={callback}
-              dot={el.dot}
-            />
-          </>
+          <LineTyper
+            key={index}
+            lineToType={el.line}
+            delay={delay}
+            classes={el.classes}
+            callback={callback}
+            dot={el.dot}
+          />
         );
       })}
     </>

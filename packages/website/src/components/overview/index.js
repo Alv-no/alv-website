@@ -14,6 +14,7 @@ export const Overview = ({ image, children, id }) => {
     >
       {image && (
         <GatsbyImage
+          alt=""
           image={image}
           className="h-80"
           style={{ marginTop: '0px' }}

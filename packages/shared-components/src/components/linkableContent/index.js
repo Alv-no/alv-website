@@ -41,6 +41,7 @@ export const LinkableContent = ({
           <>
             <div className="z-50 relative mb-10 sm:hidden">
               <GatsbyImage
+                alt=""
                 image={heroImage}
                 className="relative z-50 sm:-mr-12 sm:h-20vh h-30vh h-30vh -mx-5"
               />
@@ -76,8 +77,9 @@ export const LinkableContent = ({
 
 const ScrollToIdNav = ({ navElements, onClick }) => (
   <ul className="sm:sticky hide-scrollbar top-10 max-h-90vh overflow-y-scroll text-lg sm:mt-20 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
-    {navElements.map((el) => (
+    {navElements.map((el, index) => (
       <button
+        key={index}
         aria-label="Scroll Link"
         className="py-3 block sm:mr-0 mr-4 w-full focus:outline-none"
         onClick={onClick}

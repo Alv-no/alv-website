@@ -122,13 +122,15 @@ const GenerateLinks = ({
   children,
 }) => (
   <div className="relative z-70">
-    <LargeLink mobileDropdown>{title}</LargeLink>
+    <LargeLink link="#" mobileDropdown>
+      {title}
+    </LargeLink>
     <ul>
       {mainLinkText && (
         <SubtitleLink link={parentPage}>{mainLinkText}</SubtitleLink>
       )}
-      {linksArr?.map((link) => (
-        <SubtitleLink link={`${parentPage}/${link.slug.current}`}>
+      {linksArr?.map((link, index) => (
+        <SubtitleLink key={index} link={`${parentPage}/${link.slug.current}`}>
           {link.heroHeading}
         </SubtitleLink>
       ))}

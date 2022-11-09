@@ -49,7 +49,7 @@ export const NavyIntroImage = ({
         }}
         className="twelve:absolute twelve:block right-0 bottom-0 transform hidden translate-y-8"
       >
-        <GatsbyImage image={image} />
+        <GatsbyImage image={image} alt="" />
       </div>
     </div>
   </div>
