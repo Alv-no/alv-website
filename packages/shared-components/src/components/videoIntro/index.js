@@ -8,13 +8,7 @@ export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
       style={{ gridTemplateColumns: 'minmax(400px, 866px) 167px' }}
     >
       <div className="relative w-full" style={{ maxWidth: '866px' }}>
-        <video
-          className="h-auto mx-auto"
-          controls
-          autoplay="true"
-          muted
-          defaultMuted
-        >
+        <video className="h-auto mx-auto" controls autoPlay={true} muted>
           <source src={videoWebm} type="video/webm" />
           <source src={videoMp4} type="video/mp4" />
         </video>

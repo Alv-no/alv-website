@@ -22,8 +22,9 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
       )}
       <div className="h-12" />
       <div className="grid xs:gap-4 mb-12 xs:max-w-570 seven:max-w-none grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-team-lg nine:justify-between gap-y-6">
-        {linkableTeam.map((employee) => (
+        {linkableTeam.map((employee, index) => (
           <Link
+            key={index}
             to={`/ansatte#${employee.slug}`}
             state={{ activeCard: employee.id, employee: employee.slug }}
           >

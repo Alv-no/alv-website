@@ -51,6 +51,7 @@ export const PostCard = ({
           </div>
           <div className="overflow-hidden h-50">
             <GatsbyImage
+              alt=""
               image={
                 (mainImage && mainImage.asset.gatsbyImageData) || fallbackImg
               }
@@ -62,8 +63,11 @@ export const PostCard = ({
               {title}
             </h3>
             <div className="flex flex-wrap mb-4">
-              {tags.map((tag) => (
-                <div className="px-2 py-1 uppercase tracking-wider mr-6px text-xs text-tag bg-tagbg">
+              {tags.map((tag, index) => (
+                <div
+                  key={index}
+                  className="px-2 py-1 uppercase tracking-wider mr-6px text-xs text-tag bg-tagbg"
+                >
                   {tag.tag}
                 </div>
               ))}
@@ -71,6 +75,7 @@ export const PostCard = ({
             <div className="flex items-center mb-3">
               <div className="h-6 w-6 rounded-full overflow-hidden mr-2 filter-grayscale">
                 <GatsbyImage
+                  alt=""
                   image={
                     (author &&
                       author.image &&

@@ -18,9 +18,9 @@ export const Hero = ({
       <div className={styles.videoContainer}>
         <video
           title="reel"
-          className="w-full w-full eight:block hidden"
+          className="w-full eight:block hidden"
           muted
-          autoPlay="true"
+          autoPlay={true}
         >
           <source src={videoWebm} type="video/webm" />
           <source src={videoMp4} type="video/mp4" />

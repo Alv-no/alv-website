@@ -63,6 +63,7 @@ export const OurServices = ({
                 className="tracking-wider font-semibold mb-8 cursor-pointer"
                 id={i}
                 onClick={handleClick}
+                key={i}
               >
                 <p className="uppercase pointer-events-none text-theme-text">
                   {el.title}
