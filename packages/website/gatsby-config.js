@@ -16,7 +16,8 @@ function createSiteMap(prefix, routes) {
 
 const siteUrl = 'https://www.alv.no';
 
-const config = require('./src/config');
+const tsImport = require('ts-import');
+const config = tsImport.loadSync('./src/config.ts').default;
 
 module.exports = {
   siteMetadata: {

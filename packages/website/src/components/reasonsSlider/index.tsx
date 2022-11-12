@@ -1,0 +1,169 @@
+import React, { MouseEventHandler } from 'react';
+import { Icon } from 'shared-components';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import Slider from 'react-slick';
+const { SliderArrowBlue } = Icon;
+
+interface ReasonsSliderProps {
+  mainHeading: any;
+  slides: any;
+}
+
+export const ReasonsSlider : React.FC<ReasonsSliderProps> = ({
+  mainHeading,
+  slides
+}) => {
+  return (
+    <div className="pb-12 twelve:pb-0">
+      <Slider
+        infinite={true}
+        speed={500}
+        slidesToShow={1}
+        nextArrow={<NextArrowLine />}
+        prevArrow={<PrevArrowLine />}
+        slidesToScroll={1}
+        responsive={[
+          {
+            breakpoint: 1200,
+            settings: {
+              nextArrow: <NextArrow />,
+              prevArrow: <PrevArrow />,
+            },
+          },
+        ]}
+      >
+        {slides.map((el : any, index : number) => (
+          <ArticleSlide
+            key={index}
+            mainHeading={mainHeading}
+            heading={el.heading}
+            description={el.description}
+            image={el.image.asset.gatsbyImageData}
+            alt="" /* todo: add alt */
+            slideNr={index + 1}
+          />
+        ))}
+      </Slider>
+    </div>
+  );
+};
+
+interface ArticleSlideProps {
+  image: any;
+  alt: string;
+  mainHeading: any;
+  slideNr: number,
+  heading: string;
+  description: string;
+}
+
+export const ArticleSlide : React.FC<ArticleSlideProps> = ({
+  image,
+  alt,
+  mainHeading,
+  slideNr,
+  heading,
+  description,
+}) => (
+  <div
+    className="max-w-1440 mx-auto twelve:grid tracking-wider"
+    style={{ gridTemplateColumns: '65% auto' }}
+  >
+    <div className="twelve:px-30 sm:px-12 px-5">
+      <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-10 -ml-2px hyphenate">
+        {mainHeading}
+      </h3>
+      <div className="pl-32 pr-18 hidden twelve:block">
+        <div className="flex mt-10">
+          <div className="text-4xl mr-5 text-white py-0 flex items-center px-12 bg-navy">
+            {slideNr}
+          </div>
+          <h4 className="uppercase text-2xl font-semibold w-100">{heading}</h4>
+        </div>
+        <div className="h-40 my-10">
+          <p className="font-light mt-12">{description}</p>
+        </div>
+      </div>
+    </div>
+    <GatsbyImage image={image} alt={alt} className="twelve:h-auto h-60vh" />
+    <div className="sm:px-12 px-5 twelve:hidden mb-12">
+      <div className="flex mt-12">
+        <div className="sm:text-4xl text-2xl mr-5 text-white py-0 flex items-center sm:px-12 px-6 bg-navy">
+          {slideNr}
+        </div>
+        <h4 className="uppercase text-2xl font-semibold w-100 hyphenate">
+          {heading}
+        </h4>
+      </div>
+      <p className="font-light mt-8">{description}</p>
+    </div>
+  </div>
+);
+
+const PrevArrowLine : React.FC<{ onClick?: MouseEventHandler<HTMLDivElement> }> = ({ onClick }) => {
+  return (
+    <div
+      className="bg-navy bg-opacity-90 pr-3 absolute justify-between twelve:block hidden h-8 text-navy top-2/4"
+      style={{ top: '50%' }}
+    >
+      <div
+        className="h-full flex items-center cursor-pointer relative z-10"
+        onClick={onClick}
+      >
+        <div className="w-20 bg-white h-2px" />{' '}
+        <div className="uppercase tracking-wider text-white ml-5 font-semibold text-base">
+          Tilbake
+        </div>
+      </div>
+
+      <div />
+    </div>
+  );
+};
+const NextArrowLine  : React.FC<{ onClick?: MouseEventHandler<HTMLDivElement> }>= ({ onClick }) => {
+  return (
+    <div
+      className="bg-navy bg-opacity-90 pl-3 absolute flex justify-between h-8 text-navy right-0"
+      style={{ top: '50%' }}
+      onClick={onClick}
+    >
+      <div />
+      <div className="flex items-center cursor-pointer">
+        <div className="uppercase tracking-wider text-white mr-5 font-semibold text-base">
+          Neste
+        </div>
+        <div className="w-20 bg-white h-2px" />{' '}
+      </div>
+    </div>
+  );
+};
+
+const NextArrow : React.FC<{ onClick?: MouseEventHandler<HTMLDivElement> }>= ({ onClick }) => {
+  return (
+    <>
+      <div
+        className="absolute transform translate-y-10 translate-y-10 -translate-x-2 sm:-translate-x-10 right-0 bottom-0 lg:scale-90 scale-70 cursor-pointer"
+        onClick={onClick}
+      >
+        <div className="">
+          <SliderArrowBlue />
+        </div>
+      </div>
+    </>
+  );
+};
+
+const PrevArrow : React.FC<{ onClick?: MouseEventHandler<HTMLDivElement> }>= ({ onClick }) => {
+  return (
+    <>
+      <div
+        className="transform absolute translate-y-10 -translate-x-16 sm:-translate-x-24  lg:mr-5 right-0 bottom-0 rotate-180 lg:scale-90 scale-70 cursor-pointer"
+        onClick={onClick}
+      >
+        <div className="">
+          <SliderArrowBlue />
+        </div>
+      </div>
+    </>
+  );
+};

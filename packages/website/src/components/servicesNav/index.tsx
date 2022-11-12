@@ -1,0 +1,41 @@
+import React from 'react';
+import { Icon } from 'shared-components';
+const { Arrow } = Icon;
+
+interface Nav {
+  id: string;
+  label: string;
+}
+
+type ScrollTo = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+
+interface Props {
+  nav: Nav[];
+  scrollTo: ScrollTo;
+}
+
+export const ServicesNav : React.FC<Props> = ({
+  nav,
+  scrollTo
+}) => {
+  return (
+    <nav className="mx-auto">
+      <ul className="sm:grid grid-flow-col gap-x-7 auto-cols-min sm:justify-center justify-between divide-y-2 divide-lightnavy sm:divide-none text-lg list-style-none p-0">
+        {nav.map((el : Nav, index : number) => (
+          <button
+            key={index}
+            aria-label="Scroll Link"
+            className="focus:outline-none w-full uppercase tracking-wider font-bold sm:w-auto justify-between flex items-center pb-6px pt-2"
+            onClick={scrollTo}
+            name={el.id}
+          >
+            {el.label}
+            <span className="block ml-2 transform scale-80">
+              <Arrow />
+            </span>
+          </button>
+        ))}
+      </ul>
+    </nav>
+  );
+};

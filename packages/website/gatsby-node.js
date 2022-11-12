@@ -1,13 +1,15 @@
 const path = require(`path`);
-const config = require('./src/config');
 const slugify = require('slugify');
 const fetch = require('node-fetch');
 
-const videoTemplate = path.resolve(`./src/templates/video.js`);
-const serviceTemplate = path.resolve(`./src/templates/service.js`);
-const categoryTemplate = path.resolve(`./src/templates/category.js`);
-const videoCategoryTemplate = path.resolve(`./src/templates/videoCategory.js`);
-const videoserieTemplate = path.resolve(`./src/templates/videoserie.js`);
+const tsImport = require('ts-import');
+const config = tsImport.loadSync('./src/config.ts').default;
+
+const videoTemplate = path.resolve(`./src/templates/video.tsx`);
+const serviceTemplate = path.resolve(`./src/templates/service.tsx`);
+const categoryTemplate = path.resolve(`./src/templates/category.tsx`);
+const videoCategoryTemplate = path.resolve(`./src/templates/videoCategory.tsx`);
+const videoserieTemplate = path.resolve(`./src/templates/videoserie.tsx`);
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
