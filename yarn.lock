@@ -18229,13 +18229,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debounce@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "debounce@npm:1.2.0"
-  checksum: e39cb593ae26344921f5a2681b40b703bdd22bc43b179f0e7515176c790997932b3a0ee6ea9864f384c6ac58cecc08158fb102c3632d5d88ab621f8230ee39ff
-  languageName: node
-  linkType: hard
-
 "debug@npm:2, debug@npm:2.6.9, debug@npm:^2.1.3, debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.6.0, debug@npm:^2.6.8, debug@npm:^2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -36785,13 +36778,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-merge-refs@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "react-merge-refs@npm:1.1.0"
-  checksum: 90884352999002d868ab9f1bcfe3222fb0f2178ed629f1da7e98e5a9b02a2c96b4aa72800db92aabd69d2483211b4be57a2088e89a11a0b660e7ada744d4ddf7
-  languageName: node
-  linkType: hard
-
 "react-popper-tooltip@npm:^3.1.1":
   version: 3.1.1
   resolution: "react-popper-tooltip@npm:3.1.1"
@@ -36841,19 +36827,6 @@ fsevents@^1.2.7:
     react: ">=16"
     rxjs: ^6
   checksum: 30d144ca507cb7f024f23ba9bcb7b9a6a06c329b6e701e024379944eef09fd6d32e936f1026a7d0ece3351250459a7a581700e018d207b026a055fda9f648326
-  languageName: node
-  linkType: hard
-
-"react-reconciler@npm:0.26.1":
-  version: 0.26.1
-  resolution: "react-reconciler@npm:0.26.1"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.1
-  peerDependencies:
-    react: ^17.0.1
-  checksum: 1c18f009d017628a2f5360732d76f75d76fcb33550d7e1e1bf19b4393e24fdd81d99aac0775ec00ec7bbbae5e0829daf47500d95c928e19ec9e63b562beb2420
   languageName: node
   linkType: hard
 
@@ -37120,27 +37093,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-three-fiber@npm:^5.3.17":
-  version: 5.3.17
-  resolution: "react-three-fiber@npm:5.3.17"
-  dependencies:
-    "@babel/runtime": ^7.12.1
-    react-merge-refs: ^1.1.0
-    react-reconciler: 0.26.1
-    react-use-measure: ^2.0.3
-    resize-observer-polyfill: ^1.5.1
-    scheduler: 0.20.1
-    tiny-emitter: ^2.1.0
-    use-asset: ^1.0.2
-    utility-types: ^3.10.0
-  peerDependencies:
-    react: ">=17.0"
-    react-dom: ">=17.0"
-    three: ">=0.121"
-  checksum: de4d00cfdacfd8b2e504b3d4d1e7bc4a75ceb563d5b1912ad42899239ec68a8bc5a62616a2f92ca4dba915e153aedf38aaa1580d59468a522995c07c086391d2
-  languageName: node
-  linkType: hard
-
 "react-tiny-virtual-list@npm:^2.0.5":
   version: 2.2.0
   resolution: "react-tiny-virtual-list@npm:2.2.0"
@@ -37149,18 +37101,6 @@ fsevents@^1.2.7:
   peerDependencies:
     react: 15.x || 16.x
   checksum: e89908ab643827f8cda2f3b8dcdb1406c800cfa830ad7a9e76a8f806a5fe07c1a5f33d136967ad177e9e786903667c4053449e1b0143bfb7d7b482f667f8372b
-  languageName: node
-  linkType: hard
-
-"react-use-measure@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "react-use-measure@npm:2.0.3"
-  dependencies:
-    debounce: ^1.2.0
-  peerDependencies:
-    react: ">=16.13"
-    react-dom: ">=16.13"
-  checksum: 75aeaa325ddb26474f586646cdf5da958747bc4a047410eeabd189451541aed0fe5e650d002bcbbe7be162c94fcae824b5f75c5f23f33af3e1764d94696f7a46
   languageName: node
   linkType: hard
 
@@ -38109,7 +38049,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"resize-observer-polyfill@npm:^1.5.0, resize-observer-polyfill@npm:^1.5.1":
+"resize-observer-polyfill@npm:^1.5.0":
   version: 1.5.1
   resolution: "resize-observer-polyfill@npm:1.5.1"
   checksum: 57e7f79489867b00ba43c9c051524a5c8f162a61d5547e99333549afc23e15c44fd43f2f318ea0261ea98c0eb3158cca261e6f48d66e1ed1cd1f340a43977094
@@ -38718,16 +38658,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"scheduler@npm:0.20.1, scheduler@npm:^0.20.1":
-  version: 0.20.1
-  resolution: "scheduler@npm:0.20.1"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: ace896fff8ccc516a4b5a249c712fc88d4e2456587d991acc220b54690362d6a2b9d426a7f030454cb439f6f5ff2706b13ee8c44ccb953884c4756304a2f8ad6
-  languageName: node
-  linkType: hard
-
 "scheduler@npm:^0.19.1":
   version: 0.19.1
   resolution: "scheduler@npm:0.19.1"
@@ -38735,6 +38665,16 @@ resolve@^2.0.0-next.3:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: 73e185a59e2ff5aa3609f5b9cb97ddd376f89e1610579d29939d952411ca6eb7a24907a4ea4556569dacb931467a1a4a56d94fe809ef713aa76748642cd96a6c
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.20.1":
+  version: 0.20.1
+  resolution: "scheduler@npm:0.20.1"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+  checksum: ace896fff8ccc516a4b5a249c712fc88d4e2456587d991acc220b54690362d6a2b9d426a7f030454cb439f6f5ff2706b13ee8c44ccb953884c4756304a2f8ad6
   languageName: node
   linkType: hard
 
@@ -41255,13 +41195,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"three@npm:^0.124.0":
-  version: 0.124.0
-  resolution: "three@npm:0.124.0"
-  checksum: f50a4d604120d41b81ca5a1da4494e7a3044b8e3de9d40a92eb5da82e84ad8571e20d5b548dc6dab267b42e525d43f574a14eb340fbc34f43ccc3ef9414b3b67
-  languageName: node
-  linkType: hard
-
 "throat@npm:^5.0.0":
   version: 5.0.0
   resolution: "throat@npm:5.0.0"
@@ -41366,7 +41299,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tiny-emitter@npm:^2.0.0, tiny-emitter@npm:^2.1.0":
+"tiny-emitter@npm:^2.0.0":
   version: 2.1.0
   resolution: "tiny-emitter@npm:2.1.0"
   checksum: fbcfb5145751a0e3b109507a828eb6d6d4501352ab7bb33eccef46e22e9d9ad3953158870a6966a59e57ab7c3f9cfac7cab8521db4de6a5e757012f4677df2dd
@@ -42698,17 +42631,6 @@ typescript@^4.0.5:
   languageName: node
   linkType: hard
 
-"use-asset@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "use-asset@npm:1.0.2"
-  dependencies:
-    fast-deep-equal: ^3.1.3
-  peerDependencies:
-    react: ">=17.0"
-  checksum: e6318f5cee0531e228db0d3c0b34ce292c63d597140e05de75d191bd180ee0656f5c2c8a9c676375f9dd209b86a150b34f14bae937645582ec9596dd836539c8
-  languageName: node
-  linkType: hard
-
 "use-callback-ref@npm:^1.2.5":
   version: 1.2.5
   resolution: "use-callback-ref@npm:1.2.5"
@@ -42856,13 +42778,6 @@ typescript@^4.0.5:
   version: 0.4.0
   resolution: "utila@npm:0.4.0"
   checksum: 97ffd3bd2bb80c773429d3fb8396469115cd190dded1e733f190d8b602bd0a1bcd6216b7ce3c4395ee3c79e3c879c19d268dbaae3093564cb169ad1212d436f4
-  languageName: node
-  linkType: hard
-
-"utility-types@npm:^3.10.0":
-  version: 3.10.0
-  resolution: "utility-types@npm:3.10.0"
-  checksum: 8f274415c6196ab62883b8bd98c9d2f8829b58016e4269aaa1ebd84184ac5dda7dc2ca45800c0d5e0e0650966ba063bf9a412aaeaea6850ca4440a391283d5c8
   languageName: node
   linkType: hard
 
@@ -43771,11 +43686,9 @@ typescript@^4.0.5:
     react-reveal: ^1.2.2
     react-share: ^4.3.1
     react-slick: ^0.28.0
-    react-three-fiber: ^5.3.17
     shared-components: "workspace:packages/shared-components"
     slugify: ^1.4.7
     tailwindcss: 3.2.3
-    three: ^0.124.0
     typescript-plugin-css-modules: ^3.4.0
     youtube-playlist-info: ^1.1.2
   languageName: unknown
