@@ -35,6 +35,5 @@ export { Container } from './components/container';
 export { CallToAction } from './components/calltoaction';
 export { EmployeeSection } from './components/employeeSection';
 export { FeaturedTeam } from './components/featuredTeam';
-export { AboutIntro } from './components/aboutIntro';
 export { NavyIntroImage } from './components/navyIntroImage';
 export { LinkableContent } from './components/linkableContent';

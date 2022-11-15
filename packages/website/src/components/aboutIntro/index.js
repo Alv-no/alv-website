@@ -1,11 +1,14 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../../../../shared-components/src/components/title';
+import { Title } from 'shared-components';
+import { Description } from 'shared-components';
+import Link from 'gatsby-link';
+import { Arrow } from 'shared-components/src/components/icon';
 
-export const AboutIntro = ({ topImg, bottomImg }) => {
+const AboutIntro = ({ topImg, bottomImg }) => {
   return (
     <div
-      className="max-w-1440 mx-auto lg:grid flex flex-col-reverse gap-x-20 lg:py-15"
+      className="max-w-1440 mx-auto lg:grid flex flex-col-reverse gap-x-20 lg:py-15 -mt-16 sm:mt-0"
       style={{
         gridTemplateColumns: '1fr 1fr',
       }}
@@ -20,13 +23,13 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
           <h2 className="text-white font-semibold uppercase text-4xl w-80 relative z-30">
             ÆRLIG. RÅ. ENGASJERT.
           </h2>
-          <p className="mb-8 mt-6 sm:pr-15 w-full sm:pr-10 text-footer sm:text-xl">
+          <p className="mb-8 mt-6 w-full sm:pr-10 text-footer sm:text-xl">
             Vi tror alle utvikles best og raskest gjennom ærlige
             tilbakemeldinger. For å kunne være ærlige med hverandre må man være
             godt kjent. Derfor er sosiale aktiviteter en viktig del av kulturen
             i Alv.
           </p>
-          <p className="mb-8 mt-6 sm:pr-15 w-full sm:pr-10 text-footer sm:text-xl">
+          <p className="mb-8 mt-6 w-full sm:pr-10 text-footer sm:text-xl">
             Råskap handler om å gi det lille ekstra. Både til kunde og til
             hverandre. Noen ganger krever det litt å si ting som det er. Noen
             ganger krever det råskap.
@@ -41,24 +44,37 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
       </div>
       <div className="font-light flex flex-col justify-between h-full text-xl">
         <div>
-          <div className="pr-5 sm:pr-12 md:pl-64 lg:pl-0 sm:pl-12 pl-5">
-            <div className="sm:h-auto h-screen w-4/6 sm:mt-20 md:mt-5 lg:mt-0 sm:w-full mx-auto sm:mx-0 sm:block flex justify-center items-center flex-col text-center sm:text-left">
+          <div className="pr-5 sm:pr-12 lg:pl-0 sm:pl-12 pl-5 mb-10">
+            <div className="sm:h-auto h-screen xs:w-5/6 sm:mt-20 lg:mt-0 mb-8 sm:w-full mx-auto sm:mx-0 sm:block flex justify-center items-center flex-col text-center sm:text-left">
               <Title classes="sm:text-left text-center">Om oss</Title>
-              <p className="mb-8 mt-6 sm:pr-15 text-footer sm:text-xl">
-                Alv er produktet av alle konsulentene som jobber i selskapet.
-                Dyktige konsulenter gjør Alv til et bra produkt.{' '}
-              </p>
+              <Description className="mt-5 sm:hidden">
+                I Alv har vi tro på at dyktige konsulenter er de som hele tiden
+                ønsker å utvikle seg selv, og de rundt seg. Dette er
+                grunnpilarene for hvordan vi bygger Alv. Gjennom dette vil vi
+                bygge Norges mest attraktive konsulentselskap både for
+                potensielle ansatte og kunder.
+              </Description>
             </div>
-            <p className="uppercase font-semibold text-lg mb-7 sm:pr-20 text-about leading-snug text-footer sm:text-xl">
-              VI BYGGER NORGES MEST ATTRAKTIVE KONSULENTSELSKAP
-            </p>
-            <p className="mb-15 text-footer sm:text-xl">
+            <p className="mb-15 text-footer sm:text-xl hidden sm:block">
               I Alv har vi tro på at dyktige konsulenter er de som hele tiden
               ønsker å utvikle seg selv, og de rundt seg. Dette er grunnpilarene
               for hvordan vi bygger Alv. Gjennom dette vil vi bygge Norges mest
               attraktive konsulentselskap både for potensielle ansatte og
               kunder.
             </p>
+            <h3 className="uppercase text-lg font-bold tracking-wider">
+              Bli bedre kjent med oss
+            </h3>
+            <div className="w-14 h-3px bg-yellow mt-6px mb-4" />
+            <div className="divide-y-2">
+              <ReadMoreLink link="/om-oss/livet-i-alv">
+                Les om livet i Alv.
+              </ReadMoreLink>
+              <ReadMoreLink link="/om-oss/personalvhandboka">
+                Bli kjent med PersonAlvHåndboka.
+              </ReadMoreLink>
+              <ReadMoreLink link="/videoserie">Se videoserien her</ReadMoreLink>
+            </div>
           </div>
 
           <GatsbyImage
@@ -70,3 +86,17 @@ export const AboutIntro = ({ topImg, bottomImg }) => {
     </div>
   );
 };
+
+const ReadMoreLink = ({ link, children }) => (
+  <Link
+    to={link}
+    className="font-normal flex text-lg py-3 items-center justify-between"
+  >
+    <span className="inline">{children}</span>
+    <span className="ml-3">
+      <Arrow />
+    </span>
+  </Link>
+);
+
+export default AboutIntro;
