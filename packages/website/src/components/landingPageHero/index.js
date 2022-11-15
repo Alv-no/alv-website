@@ -17,11 +17,13 @@ const LandingPageHero = ({
   return (
     <>
       <div className={styles.landingPageImageWrapper}>
-        <GatsbyImage
-          style={{ height: '100%', width: '100%' }}
-          alt="Top title image"
-          image={backgroundImage.asset.gatsbyImageData}
-        />
+        {backgroundImage && (
+          <GatsbyImage
+            style={{ height: '100%', width: '100%' }}
+            alt="Top title image"
+            image={backgroundImage.asset.gatsbyImageData}
+          />
+        )}
       </div>
       <div
         className={`${styles.landingPageHeroContentWrapper} justify-center flex flex-col`}
@@ -44,17 +46,21 @@ const LandingPageHero = ({
 
             {showCta && (
               <div
-                className="relative mt-10"
+                className="relative mt-10 flex"
                 style={{ justifyContent: ctaPosition }}
               >
-                <CtaButton internalLink={callToAction.link}>
-                  <p class="text-lg text-right font-thin">
-                    {callToAction.eyebrow}
-                  </p>
-                  <h2 class="text-right text-xl sm:text-2xl">
-                    {callToAction.title}
-                  </h2>
-                </CtaButton>
+                {callToAction && (
+                  <div className="w-fit">
+                    <CtaButton internalLink={callToAction.link}>
+                      <p class="text-lg text-right font-thin">
+                        {callToAction.eyebrow}
+                      </p>
+                      <h2 class="text-right text-xl sm:text-2xl">
+                        {callToAction.title}
+                      </h2>
+                    </CtaButton>
+                  </div>
+                )}
               </div>
             )}
           </div>
