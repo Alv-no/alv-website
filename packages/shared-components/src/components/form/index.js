@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { window } from 'browser-monads';
 
 const useContactForm = () => {
@@ -108,7 +108,15 @@ export const Call = () => {
 };
 
 export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
-  const { submitForm, sent, error, mailApiUrl } = useContactForm();
+  const { submitForm, sent, error } = useContactForm();
+  const [mailApiUrl, setMailApiUrl] = useState('');
+
+  useEffect(() => {
+    setMailApiUrl(
+      `${window.location.protocol}//mail-api.${window.location.hostname}/send`
+    );
+  }, []);
+
   const marginClass = compact ? 'mb-4' : 'my-5';
   const buttonClass =
     'uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none';

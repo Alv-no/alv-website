@@ -34,10 +34,11 @@ const Index = ({ data, serverData }) => {
       <div className="bg-navy">
         <LandingPageHero
           backgroundImage={serverData.image}
-          callToAction={serverData.callToAction}
+          callToAction={serverData?.callToAction}
           introduction={serverData.introductionRaw}
           subHeading={serverData.introductionSubheaderRaw}
           ctaPosition={serverData.ctaPosition}
+          showCta={serverData.showCallToAction}
           showContactForm={serverData.contactSchemaVisible}
         />
         <Container
