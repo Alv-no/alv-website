@@ -21,6 +21,12 @@ export default {
       },
     },
     {
+      name: 'showInNavigation',
+      title: 'Show in navigation',
+      type: 'boolean',
+      initialValue: true,
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
