@@ -2,17 +2,12 @@ import React from 'react';
 import Layout from '../components/layout';
 import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
 import { BlogCarousel } from '../components/blogCarousel';
-import {
-  Title,
-  OurServices,
-  AboutIntro,
-  FeaturedTeam,
-  Container,
-} from 'shared-components';
+import { Title, OurServices, FeaturedTeam, Container } from 'shared-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
 import { gql } from '@apollo/client';
+import AboutIntro from '../components/aboutIntro';
 
 const About = ({ serverData }) => {
   const data = useAboutUsQuery();
