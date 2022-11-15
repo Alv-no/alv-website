@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const useLayoutQuery = () => {
   const data = useStaticQuery(
     graphql`
-      query {
+      {
         sanitySiteSettings(
           id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }
         ) {
@@ -35,12 +35,13 @@ export const useLayoutQuery = () => {
             }
           }
         }
-        allSanityCompany {
+        allSanityCompany(filter: { showInNavigation: { eq: true } }) {
           nodes {
             heroHeading
             slug {
               current
             }
+            showInNavigation
           }
         }
         site {
