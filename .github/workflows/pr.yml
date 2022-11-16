@@ -32,10 +32,9 @@ jobs:
         run: yarn workspace cms run sanity configcheck
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.DEPLOY_SANITY_STUDIO }}
-          SANITY_DATASET: development
 
       - name: Build
-        run: yarn workspace website run build
+        run: SANITY_DATASET=development yarn workspace website run build
         env:
           DEBUG: sanity
           SANITY_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
