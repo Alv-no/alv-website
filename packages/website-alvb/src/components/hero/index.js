@@ -81,7 +81,7 @@ const HeroCtaMobile = ({ eyebrow, title, link }) => (
     to={link}
   >
     <div className="flex items-center w-full max-w-1200 mx-auto lg:mb-12">
-      <div className="w-auto w-full xs:text-left">
+      <div className="w-full xs:text-left">
         <p className={styles.ctaEyebrow}>{eyebrow}</p>
         <h1 className={styles.ctaTitle}>{title}</h1>
       </div>

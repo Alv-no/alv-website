@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Layout } from '../components/layout';
 import { Title, Description } from 'shared-components';
-import * as Form from '../../../shared-components/src/components/form';
+import { Visit } from '../../../shared-components/src/components/form';
 import localize from '../components/localize';
 
 const Contact = ({ data }) => {
@@ -47,7 +47,7 @@ const Contact = ({ data }) => {
           </div>
           <div>
             <div className=" p-5 sm:p-12 lg:mx-0 lg:pb-15 tracking-wider bg-theme-footer w-full">
-              <Form.Visit
+              <Visit
                 title={section2.title}
                 text={section2.text}
                 address={address}

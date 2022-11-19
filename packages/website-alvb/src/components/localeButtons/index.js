@@ -40,6 +40,7 @@ export const LocaleButtons = ({ whiteIcons, navyHeader }) => {
     <div className="ml-10 sm:pt-1">
       {localeList.map((locale, i) => (
         <span
+          key={i}
           className={
             whiteIcons || navyHeader ? 'text-white' : 'text-theme-text'
           }
