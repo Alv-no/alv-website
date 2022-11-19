@@ -1,7 +1,8 @@
 import Link from 'gatsby-link';
 import React from 'react';
 import { SocialLinks } from '../socialLinks';
-import { LargeLink, SubtitleLink, Icon } from 'shared-components';
+import { LargeLink, SubtitleLink } from 'shared-components';
+import { Cross } from 'shared-components/src/components/icon';
 import config from '../../config';
 
 export const Navigation = ({ open, toggleClose, logo, navItems }) => {
@@ -18,7 +19,7 @@ export const Navigation = ({ open, toggleClose, logo, navItems }) => {
 
 const NavLayout = ({ open, logo, children, toggleClose }) => (
   <nav
-    className={`text-theme-text bg-theme-bg tracking-wider fixed overflow-y-auto eight:overflow-y-hidden overflow-x-hidden z-70 w-full h-full bg-theme-bg p-6 sm:p-8 left-0 top-0 transition duration-300 ${
+    className={`text-theme-text tracking-wider fixed overflow-y-auto eight:overflow-y-hidden overflow-x-hidden z-70 w-full h-full bg-theme-bg p-6 sm:p-8 left-0 top-0 transition duration-300 ${
       open ? 'opacity-100' : 'opacity-0 pointer-events-none'
     }`}
   >
@@ -52,25 +53,25 @@ const CloseButton = ({ toggleClose }) => (
     className="cursor-pointer focus:outline-none"
     onClick={toggleClose}
   >
-    <Icon.Cross white={true} />
+    <Cross white={true} />
   </button>
 );
 
 const LocaleNav = ({ localeNavArr }) => {
   const locale = config.LOCALE;
 
-  return localeNavArr?.map((navItem) => (
-    <div key={navItem[locale].link} className={'relative z-70'}>
+  return localeNavArr?.map((navItem, index) => (
+    <div key={index} className={'relative z-70'}>
       <LargeLink
         mobileDropdown
-        link={navItem[locale].link || null}
+        link={navItem[locale].link || '#'}
         white={!navItem[locale].link}
       >
         {navItem[locale].text}
       </LargeLink>
 
-      {navItem[locale].children?.map((child) => (
-        <SubtitleLink key={child.link} link={child.link}>
+      {navItem[locale].children?.map((child, index) => (
+        <SubtitleLink key={index} link={child.link}>
           {child.text}
         </SubtitleLink>
       ))}

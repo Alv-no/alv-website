@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from 'shared-components';
+import { Facebook, Linkedin } from 'shared-components/src/components/icon';
 
 export const SocialLinks = ({ blue }) => (
   <div className="eight:flex hidden">
@@ -9,7 +9,7 @@ export const SocialLinks = ({ blue }) => (
         target="_blank"
         rel="noreferrer"
       >
-        <Icon.Linkedin blue={blue} />
+        <Linkedin blue={blue} />
       </a>
     </span>
     <a
@@ -17,7 +17,7 @@ export const SocialLinks = ({ blue }) => (
       target="_blank"
       rel="noreferrer"
     >
-      <Icon.Facebook blue={blue} />
+      <Facebook blue={blue} />
     </a>
   </div>
 );

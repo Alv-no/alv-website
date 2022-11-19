@@ -1,7 +1,7 @@
 import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import * as styles from './StyledBlockContent.module.css';
-import { Icon } from 'shared-components';
+import { Document } from 'shared-components/src/components/icon';
 
 const projectId = 'f79uyhzd';
 const dataset = 'production';
@@ -38,7 +38,7 @@ export const richTextTypes = {
           href={fileUrl(props.node.file.asset._ref)}
           style={{ textDecoration: 'none' }}
         >
-          <Icon.Document />
+          <Document />
           <span>{props.node.buttonText}</span>
         </a>
       </div>
