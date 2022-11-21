@@ -1,13 +1,11 @@
-import React from 'react';
-import localize from '../components/localize';
 import { graphql } from 'gatsby';
+import React from 'react';
+import { BlogSection, IntroContainer, Title } from 'shared-components';
 import { Layout } from '../components/layout';
-import { Title, IntroContainer, BlogSection } from 'shared-components';
+import localize from '../components/localize';
 import { useBlogQuery } from '../hookspages/useBlogQuery';
-import config from '../config';
 
 const Blog = ({ data }) => {
-  const isEnLocale = config.LOCALE === 'en';
   const { section, meta } = data.sanityBlogPage;
 
   const articleData = useBlogQuery();
@@ -16,6 +14,10 @@ const Blog = ({ data }) => {
     .sort((a, b) => (a.rawDate > b.rawDate ? -1 : 1));
   const featuredArticle = articles[0];
   articles.shift();
+
+  const eyebrowText = 'Our most recent article';
+  const postPrefix = 'blog';
+  const readMoreText = 'Read more';
 
   return (
     <Layout
@@ -26,7 +28,12 @@ const Blog = ({ data }) => {
       pageDescription={meta.metaDescription}
     >
       <div className="overflow-hidden">
-        <IntroContainer article={featuredArticle} isEnLocale={isEnLocale}>
+        <IntroContainer
+          article={featuredArticle}
+          postPrefix={postPrefix}
+          readMoreText={readMoreText}
+          eyebrowText={eyebrowText}
+        >
           <Title align="text-center twelve:text-left">
             <span className="text-white">{section.title}</span>
           </Title>
@@ -36,7 +43,11 @@ const Blog = ({ data }) => {
             </div>
           </div>
         </IntroContainer>
-        <BlogSection allArticles={articles} isEnLocale={isEnLocale} />
+        <BlogSection
+          allArticles={articles}
+          postPrefix={postPrefix}
+          readMoreText={readMoreText}
+        />
       </div>
     </Layout>
   );
