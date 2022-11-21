@@ -1,6 +1,6 @@
 import { window } from 'browser-monads';
 import { graphql } from 'gatsby';
-import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
 import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
@@ -30,7 +30,7 @@ const ArticleTemplate = (props) => {
 
   const { servicePages, categoryPages } = useLayoutQuery();
   const socialObj = socials || {};
-  const { socialSubtitle, socialImage, socialTitle } = socialObj;
+  const { socialSubtitle, socialTitle } = socialObj;
 
   const postAuthor =
     author && author.firstname
@@ -50,11 +50,8 @@ const ArticleTemplate = (props) => {
   }
 
   const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
-  const metaImage =
-    socials && socials.socialImage
-      ? getSrc(socialImage.asset.gatsbyImageData)
-      : null;
 
+  const metaImage = mainImage?.asset?.url || null;
   const metaArr = socialTags;
   const metaLang = { lang: config.LOCALE };
   const metaDescription = description;
@@ -208,6 +205,7 @@ export const query = graphql`
       mainImage {
         asset {
           gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+          url
         }
       }
       socials {
@@ -216,6 +214,7 @@ export const query = graphql`
         socialImage {
           asset {
             gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+            url
           }
         }
       }

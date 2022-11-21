@@ -1,16 +1,17 @@
 import React from 'react';
 import { Footer, SEO } from 'shared-components';
+import config from '../../config';
 import { Header, MobileHeader } from '../header';
-import { useLayoutQuery } from './useLayoutQuery';
 import * as Logo from '../logo';
 import './layout.css';
-import config from '../../config';
+import { useLayoutQuery } from './useLayoutQuery';
 
 export const Layout = ({
   children,
   path,
   pageDescription,
   pageTitle,
+  metaImage,
   white,
   whiteIcons,
   navyHeader,
@@ -38,6 +39,7 @@ export const Layout = ({
     metaTitle,
     metaArr,
     metaLang,
+    metaImage,
   };
 
   const isEnLocale = true;
