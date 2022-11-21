@@ -5,15 +5,15 @@ export const navItems = [
       children: [
         {
           text: 'Alvacan 1000 & 4000',
-          link: '/about/alvacan-1000-and-4000/',
+          link: '/services/alvacan-1000-and-4000/',
         },
         {
           text: 'Alvacan XO',
-          link: '/about/alvacan-xo/',
+          link: '/services/alvacan-xo/',
         },
         {
           text: 'Biobank',
-          link: '/about/biobank/',
+          link: '/services/biobank/',
         },
       ],
     },
