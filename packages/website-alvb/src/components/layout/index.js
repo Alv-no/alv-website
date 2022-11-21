@@ -40,7 +40,7 @@ export const Layout = ({
     metaLang,
   };
 
-  const isEnLocale = config.LOCALE === 'en';
+  const isEnLocale = true;
 
   return (
     <>
