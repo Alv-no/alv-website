@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BlogFilter } from '../blogFilter';
-import { PostCard } from '../postCard';
 import * as Button from '../button';
+import { PostCard } from '../postCard';
 
-export const BlogSection = ({ allArticles, isEnLocale }) => {
+export const BlogSection = ({ allArticles, postPrefix, readMoreText }) => {
   const [articles, setArticles] = useState(allArticles);
   const [visibleRows, setVisibleRows] = useState(12);
   const handleViewMoreClick = () => {
@@ -36,7 +36,8 @@ export const BlogSection = ({ allArticles, isEnLocale }) => {
             allAuthors={allAuthors}
             allArticles={allArticles}
             onChange={updateArticles}
-            isEnLocale={isEnLocale}
+            postPrefix={postPrefix}
+            readMoreText={readMoreText}
           />
         )}
         <div className="max-w-1200 mx-auto flex justify-center px-6">
@@ -44,7 +45,8 @@ export const BlogSection = ({ allArticles, isEnLocale }) => {
             {articles.slice(0, visibleRows).map((article) => {
               return (
                 <PostCard
-                  isEnLocale={isEnLocale}
+                  postPrefix={postPrefix}
+                  readMoreText={readMoreText}
                   {...article}
                   key={article.id}
                 />

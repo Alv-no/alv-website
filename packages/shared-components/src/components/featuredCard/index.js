@@ -7,7 +7,9 @@ export const FeaturedCard = ({
   mainImage,
   slug,
   title,
-  isEnLocale,
+  postPrefix,
+  eyebrowText,
+  readMoreText,
   description,
   fallbackImg,
 }) => {
@@ -23,7 +25,7 @@ export const FeaturedCard = ({
 
   return (
     <Link
-      to={`/${isEnLocale ? 'blog' : 'blogg'}/${slug.current}`}
+      to={`/${postPrefix}/${slug.current}`}
       className="relative"
       style={{ position: 'relative' }}
     >
@@ -43,9 +45,7 @@ export const FeaturedCard = ({
             <div className="flex text-white tracking-wider">
               <div className="pl-1">
                 <div className="uppercase text-base font-bold">
-                  {isEnLocale
-                    ? 'Our most recent article'
-                    : 'Vår nyeste artikkel'}
+                  {eyebrowText}
                 </div>
                 <div className="w-12 h-2px bg-theme-accent mb-4 mt-3" />
                 <div className="text-nav font-bold mt-4 mb-3">{title}</div>
@@ -54,7 +54,7 @@ export const FeaturedCard = ({
               <div className="flex flex-col justify-between">
                 <div />
                 <div className="font-semibold uppercase w-32 flex text-right justify-end items-center">
-                  {isEnLocale ? 'Read more' : 'Les Mer'}{' '}
+                  {readMoreText}{' '}
                   <span className="ml-2">
                     <Arrow color="#fff" />
                   </span>
@@ -75,9 +75,7 @@ export const FeaturedCard = ({
           <div />
           <div className="flex text-white flex-col tracking-wider">
             <div className="pl-1">
-              <div className="uppercase text-base font-bold">
-                Vår nyeste artikkel
-              </div>
+              <div className="uppercase text-base font-bold">{eyebrowText}</div>
               <div className="w-12 h-2px bg-theme-accent mb-4 mt-1" />
               <div className="text-nav font-bold mt-4 mb-3">{title}</div>
               <div className="max-w-100 font-light text-sm">{description}</div>
@@ -85,7 +83,7 @@ export const FeaturedCard = ({
             <div className="flex flex-col justify-between">
               <div />
               <div className="font-semibold uppercase w-full mt-4 flex text-right justify-end items-center">
-                Les Mer{' '}
+                {readMoreText}{' '}
                 <span className="ml-2">
                   <Arrow color="#fff" />
                 </span>

@@ -67,6 +67,10 @@ const ArticleTemplate = (props) => {
     metaImage,
   };
 
+  const postPrefix = 'blog';
+  const readMoreText = 'Read more';
+  const alsoReadText = 'Also read';
+
   return (
     <>
       <SEO {...metaData} />
@@ -116,7 +120,9 @@ const ArticleTemplate = (props) => {
               />
             </div>
             <AlsoRead
-              isEnLocale
+              postPrefix={postPrefix}
+              alsoReadText={alsoReadText}
+              readMoreText={readMoreText}
               articles={props.data.articles}
               currentTags={socialTags}
               currentAuthor={authorFullname}
@@ -160,7 +166,9 @@ const ArticleTemplate = (props) => {
               articles={props.data.articles}
               currentTags={socialTags}
               currentAuthor={authorFullname}
-              isEnLocale
+              postPrefix={postPrefix}
+              alsoReadText={alsoReadText}
+              readMoreText={readMoreText}
             />
           </div>
         </div>

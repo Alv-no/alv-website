@@ -1,19 +1,19 @@
-import React from 'react';
-import Sidebar from '../../components/sidebar';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { MobileHeader } from '../../../../shared-components/src/components/header';
-import { useLayoutQuery } from '../../hooks/useLayoutQuery';
-import { Footer } from '../../../../shared-components/src/components/footer';
-import { SEO } from '../../../../shared-components/src/components/seo';
-import { AlsoRead } from '../../../../shared-components/src/components/alsoRead';
-import * as styles from '../../components/styledBlockContent/StyledBlockContent.module.css';
-import { SocialShare } from '../../../../shared-components/src/components/socialShare';
-import { window } from 'browser-monads';
-import { createSlugForEmployee } from '../../../../shared-components/src/components/createSlugForEmployee';
-import { StyledBlockContent } from '../../components/styledBlockContent';
-import { getBlogDataServerSide } from '../../hooks/useBlogQueryServerSide';
-import * as Logo from '../../components/logo';
 import { gql } from '@apollo/client';
+import { window } from 'browser-monads';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
+import { AlsoRead } from '../../../../shared-components/src/components/alsoRead';
+import { createSlugForEmployee } from '../../../../shared-components/src/components/createSlugForEmployee';
+import { Footer } from '../../../../shared-components/src/components/footer';
+import { MobileHeader } from '../../../../shared-components/src/components/header';
+import { SEO } from '../../../../shared-components/src/components/seo';
+import { SocialShare } from '../../../../shared-components/src/components/socialShare';
+import * as Logo from '../../components/logo';
+import Sidebar from '../../components/sidebar';
+import { StyledBlockContent } from '../../components/styledBlockContent';
+import * as styles from '../../components/styledBlockContent/StyledBlockContent.module.css';
+import { getBlogDataServerSide } from '../../hooks/useBlogQueryServerSide';
+import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import { client } from '../../server-side/client';
 import { createGatsbyImages } from '../../server-side/imageCreator';
 
@@ -73,6 +73,10 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
     metaImage,
   };
 
+  const alsoReadText = 'Les også';
+  const postPrefix = 'blogg';
+  const readMoreText = 'Les mer';
+
   return (
     <>
       <SEO
@@ -129,6 +133,9 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
               articles={wrappedArticles}
               currentTags={socialTags}
               currentAuthor={authorFullname}
+              postPrefix={postPrefix}
+              readMoreText={readMoreText}
+              alsoReadText={alsoReadText}
             />
           </div>
         </Sidebar>
@@ -170,6 +177,9 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
               articles={wrappedArticles}
               currentTags={socialTags}
               currentAuthor={authorFullname}
+              postPrefix={postPrefix}
+              readMoreText={readMoreText}
+              alsoReadText={alsoReadText}
             />
           </div>
         </div>

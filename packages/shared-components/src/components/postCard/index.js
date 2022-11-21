@@ -11,7 +11,8 @@ export const PostCard = ({
   title,
   tags,
   author,
-  isEnLocale,
+  readMoreText,
+  postPrefix,
   publishedAt,
   fallbackImg,
 }) => {
@@ -28,7 +29,7 @@ export const PostCard = ({
 
   return (
     <Link
-      to={`/${isEnLocale ? 'blog' : 'blogg'}/${slug.current}`}
+      to={`/${postPrefix}/${slug.current}`}
       className={`${styles.container} group relative pb-6`}
     >
       <div>
@@ -37,7 +38,7 @@ export const PostCard = ({
             <div
               className={`${styles.button} flex justify-end transform translate-x-2`}
             >
-              {isEnLocale ? 'Read more' : 'Les mer'}{' '}
+              {readMoreText}{' '}
               <div className="ml-2 transform scale-80">
                 <Arrow />
               </div>
