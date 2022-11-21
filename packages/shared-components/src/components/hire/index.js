@@ -1,7 +1,7 @@
+import { BgImage } from 'gbimage-bridge';
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 import { CtaButton } from '../ctaButton';
-import { BgImage } from 'gbimage-bridge';
 
 export const Hire = ({
   title,
@@ -20,31 +20,7 @@ export const Hire = ({
       >
         <BgImage image={image}>
           <div className={`${darkFade && 'bg-black bg-opacity-25'}`}>
-            <div
-              className={`flex justify-end items-center h-40vh lg:p-0 p-10 lg:h-715`}
-            >
-              <div className="twelve:-mr-1/2 lg:block hidden lg:-mr-48 w-full transform sm:translate-x-64 2xl:translate-x-80 px-0">
-                <Fade>
-                  <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider lg:w-4/6">
-                    {title}
-                  </h2>
-                  <p
-                    className={`text-footer sm:text-xl tracking-wider ${
-                      buttonText && 'mb-16'
-                    } font-light lg:w-4/6`}
-                  >
-                    {text}
-                  </p>
-                  <div className="w-full flex justify-end">
-                    <div className="twelve:mr-0 lg:-ml-10 -mt-10">
-                      <CtaButton internalLink={buttonLink} blue={blue}>
-                        {buttonText}
-                      </CtaButton>
-                    </div>
-                  </div>
-                </Fade>
-              </div>
-            </div>
+            <div className="flex justify-end items-center h-40vh lg:p-0 p-10 lg:h-715" />
             <h2
               className="uppercase text-blog sm:text-blog md:text-4xl font-semibold tracking-wider px-5 pt-32 pb-2 lg:hidden"
               style={{
@@ -57,6 +33,13 @@ export const Hire = ({
             </h2>
           </div>
         </BgImage>
+        <HireCta
+          title={title}
+          text={text}
+          buttonText={buttonText}
+          buttonLink={buttonLink}
+          blue={blue}
+        />
         <div className="lg:hidden mt-3">
           <Fade>
             <p
@@ -79,6 +62,7 @@ export const Hire = ({
     </div>
   );
 };
+
 export const HireAlt = ({ image, text, title, imageText, blue }) => {
   return (
     <div className="bg-theme-bg w-full">
@@ -124,6 +108,32 @@ export const HireAlt = ({ image, text, title, imageText, blue }) => {
           </BgImage>
         </div>
       </div>
+    </div>
+  );
+};
+
+const HireCta = ({ title, text, buttonText, buttonLink, blue }) => {
+  return (
+    <div
+      className={`twelve:-mr-1/2 lg:flex flex-col hidden lg:-mr-48 w-full px-0 items-center justify-center`}
+    >
+      <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider lg:w-4/6">
+        {title}
+      </h2>
+      <p
+        className={`text-footer sm:text-xl tracking-wider ${
+          buttonText && 'mb-16'
+        } font-light lg:w-4/6`}
+      >
+        {text}
+      </p>
+      {buttonLink && (
+        <div className="-mt-10 lg:w-4/6">
+          <CtaButton internalLink={buttonLink} blue={blue}>
+            {buttonText}
+          </CtaButton>
+        </div>
+      )}
     </div>
   );
 };
