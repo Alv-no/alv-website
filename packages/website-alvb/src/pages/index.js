@@ -1,10 +1,10 @@
-import React from 'react';
 import { graphql } from 'gatsby';
-import { Layout } from '../components/layout';
+import React from 'react';
+import { Container, Hire, OurServices, WhoWeAre } from 'shared-components';
 import { BlogCarousel } from '../components/blogCarousel';
 import { Hero } from '../components/hero';
 import { IntroSection } from '../components/introSection';
-import { WhoWeAre, Hire, OurServices, Container } from 'shared-components';
+import { Layout } from '../components/layout';
 import localize from '../components/localize/index';
 import config from '../config';
 
@@ -28,6 +28,7 @@ const Index = ({ data }) => {
       <Layout
         white
         whiteIcons
+        metaImage={section2.image.asset.url}
         pageTitle={_rawMeta.metaTitle}
         pageDescription={_rawMeta.metaDescription}
       >
@@ -118,6 +119,7 @@ export const query = graphql`
         image {
           asset {
             gatsbyImageData
+            url
           }
         }
         text {

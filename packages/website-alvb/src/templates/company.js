@@ -20,32 +20,38 @@ const Company = ({ data }) => {
   };
 
   const {
-    sanityCompany: { pageDescription } = { pageDescription: false },
-    sanityCompany: { pageTitle } = { pageTitle: false },
-  } = data;
+    pageTitle = false,
+    pageDescription = false,
+    heroImage,
+    heroHeading,
+    heroDescription,
+    _rawBlockText,
+    blockHeading,
+  } = data.sanityCompany;
 
   return (
     <Layout
       pageTitle={pageTitle}
       pageDescription={pageDescription}
+      metaImage={heroImage.url}
       whiteIcons
       navyHeader
     >
       <div className="z-0 twelve:z-20 relative">
         <NavyIntroImage
-          title={data.sanityCompany.heroHeading}
-          description={data.sanityCompany.heroDescription}
+          title={heroHeading}
+          description={heroDescription}
           internalLink="/contact-us"
           buttonText="Get in touch"
-          image={data.sanityCompany.heroImage.asset.gatsbyImageData}
+          image={heroImage.asset.gatsbyImageData}
           white
         />
       </div>
       <div className="w-full bg-white tracking-wider z-10 relative">
         <LinkableContent
-          heroImage={data.sanityCompany.heroImage.asset.gatsbyImageData}
-          raw={data.sanityCompany._rawBlockText}
-          heading={data.sanityCompany.blockHeading}
+          heroImage={heroImage.asset.gatsbyImageData}
+          raw={_rawBlockText}
+          heading={blockHeading}
           scrollTo={scrollTo}
           config={config}
         />
@@ -69,6 +75,7 @@ export const query = graphql`
       heroImage {
         asset {
           gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+          url
         }
       }
       slug {
