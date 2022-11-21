@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
   res.data.allSanityCompany.edges.forEach((edge) => {
     createPage({
       component: companyTemplate,
-      path: `/about/${edge.node.slug.current}`,
+      path: `/services/${edge.node.slug.current}`,
       context: {
         slug: edge.node.slug.current,
       },
@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
   res.data.allSanityArticle.nodes.forEach((node) => {
     createPage({
       component: articleTemplate,
-      path: `/blogg/${node.slug.current}`,
+      path: `/blog/${node.slug.current}`,
       context: {
         slug: node.slug.current,
       },
