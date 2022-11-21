@@ -41,9 +41,7 @@ export const Container = ({
         !removePaddingTop && topSpacing
       } ${!removePaddingBottom && bottomSpacing} px-5 sm:px-12`}
     >
-      <div className={`max-w-${maxWidth || '1200'} mx-auto overflow-hidden`}>
-        {children}
-      </div>
+      <div className={`max-w-${maxWidth || '1200'} mx-auto`}>{children}</div>
     </section>
   );
 };

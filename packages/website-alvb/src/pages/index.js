@@ -24,7 +24,7 @@ const Index = ({ data }) => {
   const isEnLocale = config.LOCALE === 'en';
 
   return (
-    <div className="overflow-hidden">
+    <div>
       <Layout
         white
         whiteIcons
