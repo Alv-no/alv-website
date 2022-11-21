@@ -19,7 +19,7 @@
     "browser-monads": "^1.0.0",
     "classnames": "^2.2.6",
     "crypto": "^1.0.1",
-    "fastify": "4.9.2",
+    "fastify": "4.10.2",
     "gatsby-background-image": "^1.5.3",
     "gatsby-cookie-notice": "^1.0.6",
     "gatsby-plugin-config": "^1.0.7",
