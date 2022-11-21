@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Link from 'gatsby-link';
-import { Dropdown } from '../icon';
-import Headroom from 'react-headroom';
-import { CallToAction } from '../calltoaction';
-import { Breadcrumb } from '../breadcrumb';
-import { Navigation } from '../navigation';
 import { window } from 'browser-monads';
+import Link from 'gatsby-link';
+import React, { useState } from 'react';
+import Headroom from 'react-headroom';
+import { Breadcrumb } from '../breadcrumb';
+import { CallToAction } from '../calltoaction';
+import { Dropdown } from '../icon';
+import { Navigation } from '../navigation';
 
 export const Header = ({
   categoryPages,
@@ -77,7 +77,7 @@ export const Header = ({
             </div>
           </div>
           <span className="sm:block hidden relative z-50">
-            <Breadcrumb path={crumbs} white={!whiteIcons} />
+            <Breadcrumb path={crumbs} white={!whiteIcons} homeCrumb="Hjem" />
           </span>
         </div>
       </div>
@@ -142,6 +142,7 @@ export const BlogHeader = ({
   categoryPages,
   servicePages,
   companyPages,
+  homeCrumb,
   white,
   logo,
 }) => {
@@ -182,7 +183,7 @@ export const BlogHeader = ({
           </div>
         </div>
         <span className="sm:block hidden">
-          <Breadcrumb path={crumbs} />
+          <Breadcrumb path={crumbs} homeCrumb={homeCrumb} />
         </span>
       </div>
     </>

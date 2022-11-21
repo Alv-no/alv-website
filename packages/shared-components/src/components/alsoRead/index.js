@@ -58,7 +58,7 @@ export const AlsoRead = ({
             {...article}
             key={i}
             readMoreText={readMoreText}
-            pathPrefix={postPrefix}
+            postPrefix={postPrefix}
           />
         ))}
       </div>
@@ -68,7 +68,7 @@ export const AlsoRead = ({
             {...article}
             key={i}
             readMoreText={readMoreText}
-            pathPrefix={postPrefix}
+            postPrefix={postPrefix}
           />
         ))}
       </div>

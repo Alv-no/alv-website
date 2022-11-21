@@ -84,7 +84,7 @@ export const Header = ({
             </div>
           </div>
           <span className="sm:block hidden relative z-50">
-            <Breadcrumb path={pathArr} white={!whiteIcons} />
+            <Breadcrumb path={pathArr} white={!whiteIcons} homeCrumb="Home" />
           </span>
         </div>
       </div>
@@ -206,7 +206,7 @@ export const BlogHeader = ({
             </div>
           </div>
           <span className="sm:block hidden">
-            <Breadcrumb path={crumbs} />
+            <Breadcrumb path={crumbs} homeCrumb="Home" />
           </span>
         </div>
       </div>

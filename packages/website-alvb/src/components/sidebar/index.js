@@ -1,8 +1,8 @@
-import React from 'react';
-import { Title } from 'shared-components';
-import { MobileHeader, BlogHeader } from '../header';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
+import { Title } from 'shared-components';
+import { BlogHeader, MobileHeader } from '../header';
 
 const Sidebar = ({
   children,
