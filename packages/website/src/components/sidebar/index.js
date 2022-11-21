@@ -1,12 +1,12 @@
-import React from 'react';
-import {
-  MobileHeader,
-  BlogHeader,
-} from 'shared-components/src/components/header';
-import { Title } from 'shared-components/src/components/title';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
+import {
+  BlogHeader,
+  MobileHeader,
+} from 'shared-components/src/components/header';
 import { Arrow } from 'shared-components/src/components/icon';
+import { Title } from 'shared-components/src/components/title';
 
 const Sidebar = ({
   children,
@@ -48,6 +48,7 @@ const Sidebar = ({
               categoryPages={categoryPages}
               companyPages={companyPages}
               logo={logo}
+              homeCrumb="Hjem"
             />
             <div className="ml-6 lg:ml-10">
               <div className="uppercase text-base tracking-wider font-semibold my-10">

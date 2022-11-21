@@ -1,9 +1,19 @@
-import React from 'react';
 import Link from 'gatsby-link';
+import React from 'react';
 
-export const Breadcrumb = ({ path, white, locale }) => {
-  const isEnLocale = locale ? locale === 'en' : false;
+export const Breadcrumb = ({ path, white, homeCrumb }) => {
   const upperCrumbCharLimit = 35;
+
+  const disabledLinks = ['services'];
+
+  const checkIfDisabledLink = (link) => {
+    const linkArr = link.split('/');
+    const lastLink = linkArr[linkArr.length - 1];
+    if (disabledLinks.includes(lastLink)) {
+      return true;
+    }
+    return false;
+  };
 
   const formatCrumbs = (crumbs) =>
     crumbs
@@ -29,12 +39,8 @@ export const Breadcrumb = ({ path, white, locale }) => {
 
   const filteredPath = path.length ? formatCrumbs(path) : path;
 
-  if (isEnLocale) {
-    filteredPath.splice(0, 1);
-    filteredPath.unshift('Home');
-  } else {
-    filteredPath.unshift('Hjem');
-  }
+  filteredPath.unshift(homeCrumb);
+
   return (
     <div className="overflow-hidden">
       {filteredPath.length > 1 && (
@@ -52,7 +58,12 @@ export const Breadcrumb = ({ path, white, locale }) => {
             }
             return (
               <div key={i}>
-                <Link to={link} className="last:font-bold font-extralight">
+                <Link
+                  to={link}
+                  className={`last:font-bold font-extralight ${
+                    checkIfDisabledLink(link) ? 'pointer-events-none' : ''
+                  }`}
+                >
                   <span className="mr-3 -ml-1 font-light">/</span>
                   {text}
                 </Link>
