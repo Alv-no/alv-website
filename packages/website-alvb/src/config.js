@@ -11,7 +11,7 @@ switch (config.NODE_ENV) {
       SANITY_PROJECT_ID: 'f79uyhzd',
       SANITY_DATASET: 'production',
       SANITY_TAG: 'default',
-      LOCALE: process.env.GATSBY_LOCALE || 'no',
+      LOCALE: 'en',
       HOSTNAME: process.env.GATSBY_HOSTNAME,
       TRANSLATED_DOMAIN: process.env.GATSBY_TRANSLATED_DOMAIN,
     };

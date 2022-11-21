@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Link from 'gatsby-link';
-import Headroom from 'react-headroom';
 import { window } from 'browser-monads';
+import Link from 'gatsby-link';
+import React, { useState } from 'react';
+import Headroom from 'react-headroom';
 import { Breadcrumb, CallToAction } from 'shared-components';
-import { Navigation } from '../navigation';
 import { navItems } from '../../utils/navItems';
 import { LocaleButtons } from '../localeButtons';
+import { Navigation } from '../navigation';
 
 export const Header = ({
   categoryPages,
@@ -14,7 +14,6 @@ export const Header = ({
   logo,
   white,
   headerCtaText,
-  localization,
   headerCtaLink,
   whiteIcons,
   navyHeader,
@@ -82,12 +81,6 @@ export const Header = ({
                   </Link>
                 )}
               </div>
-              {localization && (
-                <LocaleButtons
-                  whiteIcons={whiteIcons}
-                  navyHeader={navyHeader}
-                />
-              )}
             </div>
           </div>
           <span className="sm:block hidden relative z-50">
