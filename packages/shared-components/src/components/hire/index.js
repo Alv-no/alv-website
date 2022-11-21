@@ -51,7 +51,7 @@ export const Hire = ({
             </p>
             <div className="w-full flex justify-end">
               {buttonText && (
-                <div className="twelve:-mr-40 eight:-mr-20 -mt-5">
+                <div className="twelve:-mr-40 -mt-5">
                   <CtaButton internalLink={buttonLink}>{buttonText}</CtaButton>
                 </div>
               )}
@@ -92,7 +92,7 @@ export const HireAlt = ({ image, text, title, imageText, blue }) => {
           </div>
         </div>
         <div
-          className="lg:block sm:grid -mx-5 sm:-mx-16 lg:mx-0"
+          className="lg:block sm:grid -mx-5 sm:-mx-12 lg:mx-0"
           style={{ gridTemplateColumns: '50% auto' }}
         >
           <div />
@@ -115,7 +115,7 @@ export const HireAlt = ({ image, text, title, imageText, blue }) => {
 const HireCta = ({ title, text, buttonText, buttonLink, blue }) => {
   return (
     <div
-      className={`twelve:-mr-1/2 lg:flex flex-col hidden lg:-mr-48 w-full px-0 items-center justify-center`}
+      className={`twelve:-mr-1/2 lg:flex flex-col hidden lg:-mr-48 w-full px-0 lg:-ml-10 xl:-ml-5 items-center justify-center`}
     >
       <h2 className="uppercase text-slider mb-8 font-semibold tracking-wider lg:w-4/6">
         {title}
