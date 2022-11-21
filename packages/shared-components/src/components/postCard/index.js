@@ -1,6 +1,6 @@
-import React from 'react';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
 import { Arrow } from '../icon';
 import * as styles from './PostCard.module.css';
 
@@ -28,7 +28,7 @@ export const PostCard = ({
 
   return (
     <Link
-      to={`/blogg/${slug.current}`}
+      to={`/${isEnLocale ? 'blog' : 'blogg'}/${slug.current}`}
       className={`${styles.container} group relative pb-6`}
     >
       <div>

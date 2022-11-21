@@ -1,18 +1,18 @@
-import React from 'react';
+import { window } from 'browser-monads';
 import { graphql } from 'gatsby';
-import Sidebar from '../components/sidebar';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
-import { MobileHeader } from '../components/header';
+import React from 'react';
+import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
+import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
 import { Footer } from '../../../shared-components/src/components/footer';
 import { SEO } from '../../../shared-components/src/components/seo';
-import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
-import * as styles from '../components/styledBlockContent/StyledBlockContent.module.css';
 import { SocialShare } from '../../../shared-components/src/components/socialShare';
-import { window } from 'browser-monads';
-import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
-import { StyledBlockContent } from '../components/styledBlockContent';
-import * as Logo from '../components/logo';
+import { MobileHeader } from '../components/header';
 import { useLayoutQuery } from '../components/layout/useLayoutQuery';
+import * as Logo from '../components/logo';
+import Sidebar from '../components/sidebar';
+import { StyledBlockContent } from '../components/styledBlockContent';
+import * as styles from '../components/styledBlockContent/StyledBlockContent.module.css';
 import config from '../config';
 
 // Template for how articles are rendered.
@@ -119,6 +119,7 @@ const ArticleTemplate = (props) => {
               />
             </div>
             <AlsoRead
+              isEnLocale
               articles={props.data.articles}
               currentTags={socialTags}
               currentAuthor={authorFullname}

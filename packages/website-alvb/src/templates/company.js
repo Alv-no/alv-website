@@ -1,11 +1,11 @@
-import React from 'react';
-import config from '../config';
-import { Layout } from '../components/layout';
+import { window } from 'browser-monads';
 import { graphql } from 'gatsby';
+import React from 'react';
 import { LinkableContent } from 'shared-components/src/components/linkableContent';
 import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
-import { window } from 'browser-monads';
 import { BlogCarousel } from '../components/blogCarousel';
+import { Layout } from '../components/layout';
+import config from '../config';
 
 const Company = ({ data }) => {
   const scrollTo = (e) => {
@@ -14,7 +14,7 @@ const Company = ({ data }) => {
     window.history.replaceState(
       {},
       '',
-      `/about/${data.sanityCompany.slug.current}#${e.target.name}`
+      `/services/${data.sanityCompany.slug.current}#${e.target.name}`
     );
     window.scrollTo({ top, behavior: 'smooth' });
   };
