@@ -7,7 +7,7 @@ import { Layout } from '../components/layout';
 import localize from '../components/localize';
 
 const Contact = ({ data }) => {
-  const { section1, section2, meta } = data.sanityContactPage;
+  const { section1, meta } = data.sanityContactPage;
   const { address, phone, hours, email } = data.sanitySiteSettings;
   return (
     <Layout
