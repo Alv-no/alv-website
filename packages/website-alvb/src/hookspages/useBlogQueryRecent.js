@@ -18,6 +18,7 @@ export const useBlogQueryRecent = () => {
               tags {
                 tag
               }
+              _rawBody
               mainImage {
                 asset {
                   gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
@@ -32,29 +33,9 @@ export const useBlogQueryRecent = () => {
                 firstname
                 lastname
               }
-              guestAuthor {
-                guestAuthor {
-                  image {
-                    asset {
-                      gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-                      url
-                    }
-                  }
-                  firstname
-                  lastname
-                  title
-                  id
-                }
-              }
               publishedAt(formatString: "DD MMM, YYYY")
               rawDate: publishedAt
-              _createdAt
             }
-          }
-        }
-        fallbackImg: file(name: { eq: "featuredFallback" }) {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }

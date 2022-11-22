@@ -1,11 +1,11 @@
 import React from 'react';
 import { BlogSlider } from 'shared-components';
-import { useBlogQuery } from '../../hookspages/useBlogQuery';
+import { useBlogQueryRecent } from '../../hookspages/useBlogQueryRecent';
 
 export const BlogCarousel = ({ blue, isEnLocale, blueText, maxWidth }) => (
   <BlogSlider
     blue={blue}
-    useBlogQuery={useBlogQuery}
+    useBlogQuery={useBlogQueryRecent}
     isEnLocale={isEnLocale}
     blueText={blueText}
     maxWidth={maxWidth}
