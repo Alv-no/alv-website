@@ -6,7 +6,7 @@ export const Container = ({
   removePaddingTop,
   removePaddingBottom,
   removePaddingMobile,
-  maxWidth,
+  maxWidth = 1200,
   theme = 'white',
 }) => {
   // avoid unnecessary margins on mobile when using images
@@ -41,7 +41,9 @@ export const Container = ({
         !removePaddingTop && topSpacing
       } ${!removePaddingBottom && bottomSpacing} px-5 sm:px-12`}
     >
-      <div className={`max-w-${maxWidth || '1200'} mx-auto`}>{children}</div>
+      <div className={`mx-auto`} style={{ maxWidth: `${maxWidth}px` }}>
+        {children}
+      </div>
     </section>
   );
 };

@@ -122,7 +122,7 @@ const HireCta = ({ title, text, buttonText, buttonLink, blue }) => {
       </h2>
       <p
         className={`text-footer sm:text-xl tracking-wider ${
-          buttonText && 'mb-16'
+          buttonText ? 'mb-16' : ''
         } font-light lg:w-4/6`}
       >
         {text}
