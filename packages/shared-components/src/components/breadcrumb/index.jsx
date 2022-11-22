@@ -4,7 +4,7 @@ import React from 'react';
 export const Breadcrumb = ({ path, white, homeCrumb }) => {
   const upperCrumbCharLimit = 35;
 
-  const disabledLinks = ['services'];
+  const disabledLinks = ['products'];
 
   const checkIfDisabledLink = (link) => {
     const linkArr = link.split('/');
