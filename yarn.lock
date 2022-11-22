@@ -43568,6 +43568,7 @@ typescript@^4.0.5:
   resolution: "website-alvb@workspace:packages/website-alvb"
   dependencies:
     "@babel/core": ^7.12.10
+    "@babel/plugin-transform-spread": ^7.12.1
     "@mdx-js/react": ^1.6.22
     "@sanity/block-content-to-react": ^2.0.7
     "@sanity/image-url": ^0.140.22
@@ -43591,7 +43592,6 @@ typescript@^4.0.5:
     gatsby-image: ^3.11.0
     gatsby-plugin-config: 1.0.7
     gatsby-plugin-google-analytics: ^4.1.0
-    gatsby-plugin-google-fonts: ^1.0.1
     gatsby-plugin-google-tagmanager: ^4.6.0
     gatsby-plugin-image: ^2.1.2
     gatsby-plugin-manifest: ^4.1.3
