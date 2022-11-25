@@ -1,4 +1,5 @@
 import Link from 'gatsby-link';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { BgImage } from 'gbimage-bridge';
 import React, { useState } from 'react';
 import Slider from 'react-slick';
@@ -11,7 +12,7 @@ export const BlogSlider = ({
   blueText,
   useBlogQuery,
   blue,
-  maxWidth,
+  maxWidth = 'max-w-1200',
   heading,
   postPrefix,
   readMoreText,
@@ -34,7 +35,7 @@ export const BlogSlider = ({
     centerPadding: '350px',
     nextArrow: <NextArrowLine />,
     prevArrow: <PrevArrowLine />,
-    beforeChange: (current, next) => {
+    beforeChange: (_, next) => {
       updateActive(next);
     },
     responsive: [
@@ -55,7 +56,8 @@ export const BlogSlider = ({
   return (
     <div className="w-full">
       <div
-        className={`max-w-${maxWidth || 1200} mx-auto px-5 sm:px-12 2xl:px-0`}
+        className={`${maxWidth} mx-auto px-5 sm:px-12 2xl:px-0`}
+        style={{ maxWidth: `${maxWidth || 1200}px` }}
       >
         <Title
           underline
@@ -63,10 +65,12 @@ export const BlogSlider = ({
           color={blue ? '#000' : 'text-white'}
           nodot={dot}
         >
-          <span className={`text-${blue ? 'navy' : 'white'}`}>{heading}</span>
+          <span className={`${blue ? 'text-navy' : 'text-white'} `}>
+            {heading}
+          </span>
         </Title>
       </div>
-      <div className="pt-12 sm:pb-20 max-w-1440 mx-auto">
+      <div className="pt-6 sm:pt-12 sm:pb-20 max-w-1440 mx-auto">
         <div>
           <Slider {...settings}>
             {articles.map((article, index) => {
@@ -80,7 +84,7 @@ export const BlogSlider = ({
                   readMoreText={readMoreText}
                   key={index}
                   blueText={blueText}
-                  active={activeSlide === index}
+                  isCurrentSlide={activeSlide === index}
                   prevPos={
                     activeSlide - 1 === index ||
                     (activeSlide === 0 && index === articles.length - 1)
@@ -140,7 +144,7 @@ const Slide = ({
   article,
   fallbackImg,
   blueText,
-  active,
+  isCurrentSlide,
   nextPos,
   prevPos,
   postPrefix,
@@ -148,54 +152,63 @@ const Slide = ({
 }) => {
   return (
     <>
-      <Link
-        to={`/${postPrefix}/${article.slug.current}`}
-        className="w-full pb-56c"
-      >
+      <Link to={`/${postPrefix}/${article.slug.current}`}>
         <div
-          className={`${active && ''} transform ${prevPos && 'scale-80'} ${
+          className={`transform ${prevPos && 'scale-80'} ${
             nextPos && 'scale-80'
           }
-          ${!active && ''} relativ transition duration-300 ${
-            !nextPos && !prevPos && !active && 'opacity-0 pointer-events-none'
-          } `}
+           transition duration-300 ${
+             !nextPos &&
+             !prevPos &&
+             !isCurrentSlide &&
+             'opacity-0 pointer-events-none'
+           } `}
         >
           <div
-            className={`absolute h-full w-full z-40 transition duration-300 ${
-              !active && 'bg-opacity-60 bg-navy'
+            className={`absolute z-40 transition duration-300 ${
+              isCurrentSlide ? '' : 'bg-opacity-60 bg-navy'
             }`}
           />
           <BgImage
+            className="w-full sm:block hidden"
             image={
               (article.mainImage && article.mainImage.asset.gatsbyImageData) ||
               fallbackImg
             }
-            className="w-full"
           >
             <div
               className={`px-5 sm:px-10 w-full bg-navy bg-opacity-20 relative sm:h-full grid grid-cols-slider-md`}
             >
               <div className="w-full h-slider h-full grid grid-cols-slider-xl">
                 <div className="z-30 hidden mb-10 sm:flex items-end text-white text-slider font-semibold sm:w-full">
-                  {active && article.title}
+                  {isCurrentSlide && article.title}
                 </div>
               </div>
               <div className="h-full transform -translate-y-10 hidden sm:flex items-end z-20 relative justify-end text-white font-semibold">
-                {active && <Button.CtaArrow>{readMoreText}</Button.CtaArrow>}
+                {isCurrentSlide && (
+                  <Button.CtaArrow>{readMoreText}</Button.CtaArrow>
+                )}
               </div>
             </div>
           </BgImage>
+          <GatsbyImage
+            className="sm:hidden"
+            image={
+              (article.mainImage && article.mainImage.asset.gatsbyImageData) ||
+              fallbackImg
+            }
+          />
           <div
             className={`grid ${blueText ? 'text-navy' : 'text-white'}`}
             style={{ gridTemplateColumns: '80% auto' }}
           >
-            <div className="text-xl sm:hidden font-semibold relative mt-3 px-5">
-              <Link to={`/blogg/${article.slug.current}`}>{article.title}</Link>{' '}
-              <div className="-mt-8">
-                <span className="px-5 w-full text-base sm:hidden relative z-10">
-                  <Button.CtaArrow>{readMoreText}</Button.CtaArrow>
-                </span>
-              </div>
+            <div className="text-lg xl:text-xl sm:hidden font-semibold relative mt-3 px-5">
+              <Link to={`/${postPrefix}/${article.slug.current}`}>
+                {article.title}
+              </Link>
+              <span className="block mt-3 mb-8 w-full text-base sm:hidden relative z-10">
+                <Button.CtaArrow>{readMoreText}</Button.CtaArrow>
+              </span>
             </div>
             <div className="px-5 w-full sm:hidden -mt-12 relative z-10 flex justify-end"></div>
           </div>
