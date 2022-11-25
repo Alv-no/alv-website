@@ -43,13 +43,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-      options: {
-        analyzerPort: 7000,
-        disable: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `AlvB AS`,
