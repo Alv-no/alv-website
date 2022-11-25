@@ -1,21 +1,21 @@
-import React from 'react';
-import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent.js';
+import { gql } from '@apollo/client';
 import { graphql } from 'gatsby';
-import LandingPageHero from '../components/landingPageHero';
-import Layout from '../components/layout';
-import { createGatsbyImages } from '../server-side/imageCreator';
+import React from 'react';
 import {
-  WhoWeAre,
-  OurServices,
   BlogSlider,
+  Container,
   Hire,
   HireAlt,
-  Container,
+  OurServices,
+  WhoWeAre,
 } from 'shared-components';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import LandingPageHero from '../components/landingPageHero';
+import Layout from '../components/layout';
 import config from '../config';
+import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent.js';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { client } from '../server-side/client';
-import { gql } from '@apollo/client';
+import { createGatsbyImages } from '../server-side/imageCreator';
 
 const Index = ({ data, serverData }) => {
   const layoutData = useLayoutQuery();
@@ -80,7 +80,13 @@ const Index = ({ data, serverData }) => {
             imageText={landingPage.flipSection3ImageText}
           />
         </Container>
-        <BlogSlider useBlogQuery={useBlogQueryRecent} maxWidth="1440" />
+        <BlogSlider
+          useBlogQuery={useBlogQueryRecent}
+          maxWidth="1440"
+          readMoreText="Les mer"
+          heading="Blogg"
+          postPrefix="blogg"
+        />
       </div>
     </Layout>
   );

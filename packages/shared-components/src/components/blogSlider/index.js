@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import Link from 'gatsby-link';
+import { BgImage } from 'gbimage-bridge';
+import React, { useState } from 'react';
+import Slider from 'react-slick';
 import * as Button from '../button';
 import { SliderArrow, SliderArrowBlue } from '../icon';
 import { Title } from '../title';
-import { BgImage } from 'gbimage-bridge';
-import Slider from 'react-slick';
 
 export const BlogSlider = ({
   dot,
@@ -12,7 +12,9 @@ export const BlogSlider = ({
   useBlogQuery,
   blue,
   maxWidth,
-  isEnLocale,
+  heading,
+  postPrefix,
+  readMoreText,
 }) => {
   const data = useBlogQuery();
   const articles = data.articles.edges
@@ -61,9 +63,7 @@ export const BlogSlider = ({
           color={blue ? '#000' : 'text-white'}
           nodot={dot}
         >
-          <span className={`text-${blue ? 'navy' : 'white'}`}>
-            {isEnLocale ? 'Blog' : 'Blogg'}
-          </span>
+          <span className={`text-${blue ? 'navy' : 'white'}`}>{heading}</span>
         </Title>
       </div>
       <div className="pt-12 sm:pb-20 max-w-1440 mx-auto">
@@ -76,7 +76,8 @@ export const BlogSlider = ({
                     data.fallbackImg?.childImageSharp.gatsbyImageData
                   }
                   article={article}
-                  isEnLocale={isEnLocale}
+                  postPrefix={postPrefix}
+                  readMoreText={readMoreText}
                   key={index}
                   blueText={blueText}
                   active={activeSlide === index}
@@ -142,11 +143,15 @@ const Slide = ({
   active,
   nextPos,
   prevPos,
-  isEnLocale,
+  postPrefix,
+  readMoreText,
 }) => {
   return (
     <>
-      <Link to={`/blogg/${article.slug.current}`} className="w-full pb-56c">
+      <Link
+        to={`/${postPrefix}/${article.slug.current}`}
+        className="w-full pb-56c"
+      >
         <div
           className={`${active && ''} transform ${prevPos && 'scale-80'} ${
             nextPos && 'scale-80'
@@ -176,11 +181,7 @@ const Slide = ({
                 </div>
               </div>
               <div className="h-full transform -translate-y-10 hidden sm:flex items-end z-20 relative justify-end text-white font-semibold">
-                {active && (
-                  <Button.CtaArrow>
-                    {isEnLocale ? 'Read more' : 'Les mer'}
-                  </Button.CtaArrow>
-                )}
+                {active && <Button.CtaArrow>{readMoreText}</Button.CtaArrow>}
               </div>
             </div>
           </BgImage>
@@ -192,9 +193,7 @@ const Slide = ({
               <Link to={`/blogg/${article.slug.current}`}>{article.title}</Link>{' '}
               <div className="-mt-8">
                 <span className="px-5 w-full text-base sm:hidden relative z-10">
-                  <Button.CtaArrow>
-                    {isEnLocale ? 'Read more' : 'Les mer'}
-                  </Button.CtaArrow>
+                  <Button.CtaArrow>{readMoreText}</Button.CtaArrow>
                 </span>
               </div>
             </div>

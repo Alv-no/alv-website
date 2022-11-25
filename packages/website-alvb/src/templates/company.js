@@ -56,7 +56,12 @@ const Company = ({ data }) => {
           config={config}
         />
         <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-          <BlogCarousel blue />
+          <BlogCarousel
+            blue
+            heading="Blog"
+            readMoreText="Read more"
+            postPrefix="blog"
+          />
         </div>
       </div>
     </Layout>
