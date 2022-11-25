@@ -78,7 +78,6 @@ const ArticleTemplate = (props) => {
         <Sidebar
           {...postAuthor}
           isEmployee
-          isEnLocale={true}
           authorSlug={authorSlug}
           logo={Logo}
           servicePages={servicePages}
