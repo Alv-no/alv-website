@@ -21,7 +21,7 @@ export const Testimonials = ({ image }) => {
   return (
     <div className="mt-12 px-5 sm:px-12 w-full tracking-wider">
       <div className="max-w-1200 mx-auto">
-        <Title underline align="left" color="text-navy">
+        <Title underline align="text-left" color="text-navy">
           Kundeomtaler
         </Title>
         <div

@@ -1,25 +1,25 @@
-import React from 'react';
 import classnames from 'classnames';
+import React from 'react';
 
 const Dot = () => <span className={`text-theme-accent font-bold`}>.</span>;
 
 export const Title = ({
   children,
   bold = true,
-  align,
+  align = 'text-center',
+  color = 'text-white',
   noDot,
-  color,
   underline,
   classes,
   size,
 }) => {
   const classNames = classnames(
-    'w-full tracking-wider uppercase text-blog sm:text-4xl text-theme-text',
+    'w-full tracking-wider uppercase text-blog sm:text-4xl',
+    align,
     bold ? 'font-bold' : 'font-extralight',
-    align ? `text-${align}` : 'text-center',
-    color || 'text-white',
+    color,
     underline ? 'text-blog' : 'text-4xl',
-    classes || null
+    classes || ''
   );
 
   return (

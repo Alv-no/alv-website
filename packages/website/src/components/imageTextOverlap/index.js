@@ -24,7 +24,7 @@ export const ImageTextShifted = ({ image, flip }) => {
           <div className="px-5 sm:px-12 py-12 lg:pr-20 font-light flex flex-col h-full justify-center tracking-wider">
             <div className="font-light">
               <div className="xl:-ml-25 sm:-ml-40 relative z-30 text-lg">
-                <Title align="left" color="text-navy">
+                <Title align="text-left" color="text-navy">
                   Intervjuprosessen
                 </Title>
               </div>

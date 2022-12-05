@@ -1,8 +1,8 @@
-import React from 'react';
 import Link from 'gatsby-link';
+import { BgImage } from 'gbimage-bridge';
+import React from 'react';
 import * as Button from '../../../../shared-components/src/components/button';
 import { Title } from '../../../../shared-components/src/components/title';
-import { BgImage } from 'gbimage-bridge';
 
 export const ImageTextListHero = ({
   image,
@@ -32,7 +32,7 @@ export const ImageTextListHero = ({
               </div>
             </div>
             <div className="twelve:ml-56 2xl:mr-30 h-screen sm:h-auto flex flex-col justify-center sm:block -mt-15 items-center sm:mt-0 text-center sm:text-left sm:px-0 xs:px-5">
-              <Title align="center sm:text-left">Jobbe i alv</Title>
+              <Title align="text-center sm:text-left">Jobbe i alv</Title>
               <p className="mb-8 mt-6 text-xl twelve:pr-25">
                 Vi bygger Norges mest attraktive konsulentselskap. For å lykkes
                 med dette, trenger vi flere medarbeidere. Vi trenger all
@@ -47,7 +47,12 @@ export const ImageTextListHero = ({
             </div>
           </div>
           <div className="ml-18 hidden twelve:block mr-40 mt-15 lg:pl-8 xl:pl-0">
-            <Title color="text-white" underline align="left" size="text-xl">
+            <Title
+              color="text-white"
+              underline
+              align="text-left"
+              size="text-xl"
+            >
               Åpne stillinger
             </Title>
           </div>
@@ -67,7 +72,7 @@ export const ImageTextListHero = ({
         </div>
       </div>
       <div className=" mt-10 sm:px-12 twelve:hidden px-5 twelve:pl-8 xl:pl-0">
-        <Title color="text-white" underline align="left" size="text-xl">
+        <Title color="text-white" underline align="text-left" size="text-xl">
           Åpne stillinger
         </Title>
       </div>

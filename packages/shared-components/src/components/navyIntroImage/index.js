@@ -1,8 +1,8 @@
-import React from 'react';
-import { Title } from '../title';
-import { Description } from '../description';
 import Link from 'gatsby-link';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
+import { Description } from '../description';
+import { Title } from '../title';
 
 export const NavyIntroImage = ({
   title,
@@ -18,7 +18,7 @@ export const NavyIntroImage = ({
       style={{ gridTemplateColumns: '60% auto' }}
     >
       <div className="transform sm:-translate-x-5 sm:px-0 px-12 flex sm:block justify-center items-center flex-col">
-        <Title align={`center twelve:text-left`}>
+        <Title align={`text-center twelve:text-left`}>
           <span
             className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
               white ? 'text-white' : ''
@@ -60,7 +60,7 @@ export const Outline = ({ children, link }) => (
     <button
       type="button"
       aria-label={children}
-      className="text-white px-10 rounded rounded-full font-semibold text-base uppercase py-2 border border-white border-2 tracking-wider"
+      className="text-white px-10 rounded-full font-semibold text-base uppercase py-2 border border-white border-2 tracking-wider"
     >
       {children}
     </button>

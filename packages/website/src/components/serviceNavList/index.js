@@ -38,7 +38,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
             <div className="cursor-text text-left z-20 relative">
               <div className="mb-10">
                 <Title
-                  align="left sm:text-index"
+                  align="text-left sm:text-index"
                   noDot
                   underline
                   color="text-navy"

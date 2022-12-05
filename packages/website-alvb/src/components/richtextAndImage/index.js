@@ -29,7 +29,7 @@ export const RichtextAndImage = ({
       style={{ gridTemplateColumns: `${leftColSize} auto` }}
     >
       <div>
-        {title && <Title align="left mb-2 mt-4">{title}</Title>}
+        {title && <Title align="text-left mb-2 mt-4">{title}</Title>}
         <span className={styles.text}>
           <BlockContent
             blocks={blocks}

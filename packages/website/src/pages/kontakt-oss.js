@@ -50,7 +50,7 @@ const Contact = ({ location }) => {
             </div>
             <div className="2xl:ml-15 ml-5 sm:mt-8 xl:mt-0">
               <div className="z-20 relative -mt-15 sm:w-100 sm:mt-5 xl:-mt-15 sm:-ml-20 xl:ml-0">
-                <Title align="left sm:text-cta-lg">Kontakt Oss</Title>
+                <Title align="text-left sm:text-cta-lg">Kontakt Oss</Title>
                 <div className="sm:h-6 h-6" />
                 <span className="">
                   <Description align="left">

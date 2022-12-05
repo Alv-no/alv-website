@@ -33,7 +33,7 @@ const Contact = ({ data }) => {
             </div>
             <div className="sm:my-8 xl:mt-0">
               <div className="z-20 relative -mt-15 sm:mt-5">
-                <Title align="left sm:text-cta-lg">
+                <Title align="text-left sm:text-cta-lg">
                   <span className="text-navy">{section1.title}</span>
                 </Title>
                 <div className="sm:h-6 h-6" />
