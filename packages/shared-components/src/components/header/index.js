@@ -156,7 +156,7 @@ export const BlogHeader = ({
   const crumbs = window.location.pathname.split('/');
   crumbs.shift();
   return (
-    <>
+    <div className="py-7">
       <Navigation
         open={open}
         toggleClose={toggleClose}
@@ -166,7 +166,7 @@ export const BlogHeader = ({
         white={white}
         logo={logo}
       />
-      <div className="container">
+      <div className="pl-6 lg:pl-10">
         <div className="flex justify-between sm:mb-7 ">
           <div className="flex">
             <button
@@ -186,6 +186,6 @@ export const BlogHeader = ({
           <Breadcrumb path={crumbs} homeCrumb={homeCrumb} />
         </span>
       </div>
-    </>
+    </div>
   );
 };
