@@ -43,7 +43,7 @@ const About = ({ serverData }) => {
           />
         </Container>
         <Container theme="navy">
-          <Title align="left">Ansatte</Title>
+          <Title align="text-left">Ansatte</Title>
           <FeaturedTeam notitle team={team} color="navy" />
         </Container>
         <div className="max-w-1440 mx-auto">

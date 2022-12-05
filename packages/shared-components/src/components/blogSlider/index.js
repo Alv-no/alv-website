@@ -59,11 +59,13 @@ export const BlogSlider = ({
       >
         <Title
           underline
-          align="left"
+          align="text-left"
           color={blue ? '#000' : 'text-white'}
           nodot={dot}
         >
-          <span className={`text-${blue ? 'navy' : 'white'}`}>{heading}</span>
+          <span className={`${blue ? 'text-navy' : 'text-white'}`}>
+            {heading}
+          </span>
         </Title>
       </div>
       <div className="pt-12 sm:pb-20 max-w-1440 mx-auto">

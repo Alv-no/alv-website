@@ -61,7 +61,7 @@ const Sidebar = ({
                   </div>
                 </Link>
               </div>
-              <Title align="left">BLOGG</Title>
+              <Title align="text-left">BLOGG</Title>
             </div>
           </div>
           {/* AUTHOR SECTION */}

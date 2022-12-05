@@ -57,7 +57,7 @@ const Sidebar = ({
                   </div>
                 </Link>
               </div>
-              <Title align="left">
+              <Title align="text-left">
                 <span className="text-white">BLOGG</span>
               </Title>
             </div>

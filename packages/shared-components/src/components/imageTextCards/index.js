@@ -28,7 +28,7 @@ export const ImageTextCards = ({
           </div>
           <div className="sm:px-12 px-5 pb-9 pt-10 lg:pt-0 flex-1 bg-servicesgray lg:bg-white">
             <div className="">
-              <Title align="left" color="text-navy">
+              <Title align="text-left" color="text-navy">
                 {title}
               </Title>
               <p className="mb-8 mt-6 font-light tracking-wider">

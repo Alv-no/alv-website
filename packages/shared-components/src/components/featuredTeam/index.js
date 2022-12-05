@@ -16,7 +16,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
   return (
     <div id="konsulentene">
       {!notitle && (
-        <Title underline align="left" color="text-navy">
+        <Title underline align="text-left" color="text-navy">
           Konsulenter
         </Title>
       )}

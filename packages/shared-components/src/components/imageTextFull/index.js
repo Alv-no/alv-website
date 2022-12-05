@@ -25,7 +25,7 @@ export const ImageTextFull = ({ image, flip, title, link, children }) => {
         <div className="font-light flex flex-col justify-between sm:h-full overflow-hidden">
           <div className="px-5 sm:px-0">
             <Title
-              align="left"
+              align="text-left"
               classes="text-nav sm:text-3xl hyphenate"
               color="text-navy"
             >
