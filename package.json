@@ -23,7 +23,8 @@
     "typescript": "^4.0.5"
   },
   "resolutions": {
-    "sharp": "0.28.3"
+    "sharp": "0.28.3",
+    "yargs": "^13.3.2"
   },
   "husky": {
     "hooks": {
