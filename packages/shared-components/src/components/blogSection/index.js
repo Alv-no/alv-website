@@ -3,7 +3,12 @@ import { BlogFilter } from '../blogFilter';
 import * as Button from '../button';
 import { PostCard } from '../postCard';
 
-export const BlogSection = ({ allArticles, postPrefix, readMoreText }) => {
+export const BlogSection = ({
+  allArticles,
+  postPrefix,
+  readMoreText,
+  initialCategoryFilter,
+}) => {
   const [articles, setArticles] = useState(allArticles);
   const [visibleRows, setVisibleRows] = useState(12);
   const handleViewMoreClick = () => {
@@ -32,6 +37,7 @@ export const BlogSection = ({ allArticles, postPrefix, readMoreText }) => {
       <div className="w-full">
         {allTags && (
           <BlogFilter
+            initialCategoryFilter={initialCategoryFilter}
             allTags={allTags}
             allAuthors={allAuthors}
             allArticles={allArticles}

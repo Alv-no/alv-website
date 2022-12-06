@@ -4,7 +4,12 @@ import { BlogSection, IntroContainer, Title } from 'shared-components';
 import Layout from '../components/layout';
 import { getBlogDataServerSide } from '../hooks/useBlogQueryServerSide';
 
-const Blog = ({ data, serverData }) => {
+const Blog = ({ data, serverData, location }) => {
+
+  // looks for initial category filter from url
+  const params = new URLSearchParams(location.search);
+  const initialCategoryFilter = params.get('kategori');
+
   const layoutData = {
     ...data.sanitySiteSettings,
     servicePages: data.allSanityServices.nodes,
@@ -57,6 +62,7 @@ const Blog = ({ data, serverData }) => {
           </div>
         </IntroContainer>
         <BlogSection
+          initialCategoryFilter={initialCategoryFilter}
           allArticles={articles}
           readMoreText={readMoreText}
           postPrefix={postPrefix}

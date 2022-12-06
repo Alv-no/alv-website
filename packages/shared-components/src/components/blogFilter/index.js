@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { FilterContainer } from '../filterContainer';
 import { DropdownMini, Tag } from '../icon';
 import * as styles from './BlogFilter.module.css';
-import { FilterContainer } from '../filterContainer';
 
 // Input: content array and filter elements
 // Output: filtered and sorted content array
@@ -11,11 +11,14 @@ export const BlogFilter = ({
   allArticles,
   onChange,
   isEnLocale,
+  initialCategoryFilter,
 }) => {
   const [active, setActive] = useState(allArticles);
-  const [activeTags, setActiveTags] = useState([]);
   const [activeAuthors, setActiveAuthors] = useState([]);
   const [sort, setSort] = useState(null);
+  const [activeTags, setActiveTags] = useState(
+    initialCategoryFilter ? [initialCategoryFilter] : []
+  );
 
   // Process all available content based on sort and filter input.
   useEffect(() => {
@@ -81,9 +84,8 @@ export const BlogFilter = ({
   // Add or remove a fiter option from state
   const tagClick = (e) => {
     const current = e.target.id;
-    let newFilter = [];
-    // Prevent array mutation
-    activeTags.forEach((tag) => newFilter.push(tag));
+    let newFilter = [...activeTags];
+
     if (newFilter.includes(current)) {
       newFilter = activeTags.filter((el) => el !== current);
     } else {
@@ -145,12 +147,17 @@ export const FilterField = ({
         type="checkbox"
       />
       <div
-        className={`${styles.filter} absolute w-full z-40 px-12 py-8 rounded-md bg-white mt-9 left-0 top-0 flex border-b border-l border-r border-bordergray`}
+        style={{ zIndex: 60 }}
+        className={`${styles.filter} absolute w-full px-12 py-8 rounded-md bg-white mt-9 left-0 top-0 flex border-b border-l border-r border-bordergray`}
       >
-        <FilterOption onChange={tagClick} tags={tags}>
+        <FilterOption onChange={tagClick} tags={tags} activeTags={activeTags}>
           {isEnLocale ? 'Categories' : 'Kategorier'}
         </FilterOption>
-        <FilterOption onChange={authorClick} tags={authors}>
+        <FilterOption
+          onChange={authorClick}
+          tags={authors}
+          activeTags={activeAuthors}
+        >
           {isEnLocale ? 'Authors' : 'Forfattere'}
         </FilterOption>
       </div>
@@ -200,7 +207,7 @@ const ActiveFilterOptions = ({ activeFilters }) => {
   ));
 };
 
-const FilterOption = ({ tags, onChange, children }) => (
+const FilterOption = ({ tags, onChange, children, activeTags }) => (
   <div className="flex-1">
     <div className="tracking-wider uppercase mb-2 text-base">{children}</div>
     <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
@@ -211,6 +218,7 @@ const FilterOption = ({ tags, onChange, children }) => (
             <input
               className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
               id={tag}
+              checked={activeTags.includes(tag)}
               onChange={onChange}
               type="checkbox"
             />
