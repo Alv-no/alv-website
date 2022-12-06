@@ -84,6 +84,11 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: { type: 'employee' } }],
     },
+    {
+      name: 'blogCarousel',
+      title: 'Blog carousel',
+      type: 'blogCarousel',
+    },
   ],
   preview: {
     select: {

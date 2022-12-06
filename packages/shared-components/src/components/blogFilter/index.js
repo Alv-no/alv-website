@@ -22,25 +22,13 @@ export const BlogFilter = ({
 
   // Process all available content based on sort and filter input.
   useEffect(() => {
-    const sortedActive = [];
-    active.forEach((el) => sortedActive.push(el));
-    if (sort === 'oldest') {
-      sortedActive.sort((a, b) => {
-        if (a.rawDate < b.rawDate) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-    } else if (sort === 'newest') {
-      sortedActive.sort((a, b) => {
-        if (a.rawDate > b.rawDate) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-    }
+    const sortedActive = [...active];
+
+    sort === 'newest' &&
+      sortedActive.sort((a, b) => (a.rawDate < b.rawDate ? -1 : 1));
+    sort === 'newest' &&
+      sortedActive.sort((a, b) => (a.rawDate < b.rawDate ? 1 : -1));
+
     onChange(sortedActive);
     // Including onChange results in infinite callback loop
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,53 +40,59 @@ export const BlogFilter = ({
   };
 
   useEffect(() => {
-    let filteredArticles;
     if (activeTags.length > 0 || activeAuthors.length > 0) {
-      const articles = [];
-      allArticles.forEach((article) => articles.push(article));
-      filteredArticles = articles.filter((article) => {
-        let test = false;
-        if (article.author) {
-          if (activeTags.length > 0 && activeAuthors.length > 0) {
-            test =
-              article.tags.some((tag) => activeTags.includes(tag.tag)) &&
-              activeAuthors.includes(
-                `${article.author.firstname} ${article.author.lastname}`
-              );
-          } else {
-            test =
-              article.tags.some((tag) => activeTags.includes(tag.tag)) ||
-              activeAuthors.includes(
-                `${article.author.firstname} ${article.author.lastname}`
-              );
-          }
+      const filteredArticles = allArticles.filter((article) => {
+        const articleAuthor = article?.author
+          ? `${article.author.firstname} ${article.author.lastname}`
+          : null;
+        let authorMatch = true;
+        let tagsMatch = true;
+
+        // case insensitive tags comparison to make url query params case insensitive
+        if (activeTags.length > 0) {
+          const lowercaseArticleTags = article.tags.map((tag) =>
+            tag.tag.toLowerCase()
+          );
+          const lowercaseActiveTags = activeTags.map((tag) =>
+            tag.toLowerCase()
+          );
+
+          tagsMatch = lowercaseActiveTags.some((tag) =>
+            lowercaseArticleTags.includes(tag)
+          );
         }
-        return test;
+
+        // look for article author in active authors
+        if (articleAuthor && activeAuthors.length > 0) {
+          authorMatch = activeAuthors.includes(articleAuthor);
+        }
+
+        return tagsMatch && authorMatch;
       });
+      setActive(filteredArticles);
     } else {
-      filteredArticles = allArticles;
+      setActive(allArticles);
     }
-    setActive(filteredArticles);
   }, [activeTags, activeAuthors, allArticles]);
 
-  // Add or remove a fiter option from state
+  // Add or remove tag from current filter config
   const tagClick = (e) => {
-    const current = e.target.id;
-    let newFilter = [...activeTags];
+    const currentTag = e.target.id.toLowerCase();
+    let newFilter = [...activeTags.map((tag) => tag.toLowerCase())];
 
-    if (newFilter.includes(current)) {
-      newFilter = activeTags.filter((el) => el !== current);
+    if (newFilter.includes(currentTag)) {
+      newFilter = activeTags.filter((tag) => tag !== currentTag);
     } else {
-      newFilter.push(current);
+      newFilter.push(currentTag);
     }
     setActiveTags(newFilter);
   };
 
+  // Add or remove author from current filter config
   const authorClick = (e) => {
     const current = e.target.id;
-    let newFilter = [];
-    // Prevent array mutation
-    activeAuthors.forEach((author) => newFilter.push(author));
+    let newFilter = [...activeAuthors];
+
     if (newFilter.includes(current)) {
       newFilter = activeAuthors.filter((el) => el !== current);
     } else {
@@ -106,6 +100,7 @@ export const BlogFilter = ({
     }
     setActiveAuthors(newFilter);
   };
+
   const noFilter =
     active.length === allArticles.length &&
     activeTags.length < 1 &&
@@ -207,31 +202,35 @@ const ActiveFilterOptions = ({ activeFilters }) => {
   ));
 };
 
-const FilterOption = ({ tags, onChange, children, activeTags }) => (
-  <div className="flex-1">
-    <div className="tracking-wider uppercase mb-2 text-base">{children}</div>
-    <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
-    <ul>
-      {tags.map((tag, index) => (
-        <li key={index} className={styles.listItem}>
-          <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
-            <input
-              className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
-              id={tag}
-              checked={activeTags.includes(tag)}
-              onChange={onChange}
-              type="checkbox"
-            />
-            <div
-              className={`${styles.dot} h-2 w-2 bg-theme-accent rounded-full mr-2 absolute mt-px`}
-            />
-            <span>{tag}</span>
-          </div>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const FilterOption = ({ tags, onChange, children, activeTags }) => {
+  return (
+    <div className="flex-1">
+      <div className="tracking-wider uppercase mb-2 text-base">{children}</div>
+      <div className={`${styles.line} bg-theme-accent w-7 mb-5`} />
+      <ul>
+        {tags.map((tag, index) => (
+          <li key={index} className={styles.listItem}>
+            <div className="text-sm text-gray-700 font-light relative mt-3 flex items-center">
+              <input
+                className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
+                id={tag}
+                checked={activeTags.some(
+                  (activeTag) => activeTag.toLowerCase() === tag.toLowerCase()
+                )}
+                onChange={onChange}
+                type="checkbox"
+              />
+              <div
+                className={`${styles.dot} h-2 w-2 bg-theme-accent rounded-full mr-2 absolute mt-px`}
+              />
+              <span>{tag}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export const SortField = ({ sort, sortClick, light, isEnLocale }) => {
   const [open, setOpen] = useState(false);

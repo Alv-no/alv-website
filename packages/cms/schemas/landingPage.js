@@ -237,5 +237,10 @@ export default {
         maxLength: 60,
       },
     },
+    {
+      name: 'blogCarousel',
+      title: 'Section 4: Blog carousel',
+      type: 'blogCarousel',
+    },
   ],
 };

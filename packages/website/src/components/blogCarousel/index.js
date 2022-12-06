@@ -1,12 +1,11 @@
 import React from 'react';
 import { BlogSlider } from 'shared-components';
-import { useBlogQuery } from '../../hooks/useBlogQuery';
 
-export const BlogCarousel = ({ blue, blueText }) => (
+export const BlogCarousel = ({ blue, blueText, articles }) => (
   <BlogSlider
     blue={blue}
     blueText={blueText}
-    useBlogQuery={useBlogQuery}
+    articles={articles}
     heading="Blogg"
     readMoreText="Les mer"
     postPrefix="blogg"

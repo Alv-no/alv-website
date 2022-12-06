@@ -5,7 +5,6 @@ import Layout from '../components/layout';
 import { getBlogDataServerSide } from '../hooks/useBlogQueryServerSide';
 
 const Blog = ({ data, serverData, location }) => {
-
   // looks for initial category filter from url
   const params = new URLSearchParams(location.search);
   const initialCategoryFilter = params.get('kategori');

@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 export const useBlogQueryRecent = () => {
   const data = useStaticQuery(
     graphql`
@@ -7,34 +7,16 @@ export const useBlogQueryRecent = () => {
           sort: { fields: publishedAt, order: DESC }
           limit: 5
         ) {
-          edges {
-            node {
-              id
-              description
-              slug {
-                current
+          nodes {
+            slug {
+              current
+            }
+            id
+            title
+            mainImage {
+              asset {
+                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
-              title
-              tags {
-                tag
-              }
-              _rawBody
-              mainImage {
-                asset {
-                  gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-                }
-              }
-              author {
-                image {
-                  asset {
-                    gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-                  }
-                }
-                firstname
-                lastname
-              }
-              publishedAt(formatString: "DD MMM, YYYY")
-              rawDate: publishedAt
             }
           }
         }

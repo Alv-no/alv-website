@@ -1,12 +1,13 @@
-import React from 'react';
-import Layout from '../components/layout';
 import { graphql } from 'gatsby';
-import { NavyIntro, FeaturedTeam, Container } from 'shared-components';
-import { RolesList } from '../components/rolesList';
-import { Overview } from '../components/overview';
-import { ServicesNav } from '../components/servicesNav';
+import React from 'react';
+import { Container, FeaturedTeam, NavyIntro } from 'shared-components';
 import { BlogCarousel } from '../components/blogCarousel';
+import Layout from '../components/layout';
+import { Overview } from '../components/overview';
+import { RolesList } from '../components/rolesList';
+import { ServicesNav } from '../components/servicesNav';
 import { StyledBlockContent } from '../components/styledBlockContent';
+import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Category = ({ data }) => {
@@ -43,6 +44,11 @@ const Category = ({ data }) => {
     });
 
   topFour = topFour.slice(0, topFour.length > 4 ? 4 : topFour.length);
+
+  const recentArticles = useBlogQueryRecent().articles.nodes;
+
+  const blogCarouselArticles =
+    data.sanityCategoryPage?.blogCarousel?.selectedArticles || recentArticles;
 
   return (
     <Layout
@@ -88,7 +94,7 @@ const Category = ({ data }) => {
         </Container>
       )}
       <div className="text-navy">
-        <BlogCarousel blueText blue={true} />
+        <BlogCarousel blueText blue={true} articles={blogCarouselArticles} />
       </div>
     </Layout>
   );
@@ -138,6 +144,21 @@ export const query = graphql`
       }
       servicesListText
       _rawText
+      blogCarousel {
+        selectedArticles {
+          slug {
+            current
+          }
+          id
+          title
+          mainImage {
+            asset {
+              url
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+            }
+          }
+        }
+      }
     }
     allSanityServices(
       filter: { parentPage: { slug: { current: { eq: $slug } } } }
