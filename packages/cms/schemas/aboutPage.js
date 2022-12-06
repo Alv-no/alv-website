@@ -20,5 +20,10 @@ export default {
         maxLength: 160,
       },
     },
+    {
+      name: 'blogCarousel',
+      title: 'Blog carousel',
+      type: 'blogCarousel',
+    },
   ],
 };

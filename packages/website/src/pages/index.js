@@ -12,7 +12,7 @@ import {
 import LandingPageHero from '../components/landingPageHero';
 import Layout from '../components/layout';
 import config from '../config';
-import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent.js';
+import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
@@ -23,6 +23,11 @@ const Index = ({ data, serverData }) => {
   const pageDescription = data.sanityLandingPage.pageDescription || false;
 
   const landingPage = data.sanityLandingPage;
+
+  const recentArticles = useBlogQueryRecent().articles.nodes;
+
+  const blogCarouselArticles =
+    serverData.blogCarousel?.selectedArticles || recentArticles;
 
   return (
     <Layout
@@ -81,7 +86,7 @@ const Index = ({ data, serverData }) => {
           />
         </Container>
         <BlogSlider
-          useBlogQuery={useBlogQueryRecent}
+          articles={blogCarouselArticles}
           maxWidth="1440"
           readMoreText="Les mer"
           heading="Blogg"
@@ -105,6 +110,26 @@ async function fetchServerSideData() {
           showCallToAction
           contactSchemaVisible
           ctaPosition
+          blogCarousel {
+            selectedArticles {
+              slug {
+                current
+              }
+              id: _id
+              title
+              mainImage {
+                asset {
+                  id: _id
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
+              }
+            }
+          }
           image: topBackgroundImage {
             asset {
               id: _id

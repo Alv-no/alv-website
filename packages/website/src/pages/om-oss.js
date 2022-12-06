@@ -1,17 +1,19 @@
+import { gql } from '@apollo/client';
 import React from 'react';
-import Layout from '../components/layout';
-import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
+import { Container, FeaturedTeam, OurServices, Title } from 'shared-components';
+import AboutIntro from '../components/aboutIntro';
 import { BlogCarousel } from '../components/blogCarousel';
-import { Title, OurServices, FeaturedTeam, Container } from 'shared-components';
+import Layout from '../components/layout';
+import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
-import { gql } from '@apollo/client';
-import AboutIntro from '../components/aboutIntro';
 
 const About = ({ serverData }) => {
   const data = useAboutUsQuery();
   const layoutData = useLayoutQuery();
+
   const {
     sanityAboutPage: { pageDescription } = { pageDescription: false },
     sanityAboutPage: { pageTitle } = { pageTitle: false },
@@ -21,6 +23,11 @@ const About = ({ serverData }) => {
     (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData)
   );
   const team = employees.slice(0, 4);
+
+  const recentArticles = useBlogQueryRecent().articles.nodes;
+
+  const blogCarouselArticles =
+    serverData.aboutPage?.blogCarousel?.selectedArticles || recentArticles;
 
   return (
     <Layout
@@ -47,7 +54,7 @@ const About = ({ serverData }) => {
           <FeaturedTeam notitle team={team} color="navy" />
         </Container>
         <div className="max-w-1440 mx-auto">
-          <BlogCarousel />
+          <BlogCarousel articles={blogCarouselArticles} />
         </div>
       </div>
     </Layout>
@@ -61,8 +68,27 @@ async function getAboutContent() {
         aboutPage: allAboutPage {
           pageDescription
           pageTitle
+          blogCarousel {
+            selectedArticles {
+              slug {
+                current
+              }
+              id: _id
+              title
+              mainImage {
+                asset {
+                  id: _id
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-
         allLandingPage {
           section2Services {
             description

@@ -1,15 +1,16 @@
-import React from 'react';
-import config from '../../config';
-import Layout from '../../components/layout';
+import { gql } from '@apollo/client';
+import { window } from 'browser-monads';
 import { graphql } from 'gatsby';
+import React from 'react';
 import { LinkableContent } from 'shared-components/src/components/linkableContent';
 import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
-import { window } from 'browser-monads';
 import { BlogCarousel } from '../../components/blogCarousel';
+import Layout from '../../components/layout';
+import config from '../../config';
+import { useBlogQueryRecent } from '../../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import { client } from '../../server-side/client';
 import { createGatsbyImages } from '../../server-side/imageCreator';
-import { gql } from '@apollo/client';
 
 const Company = ({ serverData }) => {
   const scrollTo = (e) => {
@@ -23,6 +24,11 @@ const Company = ({ serverData }) => {
     window.scrollTo({ top, behavior: 'smooth' });
   };
   const layoutData = useLayoutQuery();
+
+  const recentArticles = useBlogQueryRecent().articles.nodes;
+
+  const blogCarouselArticles =
+    serverData.blogCarousel?.selectedArticles || recentArticles;
 
   return (
     <Layout
@@ -49,7 +55,7 @@ const Company = ({ serverData }) => {
           config={config}
         />
         <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-          <BlogCarousel blue />
+          <BlogCarousel blue articles={blogCarouselArticles} />
         </div>
       </div>
     </Layout>
@@ -89,6 +95,26 @@ async function getCompanyDataServerSide(slug) {
           heroDescription
           _rawBlockText: blockTextRaw
           blockHeading
+          blogCarousel {
+            selectedArticles {
+              slug {
+                current
+              }
+              id: _id
+              title
+              mainImage {
+                asset {
+                  id: _id
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
         allCompany {
           heroHeading

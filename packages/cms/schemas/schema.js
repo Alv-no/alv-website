@@ -9,6 +9,7 @@ import aboutPage from './aboutPage';
 import article from './article';
 import articleTag from './articleTag';
 import blockContent from './blockContent';
+import blogCarousel from './blogCarousel';
 import blogPage from './blogPage';
 import careerPage from './careerPage';
 import categoryPage from './categoryPage';
@@ -84,6 +85,7 @@ export default createSchema({
     headingDescButtonCta,
     guestAuthor,
     servicesIntro,
+    blogCarousel,
     reasonsCard,
     serviceItem,
     playlists,

@@ -65,6 +65,11 @@ export default {
       title: 'Text Block',
       type: 'linkableBlockContent',
     },
+    {
+      name: 'blogCarousel',
+      title: 'Blog carousel',
+      type: 'blogCarousel',
+    },
   ],
   preview: {
     select: {

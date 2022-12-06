@@ -105,6 +105,11 @@ export default {
       title: 'CTA Heading',
       type: 'string',
     },
+    {
+      name: 'blogCarousel',
+      title: 'Blog carousel',
+      type: 'blogCarousel',
+    },
   ],
   preview: {
     select: {

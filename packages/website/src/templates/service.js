@@ -1,12 +1,13 @@
-import React from 'react';
-import Layout from '../components/layout';
-import { graphql } from 'gatsby';
-import { ServiceNavList } from '../components/serviceNavList';
-import { RolesList } from '../components/rolesList';
-import { Container, NavyIntroImage } from 'shared-components';
-import { CtaSection } from '../components/ctaSection';
 import { window } from 'browser-monads';
+import { graphql } from 'gatsby';
+import React from 'react';
+import { Container, NavyIntroImage } from 'shared-components';
 import { BlogCarousel } from '../components/blogCarousel';
+import { CtaSection } from '../components/ctaSection';
+import Layout from '../components/layout';
+import { RolesList } from '../components/rolesList';
+import { ServiceNavList } from '../components/serviceNavList';
+import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
 const Service = ({ data }) => {
@@ -30,6 +31,11 @@ const Service = ({ data }) => {
   const relatedServices = data.allSanityServices.edges.filter((service) =>
     window.location.href.includes(service.node.parentPage.slug.current)
   );
+
+  const recentArticles = useBlogQueryRecent().articles.nodes;
+
+  const blogCarouselArticles =
+    data.sanityServices?.blogCarousel?.selectedArticles || recentArticles;
 
   return (
     <Layout
@@ -82,7 +88,7 @@ const Service = ({ data }) => {
         </Container>
       </div>
       <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-        <BlogCarousel blue />
+        <BlogCarousel blue articles={blogCarouselArticles} />
       </div>
     </Layout>
   );
@@ -116,6 +122,21 @@ export const query = graphql`
       aboutSection
       aboutBlock {
         _rawChildren
+      }
+      blogCarousel {
+        selectedArticles {
+          slug {
+            current
+          }
+          id
+          title
+          mainImage {
+            asset {
+              url
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+            }
+          }
+        }
       }
     }
     allSanityServices {

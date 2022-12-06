@@ -10,19 +10,13 @@ import { Title } from '../title';
 export const BlogSlider = ({
   dot,
   blueText,
-  useBlogQuery,
+  articles,
   blue,
   maxWidth = 'max-w-1200',
   heading,
   postPrefix,
   readMoreText,
 }) => {
-  const data = useBlogQuery();
-  const articles = data.articles.edges
-    .map((edge) => edge.node)
-    .sort((a, b) => (a.rawDate > b.rawDate ? 1 : -1))
-    .sort((a) => (a.rawDate ? -1 : 1));
-
   const [activeSlide, setActiveSlide] = useState(0);
   const updateActive = (next) => {
     setActiveSlide(next);
@@ -76,9 +70,6 @@ export const BlogSlider = ({
             {articles.map((article, index) => {
               return (
                 <Slide
-                  fallbackImg={
-                    data.fallbackImg?.childImageSharp.gatsbyImageData
-                  }
                   article={article}
                   postPrefix={postPrefix}
                   readMoreText={readMoreText}
