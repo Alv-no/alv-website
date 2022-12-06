@@ -1,11 +1,11 @@
+import { gql } from '@apollo/client';
 import React from 'react';
-import Layout from '../../components/layout';
 import { NavyIntro } from '../../../../shared-components/src/components/navyIntro';
+import Layout from '../../components/layout';
 import { StyledBlockContent } from '../../components/styledBlockContent';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import { client } from '../../server-side/client';
 import { createGatsbyImages } from '../../server-side/imageCreator';
-import { gql } from '@apollo/client';
 
 const Career = ({ serverData }) => {
   const sanityOpenPostionPage = serverData.career;

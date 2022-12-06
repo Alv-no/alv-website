@@ -5,42 +5,43 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // We import object and document schemas
-import blockContent from './blockContent';
-import employee from './employee';
-import employeeTag from './employeeTag';
-import article from './article';
-import imageTextFlip from './imageTextFlip';
-import guestAuthor from './guestAuthor';
-import articleTag from './articleTag';
-import companyPage from './companyPage';
-import redirects from './redirects';
-import landingPage from './landingPage';
 import aboutPage from './aboutPage';
-import servicesIntro from './servicesIntro';
-import heroCta from './heroCta';
-import employeePage from './employeePage';
-import linkableBlockContent from './linkableBlockContent';
-import careerPage from './careerPage';
-import contactPage from './contactPage';
-import ourServicesPage from './ourServicesPage';
-import openPositionPage from './openPositionPage';
-import socials from './socials';
-import playlists from './playlists';
-import playlist from './playlist';
-import videoseries from './videoseries';
-import externalProfiles from './externalProfiles';
-import videoseriesPage from './videoseriesPage';
-import imageAndText from './imageAndText';
+import article from './article';
+import articleTag from './articleTag';
+import blockContent from './blockContent';
 import blogPage from './blogPage';
+import careerPage from './careerPage';
 import categoryPage from './categoryPage';
-import testimonial from './testimonial';
-import servicePage from './servicePage';
-import serviceItem from './serviceItem';
-import siteSettings from './siteSettings';
+import companyPage from './companyPage';
+import contactPage from './contactPage';
+import cta from './cta';
+import employee from './employee';
+import employeePage from './employeePage';
+import employeeTag from './employeeTag';
+import externalProfiles from './externalProfiles';
+import guestAuthor from './guestAuthor';
+import headingDescButtonCta from './headingDescButtonCta';
+import heroCta from './heroCta';
+import imageAndText from './imageAndText';
+import imageTextFlip from './imageTextFlip';
+import landingPage from './landingPage';
+import linkableBlockContent from './linkableBlockContent';
+import linkableHeading from './linkableHeading';
+import openPositionPage from './openPositionPage';
+import ourServicesPage from './ourServicesPage';
+import playlist from './playlist';
+import playlists from './playlists';
 import reasonsCard from './reasonsCard';
 import reasonsCarousel from './reasonsCarousel';
-import linkableHeading from './linkableHeading';
-import cta from './cta';
+import redirects from './redirects';
+import serviceItem from './serviceItem';
+import servicePage from './servicePage';
+import servicesIntro from './servicesIntro';
+import siteSettings from './siteSettings';
+import socials from './socials';
+import testimonial from './testimonial';
+import videoseries from './videoseries';
+import videoseriesPage from './videoseriesPage';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -80,6 +81,7 @@ export default createSchema({
     blockContent,
     imageAndText,
     imageTextFlip,
+    headingDescButtonCta,
     guestAuthor,
     servicesIntro,
     reasonsCard,

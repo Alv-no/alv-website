@@ -1,8 +1,8 @@
-import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
-import * as styles from './Serializers.module.css';
+import React from 'react';
 import * as Button from '../button';
-import { DropdownArrow, Cross } from '../icon';
+import { Cross, DropdownArrow } from '../icon';
+import * as styles from './Serializers.module.css';
 
 const Image = ({ props, link, urlBuilder }) => (
   <a href={link} className={styles.wrapper}>
@@ -95,6 +95,7 @@ export function richTextTypesSerializer(config) {
           ) : null}
         </div>
       ),
+      headingDescButtonCta: (props) => <HeadingDescButtonCta {...props} />,
     },
     marks: {
       'alv-yellow': ({ children }) => (
@@ -118,4 +119,42 @@ const ShowMediaToggle = () => (
       </div>
     </div>
   </>
+);
+
+const HeadingDescButtonCta = ({
+  heading,
+  description,
+  buttonLink,
+  buttonText,
+  whiteOnBlue,
+  layout,
+}) => (
+  <section
+    className={`${whiteOnBlue ? 'bg-navy text-white' : 'bg-white text-navy'} ${
+      layout === 'horizontal'
+        ? ' justify-between items-center'
+        : 'flex-col text-center'
+    } md:flex md:px-8 py-8 px-4   my-8 md:gap-4`}
+  >
+    <div>
+      <span
+        className={`block ${
+          layout === 'horizontal' ? 'mb-0' : 'mb-1'
+        } font-thin`}
+      >
+        {description}
+      </span>
+      <h2 className="text-cta-section font-semibold">{heading}</h2>
+    </div>
+    <div>
+      <a
+        href={buttonLink}
+        className={`block px-5 rounded-full font-semibold text-base uppercase tracking-wider py-1 md:mt-0 mt-3 border border-2 whitespace-nowrap ${
+          whiteOnBlue ? 'border-white' : 'border-navy'
+        } `}
+      >
+        {buttonText}
+      </a>
+    </div>
+  </section>
 );
