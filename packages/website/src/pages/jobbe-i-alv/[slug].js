@@ -24,7 +24,6 @@ const Career = ({ serverData }) => {
         <NavyIntro
           title={pageTitle}
           description={pageDescription}
-          button=""
           image={sanityOpenPostionPage.heroImage.asset.gatsbyImageData}
         />
       </div>
