@@ -49,5 +49,5 @@ stages:
                 CI_ENVIRONMENT_SLUG=$(echo "$TRUNCATED_BUILD_SOURCEBRANCH-$TRUNCATED_SYSTEM_PULLREQUEST_PULLREQUESTNUMBER" | tr "/" "-" | tr "_" "-")
 
                 # Run scripts to deploy review environment
-                ./run undeploy "" "" "" $CI_ENVIRONMENT_SLUG
+                ./run undeploy "review" "" "" $CI_ENVIRONMENT_SLUG
                 echo "Killed review environment deployed to https://$CI_ENVIRONMENT_SLUG.review.test-alv.no"
