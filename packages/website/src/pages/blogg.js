@@ -36,8 +36,8 @@ const Blog = ({ data, serverData }) => {
   return (
     <Layout
       whiteIcons
-      pageTitle={data.sanityBlogPage.pageTitle}
-      pageDescription={data.sanityBlogPage.pageDescription}
+      pageTitle={serverData.articles.pageMetadata.pageTitle}
+      pageDescription={serverData.articles.pageMetadata.pageDescription}
       layoutData={layoutData}
     >
       <div className="overflow-hidden">
@@ -121,10 +121,6 @@ export const query = graphql`
           current
         }
       }
-    }
-    sanityBlogPage {
-      pageTitle
-      pageDescription
     }
     site {
       siteMetadata {
