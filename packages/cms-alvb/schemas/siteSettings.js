@@ -6,6 +6,12 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'mainMenu',
+      title: 'Main menu',
+      type: 'array',
+      of: [{ type: 'menuColumn' }],
+    },
+    {
       name: 'postSlider',
       title: 'Blog posts featured in slider',
       type: 'array',
