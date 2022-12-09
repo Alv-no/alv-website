@@ -21,6 +21,8 @@ import landingPage from './landingPage';
 import titleBlockImage from './titleBlockImage';
 import founder from './founder';
 import blockImage from './blockImage';
+import mainMenu from './menuColumn';
+import menuItem from './menuItem';
 import categoryList from './categoryList';
 import localeImageText from './localeImageText';
 import titleBlock from './titleBlock';
@@ -80,6 +82,7 @@ export default createSchema({
     servicesIntro,
     blockContent,
     imageAndText,
+    mainMenu,
     titleTextButtonImage,
     ourProjectsPage,
     localeSimpleBlock,
@@ -96,6 +99,7 @@ export default createSchema({
     twoImages,
     titleBlock,
     button,
+    menuItem,
     blockImage,
     titleTextButton,
     productCta,

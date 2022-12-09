@@ -1,16 +1,18 @@
 import Link from 'gatsby-link';
 import React from 'react';
-import { SocialLinks } from '../socialLinks';
 import { LargeLink, SubtitleLink } from 'shared-components';
 import { Cross } from 'shared-components/src/components/icon';
-import config from '../../config';
+import { useNavigationQuery } from '../../hookspages/useNavigationQuery';
+import { SocialLinks } from '../socialLinks';
 
-export const Navigation = ({ open, toggleClose, logo, navItems }) => {
+export const Navigation = ({ open, toggleClose, logo }) => {
+  const { mainMenu } = useNavigationQuery();
+
   return (
     <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
       <div className="flex eight:justify-center h-full eight:items-center relative eight:-top-16">
         <div className="eight:flex transition duration-300 gap-x-16 justify-center w-full">
-          <LocaleNav localeNavArr={navItems} />
+          <NavColumns navItems={mainMenu} />
         </div>
       </div>
     </NavLayout>
@@ -57,22 +59,20 @@ const CloseButton = ({ toggleClose }) => (
   </button>
 );
 
-const LocaleNav = ({ localeNavArr }) => {
-  const locale = config.LOCALE;
-
-  return localeNavArr?.map((navItem, index) => (
+const NavColumns = ({ navItems }) => {
+  return navItems?.map((navItem, index) => (
     <div key={index} className={'relative z-70'}>
       <LargeLink
         mobileDropdown
-        link={navItem[locale].link || '#'}
-        white={!navItem[locale].link}
+        link={navItem.link || '#'}
+        white={!navItem.link}
       >
-        {navItem[locale].text}
+        {navItem.title}
       </LargeLink>
 
-      {navItem[locale].children?.map((child, index) => (
-        <SubtitleLink key={index} link={child.link}>
-          {child.text}
+      {navItem.items?.map((el, index) => (
+        <SubtitleLink key={index} link={el.link}>
+          {el.title}
         </SubtitleLink>
       ))}
     </div>
