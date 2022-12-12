@@ -36,8 +36,8 @@ const Blog = ({ data, serverData }) => {
   return (
     <Layout
       whiteIcons
-      pageTitle={serverData.articles.pageMetadata.pageTitle}
-      pageDescription={serverData.articles.pageMetadata.pageDescription}
+      pageTitle={serverData.articles.pageMetadata[0].pageTitle}
+      pageDescription={serverData.articles.pageMetadata[0].pageDescription}
       layoutData={layoutData}
     >
       <div className="overflow-hidden">

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
-import { createGatsbyImages } from '../server-side/imageCreator';
 import { client } from '../server-side/client';
+import { createGatsbyImages } from '../server-side/imageCreator';
 export async function getBlogDataServerSide() {
   const response = await client.query({
     fetchPolicy: 'no-cache',
@@ -68,5 +68,6 @@ export async function getBlogDataServerSide() {
   response.data.articles.forEach((article) => {
     createGatsbyImages(article);
   });
+
   return response.data;
 }
