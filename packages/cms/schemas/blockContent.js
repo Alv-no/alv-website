@@ -69,7 +69,7 @@ export default {
       type: 'cta',
     },
     {
-      title: 'HeadingDescButtonCta',
+      title: 'Text CTA',
       type: 'headingDescButtonCta',
     },
   ],
