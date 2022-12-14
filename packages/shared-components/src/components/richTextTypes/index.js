@@ -95,7 +95,7 @@ export function richTextTypesSerializer(config) {
           ) : null}
         </div>
       ),
-      headingDescButtonCta: (props) => <HeadingDescButtonCta {...props} />,
+      headingDescButtonCta: (props) => <HeadingDescButtonCta {...props.node} />,
     },
     marks: {
       'alv-yellow': ({ children }) => (
@@ -130,26 +130,26 @@ const HeadingDescButtonCta = ({
   layout,
 }) => (
   <section
-    className={`${whiteOnBlue ? 'bg-navy text-white' : 'bg-white text-navy'} ${
+    className={`${
+      whiteOnBlue ? 'bg-navy text-white my-10 py-8' : 'bg-white text-navy mt-10'
+    } ${
       layout === 'horizontal'
         ? ' justify-between items-center'
         : 'flex-col text-center'
-    } md:flex md:px-8 py-8 px-4   my-8 md:gap-4`}
+    } md:flex md:px-8 px-4 md:gap-6 tracking-wider`}
   >
     <div>
-      <span
-        className={`block ${
-          layout === 'horizontal' ? 'mb-0' : 'mb-1'
-        } font-thin`}
-      >
+      <span className={`block ${layout === 'horizontal' ? 'mb-0' : 'mb-1'}`}>
         {description}
       </span>
-      <h2 className="text-cta-section font-semibold">{heading}</h2>
+      <h2 className="text-cta-section font-semibold" style={{ marginTop: 0 }}>
+        {heading}
+      </h2>
     </div>
     <div>
       <a
         href={buttonLink}
-        className={`block px-5 rounded-full font-semibold text-base uppercase tracking-wider py-1 md:mt-0 mt-3 border border-2 whitespace-nowrap ${
+        className={`inline-block px-5 rounded-full font-semibold text-base uppercase tracking-wider py-1 md:mt-0 mt-3 border border-2 whitespace-nowrap ${
           whiteOnBlue ? 'border-white' : 'border-navy'
         } `}
       >
