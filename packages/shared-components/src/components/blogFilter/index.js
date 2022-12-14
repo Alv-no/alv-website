@@ -76,14 +76,19 @@ export const BlogFilter = ({
   }, [activeTags, activeAuthors, allArticles]);
 
   // Add or remove tag from current filter config
+  // Converts tag to lowercase to allow for case insensitive url query params
   const tagClick = (e) => {
     const currentTag = e.target.id.toLowerCase();
-    let newFilter = [...activeTags.map((tag) => tag.toLowerCase())];
-
-    if (newFilter.includes(currentTag)) {
-      newFilter = activeTags.filter((tag) => tag !== currentTag);
+    const activeTagsLowercase = [...activeTags.map((tag) => tag.toLowerCase())];
+    let newFilter = [...activeTags];
+    if (activeTagsLowercase.includes(currentTag)) {
+      newFilter = [
+        ...activeTags.filter(
+          (tag) => tag.toLowerCase() !== currentTag.toLowerCase()
+        ),
+      ];
     } else {
-      newFilter.push(currentTag);
+      newFilter.push(e.target.id);
     }
     setActiveTags(newFilter);
   };
@@ -142,8 +147,8 @@ export const FilterField = ({
         type="checkbox"
       />
       <div
-        style={{ zIndex: 60 }}
-        className={`${styles.filter} absolute w-full px-12 py-8 rounded-md bg-white mt-9 left-0 top-0 flex border-b border-l border-r border-bordergray`}
+        style={{ zIndex: 60, background: 'white' }}
+        className={`${styles.filter} bg-white absolute w-full px-12 py-8 rounded-md bg-white mt-9 left-0 top-0 flex border-b border-l border-r border-bordergray`}
       >
         <FilterOption onChange={tagClick} tags={tags} activeTags={activeTags}>
           {isEnLocale ? 'Categories' : 'Kategorier'}
