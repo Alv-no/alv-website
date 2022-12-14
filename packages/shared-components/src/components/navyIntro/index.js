@@ -9,7 +9,7 @@ export const NavyIntro = ({ title, description, image, white, blueDot }) => (
       <div className="sm:z-40 -mt-20 -mb-2">
         <BgImage image={image}>
           <div className="bg-navy bg-opacity-75 w-full px-5 py-10 sm:h-620 h-screen flex flex-col justify-center items-center sm:py-16">
-            <Title blueDot={blueDot} align="text-left">
+            <Title blueDot={blueDot} align="text-center">
               <span
                 className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
                   white && 'text-white'
