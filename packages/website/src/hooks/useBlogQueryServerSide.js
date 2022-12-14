@@ -58,7 +58,7 @@ export async function getBlogDataServerSide() {
             current
           }
         }
-        pageMetadata: allBlogPage {
+        pageMetaData: allBlogPage {
           pageTitle
           pageDescription
         }
@@ -69,5 +69,9 @@ export async function getBlogDataServerSide() {
     createGatsbyImages(article);
   });
 
-  return response.data;
+  response.data.pageMetaData = response.data.pageMetaData[0];
+
+  const { pageMetaData, articles } = response.data;
+
+  return { pageMetaData, articles };
 }

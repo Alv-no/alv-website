@@ -13,7 +13,9 @@ const Blog = ({ data, serverData }) => {
     site: data.site,
   };
 
-  const articles = serverData.articles.articles
+  const { pageMetaData, articles } = serverData;
+
+  const formattedArticles = articles
     .filter((article) => article.publishedAt !== null)
     .map((article) => {
       const date = new Date(article.publishedAt);
@@ -26,8 +28,8 @@ const Blog = ({ data, serverData }) => {
     .sort((a, b) => a.date > b.date)
     .reverse();
 
-  const featuredArticle = articles[0];
-  articles.shift();
+  const featuredArticle = formattedArticles[0];
+  formattedArticles.shift();
 
   const eyebrowText = 'Vår nyeste artikkel';
   const postPrefix = 'blogg';
@@ -36,8 +38,8 @@ const Blog = ({ data, serverData }) => {
   return (
     <Layout
       whiteIcons
-      pageTitle={serverData.articles.pageMetadata[0].pageTitle}
-      pageDescription={serverData.articles.pageMetadata[0].pageDescription}
+      pageTitle={pageMetaData.pageTitle}
+      pageDescription={pageMetaData.pageDescription}
       layoutData={layoutData}
     >
       <div className="overflow-hidden">
@@ -57,7 +59,7 @@ const Blog = ({ data, serverData }) => {
           </div>
         </IntroContainer>
         <BlogSection
-          allArticles={articles}
+          allArticles={formattedArticles}
           readMoreText={readMoreText}
           postPrefix={postPrefix}
         />
@@ -71,7 +73,7 @@ export default Blog;
 export async function getServerData() {
   try {
     return {
-      props: { articles: await getBlogDataServerSide() },
+      props: await getBlogDataServerSide(),
       status: 200,
     };
   } catch {
