@@ -191,13 +191,15 @@ const Slide = ({
               </div>
             </div>
           </BgImage>
-          <GatsbyImage
-            className="sm:hidden"
-            image={
-              (article.mainImage && article.mainImage.asset.gatsbyImageData) ||
-              fallbackImg
-            }
-          />
+          <div className="sm:hidden">
+            <GatsbyImage
+              image={
+                (article.mainImage &&
+                  article.mainImage.asset.gatsbyImageData) ||
+                fallbackImg
+              }
+            />
+          </div>
           <div
             className={`grid ${blueText ? 'text-navy' : 'text-white'}`}
             style={{ gridTemplateColumns: '80% auto' }}
