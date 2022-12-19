@@ -10,6 +10,7 @@ export default {
       options: {
         maxLength: 60,
       },
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'pageDescription',
@@ -19,6 +20,7 @@ export default {
       options: {
         maxLength: 160,
       },
+      validation: (Rule) => Rule.required(),
     },
   ],
 };
