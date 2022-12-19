@@ -26,7 +26,7 @@ export const BlogFilter = ({
 
     sort === 'newest' &&
       sortedActive.sort((a, b) => (a.rawDate < b.rawDate ? -1 : 1));
-    sort === 'newest' &&
+    sort === 'oldest' &&
       sortedActive.sort((a, b) => (a.rawDate < b.rawDate ? 1 : -1));
 
     onChange(sortedActive);
