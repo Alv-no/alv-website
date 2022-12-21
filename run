@@ -168,9 +168,6 @@ function deployServices() {
       --set image.tag="$TAG" \
       --set "hosts={$HOSTS}" \
       --namespace "alv-no"
-    sleep 20
-
-    curl "https://$ALV_HOSTNAME"
 
     if [ "$ENV_INPUT" = "review" ]; then
       commentPullRequest "https://$HOSTS" $PULL_REQUEST_NUMBER
