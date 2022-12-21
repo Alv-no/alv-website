@@ -90,19 +90,19 @@ const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
       <div className="flex eight:justify-center h-full eight:items-center relative eight:-top-16">
         <div className="eight:flex transition duration-300 gap-x-16 justify-center">
           <GenerateLinks
-            title="Hva vi tilbyr"
+            title="Vi tilbyr Truls"
             linksArr={categoryPages}
             parentPage="/vi-tilbyr"
           />
           <GenerateLinks
-            title="Hvem vi er"
+            title="Vi er Truls"
             linksArr={filteredCompanyPages}
             parentPage="/om-oss"
             mainLinkText="Om oss"
           >
             <SubtitleLink link="/ansatte">Ansatte</SubtitleLink>
           </GenerateLinks>
-          <GenerateLinks title="Mer om alv">
+          <GenerateLinks title="Mer om Truls">
             <SubtitleLink link="/jobbe-i-alv">Ledige stillinger</SubtitleLink>
             <SubtitleLink link="/videoserie">Videoserien</SubtitleLink>
             <SubtitleLink link="/om-oss/kunder-og-prosjekter">
