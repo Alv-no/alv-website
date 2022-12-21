@@ -5,6 +5,7 @@ pr:
   paths:
     include:
       - packages/website/*
+      - packages/shared-components/*
 
 trigger: none
 
