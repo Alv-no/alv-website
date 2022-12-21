@@ -1,7 +1,7 @@
 steps:
   - task: HelmInstaller@0
     inputs:
-      helmVersion: "3.5.3"
+      helmVersion: "3.7.2"
       checkLatestHelmVersion: false
       installKubectl: true
 
