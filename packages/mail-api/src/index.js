@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sgMail = require('@sendgrid/mail');
+const formidable = require('formidable');
 const dotenv = require('dotenv');
 const app = express();
 const port = 80;
+const fs = require('fs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +18,7 @@ dotenv.config({
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
   res.send('Hello');
 });
 
@@ -58,6 +60,71 @@ app.post('/send', (req, res) => {
       console.error(error);
       res.sendStatus(500);
     });
+
+  res.sendStatus(200);
+});
+
+// job application forms
+app.post('/jobApplication/send', (req, res) => {
+  const form = formidable({ multiples: true });
+
+  form.parse(req, async (err, fields, { files }) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+      return;
+    }
+
+    const { email, subject, name } = fields;
+
+    // Create mail body from form fields
+    let mailbody = '';
+    if (name) mailbody += '\nNavn: ' + name;
+    if (email) mailbody += '\nEpost: ' + email;
+
+    // Create mail object
+    const msg = {
+      to: 'mikkel@alv.no', // for testing purposes
+      from: 'itadmin@alv.no',
+      subject: subject,
+      text: mailbody,
+    };
+
+    if (files) {
+      const attachments = [];
+
+      // Convert files to array if only one file is uploaded
+      [files].length === 1 && (files = [files]);
+
+      // Convert files to base64 and add to attachments array
+      for (const file in files) {
+        const base64content = await fs.promises.readFile(files[file].filepath, {
+          encoding: 'base64',
+        });
+
+        attachments.push({
+          content: base64content,
+          filename: files[file].originalFilename,
+          type: files[file].mimetype,
+          disposition: 'attachment',
+        });
+      }
+
+      msg.attachments = attachments;
+    }
+
+    // Send mail
+    sgMail
+      .send(msg)
+      .then(() => {
+        res.json({ fields, files, status: 'email sent successfully' });
+      })
+      .catch((error) => {
+        console.error(error);
+        console.error(error.response.body);
+        res.json(error);
+      });
+  });
 });
 
 app.listen(port, () => {

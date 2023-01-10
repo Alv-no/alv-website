@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import React from 'react';
 import { NavyIntro } from '../../../../shared-components/src/components/navyIntro';
+import ApplyForm from '../../components/applyForm';
 import Layout from '../../components/layout';
 import { StyledBlockContent } from '../../components/styledBlockContent';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
@@ -8,10 +9,14 @@ import { client } from '../../server-side/client';
 import { createGatsbyImages } from '../../server-side/imageCreator';
 
 const Career = ({ serverData }) => {
-  const sanityOpenPostionPage = serverData.career;
   const layoutData = useLayoutQuery();
 
-  const { pageDescription, pageTitle } = serverData.career;
+  const {
+    pageDescription,
+    pageTitle,
+    heroImage,
+    _rawJobDescription,
+  } = serverData;
 
   return (
     <Layout
@@ -24,19 +29,32 @@ const Career = ({ serverData }) => {
         <NavyIntro
           title={pageTitle}
           description={pageDescription}
-          image={sanityOpenPostionPage.heroImage.asset.gatsbyImageData}
+          image={heroImage.asset.gatsbyImageData}
         />
       </div>
       <div
-        className="bg-white max-w-1200 mx-auto lg:grid xl:pl-25 sm:px-12 lg:pr-0 px-5 pt-8 pb-18 gap-x-12"
-        style={{ gridTemplateColumns: '60% auto' }}
+        className="bg-white max-w-1200 mx-auto lg:grid sm:px-12 lg:pr-0 pt-12 lg:pb-18 sm:pb-8 gap-x-12"
+        style={{
+          gridTemplateColumns: '55% minmax(min-content, 500px)',
+        }}
       >
-        <StyledBlockContent blocks={sanityOpenPostionPage._rawJobDescription} />
+        <div className="px-5">
+          <StyledBlockContent blocks={_rawJobDescription} />
+        </div>
         <div>
-          <div
-            className="lg:mt-10 mt-20"
-            dangerouslySetInnerHTML={{ __html: sanityOpenPostionPage.embed }}
-          />
+          <div className="tracking-wider py-10 bg-[#fafafb] px-8 mt-6 lg:mt-0">
+            <h2 className="text-xl font-bold mb-4 uppercase mb-4">
+              Legg igjen kontaktinformasjonen din her, så tar vi kontakt med
+              deg!
+            </h2>
+            <p className="mb-6">
+              Vi kommer til å be deg sende over CV og eventuelt andre ting vi
+              trenger for å vurdere deg for stillingen. Du kan gjerne sende din
+              CV til oss på hei@alv.no allerede nå. Vi gleder oss til å høre fra
+              deg!
+            </p>
+            <ApplyForm jobTitle={pageTitle} />
+          </div>
         </div>
       </div>
     </Layout>
@@ -61,7 +79,6 @@ async function getPositionDataServerSide(slug) {
           }
           pageDescription
           pageTitle
-          embed
           heroImage {
             asset {
               id: _id
@@ -87,10 +104,9 @@ export async function getServerData(context) {
   try {
     const slug = context.params['slug'];
     const career = await getPositionDataServerSide(slug);
+
     return {
-      props: {
-        career,
-      },
+      props: career,
       status: 200,
     };
   } catch {
