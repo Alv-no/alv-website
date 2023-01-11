@@ -1,14 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { MdDelete, MdUpload } from 'react-icons/md';
 
-interface TextInputsProps {
-  name?: string;
-  email?: string;
-}
-
-const ApplyForm = ({ jobTitle }: { jobTitle: string }) => {
-  const [files, setFiles] = useState<FileList | null>(null);
-  const [formInputs, setFormInputs] = useState<TextInputsProps>({
+const ApplyForm = ({ jobTitle }) => {
+  const [status, setStatus] = useState('validating');
+  const [files, setFiles] = useState(null);
+  const [formInputs, setFormInputs] = useState({
     name: '',
     email: '',
   });
@@ -20,8 +16,10 @@ const ApplyForm = ({ jobTitle }: { jobTitle: string }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/jobApplication/send`;
 
     const { name, email } = formInputs;
 
@@ -37,11 +35,40 @@ const ApplyForm = ({ jobTitle }: { jobTitle: string }) => {
       }
     }
 
-    fetch('http://localhost:80/jobApplication/send', {
+    setStatus('loading');
+
+    fetch(mailApiUrl, {
       method: 'POST',
       body: formData,
-    });
+    })
+      .then(() => {
+        setTimeout(() => {
+          setStatus('success');
+        }, 400);
+      })
+      .catch(() => {
+        setTimeout(() => {
+          setStatus('error');
+        }, 400);
+      });
   };
+
+  if (status === 'success') {
+    return <FeedbackMsg msg="Vellykket. Takk for din søknad!" color="green" />;
+  }
+
+  if (status === 'error') {
+    return (
+      <FeedbackMsg
+        msg="Ops! Det har oppstått en feil. Prøv igjen."
+        color="red"
+      />
+    );
+  }
+
+  if (status === 'loading') {
+    return <FeedbackMsg msg="Laster..." color="gray" />;
+  }
 
   return (
     <form className="grid" onSubmit={handleSubmit}>
@@ -50,6 +77,7 @@ const ApplyForm = ({ jobTitle }: { jobTitle: string }) => {
         className={
           'rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3'
         }
+        data-testid="name-input"
         name="name"
         value={formInputs.name}
         onChange={handleInputChange}
@@ -61,31 +89,22 @@ const ApplyForm = ({ jobTitle }: { jobTitle: string }) => {
         className={
           'rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3'
         }
+        data-testid="email-input"
         onChange={handleInputChange}
         required
         name="email"
         value={formInputs.email}
         type="email"
       />
-
       <UploadAttachments files={files} setFiles={setFiles} />
-      <button
-        type="submit"
-        className="mt-4 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider hover:bg-yellow hover:text-navy mx-auto w-full xs:w-auto"
-      >
-        Send inn
-      </button>
+      <SubmitButton />
     </form>
   );
 };
 
-interface UploadAttachmentsProps {
-  files: FileList | null;
-  setFiles: (files: FileList | null) => void;
-}
-
-const UploadAttachments = ({ files, setFiles }: UploadAttachmentsProps) => {
-  const hiddenFileInput = useRef<HTMLInputElement>(null);
+const UploadAttachments = (props) => {
+  const { files, setFiles } = props;
+  const hiddenFileInput = useRef(null);
 
   const handleInputClick = () => {
     if (hiddenFileInput.current) hiddenFileInput.current.click();
@@ -119,6 +138,7 @@ const UploadAttachments = ({ files, setFiles }: UploadAttachmentsProps) => {
         multiple
         type="file"
         name="files"
+        data-testid="file-upload"
         ref={hiddenFileInput}
         onChange={(e) => setFiles(e.target.files)}
         className="opacity-0 border absolute left-0 w-24"
@@ -134,6 +154,34 @@ const UploadAttachments = ({ files, setFiles }: UploadAttachmentsProps) => {
             </li>
           ))}
       </ul>
+    </div>
+  );
+};
+
+const SubmitButton = () => (
+  <button
+    type="submit"
+    data-testid="submit-btn"
+    className="mt-4 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider hover:bg-yellow hover:text-navy mx-auto w-full xs:w-auto"
+  >
+    Send inn
+  </button>
+);
+
+const FeedbackMsg = ({ msg, color }) => {
+  const colorMapper = {
+    green: 'bg-green-100  border-green-400 text-green-700',
+    red: 'bg-red-100 border-red-400 text-red-700',
+    gray: 'bg-gray-100 border-gray-400 text-gray-700',
+  };
+
+  return (
+    <div
+      className={'border px-4 py-3 rounded relative ' + colorMapper[color]}
+      role="alert"
+      data-testid="feedback-msg"
+    >
+      <strong className="font-bold">{msg}</strong>
     </div>
   );
 };
