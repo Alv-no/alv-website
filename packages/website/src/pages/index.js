@@ -7,6 +7,7 @@ import {
   Hire,
   HireAlt,
   OurServices,
+  VideoIntro,
   WhoWeAre,
 } from 'shared-components';
 import LandingPageHero from '../components/landingPageHero';
@@ -29,6 +30,9 @@ const Index = ({ data, serverData }) => {
   const blogCarouselArticles =
     serverData.blogCarousel?.selectedArticles || recentArticles;
 
+  const maxWidth = 1440;
+  const theme = 'navy';
+
   return (
     <Layout
       whiteIcons
@@ -47,9 +51,21 @@ const Index = ({ data, serverData }) => {
           showContactForm={serverData.contactSchemaVisible}
         />
         <Container
-          className="mt-12 sm:mt-2"
           theme="navy"
           maxWidth="1440"
+          removePaddingBottom
+          removePaddingMobile="top"
+        >
+          <VideoIntro
+            videoMp4={serverData.videoMp4.asset.url}
+            videoWebm={serverData.videoWebm.asset.url}
+          >
+            {serverData.videoTextOverlay}
+          </VideoIntro>
+        </Container>
+        <Container
+          theme={theme}
+          maxWidth={maxWidth}
           removePaddingMobile="bottom"
         >
           <WhoWeAre
@@ -59,14 +75,14 @@ const Index = ({ data, serverData }) => {
             config={config}
           />
         </Container>
-        <Container theme="navy" maxWidth="1440">
+        <Container theme={theme} maxWidth={maxWidth}>
           <OurServices
             darkFade
             {...landingPage.section2Services}
             leftAlignTopSection
           />
         </Container>
-        <Container theme="navy" maxWidth="1440" removePaddingMobile="top">
+        <Container theme={theme} maxWidth={maxWidth} removePaddingMobile="top">
           <Hire
             darkFade
             title={landingPage.flipSection1Title}
@@ -76,7 +92,7 @@ const Index = ({ data, serverData }) => {
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
           />
         </Container>
-        <Container theme="navy" maxWidth="1440" removePaddingMobile="top">
+        <Container theme={theme} maxWidth={maxWidth} removePaddingMobile="top">
           <HireAlt
             darkFade
             title={landingPage.flipSection3Title}
@@ -87,7 +103,7 @@ const Index = ({ data, serverData }) => {
         </Container>
         <BlogSlider
           articles={blogCarouselArticles}
-          maxWidth="1440"
+          maxWidth={maxWidth}
           readMoreText="Les mer"
           heading="Blogg"
           postPrefix="blogg"
@@ -110,6 +126,17 @@ async function fetchServerSideData() {
           showCallToAction
           contactSchemaVisible
           ctaPosition
+          videoTextOverlay
+          videoWebm {
+            asset {
+              url
+            }
+          }
+          videoMp4 {
+            asset {
+              url
+            }
+          }
           blogCarousel {
             selectedArticles {
               slug {
@@ -176,7 +203,6 @@ export const query = graphql`
     sanityLandingPage {
       pageDescription
       pageTitle
-      videoTextOverlay
       flipSection1Image {
         asset {
           gatsbyImageData
