@@ -84,7 +84,7 @@ app.post('/jobApplication/send', (req, res) => {
 
     // Create mail object
     const msg = {
-      to: 'mikkel@alv.no', // for testing purposes
+      to: process.env.MAILTO,
       from: 'itadmin@alv.no',
       subject: subject,
       text: mailbody,
