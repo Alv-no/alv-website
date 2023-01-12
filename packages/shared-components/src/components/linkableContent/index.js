@@ -23,7 +23,7 @@ export const LinkableContent = ({
       if (el._type === 'linkableHeading') {
         heading = el.Heading;
       } else {
-        heading = el.linkableBlock.find((node) => node.Heading)?.Heading;
+        heading = el.linkableBlock?.find((node) => node.Heading)?.Heading;
       }
       let formattedId = heading?.split(' ').join('-');
       formattedId = formattedId?.toLowerCase();
