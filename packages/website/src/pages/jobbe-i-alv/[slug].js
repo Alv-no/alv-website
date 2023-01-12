@@ -12,9 +12,11 @@ const Career = ({ serverData }) => {
   const layoutData = useLayoutQuery();
 
   const {
-    pageDescription,
     pageTitle,
+    pageDescription,
     heroImage,
+    formHeader,
+    formDescription,
     _rawJobDescription,
   } = serverData;
 
@@ -44,15 +46,9 @@ const Career = ({ serverData }) => {
         <div>
           <div className="tracking-wider py-10 bg-[#fafafb] px-8 mt-6 lg:mt-0">
             <h2 className="text-xl font-bold mb-4 uppercase mb-4">
-              Legg igjen kontaktinformasjonen din her, så tar vi kontakt med
-              deg!
+              {formHeader}
             </h2>
-            <p className="mb-6">
-              Vi kommer til å be deg sende over CV og eventuelt andre ting vi
-              trenger for å vurdere deg for stillingen. Du kan gjerne sende din
-              CV til oss på hei@alv.no allerede nå. Vi gleder oss til å høre fra
-              deg!
-            </p>
+            <p className="mb-6">{formDescription}</p>
             <ApplyForm jobTitle={pageTitle} />
           </div>
         </div>
@@ -79,6 +75,8 @@ async function getPositionDataServerSide(slug) {
           }
           pageDescription
           pageTitle
+          formHeader
+          formDescription
           heroImage {
             asset {
               id: _id
