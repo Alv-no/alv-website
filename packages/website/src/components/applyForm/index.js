@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { MdDelete, MdUpload } from 'react-icons/md';
 
 const ApplyForm = ({ jobTitle }) => {
   const [status, setStatus] = useState('validating');
-  const [files, setFiles] = useState(null);
   const [formInputs, setFormInputs] = useState({
     name: '',
     email: '',
@@ -20,7 +18,6 @@ const ApplyForm = ({ jobTitle }) => {
     e.preventDefault();
 
     const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/jobApplication/send`;
-
     const { name, email } = formInputs;
 
     const formData = new FormData();
@@ -28,12 +25,6 @@ const ApplyForm = ({ jobTitle }) => {
     formData.append('subject', 'Jobbsøknad - ' + jobTitle);
     name && formData.append('name', name);
     email && formData.append('email', email);
-
-    if (files) {
-      for (let i = 0; i < files.length; i++) {
-        formData.append('files', files[i]);
-      }
-    }
 
     setStatus('loading');
 
@@ -71,7 +62,7 @@ const ApplyForm = ({ jobTitle }) => {
   }
 
   return (
-    <form className="grid" onSubmit={handleSubmit}>
+    <form className="grid" onSubmit={handleSubmit} data-testid="form">
       <label className="mb-2">Navn *</label>
       <input
         className={
@@ -96,13 +87,12 @@ const ApplyForm = ({ jobTitle }) => {
         value={formInputs.email}
         type="email"
       />
-      <UploadAttachments files={files} setFiles={setFiles} />
       <SubmitButton />
     </form>
   );
 };
 
-const UploadAttachments = (props) => {
+export const UploadAttachments = (props) => {
   const { files, setFiles } = props;
   const hiddenFileInput = useRef(null);
 
@@ -123,12 +113,13 @@ const UploadAttachments = (props) => {
       >
         <span className="flex items-center">
           {files ? (
-            <>
-              Fjern vedlegg <MdDelete className="mt-2px ml-2px" size="20" />
-            </>
+            <>Fjern vedlegg</>
           ) : (
             <>
-              Last opp <MdUpload className="mt-1 ml-2px" size="20" />
+              Last opp
+              <span className="text-sm mt-1 ml-1 font-normal">
+                (.docx eller .pdf)
+              </span>
             </>
           )}
         </span>
@@ -138,6 +129,8 @@ const UploadAttachments = (props) => {
         multiple
         type="file"
         name="files"
+        max={3}
+        accept=".pdf, .docx"
         data-testid="file-upload"
         ref={hiddenFileInput}
         onChange={(e) => setFiles(e.target.files)}

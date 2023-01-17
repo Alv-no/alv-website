@@ -58,7 +58,6 @@ export const useServicesQuery = () => {
           section3description
           section2Title
           section2Eyebrow
-          section2ImageText
           section7description
           section6description
           mainImage {

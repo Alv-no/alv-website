@@ -8,8 +8,7 @@ switch (config.NODE_ENV) {
     configuration = {
       SANITY_TOKEN: config.SANITY_TOKEN || process.env.SANITY_TOKEN,
       SANITY_PROJECT_ID: 'mnr37rl0',
-      SANITY_DATASET:
-        config.SANITY_DATASET || process.env.SANITY_DATASET || 'production',
+      SANITY_DATASET: 'development',
       SANITY_TAG: 'default',
       YT_API: config.YT_API,
     };

@@ -6,7 +6,8 @@ const formidable = require('formidable');
 const dotenv = require('dotenv');
 const app = express();
 const port = 80;
-const fs = require('fs');
+const { readFile } = require('fs').promises;
+const { validateEmailAttachment } = require('./utils');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -66,6 +67,8 @@ app.post('/send', (req, res) => {
 
 // job application forms
 app.post('/jobApplication/send', (req, res) => {
+  let errorMsg = '';
+
   const form = formidable({ multiples: true });
 
   form.parse(req, async (err, fields, { files }) => {
@@ -90,39 +93,53 @@ app.post('/jobApplication/send', (req, res) => {
       text: mailbody,
     };
 
+    // Validate request content type
+    if (!req.headers['content-type'].includes('multipart/form-data')) {
+      errorMsg += 'Content type must be of multipart/form-data.';
+      return;
+    }
+
     if (files) {
       const attachments = [];
 
       // Convert files to array if only one file is uploaded
       [files].length === 1 && (files = [files]);
 
-      // Convert files to base64 and add to attachments array
       for (const file in files) {
-        const base64content = await fs.promises.readFile(files[file].filepath, {
-          encoding: 'base64',
-        });
+        const { filepath } = files[file];
+        const attachmentErrors = validateEmailAttachment(files[file]);
+
+        if (attachmentErrors) {
+          errorMsg += attachmentErrors;
+          return;
+        }
+
+        // Upon successful validation - convert file to base64 and add to attachments array
+        const base64content = await readFile(filepath, { encoding: 'base64' });
 
         attachments.push({
           content: base64content,
-          filename: files[file].originalFilename,
+          filename: files[file].newFilename,
           type: files[file].mimetype,
           disposition: 'attachment',
         });
       }
+    }
 
-      msg.attachments = attachments;
+    if (errorMsg) {
+      res.status(400).send(errorMsg);
+      return;
     }
 
     // Send mail
     sgMail
       .send(msg)
       .then(() => {
-        res.json({ fields, files, status: 'email sent successfully' });
+        res.sendStatus(200);
       })
       .catch((error) => {
         console.error(error);
-        console.error(error.response.body);
-        res.json(error);
+        res.sendStatus(500);
       });
   });
 });
