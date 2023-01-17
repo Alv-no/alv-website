@@ -58,12 +58,12 @@ export const ImageTextListHero = ({
           </div>
           <div className="text-white hidden twelve:flex grid sm:grid-cols-2 mt-5 w-full lg:pl-8 xl:pl-0 ml-18 mr-40 twelve:max-w-720">
             <div className="divide-y-2 divide-white divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
-              {positionsListLeft.map((el) => (
+              {positionsListLeft?.map((el) => (
                 <Roles link={el.slug.current}>{el.pageTitle}</Roles>
               ))}
             </div>
             <div className="divide-y-2 divide-white divide-solid h-full flex flex-col justify-end w-full flex-1 mr-10">
-              {positionsListRight.map((el) => (
+              {positionsListRight?.map((el) => (
                 <Roles link={el.slug.current}>{el.pageTitle}</Roles>
               ))}
               <Mail link="mailto: hei@alv.no">Send inn åpen søknad</Mail>
@@ -78,12 +78,12 @@ export const ImageTextListHero = ({
       </div>
       <div className="text-white  twelve:hidden grid gap-x-10 sm:grid-cols-2 sm:px-12 px-5 mt-5 sm:mt-5 pb-10">
         <div className="border-b-2 border-divide sm:border-none divide-y-2 divide-divide mr-10 divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
-          {positionsListLeft.map((el) => (
+          {positionsListLeft?.map((el) => (
             <Roles link={el.slug.current}>{el.pageTitle}</Roles>
           ))}
         </div>
         <div className="divide-y-2 divide-divide divide-solid h-full flex flex-col justify-end w-full flex-1 mr-10">
-          {positionsListRight.map((el) => (
+          {positionsListRight?.map((el) => (
             <Roles link={el.slug.current}>{el.pageTitle}</Roles>
           ))}
           <Mail link="mailto: hei@alv.no">Send inn åpen søknad</Mail>

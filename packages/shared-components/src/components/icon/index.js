@@ -18,6 +18,38 @@ export const Shade = () => (
 
 export const Dot = () => <span className="text-theme-accent">.</span>;
 
+export const Upload = (props) => (
+  <svg
+    {...props}
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+    viewBox="0 0 24 24"
+    height="20"
+    width="20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path fill="none" d="M0 0h24v24H0z"></path>
+    <path d="M5 20h14v-2H5v2zm0-10h4v6h6v-6h4l-7-7-7 7z"></path>
+  </svg>
+);
+
+export const Delete = (props) => (
+  <svg
+    {...props}
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+    viewBox="0 0 24 24"
+    height="20"
+    width="20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path fill="none" d="M0 0h24v24H0z"></path>
+    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
+  </svg>
+);
+
 export const VideoPlay = () => (
   <svg width="70" height="70" viewBox="0 0 70 70" className="text-theme-text">
     <path
