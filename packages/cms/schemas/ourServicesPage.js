@@ -63,18 +63,32 @@ export default {
       },
     },
     {
-      name: 'section2ImageText',
-      title: 'Text over image - section 2',
-      type: 'string',
-      options: {
-        maxLength: 50,
-      },
+      name: 'section2cards',
+      title: 'Cards - section 2',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'services' },
+        },
+      ],
     },
     {
       name: 'section3link',
       title: 'Category Page Link - section 3',
       type: 'reference',
       to: { type: 'categoryPage' },
+    },
+    {
+      name: 'section3cards',
+      title: 'Cards - section 3',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'services' },
+        },
+      ],
     },
     {
       name: 'section3description',
@@ -108,6 +122,17 @@ export default {
       to: { type: 'categoryPage' },
     },
     {
+      name: 'section5cards',
+      title: 'Cards - section 5',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'services' },
+        },
+      ],
+    },
+    {
       name: 'section5block',
       title: 'Text block - section 5',
       type: 'blockContent',
@@ -127,6 +152,17 @@ export default {
       to: { type: 'categoryPage' },
     },
     {
+      name: 'section6cards',
+      title: 'Cards - section 6',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'services' },
+        },
+      ],
+    },
+    {
       name: 'section6description',
       title: 'Description - section 6',
       type: 'text',
@@ -137,6 +173,17 @@ export default {
       title: 'Category Page Link - section 7',
       type: 'reference',
       to: { type: 'categoryPage' },
+    },
+    {
+      name: 'section7cards',
+      title: 'Cards - section 7',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: { type: 'services' },
+        },
+      ],
     },
     {
       name: 'section7description',
