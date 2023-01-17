@@ -1,25 +1,24 @@
 import React from 'react';
-import Layout from '../components/layout';
-import { useServicesQuery } from '../hookspages/useServicesQuery';
-import { StyledBlockContent } from '../components/styledBlockContent';
 import {
-  ServicesHero,
-  Title,
-  Description,
-  ServicesSection,
   ColumnSection,
+  Container,
+  Description,
   ImageTextCards,
   ImageTextFull,
-  Container,
   ServicesCard,
+  ServicesHero,
+  ServicesSection,
+  Title,
 } from 'shared-components';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import Layout from '../components/layout';
+import { StyledBlockContent } from '../components/styledBlockContent';
 import config from '../config';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { useServicesQuery } from '../hookspages/useServicesQuery';
 
 const Services = () => {
   const data = useServicesQuery();
   const layoutData = useLayoutQuery();
-  const cards = data.allSanityServices.edges.map((edge) => edge.node);
 
   const {
     sanityOurServicesPage: {
@@ -32,9 +31,15 @@ const Services = () => {
       section3description,
       section6description,
       section7description,
+      section3cards,
+      section6cards,
+      section7cards,
       section1Image,
       section3link,
+      section4link,
+      section5link,
       section6link,
+      section7link,
       section4Image,
       section5Image,
       section7Image,
@@ -77,30 +82,23 @@ const Services = () => {
           <Container theme="gray">
             <ServicesSection
               description={section3description}
-              title={data.sanityOurServicesPage.section3link.heroHeading}
-              link={data.sanityOurServicesPage.section3link.slug.current}
+              title={section3link.heroHeading}
+              link={section3link.slug.current}
             >
-              {cards
-                .filter(
-                  (card) =>
-                    card.parentPage.slug.current === section3link.slug.current
-                )
-                .map((card) => {
-                  return (
-                    <ServicesCard
-                      title={card.heroHeading}
-                      description={card.heroDescription}
-                      link={`${card.parentPage.slug.current}/${card.slug.current}`}
-                    />
-                  );
-                })}
+              {section3cards.map((card) => (
+                <ServicesCard
+                  title={card.heroHeading}
+                  description={card.heroDescription}
+                  link={`${section3link.slug.current}/${card.slug.current}`}
+                />
+              ))}
             </ServicesSection>
           </Container>
           {_rawSection4Block && (
             <Container>
               <ImageTextFull
-                link={data.sanityOurServicesPage.section4link.slug.current}
-                title={data.sanityOurServicesPage.section4link.heroHeading}
+                link={section4link.slug.current}
+                title={section4link.heroHeading}
                 image={section4Image.asset.gatsbyImageData}
               >
                 <StyledBlockContent blocks={_rawSection4Block} />
@@ -110,8 +108,8 @@ const Services = () => {
           {_rawSection5Block && (
             <Container>
               <ImageTextFull
-                link={data.sanityOurServicesPage.section5link.slug.current}
-                title={data.sanityOurServicesPage.section5link.heroHeading}
+                link={section5link.slug.current}
+                title={section5link.heroHeading}
                 image={section5Image.asset.gatsbyImageData}
                 flip
               >
@@ -121,41 +119,32 @@ const Services = () => {
           )}
           <Container theme="gray">
             <ServicesSection
-              title={data.sanityOurServicesPage.section6link.heroHeading}
+              title={section6link.heroHeading}
               description={section6description}
-              link={data.sanityOurServicesPage.section6link.slug.current}
+              link={section6link.slug.current}
             >
-              {cards
-                .filter(
-                  (card) =>
-                    card.parentPage.slug.current === section6link.slug.current
-                )
-                .map((card) => {
-                  return (
-                    <ServicesCard
-                      title={card.heroHeading}
-                      description={card.heroDescription}
-                      link={`${card.parentPage.slug.current}/${card.slug.current}`}
-                    />
-                  );
-                })}
-            </ServicesSection>
-          </Container>
-          <ImageTextCards
-            title={data.sanityOurServicesPage.section7link.heroHeading}
-            image={section7Image.asset.gatsbyImageData}
-            description={section7description}
-            link={data.sanityOurServicesPage.section7link.slug.current}
-          >
-            {cards.slice(4, 6).map((card) => {
-              return (
+              {section6cards.map((card) => (
                 <ServicesCard
                   title={card.heroHeading}
                   description={card.heroDescription}
-                  link={`${data.sanityOurServicesPage.section7link.slug.current}/${card.slug.current}`}
+                  link={`${section6link.slug.current}/${card.slug.current}`}
                 />
-              );
-            })}
+              ))}
+            </ServicesSection>
+          </Container>
+          <ImageTextCards
+            title={section7link.heroHeading}
+            image={section7Image.asset.gatsbyImageData}
+            description={section7description}
+            link={section7link.slug.current}
+          >
+            {section7cards.map((card) => (
+              <ServicesCard
+                title={card.heroHeading}
+                description={card.heroDescription}
+                link={`${section7link.slug.current}/${card.slug.current}`}
+              />
+            ))}
           </ImageTextCards>
         </div>
       </Layout>

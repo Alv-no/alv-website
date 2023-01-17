@@ -90,6 +90,35 @@ export const useServicesQuery = () => {
               url
             }
           }
+
+          section3cards {
+            heroHeading
+            heroDescription
+            slug {
+              current
+            }
+          }
+          section5cards {
+            heroHeading
+            heroDescription
+            slug {
+              current
+            }
+          }
+          section6cards {
+            heroHeading
+            heroDescription
+            slug {
+              current
+            }
+          }
+          section7cards {
+            heroHeading
+            heroDescription
+            slug {
+              current
+            }
+          }
           _rawSection2Block
           _rawSection4Block
           _rawSection5Block

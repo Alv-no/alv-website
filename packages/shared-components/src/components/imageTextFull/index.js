@@ -1,7 +1,7 @@
-import React from 'react';
-import { Title } from '../title';
-import * as Button from '../button';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
+import * as Button from '../button';
+import { Title } from '../title';
 
 export const ImageTextFull = ({ image, flip, title, link, children }) => {
   return (
@@ -26,7 +26,7 @@ export const ImageTextFull = ({ image, flip, title, link, children }) => {
           <div className="px-5 sm:px-0">
             <Title
               align="text-left"
-              classes="text-nav sm:text-3xl hyphenate"
+              classes="text-nav sm:text-3xl hyphenate mb-2"
               color="text-navy"
             >
               {title}
