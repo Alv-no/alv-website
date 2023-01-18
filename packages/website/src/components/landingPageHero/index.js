@@ -1,9 +1,9 @@
-import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import * as styles from './landingpage.module.css';
+import React from 'react';
 import { BlockContent, CtaButton } from 'shared-components';
-import config from '../../config';
 import { Offer } from 'shared-components/src/components/form';
+import config from '../../config';
+import * as styles from './landingpage.module.css';
 
 const LandingPageHero = ({
   backgroundImage,
@@ -15,8 +15,9 @@ const LandingPageHero = ({
   showContactForm = true,
 }) => {
   return (
-    <>
+    <div className={styles.wrapper}>
       <div className={styles.landingPageImageWrapper}>
+        <GradientOverlay />
         {backgroundImage && (
           <GatsbyImage
             style={{ height: '100%', width: '100%' }}
@@ -31,7 +32,7 @@ const LandingPageHero = ({
         <div className={styles.columnWrapper}>
           <div className="w-full"></div>
           <div
-            className={`relative container max-w-5xl col-span-3 max-w- twelve:col-span-1 ${
+            className={`z-20 relative container max-w-5xl col-span-3 max-w- twelve:col-span-1 ${
               showContactForm ? '' : styles.dynamicColumn
             }`}
           >
@@ -83,8 +84,17 @@ const LandingPageHero = ({
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
+
+const GradientOverlay = () => (
+  <div className="relative z-10">
+    <div
+      className={`${styles.gradient} sm:block hidden h-screen absolute w-full top-0 left-0`}
+    />
+    <div className="sm:hidden h-screen w-full opacity-90 bg-navy absolute top-0 left-0" />
+  </div>
+);
 
 export default LandingPageHero;
