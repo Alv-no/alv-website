@@ -53,6 +53,7 @@ const Index = ({ data, serverData }) => {
         <Container
           theme="navy"
           maxWidth="1440"
+          removePaddingTop
           removePaddingBottom
           removePaddingMobile="top"
         >
