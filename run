@@ -43,11 +43,11 @@ function buildServices() {
     echo "building alv website"
 
     if [ ! -f packages/website/.env.production ]; then
-      echo "ENV=$ENV" >> packages/website/.env.production
-      echo "SANITY_TOKEN=$SANITY_TOKEN" >> packages/website/.env.production
-      echo "YT_API=$YT_API" >> packages/website/.env.production
+      echo "ENV=$ENV" >>packages/website/.env.production
+      echo "SANITY_TOKEN=$SANITY_TOKEN" >>packages/website/.env.production
+      echo "YT_API=$YT_API" >>packages/website/.env.production
       if [ "$ENV" != "prod" ]; then
-        echo "SANITY_DATASET=development" >> packages/website/.env.production
+        echo "SANITY_DATASET=development" >>packages/website/.env.production
       fi
     fi
 
@@ -60,9 +60,9 @@ function buildServices() {
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "building alv-b website-no"
 
-    echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" > packages/website-alvb/.env.production
-    echo "GATSBY_HOSTNAME=www.$ALVB_HOSTNAME" >> packages/website-alvb/.env.production
-    echo "GATSBY_TRANSLATED_DOMAIN=www.$ALVBIOTECH_HOSTNAME" >> packages/website-alvb/.env.production
+    echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" >packages/website-alvb/.env.production
+    echo "GATSBY_HOSTNAME=www.$ALVB_HOSTNAME" >>packages/website-alvb/.env.production
+    echo "GATSBY_TRANSLATED_DOMAIN=www.$ALVBIOTECH_HOSTNAME" >>packages/website-alvb/.env.production
 
     docker build . \
       --file website-alvb.Dockerfile \
@@ -71,10 +71,10 @@ function buildServices() {
 
     echo "building alv-b website-en"
 
-    echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" > packages/website-alvb/.env.production
-    echo "GATSBY_HOSTNAME=www.$ALVBIOTECH_HOSTNAME" >> packages/website-alvb/.env.production
-    echo "GATSBY_TRANSLATED_DOMAIN=www.$ALVB_HOSTNAME" >> packages/website-alvb/.env.production
-    echo "GATSBY_LOCALE=en" >> packages/website-alvb/.env.production
+    echo "SANITY_TOKEN=$SANITY_TOKEN_ALVB" >packages/website-alvb/.env.production
+    echo "GATSBY_HOSTNAME=www.$ALVBIOTECH_HOSTNAME" >>packages/website-alvb/.env.production
+    echo "GATSBY_TRANSLATED_DOMAIN=www.$ALVB_HOSTNAME" >>packages/website-alvb/.env.production
+    echo "GATSBY_LOCALE=en" >>packages/website-alvb/.env.production
 
     docker build . \
       --file website-alvb.Dockerfile \
@@ -89,7 +89,7 @@ function buildServices() {
       --file mail-api.Dockerfile \
       --tag "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH" \
       --no-cache
-  fi 
+  fi
 }
 
 function pushServices() {
@@ -116,10 +116,10 @@ function pushServices() {
 
 function commentPullRequest() {
   curl \
-  --header Accept: application/vnd.github+json \
-  --header "Authorization: token $GITHUB_COMMENT_PR_TOKEN" \
-  "https://api.github.com/repos/Alv-no/alv-website/issues/$2/comments" \
-  --data "{\"body\": \"💻 $1\"}"
+    --header Accept: application/vnd.github+json \
+    --header "Authorization: token $GITHUB_COMMENT_PR_TOKEN" \
+    "https://api.github.com/repos/Alv-no/alv-website/issues/$2/comments" \
+    --data "{\"body\": \"💻 $1\"}"
 }
 
 function undeployServices() {
@@ -128,10 +128,10 @@ function undeployServices() {
     --resource-group "$RESOURCE_GROUP_NAME" \
     --name "$KUBERNETES_CLUSTER_NAME"
 
-    CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"
+  CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"
 
-    helm uninstall "website$CHART_NAME_SUFFIX" \
-      --namespace "alv-no"
+  helm uninstall "website$CHART_NAME_SUFFIX" \
+    --namespace "alv-no"
 }
 
 function deployServices() {
@@ -140,6 +140,12 @@ function deployServices() {
   echo "$SP_ALVTIME_ADMIN_RBAC_SECRET" | helm registry login "$CONTAINER_REGISTRY" \
     --username "$SP_ALVTIME_ADMIN_CLIENT_ID" \
     --password-stdin
+
+  if [[ -d "chart" ]] && [[ "$CI" ]]; then
+    echo "The chart folder exists on this filesystem. And this is runing in CI"
+    echo "Deleting the chart folder in order for the next command to work"
+    rm -rf chart
+  fi
 
   helm pull "oci://$CONTAINER_REGISTRY/helm/chart" --version v1 --untar
 
@@ -229,7 +235,7 @@ if [ "deploy" = "$1" ]; then
   deployServices
 fi
 
-if [ "undeploy" = "$1"  ]; then
+if [ "undeploy" = "$1" ]; then
   getSecrets
   undeployServices
 fi
