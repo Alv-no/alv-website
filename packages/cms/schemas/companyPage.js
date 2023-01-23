@@ -63,7 +63,7 @@ export default {
     {
       name: 'blockText',
       title: 'Text Block',
-      type: 'linkableBlockContent',
+      type: 'blockContent',
     },
     {
       name: 'blogCarousel',
