@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import * as styles from './NavItems.module.css';
-import { TransitionArrow, Dot } from '../icon';
 import Link from 'gatsby-link';
+import React, { useState } from 'react';
+import { Dot, TransitionArrow } from '../icon';
+import * as styles from './NavItems.module.css';
 
 export const LargeLink = ({ children, link, mobileDropdown }) => {
   const [open, setOpen] = useState(false);
@@ -47,7 +47,7 @@ export const LargeTitleDropdown = ({ title, mobileDropdown, children }) => {
           className={styles.subTitleInput}
           onChange={toggleDropdown}
         />
-        <li className="list-none eight:block w-full">
+        <li className="list-none eight:block w-full flex justify-between">
           <LargeLinkContent>{title}</LargeLinkContent>
           <TransitionArrow open={open} />
         </li>
@@ -58,9 +58,11 @@ export const LargeTitleDropdown = ({ title, mobileDropdown, children }) => {
 };
 
 const LargeLinkContent = ({ children, arrow, open }) => (
-  <h2 className="pointer-events-none text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full sm:ml-1 eight:ml-0 z-50 w-full">
-    {children}
-    <Dot />
+  <h2 className="flex w-full justify-between pointer-events-none text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full sm:ml-1 eight:ml-0 z-50 w-full">
+    <span>
+      {children}
+      <Dot />
+    </span>
     {arrow && <TransitionArrow open={open} />}
   </h2>
 );

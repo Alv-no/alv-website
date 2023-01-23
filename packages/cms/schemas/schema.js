@@ -26,7 +26,6 @@ import heroCta from './heroCta';
 import imageAndText from './imageAndText';
 import imageTextFlip from './imageTextFlip';
 import landingPage from './landingPage';
-import linkableBlockContent from './linkableBlockContent';
 import linkableHeading from './linkableHeading';
 import openPositionPage from './openPositionPage';
 import ourServicesPage from './ourServicesPage';
@@ -71,7 +70,6 @@ export default createSchema({
     articleTag,
     employee,
     employeeTag,
-    linkableBlockContent,
     linkableHeading,
     testimonial,
     externalProfiles,

@@ -10,7 +10,7 @@ export default {
     {
       name: 'linkableBlock',
       title: 'Text',
-      type: 'linkableBlockContent',
+      type: 'blockContent',
     },
     {
       name: 'image',
