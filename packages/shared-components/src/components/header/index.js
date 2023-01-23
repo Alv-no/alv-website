@@ -111,11 +111,11 @@ export const MobileHeader = ({
         white={white}
         logo={logo}
       />
-      <Headroom style={{ height: '0px', zIndex: 30 }}>
+      <Headroom style={{ height: '0px', zIndex: 50 }}>
         <div
           className={`bg-navy block ${
             viewport || 'sm'
-          }:hidden py-5 px-6 fivefifty:px-10 `}
+          }:hidden py-5 px-6 fivefifty:px-10 z-20 relative`}
         >
           <div className="max-w-1600 mx-auto">
             <div className="flex flex-row-reverse justify-between">

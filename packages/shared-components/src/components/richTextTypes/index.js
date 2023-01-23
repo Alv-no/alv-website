@@ -17,7 +17,9 @@ export const richTextTypesSerializer = (config) => ({
       <LinkableHeading {...props.node} config={config} />
     ),
 
-    // backwards compatibility
+    // for backwards compatibility
+    // headingDescButtonCta can be safely removed after updating serialised data with a sanity script that replaces "headingDescButtonCta" with "textCta"
+    // see https://www.sanity.io/docs/migrating-data for more info
     headingDescButtonCta: (props) => (
       <Cta ctaType="text" textSection={{ ...props.node }} />
     ),
