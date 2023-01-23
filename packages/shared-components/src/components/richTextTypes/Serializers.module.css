@@ -64,6 +64,13 @@ p.heading {
   display: block;
 }
 
+.imageTextFlip h2:first {
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: 1.8px;
+  margin: 0px 0 16px;
+}
+
 .checkbox {
   position: absolute;
 }
@@ -99,6 +106,10 @@ p.heading {
   z-index: 20;
   opacity: 0;
   cursor: pointer;
+}
+
+.imageTextFlip h2 {
+  margin: 0 0 20px 0 !important;
 }
 
 @media only screen and (max-width: 639px) {

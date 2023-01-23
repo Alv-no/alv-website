@@ -24,3 +24,13 @@
     }
   }
 }
+
+@layer base {
+  strong {
+    font-weight: 600;
+  }
+
+  .block-content a {
+    text-decoration: underline !important;
+  }
+}

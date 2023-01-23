@@ -87,8 +87,8 @@ const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
   );
   return (
     <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
-      <div className="flex eight:justify-center h-full eight:items-center relative eight:-top-16">
-        <div className="eight:flex transition duration-300 gap-x-16 justify-center">
+      <div className="w-full flex eight:justify-center h-full eight:items-center relative eight:-top-16">
+        <div className="w-full eight:px-0 eight:flex transition duration-300 gap-x-16 justify-center">
           <GenerateLinks
             title="Hva vi tilbyr"
             linksArr={categoryPages}
