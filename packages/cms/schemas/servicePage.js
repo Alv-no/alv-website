@@ -63,19 +63,6 @@ export default {
       type: 'string',
     },
     {
-      name: 'aboutText',
-      title: 'About Text',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
-          lists: [],
-        },
-      ],
-    },
-    {
       name: 'aboutBlock',
       title: 'About Block',
       type: 'blockContent',
