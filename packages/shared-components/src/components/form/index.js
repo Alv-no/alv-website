@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { window } from 'browser-monads';
+import React, { useEffect, useState } from 'react';
 
 const useContactForm = () => {
   const [sent, setSent] = useState(false);

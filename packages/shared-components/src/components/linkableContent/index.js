@@ -1,9 +1,9 @@
-import React from 'react';
-import { Arrow } from 'shared-components/src/components/icon';
-import { companyRichTextTypesSerializer } from '../companyRichText';
 import PortableText from '@sanity/block-content-to-react';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
+import { Arrow } from 'shared-components/src/components/icon';
 import { Title } from 'shared-components/src/components/title';
+import { richTextTypesSerializer } from '../richTextTypes';
 import * as styles from './LinkableContent.module.css';
 
 export const LinkableContent = ({
@@ -46,9 +46,8 @@ export const LinkableContent = ({
                 className="relative z-50 sm:-mr-12 sm:h-20vh h-30vh h-30vh -mx-5"
               />
             </div>
-
             <div className="font-light block sm:mb-15 sm:h-auto -mb-10 relative overflow-hidden sm:overflow-visible">
-              <div className="cursor-text text-left z-20 relative">
+              <div className="cursor-text text-left z-20 relative max-w-[766px]">
                 <div className="mb-10">
                   <Title
                     align="text-left sm:text-index"
@@ -64,7 +63,7 @@ export const LinkableContent = ({
                   projectId={config.SANITY_PROJECT_ID}
                   dataset={config.SANITY_DATASET}
                   className={styles.body}
-                  serializers={companyRichTextTypesSerializer(config)}
+                  serializers={richTextTypesSerializer(config)}
                 />
               </div>
             </div>

@@ -72,5 +72,13 @@ export default {
       title: 'Text CTA',
       type: 'headingDescButtonCta',
     },
+    {
+      title: 'Linkable heading',
+      type: 'linkableHeading',
+    },
+    {
+      title: 'Text image flip',
+      type: 'imageTextFlip',
+    },
   ],
 };
