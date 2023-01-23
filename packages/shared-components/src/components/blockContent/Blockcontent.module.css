@@ -9,7 +9,7 @@
   word-wrap: break-word;
 }
 
-.body a {
+.body > a {
   text-decoration: underline;
 }
 
