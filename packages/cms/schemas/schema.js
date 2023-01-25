@@ -20,6 +20,7 @@ import employee from './employee';
 import employeePage from './employeePage';
 import employeeTag from './employeeTag';
 import externalProfiles from './externalProfiles';
+import textCta from './textCta';
 import guestAuthor from './guestAuthor';
 import headingDescButtonCta from './headingDescButtonCta';
 import heroCta from './heroCta';
@@ -90,6 +91,7 @@ export default createSchema({
     playlist,
     socials,
     heroCta,
+    textCta,
     cta,
   ]),
 });
