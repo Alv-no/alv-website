@@ -69,16 +69,16 @@ export default {
       type: 'cta',
     },
     {
-      title: 'Text CTA',
-      type: 'headingDescButtonCta',
-    },
-    {
       title: 'Linkable heading',
       type: 'linkableHeading',
     },
     {
       title: 'Text image flip',
       type: 'imageTextFlip',
+    },
+    {
+      title: 'Video',
+      type: 'video',
     },
   ],
 };

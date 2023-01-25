@@ -1,6 +1,6 @@
 import PortableText from '@sanity/block-content-to-react';
 import React from 'react';
-import { richTextTypesSerializer } from '../..';
+import { richTextTypesSerializer } from '..';
 import { urlBuilder } from '../../../../utils';
 
 import styles from './imageTextFlip.module.css';
