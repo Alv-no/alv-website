@@ -1,3 +1,13 @@
+const shouldShow = (parent, condition) => parent.ctaType === condition;
+
+const validateIfRequired = (rule, type) => {
+  return rule.custom((currentValue, { parent }) => {
+    if (shouldShow(parent, type) && currentValue === undefined)
+      return `This is required when Type is set to ${type}`;
+    return true;
+  });
+};
+
 export default {
   title: 'CTA',
   name: 'cta',
@@ -12,7 +22,7 @@ export default {
         list: [
           { title: 'Image', value: 'image' },
           { title: 'Self-hosted video', value: 'video' },
-          { title: 'Youtube link', value: 'youtubeLink' },
+          { title: 'Youtube', value: 'youtube' },
           { title: 'Text', value: 'text' },
         ],
         layout: 'radio',
@@ -24,8 +34,8 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'image',
-      hidden: ({ parent }) => parent?.ctaType !== 'image',
-      validation: (Rule) => Rule.required(),
+      hidden: ({ parent }) => !shouldShow(parent, 'image'),
+      validation: (rule) => validateIfRequired(rule, 'image'),
       options: {
         hotspot: true,
       },
@@ -36,8 +46,8 @@ export default {
       description:
         'WebM format is the most performant video format and it is also required for Firefox support.',
       type: 'file',
-      hidden: ({ parent }) => parent?.ctaType !== 'video',
-      validation: (Rule) => Rule.required(),
+      hidden: ({ parent }) => !shouldShow(parent, 'video'),
+      validation: (rule) => validateIfRequired(rule, 'video'),
     },
     {
       name: 'videoMp4',
@@ -45,49 +55,20 @@ export default {
       description:
         'Mp4 format is required for Safari and IE11 support and will only be served to users of those browser types.',
       type: 'file',
-      hidden: ({ parent }) => parent?.ctaType !== 'video',
-      validation: (Rule) => Rule.required(),
+      hidden: ({ parent }) => !shouldShow(parent, 'video'),
+      validation: (rule) => validateIfRequired(rule, 'video'),
     },
     {
-      title: 'Youtube link',
-      name: 'youtubeLink',
+      title: 'Youtube video id',
+      name: 'videoId',
       type: 'string',
-      hidden: ({ parent }) => parent?.ctaType !== 'youtubeLink',
-      validation: (Rule) => Rule.required(),
+      hidden: ({ parent }) => !shouldShow(parent, 'youtube'),
+      validation: (rule) => validateIfRequired(rule, 'youtube'),
     },
     {
       title: 'Text section',
       name: 'textSection',
-      type: 'object',
-      options: {
-        collapsible: true,
-      },
-      hidden: ({ parent }) => !parent?.ctaType,
-      fields: [
-        {
-          title: 'Heading',
-          name: 'heading',
-          type: 'string',
-        },
-        {
-          title: 'Description',
-          name: 'description',
-          type: 'text',
-          rows: 3,
-        },
-        {
-          title: 'Link (url)',
-          name: 'link',
-          type: 'string',
-        },
-        {
-          title: 'Button text',
-          description: "Leave empty if you don't want a button",
-          name: 'buttonText',
-          type: 'string',
-          hidden: ({ parent }) => !parent?.link,
-        },
-      ],
+      type: 'textCta',
     },
   ],
 };

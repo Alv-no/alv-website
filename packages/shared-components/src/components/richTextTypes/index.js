@@ -1,15 +1,30 @@
 import React from 'react';
-import { ImageTextFlip, LinkableHeading, ProductCta, TextCta } from './types';
-
-// create combined CTA
+import { MediaCta, ProductCta, TextCta } from './cta';
+import { ImageTextFlip, LinkableHeading } from './layout';
+import MediaComponent from './mediaComponent';
 
 export const richTextTypesSerializer = (config) => ({
   types: {
-    textCta: (props) => <TextCta {...props.node} config={config} />,
-    productCta: (props) => <ProductCta {...props.node} config={config} />,
+    // CTAs
+    cta: (props) => <TextCta {...props} config={config} />,
+    mediaCta: (props) => <MediaCta {...props} config={config} />,
+    emailCta: (props) => <ProductCta {...props} config={config} />,
+
+    // Media
+    image: (props) => (
+      <MediaComponent type="image" {...props.node} config={config} />
+    ),
+    videoUpload: (props) => (
+      <MediaComponent type="video" {...props} config={config} />
+    ),
+    youtube: (props) => (
+      <MediaComponent type="youtube" {...props} config={config} />
+    ),
+
+    // Layout
     imageTextFlip: (props) => <ImageTextFlip {...props.node} config={config} />,
     linkableHeading: (props) => (
-      <LinkableHeading {...props.node} config={config} />
+      <LinkableHeading heading={props.node?.Heading} config={config} />
     ),
 
     // for backwards compatibility

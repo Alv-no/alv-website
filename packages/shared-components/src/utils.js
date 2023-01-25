@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { imageUrlBuilder } from '@sanity/image-url';
+import imageUrlBuilder from '@sanity/image-url';
 
 import { window } from 'browser-monads';
 
@@ -10,7 +10,7 @@ export const urlBuilder = (source, config) =>
   }).image(source);
 
 export const getFilePath = (config) =>
-  `https://cdn.sanity.io/files/${config.projectId}/${config.dataset}/`;
+  `https://cdn.sanity.io/files/${config.SANITY_PROJECT_ID}/${config.SANITY_DATASET}/`;
 
 export const handleEmailSubmit = async (productName, email) => {
   const mailApiUrl = window.location.protocol + '//mail-api-alvb.alvb.no/send';
