@@ -91,6 +91,7 @@ const Index = ({ data, serverData }) => {
             buttonLink={landingPage.flipSection1ButtonLink}
             buttonText={landingPage.flipSection1ButtonText}
             image={landingPage.flipSection1Image.asset.gatsbyImageData}
+            color="white"
           />
         </Container>
         <Container theme={theme} maxWidth={maxWidth} removePaddingMobile="top">
@@ -100,6 +101,7 @@ const Index = ({ data, serverData }) => {
             text={landingPage.flipSection3Text}
             image={landingPage.flipSection3Image.asset.gatsbyImageData}
             imageText={landingPage.flipSection3ImageText}
+            color="white"
           />
         </Container>
         <BlogSlider

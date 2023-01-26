@@ -102,33 +102,40 @@ export const DropdownArrow = ({ white }) => (
   </svg>
 );
 
-export const CtaArrow = ({ blue }) => (
-  <svg width="67" height="67" viewBox="0 0 67 67">
-    <g transform="translate(-950 -2347)">
-      <g transform="translate(-312 1436)">
-        <g
-          transform="translate(1262 911)"
-          fill="none"
-          stroke={blue ? 'rgba(6, 24, 56)' : '#fff'}
-          strokeWidth="3"
-        >
-          <circle cx="33.5" cy="33.5" r="33.5" stroke="none" />
-          <circle cx="33.5" cy="33.5" r="32" fill="none" />
+export const CtaArrow = ({ color = 'navy' }) => {
+  const colorMapper = {
+    white: '#fff',
+    navy: 'rgba(6, 24, 56)',
+  };
+
+  return (
+    <svg width="67" height="67" viewBox="0 0 67 67">
+      <g transform="translate(-950 -2347)">
+        <g transform="translate(-312 1436)">
+          <g
+            transform="translate(1262 911)"
+            fill="none"
+            stroke={colorMapper[color]}
+            strokeWidth="3"
+          >
+            <circle cx="33.5" cy="33.5" r="33.5" stroke="none" />
+            <circle cx="33.5" cy="33.5" r="32" fill="none" />
+          </g>
         </g>
+        <path
+          id="Path_375"
+          d="M-13902.463,2330.474l9.32,9.083-9.32,9.439"
+          transform="translate(14881.65 41.026)"
+          fill="none"
+          stroke={colorMapper[color]}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="4"
+        />
       </g>
-      <path
-        id="Path_375"
-        d="M-13902.463,2330.474l9.32,9.083-9.32,9.439"
-        transform="translate(14881.65 41.026)"
-        fill="none"
-        stroke={blue ? 'rgba(6, 24, 56)' : '#fff'}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="4"
-      />
-    </g>
-  </svg>
-);
+    </svg>
+  );
+};
 export const SliderArrowBlue = () => (
   <svg width="67" height="67" viewBox="0 0 67 67">
     <g transform="translate(-950 -2347)">

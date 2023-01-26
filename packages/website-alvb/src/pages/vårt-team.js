@@ -1,11 +1,11 @@
-import React from 'react';
 import { graphql } from 'gatsby';
-import { Layout } from '../components/layout';
-import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
-import { Title, Description, EmployeeSection, Cta } from 'shared-components';
-import localize from '../components/localize';
+import React from 'react';
+import { Cta, Description, EmployeeSection, Title } from 'shared-components';
 import slugify from 'slugify';
+import { Layout } from '../components/layout';
+import localize from '../components/localize';
 import config from '../config';
+import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 const Employees = ({ location, data }) => {
   const { meta, section1, _rawSection2, section2 } = data.sanityEmployeePage;
 
@@ -29,7 +29,7 @@ const Employees = ({ location, data }) => {
       pageDescription={meta.metaDescription}
     >
       <div className="bg-white w-full pt-10 sm:pt-16 sm:pb-12 pb-4 overflow-hidden">
-        <Title>{section1.title}</Title>
+        <Title color="text-navy">{section1.title}</Title>
         <div className="sm:h-8 h-4" />
         <div className="flex justify-center">
           <span className="px-6">
@@ -55,7 +55,6 @@ const Employees = ({ location, data }) => {
           description={section2.text}
           buttonText={_rawSection2.button.text}
           internalLink={_rawSection2.button.link}
-          white
         />
       </div>
     </Layout>

@@ -52,7 +52,7 @@ const LandingPageHero = ({
               >
                 {callToAction && (
                   <div className="w-fit">
-                    <CtaButton internalLink={callToAction.link}>
+                    <CtaButton internalLink={callToAction.link} color="white">
                       <p class="text-lg text-right font-thin">
                         {callToAction.eyebrow}
                       </p>
