@@ -7,7 +7,7 @@ export const Hire = ({
   title,
   text,
   image,
-  blue,
+  color,
   darkFade,
   buttonLink,
   buttonText,
@@ -38,7 +38,7 @@ export const Hire = ({
           text={text}
           buttonText={buttonText}
           buttonLink={buttonLink}
-          blue={blue}
+          color={color}
         />
         <div className="lg:hidden mt-3">
           <Fade>
@@ -52,7 +52,9 @@ export const Hire = ({
             <div className="w-full flex justify-end">
               {buttonText && (
                 <div className="twelve:-mr-40 -mt-5">
-                  <CtaButton internalLink={buttonLink}>{buttonText}</CtaButton>
+                  <CtaButton internalLink={buttonLink} color={color}>
+                    {buttonText}
+                  </CtaButton>
                 </div>
               )}
             </div>
@@ -63,7 +65,7 @@ export const Hire = ({
   );
 };
 
-export const HireAlt = ({ image, text, title, imageText, blue }) => {
+export const HireAlt = ({ image, text, title, imageText, color }) => {
   return (
     <div className="bg-theme-bg w-full">
       <div
@@ -79,7 +81,7 @@ export const HireAlt = ({ image, text, title, imageText, blue }) => {
           </p>
           <div className="w-full flex sm:mt-18 justify-end">
             <div className="lg:mb-24 sm:mr-12 lg:mr-10 tracking-wider">
-              <CtaButton blue={blue} internalLink="/jobbe-i-alv">
+              <CtaButton color={color} internalLink="/jobbe-i-alv">
                 Våre stillinger
               </CtaButton>
             </div>
@@ -112,7 +114,7 @@ export const HireAlt = ({ image, text, title, imageText, blue }) => {
   );
 };
 
-const HireCta = ({ title, text, buttonText, buttonLink, blue }) => {
+const HireCta = ({ title, text, buttonText, buttonLink, color }) => {
   return (
     <div
       className={`twelve:-mr-1/2 lg:flex flex-col hidden lg:-mr-48 w-full px-0 lg:-ml-10 xl:-ml-5 items-center justify-center`}
@@ -129,7 +131,7 @@ const HireCta = ({ title, text, buttonText, buttonLink, blue }) => {
       </p>
       {buttonLink && (
         <div className="-mt-10 lg:w-4/6">
-          <CtaButton internalLink={buttonLink} blue={blue}>
+          <CtaButton internalLink={buttonLink} color={color}>
             {buttonText}
           </CtaButton>
         </div>

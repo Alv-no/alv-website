@@ -1,14 +1,14 @@
+import { gql } from '@apollo/client';
 import React from 'react';
-import Layout from '../components/layout';
-import { Title, Description, EmployeeSection, Cta } from 'shared-components';
-import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
+import { Cta, Description, EmployeeSection, Title } from 'shared-components';
+import { createSlugForEmployee } from 'shared-components/src/components/createSlugForEmployee';
 import slugify from 'slugify';
+import Layout from '../components/layout';
+import config from '../config';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
-import { gql } from '@apollo/client';
-import { createSlugForEmployee } from 'shared-components/src/components/createSlugForEmployee';
-import config from '../config';
 
 const Employees = ({ location, serverData }) => {
   const data = useEmployeeQuery();
@@ -57,7 +57,7 @@ const Employees = ({ location, serverData }) => {
         <Cta
           image={data.cta.childImageSharp.gatsbyImageData}
           fallback={data.ctaFallback.childImageSharp.gatsbyImageData}
-          white={true}
+          color="white"
           heading="Bli en av oss"
           internalLink="/jobbe-i-alv"
           buttonText="Bli en alv"

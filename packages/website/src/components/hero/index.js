@@ -1,7 +1,7 @@
-import React from 'react';
-import { Title, Button } from 'shared-components';
-import { Typewriter } from '../typewriter';
 import Link from 'gatsby-link';
+import React from 'react';
+import { Button, Title } from 'shared-components';
+import { Typewriter } from '../typewriter';
 import * as styles from './hero.module.css';
 
 export const Hero = ({
@@ -66,7 +66,7 @@ const HeroCta = ({ link, eyebrow, title }) => (
         <h1 className={styles.ctaTitle}>{title}</h1>
       </div>
       <span className={styles.ctaButton}>
-        <Button.CtaButton internalLink={link} />
+        <Button.CtaButton internalLink={link} color="white" />
       </span>
     </div>
   </Link>

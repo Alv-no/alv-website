@@ -1,10 +1,9 @@
-import React from 'react';
-import { BlockContent } from 'shared-components';
-import * as styles from './hero.module.css';
 import Link from 'gatsby-link';
-import { Button } from 'shared-components';
 import { BgImage } from 'gbimage-bridge';
+import React from 'react';
+import { BlockContent, Button } from 'shared-components';
 import config from '../../config';
+import * as styles from './hero.module.css';
 
 export const Hero = ({
   blocks,
@@ -55,7 +54,7 @@ const HeroCtaDesktop = ({ eyebrow, title, link }) => (
         <h1 className={styles.ctaTitle}>{title}</h1>
       </div>
       <span className={styles.ctaButton}>
-        <Button.CtaButton internalLink={link} />
+        <Button.CtaButton internalLink={link} color="white" />
       </span>
     </div>
   </Link>
@@ -86,7 +85,7 @@ const HeroCtaMobile = ({ eyebrow, title, link }) => (
         <h1 className={styles.ctaTitle}>{title}</h1>
       </div>
       <span className={styles.ctaButton}>
-        <Button.CtaButton internalLink={link} />
+        <Button.CtaButton internalLink={link} color="white" />
       </span>
     </div>
   </Link>
