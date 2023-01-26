@@ -21,6 +21,14 @@ export default {
       },
     },
     {
+      name: 'mainImage',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'positionsListLeft',
       title: 'Positions List Left',
       type: 'array',
