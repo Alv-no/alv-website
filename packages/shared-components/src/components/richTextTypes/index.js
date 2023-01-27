@@ -1,20 +1,16 @@
 import React from 'react';
-import { MediaCta, ProductCta, TextCta } from './cta';
+import Cta, { TextCta } from './cta';
 import { ImageTextFlip, LinkableHeading } from './layout';
 import MediaComponent from './mediaComponent';
 
 export const richTextTypesSerializer = (config) => ({
   types: {
-    // CTAs
-    cta: (props) => <TextCta {...props} config={config} />,
-    mediaCta: (props) => <MediaCta {...props} config={config} />,
-    emailCta: (props) => <ProductCta {...props} config={config} />,
+    cta: (props) => <Cta {...props.node} config={config} />,
 
-    // Media
     image: (props) => (
       <MediaComponent type="image" {...props.node} config={config} />
     ),
-    videoUpload: (props) => (
+    video: (props) => (
       <MediaComponent type="video" {...props} config={config} />
     ),
     youtube: (props) => (

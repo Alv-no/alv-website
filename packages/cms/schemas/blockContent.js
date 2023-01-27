@@ -65,6 +65,13 @@ export default {
       options: { hotspot: true },
     },
     {
+      type: 'video',
+    },
+    {
+      type: 'youtube',
+      title: 'YouTube',
+    },
+    {
       title: 'CTA',
       type: 'cta',
     },
@@ -75,10 +82,6 @@ export default {
     {
       title: 'Text image flip',
       type: 'imageTextFlip',
-    },
-    {
-      title: 'Video',
-      type: 'video',
     },
   ],
 };
