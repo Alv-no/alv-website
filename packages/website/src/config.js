@@ -10,7 +10,7 @@ switch (config.NODE_ENV) {
       SANITY_PROJECT_ID: 'mnr37rl0',
       SANITY_DATASET:
         config.SANITY_DATASET || process.env.SANITY_DATASET || 'production',
-      SANITY_TAG: 'default',
+      SANITY_TAG: process.env.SANITY_TAG || 'default',
       YT_API: config.YT_API,
     };
     break;

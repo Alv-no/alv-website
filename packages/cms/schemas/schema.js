@@ -20,7 +20,6 @@ import employee from './employee';
 import employeePage from './employeePage';
 import employeeTag from './employeeTag';
 import externalProfiles from './externalProfiles';
-import textCta from './textCta';
 import guestAuthor from './guestAuthor';
 import headingDescButtonCta from './headingDescButtonCta';
 import heroCta from './heroCta';
@@ -41,8 +40,11 @@ import servicesIntro from './servicesIntro';
 import siteSettings from './siteSettings';
 import socials from './socials';
 import testimonial from './testimonial';
+import textCta from './textCta';
+import video from './video';
 import videoseries from './videoseries';
 import videoseriesPage from './videoseriesPage';
+import youtube from './youtube';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -58,6 +60,7 @@ export default createSchema({
     videoseriesPage,
     videoseries,
     servicePage,
+    video,
     companyPage,
     categoryPage,
     openPositionPage,
@@ -89,6 +92,7 @@ export default createSchema({
     serviceItem,
     playlists,
     playlist,
+    youtube,
     socials,
     heroCta,
     textCta,
