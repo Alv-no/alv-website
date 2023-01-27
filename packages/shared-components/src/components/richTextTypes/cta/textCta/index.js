@@ -3,7 +3,7 @@ import React from 'react';
 const TextCta = ({
   heading,
   description,
-  buttonLink,
+  link,
   buttonText,
   whiteOnBlue = true,
   layout = 'horizontal',
@@ -37,7 +37,7 @@ const TextCta = ({
       </div>
       <div>
         <a
-          href={buttonLink}
+          href={link}
           className={`inline-block px-5 rounded-full font-semibold text-base uppercase tracking-wider py-1 md:mt-0 mt-3 border border-2 whitespace-nowrap ${
             whiteOnBlue ? 'border-white' : 'border-navy'
           } `}
