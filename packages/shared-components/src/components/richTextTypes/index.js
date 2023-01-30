@@ -1,5 +1,7 @@
 import React from 'react';
-import Cta, { TextCta } from './cta';
+import Cta from './cta';
+import ProductCta from './cta/productCta';
+import TextCta from './cta/textCta';
 import { ImageTextFlip, LinkableHeading } from './layout';
 import MediaComponent from './mediaComponent';
 
@@ -11,10 +13,10 @@ export const richTextTypesSerializer = (config) => ({
       <MediaComponent type="image" {...props.node} config={config} />
     ),
     video: (props) => (
-      <MediaComponent type="video" {...props} config={config} />
+      <MediaComponent type="video" {...props.node} config={config} />
     ),
     youtube: (props) => (
-      <MediaComponent type="youtube" {...props} config={config} />
+      <MediaComponent type="youtube" {...props.node} config={config} />
     ),
 
     // Layout
@@ -24,9 +26,10 @@ export const richTextTypesSerializer = (config) => ({
     ),
 
     // for backwards compatibility
-    // headingDescButtonCta can be safely removed after updating serialised data with a sanity script that replaces "headingDescButtonCta" with "textCta"
+    // deprecated types can be safely removed after running a sanity script that replaces the deprecated types with the new ones
     // see https://www.sanity.io/docs/migrating-data for more info
     headingDescButtonCta: (props) => <TextCta {...props.node} />,
+    productCta: (props) => <ProductCta {...props.node} config={config} />,
   },
   marks: {
     'alv-yellow': ({ children }) => (
