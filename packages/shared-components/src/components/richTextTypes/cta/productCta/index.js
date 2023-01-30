@@ -76,6 +76,7 @@ const EmailForm = ({
       response?.status === 200 ? setStatus('success') : setStatus('error');
     }, 400);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -96,7 +97,10 @@ const EmailForm = ({
         }`}
       >
         {status === 'loading' && (
-          <div className="flex justify-center items-center ml-5">
+          <div
+            className="flex justify-center items-center ml-5"
+            data-testid="loading-spinner"
+          >
             <LoadingSpinner />
           </div>
         )}

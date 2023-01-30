@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import imageUrlBuilder from '@sanity/image-url';
-
 import { window } from 'browser-monads';
+import fetch from 'node-fetch';
 
 export const urlBuilder = (source, config) =>
   imageUrlBuilder({

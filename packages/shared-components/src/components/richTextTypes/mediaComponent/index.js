@@ -37,20 +37,24 @@ const YoutubeEmbed = ({ videoId }) => {
   );
 };
 
-const Image = ({ heading, asset, config }) => {
-  return <img alt={heading} src={urlBuilder(asset, config).width(700).url()} />;
+const Image = ({ image, heading, config, asset }) => {
+  const imageAsset = image ? image.asset : asset;
+
+  return (
+    <img alt={heading} src={urlBuilder(imageAsset, config).width(700).url()} />
+  );
 };
 
 const MediaComponent = (props) => {
   const { type, ...rest } = props;
 
-  const ComponentMapper = {
+  const ComponentTypeMapper = {
     image: Image,
     video: Video,
     youtube: YoutubeEmbed,
   };
 
-  const MediaComponent = ComponentMapper[type];
+  const MediaComponent = ComponentTypeMapper[type];
 
   return (
     <span className={styles.mediaWrapper}>
