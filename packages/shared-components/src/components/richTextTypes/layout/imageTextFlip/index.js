@@ -1,21 +1,17 @@
 import PortableText from '@sanity/block-content-to-react';
 import React from 'react';
-import { richTextTypesSerializer } from '..';
+import { richTextTypesSerializer } from '../..';
 import { urlBuilder } from '../../../../utils';
+import * as styles from './ImageTextFlip.module.css';
 
-import styles from './imageTextFlip.module.css';
-
-const ImageTextFlip = (props) => {
-  const { config } = props;
-
-  const { flip, image, heading, linkableBlock } = props.node;
-
+const ImageTextFlip = ({ flip, image, heading, linkableBlock, config }) => {
   const flipClasses = flip ? 'sm:order-first sm:pr-8' : 'sm:pl-8';
+
   return (
     <section className="grid sm:grid-cols-2">
       <img
         alt={heading}
-        src={urlBuilder(image.asset).width(700).height(700).url()}
+        src={urlBuilder(image.asset, config).width(700).height(700).url()}
         className="object-cover aspect-square"
         style={{ padding: 0, margin: 0 }}
       />
