@@ -203,6 +203,11 @@ export default {
       title: 'Section 2: Services',
       type: 'servicesIntro',
     },
+    {
+      name: 'brands',
+      title: 'Brands',
+      type: 'brands',
+    },
     // Section 3
     {
       name: 'flipSection3Image',
