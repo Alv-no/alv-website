@@ -48,7 +48,7 @@ export const BlogSlider = ({
     ],
   };
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <div
         className={`${maxWidth} mx-auto px-5 sm:px-12 2xl:px-0`}
         style={{ maxWidth: `${maxWidth || 1200}px` }}
