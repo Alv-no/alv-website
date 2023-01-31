@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.mainImg > div {
+  opacity: 0.99 !important;
+}
+
 .body {
   color: #061838;
   overflow-wrap: break-word;
@@ -65,10 +69,6 @@
   height: 3px;
   width: 50px;
   background: #eabb26;
-}
-
-.mainImg > div {
-  opacity: 0.99 !important;
 }
 
 .body img {
@@ -136,6 +136,11 @@
   line-height: 34px;
   font-weight: 200;
   margin-bottom: 24px;
+}
+
+.darkText strong,
+.whiteText strong {
+  font-weight: 700;
 }
 
 @media only screen and (max-width: 768px) {

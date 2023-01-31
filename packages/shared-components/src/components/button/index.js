@@ -1,6 +1,6 @@
+import Link from 'gatsby-link';
 import React from 'react';
 import { Arrow as ArrowIcon } from '../icon';
-import Link from 'gatsby-link';
 
 export const Line = ({ children, navy }) => (
   <div className="flex cursor-pointer">
@@ -22,16 +22,32 @@ export const Arrow = ({ children, color }) => (
   </div>
 );
 
-export const OvalSimple = ({ children, onClick }) => (
-  <button
-    className="uppercase tracking-wider text-base px-8 py-6px text-navy border border-bordergray rounded-full font-semibold focus:outline-none"
-    style={{ border: '2px solid #E3E3E3' }}
-    onClick={onClick}
-    aria-label={children}
-  >
-    {children}
-  </button>
-);
+export const OvalSimple = ({
+  children,
+  onClick,
+  color = 'navy',
+  variant = 'normal',
+}) => {
+  const colorMapper = {
+    navy: 'text-navy border-navy',
+    white: 'text-white border-white',
+  };
+
+  const variantClassMapper = {
+    normal: 'border-2',
+    light: 'font-thin',
+  };
+
+  return (
+    <button
+      className={`${colorMapper[color]} ${variantClassMapper[variant]} border uppercase tracking-wider text-base px-8 py-6px rounded-full font-semibold focus:outline-none`}
+      onClick={onClick}
+      aria-label={children}
+    >
+      {children}
+    </button>
+  );
+};
 
 export const CtaArrow = ({ children, onClick, path }) => (
   <Link to={path || ''}>

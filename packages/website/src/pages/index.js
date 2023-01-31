@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import {
   BlogSlider,
+  Brands,
   Container,
   Hire,
   HireAlt,
@@ -83,7 +84,10 @@ const Index = ({ data, serverData }) => {
             leftAlignTopSection
           />
         </Container>
-        <Container theme={theme} maxWidth={maxWidth} removePaddingMobile="top">
+        <Container theme={theme} maxWidth={maxWidth}>
+          <Brands {...serverData.brands} config={config} />
+        </Container>
+        <Container theme={theme} maxWidth={maxWidth}>
           <Hire
             darkFade
             title={landingPage.flipSection1Title}
@@ -129,6 +133,25 @@ async function fetchServerSideData() {
           showCallToAction
           contactSchemaVisible
           ctaPosition
+          brands {
+            headingRaw
+            buttonText
+            buttonLink
+            logos {
+              alt
+              image {
+                asset {
+                  id: _id
+                  metadata {
+                    dimensions {
+                      height
+                      width
+                    }
+                  }
+                }
+              }
+            }
+          }
           videoTextOverlay
           videoWebm {
             asset {
