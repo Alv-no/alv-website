@@ -1,5 +1,6 @@
-import React from 'react';
 import { BgImage } from 'gbimage-bridge';
+import React from 'react';
+import { Dot } from '../icon';
 
 export const ColumnSection = ({ title, eyebrow, image, children }) => {
   return (
@@ -12,9 +13,10 @@ export const ColumnSection = ({ title, eyebrow, image, children }) => {
       >
         <div className="sm:h-auto overflow-hidden lg:mr-12">
           <div>
-            <h4 className="text-lg mb-2">{eyebrow}</h4>
-            <h3 className="text-4xl uppercase font-semibold mb-0 hyphenate">
+            <h4 className="text-lg mb-2px font-light">{eyebrow}</h4>
+            <h3 className="text-4xl uppercase font-semibold mb-5 hyphenate">
               {title}
+              <Dot />
             </h3>
           </div>
           {children}
