@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import {
   BlogSlider,
-  Brands,
   Container,
   Hire,
   HireAlt,
@@ -11,11 +10,13 @@ import {
   VideoIntro,
   WhoWeAre,
 } from 'shared-components';
+import Brands from '../components/brands';
 import LandingPageHero from '../components/landingPageHero';
 import Layout from '../components/layout';
 import config from '../config';
 import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { brandsQuery } from '../queryFragments';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
 
@@ -127,31 +128,13 @@ async function fetchServerSideData() {
     query: gql`
       {
         LandingPage(id: "landingPage") {
+          ${brandsQuery}
           _id
           introductionRaw
           introductionSubheaderRaw
           showCallToAction
           contactSchemaVisible
           ctaPosition
-          brands {
-            headingRaw
-            buttonText
-            buttonLink
-            logos {
-              alt
-              image {
-                asset {
-                  id: _id
-                  metadata {
-                    dimensions {
-                      height
-                      width
-                    }
-                  }
-                }
-              }
-            }
-          }
           videoTextOverlay
           videoWebm {
             asset {
