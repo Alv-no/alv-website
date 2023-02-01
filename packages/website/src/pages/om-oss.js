@@ -1,19 +1,15 @@
 import { gql } from '@apollo/client';
 import React from 'react';
-import {
-  Brands,
-  Container,
-  FeaturedTeam,
-  OurServices,
-  Title,
-} from 'shared-components';
+import { Container, FeaturedTeam, OurServices, Title } from 'shared-components';
 import AboutIntro from '../components/aboutIntro';
 import { BlogCarousel } from '../components/blogCarousel';
+import Brands from '../components/brands';
 import Layout from '../components/layout';
 import config from '../config';
 import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
+import { brandsQuery } from '../queryFragments';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
 
@@ -73,27 +69,9 @@ async function getAboutContent() {
     query: gql`
       {
         aboutPage: allAboutPage {
+          ${brandsQuery}
           pageDescription
           pageTitle
-          brands {
-            headingRaw
-            buttonText
-            buttonLink
-            logos {
-              alt
-              image {
-                asset {
-                  id: _id
-                  metadata {
-                    dimensions {
-                      height
-                      width
-                    }
-                  }
-                }
-              }
-            }
-          }
           blogCarousel {
             selectedArticles {
               slug {

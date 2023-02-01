@@ -1,15 +1,9 @@
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { BlockContent } from '../blockContent';
-import { OvalSimple } from '../button';
+import { BlockContent } from 'shared-components';
+import { OvalSimple } from 'shared-components/src/components/button';
 
-export const Brands = ({
-  headingRaw,
-  logos,
-  config,
-  buttonLink,
-  buttonText,
-}) => (
+const Brands = ({ headingRaw, logos, config, buttonLink, buttonText }) => (
   <div>
     {headingRaw && (
       <span className="block text-center mb-8 sm:mb-12 lg:mb-18 text-xl font-thin">
@@ -32,3 +26,5 @@ export const Brands = ({
     )}
   </div>
 );
+
+export default Brands;
