@@ -54,6 +54,7 @@ import siteSettings from './siteSettings';
 import cta from './cta';
 // Company page dependencies
 import companyPage from './companyPage';
+import linkableBlockContent from './linkableBlockContent';
 import linkableHeading from './linkableHeading';
 import imageTextFlip from './imageTextFlip';
 
@@ -118,6 +119,7 @@ export default createSchema({
     // Company page dependencies
     linkableHeading,
     imageTextFlip,
+    linkableBlockContent,
     companyPage,
   ]),
 });
