@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import LoadingSpinner from '../loadingSpinner';
+import React, { useEffect, useRef, useState } from 'react';
+import LoadingSpinner from '../../../loadingSpinner';
+import { handleEmailSubmit } from './../../../../utils';
 
-export const ProductCta = ({ handleEmailSubmit, productName, buttonText }) => {
+const ProductCta = ({ productName, buttonText }) => {
   const [showInput, setShowInput] = useState(false);
 
   const [buttonWidth, setButtonWidth] = useState(null);
@@ -75,6 +76,7 @@ const EmailForm = ({
       response?.status === 200 ? setStatus('success') : setStatus('error');
     }, 400);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -95,7 +97,10 @@ const EmailForm = ({
         }`}
       >
         {status === 'loading' && (
-          <div className="flex justify-center items-center ml-5">
+          <div
+            className="flex justify-center items-center ml-5"
+            data-testid="loading-spinner"
+          >
             <LoadingSpinner />
           </div>
         )}
@@ -164,3 +169,5 @@ const RevealButton = ({
     </button>
   );
 };
+
+export default ProductCta;

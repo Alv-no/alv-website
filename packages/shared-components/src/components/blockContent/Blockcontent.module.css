@@ -9,6 +9,10 @@
   word-wrap: break-word;
 }
 
+.body > a {
+  text-decoration: underline;
+}
+
 .body strong {
   font-weight: 700;
 }

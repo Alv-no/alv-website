@@ -14,7 +14,6 @@ export function companyRichTextTypesSerializer(config) {
     }).image(source);
   return {
     types: {
-      productCta: () => null,
       linkableHeading: (props) => {
         const formattedEl = props.node.Heading?.split(' ').join('-');
         const navElement = formattedEl?.toLowerCase();

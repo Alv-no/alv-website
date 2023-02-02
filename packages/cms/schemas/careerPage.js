@@ -21,6 +21,15 @@ export default {
       },
     },
     {
+      name: 'mainImage',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'positionsListLeft',
       title: 'Positions List Left',
       type: 'array',

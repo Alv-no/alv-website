@@ -3,31 +3,11 @@
   position: relative;
 }
 
-.body {
-  color: #061838;
-  max-width: 766px;
-}
-
 .body h2 {
   font-size: 32px;
   line-height: 38px;
   letter-spacing: 1.8px;
   margin: 56px 0 16px;
-}
-
-.body h3 {
-  font-size: 30px;
-  line-height: 38px;
-  letter-spacing: 1.8px;
-  margin: 40px 0;
-}
-
-.body h4 {
-  font-size: 24px;
-  line-height: 35px;
-  letter-spacing: 1.44px;
-  font-weight: 500;
-  margin: 40px 0;
 }
 
 .mainImg > div {
@@ -43,6 +23,10 @@
   margin: 24px 0 24px;
   line-height: 26px;
   letter-spacing: 0.96px;
+}
+
+.body > a {
+  text-decoration: underline;
 }
 
 .body ol {

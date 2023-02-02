@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import * as styles from './NavItems.module.css';
-import { TransitionArrow, Dot } from '../icon';
 import Link from 'gatsby-link';
+import React, { useState } from 'react';
+import { Dot, TransitionArrow } from '../icon';
+import * as styles from './NavItems.module.css';
 
 export const LargeLink = ({ children, link, mobileDropdown }) => {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ export const LargeLink = ({ children, link, mobileDropdown }) => {
             }`}
             onChange={toggleDropdown}
           />
-          <li className="list-none eight:hidden relative">
+          <li className="list-none eight:hidden relative px-5">
             <LargeLinkContent arrow={mobileDropdown} open={open}>
               {children}
             </LargeLinkContent>
@@ -34,42 +34,19 @@ export const LargeLink = ({ children, link, mobileDropdown }) => {
   );
 };
 
-export const LargeTitleDropdown = ({ title, mobileDropdown, children }) => {
-  const [open, setOpen] = useState(false);
-  const toggleDropdown = () => {
-    setOpen(!open);
-  };
-  return (
-    <>
-      <span className={mobileDropdown ? 'eight:hidden' : 'hidden'}>
-        <input
-          type="checkbox"
-          className={styles.subTitleInput}
-          onChange={toggleDropdown}
-        />
-        <li className="list-none eight:block w-full">
-          <LargeLinkContent>{title}</LargeLinkContent>
-          <TransitionArrow open={open} />
-        </li>
-        {children}
-      </span>
-    </>
-  );
-};
-
 const LargeLinkContent = ({ children, arrow, open }) => (
-  <h2 className="pointer-events-none text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 w-full sm:ml-1 eight:ml-0 z-50 w-full">
-    {children}
-    <Dot />
+  <h2 className="flex w-full justify-between pointer-events-none text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 sm:ml-1 eight:ml-0 z-50">
+    <span>
+      {children}
+      <Dot />
+    </span>
     {arrow && <TransitionArrow open={open} />}
   </h2>
 );
 
 export const Subtitle = ({ children, link }) => (
   <Link to={link}>
-    <h3
-      className={`uppercase text-md tracking-widest mt-7 eight:mt-4 eight:mb-4 eight:ml-0 sm:ml-6 ml-6`}
-    >
+    <h3 className="uppercase text-md tracking-widest mt-7 eight:mt-4 eight:mb-4 eight:ml-0 sm:ml-6 ml-6">
       {children}
     </h3>
   </Link>

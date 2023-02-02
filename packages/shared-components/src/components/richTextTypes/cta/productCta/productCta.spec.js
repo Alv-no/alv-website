@@ -1,10 +1,10 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { ProductCta } from '.';
+import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+import ProductCta from '.';
 
 describe('mailApiButton-component', () => {
-  it('should render', () => {
+  it('should render', async () => {
     const handleEmailSubmit = jest.fn();
     render(
       <ProductCta
@@ -23,13 +23,7 @@ describe('mailApiButton-component', () => {
     );
     expect(screen.getByTestId('mail-submit-btn')).toBeInTheDocument();
     expect(handleEmailSubmit).toHaveBeenCalledTimes(0);
-    fireEvent(
-      screen.getByTestId('mail-submit-btn'),
-      new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      })
-    );
-    expect(handleEmailSubmit).toHaveBeenCalledTimes(1);
+    fireEvent.click(screen.getByTestId('mail-submit-btn'));
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
   });
 });

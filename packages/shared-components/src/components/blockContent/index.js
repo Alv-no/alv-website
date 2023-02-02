@@ -1,7 +1,7 @@
-import React from 'react';
-import * as styles from './Blockcontent.module.css';
-import { richTextTypesSerializer } from '../richTextTypes';
 import PortableText from '@sanity/block-content-to-react';
+import React from 'react';
+import { richTextTypesSerializer } from '../richTextTypes';
+import * as styles from './Blockcontent.module.css';
 
 export const BlockContent = ({
   blocks,
@@ -11,10 +11,10 @@ export const BlockContent = ({
   config,
 }) => (
   <span
-    className={
+    className={`block-content ${
       !noStyle &&
       (whiteText ? styles.whiteText : darkText ? styles.darkText : styles.body)
-    }
+    }`}
   >
     <PortableText
       blocks={blocks}

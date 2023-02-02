@@ -17,7 +17,7 @@ export const NavyIntroImage = ({
       className="max-w-1200 mx-auto twelve:grid relative"
       style={{ gridTemplateColumns: '60% auto' }}
     >
-      <div className="transform sm:-translate-x-5 sm:px-0 px-12 flex sm:block justify-center items-center flex-col">
+      <div className="transform sm:-translate-x-5 twelve:translate-x-0 sm:px-0 px-12 flex sm:block justify-center items-center flex-col">
         <Title align={`text-center twelve:text-left`}>
           <span
             className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
