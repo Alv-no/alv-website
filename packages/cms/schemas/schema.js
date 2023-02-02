@@ -11,6 +11,7 @@ import articleTag from './articleTag';
 import blockContent from './blockContent';
 import blogCarousel from './blogCarousel';
 import blogPage from './blogPage';
+import brands from './brands';
 import careerPage from './careerPage';
 import categoryPage from './categoryPage';
 import companyPage from './companyPage';
@@ -25,6 +26,7 @@ import headingDescButtonCta from './headingDescButtonCta';
 import heroCta from './heroCta';
 import imageAndText from './imageAndText';
 import imageTextFlip from './imageTextFlip';
+import imageWithAlt from './imageWithAlt';
 import landingPage from './landingPage';
 import linkableHeading from './linkableHeading';
 import openPositionPage from './openPositionPage';
@@ -88,6 +90,8 @@ export default createSchema({
     guestAuthor,
     servicesIntro,
     blogCarousel,
+    brands,
+    imageWithAlt,
     reasonsCard,
     serviceItem,
     playlists,

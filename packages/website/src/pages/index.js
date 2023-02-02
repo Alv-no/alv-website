@@ -10,11 +10,13 @@ import {
   VideoIntro,
   WhoWeAre,
 } from 'shared-components';
+import Brands from '../components/brands';
 import LandingPageHero from '../components/landingPageHero';
 import Layout from '../components/layout';
 import config from '../config';
 import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import { brandsQuery } from '../queryFragments';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
 
@@ -83,7 +85,10 @@ const Index = ({ data, serverData }) => {
             leftAlignTopSection
           />
         </Container>
-        <Container theme={theme} maxWidth={maxWidth} removePaddingMobile="top">
+        <Container theme={theme} maxWidth={maxWidth}>
+          <Brands {...serverData.brands} config={config} />
+        </Container>
+        <Container theme={theme} maxWidth={maxWidth}>
           <Hire
             darkFade
             title={landingPage.flipSection1Title}
@@ -123,6 +128,7 @@ async function fetchServerSideData() {
     query: gql`
       {
         LandingPage(id: "landingPage") {
+          ${brandsQuery}
           _id
           introductionRaw
           introductionSubheaderRaw

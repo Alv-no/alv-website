@@ -3,10 +3,13 @@ import React from 'react';
 import { Container, FeaturedTeam, OurServices, Title } from 'shared-components';
 import AboutIntro from '../components/aboutIntro';
 import { BlogCarousel } from '../components/blogCarousel';
+import Brands from '../components/brands';
 import Layout from '../components/layout';
+import config from '../config';
 import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { useAboutUsQuery } from '../hookspages/useAboutUsQuery';
+import { brandsQuery } from '../queryFragments';
 import { client } from '../server-side/client';
 import { createGatsbyImages } from '../server-side/imageCreator';
 
@@ -17,7 +20,8 @@ const About = ({ serverData }) => {
   const {
     sanityAboutPage: { pageDescription } = { pageDescription: false },
     sanityAboutPage: { pageTitle } = { pageTitle: false },
-  } = serverData.aboutPage;
+  } = serverData;
+
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
   employees.map(
     (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData)
@@ -25,9 +29,8 @@ const About = ({ serverData }) => {
   const team = employees.slice(0, 4);
 
   const recentArticles = useBlogQueryRecent().articles.nodes;
-
   const blogCarouselArticles =
-    serverData.aboutPage?.blogCarousel?.selectedArticles || recentArticles;
+    serverData?.blogCarousel?.selectedArticles || recentArticles;
 
   return (
     <Layout
@@ -44,10 +47,10 @@ const About = ({ serverData }) => {
           />
         </div>
         <Container theme="navy">
-          <OurServices
-            darkFade
-            {...serverData.allLandingPage[0].section2Services}
-          />
+          <Brands {...serverData.brands} config={config} />
+        </Container>
+        <Container theme="navy">
+          <OurServices darkFade {...serverData.section2Services} />
         </Container>
         <Container theme="navy">
           <Title align="text-left">Ansatte</Title>
@@ -66,6 +69,7 @@ async function getAboutContent() {
     query: gql`
       {
         aboutPage: allAboutPage {
+          ${brandsQuery}
           pageDescription
           pageTitle
           blogCarousel {
@@ -123,8 +127,8 @@ async function getAboutContent() {
   createGatsbyImages(data);
 
   return {
-    aboutPage: data.aboutPage[0],
-    allLandingPage: data.allLandingPage,
+    ...data.aboutPage[0],
+    ...data.allLandingPage[0],
   };
 }
 
@@ -133,9 +137,7 @@ export async function getServerData() {
     const aboutData = await getAboutContent();
     return {
       status: 200,
-      props: {
-        ...aboutData,
-      },
+      props: aboutData,
     };
   } catch {
     return {

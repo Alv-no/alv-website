@@ -21,6 +21,11 @@ export default {
       },
     },
     {
+      name: 'brands',
+      title: 'Brands',
+      type: 'brands',
+    },
+    {
       name: 'blogCarousel',
       title: 'Blog carousel',
       type: 'blogCarousel',
