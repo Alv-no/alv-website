@@ -65,23 +65,12 @@ export default {
       options: { hotspot: true },
     },
     {
-      type: 'video',
-    },
-    {
-      type: 'youtube',
-      title: 'YouTube',
-    },
-    {
       title: 'CTA',
       type: 'cta',
     },
     {
-      title: 'Linkable heading',
-      type: 'linkableHeading',
-    },
-    {
-      title: 'Text image flip',
-      type: 'imageTextFlip',
+      title: 'Text CTA',
+      type: 'headingDescButtonCta',
     },
   ],
 };
