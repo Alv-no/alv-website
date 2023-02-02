@@ -1,6 +1,12 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import { Container, FeaturedTeam, NavyIntro } from 'shared-components';
+import {
+  Container,
+  FeaturedTeam,
+  SuccessStorySlider,
+  NavyIntro,
+  Title,
+} from 'shared-components';
 import { BlogCarousel } from '../components/blogCarousel';
 import Layout from '../components/layout';
 import { Overview } from '../components/overview';
@@ -96,6 +102,14 @@ const Category = ({ data }) => {
       <div className="text-navy">
         <BlogCarousel blueText blue={true} articles={blogCarouselArticles} />
       </div>
+      <Container>
+        <Title underline align="text-left" color="text-navy">
+          Hva sier kundene
+        </Title>
+        <SuccessStorySlider
+          image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
+        />
+      </Container>
     </Layout>
   );
 };
