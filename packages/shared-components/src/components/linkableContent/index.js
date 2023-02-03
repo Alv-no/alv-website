@@ -1,16 +1,9 @@
-import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Arrow } from 'shared-components/src/components/icon';
 import { Title } from 'shared-components/src/components/title';
 import { BlockContent } from '../blockContent';
 
-export const LinkableContent = ({
-  heroImage,
-  raw,
-  heading,
-  scrollTo,
-  config,
-}) => {
+export const LinkableContent = ({ raw, heading, scrollTo, config }) => {
   // create menuitems from linkable heading types used in sanity rich text
   const navElements = raw
     .filter(
@@ -32,34 +25,23 @@ export const LinkableContent = ({
     });
 
   return (
-    <div className="px-5 sm:px-12 relative z-10">
-      <div className="max-w-1200 mx-auto pt-5 sm:pt-16 w-full tracking-wider relative z-0">
-        <div className="mx-auto sm:grid sm:gap-x-4 sm:grid-cols-navlist-sm">
-          <ScrollToIdNav navElements={navElements} onClick={scrollTo} />
-          <>
-            <div className="z-50 relative mb-10 sm:hidden">
-              <GatsbyImage
-                alt=""
-                image={heroImage}
-                className="relative z-50 sm:-mr-12 sm:h-20vh h-30vh h-30vh -mx-5"
-              />
+    <div className="px-5 sm:px-12 relative z-10 max-w-1200 mx-auto pt-5 sm:pt-16 w-full tracking-wider relative z-0">
+      <div className="mx-auto sm:grid sm:gap-x-4 sm:grid-cols-navlist-sm">
+        <ScrollToIdNav navElements={navElements} onClick={scrollTo} />
+        <div className="font-light block sm:mb-15 sm:h-auto -mb-10 relative overflow-hidden sm:overflow-visible">
+          <div className="cursor-text text-left z-20 relative max-w-[766px]">
+            <div className="mb-10">
+              <Title
+                align="text-left sm:text-index"
+                noDot
+                underline
+                color="text-navy"
+              >
+                {heading}
+              </Title>
             </div>
-            <div className="font-light block sm:mb-15 sm:h-auto -mb-10 relative overflow-hidden sm:overflow-visible">
-              <div className="cursor-text text-left z-20 relative max-w-[766px]">
-                <div className="mb-10">
-                  <Title
-                    align="text-left sm:text-index"
-                    noDot
-                    underline
-                    color="text-navy"
-                  >
-                    {heading}
-                  </Title>
-                </div>
-                <BlockContent blocks={raw} config={config} />
-              </div>
-            </div>
-          </>
+            <BlockContent blocks={raw} config={config} />
+          </div>
         </div>
       </div>
     </div>
@@ -67,7 +49,7 @@ export const LinkableContent = ({
 };
 
 const ScrollToIdNav = ({ navElements, onClick }) => (
-  <ul className="sm:sticky hide-scrollbar top-10 max-h-90vh overflow-y-scroll text-lg sm:mt-20 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
+  <ul className="sm:sticky hide-scrollbar top-10 max-h-90vh overflow-y-scroll text-lg sm:mt-[88px] -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
     {navElements.map((el, index) => (
       <button
         key={index}

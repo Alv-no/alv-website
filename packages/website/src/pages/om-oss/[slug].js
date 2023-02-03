@@ -9,23 +9,14 @@ import Layout from '../../components/layout';
 import config from '../../config';
 import { useBlogQueryRecent } from '../../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
+import useScrollToHeading from '../../hooks/useScrollToHeading';
 import { client } from '../../server-side/client';
 import { createGatsbyImages } from '../../server-side/imageCreator';
 
 const Company = ({ serverData }) => {
-  const scrollTo = (e) => {
-    const element = document.getElementById(e.target.name);
-    const top = element && window.scrollY + element.getBoundingClientRect().top;
-    window.history.replaceState(
-      {},
-      '',
-      `/om-oss/${serverData.sanityCompany.slug.current}#${e.target.name}`,
-    );
-    window.scrollTo({ top, behavior: 'smooth' });
-  };
   const layoutData = useLayoutQuery();
-
   const recentArticles = useBlogQueryRecent().articles.nodes;
+  const { handleHeadingClick } = useScrollToHeading(window.location.pathname);
 
   const blogCarouselArticles =
     serverData.blogCarousel?.selectedArticles || recentArticles;
@@ -51,7 +42,7 @@ const Company = ({ serverData }) => {
           heroImage={serverData.sanityCompany.heroImage.asset.gatsbyImageData}
           raw={serverData.sanityCompany._rawBlockText}
           heading={serverData.sanityCompany.blockHeading}
-          scrollTo={scrollTo}
+          scrollTo={handleHeadingClick}
           config={config}
         />
         <div className="max-w-1440 mx-auto sm:my-15 mt-10">
