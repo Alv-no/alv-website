@@ -1,0 +1,86 @@
+.container {
+  margin: 0 auto;
+  padding: 30px;
+  border-left: 6px solid #061838;
+}
+
+.blueOnWhite {
+  background-color: #fff;
+}
+
+.whiteOnBlue {
+  background-color: #061838;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.blueOnWhite input,
+.blueOnWhite textarea,
+.blueOnWhite button {
+  border: 1px solid #061838;
+}
+
+.whiteOnBlue input,
+.whiteOnBlue textarea,
+.whiteOnBlue button {
+  border: 1px solid #fff;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.container .heading {
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.container .eyebrow {
+  font-weight: 300;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 0px;
+}
+
+/* inputclasses */
+.container .input {
+  background: #00000000;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+}
+
+.textareaWrapper {
+  grid-column: span 2;
+}
+
+/* Remove left border on mobile */
+@media (max-width: 767px) {
+  .container {
+    border-left: none;
+  }
+
+  .container.blueOnWhite {
+    padding: 0;
+  }
+
+  .form {
+    margin-top: 20px;
+    display: block;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+  .form input {
+    margin-bottom: 10px;
+  }
+
+  .form button {
+    margin-top: 20px;
+  }
+}

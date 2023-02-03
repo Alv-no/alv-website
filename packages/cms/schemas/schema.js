@@ -11,6 +11,7 @@ import articleTag from './articleTag';
 import blockContent from './blockContent';
 import blogCarousel from './blogCarousel';
 import blogPage from './blogPage';
+import formCta from './formCta';
 import brands from './brands';
 import careerPage from './careerPage';
 import categoryPage from './categoryPage';
@@ -99,6 +100,7 @@ export default createSchema({
     reasonsCard,
     serviceItem,
     playlists,
+    formCta,
     playlist,
     youtube,
     socials,

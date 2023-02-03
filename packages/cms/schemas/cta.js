@@ -24,6 +24,7 @@ export default {
           { title: 'Self-hosted video', value: 'video' },
           { title: 'Youtube', value: 'youtube' },
           { title: 'Text', value: 'text' },
+          { title: 'Form', value: 'form' },
         ],
         layout: 'radio',
         direction: 'horizontal',
@@ -69,6 +70,14 @@ export default {
       title: 'Text section',
       name: 'textSection',
       type: 'textCta',
+      hidden: ({ parent }) => shouldShow(parent, 'form'),
+    },
+    {
+      title: 'Form',
+      name: 'form',
+      type: 'formCta',
+      hidden: ({ parent }) => !shouldShow(parent, 'form'),
+      validation: (rule) => validateIfRequired(rule, 'form'),
     },
   ],
 };

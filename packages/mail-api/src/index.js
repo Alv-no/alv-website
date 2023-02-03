@@ -24,17 +24,22 @@ app.get('/', (_, res) => {
 });
 
 app.post('/send', (req, res) => {
-  const email = req.body.email;
-  const subject = req.body.subject;
-  const body = req.body.text;
-  const firstname = req.body.firstname;
-  const lastname = req.body.lastname;
-  const phone = req.body.phone;
-  const productname = req.body.productName;
+  const {
+    email,
+    subject,
+    body,
+    firstname,
+    lastname,
+    name,
+    phone,
+    productname,
+  } = req.body;
 
   let mailbody = '';
   if (firstname || lastname)
     mailbody += '\nNavn: ' + firstname + ' ' + lastname;
+
+  if (name) mailbody += '\nNavn: ' + name;
 
   if (phone) mailbody += '\nTelefon: ' + phone;
 
