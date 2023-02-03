@@ -13,7 +13,7 @@ export const RolesList = ({ image, roles, categoryName }) => {
     >
       <div>
         <GatsbyImage
-          alt=""
+          alt={`${categoryName}-tjenester`}
           image={image}
           className="relative h-80 opacity-35 sm:block hidden"
         />

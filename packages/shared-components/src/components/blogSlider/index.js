@@ -160,6 +160,7 @@ const Slide = ({
             }`}
           />
           <BgImage
+            alt={article.title}
             className="w-full sm:block hidden"
             image={
               (article.mainImage && article.mainImage.asset.gatsbyImageData) ||
@@ -183,6 +184,7 @@ const Slide = ({
           </BgImage>
           <div className="sm:hidden">
             <GatsbyImage
+              alt={article.title}
               image={
                 (article.mainImage &&
                   article.mainImage.asset.gatsbyImageData) ||

@@ -11,8 +11,9 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
       <div className="max-w-1200 mx-auto pt-5 sm:pt-16 w-full tracking-wider relative z-0">
         <nav className="mx-auto sm:grid sm:gap-x-4 sm:grid-cols-navlist-sm">
           <ul className="text-lg sm:mt-20 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-5 mb-3">
-            {nav.map((el) => (
+            {nav.map((el, i) => (
               <button
+                key={`link-${i}`}
                 aria-label="Scroll Link"
                 className="py-3 block sm:mr-0 mr-4 w-full focus:outline-none"
                 onClick={scrollTo}
@@ -29,6 +30,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
           </ul>
           <div className="z-50 relative mb-10 sm:hidden">
             <GatsbyImage
+              alt={heading}
               image={heroImage}
               className="relative z-50 sm:-mr-12 sm:h-20vh h-30vh h-30vh -mx-5"
             />

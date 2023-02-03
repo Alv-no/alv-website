@@ -2,9 +2,6 @@ export default {
   title: 'Text section',
   name: 'textCta',
   type: 'object',
-  options: {
-    collapsible: true,
-  },
   hidden: ({ parent }) => !parent?.ctaType,
   fields: [
     {
