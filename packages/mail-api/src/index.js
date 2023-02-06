@@ -1,13 +1,20 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const sgMail = require("@sendgrid/mail");
-const formidable = require("formidable");
-const dotenv = require("dotenv");
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const sgMail = require('@sendgrid/mail');
+const formidable = require('formidable');
+const FormData = require('form-data');
+const { readFile, createReadStream } = require('fs');
+
 const app = express();
+const {
+  validateEmailAttachment,
+  generateVirusEmail,
+  fetch,
+} = require('./utils');
+
 const port = 80;
-const { readFile } = require("fs").promises;
-const { validateEmailAttachment } = require("./utils");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -86,7 +93,7 @@ app.post("/jobApplication/send", (req, res) => {
     if (email) mailbody += "\nEpost: " + email;
 
     // Create mail object
-    const msg = {
+    let msg = {
       to: process.env.MAILTO,
       from: "itadmin@alv.no",
       subject: subject,
@@ -99,23 +106,59 @@ app.post("/jobApplication/send", (req, res) => {
       return;
     }
 
+    // Validate, scan and append attachments to mail object
     if (files) {
+      let virusDetected = false;
+
       const attachments = [];
 
       // Convert files to array if only one file is uploaded
       [files].length === 1 && (files = [files]);
 
       for (const file in files) {
-        const { filepath } = files[file];
-        const attachmentErrors = validateEmailAttachment(files[file]);
+        // If virus is detected, stop processing
+        if (virusDetected) {
+          return;
+        }
+
+        // Validate file
+        const attachmentErrors = await validateEmailAttachment(files[file]);
 
         if (attachmentErrors) {
           errorMsg += attachmentErrors;
           return;
         }
 
-        // Upon successful validation - convert file to base64 and add to attachments array
-        const base64content = await readFile(filepath, { encoding: "base64" });
+        // scan file with clamav
+        const formData = new FormData();
+        formData.append('testfile', createReadStream(files[file].filepath));
+
+        const virusScanResponse = await fetch(
+          'http://clamav-api-service.clamav.svc.cluster.local/upload_file',
+          {
+            method: 'POST',
+            body: formData,
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => data.message)
+          .catch((err) => console.error(err));
+
+        // If virus is detected, send email with details to itadmin
+        if (virusScanResponse[0] === 'FOUND') {
+          msg = generateVirusEmail(virusScanResponse[1], email);
+          virusDetected = true;
+
+          return;
+        }
+
+        // log to server console
+        console.log('No virus detected.');
+
+        // Upon successful validation and scan - convert file to base64 and add to attachments array
+        const base64content = await readFile(files[file].filepath, {
+          encoding: 'base64',
+        });
 
         attachments.push({
           content: base64content,
@@ -123,10 +166,14 @@ app.post("/jobApplication/send", (req, res) => {
           type: files[file].mimetype,
           disposition: "attachment",
         });
+
+        // Add attachments to mail object
+        msg.attachments = attachments;
       }
     }
 
     if (errorMsg) {
+      console.error(errorMsg);
       res.status(400).send(errorMsg);
       return;
     }

@@ -42,4 +42,14 @@ const validateEmailAttachment = async (file) => {
   return errors;
 };
 
-module.exports = { validateEmailAttachment };
+const fetch = (url, options) =>
+  import('node-fetch').then(({ default: fetch }) => fetch(url, options));
+
+const generateVirusEmail = (threat, sender) => ({
+  to: 'itadmin@alv.no',
+  from: 'itadmin@alv.no',
+  subject: 'Virus scan failed',
+  text: `\n CalmAV detected: ${threat} \n Sender: ${sender} \n Timestamp: ${new Date()} \n\n Original form data was not forwarded.`,
+});
+
+module.exports = { validateEmailAttachment, fetch, generateVirusEmail };
