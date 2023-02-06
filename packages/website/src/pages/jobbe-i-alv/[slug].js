@@ -1,9 +1,10 @@
 import { gql } from '@apollo/client';
 import React from 'react';
+import { BlockContent } from 'shared-components';
 import { NavyIntro } from '../../../../shared-components/src/components/navyIntro';
 import ApplyForm from '../../components/applyForm';
 import Layout from '../../components/layout';
-import { StyledBlockContent } from '../../components/styledBlockContent';
+import configuration from '../../config';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import { client } from '../../server-side/client';
 import { createGatsbyImages } from '../../server-side/imageCreator';
@@ -41,7 +42,7 @@ const Career = ({ serverData }) => {
         }}
       >
         <div className="px-5">
-          <StyledBlockContent blocks={_rawJobDescription} />
+          <BlockContent blocks={_rawJobDescription} config={configuration} />
         </div>
         <div>
           <div className="tracking-wider py-10 bg-[#fafafb] px-8 mt-6 lg:mt-0">

@@ -9,9 +9,8 @@ import { Title } from '../title';
 
 export const BlogSlider = ({
   dot,
-  blueText,
+  blueText = true,
   articles,
-  blue,
   maxWidth = 'max-w-1200',
   heading,
   postPrefix,
@@ -56,10 +55,10 @@ export const BlogSlider = ({
         <Title
           underline
           align="text-left"
-          color={blue ? '#000' : 'text-white'}
+          color={blueText ? '#000' : 'text-white'}
           nodot={dot}
         >
-          <span className={`${blue ? 'text-navy' : 'text-white'}`}>
+          <span className={`${blueText ? 'text-navy' : 'text-white'}`}>
             {heading}
           </span>
         </Title>

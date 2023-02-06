@@ -1,10 +1,8 @@
-import PortableText from '@sanity/block-content-to-react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Arrow } from 'shared-components/src/components/icon';
 import { Title } from 'shared-components/src/components/title';
-import { richTextTypesSerializer } from '../richTextTypes';
-import * as styles from './LinkableContent.module.css';
+import { BlockContent } from '../blockContent';
 
 export const LinkableContent = ({
   heroImage,
@@ -58,13 +56,7 @@ export const LinkableContent = ({
                     {heading}
                   </Title>
                 </div>
-                <PortableText
-                  blocks={raw}
-                  projectId={config.SANITY_PROJECT_ID}
-                  dataset={config.SANITY_DATASET}
-                  className={styles.body}
-                  serializers={richTextTypesSerializer(config)}
-                />
+                <BlockContent blocks={raw} config={config} />
               </div>
             </div>
           </>

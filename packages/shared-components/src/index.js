@@ -36,4 +36,3 @@ export { EmployeeSection } from './components/employeeSection';
 export { FeaturedTeam } from './components/featuredTeam';
 export { NavyIntroImage } from './components/navyIntroImage';
 export { LinkableContent } from './components/linkableContent';
-export { SuccessStorySlider } from './components/successStorySlider';

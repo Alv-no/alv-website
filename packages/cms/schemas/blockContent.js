@@ -83,5 +83,9 @@ export default {
       title: 'Text image flip',
       type: 'imageTextFlip',
     },
+    {
+      title: 'Text CTA (deprecated)',
+      type: 'headingDescButtonCta',
+    },
   ],
 };

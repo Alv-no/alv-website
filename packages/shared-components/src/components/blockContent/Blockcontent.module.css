@@ -17,15 +17,24 @@
   text-decoration: underline;
 }
 
+.body div p > a {
+  text-decoration: underline;
+}
+
 .body strong {
   font-weight: 700;
 }
 
+.body div *:first-child {
+  margin-top: 0;
+}
+
 .body h2 {
+  font-weight: 300;
   font-size: 32px;
   line-height: 38px;
   letter-spacing: 1.8px;
-  margin: 40px 0;
+  margin: 40px 0 20px;
 }
 
 .body h3 {
@@ -87,9 +96,13 @@
 
 .body p {
   color: #061838;
-  margin: 40px 0;
+  margin: 20px 0 24px;
   line-height: 26px;
   letter-spacing: 0.96px;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
 }
 
 .body ol {

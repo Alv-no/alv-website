@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  BlockContent,
   ColumnSection,
   Container,
   Description,
@@ -11,7 +12,6 @@ import {
   Title,
 } from 'shared-components';
 import Layout from '../components/layout';
-import { StyledBlockContent } from '../components/styledBlockContent';
 import config from '../config';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import { useServicesQuery } from '../hookspages/useServicesQuery';
@@ -76,7 +76,7 @@ const Services = () => {
               imageText={section2ImageText}
               image={section1Image.asset.gatsbyImageData}
             >
-              <StyledBlockContent blocks={_rawSection2Block} config={config} />
+              <BlockContent blocks={_rawSection2Block} config={config} />
             </ColumnSection>
           </Container>
           <Container theme="gray">
@@ -101,7 +101,7 @@ const Services = () => {
                 title={section4link.heroHeading}
                 image={section4Image.asset.gatsbyImageData}
               >
-                <StyledBlockContent blocks={_rawSection4Block} />
+                <BlockContent blocks={_rawSection4Block} config={config} />
               </ImageTextFull>
             </Container>
           )}
@@ -113,7 +113,7 @@ const Services = () => {
                 image={section5Image.asset.gatsbyImageData}
                 flip
               >
-                <StyledBlockContent blocks={_rawSection5Block} />
+                <BlockContent blocks={_rawSection5Block} config={config} />
               </ImageTextFull>
             </Container>
           )}

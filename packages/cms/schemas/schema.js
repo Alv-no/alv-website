@@ -48,6 +48,7 @@ import video from './video';
 import videoseries from './videoseries';
 import videoseriesPage from './videoseriesPage';
 import youtube from './youtube';
+import testimonialSlider from './testimonialSlider';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -76,6 +77,7 @@ export default createSchema({
     ourServicesPage,
     articleTag,
     employee,
+    testimonialSlider,
     employeeTag,
     linkableHeading,
     testimonial,

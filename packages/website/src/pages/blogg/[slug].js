@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 import { window } from 'browser-monads';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
+import { BlockContent } from 'shared-components';
 import { AlsoRead } from '../../../../shared-components/src/components/alsoRead';
 import { createSlugForEmployee } from '../../../../shared-components/src/components/createSlugForEmployee';
 import { Footer } from '../../../../shared-components/src/components/footer';
@@ -10,12 +11,11 @@ import { SEO } from '../../../../shared-components/src/components/seo';
 import { SocialShare } from '../../../../shared-components/src/components/socialShare';
 import * as Logo from '../../components/logo';
 import Sidebar from '../../components/sidebar';
-import { StyledBlockContent } from '../../components/styledBlockContent';
-import * as styles from '../../components/styledBlockContent/StyledBlockContent.module.css';
 import { getBlogDataServerSide } from '../../hooks/useBlogQueryServerSide';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import { client } from '../../server-side/client';
 import { createGatsbyImages } from '../../server-side/imageCreator';
+import configuration from '../../config';
 
 // Template for how articles are rendered.
 const ArticleTemplate = ({ serverData: { article, articles } }) => {
@@ -107,12 +107,10 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
                 twitterHandle="Alvnoas"
               />
             </div>
-            <h1 className="text-blog font-bold mb-8">{title}</h1>
+            <h1 className="text-4xl font-bold mb-8">{title}</h1>
             {mainImage && (
               <div className="w-full mb-3">
-                <span
-                  className={`${styles.mainImg} relative z-0 fixed opacity-90`}
-                >
+                <span className="relative fixed opacity-90">
                   <GatsbyImage
                     image={mainImage.asset.gatsbyImageData}
                     style={{ zIndex: '0', position: 'relative' }}
@@ -120,7 +118,7 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
                 </span>
               </div>
             )}
-            <StyledBlockContent blocks={_rawBody} />
+            <BlockContent blocks={_rawBody} config={configuration} />
             <div className="mt-6 relative z-20">
               <SocialShare
                 url={window.location.href}
@@ -162,7 +160,7 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
               <GatsbyImage image={mainImage.asset.gatsbyImageData} />
             </div>
           )}
-          <StyledBlockContent blocks={_rawBody} />
+          <BlockContent blocks={_rawBody} config={configuration} />
           <div className="flex justify-end items-center mb-8">
             <div className="relative z-20">
               <SocialShare

@@ -1,8 +1,6 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from 'shared-components';
-import { BlockContent } from '../blockContent';
-import { richTextTypes } from '../richTextTypes';
+import { BlockContent, Title } from 'shared-components';
 import * as styles from './richtextAndImage.module.css';
 import config from '../../config';
 
@@ -31,11 +29,7 @@ export const RichtextAndImage = ({
       <div>
         {title && <Title align="text-left mb-2 mt-4">{title}</Title>}
         <span className={styles.text}>
-          <BlockContent
-            blocks={blocks}
-            config={config}
-            serializer={richTextTypes}
-          />
+          <BlockContent blocks={blocks} config={config} />
         </span>
       </div>
       <div style={{ gridRow: flip && '1' }}>

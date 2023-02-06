@@ -1,20 +1,20 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import {
+  BlockContent,
   Container,
   FeaturedTeam,
-  SuccessStorySlider,
   NavyIntro,
-  Title,
 } from 'shared-components';
 import { BlogCarousel } from '../components/blogCarousel';
 import Layout from '../components/layout';
 import { Overview } from '../components/overview';
 import { RolesList } from '../components/rolesList';
 import { ServicesNav } from '../components/servicesNav';
-import { StyledBlockContent } from '../components/styledBlockContent';
+import TestimonialSlider from '../components/testimonialsSlider';
 import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import configuration from '../config';
 
 const Category = ({ data }) => {
   const { sanityCategoryPage } = data;
@@ -35,21 +35,9 @@ const Category = ({ data }) => {
   const {
     sanityCategoryPage: { pageDescription } = { pageDescription: false },
     sanityCategoryPage: { pageTitle } = { pageTitle: false },
-    sanityCategoryPage: { categoryTag } = { categoryTag: '' },
     sanityCategoryPage: { featuredTeam },
+    sanityCategoryPage: { testimonialSlider },
   } = data;
-
-  let topFour = data.allSanityEmployee.nodes
-    .filter((el) => el.tags.some((el) => el.tag === categoryTag.tag))
-    .sort((a, b) => {
-      if (a.experience > b.experience) {
-        return -1;
-      } else {
-        return 1;
-      }
-    });
-
-  topFour = topFour.slice(0, topFour.length > 4 ? 4 : topFour.length);
 
   const recentArticles = useBlogQueryRecent().articles.nodes;
 
@@ -79,7 +67,10 @@ const Category = ({ data }) => {
           }
           id="oversikt"
         >
-          <StyledBlockContent blocks={sanityCategoryPage._rawText || null} />
+          <BlockContent
+            blocks={sanityCategoryPage._rawText || null}
+            config={configuration}
+          />
         </Overview>
       </Container>
       {sanityCategoryPage.servicesListText && (
@@ -93,23 +84,16 @@ const Category = ({ data }) => {
       )}
       {sanityCategoryPage.featuredTeam && (
         <Container>
-          <FeaturedTeam
-            team={featuredTeam[0] ? featuredTeam : topFour}
-            notransparent
-          />
+          <FeaturedTeam team={featuredTeam} notransparent />
         </Container>
       )}
-      <div className="text-navy">
-        <BlogCarousel blueText blue={true} articles={blogCarouselArticles} />
-      </div>
-      <Container>
-        <Title underline align="text-left" color="text-navy">
-          Hva sier kundene
-        </Title>
-        <SuccessStorySlider
-          image={sanityCategoryPage.servicesListImage.asset.gatsbyImageData}
-        />
-      </Container>
+
+      <BlogCarousel blueText articles={blogCarouselArticles} />
+      {testimonialSlider && (
+        <Container>
+          <TestimonialSlider {...testimonialSlider} />
+        </Container>
+      )}
     </Layout>
   );
 };
@@ -120,6 +104,20 @@ export default Category;
 export const query = graphql`
   query($slug: String!) {
     sanityCategoryPage(slug: { current: { eq: $slug } }) {
+      testimonialSlider {
+        heading
+        testimonials {
+          bio
+          company
+          name
+          _rawBody
+          image {
+            asset {
+              gatsbyImageData
+            }
+          }
+        }
+      }
       slug {
         current
       }
@@ -158,6 +156,20 @@ export const query = graphql`
       }
       servicesListText
       _rawText
+      testimonialSlider {
+        heading
+        testimonials {
+          bio
+          company
+          name
+          _rawBody
+          image {
+            asset {
+              gatsbyImageData
+            }
+          }
+        }
+      }
       blogCarousel {
         selectedArticles {
           slug {
@@ -187,24 +199,6 @@ export const query = graphql`
           }
           slug {
             current
-          }
-        }
-      }
-    }
-    allSanityEmployee {
-      nodes {
-        firstname
-        lastname
-        experience
-        title
-        id
-        tags {
-          tag
-        }
-        image {
-          asset {
-            url
-            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
       }

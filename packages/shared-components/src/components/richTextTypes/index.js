@@ -2,6 +2,7 @@ import React from 'react';
 import Cta from './cta';
 import ProductCta from './cta/productCta';
 import TextCta from './cta/textCta';
+import Download from './download';
 import { ImageTextFlip, LinkableHeading } from './layout';
 import MediaComponent from './mediaComponent';
 
@@ -18,6 +19,7 @@ export const richTextTypesSerializer = (config) => ({
     youtube: (props) => (
       <MediaComponent type="youtube" {...props.node} config={config} />
     ),
+    download: (props) => <Download {...props.node} config={config} />,
 
     // Layout
     imageTextFlip: (props) => <ImageTextFlip {...props.node} config={config} />,
