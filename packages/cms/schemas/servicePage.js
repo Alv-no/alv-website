@@ -97,6 +97,10 @@ export default {
       title: 'Blog carousel',
       type: 'blogCarousel',
     },
+    {
+      name: 'testimonialSlider',
+      type: 'testimonialSlider',
+    },
   ],
   preview: {
     select: {

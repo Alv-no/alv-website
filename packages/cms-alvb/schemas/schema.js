@@ -25,6 +25,8 @@ import mainMenu from './menuColumn';
 import menuItem from './menuItem';
 import categoryList from './categoryList';
 import localeImageText from './localeImageText';
+import video from './video';
+import youtube from './youtube';
 import titleBlock from './titleBlock';
 import titleTextButtonImage from './titleTextButtonImage';
 import titleTextImage from './titleTextImage';
@@ -89,6 +91,8 @@ export default createSchema({
     localeHeroBlockContent,
     imageTitleTextButton,
     titleBlockImage,
+    video,
+    youtube,
     download,
     localeMeta,
     titleTextImage,

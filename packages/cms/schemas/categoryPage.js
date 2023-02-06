@@ -83,11 +83,16 @@ export default {
       title: 'Featured Team',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'employee' } }],
+      validation: (Rule) => Rule.unique(),
     },
     {
       name: 'blogCarousel',
       title: 'Blog carousel',
       type: 'blogCarousel',
+    },
+    {
+      name: 'testimonialSlider',
+      type: 'testimonialSlider',
     },
   ],
   preview: {

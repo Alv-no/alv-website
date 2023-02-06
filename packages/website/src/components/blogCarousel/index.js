@@ -1,9 +1,8 @@
 import React from 'react';
 import { BlogSlider } from 'shared-components';
 
-export const BlogCarousel = ({ blue, blueText, articles }) => (
+export const BlogCarousel = ({ blueText, articles }) => (
   <BlogSlider
-    blue={blue}
     blueText={blueText}
     articles={articles}
     heading="Blogg"

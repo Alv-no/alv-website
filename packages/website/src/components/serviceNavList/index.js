@@ -2,11 +2,12 @@ import React from 'react';
 import { Arrow } from '../../../../shared-components/src/components/icon';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Title } from '../../../../shared-components/src/components/title';
-import { StyledBlockContent } from '../styledBlockContent';
+import { BlockContent } from 'shared-components';
+import configuration from '../../config';
 
 export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
   return (
-    <div className="px-5 sm:px-12 relative z-10" id="oversikt">
+    <div className="relative z-10" id="oversikt">
       <div className="max-w-1200 mx-auto pt-5 sm:pt-16 w-full tracking-wider relative z-0">
         <nav className="mx-auto sm:grid sm:gap-x-4 sm:grid-cols-navlist-sm">
           <ul className="text-lg sm:mt-20 -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-5 mb-3">
@@ -46,7 +47,7 @@ export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
                   {heading}
                 </Title>
               </div>
-              <StyledBlockContent blocks={raw} />
+              <BlockContent blocks={raw} config={configuration} />
             </div>
           </div>
         </nav>

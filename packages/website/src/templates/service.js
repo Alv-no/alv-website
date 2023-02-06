@@ -7,6 +7,7 @@ import { CtaSection } from '../components/ctaSection';
 import Layout from '../components/layout';
 import { RolesList } from '../components/rolesList';
 import { ServiceNavList } from '../components/serviceNavList';
+import TestimonialSlider from '../components/testimonialsSlider';
 import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 
@@ -26,6 +27,7 @@ const Service = ({ data }) => {
   const {
     sanityServices: { pageDescription } = { pageDescription: false },
     sanityServices: { pageTitle } = { pageTitle: false },
+    sanityServices: { testimonialSlider } = { pageTitle: false },
   } = data;
 
   const relatedServices = data.allSanityServices.edges.filter((service) =>
@@ -62,34 +64,38 @@ const Service = ({ data }) => {
           scrollTo={scrollTo}
         />
       </Container>
-      <div className="overflow-x-hidden">
-        <Container theme="gray">
-          <RolesList
-            image={data.rolesImg.childImageSharp.gatsbyImageData}
-            roles={relatedServices}
-            categoryName={relatedServices[0].node.parentPage.slug.current}
-            id="tjenester"
-          />
+
+      <Container theme="gray">
+        <RolesList
+          image={data.rolesImg.childImageSharp.gatsbyImageData}
+          roles={relatedServices}
+          categoryName={relatedServices[0].node.parentPage.slug.current}
+          id="tjenester"
+        />
+      </Container>
+      <Container theme="navy" className="mb-10">
+        <CtaSection
+          navy
+          eyebrow={
+            data.sanityServices.ctaEyebrow ||
+            'Tenker du på å kjøre i gang med et prosjekt?'
+          }
+          heading={
+            data.sanityServices.ctaHeading ||
+            'Ta kontakt med oss for å se om vi har passende konsulenter tilgjengelig.'
+          }
+          buttonText="Ta Kontakt"
+          internalLink="/kontakt-oss"
+        />
+      </Container>
+
+      <BlogCarousel articles={blogCarouselArticles} />
+
+      {testimonialSlider && (
+        <Container removePaddingTop>
+          <TestimonialSlider {...testimonialSlider} />
         </Container>
-        <Container theme="navy">
-          <CtaSection
-            navy
-            eyebrow={
-              data.sanityServices.ctaEyebrow ||
-              'Tenker du på å kjøre i gang med et prosjekt?'
-            }
-            heading={
-              data.sanityServices.ctaHeading ||
-              'Ta kontakt med oss for å se om vi har passende konsulenter tilgjengelig.'
-            }
-            buttonText="Ta Kontakt"
-            internalLink="/kontakt-oss"
-          />
-        </Container>
-      </div>
-      <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-        <BlogCarousel blue articles={blogCarouselArticles} />
-      </div>
+      )}
     </Layout>
   );
 };
@@ -122,6 +128,20 @@ export const query = graphql`
       aboutSection
       aboutBlock {
         _rawChildren
+      }
+      testimonialSlider {
+        heading
+        testimonials {
+          bio
+          company
+          name
+          _rawBody
+          image {
+            asset {
+              gatsbyImageData
+            }
+          }
+        }
       }
       blogCarousel {
         selectedArticles {

@@ -29,3 +29,12 @@ export const handleEmailSubmit = async (productName, email) => {
 
   return response;
 };
+
+export const fileUrl = (_ref, config) => {
+  const baseUrl = 'https://cdn.sanity.io/files';
+  const ref = _ref.split('-');
+  const asset = ref[1];
+  const extension = `${ref[2]}`;
+
+  return `${baseUrl}/${config.SANITY_PROJECT_ID}/${config.SANITY_DATASET}/${asset}.${extension}`;
+};

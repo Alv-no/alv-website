@@ -18,3 +18,21 @@
   aspect-ratio: 16 / 9;
   margin: 0 auto;
 }
+
+.mediaWrapper {
+  margin: 40px auto;
+  display: block;
+}
+
+.mediaWrapper h2 {
+  margin: 40px auto;
+  display: block;
+  font-weight: 700 !important;
+}
+
+@media screen and (max-width: 639px) {
+  .mediaWrapper {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+}

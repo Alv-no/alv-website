@@ -5,12 +5,10 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Full name',
       type: 'string',
     },
     {
       name: 'company',
-      title: 'Title',
       type: 'string',
     },
     {
@@ -20,6 +18,15 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'bio',
+      type: 'text',
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
     },
   ],
   preview: {

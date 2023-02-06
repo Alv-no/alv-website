@@ -46,7 +46,7 @@ const Image = ({ image, heading, config, asset }) => {
 };
 
 const MediaComponent = (props) => {
-  const { type, ...rest } = props;
+  const { type, ctaType, ...rest } = props;
 
   const ComponentTypeMapper = {
     image: Image,
@@ -54,11 +54,13 @@ const MediaComponent = (props) => {
     youtube: YoutubeEmbed,
   };
 
-  const MediaComponent = ComponentTypeMapper[type];
+  const Component = ComponentTypeMapper[type];
+
+  const wrapperStyles = ctaType ? styles.mediaCtaWrapper : styles.mediaWrapper;
 
   return (
-    <span className={styles.mediaWrapper}>
-      <MediaComponent {...rest} />
+    <span className={wrapperStyles}>
+      <Component {...rest} />
     </span>
   );
 };
