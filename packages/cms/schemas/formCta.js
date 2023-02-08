@@ -8,6 +8,7 @@ export default {
       title: 'Identifier',
       description: 'To identify which form the submission came from.',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'eyebrow',
@@ -18,6 +19,7 @@ export default {
       name: 'heading',
       title: 'Heading',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'whiteOnBlue',

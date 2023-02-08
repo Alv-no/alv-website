@@ -24,31 +24,17 @@ app.get('/', (_, res) => {
 });
 
 app.post('/send', (req, res) => {
-  const {
-    email,
-    subject,
-    body,
-    firstname,
-    lastname,
-    name,
-    phone,
-    productname,
-  } = req.body;
+  const { subject } = req.body;
 
+  // Create mail body
   let mailbody = '';
-  if (firstname || lastname)
-    mailbody += '\nNavn: ' + firstname + ' ' + lastname;
+  for (const key in req.body) {
+    if (key !== 'subject') {
+      mailbody += '\n' + key + ': ' + req.body[key];
+    }
+  }
 
-  if (name) mailbody += '\nNavn: ' + name;
-
-  if (phone) mailbody += '\nTelefon: ' + phone;
-
-  if (email) mailbody += '\nEpost: ' + email;
-
-  if (body) mailbody += '\n\n' + body;
-
-  if (productname) mailbody += '\n\n' + productname;
-
+  // Create mail object
   const msg = {
     to: process.env.MAILTO,
     from: 'itadmin@alv.no',
@@ -56,6 +42,7 @@ app.post('/send', (req, res) => {
     text: mailbody,
   };
 
+  // Send mail with sendgrid
   sgMail
     .send(msg)
     .then(() => {
