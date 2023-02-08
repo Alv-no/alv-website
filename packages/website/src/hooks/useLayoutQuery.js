@@ -3,13 +3,19 @@ export const useLayoutQuery = () => {
   const data = useStaticQuery(
     graphql`
       {
-        sanitySiteSettings(
-          id: { eq: "-0f217bb5-f7f6-5420-b7c6-58db2c12b8c7" }
-        ) {
+        sanitySiteSettings {
           email
           org
           phone
           address
+          brandPackageButton {
+            buttonText
+            brandPackage {
+              asset {
+                url
+              }
+            }
+          }
         }
         allSanityCategoryPage {
           nodes {
@@ -58,12 +64,14 @@ export const useLayoutQuery = () => {
   const categoryPages = data.allSanityCategoryPage.nodes;
   const companyPages = data.allSanityCompany.nodes;
   const { site } = data;
-  const { address, phone, org, email } = data.sanitySiteSettings || {};
+  const { address, phone, org, email, brandPackageButton } =
+    data.sanitySiteSettings || {};
   return {
     address,
     phone,
     org,
     email,
+    brandPackageButton,
     servicePages,
     categoryPages,
     companyPages,
