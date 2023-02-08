@@ -63,11 +63,11 @@ export const PostCard = ({
             <h3 className="text-lg font-semibold tracking-wide mb-4">
               {title}
             </h3>
-            <div className="flex flex-wrap mb-4">
+            <div className="flex flex-wrap mb-4 gap-6px">
               {tags.map((tag, index) => (
                 <div
                   key={index}
-                  className="px-2 py-1 uppercase tracking-wider mr-6px text-xs text-tag bg-tagbg"
+                  className="px-2 py-1 uppercase tracking-wider text-xs text-tag bg-tagbg"
                 >
                   {tag.tag}
                 </div>

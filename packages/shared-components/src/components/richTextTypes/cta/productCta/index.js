@@ -65,7 +65,7 @@ const EmailForm = ({
 }) => {
   const [email, setEmail] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmitClick = async (e) => {
     e.preventDefault();
 
     setStatus('loading');
@@ -78,7 +78,7 @@ const EmailForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmitClick}>
       <input
         ref={inputRef}
         className={`absolute left-0 bg-none bottom-1/2 transform pl-8 translate-y-1/2 w-72 focus:outline-none ${
