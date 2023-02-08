@@ -34,14 +34,14 @@ export const EmployeeGroup = ({
   };
   // Close employee bio section by clearing activeBio state
   const handleCloseClick = () => {
-    // eslint-disable-next-line no-self-assign
     updateActiveBio(null);
   };
+
   return (
     <>
       <div>
-        <div class="md:flex justify-center">
-          <div className="grid xs:gap-4 justify-center gap-y-4 five:gap-y-0 xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid -mx-4 xs:mx-0 grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg">
+        <div class="md:flex justify-center ">
+          <div className="grid gap-4 justify-center five:gap-y-0 xs:mx-auto mb-4 xs:max-w-570 seven:max-w-none nine:max-w-grid grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-employees-lg">
             {group.map((employee, i) => (
               <span key={`employee-${i}`}>
                 <div>

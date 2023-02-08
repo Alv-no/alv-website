@@ -41,7 +41,6 @@ export const GridContainer = ({
   const [rows, setRows] = useState(null);
   const [contentGroups, setContentGroups] = useState([]);
   const [visibleRows, setVisibleRows] = useState(20);
-  const [cardClick, setCardClick] = useState(false);
   const bioRefContainer = useRef(null);
 
   // Set active bio on route update
@@ -53,69 +52,76 @@ export const GridContainer = ({
     return null;
   });
 
+  // Set number of columns based on screen width
   useEffect(() => {
-    setColumnsNr(width >= 930 ? 4 : width >= 700 ? 3 : width >= 500 ? 2 : 1);
-    setRows(Math.ceil(filteredContent.length / columnsNr));
-  }, [filteredContent, columnsNr, width]);
-
-  useEffect(() => {
-    if (typeof rows == 'number' && rows < 20) {
-      setContentGroups(() => {
-        const newGroup = [];
-        const showEmployees = filteredContent;
-        let i;
-        for (i = 0; i < rows || newGroup.length < visibleRows; i++) {
-          const currentGroup = showEmployees.slice(
-            i * columnsNr,
-            (i + 1) * columnsNr
-          );
-          showEmployees.slice(0, columnsNr);
-          newGroup.push(currentGroup);
-        }
-        return newGroup;
-      });
+    if (width > 930) {
+      setColumnsNr(4);
+    } else if (width > 700) {
+      setColumnsNr(3);
+    } else if (width > 480) {
+      setColumnsNr(2);
+    } else {
+      setColumnsNr(1);
     }
-  }, [rows, filteredContent, columnsNr, visibleRows]);
+  }, [width]);
 
-  const updateActiveBio = (card) => {
-    setActiveBio(card);
-    if (!cardClick) setCardClick(true);
+  // Set number of rows based on number of columns
+  useEffect(() => {
+    if (columnsNr) {
+      setRows(Math.ceil(filteredContent.length / columnsNr));
+    }
+  }, [columnsNr, filteredContent]);
+
+  // Group employees based on number of columns
+  useEffect(() => {
+    if (rows) {
+      const groups = [];
+      for (let i = 0; i < rows; i++) {
+        groups.push(
+          filteredContent.slice(i * columnsNr, i * columnsNr + columnsNr)
+        );
+      }
+
+      setContentGroups(groups);
+    }
+  }, [rows, columnsNr, filteredContent]);
+
+  // Update active bio on card click
+  const updateActiveBio = (bio) => {
+    setActiveBio(bio);
   };
 
+  // View more button
   const handleViewMoreClick = () => {
     setVisibleRows(visibleRows + 2);
   };
 
   return (
     <>
-      {contentGroups.length > 0
-        ? contentGroups.slice(0, visibleRows).map((group) => {
-            if (group.length > 0) {
-              return (
-                <EmployeeGroup
-                  showVideo={showVideo}
-                  key={contentGroups.indexOf(group)}
-                  activeBio={activeBio}
-                  employees={filteredContent}
-                  updateActiveBio={updateActiveBio}
-                  group={group}
-                  fallbackImg={fallbackImg}
-                  white={white}
-                  greyCards={greyCards}
-                  centerBioText={centerBioText}
-                  config={config}
-                />
-              );
-            }
-            return null;
-          })
-        : null}
+      {Boolean(contentGroups.length) &&
+        contentGroups
+          .slice(0, visibleRows)
+          .filter((group) => Boolean(group.length))
+          .map((group) => (
+            <EmployeeGroup
+              showVideo={showVideo}
+              key={contentGroups.indexOf(group)}
+              activeBio={activeBio}
+              employees={filteredContent}
+              updateActiveBio={updateActiveBio}
+              group={group}
+              fallbackImg={fallbackImg}
+              white={white}
+              greyCards={greyCards}
+              centerBioText={centerBioText}
+              config={config}
+            />
+          ))}
       {/* VIEW MORE BUTTON */}
       <div
-        className="max-w-1200 mx-auto flex justify-between sm:mt-15 xs:mt-12 mt-10 twelve:px-6"
+        className="max-w-1200 mx-auto flex justify-end sm:mt-15 xs:mt-12 mt-10 twelve:px-6"
         id="container"
       >
-        <div />
         <div
           className="font-bold tracking-wider pr-2px"
           onClick={handleViewMoreClick}
