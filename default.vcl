@@ -15,4 +15,15 @@ sub vcl_recv {
 
 sub vcl_backend_response {
 	set beresp.ttl = 2w;
+  set beresp.grace = 10m;
+
+  if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504)
+  {
+    if (bereq.is_bgfetch)
+    {
+        return (abandon);
+    }
+
+    set beresp.uncacheable = true;
+  }
 }	

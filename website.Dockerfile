@@ -26,7 +26,8 @@ RUN test -f "/app/packages/website/.env.production"
 RUN yarn workspace website run build
 
 # Configuring NginX
-COPY website.nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx/website.nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx/500.html /usr/share/nginx/html/500.html
 EXPOSE 80
 
 # Configure varnish
