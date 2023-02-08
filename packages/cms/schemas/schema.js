@@ -19,6 +19,7 @@ import contactPage from './contactPage';
 import cta from './cta';
 import employee from './employee';
 import employeePage from './employeePage';
+import brandPackageButton from './brandPackageButton';
 import employeeTag from './employeeTag';
 import externalProfiles from './externalProfiles';
 import guestAuthor from './guestAuthor';
@@ -91,6 +92,7 @@ export default createSchema({
     servicesIntro,
     blogCarousel,
     brands,
+    brandPackageButton,
     imageWithAlt,
     reasonsCard,
     serviceItem,

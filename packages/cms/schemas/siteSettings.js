@@ -44,5 +44,9 @@ export default {
       title: 'Org. nr',
       type: 'string',
     },
+    {
+      name: 'brandPackageButton',
+      type: 'brandPackageButton',
+    },
   ],
 };

@@ -14,14 +14,11 @@ const Layout = ({
   white,
 }) => {
   const {
-    address,
-    org,
-    email,
-    phone,
     servicePages,
     categoryPages,
     companyPages,
     site,
+    ...footerProps
   } = layoutData;
 
   const metaAuthor = site.siteMetadata.author;
@@ -59,13 +56,7 @@ const Layout = ({
         logo={Logo}
       />
       <div>{children}</div>
-      <Footer
-        address={address}
-        org={org}
-        email={email}
-        phone={phone}
-        companyName="Alv"
-      />
+      <Footer {...footerProps} companyName="Alv" />
       <CookieNotice />
     </>
   );

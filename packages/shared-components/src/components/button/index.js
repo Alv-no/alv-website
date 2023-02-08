@@ -25,6 +25,7 @@ export const Arrow = ({ children, color }) => (
 export const OvalSimple = ({
   children,
   onClick,
+  uppercase = true,
   color = 'navy',
   variant = 'normal',
 }) => {
@@ -40,7 +41,9 @@ export const OvalSimple = ({
 
   return (
     <button
-      className={`${colorMapper[color]} ${variantClassMapper[variant]} border uppercase tracking-wider text-base px-8 py-6px rounded-full font-semibold focus:outline-none`}
+      className={`${colorMapper[color]} ${variantClassMapper[variant]} ${
+        uppercase ? 'uppercase' : ''
+      }  border tracking-wider text-base px-8 py-6px rounded-full font-semibold focus:outline-none`}
       onClick={onClick}
       aria-label={children}
     >
