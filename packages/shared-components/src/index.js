@@ -14,7 +14,6 @@ export { GridContainer } from './components/gridContainer';
 export { NavyIntro } from './components/navyIntro';
 export { OurServices } from './components/ourServices';
 export { WhoWeAre } from './components/whoWeAre';
-export { WhatWeDo } from './components/whatWeDo';
 export { LargeLink, Subtitle as SubtitleLink } from './components/navItems';
 export { BlogSlider } from './components/blogSlider';
 export { VideoIntro } from './components/videoIntro';
