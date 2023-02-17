@@ -25,9 +25,11 @@ export const Arrow = ({ children, color }) => (
 export const OvalSimple = ({
   children,
   onClick,
+  className,
   uppercase = true,
   color = 'navy',
   variant = 'normal',
+  padding = 'normal',
 }) => {
   const colorMapper = {
     navy: 'text-navy border-navy',
@@ -39,11 +41,18 @@ export const OvalSimple = ({
     light: 'font-thin',
   };
 
+  const paddingMapper = {
+    normal: 'px-8 py-6px',
+    tight: 'px-4 py-6px',
+  };
+
   return (
     <button
       className={`${colorMapper[color]} ${variantClassMapper[variant]} ${
+        paddingMapper[padding]
+      } ${
         uppercase ? 'uppercase' : ''
-      }  border tracking-wider text-base px-8 py-6px rounded-full font-semibold focus:outline-none`}
+      } ${className} border tracking-wider text-base rounded-full font-semibold focus:outline-none`}
       onClick={onClick}
       aria-label={children}
     >
