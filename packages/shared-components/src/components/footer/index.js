@@ -24,16 +24,38 @@ export const Footer = ({
         <p className="text-footer tracking-wider">{email}</p>
         <p className="text-footer tracking-wider">{phone}</p>
       </div>
-      <div className="flex flex-col sm:items-end justify-between">
-        <a href={brandPackageButton?.brandPackage?.asset.url}>
-          <OvalSimple variant="normal" color="white" uppercase={false}>
-            {brandPackageButton.buttonText}
-          </OvalSimple>
-        </a>
+      <div className="flex flex-col sm:items-end justify-between text-footer">
+        {brandPackageButton && (
+          <BrandPackageButton brandPackageButton={brandPackageButton} />
+        )}
         <p className="sm:mt-auto bottom-0 sm:text-right mt-2">
           {companyName} © {new Date().getFullYear()}
         </p>
       </div>
     </div>
   </footer>
+);
+
+const BrandPackageButton = ({ brandPackageButton }) => (
+  <>
+    <a
+      href={brandPackageButton?.brandPackage?.asset.url}
+      className="hidden md:block"
+    >
+      <OvalSimple
+        variant="normal"
+        color="white"
+        uppercase={false}
+        padding="tight"
+      >
+        {brandPackageButton.buttonText}
+      </OvalSimple>
+    </a>
+    <a
+      href={brandPackageButton?.brandPackage?.asset.url}
+      className="underline text-footer md:hidden"
+    >
+      {brandPackageButton.buttonText}
+    </a>
+  </>
 );
