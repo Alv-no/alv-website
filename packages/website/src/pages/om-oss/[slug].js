@@ -55,7 +55,7 @@ const Company = ({ serverData }) => {
           config={config}
         />
         <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-          <BlogCarousel blue articles={blogCarouselArticles} />
+          <BlogCarousel articles={blogCarouselArticles} />
         </div>
       </div>
     </Layout>
