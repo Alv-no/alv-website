@@ -14,7 +14,7 @@ export const CtaSection = ({
         navy ? 'bg-navy text-white' : 'bg-servicesgray'
       }`}
     >
-      <p className="font-light text-center font-lg mb-2">{eyebrow}</p>
+      <p className="font-light text-center text-lg mb-2">{eyebrow}</p>
       <h4 className="font-semibold text-center text-cta-section mb-5">
         {heading}
       </h4>
@@ -22,7 +22,7 @@ export const CtaSection = ({
         <button
           type="button"
           aria-label={buttonText}
-          className={`px-10 rounded rounded-full font-semibold text-base uppercase py-6px border ${
+          className={`px-10 rounded-full font-semibold text-base uppercase py-6px border ${
             navy ? 'border-white' : ' border-navy'
           } border-2`}
         >

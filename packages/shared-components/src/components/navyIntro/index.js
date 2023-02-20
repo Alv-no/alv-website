@@ -29,10 +29,10 @@ export const NavyIntro = ({ title, description, image, white, blueDot }) => (
         </BgImage>
       </div>
     ) : (
-      <div className="z-50 bg-navy sm:-mt-20 w-full sm:h-auto h-screen sm:block flex justify-center items-center flex-col sm:py-40 overflow-hidden">
+      <div className="z-50 bg-navy sm:-mt-20 w-full sm:h-auto h-screen sm:block flex justify-center items-center flex-col sm:py-40 overflow-hidden px-5">
         <Title blueDot={blueDot}>
           <span
-            className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
+            className={`xs:inline text-2xl sm:text-3xl lg:text-4xl hyphenate ${
               white && 'text-white'
             }`}
           >
@@ -45,7 +45,6 @@ export const NavyIntro = ({ title, description, image, white, blueDot }) => (
             <Description align="center">{description}</Description>
           </span>
         </div>
-        <div className="h-32 sm:hidden" />
       </div>
     )}
   </>

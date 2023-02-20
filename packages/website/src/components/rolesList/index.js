@@ -22,7 +22,7 @@ export const RolesList = ({ image, roles, categoryName }) => {
         <BgImage image={image}>
           <div className="bg-navy bg-opacity-20">
             <h3
-              className="text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase"
+              className="sm:text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase hyphenate text-3xl"
               style={{ lineHeight: '1.05' }}
             >
               Tjenester innenfor <br /> {categoryName}
@@ -59,7 +59,7 @@ export const RolesList = ({ image, roles, categoryName }) => {
         className="h-2px w-full sm:hidden"
         style={{ background: 'rgba(6, 24, 56, 0.3)' }}
       />
-      <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end sm:px-0">
+      <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end sm:px-0 -mb-5 sm:mb-0">
         {roles &&
           roles
             .slice(Math.ceil(roles.length / 2), roles.length)
