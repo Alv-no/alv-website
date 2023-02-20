@@ -55,7 +55,7 @@ const Service = ({ data }) => {
           buttonText="kontakt oss"
         />
       </div>
-      <Container>
+      <Container removePaddingMobile="top">
         <ServiceNavList
           nav={nav}
           heroImage={data.sanityServices.heroImage.asset.gatsbyImageData}

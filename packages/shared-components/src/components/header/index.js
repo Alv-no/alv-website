@@ -45,7 +45,7 @@ export const Header = ({
           navyHeader ? 'bg-navy' : 'bg-theme-bg'
         } hidden sm:pt-7 py-5 sm:flex justify-center`}
       >
-        <div className="container max-w-screen-2xl relative z-50 h-8">
+        <div className="px-6 sm:px-12 twelve:px-20 w-full max-w-screen-2xl relative z-50 h-8">
           <div className="flex justify-between sm:mb-7">
             <div className="flex relative z-50">
               <button
