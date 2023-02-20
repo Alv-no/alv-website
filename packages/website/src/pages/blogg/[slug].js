@@ -292,7 +292,7 @@ export async function getServerData(props) {
     const articles = await getBlogDataServerSide();
 
     const dedupeMap = new Map(
-      articles.articles.map((item) => [item.slug.current, item])
+      articles.articles.map((item) => [item.slug.current, item]),
     );
 
     dedupeMap.delete(article.slug.current);

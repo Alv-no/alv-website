@@ -25,12 +25,12 @@ export const useEmployeeQuery = () => {
           }
         }
       }
-    `
+    `,
   );
   const allEmployees = data.sanityEmployeePage.employees.map((employee) => {
     employee.slug = createSlugForEmployee(
       employee.firstname,
-      employee.lastname
+      employee.lastname,
     );
     return employee;
   });

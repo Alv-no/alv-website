@@ -13,13 +13,8 @@ const Layout = ({
   whiteIcons,
   white,
 }) => {
-  const {
-    servicePages,
-    categoryPages,
-    companyPages,
-    site,
-    ...footerProps
-  } = layoutData;
+  const { servicePages, categoryPages, companyPages, site, ...footerProps } =
+    layoutData;
 
   const metaAuthor = site.siteMetadata.author;
   const metaDescription = site.siteMetadata.description;

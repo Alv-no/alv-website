@@ -22,8 +22,7 @@ const blocks = [
         _key: 'bcd4b4e93bdd',
         _type: 'span',
         marks: [],
-        text:
-          'Alv er produktet av alle konsulentene som jobber i selskapet. Dyktige konsulenter gjør Alv til et bra produkt. En dyktig konsulent er en konsulent som er mer en bare faglig sterk.',
+        text: 'Alv er produktet av alle konsulentene som jobber i selskapet. Dyktige konsulenter gjør Alv til et bra produkt. En dyktig konsulent er en konsulent som er mer en bare faglig sterk.',
       },
     ],
     markDefs: [],
@@ -37,8 +36,7 @@ const blocks = [
         _key: 'c9ada2f5ca870',
         _type: 'span',
         marks: [],
-        text:
-          'I Alv har vi tro på at dyktige konsulenter er de som hele tiden ønsker å utvikle seg selv, og de rundt seg. Dette er grunnpilarene for hvordan vi bygger Alv. Følg gjerne videoserien vår for å få et bedre innblikk i hvordan vi bygger Alv som selskap.',
+        text: 'I Alv har vi tro på at dyktige konsulenter er de som hele tiden ønsker å utvikle seg selv, og de rundt seg. Dette er grunnpilarene for hvordan vi bygger Alv. Følg gjerne videoserien vår for å få et bedre innblikk i hvordan vi bygger Alv som selskap.',
       },
     ],
     markDefs: [],

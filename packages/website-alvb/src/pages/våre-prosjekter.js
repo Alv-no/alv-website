@@ -6,13 +6,8 @@ import { ServicesHero, Title, Description } from 'shared-components';
 import { RichtextAndImage } from '../components/richtextAndImage';
 
 const Projects = ({ data }) => {
-  const {
-    section1,
-    section2,
-    section3,
-    section4,
-    meta,
-  } = data.sanityOurServicesPage;
+  const { section1, section2, section3, section4, meta } =
+    data.sanityOurServicesPage;
   return (
     <div className="overflow-hidden">
       <Layout

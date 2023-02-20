@@ -58,7 +58,7 @@ export const useLayoutQuery = () => {
           }
         }
       }
-    `
+    `,
   );
   const servicePages = data.allSanityServices.edges.map((edge) => edge.node);
   const categoryPages = data.allSanityCategoryPage.nodes;

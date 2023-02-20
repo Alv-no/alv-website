@@ -14,7 +14,7 @@ const Company = ({ data }) => {
     window.history.replaceState(
       {},
       '',
-      `/${data.sanityCompany.slug.current}#${e.target.name}`
+      `/${data.sanityCompany.slug.current}#${e.target.name}`,
     );
     window.scrollTo({ top, behavior: 'smooth' });
   };

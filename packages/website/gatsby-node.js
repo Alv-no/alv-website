@@ -95,7 +95,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    `
+    `,
   );
 
   let videoseries;
@@ -107,7 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
         await Promise.all(
           category.playlists.process.map(async ({ id }) => {
             const response = await fetch(
-              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&key=${config.YT_API}`
+              `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&key=${config.YT_API}`,
             );
             const list = await response.json();
             let seasonVideos = list.items;
@@ -117,7 +117,7 @@ exports.createPages = async ({ graphql, actions }) => {
               let nextPageToken = list.nextPageToken;
               while (nextPageToken) {
                 const response = await fetch(
-                  `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&pageToken=${nextPageToken}&key=${config.YT_API}`
+                  `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${id}&pageToken=${nextPageToken}&key=${config.YT_API}`,
                 );
                 const nextPageList = await response.json();
                 seasonVideos = seasonVideos.concat(nextPageList.items);
@@ -139,19 +139,19 @@ exports.createPages = async ({ graphql, actions }) => {
                   lower: true,
                 });
                 video.formattedPublishedAt = new Date(
-                  video.publishedAt
+                  video.publishedAt,
                 ).toUTCString();
                 return video;
               })
               .sort((a, b) => (a.position > b.position ? -1 : 1));
 
             seasons.push(seasonVideos);
-          })
+          }),
         );
         const newCategory = category;
         newCategory.seasons = seasons;
         return newCategory;
-      })
+      }),
     );
   }
 
@@ -173,7 +173,7 @@ exports.createPages = async ({ graphql, actions }) => {
       const sortedSeasons = category.seasons.sort(
         (a, b) =>
           sortingArr.indexOf(a[0].playlistId) -
-          sortingArr.indexOf(b[0].playlistId)
+          sortingArr.indexOf(b[0].playlistId),
       );
 
       // create episode pages

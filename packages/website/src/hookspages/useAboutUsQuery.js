@@ -58,7 +58,7 @@ export const useAboutUsQuery = () => {
           }
         }
       }
-    `
+    `,
   );
   return data;
 };

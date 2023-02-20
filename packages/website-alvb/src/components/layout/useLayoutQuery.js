@@ -19,7 +19,7 @@ export const useLayoutQuery = () => {
           }
         }
       }
-    `
+    `,
   );
   const { site } = data;
   const { address, phone, hours, email } = data.sanitySiteSettings;

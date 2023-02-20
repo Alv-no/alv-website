@@ -15,40 +15,35 @@ const CookieNoticeWrapper = () => {
             editable: false,
             default: true,
             title: 'Nødvendige cookies',
-            text:
-              'Cookies helt nødvendig for at siden skal fungere som den skal',
+            text: 'Cookies helt nødvendig for at siden skal fungere som den skal',
           },
           {
             name: 'gatsby-gdpr-google-analytics',
             editable: true,
             default: true,
             title: 'Google Analytics',
-            text:
-              'Vi bruker Google Analytics til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
+            text: 'Vi bruker Google Analytics til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
           },
           {
             name: 'gatsby-gdpr-google-tagmanager',
             editable: true,
             default: true,
             title: 'Google TagManager',
-            text:
-              'Vi bruker Google Tags til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
+            text: 'Vi bruker Google Tags til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
           },
           {
             name: 'gatsby-gdpr-facebook-pixel',
             editable: true,
             default: true,
             title: 'Facebook',
-            text:
-              'Vi bruker Facebook Pixel til å forbedre brukeropplevelsen av Alv sin markedsføring.',
+            text: 'Vi bruker Facebook Pixel til å forbedre brukeropplevelsen av Alv sin markedsføring.',
           },
           {
             name: 'gatsby-gdpr-linked-in',
             editable: true,
             default: true,
             title: 'Linkedin',
-            text:
-              'Vi bruker LinkedIn til å forbedre brukeropplevelsen av Alv sin markedsføring.',
+            text: 'Vi bruker LinkedIn til å forbedre brukeropplevelsen av Alv sin markedsføring.',
           },
         ]}
         backgroundClasses="md:flex justify-between w-full shrink-0 sm:block"

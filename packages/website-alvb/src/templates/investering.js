@@ -8,13 +8,8 @@ import { RichtextAndImage } from '../components/richtextAndImage';
 import { Cta } from '../components/cta';
 
 const Investering = ({ data }) => {
-  const {
-    meta,
-    section1,
-    section2,
-    section3,
-    _rawSection4,
-  } = data.sanityInvestmentPage;
+  const { meta, section1, section2, section3, _rawSection4 } =
+    data.sanityInvestmentPage;
   return (
     <div className="overflow-hidden">
       <Layout

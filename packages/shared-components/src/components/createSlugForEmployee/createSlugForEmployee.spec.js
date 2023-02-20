@@ -6,6 +6,6 @@ const lastname = 'Fra]]nsPlass#?';
 
 test('names get slugified', () => {
   expect(createSlugForEmployee(firstname, lastname)).toBe(
-    'mats-gundersen-fransplass'
+    'mats-gundersen-fransplass',
   );
 });

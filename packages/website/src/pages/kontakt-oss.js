@@ -20,15 +20,8 @@ const Contact = ({ location }) => {
     });
   };
 
-  const {
-    address,
-    phone,
-    image,
-    email,
-    org,
-    pageTitle,
-    pageDescription,
-  } = useContactQuery();
+  const { address, phone, image, email, org, pageTitle, pageDescription } =
+    useContactQuery();
   return (
     <Layout
       layoutData={layoutData}

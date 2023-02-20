@@ -17,15 +17,8 @@ export const Layout = ({
   navyHeader,
   noCta,
 }) => {
-  const {
-    address,
-    org,
-    email,
-    phone,
-    servicePages,
-    categoryPages,
-    site,
-  } = useLayoutQuery();
+  const { address, org, email, phone, servicePages, categoryPages, site } =
+    useLayoutQuery();
 
   const metaAuthor = site.siteMetadata.author;
   const metaDescription = pageDescription || site.siteMetadata.description;

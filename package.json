@@ -1,12 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "fix": "run-p -slc --aggregate-output 'fix:*'",
-    "fix:prettier": "prettier --ignore-path .lintignore --check --write \"packages/**/*.{ts,tsx,js,jsx,json,css,scss,html,md}\"",
+    "fix:rome": "rome format . --write",
     "fix:scripts": "eslint --ignore-path .lintignore --cache --fix \"packages/**/*.{ts,tsx,js,jsx,json}\"",
-    "lint": "run-p -slc --aggregate-output 'lint:*'",
-    "lint:prettier": "prettier --ignore-path .lintignore --check \"packages/**/*.{ts,tsx,js,jsx,json,css,scss,html,md}\"",
-    "lint:scripts": "eslint --ignore-path .lintignore --max-warnings 0 --cache \"packages/**/*.{ts,tsx,js,jsx,json}\""
+    "lint:rome": "rome ci .",
+    "lint:eslint": "eslint --ignore-path .lintignore --max-warnings 0 --cache \"packages/**/*.{ts,tsx,js,jsx,json}\""
   },
   "workspaces": [
     "packages/*"
@@ -14,11 +12,9 @@
   "devDependencies": {
     "@blueberrypie/editor-config": "^1.0.0",
     "@blueberrypie/eslint-config": "^1.0.0",
-    "@blueberrypie/prettier-config": "^1.0.0",
     "eslint": "^7.13.0",
     "husky": "^4.3.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
+    "rome": "^11.0.0",
     "turbo": "^1.8.1",
     "typescript": "^4.0.5"
   },
@@ -27,9 +23,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s -s lint"
+      "pre-commit": "yarn lint:rome lint:eslint"
     }
   },
-  "prettier": "@blueberrypie/prettier-config",
   "packageManager": "yarn@3.2.3"
 }
