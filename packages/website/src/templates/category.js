@@ -88,7 +88,7 @@ const Category = ({ data }) => {
         </Container>
       )}
 
-      <BlogCarousel blueText articles={blogCarouselArticles} />
+      <BlogCarousel articles={blogCarouselArticles} />
       {testimonialSlider && (
         <Container>
           <TestimonialSlider {...testimonialSlider} />

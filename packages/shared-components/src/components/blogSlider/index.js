@@ -9,17 +9,18 @@ import { Title } from '../title';
 
 export const BlogSlider = ({
   dot,
-  blueText = true,
   articles,
-  maxWidth = 'max-w-1200',
   heading,
   postPrefix,
   readMoreText,
+  textColor = 'blue',
+  maxWidth = '1200',
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const updateActive = (next) => {
     setActiveSlide(next);
   };
+
   const settings = {
     infinite: true,
     slidesToShow: 1,
@@ -40,27 +41,23 @@ export const BlogSlider = ({
           centerMode: false,
           centerPadding: '0',
           infinite: true,
-          nextArrow: <NextArrow blueText={blueText} />,
-          prevArrow: <PrevArrow blueText={blueText} />,
+          nextArrow: <NextArrow arrowColor={textColor} />,
+          prevArrow: <PrevArrow arrowColor={textColor} />,
         },
       },
     ],
   };
+
+  const textColorClass = textColor === 'white' ? 'text-white' : 'text-navy';
+
   return (
     <div className="w-full relative">
       <div
-        className={`${maxWidth} mx-auto px-5 sm:px-12 2xl:px-0`}
-        style={{ maxWidth: `${maxWidth || 1200}px` }}
+        className="mx-auto px-5 sm:px-12 2xl:px-0"
+        style={{ maxWidth: `${maxWidth}px` }}
       >
-        <Title
-          underline
-          align="text-left"
-          color={blueText ? '#000' : 'text-white'}
-          nodot={dot}
-        >
-          <span className={`${blueText ? 'text-navy' : 'text-white'}`}>
-            {heading}
-          </span>
+        <Title underline align="text-left" nodot={dot}>
+          <span className={textColorClass}>{heading}</span>
         </Title>
       </div>
       <div className="pt-6 sm:pt-12 sm:pb-20 max-w-1440 mx-auto">
@@ -73,7 +70,7 @@ export const BlogSlider = ({
                   postPrefix={postPrefix}
                   readMoreText={readMoreText}
                   key={index}
-                  blueText={blueText}
+                  textColorClass={textColorClass}
                   isCurrentSlide={activeSlide === index}
                   prevPos={
                     activeSlide - 1 === index ||
@@ -133,7 +130,7 @@ const PrevArrow = ({ onClick, blueText }) => {
 const Slide = ({
   article,
   fallbackImg,
-  blueText,
+  textColorClass,
   isCurrentSlide,
   nextPos,
   prevPos,
@@ -193,7 +190,7 @@ const Slide = ({
             />
           </div>
           <div
-            className={`grid ${blueText ? 'text-navy' : 'text-white'}`}
+            className={`grid ${textColorClass}`}
             style={{ gridTemplateColumns: '80% auto' }}
           >
             <div className="text-lg xl:text-xl sm:hidden font-semibold relative mt-3 px-5">

@@ -65,7 +65,7 @@ const Index = ({ data }) => {
           <OurServices {..._rawSection5} image={section5.image} blueLine />
         </Container>
         <Container removePaddingBottom />
-        <BlogCarousel blue blueText maxWidth="1280" />
+        <BlogCarousel maxWidth="1280" />
       </Layout>
     </div>
   );

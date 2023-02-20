@@ -57,7 +57,7 @@ const About = ({ serverData }) => {
           <FeaturedTeam notitle team={team} color="navy" />
         </Container>
         <div className="max-w-1440 mx-auto">
-          <BlogCarousel articles={blogCarouselArticles} />
+          <BlogCarousel textColor="white" articles={blogCarouselArticles} />
         </div>
       </div>
     </Layout>

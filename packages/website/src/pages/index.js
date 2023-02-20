@@ -111,6 +111,7 @@ const Index = ({ data, serverData }) => {
         </Container>
         <BlogSlider
           articles={blogCarouselArticles}
+          textColor="white"
           maxWidth={maxWidth}
           readMoreText="Les mer"
           heading="Blogg"
