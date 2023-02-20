@@ -23,13 +23,13 @@ export const EmployeeGroup = ({
       return updateActiveBio(null);
     }
     const currentBio = employees.find(
-      (employee) => employee.id === e.target.id
+      (employee) => employee.id === e.target.id,
     );
     updateActiveBio(currentBio);
     window.history.replaceState(
       {},
       '',
-      `${window.location.pathname}#${currentBio.slug}`
+      `${window.location.pathname}#${currentBio.slug}`,
     );
   };
   // Close employee bio section by clearing activeBio state

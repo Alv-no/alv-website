@@ -20,7 +20,7 @@ export const BlogSection = ({
       allArticles.map(({ author }) => {
         if (author) return `${author.firstname} ${author.lastname}`;
         return '';
-      })
+      }),
     ),
   ];
 

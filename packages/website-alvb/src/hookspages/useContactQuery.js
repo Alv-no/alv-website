@@ -41,7 +41,7 @@ export const useContactQuery = () => {
           hours
         }
       }
-    `
+    `,
   );
   const { address, phone, email, hours } = data.sanitySiteSettings;
   const { section1, meta } = data.sanityContactPage;

@@ -23,14 +23,10 @@ export const useContactQuery = () => {
           }
         }
       }
-    `
+    `,
   );
-  const {
-    address,
-    phone,
-    org,
-    email,
-  } = data.allSanitySiteSettings.edges[0].node;
+  const { address, phone, org, email } =
+    data.allSanitySiteSettings.edges[0].node;
   const { pageDescription, pageTitle } = data.sanityContactPage;
   const image = data.contactUsImg.childImageSharp.gatsbyImageData;
   return { address, phone, org, email, image, pageDescription, pageTitle };

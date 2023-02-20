@@ -4,7 +4,7 @@ import { SortField } from '../../../../shared-components/src/components/blogFilt
 export const VideoFilter = ({ seasons, onChange, seasonTitles }) => {
   const [sort, setSort] = useState('newest');
   const [activeSeasonIndex, setActiveSeasonIndex] = useState(
-    seasons.length - 1
+    seasons.length - 1,
   );
 
   useEffect(() => {

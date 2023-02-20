@@ -19,7 +19,7 @@ const Company = ({ serverData }) => {
     window.history.replaceState(
       {},
       '',
-      `/om-oss/${serverData.sanityCompany.slug.current}#${e.target.name}`
+      `/om-oss/${serverData.sanityCompany.slug.current}#${e.target.name}`,
     );
     window.scrollTo({ top, behavior: 'smooth' });
   };

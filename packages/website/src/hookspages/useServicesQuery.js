@@ -124,7 +124,7 @@ export const useServicesQuery = () => {
           _rawSection5Block
         }
       }
-    `
+    `,
   );
   return data;
 };

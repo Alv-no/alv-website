@@ -74,7 +74,7 @@ export const useBlogQuery = () => {
           }
         }
       }
-    `
+    `,
   );
   return data;
 };

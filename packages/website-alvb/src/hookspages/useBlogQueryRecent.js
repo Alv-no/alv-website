@@ -21,7 +21,7 @@ export const useBlogQueryRecent = () => {
           }
         }
       }
-    `
+    `,
   );
   return data;
 };

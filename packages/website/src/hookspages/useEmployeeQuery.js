@@ -19,7 +19,7 @@ export const useEmployeeQuery = () => {
           }
         }
       }
-    `
+    `,
   );
 
   return data;

@@ -14,7 +14,7 @@ export const LinkableContent = ({
   // create menuitems from linkable heading types used in sanity rich text
   const navElements = raw
     .filter(
-      (el) => el._type === 'linkableHeading' || el._type === 'imageTextFlip'
+      (el) => el._type === 'linkableHeading' || el._type === 'imageTextFlip',
     )
     .map((el) => {
       let heading;

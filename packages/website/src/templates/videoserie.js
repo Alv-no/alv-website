@@ -13,14 +13,14 @@ const Videoseries = ({ pageContext }) => {
   const layoutData = useLayoutQuery();
 
   const sortingArr = data.sanityVideoseriesPage.videoseries.map(
-    (el) => el.slug.current
+    (el) => el.slug.current,
   );
 
   const filteredVideoseries = videoseries
     .filter((el) => sortingArr.includes(el.slug.current))
     .sort(
       (a, b) =>
-        sortingArr.indexOf(a.slug.current) - sortingArr.indexOf(b.slug.current)
+        sortingArr.indexOf(a.slug.current) - sortingArr.indexOf(b.slug.current),
     );
 
   const pageDescription = data.sanityVideoSeriesPage?.pageDescription || false;

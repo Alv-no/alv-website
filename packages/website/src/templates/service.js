@@ -31,7 +31,7 @@ const Service = ({ data }) => {
   } = data;
 
   const relatedServices = data.allSanityServices.edges.filter((service) =>
-    window.location.href.includes(service.node.parentPage.slug.current)
+    window.location.href.includes(service.node.parentPage.slug.current),
   );
 
   const recentArticles = useBlogQueryRecent().articles.nodes;

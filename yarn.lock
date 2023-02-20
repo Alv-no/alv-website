@@ -6060,15 +6060,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blueberrypie/prettier-config@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@blueberrypie/prettier-config@npm:1.0.0"
-  peerDependencies:
-    prettier: ">=1.18.2"
-  checksum: 9a5bb1a37fb9d2337498c5f90203e74fbaa5961e5c7273e2bb74e1abcb186072a1660a6350e00bde0b361bac31c394ccedf6da51dbc0c41a7f83fa00b0049a52
-  languageName: node
-  linkType: hard
-
 "@cnakazawa/watch@npm:^1.0.3":
   version: 1.0.4
   resolution: "@cnakazawa/watch@npm:1.0.4"
@@ -8558,6 +8549,48 @@ __metadata:
   peerDependencies:
     rollup: ^1.20.0||^2.0.0
   checksum: 8be16e27863c219edbb25a4e6ec2fe0e1e451d9e917b6a43cf2ae5bc025a6b8faaa40f82a6e53b66d0de37b58ff472c6c3d57a83037ae635041f8df959d6d9aa
+  languageName: node
+  linkType: hard
+
+"@rometools/cli-darwin-arm64@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@rometools/cli-darwin-arm64@npm:11.0.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@rometools/cli-darwin-x64@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@rometools/cli-darwin-x64@npm:11.0.0"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@rometools/cli-linux-arm64@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@rometools/cli-linux-arm64@npm:11.0.0"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@rometools/cli-linux-x64@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@rometools/cli-linux-x64@npm:11.0.0"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@rometools/cli-win32-arm64@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@rometools/cli-win32-arm64@npm:11.0.0"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@rometools/cli-win32-x64@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@rometools/cli-win32-x64@npm:11.0.0"
+  conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
@@ -29276,18 +29309,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"load-json-file@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "load-json-file@npm:4.0.0"
-  dependencies:
-    graceful-fs: ^4.1.2
-    parse-json: ^4.0.0
-    pify: ^3.0.0
-    strip-bom: ^3.0.0
-  checksum: 8f5d6d93ba64a9620445ee9bde4d98b1eac32cf6c8c2d20d44abfa41a6945e7969456ab5f1ca2fb06ee32e206c9769a20eec7002fe290de462e8c884b6b8b356
-  languageName: node
-  linkType: hard
-
 "loader-runner@npm:^2.3.0, loader-runner@npm:^2.4.0":
   version: 2.4.0
   resolution: "loader-runner@npm:2.4.0"
@@ -30246,13 +30267,6 @@ fsevents@^1.2.7:
     errno: ^0.1.3
     readable-stream: ^2.0.1
   checksum: a9f25b0a8ecfb7324277393f19ef68e6ba53b9e6e4b526bbf2ba23055c5440fbf61acc7bf66bfd980e9eb4951a4790f6f777a9a3abd36603f22c87e8a64d3d6b
-  languageName: node
-  linkType: hard
-
-"memorystream@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "memorystream@npm:0.3.1"
-  checksum: f18b42440d24d09516d01466c06adf797df7873f0d40aa7db02e5fb9ed83074e5e65412d0720901d7069363465f82dc4f8bcb44f0cde271567a61426ce6ca2e9
   languageName: node
   linkType: hard
 
@@ -31710,27 +31724,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"npm-run-all@npm:^4.1.5":
-  version: 4.1.5
-  resolution: "npm-run-all@npm:4.1.5"
-  dependencies:
-    ansi-styles: ^3.2.1
-    chalk: ^2.4.1
-    cross-spawn: ^6.0.5
-    memorystream: ^0.3.1
-    minimatch: ^3.0.4
-    pidtree: ^0.3.0
-    read-pkg: ^3.0.0
-    shell-quote: ^1.6.1
-    string.prototype.padend: ^3.0.0
-  bin:
-    npm-run-all: bin/npm-run-all/index.js
-    run-p: bin/run-p/index.js
-    run-s: bin/run-s/index.js
-  checksum: 373b72c6a36564da13c1642c1fd9bb4dcc756bce7a3648f883772f02661095319820834ff813762d2fee403e9b40c1cd27c8685807c107440f10eb19c006d4a0
-  languageName: node
-  linkType: hard
-
 "npm-run-path@npm:^2.0.0":
   version: 2.0.2
   resolution: "npm-run-path@npm:2.0.2"
@@ -33075,15 +33068,6 @@ fsevents@^1.2.7:
   version: 2.3.0
   resolution: "picomatch@npm:2.3.0"
   checksum: 16818720ea7c5872b6af110760dee856c8e4cd79aed1c7a006d076b1cc09eff3ae41ca5019966694c33fbd2e1cc6ea617ab10e4adac6df06556168f13be3fca2
-  languageName: node
-  linkType: hard
-
-"pidtree@npm:^0.3.0":
-  version: 0.3.1
-  resolution: "pidtree@npm:0.3.1"
-  bin:
-    pidtree: bin/pidtree.js
-  checksum: eb49025099f1af89a4696f7673351421f13420f3397b963c901fe23a1c9c2ff50f4750321970d4472c0ffbb065e4a6c3c27f75e226cc62284b19e21d32ce7012
   languageName: node
   linkType: hard
 
@@ -35542,15 +35526,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.1.2":
-  version: 2.1.2
-  resolution: "prettier@npm:2.1.2"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 7bc5a2ff5e6caf585b003fbdb1645719d5f5fcd2a03b08bae75a5608a7155fd6f84bda146104b3b6b0d9dc06720ffbfab716eade2eaae771ce4817bcee745928
-  languageName: node
-  linkType: hard
-
 "prettier@npm:^2.3.2":
   version: 2.4.1
   resolution: "prettier@npm:2.4.1"
@@ -37211,17 +37186,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"read-pkg@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "read-pkg@npm:3.0.0"
-  dependencies:
-    load-json-file: ^4.0.0
-    normalize-package-data: ^2.3.2
-    path-type: ^3.0.0
-  checksum: 398903ebae6c7e9965419a1062924436cc0b6f516c42c4679a90290d2f87448ed8f977e7aa2dbba4aa1ac09248628c43e493ac25b2bc76640e946035200e34c6
-  languageName: node
-  linkType: hard
-
 "read-pkg@npm:^5.2.0":
   version: 5.2.0
   resolution: "read-pkg@npm:5.2.0"
@@ -38454,17 +38418,44 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"rome@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "rome@npm:11.0.0"
+  dependencies:
+    "@rometools/cli-darwin-arm64": 11.0.0
+    "@rometools/cli-darwin-x64": 11.0.0
+    "@rometools/cli-linux-arm64": 11.0.0
+    "@rometools/cli-linux-x64": 11.0.0
+    "@rometools/cli-win32-arm64": 11.0.0
+    "@rometools/cli-win32-x64": 11.0.0
+  dependenciesMeta:
+    "@rometools/cli-darwin-arm64":
+      optional: true
+    "@rometools/cli-darwin-x64":
+      optional: true
+    "@rometools/cli-linux-arm64":
+      optional: true
+    "@rometools/cli-linux-x64":
+      optional: true
+    "@rometools/cli-win32-arm64":
+      optional: true
+    "@rometools/cli-win32-x64":
+      optional: true
+  bin:
+    rome: bin/rome
+  checksum: 3c92a47c78a66c62f94b6a3a72ead92a20c23326d2d73785ce88c03897b60b8114c285a636acc24bd11039381ded48f8c58c6cc5c4cc46ce7eed092c90d9a054
+  languageName: node
+  linkType: hard
+
 "root-workspace-0b6124@workspace:.":
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@blueberrypie/editor-config": ^1.0.0
     "@blueberrypie/eslint-config": ^1.0.0
-    "@blueberrypie/prettier-config": ^1.0.0
     eslint: ^7.13.0
     husky: ^4.3.0
-    npm-run-all: ^4.1.5
-    prettier: ^2.1.2
+    rome: ^11.0.0
     turbo: ^1.8.1
     typescript: ^4.0.5
   languageName: unknown
@@ -39240,7 +39231,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"shell-quote@npm:1.7.2, shell-quote@npm:^1.6.1":
+"shell-quote@npm:1.7.2":
   version: 1.7.2
   resolution: "shell-quote@npm:1.7.2"
   checksum: efad426fb25d8a54d06363f1f45774aa9e195f62f14fa696d542b44bfe418ab41206448b63af18d726c62e099e66d9a3f4f44858b9ea2ce4b794b41b802672d1
