@@ -10,12 +10,16 @@
     "enabled": true,
     "indentStyle": "space",
     "indentSize": 2,
-    "ignore": ["./packages/*/public/*", "./packages/*/.cache/*"]
+    "ignore": [
+      "./packages/*/public/*",
+      "./packages/*/.cache/*",
+      "./packages/*/dist/*"
+    ]
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "double",
-      "trailingComma": "all"
+      "trailingComma": "es5"
     }
   }
 }

@@ -7,20 +7,20 @@ describe("Checkbox-component", () => {
   it("should render", () => {
     render(<Checkbox>Hello Checkbox</Checkbox>);
     expect(
-      screen.getByRole("checkbox", { name: /Hello Checkbox/ }),
+      screen.getByRole("checkbox", { name: /Hello Checkbox/ })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("checkbox", { name: /Hello Checkbox/ }).checked,
+      screen.getByRole("checkbox", { name: /Hello Checkbox/ }).checked
     ).toEqual(false);
   });
 
   it("with defaultValue should render as checked", () => {
     render(<Checkbox defaultValue={false}>Hello Checkbox</Checkbox>);
     expect(
-      screen.getByRole("checkbox", { name: /Hello Checkbox/ }),
+      screen.getByRole("checkbox", { name: /Hello Checkbox/ })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("checkbox", { name: /Hello Checkbox/ }).checked,
+      screen.getByRole("checkbox", { name: /Hello Checkbox/ }).checked
     ).toEqual(false);
   });
 

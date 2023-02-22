@@ -78,7 +78,7 @@ export const GridContainer = ({
       const groups = [];
       for (let i = 0; i < rows; i++) {
         groups.push(
-          filteredContent.slice(i * columnsNr, i * columnsNr + columnsNr),
+          filteredContent.slice(i * columnsNr, i * columnsNr + columnsNr)
         );
       }
 

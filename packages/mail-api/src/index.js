@@ -40,7 +40,6 @@ app.post("/send", (req, res) => {
     for (const key in fields) {
       if (key !== "subject") {
         mailbody += "\n" + key + ": " + fields[key];
-        console.log(mailbody);
       }
     }
 

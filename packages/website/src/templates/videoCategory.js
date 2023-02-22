@@ -19,7 +19,7 @@ const VideoCategoryTemplate = ({ pageContext }) => {
   };
 
   const seasonTitles = pageContext.category.playlists.process.map(
-    (el) => el.title,
+    (el) => el.title
   );
 
   return (

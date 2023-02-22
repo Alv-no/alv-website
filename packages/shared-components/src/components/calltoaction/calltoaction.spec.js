@@ -7,7 +7,7 @@ describe("CallToAction-component", () => {
   it("should render", () => {
     render(<CallToAction>Hello Button</CallToAction>);
     expect(
-      screen.getByRole("button", { name: /Hello Button/ }),
+      screen.getByRole("button", { name: /Hello Button/ })
     ).toBeInTheDocument();
   });
 
