@@ -1,7 +1,7 @@
-import PortableText from '@sanity/block-content-to-react';
-import React from 'react';
-import { richTextTypesSerializer } from '../richTextTypes';
-import * as styles from './Blockcontent.module.css';
+import PortableText from "@sanity/block-content-to-react";
+import React from "react";
+import { richTextTypesSerializer } from "../richTextTypes";
+import * as styles from "./Blockcontent.module.css";
 
 export const BlockContent = ({
   blocks,

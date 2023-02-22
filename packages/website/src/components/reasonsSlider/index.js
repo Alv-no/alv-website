@@ -1,7 +1,7 @@
-import React from 'react';
-import { SliderArrowBlue } from '../../../../shared-components/src/components/icon';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import Slider from 'react-slick';
+import React from "react";
+import { SliderArrowBlue } from "../../../../shared-components/src/components/icon";
+import { GatsbyImage } from "gatsby-plugin-image";
+import Slider from "react-slick";
 
 export const ReasonsSlider = ({ mainHeading, slides }) => {
   const settings = {
@@ -48,7 +48,7 @@ export const ArticleSlide = ({
 }) => (
   <div
     className="max-w-1440 mx-auto twelve:grid tracking-wider"
-    style={{ gridTemplateColumns: '65% auto' }}
+    style={{ gridTemplateColumns: "65% auto" }}
   >
     <div className="twelve:px-30 sm:px-12 px-5">
       <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-10 -ml-2px hyphenate">
@@ -85,13 +85,13 @@ const PrevArrowLine = ({ onClick }) => {
   return (
     <div
       className="bg-navy bg-opacity-90 pr-3 absolute justify-between twelve:block hidden h-8 text-navy top-2/4"
-      style={{ top: '50%' }}
+      style={{ top: "50%" }}
     >
       <div
         className="h-full flex items-center cursor-pointer relative z-10"
         onClick={onClick}
       >
-        <div className="w-20 bg-white h-2px" />{' '}
+        <div className="w-20 bg-white h-2px" />{" "}
         <div className="uppercase tracking-wider text-white ml-5 font-semibold text-base">
           Tilbake
         </div>
@@ -105,7 +105,7 @@ const NextArrowLine = ({ onClick }) => {
   return (
     <div
       className="bg-navy bg-opacity-90 pl-3 absolute flex justify-between h-8 text-navy right-0"
-      style={{ top: '50%' }}
+      style={{ top: "50%" }}
       onClick={onClick}
     >
       <div />
@@ -113,7 +113,7 @@ const NextArrowLine = ({ onClick }) => {
         <div className="uppercase tracking-wider text-white mr-5 font-semibold text-base">
           Neste
         </div>
-        <div className="w-20 bg-white h-2px" />{' '}
+        <div className="w-20 bg-white h-2px" />{" "}
       </div>
     </div>
   );

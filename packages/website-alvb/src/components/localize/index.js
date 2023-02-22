@@ -1,7 +1,7 @@
-import React from 'react';
-import Proptypes from 'prop-types';
-import { createLocaleTextGetter } from '../../utils/index';
-import config from '../../config';
+import React from "react";
+import Proptypes from "prop-types";
+import { createLocaleTextGetter } from "../../utils/index";
+import config from "../../config";
 
 const localize = (Component) => {
   return class Localize extends React.Component {

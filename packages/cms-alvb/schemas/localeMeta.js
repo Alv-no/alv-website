@@ -1,21 +1,21 @@
-import supportedLanguages from '../utils/supportedLanguages';
+import supportedLanguages from "../utils/supportedLanguages";
 
 export default {
-  name: 'localeMeta',
-  type: 'object',
+  name: "localeMeta",
+  type: "object",
   options: {
     collapsible: true,
   },
   fieldsets: [
     {
-      title: 'Translations',
-      name: 'translations',
+      title: "Translations",
+      name: "translations",
     },
   ],
   fields: supportedLanguages.map((lang) => ({
     title: lang.title,
     name: lang.id,
-    type: 'meta',
-    fieldset: lang.isDefault ? null : 'translations',
+    type: "meta",
+    fieldset: lang.isDefault ? null : "translations",
   })),
 };

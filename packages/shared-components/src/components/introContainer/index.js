@@ -1,5 +1,5 @@
-import React from 'react';
-import { FeaturedCard } from '../featuredCard';
+import React from "react";
+import { FeaturedCard } from "../featuredCard";
 
 export const IntroContainer = ({
   article,

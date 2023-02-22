@@ -1,13 +1,13 @@
-import { graphql } from 'gatsby';
-import React from 'react';
-import { BlogSection, IntroContainer, Title } from 'shared-components';
-import Layout from '../components/layout';
-import { getBlogDataServerSide } from '../hooks/useBlogQueryServerSide';
+import { graphql } from "gatsby";
+import React from "react";
+import { BlogSection, IntroContainer, Title } from "shared-components";
+import Layout from "../components/layout";
+import { getBlogDataServerSide } from "../hooks/useBlogQueryServerSide";
 
 const Blog = ({ data, serverData, location }) => {
   // looks for initial category filter from url
   const params = new URLSearchParams(location.search);
-  const initialCategoryFilter = params.get('kategori');
+  const initialCategoryFilter = params.get("kategori");
 
   const layoutData = {
     ...data.sanitySiteSettings,
@@ -34,9 +34,9 @@ const Blog = ({ data, serverData, location }) => {
   const featuredArticle = formattedArticles[0];
   formattedArticles.shift();
 
-  const eyebrowText = 'Vår nyeste artikkel';
-  const postPrefix = 'blogg';
-  const readMoreText = 'Les mer';
+  const eyebrowText = "Vår nyeste artikkel";
+  const postPrefix = "blogg";
+  const readMoreText = "Les mer";
 
   return (
     <Layout
@@ -55,7 +55,7 @@ const Blog = ({ data, serverData, location }) => {
           <Title align="text-center twelve:text-left">Blogg</Title>
           <div className="w-full text-center">
             <div className="text-white tracking-wider text-blog font-light mt-8 twelve:w-full eight:w-1/2 w-5/6 mx-auto twelve:mx-0 twelve:text-left">
-              Vi vil gjerne dele litt av vår{' '}
+              Vi vil gjerne dele litt av vår{" "}
               <span className="font-semibold">kunnskap</span>, og gi deg noen av
               våre <span className="font-semibold">tips og tanker</span>
             </div>

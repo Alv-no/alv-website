@@ -1,5 +1,5 @@
-import React from 'react';
-import { Title } from 'shared-components';
+import React from "react";
+import { Title } from "shared-components";
 
 export const Services = ({ children, title, description }) => (
   <>
@@ -14,7 +14,7 @@ export const Services = ({ children, title, description }) => (
         <div
           className="grid tracking-wider gap-4 sm:mt-12 mt-4"
           style={{
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
           }}
         >
           {children}

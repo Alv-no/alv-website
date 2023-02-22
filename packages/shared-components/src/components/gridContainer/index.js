@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import * as Button from '../button';
-import { EmployeeGroup } from '../employeeGroup';
-import { window } from 'browser-monads';
+import React, { useState, useEffect, useRef } from "react";
+import * as Button from "../button";
+import { EmployeeGroup } from "../employeeGroup";
+import { window } from "browser-monads";
 
 // @deprecated
 const useWindowDimensions = () => {
@@ -18,8 +18,8 @@ const useWindowDimensions = () => {
       });
     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return windowDimensions;
@@ -132,7 +132,7 @@ export const GridContainer = ({
         >
           <div ref={bioRefContainer} />
           <Button.Line navy={white}>
-            {isEnLocale ? 'See more' : 'Se Mer'}
+            {isEnLocale ? "See more" : "Se Mer"}
           </Button.Line>
         </div>
       </div>

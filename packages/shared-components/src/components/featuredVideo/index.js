@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import { VideoPlay } from '../icon';
+import React from "react";
+import Link from "gatsby-link";
+import { VideoPlay } from "../icon";
 
 export const FeaturedVideo = ({ video, playlist }) => (
   <>
@@ -12,17 +12,17 @@ export const FeaturedVideo = ({ video, playlist }) => (
       </>
     )}
     <Link
-      to={`/videoserie/${video.playlistSlug || 'videoserie'}/${video.slug}`}
+      to={`/videoserie/${video.playlistSlug || "videoserie"}/${video.slug}`}
       state={{ playlist, video, id: video.videoId }}
     >
       <div
         className="w-full pb-56c shadow-card"
         style={{
           background:
-            'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
+            "transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box",
           backgroundImage: video && `url("${video.thumbnail}")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="absolute right-5 bottom-5">

@@ -1,15 +1,15 @@
-import React from 'react';
-import { FeaturedCard } from '.';
+import React from "react";
+import { FeaturedCard } from ".";
 
 export default {
-  title: 'components/featuredCard',
+  title: "components/featuredCard",
 };
 
 export const Default = ({ ...args }) => <FeaturedCard {...args} />;
 Default.args = {
-  children: 'Child',
-  mainImage: { asset: { fluid: '' } },
-  slug: 'slug',
-  title: 'title',
-  description: 'desc',
+  children: "Child",
+  mainImage: { asset: { fluid: "" } },
+  slug: "slug",
+  title: "title",
+  description: "desc",
 };

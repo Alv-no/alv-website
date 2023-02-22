@@ -1,17 +1,17 @@
 export default {
-  title: 'Hero Block Content',
-  name: 'heroBlockContent',
-  type: 'array',
+  title: "Hero Block Content",
+  name: "heroBlockContent",
+  type: "array",
   of: [
     {
-      title: 'Block',
-      type: 'block',
+      title: "Block",
+      type: "block",
       styles: [
-        { title: 'Normal', value: 'normal' },
-        { title: 'H1', value: 'h1' },
+        { title: "Normal", value: "normal" },
+        { title: "H1", value: "h1" },
       ],
       marks: {
-        decorators: [{ title: 'Strong', value: 'strong' }],
+        decorators: [{ title: "Strong", value: "strong" }],
       },
     },
   ],

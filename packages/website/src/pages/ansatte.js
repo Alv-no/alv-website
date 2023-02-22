@@ -1,14 +1,14 @@
-import { gql } from '@apollo/client';
-import React from 'react';
-import { Cta, Description, EmployeeSection, Title } from 'shared-components';
-import { createSlugForEmployee } from 'shared-components/src/components/createSlugForEmployee';
-import slugify from 'slugify';
-import Layout from '../components/layout';
-import config from '../config';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
-import { client } from '../server-side/client';
-import { createGatsbyImages } from '../server-side/imageCreator';
+import { gql } from "@apollo/client";
+import React from "react";
+import { Cta, Description, EmployeeSection, Title } from "shared-components";
+import { createSlugForEmployee } from "shared-components/src/components/createSlugForEmployee";
+import slugify from "slugify";
+import Layout from "../components/layout";
+import config from "../config";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import { useEmployeeQuery } from "../hookspages/useEmployeeQuery";
+import { client } from "../server-side/client";
+import { createGatsbyImages } from "../server-side/imageCreator";
 
 const Employees = ({ location, serverData }) => {
   const data = useEmployeeQuery();
@@ -72,7 +72,7 @@ const Employees = ({ location, serverData }) => {
 
 async function getEmployeeData() {
   const response = await client.query({
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
     query: gql`
       {
         allEmployeePage {

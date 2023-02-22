@@ -1,8 +1,8 @@
-import Link from 'gatsby-link';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { Icon, Title } from 'shared-components';
-import { BlogHeader, MobileHeader } from '../header';
+import Link from "gatsby-link";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { Icon, Title } from "shared-components";
+import { BlogHeader, MobileHeader } from "../header";
 
 const Sidebar = ({
   children,
@@ -32,13 +32,13 @@ const Sidebar = ({
       />
       <div
         className="hidden sm:grid"
-        style={{ gridTemplateColumns: 'minmax(430px, 33%) auto' }}
+        style={{ gridTemplateColumns: "minmax(430px, 33%) auto" }}
       >
         <div className="h-full bg-navy flex flex-col justify-between pr-12 2xl:pl-5 text-white">
           {/* HEADER SECTION */}
           <div
             className="pr-10 fixed z-10 sm:max-w-430 lg:max-w-seven"
-            style={{ maxWidth: '430px' }}
+            style={{ maxWidth: "430px" }}
           >
             <BlogHeader
               servicePages={servicePages}
@@ -84,7 +84,7 @@ const Sidebar = ({
             </div>
             <div
               className={`text-white tracking-wider flex flex-col ${
-                isEmployee ? 'justify-between' : 'justify-end'
+                isEmployee ? "justify-between" : "justify-end"
               }`}
             >
               <div>

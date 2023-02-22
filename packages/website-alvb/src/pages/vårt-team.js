@@ -1,11 +1,11 @@
-import { graphql } from 'gatsby';
-import React from 'react';
-import { Cta, Description, EmployeeSection, Title } from 'shared-components';
-import slugify from 'slugify';
-import { Layout } from '../components/layout';
-import localize from '../components/localize';
-import config from '../config';
-import { useEmployeeQuery } from '../hookspages/useEmployeeQuery';
+import { graphql } from "gatsby";
+import React from "react";
+import { Cta, Description, EmployeeSection, Title } from "shared-components";
+import slugify from "slugify";
+import { Layout } from "../components/layout";
+import localize from "../components/localize";
+import config from "../config";
+import { useEmployeeQuery } from "../hookspages/useEmployeeQuery";
 const Employees = ({ location, data }) => {
   const { meta, section1, _rawSection2, section2 } = data.sanityEmployeePage;
 
@@ -20,7 +20,7 @@ const Employees = ({ location, data }) => {
     activeCard = card.id;
   }
 
-  const isEnLocale = config.LOCALE === 'en';
+  const isEnLocale = config.LOCALE === "en";
 
   return (
     <Layout

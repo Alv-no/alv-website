@@ -1,5 +1,5 @@
-import React from 'react';
-import { Arrow } from '../../../../shared-components/src/components/icon';
+import React from "react";
+import { Arrow } from "../../../../shared-components/src/components/icon";
 
 export const ServicesNav = ({ nav, scrollTo }) => {
   return (

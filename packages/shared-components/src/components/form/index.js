@@ -1,14 +1,10 @@
-import { window } from 'browser-monads';
-import React, { useEffect, useState } from 'react';
+import { window } from "browser-monads";
+import React, { useEffect, useState } from "react";
 
 const useContactForm = () => {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
-  const mailApiUrl =
-    window.location.protocol +
-    '//mail-api.' +
-    window.location.hostname +
-    '/send';
+  const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/send`;
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -19,7 +15,7 @@ const useContactForm = () => {
 
     const xhr = new XMLHttpRequest();
     xhr.open(form.method, form.action, true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         setSent(true);
@@ -43,12 +39,12 @@ export const Call = () => {
 
   return (
     <div>
-      <div className={sent ? '' : 'hidden'}>
+      <div className={sent ? "" : "hidden"}>
         <span className="flex text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
           Takk for din henvendelse. Du hører fra oss snart.
         </span>
       </div>
-      <div className={sent ? 'hidden' : ''}>
+      <div className={sent ? "hidden" : ""}>
         <form
           className="text-white w-full tracking-wider text-mobile"
           method="POST"
@@ -97,7 +93,7 @@ export const Call = () => {
             </button>
           </div>
           <div className="flex justify-center mt-10">
-            <span id="error-message" className={error ? '' : 'hidden'}>
+            <span id="error-message" className={error ? "" : "hidden"}>
               Beklager, det oppstod en feil.
             </span>
           </div>
@@ -109,7 +105,7 @@ export const Call = () => {
 
 export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
   const { submitForm, sent, error } = useContactForm();
-  const [mailApiUrl, setMailApiUrl] = useState('');
+  const [mailApiUrl, setMailApiUrl] = useState("");
 
   useEffect(() => {
     setMailApiUrl(
@@ -117,27 +113,27 @@ export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
     );
   }, []);
 
-  const marginClass = compact ? 'mb-4' : 'my-5';
+  const marginClass = compact ? "mb-4" : "my-5";
   const buttonClass =
-    'uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none';
+    "uppercase font-semibold h-10 bg-darkblue px-20 mx-auto rounded-full focus:outline-none";
   const transparentButtonClass =
-    'rounded-full border border-white py-2 px-20 uppercase px-8 my-1 hover:border-theme-accent';
+    "rounded-full border border-white py-2 px-20 uppercase px-8 my-1 hover:border-theme-accent";
 
   const buttonClasses = sendButtonTransparent
     ? transparentButtonClass
     : buttonClass;
 
   const nameInputClasses = `flex-1 focus:outline-none bg-transparent border rounded-sm h-10 p-4 rounded-md ${
-    compact ? 'w-44' : 'w-fit'
+    compact ? "w-44" : "w-fit"
   }`;
   return (
     <div className="">
-      <div className={sent ? '' : 'hidden'}>
+      <div className={sent ? "" : "hidden"}>
         <span className="flex text-white tracking-wider 2xl:ml-30 mt-12 text-lg xl:mb-15">
           Takk for din henvendelse. Du hører fra oss snart.
         </span>
       </div>
-      <div className={sent ? 'hidden' : ''}>
+      <div className={sent ? "hidden" : ""}>
         <form
           className="text-white w-full tracking-wider text-mobile"
           method="POST"
@@ -202,7 +198,7 @@ export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
             </button>
           </div>
           <div className="flex justify-center mt-10">
-            <span id="error-message" className={error ? '' : 'hidden'}>
+            <span id="error-message" className={error ? "" : "hidden"}>
               Beklager, det oppstod en feil.
             </span>
           </div>

@@ -58,31 +58,31 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = [
     {
-      path: '/',
+      path: "/",
       component: path.resolve(`./src/pages/index.js`),
     },
     {
-      path: '/our-projects',
+      path: "/our-projects",
       component: path.resolve(`./src/pages/våre-prosjekter.js`),
     },
     {
-      path: '/biobank',
+      path: "/biobank",
       component: path.resolve(`./src/pages/biobank.js`),
     },
     {
-      path: '/our-team',
+      path: "/our-team",
       component: path.resolve(`./src/pages/vårt-team.js`),
     },
     {
-      path: '/collaborate-with-us/invest',
+      path: "/collaborate-with-us/invest",
       component: path.resolve(`./src/templates/investering.js`),
     },
     {
-      path: '/blog',
+      path: "/blog",
       component: path.resolve(`./src/pages/blogg.js`),
     },
     {
-      path: '/contact-us',
+      path: "/contact-us",
       component: path.resolve(`./src/pages/kontakt-oss.js`),
     },
   ];

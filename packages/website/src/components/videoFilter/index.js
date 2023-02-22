@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { SortField } from '../../../../shared-components/src/components/blogFilter';
+import React, { useState, useEffect } from "react";
+import { SortField } from "../../../../shared-components/src/components/blogFilter";
 
 export const VideoFilter = ({ seasons, onChange, seasonTitles }) => {
-  const [sort, setSort] = useState('newest');
+  const [sort, setSort] = useState("newest");
   const [activeSeasonIndex, setActiveSeasonIndex] = useState(
     seasons.length - 1,
   );
 
   useEffect(() => {
     const sortedActive = [...seasons[activeSeasonIndex]];
-    if (sort === 'oldest') {
+    if (sort === "oldest") {
       sortedActive.sort((a, b) => (a.position < b.position ? -1 : 1));
-    } else if (sort === 'newest') {
+    } else if (sort === "newest") {
       sortedActive.sort((a, b) => (a.position > b.position ? -1 : 1));
     }
 
@@ -55,7 +55,7 @@ const Seasons = ({ seasons, onClick, activeSeasonIndex, seasonTitles }) => (
     {seasons.map((_, i) => (
       <button
         className={`font-semibold mr-6 pb-1 border-b-2 focus:outline-none ${
-          activeSeasonIndex === i ? 'border-theme-accent' : 'border-navy'
+          activeSeasonIndex === i ? "border-theme-accent" : "border-navy"
         } cursor-pointer`}
         onClick={onClick}
         type="button"

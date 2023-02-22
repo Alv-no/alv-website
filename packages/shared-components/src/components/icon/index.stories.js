@@ -1,11 +1,11 @@
-import React from 'react';
-import * as Icon from '.';
+import React from "react";
+import * as Icon from ".";
 
 export default {
-  title: 'components/icon',
+  title: "components/icon",
   decorators: [
     (Story) => (
-      <div style={{ background: 'gray', padding: '20px' }}>
+      <div style={{ background: "gray", padding: "20px" }}>
         <Story />
       </div>
     ),

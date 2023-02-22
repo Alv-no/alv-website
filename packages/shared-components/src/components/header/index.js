@@ -1,11 +1,11 @@
-import { window } from 'browser-monads';
-import Link from 'gatsby-link';
-import React, { useState } from 'react';
-import Headroom from 'react-headroom';
-import { Breadcrumb } from '../breadcrumb';
-import { CallToAction } from '../calltoaction';
-import { Dropdown } from '../icon';
-import { Navigation } from '../navigation';
+import { window } from "browser-monads";
+import Link from "gatsby-link";
+import React, { useState } from "react";
+import Headroom from "react-headroom";
+import { Breadcrumb } from "../breadcrumb";
+import { CallToAction } from "../calltoaction";
+import { Dropdown } from "../icon";
+import { Navigation } from "../navigation";
 
 export const Header = ({
   categoryPages,
@@ -26,7 +26,7 @@ export const Header = ({
     setOpen(false);
   };
 
-  const crumbs = window.location.pathname.split('/');
+  const crumbs = window.location.pathname.split("/");
   crumbs.shift();
 
   return (
@@ -42,7 +42,7 @@ export const Header = ({
       />
       <div
         className={`${
-          navyHeader ? 'bg-navy' : 'bg-theme-bg'
+          navyHeader ? "bg-navy" : "bg-theme-bg"
         } hidden sm:pt-7 py-5 sm:flex justify-center`}
       >
         <div className="px-6 sm:px-12 twelve:px-20 w-full max-w-screen-2xl relative z-50 h-8">
@@ -64,7 +64,7 @@ export const Header = ({
             </div>
             <div
               className={`${
-                !white && 'eight:text-theme-text'
+                !white && "eight:text-theme-text"
               } flex hidden sm:block relative z-50`}
             >
               {!window.location.href.includes(headerCtaLink) && (
@@ -111,10 +111,10 @@ export const MobileHeader = ({
         white={white}
         logo={logo}
       />
-      <Headroom style={{ height: '0px', zIndex: 50 }}>
+      <Headroom style={{ height: "0px", zIndex: 50 }}>
         <div
           className={`bg-navy block ${
-            viewport || 'sm'
+            viewport || "sm"
           }:hidden py-5 px-6 fivefifty:px-10 z-20 relative`}
         >
           <div className="max-w-1600 mx-auto">
@@ -153,7 +153,7 @@ export const BlogHeader = ({
   const toggleClose = () => {
     setOpen(false);
   };
-  const crumbs = window.location.pathname.split('/');
+  const crumbs = window.location.pathname.split("/");
   crumbs.shift();
   return (
     <div className="py-7">

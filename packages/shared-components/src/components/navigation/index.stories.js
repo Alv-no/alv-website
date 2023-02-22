@@ -1,8 +1,8 @@
-import React from 'react';
-import { Navigation } from '.';
+import React from "react";
+import { Navigation } from ".";
 
 export default {
-  title: 'components/navigation',
+  title: "components/navigation",
 };
 
 export const Default = ({ ...args }) => <Navigation {...args} />;

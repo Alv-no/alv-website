@@ -1,7 +1,7 @@
-import { BgImage } from 'gbimage-bridge';
-import React from 'react';
-import { Description } from '../description';
-import { Title } from '../title';
+import { BgImage } from "gbimage-bridge";
+import React from "react";
+import { Description } from "../description";
+import { Title } from "../title";
 
 export const NavyIntro = ({ title, description, image, white, blueDot }) => (
   <>
@@ -12,7 +12,7 @@ export const NavyIntro = ({ title, description, image, white, blueDot }) => (
             <Title blueDot={blueDot} align="text-center">
               <span
                 className={`xs:inline sm:text-3xl lg:text-4xl hyphenate ${
-                  white && 'text-white'
+                  white && "text-white"
                 }`}
               >
                 {title}
@@ -33,7 +33,7 @@ export const NavyIntro = ({ title, description, image, white, blueDot }) => (
         <Title blueDot={blueDot}>
           <span
             className={`xs:inline text-2xl sm:text-3xl lg:text-4xl hyphenate ${
-              white && 'text-white'
+              white && "text-white"
             }`}
           >
             {title}

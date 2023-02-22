@@ -1,10 +1,10 @@
-import React from 'react';
-import Cta from './cta';
-import ProductCta from './cta/productCta';
-import TextCta from './cta/textCta';
-import Download from './download';
-import { ImageTextFlip, LinkableHeading } from './layout';
-import MediaComponent from './mediaComponent';
+import React from "react";
+import Cta from "./cta";
+import ProductCta from "./cta/productCta";
+import TextCta from "./cta/textCta";
+import Download from "./download";
+import { ImageTextFlip, LinkableHeading } from "./layout";
+import MediaComponent from "./mediaComponent";
 
 export const richTextTypesSerializer = (config) => ({
   types: {
@@ -34,8 +34,8 @@ export const richTextTypesSerializer = (config) => ({
     productCta: (props) => <ProductCta {...props.node} config={config} />,
   },
   marks: {
-    'alv-yellow': ({ children }) => (
-      <strong style={{ color: '#eabb26', fontSize: '120%' }}>{children}</strong>
+    "alv-yellow": ({ children }) => (
+      <strong style={{ color: "#eabb26", fontSize: "120%" }}>{children}</strong>
     ),
   },
 });

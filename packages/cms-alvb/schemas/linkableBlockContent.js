@@ -1,29 +1,29 @@
 export default {
-  title: 'Linkable Block Content',
-  name: 'linkableBlockContent',
-  type: 'array',
+  title: "Linkable Block Content",
+  name: "linkableBlockContent",
+  type: "array",
   of: [
     {
-      title: 'Block',
-      type: 'block',
-      styles: [{ title: 'Normal', value: 'normal' }],
-      lists: [{ title: 'Bullet', value: 'bullet' }],
+      title: "Block",
+      type: "block",
+      styles: [{ title: "Normal", value: "normal" }],
+      lists: [{ title: "Bullet", value: "bullet" }],
       marks: {
         decorators: [
-          { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' },
-          { title: 'Code', value: 'code' },
+          { title: "Strong", value: "strong" },
+          { title: "Emphasis", value: "em" },
+          { title: "Code", value: "code" },
         ],
         annotations: [
           {
-            title: 'URL',
-            name: 'link',
-            type: 'object',
+            title: "URL",
+            name: "link",
+            type: "object",
             fields: [
               {
-                title: 'URL',
-                name: 'href',
-                type: 'url',
+                title: "URL",
+                name: "href",
+                type: "url",
               },
             ],
           },
@@ -31,16 +31,16 @@ export default {
       },
     },
     {
-      title: 'Linkable heading',
-      type: 'linkableHeading',
+      title: "Linkable heading",
+      type: "linkableHeading",
     },
     {
-      title: 'Text image flip',
-      type: 'imageTextFlip',
+      title: "Text image flip",
+      type: "imageTextFlip",
     },
     {
-      title: 'Product CTA',
-      type: 'productCta',
+      title: "Product CTA",
+      type: "productCta",
     },
   ],
 };

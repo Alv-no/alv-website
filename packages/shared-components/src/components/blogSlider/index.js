@@ -1,11 +1,11 @@
-import Link from 'gatsby-link';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { BgImage } from 'gbimage-bridge';
-import React, { useState } from 'react';
-import Slider from 'react-slick';
-import * as Button from '../button';
-import { SliderArrow, SliderArrowBlue } from '../icon';
-import { Title } from '../title';
+import Link from "gatsby-link";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { BgImage } from "gbimage-bridge";
+import React, { useState } from "react";
+import Slider from "react-slick";
+import * as Button from "../button";
+import { SliderArrow, SliderArrowBlue } from "../icon";
+import { Title } from "../title";
 
 export const BlogSlider = ({
   dot,
@@ -13,8 +13,8 @@ export const BlogSlider = ({
   heading,
   postPrefix,
   readMoreText,
-  textColor = 'blue',
-  maxWidth = '1200',
+  textColor = "blue",
+  maxWidth = "1200",
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const updateActive = (next) => {
@@ -26,7 +26,7 @@ export const BlogSlider = ({
     slidesToShow: 1,
     centerMode: true,
     slidesToScroll: 1,
-    centerPadding: '350px',
+    centerPadding: "350px",
     nextArrow: <NextArrowLine />,
     prevArrow: <PrevArrowLine />,
     beforeChange: (_, next) => {
@@ -39,7 +39,7 @@ export const BlogSlider = ({
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: false,
-          centerPadding: '0',
+          centerPadding: "0",
           infinite: true,
           nextArrow: <NextArrow arrowColor={textColor} />,
           prevArrow: <PrevArrow arrowColor={textColor} />,
@@ -48,7 +48,7 @@ export const BlogSlider = ({
     ],
   };
 
-  const textColorClass = textColor === 'white' ? 'text-white' : 'text-navy';
+  const textColorClass = textColor === "white" ? "text-white" : "text-navy";
 
   return (
     <div className="w-full relative">
@@ -95,7 +95,7 @@ const NextArrow = ({ onClick, blueText }) => {
     <>
       <div
         className="transform absolute mt-20 -translate-y-10 sm:translate-y-18 -translate-x-1 ml-3 sm:ml-0 right-0 bottom-0 scale-60 cursor-pointer lg:inset-y-0 lg:mr-14 lg:translate-y-12"
-        style={{ display: 'inline-block', background: '' }}
+        style={{ display: "inline-block", background: "" }}
         onClick={onClick}
       >
         <div className="">
@@ -111,7 +111,7 @@ const PrevArrow = ({ onClick, blueText }) => {
     <>
       <div
         className="transform absolute -translate-y-10 opacity-50 sm:translate-y-18 mr-3 -translate-x-12 ml-2 right-0 mt-20 bottom-0 scale-60 cursor-pointer lg:opacity-100 lg:left-0 lg:ml-9 lg:-translate-y-48 z-30 rotate-180"
-        style={{ display: 'inline-block', background: '' }}
+        style={{ display: "inline-block", background: "" }}
         onClick={onClick}
       >
         <div className="lg:hidden">
@@ -141,19 +141,19 @@ const Slide = ({
     <>
       <Link to={`/${postPrefix}/${article.slug.current}`}>
         <div
-          className={`transform ${prevPos && 'scale-80'} ${
-            nextPos && 'scale-80'
+          className={`transform ${prevPos && "scale-80"} ${
+            nextPos && "scale-80"
           }
            transition duration-300 ${
              !nextPos &&
              !prevPos &&
              !isCurrentSlide &&
-             'opacity-0 pointer-events-none'
+             "opacity-0 pointer-events-none"
            } `}
         >
           <div
             className={`absolute z-40 transition duration-300 ${
-              isCurrentSlide ? '' : 'bg-opacity-60 bg-navy'
+              isCurrentSlide ? "" : "bg-opacity-60 bg-navy"
             }`}
           />
           <BgImage
@@ -191,7 +191,7 @@ const Slide = ({
           </div>
           <div
             className={`grid ${textColorClass}`}
-            style={{ gridTemplateColumns: '80% auto' }}
+            style={{ gridTemplateColumns: "80% auto" }}
           >
             <div className="text-lg xl:text-xl sm:hidden font-semibold relative mt-3 px-5">
               <Link to={`/${postPrefix}/${article.slug.current}`}>
@@ -213,13 +213,13 @@ const PrevArrowLine = ({ onClick }) => {
   return (
     <div
       className="absolute justify-between h-5 text-navy top-2/4 transform -translate-y-2 z-40"
-      style={{ top: '50%' }}
+      style={{ top: "50%" }}
     >
       <div
         className="flex items-center cursor-pointer relative z-20"
         onClick={onClick}
       >
-        <div className="w-20 bg-white h-2px" />{' '}
+        <div className="w-20 bg-white h-2px" />{" "}
         <div className="uppercase tracking-wider text-white ml-5 font-semibold text-base">
           Tilbake
         </div>
@@ -233,7 +233,7 @@ const NextArrowLine = ({ onClick }) => {
   return (
     <div
       className="absolute flex justify-between h-5 text-navy inset-0 w-full transform -translate-y-2 z-30"
-      style={{ top: '50%' }}
+      style={{ top: "50%" }}
     >
       <div />
       <div className="flex items-center cursor-pointer relative z-20">
@@ -243,7 +243,7 @@ const NextArrowLine = ({ onClick }) => {
         >
           Neste
         </div>
-        <div className="w-20 bg-white h-2px" />{' '}
+        <div className="w-20 bg-white h-2px" />{" "}
       </div>
     </div>
   );

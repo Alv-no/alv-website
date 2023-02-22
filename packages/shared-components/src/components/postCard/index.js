@@ -1,8 +1,8 @@
-import Link from 'gatsby-link';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { Arrow } from '../icon';
-import * as styles from './PostCard.module.css';
+import Link from "gatsby-link";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { Arrow } from "../icon";
+import * as styles from "./PostCard.module.css";
 
 export const PostCard = ({
   slug,
@@ -19,13 +19,13 @@ export const PostCard = ({
   let newDescription = description;
   if (description.length > 200) {
     newDescription = description
-      .split(' ')
+      .split(" ")
       .slice(0, 30)
-      .join(' ')
-      .concat('...');
+      .join(" ")
+      .concat("...");
   }
 
-  const formattedDate = new Date(publishedAt).toLocaleDateString('nb-NO');
+  const formattedDate = new Date(publishedAt).toLocaleDateString("nb-NO");
 
   return (
     <Link
@@ -38,7 +38,7 @@ export const PostCard = ({
             <div
               className={`${styles.button} flex justify-end transform translate-x-2`}
             >
-              {readMoreText}{' '}
+              {readMoreText}{" "}
               <div className="ml-2 transform scale-80">
                 <Arrow />
               </div>

@@ -1,15 +1,15 @@
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { BlockContent, CtaButton } from 'shared-components';
-import { Offer } from 'shared-components/src/components/form';
-import config from '../../config';
-import * as styles from './landingpage.module.css';
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { BlockContent, CtaButton } from "shared-components";
+import { Offer } from "shared-components/src/components/form";
+import config from "../../config";
+import * as styles from "./landingpage.module.css";
 
 const LandingPageHero = ({
   backgroundImage,
   callToAction,
   showCta = true,
-  ctaPosition = 'right',
+  ctaPosition = "right",
   introduction,
   subHeading,
   showContactForm = true,
@@ -20,7 +20,7 @@ const LandingPageHero = ({
         <GradientOverlay />
         {backgroundImage && (
           <GatsbyImage
-            style={{ height: '100%', width: '100%' }}
+            style={{ height: "100%", width: "100%" }}
             alt="Top title image"
             image={backgroundImage.asset.gatsbyImageData}
           />
@@ -33,7 +33,7 @@ const LandingPageHero = ({
           <div className="w-full"></div>
           <div
             className={`z-20 relative container max-w-5xl col-span-3 max-w- twelve:col-span-1 ${
-              showContactForm ? '' : styles.dynamicColumn
+              showContactForm ? "" : styles.dynamicColumn
             }`}
           >
             <div

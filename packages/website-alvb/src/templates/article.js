@@ -1,19 +1,19 @@
-import { window } from 'browser-monads';
-import { graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { AlsoRead } from '../../../shared-components/src/components/alsoRead';
-import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
-import { Footer } from '../../../shared-components/src/components/footer';
-import { SEO } from '../../../shared-components/src/components/seo';
-import { SocialShare } from '../../../shared-components/src/components/socialShare';
-import { MobileHeader } from '../components/header';
-import { useLayoutQuery } from '../components/layout/useLayoutQuery';
-import * as Logo from '../components/logo';
-import Sidebar from '../components/sidebar';
-import { StyledBlockContent } from '../components/styledBlockContent';
-import * as styles from '../components/styledBlockContent/StyledBlockContent.module.css';
-import config from '../config';
+import { window } from "browser-monads";
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { AlsoRead } from "../../../shared-components/src/components/alsoRead";
+import { createSlugForEmployee } from "../../../shared-components/src/components/createSlugForEmployee";
+import { Footer } from "../../../shared-components/src/components/footer";
+import { SEO } from "../../../shared-components/src/components/seo";
+import { SocialShare } from "../../../shared-components/src/components/socialShare";
+import { MobileHeader } from "../components/header";
+import { useLayoutQuery } from "../components/layout/useLayoutQuery";
+import * as Logo from "../components/logo";
+import Sidebar from "../components/sidebar";
+import { StyledBlockContent } from "../components/styledBlockContent";
+import * as styles from "../components/styledBlockContent/StyledBlockContent.module.css";
+import config from "../config";
 
 // Template for how articles are rendered.
 const ArticleTemplate = (props) => {
@@ -46,10 +46,10 @@ const ArticleTemplate = (props) => {
     authorFullname = `${firstname} ${lastname}`;
     authorSlug = createSlugForEmployee(firstname, lastname);
   } else {
-    authorFullname = 'Alv B';
+    authorFullname = "Alv B";
   }
 
-  const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
+  const socialTags = (tags && tags.map((tag) => tag.tag)) || "";
 
   const metaImage = mainImage?.asset?.url || null;
   const metaArr = socialTags;
@@ -67,9 +67,9 @@ const ArticleTemplate = (props) => {
     metaImage,
   };
 
-  const postPrefix = 'blog';
-  const readMoreText = 'Read more';
-  const alsoReadText = 'Also read';
+  const postPrefix = "blog";
+  const readMoreText = "Read more";
+  const alsoReadText = "Also read";
 
   return (
     <>
@@ -86,7 +86,7 @@ const ArticleTemplate = (props) => {
         >
           <div
             className="min-h-screen flex flex-col m-15 xl:m-20 xl:mb-15 2xl:m-25 2xl:mb-15 text-navy 2xl:ml-1/2"
-            style={{ maxWidth: '770px' }}
+            style={{ maxWidth: "770px" }}
           >
             <div className="mb-5">
               <SocialShare
@@ -104,7 +104,7 @@ const ArticleTemplate = (props) => {
                 >
                   <GatsbyImage
                     image={mainImage.asset.gatsbyImageData}
-                    style={{ zIndex: '0', position: 'relative' }}
+                    style={{ zIndex: "0", position: "relative" }}
                   />
                 </span>
               </div>

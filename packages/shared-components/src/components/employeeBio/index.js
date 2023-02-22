@@ -1,10 +1,10 @@
-import React, { useMemo, useRef, useEffect } from 'react';
-import { Cv, Cross } from '../icon';
-import Link from 'gatsby-link';
-import { isIOS, isSafari } from 'react-device-detect';
-import fallback from './bioVideoFallback.png';
-import { BlockContent } from '../blockContent';
-import * as styles from './EmployeeBio.module.css';
+import React, { useMemo, useRef, useEffect } from "react";
+import { Cv, Cross } from "../icon";
+import Link from "gatsby-link";
+import { isIOS, isSafari } from "react-device-detect";
+import fallback from "./bioVideoFallback.png";
+import { BlockContent } from "../blockContent";
+import * as styles from "./EmployeeBio.module.css";
 
 export const EmployeeBio = ({
   handleCloseClick,
@@ -56,11 +56,11 @@ export const EmployeeBio = ({
               </button>
             </div>
           </div>
-          <div className={`${video && 'flex'} lg:flex-row flex-col sm:px-0`}>
+          <div className={`${video && "flex"} lg:flex-row flex-col sm:px-0`}>
             <div className="mx-auto flex-1 lg:pr-15">
               <div
                 className={`flex-1 px-12 sm:px-0 sm:hidden ${
-                  centerBioText && 'text-center'
+                  centerBioText && "text-center"
                 }`}
               >
                 {/* ---- Underneath: Visible on Mobile only ---- */}
@@ -127,8 +127,8 @@ export const EmployeeBio = ({
               <h4
                 className={`text-4xl leading-none font-extralight mb-4 uppercase tracking-wider`}
               >
-                <span className={video && 'font-bold block'}>
-                  {firstname} {!video && centerBioText && ' '}
+                <span className={video && "font-bold block"}>
+                  {firstname} {!video && centerBioText && " "}
                 </span>
                 {lastname}
               </h4>

@@ -1,6 +1,6 @@
-import { BgImage } from 'gbimage-bridge';
-import React from 'react';
-import { Dot } from '../icon';
+import { BgImage } from "gbimage-bridge";
+import React from "react";
+import { Dot } from "../icon";
 
 export const ColumnSection = ({ title, eyebrow, image, children }) => {
   return (
@@ -8,7 +8,7 @@ export const ColumnSection = ({ title, eyebrow, image, children }) => {
       <div
         className="lg:grid gap-x-3 xl:gap-x-20 "
         style={{
-          gridTemplateColumns: 'minmax(610px, 740px) minmax(320px, 440px)',
+          gridTemplateColumns: "minmax(610px, 740px) minmax(320px, 440px)",
         }}
       >
         <div className="sm:h-auto overflow-hidden lg:mr-12">
@@ -25,7 +25,7 @@ export const ColumnSection = ({ title, eyebrow, image, children }) => {
           <BgImage image={image} className="h-full w-full">
             <div
               className="absolute inset-0 bg-navy text-white cursor-pointer"
-              style={{ opacity: '0.3' }}
+              style={{ opacity: "0.3" }}
             />
             <div className="h-40vh lg:h-full w-full flex justify-between transform items-center text-white px-15"></div>
           </BgImage>

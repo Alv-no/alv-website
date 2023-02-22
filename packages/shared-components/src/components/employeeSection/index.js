@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { GridContainer } from '../gridContainer';
-import { EmployeeFilter } from '../employeeFilter';
+import React, { useState, useEffect } from "react";
+import { GridContainer } from "../gridContainer";
+import { EmployeeFilter } from "../employeeFilter";
 
 export const EmployeeSection = ({
   allTags,

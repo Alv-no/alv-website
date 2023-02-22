@@ -1,6 +1,6 @@
-import React from 'react';
-import { Shade } from '../icon';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React from "react";
+import { Shade } from "../icon";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const EmployeeCard = ({
   image,
@@ -20,8 +20,8 @@ export const EmployeeCard = ({
     <button
       className={`text-white relative group flex cursor-pointer focus:outline-none w-full overflow-hidden ${
         activeBio && id === activeBio.id
-          ? 'filter-grayscale-0'
-          : greyCards && 'filter-grayscale'
+          ? "filter-grayscale-0"
+          : greyCards && "filter-grayscale"
       } hover:filter-grayscale-0 pb-130c h-0`}
       onClick={handleClick}
       key={id}
@@ -30,20 +30,20 @@ export const EmployeeCard = ({
     >
       <div
         className={`absolute w-full h-full z-10 group-hover:opacity-100 opacity-0 transition duration-300 pointer-events-none ${
-          greyCards && 'hidden'
+          greyCards && "hidden"
         }`}
         style={{
           background:
-            'linear-gradient(180deg, rgba(196, 196, 196, 0) 47.26%, #061838 93.68%)',
+            "linear-gradient(180deg, rgba(196, 196, 196, 0) 47.26%, #061838 93.68%)",
         }}
       />
       <div
         className={`absolute h-full xs:w-full transform translate-x-4 xs:translate-x-0 w-screen ${
-          contrast && 'opacity-100'
+          contrast && "opacity-100"
         } xs:max-w-277px ${
-          !notransparent && 'opacity-70'
+          !notransparent && "opacity-70"
         } group-hover:opacity-100 transition ${
-          activeBio && id === activeBio.id ? 'opacity-100' : ''
+          activeBio && id === activeBio.id ? "opacity-100" : ""
         } group-hover:opacity-100 duration-300 pointer-events-none`}
       >
         <GatsbyImage

@@ -1,35 +1,35 @@
-import { graphql } from 'gatsby';
-import React from 'react';
+import { graphql } from "gatsby";
+import React from "react";
 import {
   BlockContent,
   Container,
   FeaturedTeam,
   NavyIntro,
-} from 'shared-components';
-import { BlogCarousel } from '../components/blogCarousel';
-import Layout from '../components/layout';
-import { Overview } from '../components/overview';
-import { RolesList } from '../components/rolesList';
-import { ServicesNav } from '../components/servicesNav';
-import TestimonialSlider from '../components/testimonialsSlider';
-import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import configuration from '../config';
+} from "shared-components";
+import { BlogCarousel } from "../components/blogCarousel";
+import Layout from "../components/layout";
+import { Overview } from "../components/overview";
+import { RolesList } from "../components/rolesList";
+import { ServicesNav } from "../components/servicesNav";
+import TestimonialSlider from "../components/testimonialsSlider";
+import { useBlogQueryRecent } from "../hooks/useBlogQueryRecent";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import configuration from "../config";
 
 const Category = ({ data }) => {
   const { sanityCategoryPage } = data;
   const layoutData = useLayoutQuery();
 
   const nav = [
-    { label: 'Oversikt', id: 'oversikt' },
-    { label: 'Tjenester', id: 'tjenester' },
-    { label: 'Konsulenter', id: 'konsulentene' },
+    { label: "Oversikt", id: "oversikt" },
+    { label: "Tjenester", id: "tjenester" },
+    { label: "Konsulenter", id: "konsulentene" },
   ];
 
   const scrollTo = (e) => {
     const element = document.getElementById(e.target.name);
     const top = element && window.scrollY + element.getBoundingClientRect().top;
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   const {

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Layout from '../components/layout';
-import { VideoCategory } from '../components/videoCategory';
-import { VideoSection } from '../components/videoSection';
-import { VideoHero } from '../components/videoHero';
-import { useVideoseriesQuery } from '../hooks/useVideoseriesQuery';
-import { VideoFilter } from '../components/videoFilter';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import React, { useState } from "react";
+import Layout from "../components/layout";
+import { VideoCategory } from "../components/videoCategory";
+import { VideoSection } from "../components/videoSection";
+import { VideoHero } from "../components/videoHero";
+import { useVideoseriesQuery } from "../hooks/useVideoseriesQuery";
+import { VideoFilter } from "../components/videoFilter";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
 
 const Videoseries = ({ pageContext }) => {
   const { videoseries } = pageContext;
@@ -24,7 +24,7 @@ const Videoseries = ({ pageContext }) => {
     );
 
   const pageDescription = data.sanityVideoSeriesPage?.pageDescription || false;
-  const pageTitle = data.sanityVideoSeriesPage?.pageTitle || 'Videoserie';
+  const pageTitle = data.sanityVideoSeriesPage?.pageTitle || "Videoserie";
   const featuredVideo = filteredVideoseries[0];
   const featuredVideoSeason =
     featuredVideo.seasons[featuredVideo.seasons.length - 1];

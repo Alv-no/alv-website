@@ -1,17 +1,17 @@
-import { gql } from '@apollo/client';
-import { window } from 'browser-monads';
-import { graphql } from 'gatsby';
-import React from 'react';
-import { LinkableContent } from 'shared-components/src/components/linkableContent';
-import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
-import { BlogCarousel } from '../../components/blogCarousel';
-import Layout from '../../components/layout';
-import config from '../../config';
-import { useBlogQueryRecent } from '../../hooks/useBlogQueryRecent';
-import { useLayoutQuery } from '../../hooks/useLayoutQuery';
-import useScrollToHeading from '../../hooks/useScrollToHeading';
-import { client } from '../../server-side/client';
-import { createGatsbyImages } from '../../server-side/imageCreator';
+import { gql } from "@apollo/client";
+import { window } from "browser-monads";
+import { graphql } from "gatsby";
+import React from "react";
+import { LinkableContent } from "shared-components/src/components/linkableContent";
+import { NavyIntroImage } from "shared-components/src/components/navyIntroImage";
+import { BlogCarousel } from "../../components/blogCarousel";
+import Layout from "../../components/layout";
+import config from "../../config";
+import { useBlogQueryRecent } from "../../hooks/useBlogQueryRecent";
+import { useLayoutQuery } from "../../hooks/useLayoutQuery";
+import useScrollToHeading from "../../hooks/useScrollToHeading";
+import { client } from "../../server-side/client";
+import { createGatsbyImages } from "../../server-side/imageCreator";
 
 const Company = ({ serverData }) => {
   const layoutData = useLayoutQuery();
@@ -57,7 +57,7 @@ export default Company;
 
 async function getCompanyDataServerSide(slug) {
   const response = await client.query({
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
     variables: {
       slug,
     },
@@ -127,7 +127,7 @@ async function getCompanyDataServerSide(slug) {
 
 export async function getServerData(context) {
   try {
-    const slug = context.params['slug'];
+    const slug = context.params["slug"];
     const companyData = await getCompanyDataServerSide(slug);
     return {
       status: 200,

@@ -1,21 +1,21 @@
-import { gql } from '@apollo/client';
-import { window } from 'browser-monads';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { BlockContent } from 'shared-components';
-import { AlsoRead } from '../../../../shared-components/src/components/alsoRead';
-import { createSlugForEmployee } from '../../../../shared-components/src/components/createSlugForEmployee';
-import { Footer } from '../../../../shared-components/src/components/footer';
-import { MobileHeader } from '../../../../shared-components/src/components/header';
-import { SEO } from '../../../../shared-components/src/components/seo';
-import { SocialShare } from '../../../../shared-components/src/components/socialShare';
-import * as Logo from '../../components/logo';
-import Sidebar from '../../components/sidebar';
-import { getBlogDataServerSide } from '../../hooks/useBlogQueryServerSide';
-import { useLayoutQuery } from '../../hooks/useLayoutQuery';
-import { client } from '../../server-side/client';
-import { createGatsbyImages } from '../../server-side/imageCreator';
-import configuration from '../../config';
+import { gql } from "@apollo/client";
+import { window } from "browser-monads";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { BlockContent } from "shared-components";
+import { AlsoRead } from "../../../../shared-components/src/components/alsoRead";
+import { createSlugForEmployee } from "../../../../shared-components/src/components/createSlugForEmployee";
+import { Footer } from "../../../../shared-components/src/components/footer";
+import { MobileHeader } from "../../../../shared-components/src/components/header";
+import { SEO } from "../../../../shared-components/src/components/seo";
+import { SocialShare } from "../../../../shared-components/src/components/socialShare";
+import * as Logo from "../../components/logo";
+import Sidebar from "../../components/sidebar";
+import { getBlogDataServerSide } from "../../hooks/useBlogQueryServerSide";
+import { useLayoutQuery } from "../../hooks/useLayoutQuery";
+import { client } from "../../server-side/client";
+import { createGatsbyImages } from "../../server-side/imageCreator";
+import configuration from "../../config";
 
 // Template for how articles are rendered.
 const ArticleTemplate = ({ serverData: { article, articles } }) => {
@@ -53,12 +53,12 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
     authorSlug = createSlugForEmployee(firstname, lastname);
   }
 
-  const socialTags = (tags && tags.map((tag) => tag.tag)) || '';
+  const socialTags = (tags && tags.map((tag) => tag.tag)) || "";
   const metaImage =
     socials && socials.socialImage ? socialImage.asset.url : null;
 
   const metaArr = socialTags;
-  const metaLang = { lang: 'no' };
+  const metaLang = { lang: "no" };
   const metaDescription = description;
   const metaAuthor = authorFullname;
   const metaTitle = title;
@@ -73,9 +73,9 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
     metaImage,
   };
 
-  const alsoReadText = 'Les også';
-  const postPrefix = 'blogg';
-  const readMoreText = 'Les mer';
+  const alsoReadText = "Les også";
+  const postPrefix = "blogg";
+  const readMoreText = "Les mer";
 
   return (
     <>
@@ -96,7 +96,7 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
         >
           <div
             className="min-h-screen flex flex-col m-15 xl:m-20 xl:mb-15 2xl:m-25 2xl:mb-15 text-navy 2xl:ml-1/2"
-            style={{ maxWidth: '770px' }}
+            style={{ maxWidth: "770px" }}
           >
             <div className="mb-5">
               <SocialShare
@@ -113,7 +113,7 @@ const ArticleTemplate = ({ serverData: { article, articles } }) => {
                 <span className="relative fixed opacity-90">
                   <GatsbyImage
                     image={mainImage.asset.gatsbyImageData}
-                    style={{ zIndex: '0', position: 'relative' }}
+                    style={{ zIndex: "0", position: "relative" }}
                   />
                 </span>
               </div>
@@ -194,7 +194,7 @@ export async function getBlogArticleServerSide(slug) {
     variables: {
       slug,
     },
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
     query: gql`
       query($slug: String!) {
         allArticle(where: { slug: { current: { eq: $slug } } }) {
@@ -286,7 +286,7 @@ export async function getBlogArticleServerSide(slug) {
 }
 
 export async function getServerData(props) {
-  const slug = props.params['slug'];
+  const slug = props.params["slug"];
   try {
     const article = await getBlogArticleServerSide(slug);
     const articles = await getBlogDataServerSide();

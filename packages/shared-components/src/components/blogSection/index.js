@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { BlogFilter } from '../blogFilter';
-import * as Button from '../button';
-import { PostCard } from '../postCard';
+import React, { useState } from "react";
+import { BlogFilter } from "../blogFilter";
+import * as Button from "../button";
+import { PostCard } from "../postCard";
 
 export const BlogSection = ({
   allArticles,
@@ -19,7 +19,7 @@ export const BlogSection = ({
     ...new Set(
       allArticles.map(({ author }) => {
         if (author) return `${author.firstname} ${author.lastname}`;
-        return '';
+        return "";
       }),
     ),
   ];

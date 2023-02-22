@@ -1,10 +1,10 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import { Layout } from '../components/layout';
-import { RichtextAndImage } from '../components/richtextAndImage';
-import { Services } from '../components/services';
-import { NavyIntro, ServicesCard } from 'shared-components';
-import localize from '../components/localize/index';
+import React from "react";
+import { graphql } from "gatsby";
+import { Layout } from "../components/layout";
+import { RichtextAndImage } from "../components/richtextAndImage";
+import { Services } from "../components/services";
+import { NavyIntro, ServicesCard } from "shared-components";
+import localize from "../components/localize/index";
 
 const Biobank = ({ data }) => {
   const { meta, section1, section2, section3 } = data.sanityBioBank;
@@ -20,7 +20,7 @@ const Biobank = ({ data }) => {
         <RichtextAndImage
           image={section2.image.asset.gatsbyImageData}
           blocks={section2.block}
-          leftColSize={'30%'}
+          leftColSize={"30%"}
           title={section2.title}
           flip
         />

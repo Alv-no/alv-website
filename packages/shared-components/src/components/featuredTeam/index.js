@@ -1,9 +1,9 @@
-import React from 'react';
-import { EmployeeCard } from '../employeeCard';
-import Link from 'gatsby-link';
-import { Title } from '../title';
-import * as Button from '../button';
-import { createSlugForEmployee } from '../createSlugForEmployee';
+import React from "react";
+import { EmployeeCard } from "../employeeCard";
+import Link from "gatsby-link";
+import { Title } from "../title";
+import * as Button from "../button";
+import { createSlugForEmployee } from "../createSlugForEmployee";
 
 export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
   const handleClick = (e) => {

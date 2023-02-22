@@ -1,5 +1,5 @@
-import React from 'react';
-import { ContactArrow } from '../icon';
+import React from "react";
+import { ContactArrow } from "../icon";
 
 export const CallToAction = ({
   children,
@@ -13,10 +13,10 @@ export const CallToAction = ({
     aria-label={children}
     className="uppercase text-xl font-extralight flex tracking-wider"
   >
-    <div className={`mr-5 ${whiteIcons && 'text-white'}`}>{children}</div>
+    <div className={`mr-5 ${whiteIcons && "text-white"}`}>{children}</div>
     <span
       className={`block transform translate-y-1 translate-x-1 ${
-        whiteIcons && 'text-white'
+        whiteIcons && "text-white"
       }`}
     >
       <ContactArrow white={whiteIcons} />

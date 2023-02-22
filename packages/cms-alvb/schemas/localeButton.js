@@ -1,21 +1,21 @@
-import supportedLanguages from '../utils/supportedLanguages';
+import supportedLanguages from "../utils/supportedLanguages";
 
 export default {
-  name: 'localeButton',
-  type: 'object',
+  name: "localeButton",
+  type: "object",
   options: {
     collapsible: true,
   },
   fieldsets: [
     {
-      title: 'Translations',
-      name: 'translations',
+      title: "Translations",
+      name: "translations",
     },
   ],
   fields: supportedLanguages.map((lang) => ({
     title: lang.title,
     name: lang.id,
-    type: 'button',
-    fieldset: lang.isDefault ? null : 'translations',
+    type: "button",
+    fieldset: lang.isDefault ? null : "translations",
   })),
 };

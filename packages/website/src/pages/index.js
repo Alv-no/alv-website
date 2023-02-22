@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
-import { graphql } from 'gatsby';
-import React from 'react';
+import { gql } from "@apollo/client";
+import { graphql } from "gatsby";
+import React from "react";
 import {
   BlogSlider,
   Container,
@@ -9,16 +9,16 @@ import {
   OurServices,
   VideoIntro,
   WhoWeAre,
-} from 'shared-components';
-import Brands from '../components/brands';
-import LandingPageHero from '../components/landingPageHero';
-import Layout from '../components/layout';
-import config from '../config';
-import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import { brandsQuery } from '../queryFragments';
-import { client } from '../server-side/client';
-import { createGatsbyImages } from '../server-side/imageCreator';
+} from "shared-components";
+import Brands from "../components/brands";
+import LandingPageHero from "../components/landingPageHero";
+import Layout from "../components/layout";
+import config from "../config";
+import { useBlogQueryRecent } from "../hooks/useBlogQueryRecent";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import { brandsQuery } from "../queryFragments";
+import { client } from "../server-side/client";
+import { createGatsbyImages } from "../server-side/imageCreator";
 
 const Index = ({ data, serverData }) => {
   const layoutData = useLayoutQuery();
@@ -33,7 +33,7 @@ const Index = ({ data, serverData }) => {
     serverData.blogCarousel?.selectedArticles || recentArticles;
 
   const maxWidth = 1440;
-  const theme = 'navy';
+  const theme = "navy";
 
   return (
     <Layout
@@ -187,7 +187,7 @@ async function fetchServerSideData() {
         }
       }
     `,
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
   });
   createGatsbyImages(response.data);
   return response.data;

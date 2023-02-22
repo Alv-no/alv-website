@@ -1,8 +1,8 @@
-import Link from 'gatsby-link';
-import { BgImage } from 'gbimage-bridge';
-import React from 'react';
-import * as Button from '../../../../shared-components/src/components/button';
-import { Title } from '../../../../shared-components/src/components/title';
+import Link from "gatsby-link";
+import { BgImage } from "gbimage-bridge";
+import React from "react";
+import * as Button from "../../../../shared-components/src/components/button";
+import { Title } from "../../../../shared-components/src/components/title";
 
 export const ImageTextListHero = ({
   image,
@@ -13,7 +13,7 @@ export const ImageTextListHero = ({
     <div className="bg-navy">
       <div
         className="max-w-1440 mx-auto flex flex-col-reverse sm:flex-row text-white twelve:grid gap-x-10 tracking-wider sm:px-12 px-5"
-        style={{ gridTemplateColumns: '25% auto' }}
+        style={{ gridTemplateColumns: "25% auto" }}
       >
         <div className="h-full sm:pt-25 sm:-ml-12 flex -ml-5 items-end sm:mt-32 twelve:mt-0">
           <BgImage image={image}>

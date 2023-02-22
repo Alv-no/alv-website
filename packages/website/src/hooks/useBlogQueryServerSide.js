@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client';
-import { client } from '../server-side/client';
-import { createGatsbyImages } from '../server-side/imageCreator';
+import { gql } from "@apollo/client";
+import { client } from "../server-side/client";
+import { createGatsbyImages } from "../server-side/imageCreator";
 export async function getBlogDataServerSide() {
   const response = await client.query({
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
     query: gql`
       {
         articles: allArticle(sort: { publishedAt: ASC }) {

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Header, MobileHeader, Footer, SEO } from 'shared-components';
-import * as Logo from '../logo';
-import './layout.css';
-import CookieNotice from '../cookieNotice';
+import React from "react";
+import { Header, MobileHeader, Footer, SEO } from "shared-components";
+import * as Logo from "../logo";
+import "./layout.css";
+import CookieNotice from "../cookieNotice";
 
 const Layout = ({
   layoutData,
@@ -20,7 +20,7 @@ const Layout = ({
   const metaDescription = site.siteMetadata.description;
   const metaTitle = site.siteMetadata.title;
   const metaArr = [];
-  const metaLang = { lang: 'no' };
+  const metaLang = { lang: "no" };
 
   const metaData = {
     metaAuthor,

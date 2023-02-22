@@ -1,8 +1,8 @@
-import Link from 'gatsby-link';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { CtaButton } from '../ctaButton';
-import { Description } from '../description';
+import Link from "gatsby-link";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { CtaButton } from "../ctaButton";
+import { Description } from "../description";
 
 export const Cta = ({
   internalLink,
@@ -11,7 +11,7 @@ export const Cta = ({
   description,
   image,
   fallback,
-  color = 'navy',
+  color = "navy",
 }) => {
   return (
     <section className="text-theme-text mt-12">
@@ -19,7 +19,7 @@ export const Cta = ({
         <div className="flex lg:flex-row flex-col-reverse xl:-mr-35">
           <div className="lg:flex-1 px-6 lg:px-0">
             <h2 className="uppercase tracking-wider text-2xl font-bold sm:mb-15 lg:mb-16 mb-10">
-              {title || 'Bli med oss'}
+              {title || "Bli med oss"}
             </h2>
             <div className="xl:ml-16 lg:ml-0 sm:ml-18 lg:mb-0 mb-10">
               <Description align="left text-theme-text">

@@ -1,8 +1,8 @@
-import React from 'react';
-import { GridContainer } from '.';
+import React from "react";
+import { GridContainer } from ".";
 
 export default {
-  title: 'components/gridContainer',
+  title: "components/gridContainer",
 };
 
 export const Default = ({ ...args }) => <GridContainer {...args} />;

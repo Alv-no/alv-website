@@ -1,8 +1,8 @@
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const config = require('./src/config');
+const config = require("./src/config");
 
 module.exports = {
   siteMetadata: {
@@ -15,23 +15,23 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-197345464-1',
+        trackingId: "UA-197345464-1",
         head: true,
       },
     },
     {
-      resolve: 'gatsby-plugin-google-tagmanager',
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        id: 'GTM-KJX5NRJ',
+        id: "GTM-KJX5NRJ",
         includeInDevelopment: false,
         enableWebVitalsTracking: true,
       },
     },
-    'gatsby-plugin-image',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-postcss',
-    'gatsby-plugin-react-helmet',
+    "gatsby-plugin-image",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-react-helmet",
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-sanity`,
@@ -47,14 +47,14 @@ module.exports = {
       options: {
         name: `AlvB AS`,
         display: `standalone`,
-        icon: 'src/favicons/favicon-32x32.png',
+        icon: "src/favicons/favicon-32x32.png",
         lang: `${config.LOCALE}`,
       },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        policy: [{ userAgent: '*', allow: '/' }],
+        policy: [{ userAgent: "*", allow: "/" }],
       },
     },
   ],

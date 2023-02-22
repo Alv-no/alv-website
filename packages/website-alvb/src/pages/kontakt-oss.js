@@ -1,10 +1,10 @@
-import { graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { Description, Title } from 'shared-components';
-import { Visit } from '../../../shared-components/src/components/form';
-import { Layout } from '../components/layout';
-import localize from '../components/localize';
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { Description, Title } from "shared-components";
+import { Visit } from "../../../shared-components/src/components/form";
+import { Layout } from "../components/layout";
+import localize from "../components/localize";
 
 const Contact = ({ data }) => {
   const { section1, meta } = data.sanityContactPage;
@@ -19,7 +19,7 @@ const Contact = ({ data }) => {
       <div className="xl:pt-10">
         <div
           className="w-full text-navy max-w-1440 mx-auto xl:grid xl:pb-20"
-          style={{ gridTemplateColumns: '50% 50%' }}
+          style={{ gridTemplateColumns: "50% 50%" }}
         >
           <div className="mt-6 sm:px-10 xl:block sm:grid grid-cols-fifty">
             <div className="sm:hidden xl:block">

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Title } from '../title';
-import * as Button from '../button';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React from "react";
+import { Title } from "../title";
+import * as Button from "../button";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const ImageTextCards = ({
   image,
@@ -18,7 +18,7 @@ export const ImageTextCards = ({
         <div
           className="max-w-1200 mx-auto lg:flex"
           style={{
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: "1fr 1fr",
           }}
         >
           <div className="h-full flex-1">
@@ -35,7 +35,7 @@ export const ImageTextCards = ({
                 {description}
               </p>
             </div>
-            <div className={`w-full flex justify-${flip ? 'start' : 'end'}`}>
+            <div className={`w-full flex justify-${flip ? "start" : "end"}`}>
               <Button.CtaArrow path={link}>Lær Mer</Button.CtaArrow>
             </div>
           </div>

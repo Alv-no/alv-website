@@ -1,11 +1,11 @@
-import PortableText from '@sanity/block-content-to-react';
-import React from 'react';
-import { richTextTypesSerializer } from '../..';
-import { urlBuilder } from '../../../../utils';
-import * as styles from './ImageTextFlip.module.css';
+import PortableText from "@sanity/block-content-to-react";
+import React from "react";
+import { richTextTypesSerializer } from "../..";
+import { urlBuilder } from "../../../../utils";
+import * as styles from "./ImageTextFlip.module.css";
 
 const ImageTextFlip = ({ flip, image, heading, linkableBlock, config }) => {
-  const flipClasses = flip ? 'sm:order-first sm:pr-8' : 'sm:pl-8';
+  const flipClasses = flip ? "sm:order-first sm:pr-8" : "sm:pl-8";
 
   return (
     <section className="grid sm:grid-cols-2">

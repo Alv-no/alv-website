@@ -1,9 +1,9 @@
-import React from 'react';
-import { Arrow } from '../../../../shared-components/src/components/icon';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../../../../shared-components/src/components/title';
-import { BlockContent } from 'shared-components';
-import configuration from '../../config';
+import React from "react";
+import { Arrow } from "../../../../shared-components/src/components/icon";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { Title } from "../../../../shared-components/src/components/title";
+import { BlockContent } from "shared-components";
+import configuration from "../../config";
 
 export const ServiceNavList = ({ nav, heroImage, raw, heading, scrollTo }) => {
   return (

@@ -1,7 +1,7 @@
-import Link from 'gatsby-link';
-import { BgImage } from 'gbimage-bridge';
-import React from 'react';
-import { Arrow } from '../icon';
+import Link from "gatsby-link";
+import { BgImage } from "gbimage-bridge";
+import React from "react";
+import { Arrow } from "../icon";
 
 export const FeaturedCard = ({
   mainImage,
@@ -15,9 +15,9 @@ export const FeaturedCard = ({
 }) => {
   let newDescription = description;
   if (description.length > 300) {
-    const wordArr = description.split(' ').slice(0, 20);
-    wordArr.push('...');
-    newDescription = wordArr.join(' ');
+    const wordArr = description.split(" ").slice(0, 20);
+    wordArr.push("...");
+    newDescription = wordArr.join(" ");
     newDescription =
       newDescription.slice(0, newDescription.length - 4) +
       newDescription.slice(newDescription.length - 3);
@@ -27,7 +27,7 @@ export const FeaturedCard = ({
     <Link
       to={`/${postPrefix}/${slug.current}`}
       className="relative"
-      style={{ position: 'relative' }}
+      style={{ position: "relative" }}
     >
       <BgImage
         image={mainImage ? mainImage.asset.gatsbyImageData : fallbackImg}
@@ -37,7 +37,7 @@ export const FeaturedCard = ({
           className="xs:block hidden h-featured"
           style={{
             background:
-              'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
+              "transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box",
           }}
         >
           <div className="w-full z-50 h-full p-8 flex flex-col justify-between">
@@ -54,7 +54,7 @@ export const FeaturedCard = ({
               <div className="flex flex-col justify-between">
                 <div />
                 <div className="font-semibold uppercase w-32 flex text-right justify-end items-center">
-                  {readMoreText}{' '}
+                  {readMoreText}{" "}
                   <span className="ml-2">
                     <Arrow color="#fff" />
                   </span>
@@ -68,7 +68,7 @@ export const FeaturedCard = ({
         className="xs:hidden"
         style={{
           background:
-            'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
+            "transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box",
         }}
       >
         <div className="w-full z-50 h-full p-6 flex flex-col justify-between">
@@ -83,7 +83,7 @@ export const FeaturedCard = ({
             <div className="flex flex-col justify-between">
               <div />
               <div className="font-semibold uppercase w-full mt-4 flex text-right justify-end items-center">
-                {readMoreText}{' '}
+                {readMoreText}{" "}
                 <span className="ml-2">
                   <Arrow color="#fff" />
                 </span>

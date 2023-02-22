@@ -1,16 +1,16 @@
 export default {
-  title: 'Meta data',
-  name: 'meta',
-  type: 'object',
+  title: "Meta data",
+  name: "meta",
+  type: "object",
   options: { collapsible: true },
   fields: [
     {
-      name: 'metaTitle',
-      type: 'string',
+      name: "metaTitle",
+      type: "string",
     },
     {
-      name: 'metaDescription',
-      type: 'text',
+      name: "metaDescription",
+      type: "text",
       rows: 4,
     },
   ],

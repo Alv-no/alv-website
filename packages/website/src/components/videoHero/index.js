@@ -1,8 +1,8 @@
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from '../../../../shared-components/src/components/title';
-import { FeaturedVideo } from '../../../../shared-components/src/components/featuredVideo';
-import * as styles from './VideoHero.module.css';
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { Title } from "../../../../shared-components/src/components/title";
+import { FeaturedVideo } from "../../../../shared-components/src/components/featuredVideo";
+import * as styles from "./VideoHero.module.css";
 
 export const VideoHero = ({
   backgroundImage,

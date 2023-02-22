@@ -1,15 +1,15 @@
-import React from 'react';
-import { getFilePath, urlBuilder } from '../../../utils';
+import React from "react";
+import { getFilePath, urlBuilder } from "../../../utils";
 
-import * as styles from './MediaComponent.module.css';
+import * as styles from "./MediaComponent.module.css";
 
 const Video = ({ videoWebM, videoMp4, config }) => {
   const isIOS = navigator.userAgent.match(/(iPhone|iPad)/);
 
-  const videoFormat = isIOS ? 'video/mp4' : 'video/webm';
+  const videoFormat = isIOS ? "video/mp4" : "video/webm";
   const videoAsset = isIOS
-    ? videoWebM.asset._ref.slice(5, videoWebM.asset._ref.length - 5) + '.webm'
-    : videoMp4.asset._ref.slice(5, videoMp4.asset._ref.length - 4) + '.mp4';
+    ? videoWebM.asset._ref.slice(5, videoWebM.asset._ref.length - 5) + ".webm"
+    : videoMp4.asset._ref.slice(5, videoMp4.asset._ref.length - 4) + ".mp4";
 
   const filePath = getFilePath(config);
   const videoPath = filePath + videoAsset;

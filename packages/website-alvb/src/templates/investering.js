@@ -1,11 +1,11 @@
-import React from 'react';
-import localize from '../components/localize/index';
-import { graphql } from 'gatsby';
-import { Layout } from '../components/layout';
-import { NavyIntro } from 'shared-components';
-import { ImagesSideBySide } from '../components/ImagesSideBySide';
-import { RichtextAndImage } from '../components/richtextAndImage';
-import { Cta } from '../components/cta';
+import React from "react";
+import localize from "../components/localize/index";
+import { graphql } from "gatsby";
+import { Layout } from "../components/layout";
+import { NavyIntro } from "shared-components";
+import { ImagesSideBySide } from "../components/ImagesSideBySide";
+import { RichtextAndImage } from "../components/richtextAndImage";
+import { Cta } from "../components/cta";
 
 const Investering = ({ data }) => {
   const { meta, section1, section2, section3, _rawSection4 } =

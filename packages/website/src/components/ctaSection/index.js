@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React from "react";
+import Link from "gatsby-link";
 
 export const CtaSection = ({
   eyebrow,
@@ -11,7 +11,7 @@ export const CtaSection = ({
   return (
     <section
       className={`px-10 flex justify-center items-center flex-col ${
-        navy ? 'bg-navy text-white' : 'bg-servicesgray'
+        navy ? "bg-navy text-white" : "bg-servicesgray"
       }`}
     >
       <p className="font-light text-center text-lg mb-2">{eyebrow}</p>
@@ -23,7 +23,7 @@ export const CtaSection = ({
           type="button"
           aria-label={buttonText}
           className={`px-10 rounded-full font-semibold text-base uppercase py-6px border ${
-            navy ? 'border-white' : ' border-navy'
+            navy ? "border-white" : " border-navy"
           } border-2`}
         >
           {buttonText}

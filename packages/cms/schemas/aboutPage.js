@@ -1,34 +1,34 @@
 export default {
-  name: 'aboutPage',
-  title: 'About Page',
-  type: 'document',
+  name: "aboutPage",
+  title: "About Page",
+  type: "document",
   fields: [
     {
-      name: 'pageTitle',
-      title: 'Page Title (meta)',
-      type: 'string',
+      name: "pageTitle",
+      title: "Page Title (meta)",
+      type: "string",
       options: {
         maxLength: 60,
       },
     },
     {
-      name: 'pageDescription',
-      title: 'Page Description (meta)',
-      type: 'text',
+      name: "pageDescription",
+      title: "Page Description (meta)",
+      type: "text",
       rows: 2,
       options: {
         maxLength: 160,
       },
     },
     {
-      name: 'brands',
-      title: 'Brands',
-      type: 'brands',
+      name: "brands",
+      title: "Brands",
+      type: "brands",
     },
     {
-      name: 'blogCarousel',
-      title: 'Blog carousel',
-      type: 'blogCarousel',
+      name: "blogCarousel",
+      title: "Blog carousel",
+      type: "blogCarousel",
     },
   ],
 };

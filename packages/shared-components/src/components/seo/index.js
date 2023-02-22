@@ -1,5 +1,5 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import React from "react";
+import { Helmet } from "react-helmet";
 
 export const SEO = ({
   description,
@@ -41,7 +41,7 @@ export const SEO = ({
           content: `website`,
         },
         {
-          property: 'og:image',
+          property: "og:image",
           content: metaImage,
         },
         {

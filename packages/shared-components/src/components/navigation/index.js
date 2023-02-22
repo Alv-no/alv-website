@@ -1,6 +1,6 @@
-import Link from 'gatsby-link';
-import React from 'react';
-import { LargeLink, SubtitleLink, SocialLinks, Icon } from 'shared-components';
+import Link from "gatsby-link";
+import React from "react";
+import { LargeLink, SubtitleLink, SocialLinks, Icon } from "shared-components";
 
 export const Navigation = ({
   open,
@@ -34,7 +34,7 @@ const NavLayout = ({
 }) => (
   <nav
     className={`text-theme-text bg-theme-bg tracking-wider fixed overflow-y-scroll overflow-x-hidden z-70 w-full h-full bg-theme-bg left-0 top-0 transition duration-300 ${
-      open ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      open ? "opacity-100" : "opacity-0 pointer-events-none"
     }`}
   >
     <button
@@ -59,7 +59,7 @@ const NavHeader = ({ white, logo, toggleClose, isEnLocale }) => (
         <CloseButton toggleClose={toggleClose} white={white} />
       </div>
       <div className="inline-block eight:absolute left-1/2 eight:transform eight:-translate-x-1/2">
-        <Link to={isEnLocale ? '/en' : '/'}>
+        <Link to={isEnLocale ? "/en" : "/"}>
           {white ? logo.Colored() : logo.White()}
         </Link>
       </div>
@@ -83,7 +83,7 @@ const CloseButton = ({ toggleClose, white }) => (
 
 const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
   const filteredCompanyPages = companyPages?.filter(
-    (page) => page.slug.current !== 'kunder-og-prosjekter',
+    (page) => page.slug.current !== "kunder-og-prosjekter",
   );
   return (
     <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
