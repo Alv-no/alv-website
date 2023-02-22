@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { FilterContainer } from '../filterContainer';
-import { DropdownMini, Tag } from '../icon';
-import * as styles from './BlogFilter.module.css';
+import React, { useEffect, useState } from "react";
+import { FilterContainer } from "../filterContainer";
+import { DropdownMini, Tag } from "../icon";
+import * as styles from "./BlogFilter.module.css";
 
 // Input: content array and filter elements
 // Output: filtered and sorted content array
@@ -24,9 +24,9 @@ export const BlogFilter = ({
   useEffect(() => {
     const sortedActive = [...active];
 
-    sort === 'newest' &&
+    sort === "newest" &&
       sortedActive.sort((a, b) => (a.rawDate < b.rawDate ? -1 : 1));
-    sort === 'oldest' &&
+    sort === "oldest" &&
       sortedActive.sort((a, b) => (a.rawDate < b.rawDate ? 1 : -1));
 
     onChange(sortedActive);
@@ -140,36 +140,36 @@ export const FilterField = ({
   return (
     <div
       className="grid relative tracking-wider h-full border border-bordergray items-center pl-2 mx-2 rounded-md flex-grow"
-      style={{ gridTemplateColumns: '50px 50px auto' }}
+      style={{ gridTemplateColumns: "50px 50px auto" }}
     >
       <input
         className={`${styles.filterCheckbox} absolute left-0 ml-2 w-full h-6 transform cursor-pointer`}
         type="checkbox"
       />
       <div
-        style={{ zIndex: 60, background: 'white' }}
+        style={{ zIndex: 60, background: "white" }}
         className={`${styles.filter} bg-white absolute w-full px-12 py-8 rounded-md bg-white mt-9 left-0 top-0 flex border-b border-l border-r border-bordergray`}
       >
         <FilterOption onChange={tagClick} tags={tags} activeTags={activeTags}>
-          {isEnLocale ? 'Categories' : 'Kategorier'}
+          {isEnLocale ? "Categories" : "Kategorier"}
         </FilterOption>
         <FilterOption
           onChange={authorClick}
           tags={authors}
           activeTags={activeAuthors}
         >
-          {isEnLocale ? 'Authors' : 'Forfattere'}
+          {isEnLocale ? "Authors" : "Forfattere"}
         </FilterOption>
       </div>
       <span className="transform scale-10 -translate-y-6px h-5 -mx-32">
         <Tag />
       </span>
-      {''}
+      {""}
       <span className="mr-3 -ml-1">Filter</span>
       <div className="overflow-x-scroll hide-scrollbar">
         <div
           className="whitespace-pre w-full pl-2 rounded-full -ml-2 relative"
-          style={{ scrollbarWidth: 'thin' }}
+          style={{ scrollbarWidth: "thin" }}
         >
           <div className="fivefifty:flex hidden w-full">
             {activeTags && <ActiveFilterOptions activeFilters={activeTags} />}
@@ -179,10 +179,10 @@ export const FilterField = ({
             {noFilter && (
               <>
                 <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
-                  {isEnLocale ? 'All categories' : 'Alle kategorier'}
+                  {isEnLocale ? "All categories" : "Alle kategorier"}
                 </div>
                 <div className="my-1 py-1 mx-2px text-sm px-2 rounded-full bg-gray-200 font-normal font-gray-600">
-                  {isEnLocale ? 'All authors' : 'Alle forfattere'}
+                  {isEnLocale ? "All authors" : "Alle forfattere"}
                 </div>
               </>
             )}
@@ -251,35 +251,35 @@ export const SortField = ({ sort, sortClick, light, isEnLocale }) => {
 
   const localeSortOptions = {
     no: {
-      oldest: 'Eldst til nyest',
-      newest: 'Nyest til eldst',
+      oldest: "Eldst til nyest",
+      newest: "Nyest til eldst",
     },
     en: {
-      oldest: 'Oldest',
-      newest: 'Most recent',
+      oldest: "Oldest",
+      newest: "Most recent",
     },
   };
 
   return (
     <div className="flex items-center h-full fivefifty:w-60 pr-2 pl-4 fivefifty:px-0">
       <span className="fivefifty:w-25 fivefifty:text-right">
-        {isEnLocale ? 'Sort' : 'Sorter'}
+        {isEnLocale ? "Sort" : "Sorter"}
       </span>
       <div
         className="relative h-full border border-bordergray flex items-center px-4 rounded-md ml-3 w-full"
         style={{
-          background: light && 'rgba(255,255,255,0.05)',
-          border: light && 'none',
+          background: light && "rgba(255,255,255,0.05)",
+          border: light && "none",
         }}
       >
         <span
           className={`block font-light ${
-            open && 'font-bold'
+            open && "font-bold"
           } text-sm flex items-center transition duration-100 justify-between w-full`}
         >
-          {localeSortOptions[isEnLocale ? 'en' : 'no'][sort || 'newest']}
-          <span className="mt-2px" style={{ filter: light && 'invert(100%)' }}>
-            {' '}
+          {localeSortOptions[isEnLocale ? "en" : "no"][sort || "newest"]}
+          <span className="mt-2px" style={{ filter: light && "invert(100%)" }}>
+            {" "}
             <DropdownMini />
           </span>
         </span>
@@ -290,9 +290,9 @@ export const SortField = ({ sort, sortClick, light, isEnLocale }) => {
         />
         <ul
           className={`${
-            open ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            open ? "opacity-100" : "opacity-0 pointer-events-none"
           } absolute top-0 left-0 mt-9 bg-white pr-1 w-full z-30 transition duration-100 text-navy -translate-x-px -translate-y-2px transform border-t-none text-sm list-style-none border border-bordergray rounded-md font-light opacity-0 pb-6px ${
-            light && '-mt-px'
+            light && "-mt-px"
           }`}
         >
           <SortOption

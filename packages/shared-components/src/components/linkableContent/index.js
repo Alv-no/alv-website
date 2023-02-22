@@ -1,22 +1,22 @@
-import React from 'react';
-import { Arrow } from 'shared-components/src/components/icon';
-import { Title } from 'shared-components/src/components/title';
-import { BlockContent } from '../blockContent';
+import React from "react";
+import { Arrow } from "shared-components/src/components/icon";
+import { Title } from "shared-components/src/components/title";
+import { BlockContent } from "../blockContent";
 
 export const LinkableContent = ({ raw, heading, scrollTo, config }) => {
   // create menuitems from linkable heading types used in sanity rich text
   const navElements = raw
     .filter(
-      (el) => el._type === 'linkableHeading' || el._type === 'imageTextFlip',
+      (el) => el._type === "linkableHeading" || el._type === "imageTextFlip"
     )
     .map((el) => {
       let heading;
-      if (el._type === 'linkableHeading') {
+      if (el._type === "linkableHeading") {
         heading = el.Heading;
       } else {
         heading = el.linkableBlock?.find((node) => node.Heading)?.Heading;
       }
-      let formattedId = heading?.split(' ').join('-');
+      let formattedId = heading?.split(" ").join("-");
       formattedId = formattedId?.toLowerCase();
       return {
         id: formattedId,

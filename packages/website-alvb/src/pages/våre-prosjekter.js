@@ -1,9 +1,9 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import localize from '../components/localize/index';
-import { Layout } from '../components/layout';
-import { ServicesHero, Title, Description } from 'shared-components';
-import { RichtextAndImage } from '../components/richtextAndImage';
+import React from "react";
+import { graphql } from "gatsby";
+import localize from "../components/localize/index";
+import { Layout } from "../components/layout";
+import { ServicesHero, Title, Description } from "shared-components";
+import { RichtextAndImage } from "../components/richtextAndImage";
 
 const Projects = ({ data }) => {
   const { section1, section2, section3, section4, meta } =
@@ -27,12 +27,12 @@ const Projects = ({ data }) => {
           image={section2.image.asset.gatsbyImageData}
           title={section2.title}
           blocks={section2.text}
-          leftColSize={'50%'}
+          leftColSize={"50%"}
         />
         <RichtextAndImage
           image={section3.image.asset.gatsbyImageData}
           blocks={section3.text}
-          leftColSize={'50%'}
+          leftColSize={"50%"}
           backgroundColor="gray"
           title={section3.title}
           flip

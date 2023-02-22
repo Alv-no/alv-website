@@ -1,11 +1,11 @@
-import { window } from 'browser-monads';
-import { graphql } from 'gatsby';
-import React from 'react';
-import { LinkableContent } from 'shared-components/src/components/linkableContent';
-import { NavyIntroImage } from 'shared-components/src/components/navyIntroImage';
-import { BlogCarousel } from '../components/blogCarousel';
-import { Layout } from '../components/layout';
-import config from '../config';
+import { window } from "browser-monads";
+import { graphql } from "gatsby";
+import React from "react";
+import { LinkableContent } from "shared-components/src/components/linkableContent";
+import { NavyIntroImage } from "shared-components/src/components/navyIntroImage";
+import { BlogCarousel } from "../components/blogCarousel";
+import { Layout } from "../components/layout";
+import config from "../config";
 
 const Company = ({ data }) => {
   const scrollTo = (e) => {
@@ -13,10 +13,10 @@ const Company = ({ data }) => {
     const top = element && window.scrollY + element.getBoundingClientRect().top;
     window.history.replaceState(
       {},
-      '',
+      "",
       `/${data.sanityCompany.slug.current}#${e.target.name}`,
     );
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   const {

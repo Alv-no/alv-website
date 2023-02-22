@@ -1,19 +1,19 @@
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { argTypesRegex: "^on[A-Z].*" },
 
   backgrounds: {
-    default: 'dark',
+    default: "dark",
     values: [
       {
-        name: 'white',
-        value: '#fff',
+        name: "white",
+        value: "#fff",
       },
       {
-        name: 'dark',
-        value: '#061838',
+        name: "dark",
+        value: "#061838",
       },
     ],
   },
 };
 
-import '../src/components/layout/layout.css';
+import "../src/components/layout/layout.css";

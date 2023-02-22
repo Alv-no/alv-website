@@ -1,42 +1,42 @@
 export default {
-  title: 'Services Intro',
-  name: 'servicesIntro',
-  type: 'object',
+  title: "Services Intro",
+  name: "servicesIntro",
+  type: "object",
   options: {
     collapsible: true,
   },
   fields: [
     {
-      title: 'Title',
-      name: 'title',
-      type: 'localeString',
+      title: "Title",
+      name: "title",
+      type: "localeString",
     },
     {
-      title: 'Description',
-      name: 'description',
-      type: 'localeText',
+      title: "Description",
+      name: "description",
+      type: "localeText",
     },
     {
-      title: 'Button',
-      name: 'button',
-      type: 'localeButton',
+      title: "Button",
+      name: "button",
+      type: "localeButton",
     },
     {
-      name: 'servicesList',
-      title: 'Services List',
-      type: 'array',
+      name: "servicesList",
+      title: "Services List",
+      type: "array",
       of: [
         {
-          title: 'Service item',
-          name: 'serviceItem',
-          type: 'serviceItem',
+          title: "Service item",
+          name: "serviceItem",
+          type: "serviceItem",
         },
       ],
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+      name: "image",
+      title: "Image",
+      type: "image",
       options: {
         hotspot: true,
       },

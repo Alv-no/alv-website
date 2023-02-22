@@ -1,21 +1,21 @@
-import React from 'react';
-import { Checkbox } from './index';
+import React from "react";
+import { Checkbox } from "./index";
 
 export default {
-  title: 'components/checkbox',
+  title: "components/checkbox",
   decorators: [
     (Story) => (
-      <div style={{ padding: '10px' }}>
+      <div style={{ padding: "10px" }}>
         <Story />
       </div>
     ),
   ],
-  argTypes: { onChange: { action: 'clicked' } },
+  argTypes: { onChange: { action: "clicked" } },
 };
 export const Default = ({ ...args }) => {
   return <Checkbox {...args} />;
 };
 Default.args = {
-  children: 'Frontend',
+  children: "Frontend",
   defaultValue: true,
 };

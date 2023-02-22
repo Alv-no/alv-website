@@ -1,22 +1,22 @@
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { Title } from 'shared-components';
-import { Description } from 'shared-components';
-import Link from 'gatsby-link';
-import { Arrow } from 'shared-components/src/components/icon';
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { Title } from "shared-components";
+import { Description } from "shared-components";
+import Link from "gatsby-link";
+import { Arrow } from "shared-components/src/components/icon";
 
 const AboutIntro = ({ topImg, bottomImg }) => {
   return (
     <div
       className="max-w-1440 mx-auto lg:grid flex flex-col-reverse gap-x-20 lg:py-15 -mt-16 sm:mt-0"
       style={{
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: "1fr 1fr",
       }}
     >
       <div className="w-full">
         <GatsbyImage
           image={topImg}
-          style={{ height: '600px', width: '100%' }}
+          style={{ height: "600px", width: "100%" }}
           className="md:pl-56 lg:pl-0 pl-0"
         />
         <div className="sm:ml-12 lg:ml-30 mx-5 tracking-wider font-light text-xl -mt-30">

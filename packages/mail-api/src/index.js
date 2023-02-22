@@ -1,13 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const sgMail = require('@sendgrid/mail');
-const formidable = require('formidable');
-const dotenv = require('dotenv');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const sgMail = require("@sendgrid/mail");
+const formidable = require("formidable");
+const dotenv = require("dotenv");
 const app = express();
 const port = 80;
-const { readFile } = require('fs').promises;
-const { validateEmailAttachment } = require('./utils');
+const { readFile } = require("fs").promises;
+const { validateEmailAttachment } = require("./utils");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,47 +19,57 @@ dotenv.config({
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-app.get('/', (_, res) => {
-  res.send('Hello');
+app.get("/", (_, res) => {
+  res.send("Hello");
 });
 
-app.post('/send', (req, res) => {
-  const { subject } = req.body;
+app.post("/send", (req, res) => {
+  const form = formidable({ multiples: true });
 
-  // Create mail body
-  let mailbody = '';
-  for (const key in req.body) {
-    if (key !== 'subject') {
-      mailbody += '\n' + key + ': ' + req.body[key];
-    }
-  }
+  form.parse(req, async (err, fields) => {
+    let mailbody = "";
+    const { subject } = fields;
 
-  // Create mail object
-  const msg = {
-    to: process.env.MAILTO,
-    from: 'itadmin@alv.no',
-    subject: subject,
-    text: mailbody,
-  };
-
-  // Send mail with sendgrid
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log('Email sent to ' + process.env.MAILTO);
-      res.sendStatus(200);
-    })
-    .catch((error) => {
-      console.error(error);
+    if (err) {
+      console.error(err);
       res.sendStatus(500);
-    });
+      return;
+    }
 
+    // Create mail body
+    for (const key in fields) {
+      if (key !== "subject") {
+        mailbody += "\n" + key + ": " + fields[key];
+        console.log(mailbody);
+      }
+    }
+
+    // Create mail object
+    const msg = {
+      to: process.env.MAILTO,
+      from: "itadmin@alv.no",
+      subject: subject,
+      text: mailbody,
+    };
+
+    // Send mail with sendgrid
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log("Email sent to " + process.env.MAILTO);
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.sendStatus(500);
+      });
+  });
   res.sendStatus(200);
 });
 
 // job application forms
-app.post('/jobApplication/send', (req, res) => {
-  let errorMsg = '';
+app.post("/jobApplication/send", (req, res) => {
+  let errorMsg = "";
 
   const form = formidable({ multiples: true });
 
@@ -73,21 +83,21 @@ app.post('/jobApplication/send', (req, res) => {
     const { email, subject, name } = fields;
 
     // Create mail body from form fields
-    let mailbody = '';
-    if (name) mailbody += '\nNavn: ' + name;
-    if (email) mailbody += '\nEpost: ' + email;
+    let mailbody = "";
+    if (name) mailbody += "\nNavn: " + name;
+    if (email) mailbody += "\nEpost: " + email;
 
     // Create mail object
     const msg = {
       to: process.env.MAILTO,
-      from: 'itadmin@alv.no',
+      from: "itadmin@alv.no",
       subject: subject,
       text: mailbody,
     };
 
     // Validate request content type
-    if (!req.headers['content-type'].includes('multipart/form-data')) {
-      errorMsg += 'Content type must be of multipart/form-data.';
+    if (!req.headers["content-type"].includes("multipart/form-data")) {
+      errorMsg += "Content type must be of multipart/form-data.";
       return;
     }
 
@@ -107,13 +117,13 @@ app.post('/jobApplication/send', (req, res) => {
         }
 
         // Upon successful validation - convert file to base64 and add to attachments array
-        const base64content = await readFile(filepath, { encoding: 'base64' });
+        const base64content = await readFile(filepath, { encoding: "base64" });
 
         attachments.push({
           content: base64content,
           filename: files[file].newFilename,
           type: files[file].mimetype,
-          disposition: 'attachment',
+          disposition: "attachment",
         });
       }
     }
@@ -137,5 +147,5 @@ app.post('/jobApplication/send', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('Listening on port ' + port);
+  console.log("Listening on port " + port);
 });

@@ -1,12 +1,12 @@
 export default {
-  title: 'YouTube',
-  name: 'youtube',
-  type: 'object',
+  title: "YouTube",
+  name: "youtube",
+  type: "object",
   fields: [
     {
-      title: 'Youtube video id',
-      name: 'videoId',
-      type: 'string',
+      title: "Youtube video id",
+      name: "videoId",
+      type: "string",
       validation: (Rule) => Rule.required(),
     },
   ],

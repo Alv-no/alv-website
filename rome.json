@@ -10,14 +10,11 @@
     "enabled": true,
     "indentStyle": "space",
     "indentSize": 2,
-    "ignore": [
-      "./packages/*/public/*",
-      "./packages/*/.cache/*"
-    ]
+    "ignore": ["./packages/*/public/*", "./packages/*/.cache/*"]
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "single",
+      "quoteStyle": "double",
       "trailingComma": "all"
     }
   }

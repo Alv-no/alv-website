@@ -1,7 +1,7 @@
 const path = require(`path`);
-const config = require('./src/config');
-const slugify = require('slugify');
-const fetch = require('node-fetch');
+const config = require("./src/config");
+const slugify = require("slugify");
+const fetch = require("node-fetch");
 
 const videoTemplate = path.resolve(`./src/templates/video.js`);
 const serviceTemplate = path.resolve(`./src/templates/service.js`);
@@ -134,7 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 video.playlistName = category.videoseriesTitle;
                 video.thumbnail =
                   video.thumbnails?.high?.url || res.data.imageSharp.fixed.src;
-                video.slug = slugify(video.title.replace(' |', ''), {
+                video.slug = slugify(video.title.replace(" |", ""), {
                   remove: /[*+~.()|#'"!:@?]/,
                   lower: true,
                 });

@@ -1,11 +1,11 @@
-import React from 'react';
-import Fade from 'react-reveal/Fade';
+import React from "react";
+import Fade from "react-reveal/Fade";
 
 export const VideoIntro = ({ videoMp4, videoWebm, children }) => {
   return (
     <div
       className="lg:pr-12 lg:grid mx-auto sm:pt-15 text-theme-text items-center"
-      style={{ gridTemplateColumns: '70% auto' }}
+      style={{ gridTemplateColumns: "70% auto" }}
     >
       <div className="relative lg:pr-4 w-full">
         <video

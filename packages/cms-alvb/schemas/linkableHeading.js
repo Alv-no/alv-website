@@ -1,12 +1,12 @@
 export default {
-  name: 'linkableHeading',
-  title: 'Linkable Heading',
-  type: 'object',
+  name: "linkableHeading",
+  title: "Linkable Heading",
+  type: "object",
   fields: [
     {
-      name: 'Heading',
-      title: 'Heading',
-      type: 'string',
+      name: "Heading",
+      title: "Heading",
+      type: "string",
     },
   ],
 };

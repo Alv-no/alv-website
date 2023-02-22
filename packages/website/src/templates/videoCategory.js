@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Layout from '../components/layout';
-import { graphql } from 'gatsby';
-import { VideoHero } from '../components/videoHero';
-import { VideoFilter } from '../components/videoFilter';
-import { VideoSection } from '../components/videoSection';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import React, { useState } from "react";
+import Layout from "../components/layout";
+import { graphql } from "gatsby";
+import { VideoHero } from "../components/videoHero";
+import { VideoFilter } from "../components/videoFilter";
+import { VideoSection } from "../components/videoSection";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
 
 const VideoCategoryTemplate = ({ pageContext }) => {
   const {

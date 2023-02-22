@@ -1,5 +1,5 @@
-import React from 'react';
-import { BlogSlider } from 'shared-components';
+import React from "react";
+import { BlogSlider } from "shared-components";
 
 export const BlogCarousel = ({ textColor, articles }) => (
   <BlogSlider

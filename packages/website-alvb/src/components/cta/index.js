@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React from "react";
+import Link from "gatsby-link";
 
 export const Cta = ({ title, text, button }) => (
   <div className="w-full mt-12 mb-8 sm:mb-20">

@@ -1,11 +1,11 @@
-import { gql } from '@apollo/client';
-import React from 'react';
-import { ImageTextListHero } from '../components/imageTextHero';
-import Layout from '../components/layout';
-import { ReasonsSlider } from '../components/reasonsSlider';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import { client } from '../server-side/client';
-import { createGatsbyImages } from '../server-side/imageCreator';
+import { gql } from "@apollo/client";
+import React from "react";
+import { ImageTextListHero } from "../components/imageTextHero";
+import Layout from "../components/layout";
+import { ReasonsSlider } from "../components/reasonsSlider";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import { client } from "../server-side/client";
+import { createGatsbyImages } from "../server-side/imageCreator";
 
 const WorkForAlv = ({ serverData }) => {
   const sanityCareerPage = serverData.allCareerPage[0];
@@ -92,7 +92,7 @@ async function getCareerPageServerSide() {
         }
       }
     `,
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
   });
   createGatsbyImages(response.data);
   return response.data;

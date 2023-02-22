@@ -1,6 +1,6 @@
-import React from 'react';
-import { BlogSlider } from 'shared-components';
-import { useBlogQueryRecent } from '../../hookspages/useBlogQueryRecent';
+import React from "react";
+import { BlogSlider } from "shared-components";
+import { useBlogQueryRecent } from "../../hookspages/useBlogQueryRecent";
 
 export const BlogCarousel = ({ textColor, maxWidth }) => {
   const articles = useBlogQueryRecent().articles.nodes;

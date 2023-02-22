@@ -1,6 +1,6 @@
-import React from 'react';
-import { CookieNotice } from 'gatsby-cookie-notice';
-import * as styles from './cookie.module.css';
+import React from "react";
+import { CookieNotice } from "gatsby-cookie-notice";
+import * as styles from "./cookie.module.css";
 const CookieNoticeWrapper = () => {
   return (
     <>
@@ -11,46 +11,46 @@ const CookieNoticeWrapper = () => {
         declineButton={false}
         cookies={[
           {
-            name: 'neccessary',
+            name: "neccessary",
             editable: false,
             default: true,
-            title: 'Nødvendige cookies',
-            text: 'Cookies helt nødvendig for at siden skal fungere som den skal',
+            title: "Nødvendige cookies",
+            text: "Cookies helt nødvendig for at siden skal fungere som den skal",
           },
           {
-            name: 'gatsby-gdpr-google-analytics',
+            name: "gatsby-gdpr-google-analytics",
             editable: true,
             default: true,
-            title: 'Google Analytics',
-            text: 'Vi bruker Google Analytics til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
+            title: "Google Analytics",
+            text: "Vi bruker Google Analytics til å forbedre og utvikle Alv sine hjemmesider og markedsføring.",
           },
           {
-            name: 'gatsby-gdpr-google-tagmanager',
+            name: "gatsby-gdpr-google-tagmanager",
             editable: true,
             default: true,
-            title: 'Google TagManager',
-            text: 'Vi bruker Google Tags til å forbedre og utvikle Alv sine hjemmesider og markedsføring.',
+            title: "Google TagManager",
+            text: "Vi bruker Google Tags til å forbedre og utvikle Alv sine hjemmesider og markedsføring.",
           },
           {
-            name: 'gatsby-gdpr-facebook-pixel',
+            name: "gatsby-gdpr-facebook-pixel",
             editable: true,
             default: true,
-            title: 'Facebook',
-            text: 'Vi bruker Facebook Pixel til å forbedre brukeropplevelsen av Alv sin markedsføring.',
+            title: "Facebook",
+            text: "Vi bruker Facebook Pixel til å forbedre brukeropplevelsen av Alv sin markedsføring.",
           },
           {
-            name: 'gatsby-gdpr-linked-in',
+            name: "gatsby-gdpr-linked-in",
             editable: true,
             default: true,
-            title: 'Linkedin',
-            text: 'Vi bruker LinkedIn til å forbedre brukeropplevelsen av Alv sin markedsføring.',
+            title: "Linkedin",
+            text: "Vi bruker LinkedIn til å forbedre brukeropplevelsen av Alv sin markedsføring.",
           },
         ]}
         backgroundClasses="md:flex justify-between w-full shrink-0 sm:block"
         wrapperClasses="text-white flex flex-col-reverse items-center sm:py-4"
         backgroundWrapperClasses={
           styles.backgroundWrapper +
-          ' bottom-0 fixed w-full px-20 -mb-8px py-8 z-50 border-t-4 border-theme-accent flex '
+          " bottom-0 fixed w-full px-20 -mb-8px py-8 z-50 border-t-4 border-theme-accent flex "
         }
         acceptButtonClasses="rounded-full border-2 border-white p-4 uppercase text-lg px-8 my-2 hover:border-theme-accent"
         cookieTitleClasses="text-xl text-white ml-4"

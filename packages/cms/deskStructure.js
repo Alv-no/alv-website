@@ -1,75 +1,75 @@
-import S from '@sanity/desk-tool/structure-builder';
+import S from "@sanity/desk-tool/structure-builder";
 
 export default () =>
   S.list()
-    .title('Content')
+    .title("Content")
     .items([
       S.listItem()
-        .title('Settings')
+        .title("Settings")
         .child(
-          S.document().schemaType('siteSettings').documentId('siteSettings'),
+          S.document().schemaType("siteSettings").documentId("siteSettings"),
         ),
       S.divider(),
       S.listItem()
-        .title('Pages')
+        .title("Pages")
         .child(
           S.list()
             // Sets a title for our new list
-            .title('Pages')
+            .title("Pages")
             // Add items to the array
             // Each will pull one of our new singletons
             .items([
               S.listItem()
-                .title('Landing Page')
+                .title("Landing Page")
                 .child(
                   S.document()
-                    .schemaType('landingPage')
-                    .documentId('landingPage'),
+                    .schemaType("landingPage")
+                    .documentId("landingPage"),
                 ),
               S.listItem()
-                .title('Employee Page')
+                .title("Employee Page")
                 .child(
                   S.document()
-                    .schemaType('employeePage')
-                    .documentId('employeePage'),
+                    .schemaType("employeePage")
+                    .documentId("employeePage"),
                 ),
               S.listItem()
-                .title('About Page')
+                .title("About Page")
                 .child(
-                  S.document().schemaType('aboutPage').documentId('aboutPage'),
+                  S.document().schemaType("aboutPage").documentId("aboutPage"),
                 ),
               S.listItem()
-                .title('Career Page')
-                .child(
-                  S.document()
-                    .schemaType('careerPage')
-                    .documentId('careerPage'),
-                ),
-              S.listItem()
-                .title('Contact Page')
+                .title("Career Page")
                 .child(
                   S.document()
-                    .schemaType('contactPage')
-                    .documentId('contactPage'),
+                    .schemaType("careerPage")
+                    .documentId("careerPage"),
                 ),
               S.listItem()
-                .title('Blog Page')
-                .child(
-                  S.document().schemaType('blogPage').documentId('blogPage'),
-                ),
-              S.listItem()
-                .title('Videoseries Page')
+                .title("Contact Page")
                 .child(
                   S.document()
-                    .schemaType('videoseriesPage')
-                    .documentId('videoseriesPage'),
+                    .schemaType("contactPage")
+                    .documentId("contactPage"),
                 ),
               S.listItem()
-                .title('Our Services Page')
+                .title("Blog Page")
+                .child(
+                  S.document().schemaType("blogPage").documentId("blogPage"),
+                ),
+              S.listItem()
+                .title("Videoseries Page")
                 .child(
                   S.document()
-                    .schemaType('ourServicesPage')
-                    .documentId('ourServicesPage'),
+                    .schemaType("videoseriesPage")
+                    .documentId("videoseriesPage"),
+                ),
+              S.listItem()
+                .title("Our Services Page")
+                .child(
+                  S.document()
+                    .schemaType("ourServicesPage")
+                    .documentId("ourServicesPage"),
                 ),
             ]),
         ),
@@ -77,15 +77,15 @@ export default () =>
       ...S.documentTypeListItems().filter(
         (listItem) =>
           ![
-            'siteSettings',
-            'landingPage',
-            'employeePage',
-            'aboutPage',
-            'careerPage',
-            'blogPage',
-            'videoseriesPage',
-            'contactPage',
-            'ourServicesPage',
+            "siteSettings",
+            "landingPage",
+            "employeePage",
+            "aboutPage",
+            "careerPage",
+            "blogPage",
+            "videoseriesPage",
+            "contactPage",
+            "ourServicesPage",
           ].includes(listItem.getId()),
       ),
     ]);

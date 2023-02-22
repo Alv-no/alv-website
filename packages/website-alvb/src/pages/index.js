@@ -1,12 +1,12 @@
-import { graphql } from 'gatsby';
-import React from 'react';
-import { Container, Hire, OurServices, WhoWeAre } from 'shared-components';
-import { BlogCarousel } from '../components/blogCarousel';
-import { Hero } from '../components/hero';
-import { IntroSection } from '../components/introSection';
-import { Layout } from '../components/layout';
-import localize from '../components/localize/index';
-import config from '../config';
+import { graphql } from "gatsby";
+import React from "react";
+import { Container, Hire, OurServices, WhoWeAre } from "shared-components";
+import { BlogCarousel } from "../components/blogCarousel";
+import { Hero } from "../components/hero";
+import { IntroSection } from "../components/introSection";
+import { Layout } from "../components/layout";
+import localize from "../components/localize/index";
+import config from "../config";
 
 const Index = ({ data }) => {
   const {

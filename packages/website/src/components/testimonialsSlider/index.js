@@ -1,8 +1,8 @@
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import Slider from 'react-slick';
-import config from '../../config';
-import { BlockContent, Title } from 'shared-components';
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import Slider from "react-slick";
+import config from "../../config";
+import { BlockContent, Title } from "shared-components";
 
 const TestimonialSlider = ({ testimonials, heading }) => {
   const settings = {

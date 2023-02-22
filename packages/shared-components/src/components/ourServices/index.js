@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Link from 'gatsby-link';
-import * as Button from '../button';
-import { BgImage } from 'gbimage-bridge';
+import React, { useState } from "react";
+import Link from "gatsby-link";
+import * as Button from "../button";
+import { BgImage } from "gbimage-bridge";
 
 export const OurServices = ({
   description,
@@ -24,13 +24,13 @@ export const OurServices = ({
       <div
         className="lg:grid lg:pb-12 pb-5 bg-theme-bg text-theme-text gap-x-10"
         style={{
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: "1fr 1fr",
         }}
       >
-        <div className={leftAlignTopSection ? '' : 'order-2'}>
+        <div className={leftAlignTopSection ? "" : "order-2"}>
           <h2 className="sm:text-5xl text-4xl font-light mb-3 uppercase lg:w-full sm:w-full">
             {/* update alv sanity to use "title" naming convention */}
-            {heading || title || 'Våre Tjenester'}
+            {heading || title || "Våre Tjenester"}
           </h2>
           <p className="mb-5 sm:pr-15 font-thin text-footer sm:text-xl w-full text-theme-text sm:text-xl tracking-wider">
             {description}
@@ -39,9 +39,9 @@ export const OurServices = ({
           <div className="lg:block flex justify-between">
             <div />
             <div>
-              <Link to={button?.link || '/vi-tilbyr'}>
+              <Link to={button?.link || "/vi-tilbyr"}>
                 <Button.Arrow>
-                  <span className="">{button?.text || 'Les Mer'}</span>
+                  <span className="">{button?.text || "Les Mer"}</span>
                 </Button.Arrow>
               </Link>
             </div>
@@ -52,7 +52,7 @@ export const OurServices = ({
       <div
         className="mx-auto lg:grid flex flex-col-reverse gap-x-10"
         style={{
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: "1fr 1fr",
         }}
       >
         {/* Map from array of list items */}
@@ -99,7 +99,7 @@ const TextFadeImage = ({ darkFade, image, textOverImage }) => (
     <BgImage image={image} className="h-133">
       <div
         className={`flex sm:justify-end items-center p-5 lg:pr-24 sm:p-16 ${
-          darkFade && 'bg-black bg-opacity-50 h-133'
+          darkFade && "bg-black bg-opacity-50 h-133"
         }`}
       >
         <div className="text-theme-text sm:text-slider text-blog uppercase text-left font-semibold tracking-wider leading-tighter sm:text-right">
@@ -119,7 +119,7 @@ const ListContent = ({ children, link, button }) => (
       </p>
       <div className="flex lg:-mr-24 z-40 relative items-center cursor-pointer">
         <p className="font-semibold tracking-wider uppercase text-base w-40 text-theme-text">
-          <Link to={button?.link || link}>{button?.text || 'Finn ut mer'}</Link>
+          <Link to={button?.link || link}>{button?.text || "Finn ut mer"}</Link>
         </p>
         <div className="h-2px bg-theme-text sm:opacity-0 twelve:opacity-100 mt-1 w-1/2 lg:w-full hidden sm:block" />
       </div>

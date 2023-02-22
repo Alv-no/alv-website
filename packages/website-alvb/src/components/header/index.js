@@ -1,9 +1,9 @@
-import { window } from 'browser-monads';
-import Link from 'gatsby-link';
-import React, { useState } from 'react';
-import Headroom from 'react-headroom';
-import { Breadcrumb, CallToAction } from 'shared-components';
-import { Navigation } from '../navigation';
+import { window } from "browser-monads";
+import Link from "gatsby-link";
+import React, { useState } from "react";
+import Headroom from "react-headroom";
+import { Breadcrumb, CallToAction } from "shared-components";
+import { Navigation } from "../navigation";
 
 export const Header = ({
   logo,
@@ -22,18 +22,18 @@ export const Header = ({
     setOpen(false);
   };
 
-  const pathStr = window.location.pathname.replace('%C3%A5', 'å');
+  const pathStr = window.location.pathname.replace("%C3%A5", "å");
 
-  const pathArr = pathStr.split('/');
+  const pathArr = pathStr.split("/");
   pathArr.shift();
 
   return (
     <>
       <Navigation open={open} toggleClose={toggleClose} logo={logo} />
       <div
-        e={{ paddingLeft: '40px' }}
+        e={{ paddingLeft: "40px" }}
         className={`${
-          navyHeader ? 'bg-navy' : 'bg-theme-bg'
+          navyHeader ? "bg-navy" : "bg-theme-bg"
         } hidden sm:block sm:pt-7 py-5 px-10 -mb-2px`}
       >
         <div className="max-w-1200 mx-auto relative z-50 h-8">
@@ -48,7 +48,7 @@ export const Header = ({
                 <DropdownIcon white={whiteIcons || navyHeader} />
               </button>
               <span className="transform">
-                <Link to={isEnLocale ? '/en' : '/'}>
+                <Link to={isEnLocale ? "/en" : "/"}>
                   {!whiteIcons && !navyHeader ? logo.Colored() : logo.White()}
                 </Link>
               </span>
@@ -56,7 +56,7 @@ export const Header = ({
             <div className="flex">
               <div
                 className={`${
-                  !white && 'eight:text-theme-text'
+                  !white && "eight:text-theme-text"
                 } flex hidden sm:block relative z-50`}
               >
                 {!window.location.href.includes(headerCtaLink) && (
@@ -81,9 +81,9 @@ export const Header = ({
 const DropdownIcon = ({ white }) => (
   <div className="flex flex-col justify-center items-center h-7">
     <div
-      className={`w-7 bg-white ${!white && 'eight:bg-theme-text'} h-px mb-2`}
+      className={`w-7 bg-white ${!white && "eight:bg-theme-text"} h-px mb-2`}
     />
-    <div className={`w-7 bg-white ${!white && 'eight:bg-theme-text'} h-px`} />
+    <div className={`w-7 bg-white ${!white && "eight:bg-theme-text"} h-px`} />
   </div>
 );
 
@@ -101,10 +101,10 @@ export const MobileHeader = ({ viewport, white, logo }) => {
       <Headroom>
         <div
           className={`bg-navy block ${
-            viewport || 'sm'
+            viewport || "sm"
           }:hidden py-5 px-6 fivefifty:px-10 `}
         >
-          <div className="max-w-1600 mx-auto" style={{ paddingLeft: '40px' }}>
+          <div className="max-w-1600 mx-auto" style={{ paddingLeft: "40px" }}>
             <div className="flex flex-row-reverse justify-between">
               <div className="flex items-center">
                 <button
@@ -136,13 +136,13 @@ export const BlogHeader = ({ logo }) => {
   const toggleClose = () => {
     setOpen(false);
   };
-  const crumbs = window.location.pathname.split('/');
+  const crumbs = window.location.pathname.split("/");
   crumbs.shift();
   return (
     <>
       <Navigation open={open} toggleClose={toggleClose} logo={logo} />
       <div className="bg-navy hidden sm:block sm:pt-7 py-5">
-        <div className="max-w-1600 mx-auto" style={{ paddingLeft: '40px' }}>
+        <div className="max-w-1600 mx-auto" style={{ paddingLeft: "40px" }}>
           <div className="flex justify-between sm:mb-7 ">
             <div className="flex">
               <button

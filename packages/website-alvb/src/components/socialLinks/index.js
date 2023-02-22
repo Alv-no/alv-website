@@ -1,5 +1,5 @@
-import React from 'react';
-import { Facebook, Linkedin } from 'shared-components/src/components/icon';
+import React from "react";
+import { Facebook, Linkedin } from "shared-components/src/components/icon";
 
 export const SocialLinks = ({ blue }) => (
   <div className="eight:flex hidden">

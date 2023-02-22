@@ -1,7 +1,7 @@
-import Link from 'gatsby-link';
-import React from 'react';
-import { Arrow } from '../icon';
-import { PostCard } from '../postCard';
+import Link from "gatsby-link";
+import React from "react";
+import { Arrow } from "../icon";
+import { PostCard } from "../postCard";
 
 export const AlsoRead = ({
   articles,
@@ -22,11 +22,11 @@ export const AlsoRead = ({
     })
     .sort((a, b) => {
       const aBool = a.author
-        ? a.author.firstname.concat(' ').concat(a.author.lastname) ===
+        ? a.author.firstname.concat(" ").concat(a.author.lastname) ===
           currentAuthor
         : false;
       const bBool = b.author
-        ? b.author.firstname.concat(' ').concat(b.author.lastname) ===
+        ? b.author.firstname.concat(" ").concat(b.author.lastname) ===
           currentAuthor
         : false;
       return aBool === bBool ? 0 : aBool ? -1 : 1;

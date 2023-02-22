@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const Container = ({
   children,
@@ -7,7 +7,7 @@ export const Container = ({
   removePaddingBottom,
   removePaddingMobile,
   maxWidth = 1200,
-  theme = 'white',
+  theme = "white",
 }) => {
   // avoid unnecessary margins on mobile when using images
   const removePaddingMobileMapper = {
@@ -21,23 +21,23 @@ export const Container = ({
 
   // calculated spacings based on removePaddingMobile and collapsible input
   const topSpacing =
-    removePaddingMobile === 'top'
+    removePaddingMobile === "top"
       ? removePaddingMobileMapper.top
       : defaultTopSpacing;
   const bottomSpacing =
-    removePaddingMobile === 'bottom'
+    removePaddingMobile === "bottom"
       ? removePaddingMobileMapper.bottom
       : defaultBottomSpacing;
 
   const colorMapper = {
-    navy: 'bg-navy text-white',
-    white: 'bg-white text-navy',
-    gray: 'bg-servicesgray text-navy',
+    navy: "bg-navy text-white",
+    white: "bg-white text-navy",
+    gray: "bg-servicesgray text-navy",
   };
 
   return (
     <section
-      className={`${className || ''} ${colorMapper[theme]} w-full ${
+      className={`${className || ""} ${colorMapper[theme]} w-full ${
         !removePaddingTop && topSpacing
       } ${!removePaddingBottom && bottomSpacing} px-5 sm:px-12`}
     >

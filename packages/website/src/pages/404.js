@@ -1,6 +1,6 @@
-import React from 'react';
-import Layout from '../components/layout';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import React from "react";
+import Layout from "../components/layout";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
 
 const NotFoundPage = () => {
   const layoutData = useLayoutQuery();

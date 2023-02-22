@@ -1,12 +1,12 @@
-import React from 'react';
-import Fade from 'react-reveal/Fade';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React from "react";
+import Fade from "react-reveal/Fade";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const IntroSection = ({ image, text }) => {
   return (
     <div
       className={`lg:pr-12 lg:grid mx-auto max-w-1440 sm:pt-15 text-theme-text items-center`}
-      style={{ gridTemplateColumns: '70% auto' }}
+      style={{ gridTemplateColumns: "70% auto" }}
     >
       <div className="relative twelve:pl-15 lg:pr-4 w-full">
         {image && <GatsbyImage image={image} />}

@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React from "react";
+import Link from "gatsby-link";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const VideoCard = ({
   title,
@@ -14,7 +14,7 @@ export const VideoCard = ({
   const handleClick = () => {
     onClick(video);
     // eslint-disable-next-line no-restricted-globals
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top, behavior: "smooth" });
   };
   return (
     <Link

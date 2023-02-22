@@ -1,5 +1,5 @@
-import { useStaticQuery, graphql } from 'gatsby';
-import { createSlugForEmployee } from '../../../shared-components/src/components/createSlugForEmployee';
+import { useStaticQuery, graphql } from "gatsby";
+import { createSlugForEmployee } from "../../../shared-components/src/components/createSlugForEmployee";
 export const useEmployeeQuery = () => {
   const data = useStaticQuery(
     graphql`

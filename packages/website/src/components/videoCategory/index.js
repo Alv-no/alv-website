@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Title } from '../../../../shared-components/src/components/title';
-import Link from 'gatsby-link';
+import React, { useEffect, useState } from "react";
+import { Title } from "../../../../shared-components/src/components/title";
+import Link from "gatsby-link";
 
 export const VideoCategory = ({
   title,
@@ -42,11 +42,11 @@ export const VideoCategory = ({
                     className="xs:block h-featured 2xl:h-featured"
                     style={{
                       backgroundColor:
-                        'transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box',
+                        "transparent linear-gradient(180deg, #1E92D000 0%, #061634 100%) 0% 0% no-repeat padding-box",
                       backgroundImage:
                         loaded && `url("${featuredVideo.thumbnail}")`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
                     }}
                   >
                     <div className="w-full z-50 h-full p-8 flex flex-col justify-between">

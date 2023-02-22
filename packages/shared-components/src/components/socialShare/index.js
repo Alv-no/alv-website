@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Facebook,
   Instagram,
@@ -6,12 +6,12 @@ import {
   CircleTwitter,
   CircleFacebook,
   CircleLinkedIn,
-} from '../icon';
+} from "../icon";
 import {
   FacebookShareButton,
   TwitterShareButton,
   LinkedinShareButton,
-} from 'react-share';
+} from "react-share";
 
 export const SocialShare = ({
   url,
@@ -24,7 +24,7 @@ export const SocialShare = ({
   return (
     <div
       className={`w-full flex justify-end uppercase ${
-        white ? 'text-white' : 'text-navy'
+        white ? "text-white" : "text-navy"
       } text-sm font-semibold items-center`}
     >
       Del
@@ -37,7 +37,7 @@ export const SocialShare = ({
         <TwitterShareButton
           url={url}
           title={title}
-          via={twitterHandle || ''}
+          via={twitterHandle || ""}
           hashtags={tags}
         >
           <CircleTwitter white={white} />

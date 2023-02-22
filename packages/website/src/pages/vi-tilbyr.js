@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BlockContent,
   ColumnSection,
@@ -10,11 +10,11 @@ import {
   ServicesHero,
   ServicesSection,
   Title,
-} from 'shared-components';
-import Layout from '../components/layout';
-import config from '../config';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import { useServicesQuery } from '../hookspages/useServicesQuery';
+} from "shared-components";
+import Layout from "../components/layout";
+import config from "../config";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import { useServicesQuery } from "../hookspages/useServicesQuery";
 
 const Services = () => {
   const data = useServicesQuery();

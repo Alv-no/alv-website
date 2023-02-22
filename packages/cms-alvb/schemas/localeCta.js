@@ -1,30 +1,30 @@
 export default {
-  title: 'Cta',
-  name: 'localeCta',
-  type: 'object',
+  title: "Cta",
+  name: "localeCta",
+  type: "object",
   options: {
     collapsible: true,
   },
   fields: [
     {
-      name: 'eyebrow',
-      title: 'Eyebrow',
-      type: 'localeString',
+      name: "eyebrow",
+      title: "Eyebrow",
+      type: "localeString",
     },
     {
-      name: 'title',
-      title: 'Title',
-      type: 'localeString',
+      name: "title",
+      title: "Title",
+      type: "localeString",
     },
     {
-      name: 'link',
-      title: 'Link',
-      type: 'localeString',
+      name: "link",
+      title: "Link",
+      type: "localeString",
     },
   ],
   preview: {
     select: {
-      title: 'title',
+      title: "title",
     },
     prepare(selection) {
       const { title } = selection;

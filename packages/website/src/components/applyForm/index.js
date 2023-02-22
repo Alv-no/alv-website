@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 
 const ApplyForm = ({ jobTitle }) => {
-  const [status, setStatus] = useState('validating');
+  const [status, setStatus] = useState("validating");
   const [formInputs, setFormInputs] = useState({
-    name: '',
-    email: '',
+    name: "",
+    email: "",
   });
 
   const handleInputChange = (event) => {
@@ -22,33 +22,33 @@ const ApplyForm = ({ jobTitle }) => {
 
     const formData = new FormData();
 
-    formData.append('subject', 'Jobbsøknad - ' + jobTitle);
-    name && formData.append('name', name);
-    email && formData.append('email', email);
+    formData.append("subject", "Jobbsøknad - " + jobTitle);
+    name && formData.append("name", name);
+    email && formData.append("email", email);
 
-    setStatus('loading');
+    setStatus("loading");
 
     fetch(mailApiUrl, {
-      method: 'POST',
+      method: "POST",
       body: formData,
     })
       .then(() => {
         setTimeout(() => {
-          setStatus('success');
+          setStatus("success");
         }, 400);
       })
       .catch(() => {
         setTimeout(() => {
-          setStatus('error');
+          setStatus("error");
         }, 400);
       });
   };
 
-  if (status === 'success') {
+  if (status === "success") {
     return <FeedbackMsg msg="Vellykket. Takk for din søknad!" color="green" />;
   }
 
-  if (status === 'error') {
+  if (status === "error") {
     return (
       <FeedbackMsg
         msg="Ops! Det har oppstått en feil. Prøv igjen."
@@ -57,7 +57,7 @@ const ApplyForm = ({ jobTitle }) => {
     );
   }
 
-  if (status === 'loading') {
+  if (status === "loading") {
     return <FeedbackMsg msg="Laster..." color="gray" />;
   }
 
@@ -66,7 +66,7 @@ const ApplyForm = ({ jobTitle }) => {
       <label className="mb-2">Navn *</label>
       <input
         className={
-          'rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3'
+          "rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3"
         }
         data-testid="name-input"
         name="name"
@@ -78,7 +78,7 @@ const ApplyForm = ({ jobTitle }) => {
       <label className="mb-2">E-post *</label>
       <input
         className={
-          'rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3'
+          "rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3"
         }
         data-testid="email-input"
         onChange={handleInputChange}
@@ -163,14 +163,14 @@ const SubmitButton = () => (
 
 const FeedbackMsg = ({ msg, color }) => {
   const colorMapper = {
-    green: 'bg-green-100  border-green-400 text-green-700',
-    red: 'bg-red-100 border-red-400 text-red-700',
-    gray: 'bg-gray-100 border-gray-400 text-gray-700',
+    green: "bg-green-100  border-green-400 text-green-700",
+    red: "bg-red-100 border-red-400 text-red-700",
+    gray: "bg-gray-100 border-gray-400 text-gray-700",
   };
 
   return (
     <div
-      className={'border px-4 py-3 rounded relative ' + colorMapper[color]}
+      className={"border px-4 py-3 rounded relative " + colorMapper[color]}
       role="alert"
       data-testid="feedback-msg"
     >

@@ -1,6 +1,6 @@
-import React from 'react';
-import * as Button from '../button';
-import Link from 'gatsby-link';
+import React from "react";
+import * as Button from "../button";
+import Link from "gatsby-link";
 
 export const ServicesCard = ({ title, description, link }) => {
   return (

@@ -1,21 +1,21 @@
 export default {
-  title: 'Reasons Carousel',
-  name: 'reasonsCarousel',
-  type: 'object',
+  title: "Reasons Carousel",
+  name: "reasonsCarousel",
+  type: "object",
   fields: [
     {
-      title: 'Main Heading',
-      name: 'mainHeading',
-      type: 'string',
+      title: "Main Heading",
+      name: "mainHeading",
+      type: "string",
       options: {
         maxLength: 40,
       },
     },
     {
-      title: 'Reasons Cards',
-      name: 'process',
-      type: 'array',
-      of: [{ type: 'reasonsCard' }],
+      title: "Reasons Cards",
+      name: "process",
+      type: "array",
+      of: [{ type: "reasonsCard" }],
     },
   ],
 };

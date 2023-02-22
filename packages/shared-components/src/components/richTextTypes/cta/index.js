@@ -1,24 +1,24 @@
-import React from 'react';
-import MediaCta from './mediaCta';
-import ProductCta from './productCta';
-import TextCta from './textCta';
-import FormCta from './formCta';
+import React from "react";
+import MediaCta from "./mediaCta";
+import ProductCta from "./productCta";
+import TextCta from "./textCta";
+import FormCta from "./formCta";
 
 const Cta = (props) => {
   const { ctaType, config, textSection, form } = props;
 
   switch (ctaType) {
-    case 'text':
+    case "text":
       return <TextCta {...textSection} config={config} />;
-    case 'form':
+    case "form":
       return <FormCta {...form} config={config} />;
-    case 'email':
+    case "email":
       return <ProductCta {...props} config={config} />;
-    case 'image':
+    case "image":
       return <MediaCta type="image" config={config} {...props} />;
-    case 'video':
+    case "video":
       return <MediaCta type="video" config={config} {...props} />;
-    case 'youtube':
+    case "youtube":
       return <MediaCta type="youtube" config={config} {...props} />;
 
     default:

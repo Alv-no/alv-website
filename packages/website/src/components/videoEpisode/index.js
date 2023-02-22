@@ -1,10 +1,10 @@
-import React from 'react';
-import * as styles from './videoEpisode.module.css';
-import ReactMarkdown from 'react-markdown';
+import React from "react";
+import * as styles from "./videoEpisode.module.css";
+import ReactMarkdown from "react-markdown";
 
 export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
-  const formattedMarkdown = description.includes('____')
-    ? description.slice(0, description.indexOf('____'))
+  const formattedMarkdown = description.includes("____")
+    ? description.slice(0, description.indexOf("____"))
     : description;
   return (
     <div>
@@ -14,7 +14,7 @@ export const VideoEpisode = ({ title, description, subtitle, videoId }) => {
             className={styles.iframe}
             title="video"
             src={`https://www.youtube.com/embed/${
-              videoId || 'w41C6nB_pYM'
+              videoId || "w41C6nB_pYM"
             }?autoplay=1&mute=0&enablejsapi=1`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

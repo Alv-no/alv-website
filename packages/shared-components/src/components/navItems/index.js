@@ -1,7 +1,7 @@
-import Link from 'gatsby-link';
-import React, { useState } from 'react';
-import { Dot, TransitionArrow } from '../icon';
-import * as styles from './NavItems.module.css';
+import Link from "gatsby-link";
+import React, { useState } from "react";
+import { Dot, TransitionArrow } from "../icon";
+import * as styles from "./NavItems.module.css";
 
 export const LargeLink = ({ children, link, mobileDropdown }) => {
   const [open, setOpen] = useState(false);
@@ -10,7 +10,7 @@ export const LargeLink = ({ children, link, mobileDropdown }) => {
   };
   return (
     <>
-      <Link to={link} className={mobileDropdown && 'hidden eight:block'}>
+      <Link to={link} className={mobileDropdown && "hidden eight:block"}>
         <LargeLinkContent>{children}</LargeLinkContent>
       </Link>
 
@@ -19,7 +19,7 @@ export const LargeLink = ({ children, link, mobileDropdown }) => {
           <input
             type="checkbox"
             className={`${styles.subTitleInput} ${
-              mobileDropdown ? 'eight:hidden' : 'hidden'
+              mobileDropdown ? "eight:hidden" : "hidden"
             }`}
             onChange={toggleDropdown}
           />

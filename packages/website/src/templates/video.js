@@ -1,10 +1,10 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import Layout from '../components/layout';
-import { window } from 'browser-monads';
-import { SocialShare } from '../../../shared-components/src/components/socialShare';
-import { VideoEpisode } from '../components/videoEpisode';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import React from "react";
+import Link from "gatsby-link";
+import Layout from "../components/layout";
+import { window } from "browser-monads";
+import { SocialShare } from "../../../shared-components/src/components/socialShare";
+import { VideoEpisode } from "../components/videoEpisode";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
 
 const VideoTemplate = ({ pageContext }) => {
   const { video, season, playlistName } = pageContext;

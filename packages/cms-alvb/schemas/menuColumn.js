@@ -1,27 +1,27 @@
 export default {
-  title: 'Menu column',
-  name: 'menuColumn',
-  type: 'object',
+  title: "Menu column",
+  name: "menuColumn",
+  type: "object",
   options: { collapsible: true },
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
+      name: "title",
+      title: "Title",
+      type: "string",
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'link',
-      title: 'Link',
+      name: "link",
+      title: "Link",
       description:
         "If you don't want this to be a link, just leave this empty.",
-      type: 'string',
+      type: "string",
     },
     {
-      name: 'items',
-      title: 'Items',
-      type: 'array',
-      of: [{ type: 'menuItem' }],
+      name: "items",
+      title: "Items",
+      type: "array",
+      of: [{ type: "menuItem" }],
     },
   ],
 };

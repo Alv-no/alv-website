@@ -1,20 +1,20 @@
-import { window } from 'browser-monads';
-import React from 'react';
-import { navItems } from '../../utils/navItems';
-import config from '../../config';
+import { window } from "browser-monads";
+import React from "react";
+import { navItems } from "../../utils/navItems";
+import config from "../../config";
 
 export const LocaleButtons = ({ whiteIcons, navyHeader }) => {
-  const pathStr = window.location.pathname.replace('%C3%A5', 'å');
-  const pathArr = pathStr.split('/');
+  const pathStr = window.location.pathname.replace("%C3%A5", "å");
+  const pathArr = pathStr.split("/");
   pathArr.shift();
 
-  const localeList = ['no', 'en'];
+  const localeList = ["no", "en"];
 
   const handleLocaleClick = (locale) => {
-    let domain = config.TRANSLATED_DOMAIN?.includes('://') ? '' : 'https://';
+    let domain = config.TRANSLATED_DOMAIN?.includes("://") ? "" : "https://";
     domain += config.TRANSLATED_DOMAIN;
 
-    if (pathStr === '/') {
+    if (pathStr === "/") {
       window.location.href = domain;
       return;
     }
@@ -42,15 +42,15 @@ export const LocaleButtons = ({ whiteIcons, navyHeader }) => {
         <span
           key={i}
           className={
-            whiteIcons || navyHeader ? 'text-white' : 'text-theme-text'
+            whiteIcons || navyHeader ? "text-white" : "text-theme-text"
           }
         >
           <button
             key={locale}
             className={`uppercase mx-6px pt-px font-thin focus:outline-none ${
               config.LOCALE === locale
-                ? 'font-medium pointer-events-none'
-                : 'opacity-50'
+                ? "font-medium pointer-events-none"
+                : "opacity-50"
             }`}
             onClick={() => handleLocaleClick(locale)}
           >

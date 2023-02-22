@@ -1,10 +1,10 @@
-import React from 'react';
-import { Footer, SEO } from 'shared-components';
-import config from '../../config';
-import { Header, MobileHeader } from '../header';
-import * as Logo from '../logo';
-import './layout.css';
-import { useLayoutQuery } from './useLayoutQuery';
+import React from "react";
+import { Footer, SEO } from "shared-components";
+import config from "../../config";
+import { Header, MobileHeader } from "../header";
+import * as Logo from "../logo";
+import "./layout.css";
+import { useLayoutQuery } from "./useLayoutQuery";
 
 export const Layout = ({
   children,
@@ -46,8 +46,8 @@ export const Layout = ({
         white={white}
         path={path}
         logo={Logo}
-        headerCtaText={isEnLocale ? 'Contact us' : 'Ta kontakt'}
-        headerCtaLink={isEnLocale ? '/contact-us' : '/kontakt-oss'}
+        headerCtaText={isEnLocale ? "Contact us" : "Ta kontakt"}
+        headerCtaLink={isEnLocale ? "/contact-us" : "/kontakt-oss"}
         whiteIcons={whiteIcons}
         localization={true}
       />
@@ -63,7 +63,7 @@ export const Layout = ({
         address={address}
         org={org}
         email={email}
-        contactTitle={isEnLocale ? 'Contact us' : 'Kontakt oss'}
+        contactTitle={isEnLocale ? "Contact us" : "Kontakt oss"}
         phone={phone}
         companyName="Alv B"
       />

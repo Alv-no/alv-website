@@ -1,7 +1,7 @@
-import React from 'react';
-import MediaComponent from '../../mediaComponent';
-import TextCta from '../textCta';
-import * as styles from './MediaCta.module.css';
+import React from "react";
+import MediaComponent from "../../mediaComponent";
+import TextCta from "../textCta";
+import * as styles from "./MediaCta.module.css";
 
 const MediaCta = (props) => {
   const { textSection, config } = props;

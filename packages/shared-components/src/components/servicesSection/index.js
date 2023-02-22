@@ -1,6 +1,6 @@
-import React from 'react';
-import { Title } from '../title';
-import * as Button from '../button';
+import React from "react";
+import { Title } from "../title";
+import * as Button from "../button";
 
 export const ServicesSection = ({ children, title, description, link }) => {
   return (
@@ -9,7 +9,7 @@ export const ServicesSection = ({ children, title, description, link }) => {
         <div className="mx-auto max-w-1200">
           <div
             className="lg:grid w-full justify-center text-navy gap-x-6"
-            style={{ gridTemplateColumns: 'auto auto 13%' }}
+            style={{ gridTemplateColumns: "auto auto 13%" }}
           >
             <Title align="text-left lg:mb-0 mb-3 hyphenate" color="text-navy">
               {title}
@@ -24,7 +24,7 @@ export const ServicesSection = ({ children, title, description, link }) => {
           <div
             className="grid tracking-wider gap-4 sm:mt-12 mt-4"
             style={{
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
             }}
           >
             {children}

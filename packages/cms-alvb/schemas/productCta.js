@@ -1,28 +1,28 @@
-import { SiMinutemailer } from 'react-icons/si';
+import { SiMinutemailer } from "react-icons/si";
 
 export default {
-  title: 'Product CTA',
-  name: 'productCta',
+  title: "Product CTA",
+  name: "productCta",
   icon: SiMinutemailer,
-  type: 'object',
+  type: "object",
   options: {
     collapsible: true,
   },
   fields: [
     {
-      name: 'productName',
-      title: 'Product Name',
-      type: 'string',
+      name: "productName",
+      title: "Product Name",
+      type: "string",
     },
     {
-      name: 'buttonText',
-      title: 'Button Text',
-      type: 'localeString',
+      name: "buttonText",
+      title: "Button Text",
+      type: "localeString",
     },
   ],
   preview: {
     select: {
-      title: 'productName',
+      title: "productName",
     },
     prepare(selection) {
       const { title } = selection;

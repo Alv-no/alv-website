@@ -1,9 +1,9 @@
-import Link from 'gatsby-link';
-import React from 'react';
-import { LargeLink, SubtitleLink } from 'shared-components';
-import { Cross } from 'shared-components/src/components/icon';
-import { useNavigationQuery } from '../../hookspages/useNavigationQuery';
-import { SocialLinks } from '../socialLinks';
+import Link from "gatsby-link";
+import React from "react";
+import { LargeLink, SubtitleLink } from "shared-components";
+import { Cross } from "shared-components/src/components/icon";
+import { useNavigationQuery } from "../../hookspages/useNavigationQuery";
+import { SocialLinks } from "../socialLinks";
 
 export const Navigation = ({ open, toggleClose, logo }) => {
   const { mainMenu } = useNavigationQuery();
@@ -22,7 +22,7 @@ export const Navigation = ({ open, toggleClose, logo }) => {
 const NavLayout = ({ open, logo, children, toggleClose }) => (
   <nav
     className={`text-theme-text tracking-wider fixed overflow-y-auto eight:overflow-y-hidden overflow-x-hidden z-70 w-full h-full bg-theme-bg p-6 sm:p-8 left-0 top-0 transition duration-300 ${
-      open ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      open ? "opacity-100" : "opacity-0 pointer-events-none"
     }`}
   >
     <button
@@ -40,7 +40,7 @@ const NavHeader = ({ logo, toggleClose }) => (
       <CloseButton toggleClose={toggleClose} />
     </div>
     <div className="inline-block eight:absolute left-1/2 eight:transform eight:-translate-x-1/2">
-      <Link to={'/'}>{logo.Colored()}</Link>
+      <Link to={"/"}>{logo.Colored()}</Link>
     </div>
     <div className="right-0 transform eight:flex hidden relative">
       <SocialLinks />
@@ -61,10 +61,10 @@ const CloseButton = ({ toggleClose }) => (
 
 const NavColumns = ({ navItems }) => {
   return navItems?.map((navItem, index) => (
-    <div key={index} className={'relative z-70'}>
+    <div key={index} className={"relative z-70"}>
       <LargeLink
         mobileDropdown
-        link={navItem.link || '#'}
+        link={navItem.link || "#"}
         white={!navItem.link}
       >
         {navItem.title}

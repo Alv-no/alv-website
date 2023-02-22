@@ -1,5 +1,5 @@
-import { getGatsbyImageData } from 'gatsby-source-sanity';
-import config from '../config';
+import { getGatsbyImageData } from "gatsby-source-sanity";
+import config from "../config";
 
 function resolveNodeType(asset) {
   if (asset._ref) {
@@ -32,7 +32,7 @@ function imageCreator(asset) {
 export function createGatsbyImages(element) {
   if (!element) return;
   Object.keys(element).forEach((subElement) => {
-    if (typeof element[subElement] === 'object') {
+    if (typeof element[subElement] === "object") {
       createGatsbyImages(element[subElement]);
       return;
     }
@@ -45,16 +45,16 @@ export function createGatsbyImages(element) {
     }
 
     if (
-      subElement === '__typename' &&
-      element[subElement] === 'Image' &&
+      subElement === "__typename" &&
+      element[subElement] === "Image" &&
       element.asset
     ) {
       element.asset.gatsbyImageData = imageCreator(element.asset);
       return;
     }
     if (
-      subElement === '_type' &&
-      element[subElement] === 'image' &&
+      subElement === "_type" &&
+      element[subElement] === "image" &&
       element.asset
     ) {
       element.asset.gatsbyImageData = imageCreator(element.asset);

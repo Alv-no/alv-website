@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { createFormData, submitWithDelay, useForm } from '../../../../utils';
-import { FormFeedbackWrapper } from '../../../formFeedbackWrapper';
-import * as styles from './FormCta.module.css';
+import React, { useState } from "react";
+import { createFormData, submitWithDelay, useForm } from "../../../../utils";
+import { FormFeedbackWrapper } from "../../../formFeedbackWrapper";
+import * as styles from "./FormCta.module.css";
 
 const FormCta = ({ identifier, eyebrow, heading, whiteOnBlue }) => {
   const themeClass = whiteOnBlue ? styles.whiteOnBlue : styles.blueOnWhite;
@@ -16,20 +16,21 @@ const FormCta = ({ identifier, eyebrow, heading, whiteOnBlue }) => {
 };
 
 const Form = ({ identifier }) => {
-  const [status, setStatus] = useState('validating');
+  const [status, setStatus] = useState("validating");
   const [inputValues, handleInputChange] = useForm({
     subject: `Form-Cta - ${identifier}`,
-    name: '',
-    email: '',
-    body: '',
+    name: "",
+    email: "",
+    body: "",
   });
 
   const handleSubmitClick = async (e) => {
     e.preventDefault();
 
-    setStatus('loading');
+    setStatus("loading");
 
     const formData = createFormData(inputValues);
+
     const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/send`;
     const submissionResponse = await submitWithDelay(mailApiUrl, formData);
 

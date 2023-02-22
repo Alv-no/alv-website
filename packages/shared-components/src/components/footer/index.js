@@ -1,5 +1,5 @@
-import React from 'react';
-import { OvalSimple } from '../button';
+import React from "react";
+import { OvalSimple } from "../button";
 
 export const Footer = ({
   org,

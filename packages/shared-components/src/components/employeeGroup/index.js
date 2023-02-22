@@ -1,7 +1,7 @@
-import React from 'react';
-import { EmployeeCard } from '../employeeCard';
-import { EmployeeBio } from '../employeeBio';
-import { window } from 'browser-monads';
+import React from "react";
+import { EmployeeCard } from "../employeeCard";
+import { EmployeeBio } from "../employeeBio";
+import { window } from "browser-monads";
 
 export const EmployeeGroup = ({
   group,
@@ -28,7 +28,7 @@ export const EmployeeGroup = ({
     updateActiveBio(currentBio);
     window.history.replaceState(
       {},
-      '',
+      "",
       `${window.location.pathname}#${currentBio.slug}`,
     );
   };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const FilterContainer = ({ children }) => (
   <div className="xs:pt-24 fivefifty:pt-32 pt-6 fivefifty:mb-12 mb-8 bg-white w-full">

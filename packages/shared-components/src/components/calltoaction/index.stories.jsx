@@ -1,15 +1,15 @@
-import React from 'react';
-import CallToAction from './index';
+import React from "react";
+import CallToAction from "./index";
 
 export default {
-  title: 'components/calltoaction',
+  title: "components/calltoaction",
 };
 
 export const Default = ({ ...args }) => <CallToAction {...args} />;
 Default.args = {
-  children: 'Go forth and be brave',
+  children: "Go forth and be brave",
   disabled: false,
 };
 Default.argTypes = {
-  onClick: { action: 'clicked' },
+  onClick: { action: "clicked" },
 };

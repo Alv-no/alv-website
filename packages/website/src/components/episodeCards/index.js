@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { VideoFilter } from '../videoFilter';
-import { VideoCard } from '../videoCard';
-import * as Button from '../button';
+import React, { useState, useEffect } from "react";
+import { VideoFilter } from "../videoFilter";
+import { VideoCard } from "../videoCard";
+import * as Button from "../button";
 
 export const EpisodeCards = ({ fallbackImg, playlist }) => {
   const [sortedVideos, setSortedVideos] = useState(playlist);
@@ -29,7 +29,7 @@ export const EpisodeCards = ({ fallbackImg, playlist }) => {
           <div
             className="grid gap-x-4 gap-y-10 w-full"
             style={{
-              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
             }}
           >
             {sortedVideos && sortedVideos.length > 1

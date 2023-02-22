@@ -1,7 +1,7 @@
-import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
-import { BlockContent } from 'shared-components';
-import { OvalSimple } from 'shared-components/src/components/button';
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import { BlockContent } from "shared-components";
+import { OvalSimple } from "shared-components/src/components/button";
 
 const Brands = ({ headingRaw, logos, config, buttonLink, buttonText }) => (
   <div>

@@ -1,9 +1,9 @@
-import Link from 'gatsby-link';
-import { BgImage } from 'gbimage-bridge';
-import React from 'react';
-import { BlockContent, Button } from 'shared-components';
-import config from '../../config';
-import * as styles from './hero.module.css';
+import Link from "gatsby-link";
+import { BgImage } from "gbimage-bridge";
+import React from "react";
+import { BlockContent, Button } from "shared-components";
+import config from "../../config";
+import * as styles from "./hero.module.css";
 
 export const Hero = ({
   blocks,

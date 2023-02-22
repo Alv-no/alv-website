@@ -1,5 +1,5 @@
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const ImagesSideBySide = ({ imageLeft, imageRight }) => (
   <div className="-mt-12">

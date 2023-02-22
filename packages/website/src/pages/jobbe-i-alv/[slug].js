@@ -1,13 +1,13 @@
-import { gql } from '@apollo/client';
-import React from 'react';
-import { BlockContent } from 'shared-components';
-import { NavyIntro } from '../../../../shared-components/src/components/navyIntro';
-import ApplyForm from '../../components/applyForm';
-import Layout from '../../components/layout';
-import configuration from '../../config';
-import { useLayoutQuery } from '../../hooks/useLayoutQuery';
-import { client } from '../../server-side/client';
-import { createGatsbyImages } from '../../server-side/imageCreator';
+import { gql } from "@apollo/client";
+import React from "react";
+import { BlockContent } from "shared-components";
+import { NavyIntro } from "../../../../shared-components/src/components/navyIntro";
+import ApplyForm from "../../components/applyForm";
+import Layout from "../../components/layout";
+import configuration from "../../config";
+import { useLayoutQuery } from "../../hooks/useLayoutQuery";
+import { client } from "../../server-side/client";
+import { createGatsbyImages } from "../../server-side/imageCreator";
 
 const Career = ({ serverData }) => {
   const layoutData = useLayoutQuery();
@@ -38,7 +38,7 @@ const Career = ({ serverData }) => {
       <div
         className="bg-white max-w-1200 mx-auto lg:grid sm:px-12 lg:pr-0 pt-12 lg:pb-18 sm:pb-8 gap-x-12"
         style={{
-          gridTemplateColumns: '55% minmax(min-content, 500px)',
+          gridTemplateColumns: "55% minmax(min-content, 500px)",
         }}
       >
         <div className="px-5">
@@ -62,7 +62,7 @@ export default Career;
 
 async function getPositionDataServerSide(slug) {
   const response = await client.query({
-    fetchPolicy: 'no-cache',
+    fetchPolicy: "no-cache",
     variables: {
       slug,
     },
@@ -101,7 +101,7 @@ async function getPositionDataServerSide(slug) {
 
 export async function getServerData(context) {
   try {
-    const slug = context.params['slug'];
+    const slug = context.params["slug"];
     const career = await getPositionDataServerSide(slug);
 
     return {

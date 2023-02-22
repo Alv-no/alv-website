@@ -1,8 +1,8 @@
-import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { BlockContent, Title } from 'shared-components';
-import * as styles from './richtextAndImage.module.css';
-import config from '../../config';
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { BlockContent, Title } from "shared-components";
+import * as styles from "./richtextAndImage.module.css";
+import config from "../../config";
 
 export const RichtextAndImage = ({
   image,
@@ -17,12 +17,12 @@ export const RichtextAndImage = ({
     className={`w-full px-5 sm:px-10 ${
       backgroundColor
         ? `py-10 sm:py-20 bg-${backgroundColor}`
-        : 'my-10 sm:my-20'
+        : "my-10 sm:my-20"
     }`}
   >
     <div
-      className={`max-w-${maxWidth || '1200'} mx-auto ${
-        image && 'lg:grid'
+      className={`max-w-${maxWidth || "1200"} mx-auto ${
+        image && "lg:grid"
       } justify-between xl:gap-x-20 lg:gap-x-15 gap-x-10`}
       style={{ gridTemplateColumns: `${leftColSize} auto` }}
     >
@@ -32,7 +32,7 @@ export const RichtextAndImage = ({
           <BlockContent blocks={blocks} config={config} />
         </span>
       </div>
-      <div style={{ gridRow: flip && '1' }}>
+      <div style={{ gridRow: flip && "1" }}>
         <GatsbyImage image={image} className="h-full" />
       </div>
     </div>

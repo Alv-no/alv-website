@@ -1,9 +1,9 @@
-import { graphql } from 'gatsby';
-import React from 'react';
-import { BlogSection, IntroContainer, Title } from 'shared-components';
-import { Layout } from '../components/layout';
-import localize from '../components/localize';
-import { useBlogQuery } from '../hookspages/useBlogQuery';
+import { graphql } from "gatsby";
+import React from "react";
+import { BlogSection, IntroContainer, Title } from "shared-components";
+import { Layout } from "../components/layout";
+import localize from "../components/localize";
+import { useBlogQuery } from "../hookspages/useBlogQuery";
 
 const Blog = ({ data }) => {
   const { section, meta } = data.sanityBlogPage;
@@ -15,9 +15,9 @@ const Blog = ({ data }) => {
   const featuredArticle = articles[0];
   articles.shift();
 
-  const eyebrowText = 'Our most recent article';
-  const postPrefix = 'blog';
-  const readMoreText = 'Read more';
+  const eyebrowText = "Our most recent article";
+  const postPrefix = "blog";
+  const readMoreText = "Read more";
 
   return (
     <Layout

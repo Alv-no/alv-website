@@ -1,7 +1,7 @@
-import Link from 'gatsby-link';
-import PropTypes from 'prop-types';
-import React from 'react';
-import { CtaArrow } from '../icon';
+import Link from "gatsby-link";
+import PropTypes from "prop-types";
+import React from "react";
+import { CtaArrow } from "../icon";
 
 export const CtaButton = ({ children, internalLink, color }) => {
   return (
@@ -27,5 +27,5 @@ CtaButton.propTypes = {
 };
 
 CtaButton.defaultProps = {
-  internalLink: '/',
+  internalLink: "/",
 };

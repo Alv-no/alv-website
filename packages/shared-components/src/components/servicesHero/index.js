@@ -1,5 +1,5 @@
-import React from 'react';
-import { BgImage } from 'gbimage-bridge';
+import React from "react";
+import { BgImage } from "gbimage-bridge";
 
 export const ServicesHero = ({ backgroundImage, children }) => {
   return (

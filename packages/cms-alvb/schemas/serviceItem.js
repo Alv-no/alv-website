@@ -1,33 +1,33 @@
 export default {
-  title: 'Service item',
-  name: 'serviceItem',
-  type: 'object',
+  title: "Service item",
+  name: "serviceItem",
+  type: "object",
   fields: [
     {
-      title: 'Title',
-      name: 'title',
-      type: 'localeString',
+      title: "Title",
+      name: "title",
+      type: "localeString",
     },
     {
-      title: 'Subtitle',
-      name: 'subtitle',
-      type: 'localeString',
+      title: "Subtitle",
+      name: "subtitle",
+      type: "localeString",
     },
     {
-      name: 'text',
-      title: 'Text',
-      type: 'localeText',
+      name: "text",
+      title: "Text",
+      type: "localeText",
     },
     {
-      title: 'Button',
-      name: 'button',
-      type: 'localeButton',
+      title: "Button",
+      name: "button",
+      type: "localeButton",
     },
   ],
   preview: {
     select: {
-      title: 'subtitle',
-      subtitle: 'title',
+      title: "subtitle",
+      subtitle: "title",
     },
     prepare(selection) {
       const { title, subtitle } = selection;

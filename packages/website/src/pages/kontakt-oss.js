@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import Layout from '../components/layout';
-import { Title, Description } from 'shared-components';
-import { FormSelect } from '../../../shared-components/src/components/button';
-import { Phone, Mail } from '../../../shared-components/src/components/icon';
-import { useContactQuery } from '../hookspages/useContactQuery';
-import * as Form from '../../../shared-components/src/components/form';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import React, { useState } from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import Layout from "../components/layout";
+import { Title, Description } from "shared-components";
+import { FormSelect } from "../../../shared-components/src/components/button";
+import { Phone, Mail } from "../../../shared-components/src/components/icon";
+import { useContactQuery } from "../hookspages/useContactQuery";
+import * as Form from "../../../shared-components/src/components/form";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
 
 const Contact = ({ location }) => {
-  const [active, setActive] = useState('offer');
+  const [active, setActive] = useState("offer");
   const layoutData = useLayoutQuery();
   const formChange = (e) => {
     setActive(e.target.id);
-    document.querySelector('form').scrollIntoView({
-      block: 'start',
-      inline: 'nearest',
-      behavior: 'smooth',
+    document.querySelector("form").scrollIntoView({
+      block: "start",
+      inline: "nearest",
+      behavior: "smooth",
     });
   };
 
@@ -33,7 +33,7 @@ const Contact = ({ location }) => {
       <div className="bg-navy xl:pt-5">
         <div
           className="bg-navy w-full -mt-16 lg:mt-8 text-white max-w-1440 mx-auto xl:grid xl:pb-20"
-          style={{ gridTemplateColumns: '50% 50%' }}
+          style={{ gridTemplateColumns: "50% 50%" }}
         >
           <div className="flex-1 mt-6 sm:px-10 xl:block sm:grid grid-cols-fifty sm:-ml-12 xl:ml-0">
             <div>
@@ -66,18 +66,18 @@ const Contact = ({ location }) => {
               <div className="hidden xl:block">
                 <div className="text-lg tracking-wider 2xl:ml-30 mb-20">
                   <div className="mb-3">
-                    <a href={'tel:' + phone} className="flex">
+                    <a href={"tel:" + phone} className="flex">
                       <span className="mr-3">
                         <Phone />
-                      </span>{' '}
+                      </span>{" "}
                       {phone}
                     </a>
                   </div>
                   <div className="mb-3">
-                    <a href={'mailto:' + email} className="flex items-center">
+                    <a href={"mailto:" + email} className="flex items-center">
                       <span className="mr-3">
                         <Mail />
-                      </span>{' '}
+                      </span>{" "}
                       {email}
                     </a>
                   </div>
@@ -89,18 +89,18 @@ const Contact = ({ location }) => {
             <div>
               <div className="text-lg tracking-wider">
                 <div className="mb-3">
-                  <a href={'tel:' + phone} className="flex">
+                  <a href={"tel:" + phone} className="flex">
                     <span className="mr-3">
                       <Phone />
-                    </span>{' '}
+                    </span>{" "}
                     {phone}
                   </a>
                 </div>
                 <div className="mb-3">
-                  <a href={'mailto:' + email} className="flex items-center">
+                  <a href={"mailto:" + email} className="flex items-center">
                     <span className="mr-3">
                       <Mail />
-                    </span>{' '}
+                    </span>{" "}
                     {email}
                   </a>
                 </div>
@@ -108,9 +108,9 @@ const Contact = ({ location }) => {
             </div>
           </div>
           <div className="flex-1 p-5 sm:p-12 lg:mx-0 lg:pb-15 tracking-wider bg-lightblue">
-            {active === 'offer' && <Form.Offer />}
-            {active === 'call' && <Form.Call />}
-            {active === 'visit' && <Form.Visit address={address} org={org} />}
+            {active === "offer" && <Form.Offer />}
+            {active === "call" && <Form.Call />}
+            {active === "visit" && <Form.Visit address={address} org={org} />}
           </div>
         </div>
       </div>
