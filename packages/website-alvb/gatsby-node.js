@@ -25,7 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    `,
+    `
   );
   //
   // Create company pages.

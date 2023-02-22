@@ -14,7 +14,7 @@ export const useNavigationQuery = () => {
           }
         }
       }
-    `,
+    `
   );
   const { mainMenu } = data.sanitySiteSettings;
   return { mainMenu };

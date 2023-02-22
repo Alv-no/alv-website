@@ -109,7 +109,7 @@ export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
 
   useEffect(() => {
     setMailApiUrl(
-      `${window.location.protocol}//mail-api.${window.location.hostname}/send`,
+      `${window.location.protocol}//mail-api.${window.location.hostname}/send`
     );
   }, []);
 

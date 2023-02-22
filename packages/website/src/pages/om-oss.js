@@ -24,7 +24,7 @@ const About = ({ serverData }) => {
 
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
   employees.map(
-    (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData),
+    (el) => (el.fallbackImg = data.fallbackImg.childImageSharp.gatsbyImageData)
   );
   const team = employees.slice(0, 4);
 

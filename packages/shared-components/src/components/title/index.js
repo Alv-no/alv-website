@@ -19,7 +19,7 @@ export const Title = ({
     bold ? "font-bold" : "font-extralight",
     color,
     underline ? "text-blog" : "text-4xl",
-    classes || "",
+    classes || ""
   );
 
   return (

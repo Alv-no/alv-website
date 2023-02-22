@@ -23,7 +23,7 @@ export const EmployeeSection = ({
       const filteredEmployeeArr = allEmployees.filter((employee) => {
         let test;
         employee.tags.forEach((node) =>
-          !test ? (test = tags.indexOf(node.tag) > -1) : null,
+          !test ? (test = tags.indexOf(node.tag) > -1) : null
         );
         return test;
       });

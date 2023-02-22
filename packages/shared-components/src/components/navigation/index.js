@@ -83,7 +83,7 @@ const CloseButton = ({ toggleClose, white }) => (
 
 const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
   const filteredCompanyPages = companyPages?.filter(
-    (page) => page.slug.current !== "kunder-og-prosjekter",
+    (page) => page.slug.current !== "kunder-og-prosjekter"
   );
   return (
     <NavLayout open={open} logo={logo} toggleClose={toggleClose}>

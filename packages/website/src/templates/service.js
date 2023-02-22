@@ -1,16 +1,16 @@
-import { window } from 'browser-monads';
-import { graphql } from 'gatsby';
-import React from 'react';
-import { Container, LinkableContent, NavyIntroImage } from 'shared-components';
-import { BlogCarousel } from '../components/blogCarousel';
-import { CtaSection } from '../components/ctaSection';
-import Layout from '../components/layout';
-import { RolesList } from '../components/rolesList';
-import TestimonialSlider from '../components/testimonialsSlider';
-import configuration from '../config';
-import { useBlogQueryRecent } from '../hooks/useBlogQueryRecent';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import useScrollToHeading from '../hooks/useScrollToHeading';
+import { window } from "browser-monads";
+import { graphql } from "gatsby";
+import React from "react";
+import { Container, LinkableContent, NavyIntroImage } from "shared-components";
+import { BlogCarousel } from "../components/blogCarousel";
+import { CtaSection } from "../components/ctaSection";
+import Layout from "../components/layout";
+import { RolesList } from "../components/rolesList";
+import TestimonialSlider from "../components/testimonialsSlider";
+import configuration from "../config";
+import { useBlogQueryRecent } from "../hooks/useBlogQueryRecent";
+import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import useScrollToHeading from "../hooks/useScrollToHeading";
 
 const Service = ({ data }) => {
   const { handleHeadingClick } = useScrollToHeading(window.location.pathname);
@@ -23,7 +23,7 @@ const Service = ({ data }) => {
   } = data;
 
   const relatedServices = data.allSanityServices.edges.filter((service) =>
-    window.location.href.includes(service.node.parentPage.slug.current),
+    window.location.href.includes(service.node.parentPage.slug.current)
   );
 
   const recentArticles = useBlogQueryRecent().articles.nodes;
@@ -67,11 +67,11 @@ const Service = ({ data }) => {
           navy
           eyebrow={
             data.sanityServices.ctaEyebrow ||
-            'Tenker du på å kjøre i gang med et prosjekt?'
+            "Tenker du på å kjøre i gang med et prosjekt?"
           }
           heading={
             data.sanityServices.ctaHeading ||
-            'Ta kontakt med oss for å se om vi har passende konsulenter tilgjengelig.'
+            "Ta kontakt med oss for å se om vi har passende konsulenter tilgjengelig."
           }
           buttonText="Ta Kontakt"
           internalLink="/kontakt-oss"

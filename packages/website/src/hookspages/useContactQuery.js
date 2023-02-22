@@ -23,7 +23,7 @@ export const useContactQuery = () => {
           }
         }
       }
-    `,
+    `
   );
   const { address, phone, org, email } =
     data.allSanitySiteSettings.edges[0].node;

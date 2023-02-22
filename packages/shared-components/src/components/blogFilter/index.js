@@ -17,7 +17,7 @@ export const BlogFilter = ({
   const [activeAuthors, setActiveAuthors] = useState([]);
   const [sort, setSort] = useState(null);
   const [activeTags, setActiveTags] = useState(
-    initialCategoryFilter ? [initialCategoryFilter] : [],
+    initialCategoryFilter ? [initialCategoryFilter] : []
   );
 
   // Process all available content based on sort and filter input.
@@ -51,14 +51,14 @@ export const BlogFilter = ({
         // case insensitive tags comparison to make url query params case insensitive
         if (activeTags.length > 0) {
           const lowercaseArticleTags = article.tags.map((tag) =>
-            tag.tag.toLowerCase(),
+            tag.tag.toLowerCase()
           );
           const lowercaseActiveTags = activeTags.map((tag) =>
-            tag.toLowerCase(),
+            tag.toLowerCase()
           );
 
           tagsMatch = lowercaseActiveTags.some((tag) =>
-            lowercaseArticleTags.includes(tag),
+            lowercaseArticleTags.includes(tag)
           );
         }
 
@@ -84,7 +84,7 @@ export const BlogFilter = ({
     if (activeTagsLowercase.includes(currentTag)) {
       newFilter = [
         ...activeTags.filter(
-          (tag) => tag.toLowerCase() !== currentTag.toLowerCase(),
+          (tag) => tag.toLowerCase() !== currentTag.toLowerCase()
         ),
       ];
     } else {
@@ -220,7 +220,7 @@ const FilterOption = ({ tags, onChange, children, activeTags }) => {
                 className={`${styles.checkbox} absolute left-0 w-full transform -translate-x-5 h-5 cursor-pointer`}
                 id={tag}
                 checked={activeTags.some(
-                  (activeTag) => activeTag.toLowerCase() === tag.toLowerCase(),
+                  (activeTag) => activeTag.toLowerCase() === tag.toLowerCase()
                 )}
                 onChange={onChange}
                 type="checkbox"
