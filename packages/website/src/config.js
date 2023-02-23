@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('gatsby-plugin-config').default;
 let configuration;
 switch (config.NODE_ENV) {

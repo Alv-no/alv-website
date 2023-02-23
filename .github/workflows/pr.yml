@@ -23,7 +23,7 @@ jobs:
         run: yarn --immutable
 
       - name: Linting
-        run: yarn lint:rome lint:eslint
+        run: yarn lint
 
       - name: Sanity configcheck
         run: yarn workspace cms run sanity configcheck

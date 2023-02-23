@@ -1,7 +1,6 @@
 # Custom
 dist/
 build/
-.editorconfig
 storybook-static/
 .vscode/
 backupfolder

@@ -1,12 +1,31 @@
 {
-  "extends": "@blueberrypie/eslint-config",
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "react-app",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-inferrable-types": [
+      "warn",
+      {
+        "ignoreParameters": true,
+        "ignoreProperties": true
+      }
+    ]
+  },
   "overrides": [
+    {
+      "files": ["*.spec.*"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    },
     {
       "files": ["*.js", "*.jsx", "*.tsx", "*.ts"],
       "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-empty-function": "off",
-        "no-console": "error",
+        "no-console": "error"
       }
     },
     {

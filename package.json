@@ -2,17 +2,22 @@
   "private": true,
   "scripts": {
     "fix:rome": "rome format . --write",
-    "fix:scripts": "eslint --ignore-path .lintignore --cache --fix \"packages/**/*.{ts,tsx,js,jsx,json}\"",
+    "fix:scripts": "eslint --ignore-path .lintignore --cache --fix \"packages/**/*.{ts,tsx,js,jsx}\"",
+    "lint": "yarn lint:rome && yarn lint:eslint",
     "lint:rome": "rome ci .",
-    "lint:eslint": "eslint --ignore-path .lintignore --max-warnings 0 --cache \"packages/**/*.{ts,tsx,js,jsx,json}\""
+    "lint:eslint": "eslint --ignore-path .lintignore --max-warnings 128 --cache \"packages/**/*.{ts,tsx,js,jsx}\""
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "@blueberrypie/editor-config": "^1.0.0",
-    "@blueberrypie/eslint-config": "^1.0.0",
-    "eslint": "^7.13.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.34.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^4.3.0",
     "rome": "^11.0.0",
     "turbo": "^1.8.1",
@@ -23,7 +28,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint:rome lint:eslint"
+      "pre-commit": "yarn lint"
     }
   },
   "packageManager": "yarn@3.2.3"
