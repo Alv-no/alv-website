@@ -52,20 +52,26 @@ export const createFormData = (inputValues) => {
 };
 
 export const submitWithDelay = async (apiUrl, body) => {
-  fetch(apiUrl, {
+  const delay = new Promise((resolve) => setTimeout(resolve, 400));
+
+  let submissionResponseStatus;
+  const trySubmit = fetch(apiUrl, {
     method: "POST",
     body,
   })
-    .then(() => {
-      setTimeout(() => {
-        return "success";
-      }, 400);
+    .then((response) => {
+      if (!response.ok) {
+        submissionResponseStatus = "error";
+      }
+      submissionResponseStatus = "success";
     })
     .catch(() => {
-      setTimeout(() => {
-        return "error";
-      }, 400);
+      submissionResponseStatus = "error";
     });
+
+  await Promise.all([trySubmit, delay]);
+
+  return submissionResponseStatus;
 };
 
 export const useForm = (initialState) => {
