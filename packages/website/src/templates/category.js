@@ -138,7 +138,7 @@ export const query = graphql`
       featuredTeam {
         firstname
         lastname
-        experience
+        experienceSinceYear
         title
         id
         image {

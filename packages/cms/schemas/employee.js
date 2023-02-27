@@ -27,8 +27,8 @@ export default {
       },
     },
     {
-      name: "experience",
-      title: "Years of experience",
+      name: "experienceSinceYear",
+      title: "Exerience since year",
       type: "number",
     },
     {
