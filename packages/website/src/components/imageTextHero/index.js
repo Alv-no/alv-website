@@ -10,43 +10,34 @@ export const ImageTextListHero = ({
   positionsListLeft,
 }) => {
   return (
-    <div className="bg-navy">
-      <div
-        className="max-w-1440 mx-auto flex flex-col-reverse sm:flex-row text-white twelve:grid gap-x-10 tracking-wider sm:px-12 px-5"
-        style={{ gridTemplateColumns: "25% auto" }}
-      >
-        <div className="h-full sm:pt-25 sm:-ml-12 flex -ml-5 items-end sm:mt-32 twelve:mt-0">
+    <div className="bg-navy tracking-wider text-white">
+      <div className="twelve:grid gap-x-16 grid-cols-[30%_auto]">
+        <div className="h-full hidden twelve:block pt-20">
           <BgImage image={image}>
-            <div className="bg-black bg-opacity-30 flex sm:justify-end justify-start sm:items-center items-end px-5 py-7 sm:p-0 twelve:h-620 sm:h-60vh lg:w-386 sm:w-277 w-screen h-50vh">
-              <div className="font-semibold twelve:hidden text-4xl w-5/6 sm:w-auto uppercase sm:hidden md:block absolute tracking-wider transform sm:translate-x-64 sm:translate-y-20">
-                Alv søker medarbeidere
-              </div>
+            <div className="font-semibold text-4xl uppercase relative z-10 transform translate-x-60 translate-y-28 h-[610px]">
+              <span className="inline-block">Alv søker medarbeidere</span>
             </div>
+            <div className="bg-black opacity-30 absolute h-full w-full top-0" />
           </BgImage>
         </div>
-        <div className="pb-10">
-          <div className="text-xl twelve:ml-20 font-light items-end flex text-blog">
-            <div className="relative hidden twelve:block -ml-20">
-              <div className="font-semibold text-4xl uppercase absolute transform -translate-y-40 tracking-wider -translate-x-32">
-                Alv søker medarbeidere
-              </div>
-            </div>
-            <div className="twelve:ml-56 2xl:mr-30 h-screen sm:h-auto flex flex-col justify-center sm:block -mt-15 items-center sm:mt-0 text-center sm:text-left sm:px-0 xs:px-5">
-              <Title align="text-center sm:text-left">Jobbe i alv</Title>
-              <p className="mb-8 mt-6 text-xl twelve:pr-25">
-                Vi bygger Norges mest attraktive konsulentselskap. For å lykkes
-                med dette, trenger vi flere medarbeidere. Vi trenger all
-                kompetanse relatert til systemutvikling.
-              </p>
-              <p className="text-xl twelve:pr-25 relative">
-                Det vil si blant annet systemutviklere, testledere, teknisk
-                testere, funksjonelle arkitekter og prosjektledere. Hvis du tror
-                du kan være rett for Alv, håper vi du sender oss en CV og
-                søknad.
-              </p>
-            </div>
+        <div>
+          <div className="-mt-12 sm:mt-0 twelve:ml-44 text-blog font-light h-screen sm:h-auto flex flex-col justify-center sm:block items-center sm:mt-0 text-center sm:text-left">
+            <Title align="text-center sm:text-left mb-5 sm:mt-5 twelve:mt-0">
+              Jobbe i alv
+            </Title>
+            <p className="mb-8 text-xl">
+              Vi bygger Norges mest attraktive konsulentselskap. For å lykkes
+              med dette, trenger vi flere medarbeidere. Vi trenger all
+              kompetanse relatert til systemutvikling.
+            </p>
+            <p className="text-xl relative">
+              Det vil si blant annet systemutviklere, testledere, teknisk
+              testere, funksjonelle arkitekter og prosjektledere. Hvis du tror
+              du kan være rett for Alv, håper vi du sender oss en CV og søknad.
+            </p>
           </div>
-          <div className="ml-18 hidden twelve:block mr-40 mt-15 lg:pl-8 xl:pl-0">
+
+          <div className="hidden twelve:block mt-15">
             <Title
               color="text-white"
               underline
@@ -56,13 +47,13 @@ export const ImageTextListHero = ({
               Åpne stillinger
             </Title>
           </div>
-          <div className="text-white hidden twelve:flex grid sm:grid-cols-2 mt-5 w-full lg:pl-8 xl:pl-0 ml-18 mr-40 twelve:max-w-720">
+          <div className="text-white hidden twelve:flex grid sm:grid-cols-2 mt-5 w-full mb-8">
             <div className="divide-y-2 divide-white divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
               {positionsListLeft?.map((el) => (
                 <Roles link={el.slug.current}>{el.pageTitle}</Roles>
               ))}
             </div>
-            <div className="divide-y-2 divide-white divide-solid h-full flex flex-col justify-end w-full flex-1 mr-10">
+            <div className="divide-y-2 divide-white divide-solid h-full flex flex-col justify-end w-full flex-1">
               {positionsListRight?.map((el) => (
                 <Roles link={el.slug.current}>{el.pageTitle}</Roles>
               ))}
@@ -71,12 +62,12 @@ export const ImageTextListHero = ({
           </div>
         </div>
       </div>
-      <div className=" mt-10 sm:px-12 twelve:hidden px-5 twelve:pl-8 xl:pl-0">
+      <div className="mt-10 twelve:hidden">
         <Title color="text-white" underline align="text-left" size="text-xl">
           Åpne stillinger
         </Title>
       </div>
-      <div className="text-white  twelve:hidden grid gap-x-10 sm:grid-cols-2 sm:px-12 px-5 mt-5 sm:mt-5 pb-10">
+      <div className="text-white  twelve:hidden grid gap-x-5 sm:grid-cols-2 mt-5 sm:mt-5 pb-10">
         <div className="border-b-2 border-divide sm:border-none divide-y-2 divide-divide mr-10 divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
           {positionsListLeft?.map((el) => (
             <Roles link={el.slug.current}>{el.pageTitle}</Roles>

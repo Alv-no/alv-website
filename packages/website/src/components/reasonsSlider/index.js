@@ -1,6 +1,6 @@
 import React from "react";
-import { SliderArrowBlue } from "../../../../shared-components/src/components/icon";
 import { GatsbyImage } from "gatsby-plugin-image";
+import * as styles from "./sliderStyles.module.css";
 import Slider from "react-slick";
 
 export const ReasonsSlider = ({ mainHeading, slides }) => {
@@ -8,21 +8,11 @@ export const ReasonsSlider = ({ mainHeading, slides }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    nextArrow: <NextArrowLine />,
-    prevArrow: <PrevArrowLine />,
     slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          nextArrow: <NextArrow />,
-          prevArrow: <PrevArrow />,
-        },
-      },
-    ],
+    dots: true,
   };
   return (
-    <div className="pb-12 twelve:pb-0">
+    <div className={styles.container}>
       <Slider {...settings}>
         {slides.map((el, index) => (
           <ArticleSlide
@@ -46,12 +36,9 @@ export const ArticleSlide = ({
   heading,
   description,
 }) => (
-  <div
-    className="max-w-1440 mx-auto twelve:grid tracking-wider"
-    style={{ gridTemplateColumns: "65% auto" }}
-  >
-    <div className="twelve:px-30 sm:px-12 px-5">
-      <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-10 -ml-2px hyphenate">
+  <div className="max-w-[1280px] mx-auto twelve:grid grid-cols-[65%_auto] tracking-wider">
+    <div className="twelve:pr-30 xl:pl-0 sm:px-12 px-5">
+      <h3 className="uppercase text-4xl leading-snug font-semibold twelve:w-100 w-full mb-10 -ml-2px hyphenate leading-[1em]">
         {mainHeading}
       </h3>
       <div className="pl-32 pr-18 hidden twelve:block">
@@ -66,8 +53,11 @@ export const ArticleSlide = ({
         </div>
       </div>
     </div>
-    <GatsbyImage image={image} className="twelve:h-auto h-60vh" />
-    <div className="sm:px-12 px-5 twelve:hidden mb-12">
+    <GatsbyImage
+      image={image}
+      className="twelve:h-auto twelve:aspect-square sm:h-50vh"
+    />
+    <div className="sm:px-12 px-5 twelve:hidden sm:mb-12">
       <div className="flex mt-12">
         <div className="sm:text-4xl text-2xl mr-5 text-white py-0 flex items-center sm:px-12 px-6 bg-navy">
           {slideNr}
@@ -80,71 +70,3 @@ export const ArticleSlide = ({
     </div>
   </div>
 );
-
-const PrevArrowLine = ({ onClick }) => {
-  return (
-    <div
-      className="bg-navy bg-opacity-90 pr-3 absolute justify-between twelve:block hidden h-8 text-navy top-2/4"
-      style={{ top: "50%" }}
-    >
-      <div
-        className="h-full flex items-center cursor-pointer relative z-10"
-        onClick={onClick}
-      >
-        <div className="w-20 bg-white h-2px" />{" "}
-        <div className="uppercase tracking-wider text-white ml-5 font-semibold text-base">
-          Tilbake
-        </div>
-      </div>
-
-      <div />
-    </div>
-  );
-};
-const NextArrowLine = ({ onClick }) => {
-  return (
-    <div
-      className="bg-navy bg-opacity-90 pl-3 absolute flex justify-between h-8 text-navy right-0"
-      style={{ top: "50%" }}
-      onClick={onClick}
-    >
-      <div />
-      <div className="flex items-center cursor-pointer">
-        <div className="uppercase tracking-wider text-white mr-5 font-semibold text-base">
-          Neste
-        </div>
-        <div className="w-20 bg-white h-2px" />{" "}
-      </div>
-    </div>
-  );
-};
-
-const NextArrow = ({ onClick }) => {
-  return (
-    <>
-      <div
-        className="absolute transform translate-y-10 translate-y-10 -translate-x-2 sm:-translate-x-10 right-0 bottom-0 lg:scale-90 scale-70 cursor-pointer"
-        onClick={onClick}
-      >
-        <div className="">
-          <SliderArrowBlue />
-        </div>
-      </div>
-    </>
-  );
-};
-
-const PrevArrow = ({ onClick }) => {
-  return (
-    <>
-      <div
-        className="transform absolute translate-y-10 -translate-x-16 sm:-translate-x-24  lg:mr-5 right-0 bottom-0 rotate-180 lg:scale-90 scale-70 cursor-pointer"
-        onClick={onClick}
-      >
-        <div className="">
-          <SliderArrowBlue />
-        </div>
-      </div>
-    </>
-  );
-};
