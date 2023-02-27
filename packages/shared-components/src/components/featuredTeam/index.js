@@ -21,7 +21,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
         </Title>
       )}
       <div className="h-12" />
-      <div className="grid xs:gap-4 mb-12 xs:max-w-570 seven:max-w-none grid-cols-employees-xs xs:grid-cols-employees-sm seven:grid-cols-employees-md nine:grid-cols-team-lg nine:justify-between gap-y-6">
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4">
         {linkableTeam.map((employee, index) => (
           <Link
             key={index}
@@ -38,7 +38,7 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
           </Link>
         ))}
       </div>
-      <div className="w-full flex justify-end mt-10 font-semibold pr-2">
+      <div className="w-full flex justify-end mt-10 font-semibold">
         <Link to="/ansatte">
           <Button.Line>Se alle konsulentene</Button.Line>
         </Link>

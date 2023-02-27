@@ -38,7 +38,7 @@ export const useAboutUsQuery = () => {
               lastname
               id
               title
-              experience
+              experienceSinceYear
               video {
                 asset {
                   url

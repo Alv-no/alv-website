@@ -99,7 +99,7 @@ async function getEmployeeData() {
           }
           id: _id
           title
-          experience
+          experienceSinceYear
           _rawBio: bioRaw
           image {
             asset {
