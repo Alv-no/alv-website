@@ -1,0 +1,20 @@
+.container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  overflow-x: hidden;
+}
+
+.container li button {
+  transform: scale(1.6);
+}
+
+.container > div {
+  padding-bottom: 26px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}

@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import React from "react";
+import { Container } from "shared-components";
 import { ImageTextListHero } from "../components/imageTextHero";
 import Layout from "../components/layout";
 import { ReasonsSlider } from "../components/reasonsSlider";
@@ -12,30 +13,31 @@ const WorkForAlv = ({ serverData }) => {
 
   const layoutData = useLayoutQuery();
   return (
-    <>
-      <Layout
-        whiteIcons
-        layoutData={layoutData}
-        pageTitle={sanityCareerPage.pageTitle}
-        pageDescription={sanityCareerPage.pageDescription}
+    <Layout
+      whiteIcons
+      layoutData={layoutData}
+      pageTitle={sanityCareerPage.pageTitle}
+      pageDescription={sanityCareerPage.pageDescription}
+    >
+      <Container
+        theme="navy"
+        maxWidth={1280}
+        removePaddingBottom
+        className="xl:px-20"
       >
-        <div className="overflow-hidden">
-          <ImageTextListHero
-            image={sanityCareerPage.mainImage.asset.gatsbyImageData}
-            positionsListLeft={sanityCareerPage.positionsListLeft}
-            positionsListRight={sanityCareerPage.positionsListRight}
-          />
-        </div>
-        <div className="py-15 twelve:py-25">
-          {sanityCareerPage.reasonsCarousel && (
-            <ReasonsSlider
-              mainHeading={sanityCareerPage.reasonsCarousel.mainHeading}
-              slides={sanityCareerPage.reasonsCarousel.process}
-            />
-          )}
-        </div>
-      </Layout>
-    </>
+        <ImageTextListHero
+          image={sanityCareerPage.mainImage.asset.gatsbyImageData}
+          positionsListLeft={sanityCareerPage.positionsListLeft}
+          positionsListRight={sanityCareerPage.positionsListRight}
+        />
+      </Container>
+      {sanityCareerPage.reasonsCarousel && (
+        <ReasonsSlider
+          mainHeading={sanityCareerPage.reasonsCarousel.mainHeading}
+          slides={sanityCareerPage.reasonsCarousel.process}
+        />
+      )}
+    </Layout>
   );
 };
 
