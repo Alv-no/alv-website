@@ -22,7 +22,7 @@ export const SEO = ({
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description || metaDescription,
         },
         {
           name: `author`,
@@ -30,11 +30,11 @@ export const SEO = ({
         },
         {
           property: `og:title`,
-          content: metaTitle,
+          content: title || metaTitle,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description || metaDescription,
         },
         {
           property: `og:type`,

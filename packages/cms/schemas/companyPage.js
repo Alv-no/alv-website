@@ -41,16 +41,31 @@ export default {
       name: "heroHeading",
       title: "Hero Heading",
       type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "heroDescription",
       title: "Hero Description",
       type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "heroButtonText",
+      title: "Hero Button Text",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "heroButtonLink",
+      title: "Hero Button Link",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "heroImage",
       title: "Hero Image",
       type: "image",
+      validation: (Rule) => Rule.required(),
       options: {
         hotspot: true,
       },

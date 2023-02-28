@@ -1,7 +1,7 @@
+import React from "react";
 import { gql } from "@apollo/client";
 import { window } from "browser-monads";
 import { graphql } from "gatsby";
-import React from "react";
 import { Container } from "shared-components";
 import { LinkableContent } from "shared-components/src/components/linkableContent";
 import { NavyIntroImage } from "shared-components/src/components/navyIntroImage";
@@ -20,7 +20,7 @@ const Company = ({ serverData }) => {
   const { handleHeadingClick } = useScrollToHeading(window.location.pathname);
 
   const blogCarouselArticles =
-    serverData.blogCarousel?.selectedArticles || recentArticles;
+    serverData.sanityCompany?.blogCarousel?.selectedArticles || recentArticles;
 
   return (
     <Layout
@@ -33,8 +33,10 @@ const Company = ({ serverData }) => {
         <NavyIntroImage
           title={serverData.sanityCompany.heroHeading}
           description={serverData.sanityCompany.heroDescription}
-          internalLink="/videoserie"
-          buttonText="Se videoserien vår"
+          internalLink={
+            serverData.sanityCompany?.heroButtonLink || "/kontakt-oss"
+          }
+          buttonText={serverData.sanityCompany?.heroButtonText || "Kontakt oss"}
           image={serverData.sanityCompany.heroImage.asset.gatsbyImageData}
         />
       </div>
@@ -85,6 +87,8 @@ async function getCompanyDataServerSide(slug) {
           }
           heroHeading
           heroDescription
+          heroButtonText
+          heroButtonLink
           _rawBlockText: blockTextRaw
           blockHeading
           blogCarousel {

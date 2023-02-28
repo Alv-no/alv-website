@@ -17,10 +17,7 @@ const About = ({ serverData }) => {
   const data = useAboutUsQuery();
   const layoutData = useLayoutQuery();
 
-  const {
-    sanityAboutPage: { pageDescription } = { pageDescription: false },
-    sanityAboutPage: { pageTitle } = { pageTitle: false },
-  } = serverData;
+  const { pageTitle, pageDescription } = serverData;
 
   const employees = data.allSanityEmployee.edges.map((el) => el.node);
   employees.map(
