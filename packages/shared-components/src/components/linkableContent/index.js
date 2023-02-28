@@ -7,7 +7,10 @@ export const LinkableContent = ({ raw, heading, scrollTo, config }) => {
   // create menuitems from linkable heading types used in sanity rich text
   const navElements = raw
     .filter(
-      (el) => el._type === "linkableHeading" || el._type === "imageTextFlip"
+      (el) =>
+        el._type === "linkableHeading" ||
+        (el._type === "imageTextFlip" &&
+          el.linkableBlock.find((node) => node.Heading))
     )
     .map((el) => {
       let heading;
@@ -25,36 +28,36 @@ export const LinkableContent = ({ raw, heading, scrollTo, config }) => {
     });
 
   return (
-    <div className="px-5 sm:px-12 relative z-10 max-w-1200 mx-auto pt-5 sm:pt-16 w-full tracking-wider relative z-0">
-      <div className="mx-auto sm:grid sm:gap-x-4 sm:grid-cols-navlist-sm">
+    <div className="md:mt-10 md:grid grid-cols-[27%,auto] gap-y-10 max-w-[1080px] mx-auto pt-5 md:pt-0">
+      <div />
+      <div className="md:hidden mb-5 sm:mb-10 block">
         <ScrollToIdNav navElements={navElements} onClick={scrollTo} />
-        <div className="font-light block sm:mb-15 sm:h-auto -mb-10 relative overflow-hidden sm:overflow-visible">
-          <div className="cursor-text text-left z-20 relative max-w-[766px]">
-            <div className="mb-10">
-              <Title
-                align="text-left sm:text-index"
-                noDot
-                underline
-                color="text-navy"
-              >
-                {heading}
-              </Title>
-            </div>
-            <BlockContent blocks={raw} config={config} />
-          </div>
-        </div>
       </div>
+      <span>
+        <Title
+          align="text-left md:text-index relative"
+          noDot
+          underline
+          color="text-navy"
+        >
+          {heading}
+        </Title>
+      </span>
+      <div className="hidden md:block">
+        <ScrollToIdNav navElements={navElements} onClick={scrollTo} />
+      </div>
+      <BlockContent blocks={raw} config={config} />
     </div>
   );
 };
 
 const ScrollToIdNav = ({ navElements, onClick }) => (
-  <ul className="sm:sticky hide-scrollbar top-10 max-h-90vh overflow-y-scroll text-lg sm:mt-[88px] -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid sm:pr-10 mb-3">
+  <ul className="md:sticky hide-scrollbar top-10 max-h-90vh overflow-y-scroll text-lg -mt-2 list-style-none text-navynav opacity-80 tracking-wider block divide-y-2 divide-lightnavy divide-solid md:pr-10 mb-3">
     {navElements.map((el, index) => (
       <button
         key={index}
         aria-label="Scroll Link"
-        className="py-3 block sm:mr-0 mr-4 w-full focus:outline-none"
+        className="py-3 block md:mr-0 mr-4 w-full focus:outline-none"
         onClick={onClick}
         name={el.id}
       >

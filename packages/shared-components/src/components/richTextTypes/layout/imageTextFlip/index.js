@@ -8,14 +8,14 @@ const ImageTextFlip = ({ flip, image, heading, linkableBlock, config }) => {
   const flipClasses = flip ? "sm:order-first sm:pr-8" : "sm:pl-8";
 
   return (
-    <section className="grid sm:grid-cols-2">
+    <section className="grid sm:grid-cols-2 sm:mt-12">
       <img
         alt={heading}
         src={urlBuilder(image.asset, config).width(700).height(700).url()}
         className="object-cover aspect-square"
         style={{ padding: 0, margin: 0 }}
       />
-      <div className={`${flipClasses} flex flex-col font-thin`}>
+      <div className={`${flipClasses} flex flex-col font-thin sm:-mt-2px mt-4`}>
         <PortableText
           blocks={linkableBlock}
           projectId={config.SANITY_PROJECT_ID}

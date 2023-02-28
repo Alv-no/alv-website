@@ -12,7 +12,7 @@ export const NavyIntroImage = ({
   buttonText,
   white = false,
 }) => (
-  <div className="bg-navy w-full sm:pt-16 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative px-12 sm:px-20">
+  <div className="bg-navy w-full sm:pt-20 sm:h-auto h-screen flex sm:block justify-center items-center flex-col relative px-12 sm:px-20">
     <div
       className="max-w-[1280px] mx-auto twelve:grid relative"
       style={{ gridTemplateColumns: "60% auto" }}
@@ -27,7 +27,7 @@ export const NavyIntroImage = ({
             {title}
           </span>
         </Title>
-        <div className="sm:h-8 h-4" />
+        <div className="h-4" />
         <div className="mb-10 flex twelve:block justify-center">
           <Description align="center twelve:text-left text-lg">
             {description}

@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { window } from "browser-monads";
 import { graphql } from "gatsby";
 import React from "react";
+import { Container } from "shared-components";
 import { LinkableContent } from "shared-components/src/components/linkableContent";
 import { NavyIntroImage } from "shared-components/src/components/navyIntroImage";
 import { BlogCarousel } from "../../components/blogCarousel";
@@ -37,7 +38,7 @@ const Company = ({ serverData }) => {
           image={serverData.sanityCompany.heroImage.asset.gatsbyImageData}
         />
       </div>
-      <div className="w-full bg-white tracking-wider z-10 relative">
+      <Container maxWidth={1280} removePaddingMobile="top">
         <LinkableContent
           heroImage={serverData.sanityCompany.heroImage.asset.gatsbyImageData}
           raw={serverData.sanityCompany._rawBlockText}
@@ -45,9 +46,9 @@ const Company = ({ serverData }) => {
           scrollTo={handleHeadingClick}
           config={config}
         />
-        <div className="max-w-1440 mx-auto sm:my-15 mt-10">
-          <BlogCarousel articles={blogCarouselArticles} />
-        </div>
+      </Container>
+      <div className="max-w-1440 mx-auto sm:my-15 mt-10">
+        <BlogCarousel articles={blogCarouselArticles} />
       </div>
     </Layout>
   );
