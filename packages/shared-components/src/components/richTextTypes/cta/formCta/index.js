@@ -5,9 +5,12 @@ import * as styles from "./FormCta.module.css";
 
 const FormCta = ({ identifier, eyebrow, heading, whiteOnBlue }) => {
   const themeClass = whiteOnBlue ? styles.whiteOnBlue : styles.blueOnWhite;
+  const paddingClass = heading.trim()
+    ? styles.verticalPadding
+    : styles.noVerticalPadding;
 
   return (
-    <section className={`${styles.container} ${themeClass}`}>
+    <section className={`${styles.container} ${paddingClass} ${themeClass}`}>
       <span className={styles.eyebrow}>{eyebrow}</span>
       <h3 className={styles.heading}>{heading}</h3>
       <Form identifier={identifier} />

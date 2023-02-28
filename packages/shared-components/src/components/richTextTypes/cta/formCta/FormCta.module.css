@@ -1,7 +1,18 @@
 .container {
-  margin: 0 auto;
-  padding: 30px;
+  margin: 20px auto 0;
+  padding-left: 30px;
+  padding-right: 30px;
   border-left: 6px solid #061838;
+}
+
+.verticalPadding {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.noVerticalPadding {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .blueOnWhite {

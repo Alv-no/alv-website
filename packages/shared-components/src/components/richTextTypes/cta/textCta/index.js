@@ -48,14 +48,16 @@ const TextCta = ({
           <h2 className={styles.heading}>{heading}</h2>
         </div>
         {buttonText && (
-          <a
-            href={href}
-            className={`inline-block px-5 rounded-full font-semibold text-base uppercase tracking-wider py-1 md:mt-0 mt-3 border border-2 whitespace-nowrap ${
-              whiteOnBlue ? "border-white" : "border-navy"
-            } `}
-          >
-            {buttonText}
-          </a>
+          <div>
+            <a
+              href={href}
+              className={`inline-block px-5 rounded-full font-semibold text-base uppercase tracking-wider py-1 md:mt-0 mt-3 border border-2 whitespace-nowrap ${
+                whiteOnBlue ? "border-white" : "border-navy"
+              }`}
+            >
+              {buttonText}
+            </a>
+          </div>
         )}
       </section>
     </ConditionalWrapper>

@@ -47,13 +47,14 @@ const Service = ({ data }) => {
           buttonText="kontakt oss"
         />
       </div>
-      <LinkableContent
-        raw={data.sanityServices._rawAboutBlock}
-        heading={data.sanityServices.aboutSection}
-        scrollTo={handleHeadingClick}
-        config={configuration}
-      />
-
+      <Container maxWidth={1280} removePaddingMobile="top">
+        <LinkableContent
+          raw={data.sanityServices._rawAboutBlock}
+          heading={data.sanityServices.aboutSection}
+          scrollTo={handleHeadingClick}
+          config={configuration}
+        />
+      </Container>
       <Container theme="gray">
         <RolesList
           image={data.rolesImg.childImageSharp.gatsbyImageData}
