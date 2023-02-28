@@ -63,7 +63,6 @@ app.post("/send", (req, res) => {
         res.sendStatus(500);
       });
   });
-  res.sendStatus(200);
 });
 
 // job application forms
