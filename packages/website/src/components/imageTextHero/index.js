@@ -47,7 +47,7 @@ export const ImageTextListHero = ({
               Åpne stillinger
             </Title>
           </div>
-          <div className="text-white hidden twelve:flex grid sm:grid-cols-2 mt-5 w-full mb-8">
+          <div className="text-white hidden twelve:flex grid sm:grid-cols-2 mt-5 w-full mb-8 relative">
             <div className="divide-y-2 divide-white divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
               {positionsListLeft?.map((el) => (
                 <Roles link={el.slug.current}>{el.pageTitle}</Roles>

@@ -11,24 +11,19 @@ const useContactForm = () => {
     if (sent) return false;
 
     const form = e.target;
-    const data = new URLSearchParams(new FormData(form).entries());
 
-    const xhr = new XMLHttpRequest();
-    xhr.open(form.method, form.action, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        setSent(true);
-      } else if (
-        this.readyState === XMLHttpRequest.DONE &&
-        this.status === 500
-      ) {
+    const data = new FormData(form);
+
+    fetch(mailApiUrl, {
+      method: "POST",
+      body: data,
+    })
+      .then((response) =>
+        response.status === 200 ? setSent(true) : setError(true)
+      )
+      .catch(() => {
         setError(true);
-      }
-    };
-
-    xhr.send(data);
-    return false;
+      });
   };
 
   return { submitForm, sent, error, mailApiUrl };
