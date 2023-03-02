@@ -155,6 +155,19 @@ export default {
         },
       ],
     },
+    {
+      name: "aboutButtonText",
+      title: "About Button Text",
+      type: "string",
+      options: {
+        maxLength: 60,
+      },
+    },
+    {
+      name: "aboutButtonLink",
+      title: "About Button Link",
+      type: "string",
+    },
     // Section 1
     {
       name: "flipSection1Image",
