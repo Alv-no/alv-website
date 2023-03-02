@@ -16,7 +16,7 @@ import Layout from "../components/layout";
 import config from "../config";
 import { useBlogQueryRecent } from "../hooks/useBlogQueryRecent";
 import { useLayoutQuery } from "../hooks/useLayoutQuery";
-import { brandsQuery } from "../queryFragments";
+import { aboutTextQuery, brandsQuery } from "../queryFragments";
 import { client } from "../server-side/client";
 import { createGatsbyImages } from "../server-side/imageCreator";
 
@@ -72,9 +72,11 @@ const Index = ({ data, serverData }) => {
           removePaddingMobile="bottom"
         >
           <WhoWeAre
-            title="Hvem er vi"
+            title={serverData.aboutTitle}
+            blocks={serverData.aboutTextRaw}
+            buttonLink={serverData.aboutButtonLink}
+            buttonText={serverData.aboutButtonText}
             whiteText
-            blocks={landingPage._rawAboutText}
             config={config}
           />
         </Container>
@@ -130,6 +132,7 @@ async function fetchServerSideData() {
       {
         LandingPage(id: "landingPage") {
           ${brandsQuery}
+          ${aboutTextQuery}
           _id
           introductionRaw
           introductionSubheaderRaw
@@ -249,8 +252,6 @@ export const query = graphql`
       flipSection3Text
       flipSection3TextOverImage
       flipSection3Title
-      _rawAboutText
-      aboutTitle
     }
   }
 `;

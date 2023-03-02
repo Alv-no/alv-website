@@ -17,3 +17,10 @@ export const brandsQuery = `brands {
       }
     }
   }`;
+
+export const aboutTextQuery = `
+  aboutTitle
+  aboutTextRaw
+  aboutButtonText
+  aboutButtonLink
+`;
