@@ -191,5 +191,11 @@ module.exports = {
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `alv.no`,
+      },
+    },
   ],
 };
