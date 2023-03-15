@@ -4,6 +4,7 @@ import ProductCta from "./cta/productCta";
 import TextCta from "./cta/textCta";
 import Download from "./download";
 import { ImageTextFlip, LinkableHeading } from "./layout";
+import { LinkList } from "./links";
 import MediaComponent from "./mediaComponent";
 
 export const richTextTypesSerializer = (config) => ({
@@ -26,6 +27,8 @@ export const richTextTypesSerializer = (config) => ({
     linkableHeading: (props) => (
       <LinkableHeading heading={props.node?.Heading} config={config} />
     ),
+
+    linkList: (props) => <LinkList {...props.node} />,
 
     // for backwards compatibility
     // deprecated types can be safely removed after running a sanity script that replaces the deprecated types with the new ones

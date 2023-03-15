@@ -24,3 +24,49 @@ export const aboutTextQuery = `
   aboutButtonText
   aboutButtonLink
 `;
+
+export const sectionsQuery = `
+sections {
+  ... on Multicol {
+    theme
+    eyebrow
+    title
+    bodyRaw
+    icons {
+      text
+      image {
+        asset {
+          altText
+          id: _id
+          metadata {
+            dimensions {
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+  }
+  ... on VideoList {
+    theme
+    title
+    description
+    list {
+      bodyRaw
+      video {
+        videoMp4 {
+          asset {
+            url
+          }
+        }
+        videoWebM {
+          asset {
+            url
+          }
+        }
+      }
+    }
+  }
+}
+`;
