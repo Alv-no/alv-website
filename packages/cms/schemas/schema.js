@@ -15,14 +15,19 @@ import formCta from "./formCta";
 import brands from "./brands";
 import careerPage from "./careerPage";
 import categoryPage from "./categoryPage";
+import linkList from "./linkList";
+import theme from "./theme";
 import companyPage from "./companyPage";
 import contactPage from "./contactPage";
 import cta from "./cta";
 import employee from "./employee";
+import urlWithText from "./urlWithText";
 import employeePage from "./employeePage";
+import videoAndBody from "./videoAndBody";
 import brandPackageButton from "./brandPackageButton";
 import employeeTag from "./employeeTag";
 import externalProfiles from "./externalProfiles";
+import sections from "./sections";
 import guestAuthor from "./guestAuthor";
 import headingDescButtonCta from "./headingDescButtonCta";
 import heroCta from "./heroCta";
@@ -32,6 +37,7 @@ import imageWithAlt from "./imageWithAlt";
 import landingPage from "./landingPage";
 import linkableHeading from "./linkableHeading";
 import openPositionPage from "./openPositionPage";
+import imageWithText from "./imageWithText";
 import ourServicesPage from "./ourServicesPage";
 import playlist from "./playlist";
 import playlists from "./playlists";
@@ -50,6 +56,8 @@ import videoseries from "./videoseries";
 import videoseriesPage from "./videoseriesPage";
 import youtube from "./youtube";
 import testimonialSlider from "./testimonialSlider";
+import multicol from "./sections/multicol";
+import videoList from "./sections/videoList";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -61,6 +69,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
+    sections,
     landingPage,
     videoseriesPage,
     videoseries,
@@ -72,16 +81,22 @@ export default createSchema({
     article,
     employeePage,
     blogPage,
+    videoAndBody,
     contactPage,
     aboutPage,
+    linkList,
     careerPage,
     ourServicesPage,
     articleTag,
+    theme,
     employee,
     testimonialSlider,
+    urlWithText,
     employeeTag,
     linkableHeading,
     testimonial,
+    videoList,
+    multicol,
     externalProfiles,
     redirects,
     // When added to this list, object types can be used as
@@ -100,6 +115,7 @@ export default createSchema({
     reasonsCard,
     serviceItem,
     playlists,
+    imageWithText,
     formCta,
     playlist,
     youtube,

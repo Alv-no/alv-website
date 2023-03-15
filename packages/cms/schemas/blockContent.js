@@ -87,5 +87,9 @@ export default {
       title: "Text CTA (deprecated)",
       type: "headingDescButtonCta",
     },
+    {
+      title: "Link list",
+      type: "linkList",
+    },
   ],
 };

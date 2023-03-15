@@ -22,6 +22,9 @@
     .hide-scrollbar::-webkit-scrollbar {
       display: none;
     }
+    .multicol-2 {
+      column-count: 2;
+    }
   }
 }
 

@@ -50,12 +50,12 @@ export const ImageTextListHero = ({
           <div className="text-white hidden twelve:flex grid sm:grid-cols-2 mt-5 w-full mb-8 relative">
             <div className="divide-y-2 divide-white divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
               {positionsListLeft?.map((el) => (
-                <Roles link={el.slug.current}>{el.pageTitle}</Roles>
+                <RoleLink link={el.slug.current}>{el.pageTitle}</RoleLink>
               ))}
             </div>
             <div className="divide-y-2 divide-white divide-solid h-full flex flex-col justify-end w-full flex-1">
               {positionsListRight?.map((el) => (
-                <Roles link={el.slug.current}>{el.pageTitle}</Roles>
+                <RoleLink link={el.slug.current}>{el.pageTitle}</RoleLink>
               ))}
               <Mail link="mailto: hei@alv.no">Send inn åpen søknad</Mail>
             </div>
@@ -70,12 +70,12 @@ export const ImageTextListHero = ({
       <div className="text-white  twelve:hidden grid gap-x-5 sm:grid-cols-2 mt-5 sm:mt-5 pb-10">
         <div className="border-b-2 border-divide sm:border-none divide-y-2 divide-divide mr-10 divide-solid h-full lg:pr-7 xl:pr-15 flex flex-col justify-end w-full flex-1">
           {positionsListLeft?.map((el) => (
-            <Roles link={el.slug.current}>{el.pageTitle}</Roles>
+            <RoleLink link={el.slug.current}>{el.pageTitle}</RoleLink>
           ))}
         </div>
         <div className="divide-y-2 divide-divide divide-solid h-full flex flex-col justify-end w-full flex-1 mr-10">
           {positionsListRight?.map((el) => (
-            <Roles link={el.slug.current}>{el.pageTitle}</Roles>
+            <RoleLink link={el.slug.current}>{el.pageTitle}</RoleLink>
           ))}
           <Mail link="mailto: hei@alv.no">Send inn åpen søknad</Mail>
         </div>
@@ -84,7 +84,7 @@ export const ImageTextListHero = ({
   );
 };
 
-export const Roles = ({ children, link }) => (
+export const RoleLink = ({ children, link }) => (
   <Link to={link}>
     <div
       className={`flex w-full items-center my-2 h-10 uppercase text-white font-semibold justify-between`}
@@ -94,6 +94,7 @@ export const Roles = ({ children, link }) => (
     </div>
   </Link>
 );
+
 export const Mail = ({ children, link }) => (
   <a href={link} target="_blank" rel="noreferrer">
     <div

@@ -7,6 +7,8 @@ import { ReasonsSlider } from "../components/reasonsSlider";
 import { useLayoutQuery } from "../hooks/useLayoutQuery";
 import { client } from "../server-side/client";
 import { createGatsbyImages } from "../server-side/imageCreator";
+import { sectionsQuery } from "../queryFragments";
+import Sections from "../components/sections";
 
 const WorkForAlv = ({ serverData }) => {
   const sanityCareerPage = serverData.allCareerPage[0];
@@ -31,6 +33,9 @@ const WorkForAlv = ({ serverData }) => {
           positionsListRight={sanityCareerPage.positionsListRight}
         />
       </Container>
+
+      <Sections sections={sanityCareerPage.sections} maxWidth={1280} />
+
       {sanityCareerPage.reasonsCarousel && (
         <ReasonsSlider
           mainHeading={sanityCareerPage.reasonsCarousel.mainHeading}
@@ -48,6 +53,7 @@ async function getCareerPageServerSide() {
     query: gql`
       {
         allCareerPage {
+          ${sectionsQuery}
           pageDescription
           pageTitle
           mainImage {
@@ -73,6 +79,7 @@ async function getCareerPageServerSide() {
               current
             }
           }
+
           reasonsCarousel {
             mainHeading
             process {

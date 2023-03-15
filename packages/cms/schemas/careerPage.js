@@ -42,6 +42,11 @@ export default {
       of: [{ type: "reference", to: { type: "openPostionPage" } }],
     },
     {
+      name: "sections",
+      title: "Sections",
+      type: "sections",
+    },
+    {
       name: "reasonsCarousel",
       title: "Reasons Carousel",
       type: "reasonsCarousel",
