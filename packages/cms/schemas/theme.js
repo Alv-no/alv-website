@@ -8,6 +8,7 @@ export default {
     list: [
       { title: "White", value: "white" },
       { title: "Gray", value: "gray" },
+      { title: "Navy", value: "navy" },
     ],
     layout: "radio",
     direction: "horizontal",
