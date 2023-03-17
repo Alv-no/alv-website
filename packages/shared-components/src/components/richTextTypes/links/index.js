@@ -4,7 +4,7 @@ import * as Button from "shared-components/src/components/button";
 
 export const LinkList = ({ list }) => {
   return (
-    <div className="divide-y-2 divide-divide divide-solid h-full flex flex-col justify-end w-full flex-1 md:max-w-[400px]">
+    <div className="divide-y-2 divide-divide divide-solid divide-navy h-full flex flex-col justify-end w-full flex-1 md:max-w-[400px]">
       {list.map(({ link, text }, i) => (
         <LinkItem key={i} link={link}>
           {text}

@@ -68,5 +68,27 @@ sections {
       }
     }
   }
+  ... on VideoCarousel {
+    title
+    theme
+    description
+    list {
+      link
+      title
+      description
+      thumbnail {
+        asset {
+          altText
+          id: _id
+          metadata {
+            dimensions {
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+  }
 }
 `;

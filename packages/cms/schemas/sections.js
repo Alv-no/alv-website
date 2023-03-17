@@ -8,6 +8,9 @@ export default {
       type: "videoList",
     },
     {
+      type: "videoCarousel",
+    },
+    {
       type: "reasonsCarousel",
     },
   ],

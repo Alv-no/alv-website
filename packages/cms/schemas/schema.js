@@ -58,6 +58,8 @@ import youtube from "./youtube";
 import testimonialSlider from "./testimonialSlider";
 import multicol from "./sections/multicol";
 import videoList from "./sections/videoList";
+import videoCarousel from "./sections/videoCarousel";
+import videoCard from "./videoCard";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -88,6 +90,8 @@ export default createSchema({
     careerPage,
     ourServicesPage,
     articleTag,
+    videoCard,
+    videoCarousel,
     theme,
     employee,
     testimonialSlider,
