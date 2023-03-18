@@ -13,7 +13,7 @@ const VideoTemplate = ({ pageContext }) => {
 
   return (
     <Layout layoutData={layoutData} whiteIcons pageTitle={playlistName}>
-      <div className="bg-navy text-white seven:px-10 overflow-hidden min-h-screen">
+      <div className="bg-navy text-white seven:px-10 overflow-hidden min-h-screen pt-20">
         <div className="max-w-1200 mx-auto">
           <div className="lg:grid gap-y-6 gap-x-2 grid-cols-videos-sidebar">
             <div>
