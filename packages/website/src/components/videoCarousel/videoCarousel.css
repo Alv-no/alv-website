@@ -1,3 +1,19 @@
 .slick-arrow::before {
   display: none;
 }
+
+.slick-arrow.slick-prev {
+  top: unset;
+  right: 90px;
+  left: unset;
+  bottom: -60px;
+  display: block;
+  
+}
+
+.slick-arrow.slick-next {
+  top: unset;
+  right: 40px;
+  bottom: -60px;
+  display: block;
+}
