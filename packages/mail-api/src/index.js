@@ -1,18 +1,17 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const sgMail = require('@sendgrid/mail');
-const formidable = require('formidable');
-const FormData = require('form-data');
-const { readFile, createReadStream } = require('fs');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const sgMail = require("@sendgrid/mail");
+const formidable = require("formidable");
+const { readFile } = require("fs");
 
 const app = express();
 const {
   validateEmailAttachment,
   generateVirusEmail,
-  fetch,
-} = require('./utils');
+  scanFileForMaliciousContent,
+} = require("./utils");
 
 const port = 80;
 
@@ -108,21 +107,24 @@ app.post("/jobApplication/send", (req, res) => {
 
     // Validate, scan and append attachments to mail object
     if (files) {
-      let virusDetected = false;
-
       const attachments = [];
 
       // Convert files to array if only one file is uploaded
       [files].length === 1 && (files = [files]);
 
+      let virusDetected = false;
+
       for (const file in files) {
-        // If virus is detected, stop processing
+        // If virus is detected in a previous iteration => stop processing remaining iterations
         if (virusDetected) {
           return;
         }
 
-        // Validate file
-        const attachmentErrors = await validateEmailAttachment(files[file]);
+        const currentFile = files[file];
+        const { filepath, newFilename, mimetype } = currentFile;
+
+        // Validate file size, mimetype and signature
+        const attachmentErrors = await validateEmailAttachment(currentFile);
 
         if (attachmentErrors) {
           errorMsg += attachmentErrors;
@@ -130,40 +132,26 @@ app.post("/jobApplication/send", (req, res) => {
         }
 
         // scan file with clamav
-        const formData = new FormData();
-        formData.append('testfile', createReadStream(files[file].filepath));
+        const fileScanResults = await scanFileForMaliciousContent(filepath);
 
-        const virusScanResponse = await fetch(
-          'http://clamav-api-service.clamav.svc.cluster.local/upload_file',
-          {
-            method: 'POST',
-            body: formData,
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => data.message)
-          .catch((err) => console.error(err));
+        if (fileScanResults.isMalicious) {
+          msg = generateVirusEmail(fileScanResults.threat, email);
 
-        // If virus is detected, send email with details to itadmin
-        if (virusScanResponse[0] === 'FOUND') {
-          msg = generateVirusEmail(virusScanResponse[1], email);
+          // stop processing attachments
           virusDetected = true;
 
           return;
         }
 
-        // log to server console
-        console.log('No virus detected.');
-
         // Upon successful validation and scan - convert file to base64 and add to attachments array
-        const base64content = await readFile(files[file].filepath, {
-          encoding: 'base64',
+        const base64content = await readFile(filepath, {
+          encoding: "base64",
         });
 
         attachments.push({
           content: base64content,
-          filename: files[file].newFilename,
-          type: files[file].mimetype,
+          filename: newFilename,
+          type: mimetype,
           disposition: "attachment",
         });
 

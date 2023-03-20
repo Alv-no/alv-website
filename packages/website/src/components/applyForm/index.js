@@ -20,9 +20,9 @@ const ApplyForm = ({ jobTitle }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setStatus('loading');
+    setStatus("loading");
 
-    const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/jobApplication/send`;
+    const mailApiUrl = `${window.location.protocol}//mail-api.alv.no/jobApplication/send`;
     const { name, email } = formInputs;
 
     const formData = new FormData();
@@ -33,7 +33,7 @@ const ApplyForm = ({ jobTitle }) => {
 
     if (files) {
       for (let i = 0; i < files.length; i++) {
-        formData.append('files', files[i]);
+        formData.append("files", files[i]);
       }
     }
 
