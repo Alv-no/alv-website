@@ -161,7 +161,16 @@ app.post("/jobApplication/send", (req, res) => {
     }
 
     if (errorMsg) {
-      console.error(errorMsg);
+      console.error(
+        `One or more errors occured: ${errorMsg} \n \n
+
+        Form data: \n
+        Sender name: ${name} \n
+        Sender email: ${email} \n
+        Subject: ${subject} \n
+        No. of attachemnts: ${files?.length || 0}
+        `
+      );
       res.status(400).send(errorMsg);
       return;
     }

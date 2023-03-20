@@ -22,7 +22,7 @@ const ApplyForm = ({ jobTitle }) => {
 
     setStatus("loading");
 
-    const mailApiUrl = `${window.location.protocol}//mail-api.alv.no/jobApplication/send`;
+    const mailApiUrl = `${window.location.protocol}//mail-api.test-alv.no/jobApplication/send`;
     const { name, email } = formInputs;
 
     const formData = new FormData();

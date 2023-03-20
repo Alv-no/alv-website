@@ -81,8 +81,8 @@ const scanFileForMaliciousContent = async (filepath) => {
 };
 
 module.exports = {
-  validateEmailAttachment,
   fetch,
+  validateEmailAttachment,
   generateVirusEmail,
   scanFileForMaliciousContent,
 };
