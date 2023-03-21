@@ -1,6 +1,14 @@
 const { readFile } = require("fs").promises;
 const { createReadStream } = require("fs");
 const FormData = require("form-data");
+const dotenv = require("dotenv");
+const sgMail = require("@sendgrid/mail");
+
+dotenv.config({
+  path: `.env`,
+});
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const allowedDocTypes = [
   {
@@ -80,9 +88,90 @@ const scanFileForMaliciousContent = async (filepath) => {
   return { isMalicious, threat };
 };
 
+const generateMailbody = (fields) => {
+  let mailbody = "";
+
+  for (const key in fields) {
+    if (key !== "subject") {
+      mailbody += "\n" + key + ": " + fields[key];
+    }
+  }
+
+  return mailbody;
+};
+
+const generateAttachmentFromFiles = async (files) => {
+  const attachments = [];
+
+  for (const file in files) {
+    const currentFile = files[file];
+    const { filepath, newFilename, mimetype } = currentFile;
+
+    // Upon successful validation and scan - convert file to base64 and add to attachments array
+    const base64content = await readFile(filepath, "base64");
+
+    attachments.push({
+      content: base64content,
+      filename: newFilename,
+      type: mimetype,
+      disposition: "attachment",
+    });
+
+    // Add attachments to mail object
+  }
+
+  return attachments;
+};
+
+const validateSingleFile = async (file) => {
+  const formatErrors = await validateEmailAttachment(file);
+
+  if (formatErrors) {
+    return { threat: null, formatErrors };
+  }
+
+  const fileScanResults = await scanFileForMaliciousContent(file.filepath);
+
+  if (fileScanResults.isMalicious) {
+    return { threat: fileScanResults.threat, formatErrors: null };
+  }
+
+  return { threat: null, formatErrors: null };
+};
+
+const validateFiles = async (files) => {
+  for (const file in files) {
+    const currentFile = files[file];
+    const validationResult = await validateSingleFile(currentFile);
+
+    const { threat, formatErrors } = validationResult;
+
+    if (threat || formatErrors) {
+      return validationResult;
+    }
+  }
+
+  return { threat: null, formatErrors: null };
+};
+
+const sendSgMail = async (mail) => {
+  sgMail
+    .send(mail)
+    .then(() => {
+      console.log("Virus email sent to " + process.env.MAILTO);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 module.exports = {
   fetch,
   validateEmailAttachment,
   generateVirusEmail,
+  generateAttachmentFromFiles,
   scanFileForMaliciousContent,
+  generateMailbody,
+  validateFiles,
+  sendSgMail,
 };
