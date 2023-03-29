@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BlockContent } from "shared-components";
 
 const VideoList = ({ title, description, list, config }) => {
@@ -28,7 +28,12 @@ const VideoList = ({ title, description, list, config }) => {
 };
 
 const Video = ({ videoWebM, videoMp4 }) => {
-  const isIOS = navigator.userAgent.match(/(iPhone|iPad)/);
+  const [isIOS, setIOS] = useState(false);
+
+  useEffect(() => {
+    setIOS(navigator.userAgent.match(/(iPhone|iPad)/));
+  }, []);
+
   const videoFormat = isIOS ? "video/mp4" : "video/webm";
   const videoPath = isIOS ? videoMp4.asset.url : videoWebM.asset.url;
 
