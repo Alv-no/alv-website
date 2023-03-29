@@ -26,14 +26,18 @@ export const ImageTextListHero = ({
               Jobbe i alv
             </Title>
             <p className="mb-8 text-xl">
-              Vi bygger Norges mest attraktive konsulentselskap. For å lykkes
-              med dette, trenger vi flere medarbeidere. Vi trenger all
-              kompetanse relatert til systemutvikling.
+              Vi bygger Norges mest attraktive konsulentselskap. Alt vi gjør i
+              Alv bygger opp under visjonen vår. Vi ønsker å være et sted du har
+              muligheten til å utvikle deg raskere enn du har andre steder.
             </p>
-            <p className="text-xl relative">
-              Det vil si blant annet systemutviklere, testledere, teknisk
-              testere, funksjonelle arkitekter og prosjektledere. Hvis du tror
-              du kan være rett for Alv, håper vi du sender oss en CV og søknad.
+            <p className=" mb-8 text-xl relative">
+              Engasjement og utvikling står i sentrum av kulturen vår, derfor
+              har du i Alv en unik mulighet til medbestemmelse og påvirkning på
+              områder som interesserer deg.
+            </p>
+            <p className="mb-8 text-xl">
+              Å være konsulent betyr mer enn bare timeføring. Bli bedre kjent
+              med oss under.
             </p>
           </div>
 

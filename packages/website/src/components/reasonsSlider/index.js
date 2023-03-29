@@ -48,7 +48,7 @@ export const ArticleSlide = ({
           </div>
           <h4 className="text-2xl font-semibold w-100">{heading}</h4>
         </div>
-        <div className="h-40 my-10">
+        <div className="h-40 my-10 font-light">
           <p className="mt-8 text-lg leading-[32px]">{description}</p>
         </div>
       </div>

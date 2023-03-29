@@ -30,7 +30,7 @@ const VideoCarousel = ({ title, description, list }) => {
     <div className="video-carousel-container -mx-5 pb-16">
       <div className="text-center pb-20 lg:w-4/6 mx-auto">
         <h2 className="text-[32px] leading-[40px] font-bold mb-5">{title}</h2>
-        <p className="text-lg leading-[30px]">{description}</p>
+        <p className="text-lg font-light leading-[30px]">{description}</p>
       </div>
 
       <Slider
@@ -74,7 +74,7 @@ const VideoCard = ({ title, description, thumbnail, link }) => (
         />
       </div>
       <h3 className="text-xl mt-5 font-bold leading-[26px]">{title}</h3>
-      <p className="text-[20px]  mt-2">{description}</p>
+      <p className="text-[20px] font-light mt-2">{description}</p>
     </div>
   </Link>
 );
