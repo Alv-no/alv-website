@@ -13729,14 +13729,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async@npm:^3.2.1":
-  version: 3.2.2
-  resolution: "async@npm:3.2.2"
-  checksum: 90712c98df0c6d0ef0190f8bee9797bf6c7035a1317c9a036b80306a8d2246396b3ee356b4540ff349e29e625fafa25d4f04e11b6ac1c5f6b4c74c803e641137
-  languageName: node
-  linkType: hard
-
-"async@npm:^3.2.3":
+"async@npm:^3.2.3, async@npm:^3.2.4":
   version: 3.2.4
   resolution: "async@npm:3.2.4"
   checksum: 43d07459a4e1d09b84a20772414aa684ff4de085cbcaec6eea3c7a8f8150e8c62aa6cd4e699fe8ee93c3a5b324e777d34642531875a0817a35697522c1b02e89
@@ -22580,6 +22573,29 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-core-utils@npm:^3.25.0":
+  version: 3.25.0
+  resolution: "gatsby-core-utils@npm:3.25.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    ci-info: 2.0.0
+    configstore: ^5.0.1
+    fastq: ^1.13.0
+    file-type: ^16.5.3
+    fs-extra: ^10.1.0
+    got: ^11.8.5
+    import-from: ^4.0.0
+    lmdb: 2.5.3
+    lock: ^1.1.0
+    node-object-hash: ^2.3.10
+    proper-lockfile: ^4.1.2
+    resolve-from: ^5.0.0
+    tmp: ^0.2.1
+    xdg-basedir: ^4.0.0
+  checksum: d67e1b56b32762f9f416bc0e3df8841247b735ac64ceb192ebbf50a7715bfe383586871a11031d2d0d986954df5ffd0e78b573e431e7c0557b9066d9cc353e4b
+  languageName: node
+  linkType: hard
+
 "gatsby-graphiql-explorer@npm:^2.1.0":
   version: 2.1.0
   resolution: "gatsby-graphiql-explorer@npm:2.1.0"
@@ -22884,31 +22900,25 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sharp@npm:^4.1.3":
-  version: 4.1.3
-  resolution: "gatsby-plugin-sharp@npm:4.1.3"
+"gatsby-plugin-sharp@npm:^4.25.1":
+  version: 4.25.1
+  resolution: "gatsby-plugin-sharp@npm:4.25.1"
   dependencies:
     "@babel/runtime": ^7.15.4
-    async: ^3.2.1
+    async: ^3.2.4
     bluebird: ^3.7.2
+    debug: ^4.3.4
     filenamify: ^4.3.0
-    fs-extra: ^10.0.0
-    gatsby-core-utils: ^3.1.2
-    gatsby-plugin-utils: ^2.1.1
-    gatsby-telemetry: ^3.1.2
-    got: ^11.8.2
+    fs-extra: ^10.1.0
+    gatsby-core-utils: ^3.25.0
+    gatsby-plugin-utils: ^3.19.0
     lodash: ^4.17.21
-    mini-svg-data-uri: ^1.3.3
-    potrace: ^2.1.8
-    probe-image-size: ^6.0.0
-    progress: ^2.0.3
-    semver: ^7.3.5
-    sharp: ^0.29.1
-    svgo: 1.3.2
-    uuid: 3.4.0
+    probe-image-size: ^7.2.3
+    semver: ^7.3.7
+    sharp: ^0.30.7
   peerDependencies:
     gatsby: ^4.0.0-next
-  checksum: 6b2a94d6e08fa06fddcaf12ceb7e929add46a7fefaa0865ad3c44a3adf04ae2962c6e886d4c133d3d41068a6d97469bf5db6c439d5e406a9a7da708e1253cef7
+  checksum: 09956cfeb1e2a714539a949a0e77cf7a756572fcaf3d2ee80979a2221d34f0e6d36282ca9f6fa3f191a2dabbd92b8eb4e617601e7e7843f8a3297993a472ad43
   languageName: node
   linkType: hard
 
@@ -22977,6 +22987,26 @@ fsevents@^1.2.7:
     gatsby: ^4.0.0-next
     graphql: ^15.0.0
   checksum: ebba95158055003a0506a5264bb1b48e9c788da13a757c0d5775b54f9a3d9e362a654d1fe7f30a5b7ba5560a19248b17439f972e0da6b90b7615e8457cb54fd1
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-utils@npm:^3.19.0":
+  version: 3.19.0
+  resolution: "gatsby-plugin-utils@npm:3.19.0"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    fastq: ^1.13.0
+    fs-extra: ^10.1.0
+    gatsby-core-utils: ^3.25.0
+    gatsby-sharp: ^0.19.0
+    graphql-compose: ^9.0.7
+    import-from: ^4.0.0
+    joi: ^17.4.2
+    mime: ^3.0.0
+  peerDependencies:
+    gatsby: ^4.0.0-next
+    graphql: ^15.0.0
+  checksum: a8dff918705b79f86ce0e48d672b7feca5cd9e0c3552e55003134a631daa22485571ed950831ef9d0532074ec8dbf1387b969ce978904d7fa55831f8fa557b08
   languageName: node
   linkType: hard
 
@@ -23078,6 +23108,16 @@ fsevents@^1.2.7:
     "@types/sharp": ^0.30.5
     sharp: ^0.30.7
   checksum: 9333008ea3ce13c10529d4ce4448d18d1f98466d469d146c65a8e8aeff2404be7a34e88345b6e900b603501dd164c0cd2ef291727dbee60b13f4f9723a947433
+  languageName: node
+  linkType: hard
+
+"gatsby-sharp@npm:^0.19.0":
+  version: 0.19.0
+  resolution: "gatsby-sharp@npm:0.19.0"
+  dependencies:
+    "@types/sharp": ^0.30.5
+    sharp: ^0.30.7
+  checksum: 1d213c0c705504e0591352c7386e0d2bf512523b123f27edb354d94e4b1ed559a617c36882f159634573ba776f9ec4091aab4afa5722a334726c19768d0387e5
   languageName: node
   linkType: hard
 
@@ -30941,15 +30981,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mini-svg-data-uri@npm:^1.3.3":
-  version: 1.4.3
-  resolution: "mini-svg-data-uri@npm:1.4.3"
-  bin:
-    mini-svg-data-uri: cli.js
-  checksum: bd1789c34907a36ae9157897b7c7f6ad700e71c8cb6d725bb2810ce6211abcaa3717333ca17408f6f8b2a44055e571cd5b78d478688e1864513cb7f8e023ae3f
-  languageName: node
-  linkType: hard
-
 "mini-svg-data-uri@npm:^1.4.4":
   version: 1.4.4
   resolution: "mini-svg-data-uri@npm:1.4.4"
@@ -35852,6 +35883,17 @@ fsevents@^1.2.7:
     needle: ^2.5.2
     stream-parser: ~0.3.1
   checksum: 5fb44cf831b0b925b6eae58144761c6118b76c62e5daf33a35721fe140ca1a4f659e8f7195e13261b4c97ad827f1f765a3dd805d424ddfdef00d8c7737834f6e
+  languageName: node
+  linkType: hard
+
+"probe-image-size@npm:^7.2.3":
+  version: 7.2.3
+  resolution: "probe-image-size@npm:7.2.3"
+  dependencies:
+    lodash.merge: ^4.6.2
+    needle: ^2.5.2
+    stream-parser: ~0.3.1
+  checksum: 1a5eeb8f5cb979172144a5d7a017c70fcd664ccc8af9ad3a803903ee81864abea4036adae4fc6e66e9ae21bd3ce0febefaf1f32e65a77ff226b2eb61e9e4978c
   languageName: node
   linkType: hard
 
@@ -40939,7 +40981,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"svgo@npm:1.3.2, svgo@npm:^1.0.0, svgo@npm:^1.2.2":
+"svgo@npm:^1.0.0, svgo@npm:^1.2.2":
   version: 1.3.2
   resolution: "svgo@npm:1.3.2"
   dependencies:
@@ -43882,7 +43924,7 @@ typescript@^4.0.5:
     gatsby-plugin-postcss: ^5.1.0
     gatsby-plugin-react-helmet: ^5.1.0
     gatsby-plugin-robots-txt: ^1.7.0
-    gatsby-plugin-sharp: ^4.1.3
+    gatsby-plugin-sharp: ^4.25.1
     gatsby-plugin-sitemap: ^5.16.0
     gatsby-source-filesystem: ^4.1.2
     gatsby-source-sanity: ^7.1.0
@@ -43948,7 +43990,7 @@ typescript@^4.0.5:
     gatsby-plugin-postcss: ^5.1.0
     gatsby-plugin-react-helmet: ^5.1.0
     gatsby-plugin-robots-txt: ^1.7.0
-    gatsby-plugin-sharp: ^4.1.3
+    gatsby-plugin-sharp: ^4.25.1
     gatsby-plugin-sitemap: ^5.16.0
     gatsby-plugin-webpack-bundle-analyzer: ^1.0.5
     gatsby-source-filesystem: ^4.1.2
