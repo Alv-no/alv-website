@@ -13,7 +13,12 @@
     "ignore": [
       "./packages/*/public/*",
       "./packages/*/.cache/*",
-      "./packages/*/dist/*"
+      "./packages/*/.next/*",
+      "./packages/*/dist/*",
+      "./packages/*/build/*",
+      "./packages/*/.docusaurus/*",
+      "./packages/keycloak/*",
+      "*.json"
     ]
   },
   "javascript": {
