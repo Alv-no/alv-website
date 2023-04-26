@@ -122,12 +122,17 @@ function commentPullRequest() {
     --data "{\"body\": \"💻 $1\"}"
 }
 
-function undeployServices() {
+function getAksCredentials() {
+  # Retrieve the access credentials for your cluster and automatically configure kubectl
   az aks get-credentials \
     --subscription "$SUBSCRIPTION" \
     --resource-group "$RESOURCE_GROUP_NAME" \
     --name "$KUBERNETES_CLUSTER_NAME"
 
+  kubelogin convert-kubeconfig -l azurecli
+}
+
+function undeployServices() {
   CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"
 
   helm uninstall "website$CHART_NAME_SUFFIX" \
@@ -148,14 +153,6 @@ function deployServices() {
   fi
 
   helm pull "oci://$CONTAINER_REGISTRY/helm/chart" --version v1 --untar
-
-  # Retrieve the access credentials for your cluster and automatically configure kubectl
-  az aks get-credentials \
-    --subscription "$SUBSCRIPTION" \
-    --resource-group "$RESOURCE_GROUP_NAME" \
-    --name "$KUBERNETES_CLUSTER_NAME"
-
-  kubelogin convert-kubeconfig -l azurecli
 
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "helm website"
@@ -234,10 +231,12 @@ if [ "deploy" = "$1" ]; then
   az acr login --name $CONTAINER_REGISTRY_NAME
   buildServices
   pushServices
+  getAksCredentials
   deployServices
 fi
 
 if [ "undeploy" = "$1" ]; then
   getSecrets
+  getAksCredentials
   undeployServices
 fi
