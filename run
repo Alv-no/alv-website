@@ -155,6 +155,8 @@ function deployServices() {
     --resource-group "$RESOURCE_GROUP_NAME" \
     --name "$KUBERNETES_CLUSTER_NAME"
 
+  kubelogin convert-kubeconfig -l azurecli
+
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     echo "helm website"
 
