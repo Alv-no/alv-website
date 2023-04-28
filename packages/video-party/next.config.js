@@ -2,8 +2,18 @@
 const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
 const withVanillaExtract = createVanillaExtractPlugin();
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
+  reactStrictMode: true,
+  experimental: {
+    // this includes files from the monorepo base two directories up
+    outputFileTracingRoot: path.join(__dirname, "../../"),
+  },
+
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")

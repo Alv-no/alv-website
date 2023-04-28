@@ -1,27 +1,10 @@
-FROM node:alpine AS builder
-RUN apk add --no-cache libc6-compat
-RUN apk update
+FROM node:16 AS builder
 # Set working directory
 WORKDIR /app
 RUN yarn global add turbo
 COPY . .
-RUN turbo prune --scope=video-party --docker
 
-# Add lockfile and package.json's of isolated subworkspace
-FROM node:alpine AS installer
-RUN apk add --no-cache libc6-compat
-RUN apk update
-WORKDIR /app
-
-# First install the dependencies (as they change less often)
-COPY .gitignore .gitignore
-COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/yarn.lock ./yarn.lock
-RUN yarn install
-
-# Build the project
-COPY --from=builder /app/out/full/ .
-COPY turbo.json turbo.json
+RUN yarn
 RUN yarn turbo run build --filter=video-party
 
 FROM node:alpine AS runner
@@ -32,12 +15,14 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
-COPY --from=installer /app/packages/video-party/next.config.js .
-COPY --from=installer /app/packages/video-party/package.json .
+COPY --from=builder /app/packages/video-party/next.config.js .
+COPY --from=builder  /app/packages/video-party/package.json .
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=installer --chown=nextjs:nodejs /app/packages/video-party/.next/standalone ./
-COPY --from=installer --chown=nextjs:nodejs /app/packages/video-party/.next/static ./packages/frontend/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/packages/video-party/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/packages/video-party/.next/static ./packages/video-party/.next/static
 
-CMD node ./packages/video-party/server.js
+CMD PORT=80 node ./packages/video-party/server.js
+
+EXPOSE 80

@@ -1,1 +1,10 @@
 .next/
+node_modules/
+packages/website/public/
+packages/website/node_modules/
+packages/website/storybook-static
+packages/website/.cache/
+packages/cms/dist/
+packages/cms/node_modules/
+packages/video-party/.next/
+packages/video-party/node_modules/

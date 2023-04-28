@@ -7,13 +7,14 @@ import { Command } from "cmdk";
 
 const Thumbnail = ({ videoID, onClick }) => {
   return (
-    <img
-      width={500}
-      height={300}
-      src={`https://img.youtube.com/vi/${videoID}/0.jpg`}
-      onClick={onClick}
-      alt="Next youtube video"
-    />
+    <div className="thumbnail">
+      <img
+        height="100%"
+        src={`https://img.youtube.com/vi/${videoID}/0.jpg`}
+        onClick={onClick}
+        alt="Next youtube video"
+      />
+    </div>
   );
 };
 
@@ -61,24 +62,33 @@ const Home = ({ data }) => {
       </CMDK>
 
       <nav>
-        <div>
-          <h1>{title}</h1>
-          <p>
-            {" "}
-            Publisert{" "}
-            {date.toLocaleDateString("no-NO", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}{" "}
-          </p>
-        </div>
-        <White />
-        <h3>
-          {" "}
-          Video {video} of {total}{" "}
-        </h3>
+        <section>
+          <White />
+          <div className="title-section">
+            <span>
+              {" "}
+              Episode: {video} / {total}{" "}
+            </span>
+            <span className="title">{title}</span>
+            <span>
+              Publisert:{" "}
+              {date.toLocaleDateString("no-NO", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}{" "}
+            </span>
+          </div>
+        </section>
+        <section>
+          <div className="next">Neste episode</div>
+          <Thumbnail
+            videoID={data.items[video + 1].snippet.resourceId.videoId}
+            onClick={next}
+          />
+        </section>
       </nav>
+
       <YouTube
         className="yt"
         videoId={resourceId.videoId || "w41C6nB_pYM"}
@@ -92,16 +102,6 @@ const Home = ({ data }) => {
         }}
         onEnd={onEnd}
       />
-      <footer>
-        <div></div>
-        <div>
-          <h4>Next up</h4>
-          <Thumbnail
-            videoID={data.items[video + 1].snippet.resourceId.videoId}
-            onClick={next}
-          />
-        </div>
-      </footer>
     </div>
   );
 };
