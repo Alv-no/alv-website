@@ -90,6 +90,15 @@ function buildServices() {
       --tag "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH" \
       --no-cache
   fi
+
+  if [[ "video-party" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "building video party"
+    echo "YT_API=$YT_API" >>packages/video-party/.env
+    docker build . \
+      --file packages/video-party/Dockerfile \
+      --tag "$CONTAINER_REGISTRY/video-party:$SHORT_HASH" \
+      --no-cache
+  fi
 }
 
 function pushServices() {
@@ -111,6 +120,11 @@ function pushServices() {
   if [[ "mail-api" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" && -n "$EXISTING_HASH" ]]; then
     echo "pushing mail api"
     docker push "$CONTAINER_REGISTRY/mail-api:$SHORT_HASH"
+  fi
+
+  if [[ "video-party" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "pushing video party"
+    docker push "$CONTAINER_REGISTRY/video-party:$SHORT_HASH"
   fi
 }
 
@@ -224,6 +238,19 @@ function deployServices() {
     sleep 20
     curl "https://mail-api-alvb.$ALVB_HOSTNAME"
   fi
+
+  if [[ "video-party" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
+    echo "helm video-party"
+    helm upgrade video-party ./chart \
+      --install \
+      --set image.repository="$CONTAINER_REGISTRY/video-party" \
+      --set image.tag="$SHORT_HASH" \
+      --set "hosts={video-party.$ALV_HOSTNAME}" \
+      --namespace "alv-no"
+    sleep 20
+    curl "https://video-party.$ALV_HOSTNAME"
+  fi
+
 }
 
 if [ "deploy" = "$1" ]; then
