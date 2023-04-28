@@ -1,22 +1,12 @@
 trigger:
-  - master
+  branches:
+    include:
+      - master
 
+  paths:
+    include:
+      - packages/video-party
 pr: none
-
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers?view=azure-devops&tabs=yaml#cron-syntax
-schedules:
-- cron: "30 10 * * 2"
-  displayName: Thusdays at 1030
-  branches:
-    include:
-    - master
-  always: true
-- cron: "0 16 * * 4"
-  displayName: Thursday at 1600
-  branches:
-    include:
-    - master
-  always: true
 
 pool:
   vmImage: ubuntu-20.04
@@ -40,7 +30,7 @@ stages:
                 - template: installDependencies.yaml
 
                 - task: Bash@3
-                  displayName: ./run deploy prod website $BUILD_BUILDID
+                  displayName: ./run deploy prod video-party $BUILD_BUILDID
                   env:
                     AZURE_SERVICE_PRINCIPAL_USERNAME: $(azure-service-principal-username)
                     AZURE_SERVICE_PRINCIPAL_PASSWORD: $(azure-service-principal-password)
@@ -62,7 +52,4 @@ stages:
                         --password $AZURE_SERVICE_PRINCIPAL_PASSWORD
 
                       # Run scripts to build for prod environment
-                      ./run deploy prod website $BUILD_BUILDID
-                      ./run deploy prod website-alvb $BUILD_BUILDID
-                      ./run deploy prod mail-api $BUILD_BUILDID
-                      ./run deploy prod mail-api-alvb $BUILD_BUILDID
+                      ./run deploy prod video-party $BUILD_BUILDID
