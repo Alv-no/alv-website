@@ -15,8 +15,8 @@ COPY --from=builder  /app/packages/video-party/package.json .
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/packages/video-party/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/packages/video-party/.next/static ./packages/video-party/.next/static
+COPY --from=builder --chown=nodejs:nodejs /app/packages/video-party/.next/standalone ./
+COPY --from=builder --chown=nodejs:nodejs /app/packages/video-party/.next/static ./packages/video-party/.next/static
 
 CMD PORT=80 node ./packages/video-party/server.js
 
