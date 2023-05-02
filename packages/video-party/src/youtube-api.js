@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 /*
 conf: {
   id,
@@ -44,6 +42,26 @@ export const playlistItems = async (key, conf, part = "snippet") => {
     .filter((value) => value !== null)
     .join("&");
 
-  return fetch(`${url}?${urlParams}`);
-  // TODO: fetch all videos, not just the first page
+  const res = await fetch(`${url}?${urlParams}`);
+  const json = await res.json();
+  return json;
+};
+
+// One api call can only fetch 50 videoes at a time
+// This functions loops over it calling it as many times as needed until it gets the whole playlist
+export const playlistItemsFull = async (key, conf, part = "snippet") => {
+  let firstBatch = await playlistItems(key, conf, part);
+  let currentBatch = firstBatch;
+
+  while (currentBatch.nextPageToken) {
+    const { nextPageToken } = currentBatch;
+    currentBatch = await playlistItems(
+      key,
+      { pageToken: nextPageToken, ...conf },
+      part
+    );
+    firstBatch.items = [...firstBatch.items, ...currentBatch.items];
+  }
+
+  return firstBatch;
 };

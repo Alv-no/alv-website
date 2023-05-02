@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { playlistItems } from "../youtube-api";
+import { playlistItemsFull } from "../youtube-api";
 import YouTube from "react-youtube";
 import { White } from "../logo";
 import CMDK from "../cmdk";
@@ -19,7 +19,7 @@ const Thumbnail = ({ videoID, onClick }) => {
 };
 
 const Home = ({ data }) => {
-  const [video, setVideo] = useState(3);
+  const [video, setVideo] = useState(0);
   const total = data.pageInfo.totalResults;
 
   const previous = () => {
@@ -67,7 +67,7 @@ const Home = ({ data }) => {
           <div className="title-section">
             <span>
               {" "}
-              Episode: {video} / {total}{" "}
+              Episode: {video + 1} / {total + 1}{" "}
             </span>
             <span className="title">{title}</span>
             <span>
@@ -109,11 +109,14 @@ const Home = ({ data }) => {
 export default Home;
 
 export async function getServerSideProps() {
-  const res = await playlistItems(process.env.YT_API, {
+  let data = await playlistItemsFull(process.env.YT_API, {
     playlistId: process.env.playlistId || "PL8FLf46zzxQ6Mw5QmOOs_Ttb3dA5YbUsH",
     maxResults: 50,
   });
-  const data = await res.json();
+
+  // HACK: hardcoded to remove the 3 first videos of the playlist
+  data.items = data.items.slice(3);
+  data.pageInfo.totalResults -= 3;
 
   return {
     props: {
