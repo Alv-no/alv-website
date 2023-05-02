@@ -23,6 +23,6 @@ COPY --from=builder  /app/packages/video-party/package.json .
 COPY --from=builder --chown=nextjs:nodejs /app/packages/video-party/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/packages/video-party/.next/static ./packages/video-party/.next/static
 
-CMD PORT=80 node ./packages/video-party/server.js
+CMD node ./packages/video-party/server.js
 
-EXPOSE 80
+EXPOSE 3000
