@@ -3,6 +3,10 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import ApplyForm from ".";
 
+jest.mock("shared-components", () => ({
+  generatePlausibleClass: () => "",
+}));
+
 describe("applyForm-component", () => {
   render(<ApplyForm jobTitle="Utvikler" />);
 

@@ -1,10 +1,7 @@
 import Link from "gatsby-link";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import {
-  BlogHeader,
-  MobileHeader,
-} from "shared-components/src/components/header";
+import { BlogHeader, MobileHeader } from "../header";
 import { Arrow } from "shared-components/src/components/icon";
 import { Title } from "shared-components/src/components/title";
 

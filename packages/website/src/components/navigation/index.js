@@ -1,6 +1,8 @@
 import Link from "gatsby-link";
 import React from "react";
 import { LargeLink, SubtitleLink, SocialLinks, Icon } from "shared-components";
+import { generatePlausibleClass } from "shared-components";
+import { PLAUSIBLE_NAVBAR_CLICK } from "../../plausible/plausible-events";
 
 export const Navigation = ({
   open,
@@ -100,16 +102,22 @@ const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
             parentPage="/om-oss"
             mainLinkText="Om oss"
           >
-            <SubtitleLink link="/ansatte">Ansatte</SubtitleLink>
+            <SubtitleLinkWrapper link="/ansatte">Ansatte</SubtitleLinkWrapper>
           </GenerateLinks>
           <GenerateLinks title="Mer om alv">
-            <SubtitleLink link="/jobbe-i-alv">Ledige stillinger</SubtitleLink>
-            <SubtitleLink link="/videoserie">Videoserien</SubtitleLink>
-            <SubtitleLink link="/om-oss/kunder-og-prosjekter">
+            <SubtitleLinkWrapper link="/jobbe-i-alv">
+              Ledige stillinger
+            </SubtitleLinkWrapper>
+            <SubtitleLinkWrapper link="/videoserie">
+              Videoserien
+            </SubtitleLinkWrapper>
+            <SubtitleLinkWrapper link="/om-oss/kunder-og-prosjekter">
               Kunder og prosjekter
-            </SubtitleLink>
-            <SubtitleLink link="/blogg">Blogg</SubtitleLink>
-            <SubtitleLink link="/kontakt-oss">Kontakt oss</SubtitleLink>
+            </SubtitleLinkWrapper>
+            <SubtitleLinkWrapper link="/blogg">Blogg</SubtitleLinkWrapper>
+            <SubtitleLinkWrapper link="/kontakt-oss">
+              Kontakt oss
+            </SubtitleLinkWrapper>
           </GenerateLinks>
         </div>
       </div>
@@ -130,14 +138,31 @@ const GenerateLinks = ({
     </LargeLink>
     <ul>
       {mainLinkText && (
-        <SubtitleLink link={parentPage}>{mainLinkText}</SubtitleLink>
+        <SubtitleLinkWrapper link={parentPage}>
+          {mainLinkText}
+        </SubtitleLinkWrapper>
       )}
       {linksArr?.map((link, index) => (
-        <SubtitleLink key={index} link={`${parentPage}/${link.slug.current}`}>
+        <SubtitleLinkWrapper
+          key={index}
+          link={`${parentPage}/${link.slug.current}`}
+        >
           {link.heroHeading}
-        </SubtitleLink>
+        </SubtitleLinkWrapper>
       ))}
       {children}
     </ul>
   </div>
+);
+
+const SubtitleLinkWrapper = ({ link, children }) => (
+  <SubtitleLink
+    link={link}
+    className={generatePlausibleClass(PLAUSIBLE_NAVBAR_CLICK, {
+      key: "link",
+      value: link,
+    })}
+  >
+    {children}
+  </SubtitleLink>
 );

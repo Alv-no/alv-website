@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
-import { Title, Description } from "shared-components";
+import { generatePlausibleClass, Title, Description } from "shared-components";
 import { FormSelect } from "../../../shared-components/src/components/button";
 import { Phone, Mail } from "../../../shared-components/src/components/icon";
 import { useContactQuery } from "../hookspages/useContactQuery";
 import * as Form from "../../../shared-components/src/components/form";
 import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import {
+  PLAUSIBLE_CONTACT_EMAIL,
+  PLAUSIBLE_CONTACT_PAGE_LINK,
+  PLAUSIBLE_CONTACT_PHONE,
+} from "../plausible/plausible-events";
 
 const Contact = ({ location }) => {
   const [active, setActive] = useState("offer");
@@ -66,20 +71,10 @@ const Contact = ({ location }) => {
               <div className="hidden xl:block">
                 <div className="text-lg tracking-wider 2xl:ml-30 mb-20">
                   <div className="mb-3">
-                    <a href={"tel:" + phone} className="flex">
-                      <span className="mr-3">
-                        <Phone />
-                      </span>{" "}
-                      {phone}
-                    </a>
+                    <PhoneLink phone={phone} />
                   </div>
                   <div className="mb-3">
-                    <a href={"mailto:" + email} className="flex items-center">
-                      <span className="mr-3">
-                        <Mail />
-                      </span>{" "}
-                      {email}
-                    </a>
+                    <MailLink email={email} />
                   </div>
                 </div>
               </div>
@@ -89,32 +84,74 @@ const Contact = ({ location }) => {
             <div>
               <div className="text-lg tracking-wider">
                 <div className="mb-3">
-                  <a href={"tel:" + phone} className="flex">
-                    <span className="mr-3">
-                      <Phone />
-                    </span>{" "}
-                    {phone}
-                  </a>
+                  <PhoneLink phone={phone} />
                 </div>
                 <div className="mb-3">
-                  <a href={"mailto:" + email} className="flex items-center">
-                    <span className="mr-3">
-                      <Mail />
-                    </span>{" "}
-                    {email}
-                  </a>
+                  <MailLink email={email} />
                 </div>
               </div>
             </div>
           </div>
           <div className="flex-1 p-5 sm:p-12 lg:mx-0 lg:pb-15 tracking-wider bg-lightblue">
-            {active === "offer" && <Form.Offer />}
-            {active === "call" && <Form.Call />}
+            {active === "offer" && (
+              <Form.Offer
+                className={generatePlausibleClass(
+                  PLAUSIBLE_CONTACT_EMAIL
+                )}
+              />
+            )}
+            {active === "call" && (
+              <Form.Call
+                className={generatePlausibleClass(
+                  PLAUSIBLE_CONTACT_PHONE
+                )}
+              />
+            )}
             {active === "visit" && <Form.Visit address={address} org={org} />}
           </div>
         </div>
       </div>
     </Layout>
+  );
+};
+
+const PhoneLink = ({ phone }) => {
+  return (
+    <a
+      href={"tel:" + phone}
+      className={
+        "flex" +
+        generatePlausibleClass(PLAUSIBLE_CONTACT_PAGE_LINK, {
+          key: "type",
+          value: "phone",
+        })
+      }
+    >
+      <span className="mr-3">
+        <Phone />
+      </span>{" "}
+      {phone}
+    </a>
+  );
+};
+
+const MailLink = ({ email }) => {
+  return (
+    <a
+      href={"mailto:" + email}
+      className={
+        "flex items-center" +
+        generatePlausibleClass(PLAUSIBLE_CONTACT_PAGE_LINK, {
+          key: "type",
+          value: "mail",
+        })
+      }
+    >
+      <span className="mr-3">
+        <Mail />
+      </span>{" "}
+      {email}
+    </a>
   );
 };
 

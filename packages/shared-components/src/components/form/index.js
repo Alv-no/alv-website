@@ -29,7 +29,7 @@ const useContactForm = () => {
   return { submitForm, sent, error, mailApiUrl };
 };
 
-export const Call = () => {
+export const Call = ({ className = "" }) => {
   const { submitForm, sent, error, mailApiUrl } = useContactForm();
 
   return (
@@ -41,7 +41,7 @@ export const Call = () => {
       </div>
       <div className={sent ? "hidden" : ""}>
         <form
-          className="text-white w-full tracking-wider text-mobile"
+          className={"text-white w-full tracking-wider text-mobile" + className}
           method="POST"
           action={mailApiUrl}
           onSubmit={submitForm}
@@ -98,7 +98,11 @@ export const Call = () => {
   );
 };
 
-export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
+export const Offer = ({
+  compact = false,
+  sendButtonTransparent = false,
+  className = "",
+}) => {
   const { submitForm, sent, error } = useContactForm();
   const [mailApiUrl, setMailApiUrl] = useState("");
 
@@ -130,7 +134,10 @@ export const Offer = ({ compact = false, sendButtonTransparent = false }) => {
       </div>
       <div className={sent ? "hidden" : ""}>
         <form
-          className="text-white w-full tracking-wider text-mobile"
+          className={
+            "text-white w-full tracking-wider text-mobile" +
+            className
+          }
           method="POST"
           action={mailApiUrl}
           onSubmit={submitForm}

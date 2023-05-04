@@ -5,11 +5,18 @@ import { window } from "browser-monads";
 import { SocialShare } from "../../../shared-components/src/components/socialShare";
 import { VideoEpisode } from "../components/videoEpisode";
 import { useLayoutQuery } from "../hooks/useLayoutQuery";
+import { trackCustomEvent } from "shared-components/src/utils/plausible";
+import { PLAUSIBLE_VIDEO_CLICKED } from "../plausible/plausible-events";
 
 const VideoTemplate = ({ pageContext }) => {
   const { video, season, playlistName } = pageContext;
 
   const layoutData = useLayoutQuery();
+
+  trackCustomEvent(PLAUSIBLE_VIDEO_CLICKED, {
+    videoId: video.videoId,
+    videoTitle: video.title,
+  });
 
   return (
     <Layout layoutData={layoutData} whiteIcons pageTitle={playlistName}>
