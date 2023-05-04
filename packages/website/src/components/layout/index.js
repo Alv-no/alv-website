@@ -1,5 +1,6 @@
 import React from "react";
-import { Header, MobileHeader, Footer, SEO } from "shared-components";
+import { Header, MobileHeader } from "../header";
+import { Footer, SEO } from "shared-components";
 import * as Logo from "../logo";
 import "./layout.css";
 import CookieNotice from "../cookieNotice";

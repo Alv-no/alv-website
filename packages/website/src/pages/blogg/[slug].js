@@ -6,7 +6,7 @@ import { BlockContent } from "shared-components";
 import { AlsoRead } from "../../../../shared-components/src/components/alsoRead";
 import { createSlugForEmployee } from "../../../../shared-components/src/components/createSlugForEmployee";
 import { Footer } from "../../../../shared-components/src/components/footer";
-import { MobileHeader } from "../../../../shared-components/src/components/header";
+import { MobileHeader } from "../../components/header";
 import { SEO } from "../../../../shared-components/src/components/seo";
 import { SocialShare } from "../../../../shared-components/src/components/socialShare";
 import * as Logo from "../../components/logo";
@@ -196,7 +196,7 @@ export async function getBlogArticleServerSide(slug) {
     },
     fetchPolicy: "no-cache",
     query: gql`
-      query($slug: String!) {
+      query ($slug: String!) {
         allArticle(where: { slug: { current: { eq: $slug } } }) {
           title
           description

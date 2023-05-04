@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createFormData, submitWithDelay, useForm } from "../../../../utils";
 import { FormFeedbackWrapper } from "../../../formFeedbackWrapper";
 import * as styles from "./FormCta.module.css";
+import { generatePlausibleClass } from "../../../../utils/plausible";
 
 const FormCta = ({ identifier, eyebrow, heading, whiteOnBlue }) => {
   const themeClass = whiteOnBlue ? styles.whiteOnBlue : styles.blueOnWhite;
@@ -42,7 +43,16 @@ const Form = ({ identifier }) => {
 
   return (
     <FormFeedbackWrapper status={status}>
-      <form className={styles.form} onSubmit={handleSubmitClick}>
+      <form
+        className={
+          styles.form +
+          generatePlausibleClass("Block Form", {
+            key: "identifier",
+            value: identifier,
+          })
+        }
+        onSubmit={handleSubmitClick}
+      >
         <div className="">
           <FormLabel>Navn</FormLabel>
           <input

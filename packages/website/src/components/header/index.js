@@ -2,9 +2,9 @@ import { window } from "browser-monads";
 import Link from "gatsby-link";
 import React, { useState } from "react";
 import Headroom from "react-headroom";
-import { Breadcrumb } from "../breadcrumb";
-import { CallToAction } from "../calltoaction";
-import { Dropdown } from "../icon";
+import { Breadcrumb } from "shared-components/src/components/breadcrumb";
+import { CallToAction } from "shared-components/src/components/calltoaction";
+import { Dropdown } from "shared-components/src/components/icon";
 import { Navigation } from "../navigation";
 
 export const Header = ({

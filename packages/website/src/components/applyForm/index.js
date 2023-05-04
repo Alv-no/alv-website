@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { generatePlausibleClass } from "shared-components";
+import { PLAUSIBLE_WORK_FOR_US_FORM } from "../../plausible/plausible-events";
 
 const ApplyForm = ({ jobTitle }) => {
   const [status, setStatus] = useState("validating");
@@ -62,7 +64,17 @@ const ApplyForm = ({ jobTitle }) => {
   }
 
   return (
-    <form className="grid" onSubmit={handleSubmit} data-testid="form">
+    <form
+      className={
+        "grid" +
+        generatePlausibleClass(PLAUSIBLE_WORK_FOR_US_FORM, {
+          key: "title",
+          value: jobTitle,
+        })
+      }
+      onSubmit={handleSubmit}
+      data-testid="form"
+    >
       <label className="mb-2">Navn *</label>
       <input
         className={

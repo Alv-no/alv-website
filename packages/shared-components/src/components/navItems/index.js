@@ -44,8 +44,8 @@ const LargeLinkContent = ({ children, arrow, open }) => (
   </h2>
 );
 
-export const Subtitle = ({ children, link }) => (
-  <Link to={link}>
+export const Subtitle = ({ children, link, className = "" }) => (
+  <Link to={link} className={className}>
     <h3 className="uppercase text-md tracking-widest mt-7 eight:mt-4 eight:mb-4 eight:ml-0 sm:ml-6 ml-6">
       {children}
     </h3>
