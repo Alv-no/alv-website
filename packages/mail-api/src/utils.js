@@ -110,16 +110,14 @@ const generateAttachmentFromFiles = async (files) => {
     // Upon successful validation and scan - convert file to base64 and add to attachments array
     const base64content = await readFile(filepath, "base64");
 
+    // Add attachments to mail object
     attachments.push({
       content: base64content,
       filename: newFilename,
       type: mimetype,
       disposition: "attachment",
     });
-
-    // Add attachments to mail object
   }
-
   return attachments;
 };
 
