@@ -95,16 +95,12 @@ const Contact = ({ location }) => {
           <div className="flex-1 p-5 sm:p-12 lg:mx-0 lg:pb-15 tracking-wider bg-lightblue">
             {active === "offer" && (
               <Form.Offer
-                className={generatePlausibleClass(
-                  PLAUSIBLE_CONTACT_EMAIL
-                )}
+                className={generatePlausibleClass(PLAUSIBLE_CONTACT_EMAIL)}
               />
             )}
             {active === "call" && (
               <Form.Call
-                className={generatePlausibleClass(
-                  PLAUSIBLE_CONTACT_PHONE
-                )}
+                className={generatePlausibleClass(PLAUSIBLE_CONTACT_PHONE)}
               />
             )}
             {active === "visit" && <Form.Visit address={address} org={org} />}

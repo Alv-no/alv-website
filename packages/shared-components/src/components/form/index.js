@@ -134,10 +134,7 @@ export const Offer = ({
       </div>
       <div className={sent ? "hidden" : ""}>
         <form
-          className={
-            "text-white w-full tracking-wider text-mobile" +
-            className
-          }
+          className={"text-white w-full tracking-wider text-mobile" + className}
           method="POST"
           action={mailApiUrl}
           onSubmit={submitForm}
