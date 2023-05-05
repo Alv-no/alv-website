@@ -19,14 +19,14 @@ module.exports = (req, res) => {
   }
 
   form.parse(req, async (err, fields, { files }) => {
-    // If only one file is uploaded, formidable will not return an array, but an object
-    [files].length === 1 && (files = [files]);
-
     if (err) {
       console.error(err);
       res.sendStatus(500);
       return;
     }
+    // If only one file is uploaded, formidable will not return an array but an object instead
+    // This line makes sure that the files variable is always an array
+    if ([files].length === 1) files = [files];
 
     const { threat, formatErrors } = files ? validateFiles(files) : {};
 
