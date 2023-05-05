@@ -22,7 +22,7 @@ const ApplyForm = ({ jobTitle }) => {
 
     setStatus("loading");
 
-    const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/jobApplication/send`;
+    const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/send`;
     const { name, email } = formInputs;
 
     const formData = new FormData();
