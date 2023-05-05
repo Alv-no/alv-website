@@ -40,5 +40,10 @@ export const richTextTypesSerializer = (config) => ({
     "alv-yellow": ({ children }) => (
       <strong style={{ color: "#eabb26", fontSize: "120%" }}>{children}</strong>
     ),
+    link: ({ children, mark }) => (
+      <a href={mark.href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    ),
   },
 });
