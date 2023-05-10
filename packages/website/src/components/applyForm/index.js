@@ -8,6 +8,7 @@ const ApplyForm = ({ jobTitle }) => {
     name: "",
     email: "",
   });
+  const [files, setFiles] = useState(null);
 
   const handleInputChange = (event) => {
     setFormInputs((formInputs) => ({
@@ -19,7 +20,9 @@ const ApplyForm = ({ jobTitle }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/jobApplication/send`;
+    setStatus("loading");
+
+    const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/send`;
     const { name, email } = formInputs;
 
     const formData = new FormData();
@@ -28,7 +31,11 @@ const ApplyForm = ({ jobTitle }) => {
     name && formData.append("name", name);
     email && formData.append("email", email);
 
-    setStatus("loading");
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        formData.append("files", files[i]);
+      }
+    }
 
     fetch(mailApiUrl, {
       method: "POST",
@@ -99,6 +106,7 @@ const ApplyForm = ({ jobTitle }) => {
         value={formInputs.email}
         type="email"
       />
+      <UploadAttachments files={files} setFiles={setFiles} />
       <SubmitButton />
     </form>
   );
@@ -117,7 +125,7 @@ export const UploadAttachments = (props) => {
   };
 
   return (
-    <div className="mt-2 relative inline-block">
+    <div className="my-2 relative inline-block">
       <button
         className="font-bold tracking-wider mx-auto hover:cursor-pointer z-10 relative"
         onClick={files ? handleRemoveFiles : handleInputClick}
