@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { generatePlausibleClass } from "shared-components";
+import { trackCustomEvent } from "shared-components";
 import { PLAUSIBLE_WORK_FOR_US_FORM } from "../../plausible/plausible-events";
 
 const ApplyForm = ({ jobTitle }) => {
@@ -23,6 +23,8 @@ const ApplyForm = ({ jobTitle }) => {
     const { name, email } = formInputs;
 
     const formData = new FormData();
+
+    trackCustomEvent(PLAUSIBLE_WORK_FOR_US_FORM, { title: jobTitle });
 
     formData.append("subject", "Jobbsøknad - " + jobTitle);
     name && formData.append("name", name);
@@ -64,17 +66,7 @@ const ApplyForm = ({ jobTitle }) => {
   }
 
   return (
-    <form
-      className={
-        "grid" +
-        generatePlausibleClass(PLAUSIBLE_WORK_FOR_US_FORM, {
-          key: "title",
-          value: jobTitle,
-        })
-      }
-      onSubmit={handleSubmit}
-      data-testid="form"
-    >
+    <form className="grid" onSubmit={handleSubmit} data-testid="form">
       <label className="mb-2">Navn *</label>
       <input
         className={

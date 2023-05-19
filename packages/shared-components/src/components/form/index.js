@@ -1,7 +1,8 @@
 import { window } from "browser-monads";
 import React, { useEffect, useState } from "react";
+import { trackCustomEvent } from "../../utils/plausible";
 
-const useContactForm = () => {
+const useContactForm = (trackingEventName = "") => {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState(false);
   const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/send`;
@@ -13,6 +14,8 @@ const useContactForm = () => {
     const form = e.target;
 
     const data = new FormData(form);
+
+    trackCustomEvent(trackingEventName);
 
     fetch(mailApiUrl, {
       method: "POST",
@@ -29,8 +32,9 @@ const useContactForm = () => {
   return { submitForm, sent, error, mailApiUrl };
 };
 
-export const Call = ({ className = "" }) => {
-  const { submitForm, sent, error, mailApiUrl } = useContactForm();
+export const Call = ({ trackingEventName = "" }) => {
+  const { submitForm, sent, error, mailApiUrl } =
+    useContactForm(trackingEventName);
 
   return (
     <div>
@@ -41,7 +45,7 @@ export const Call = ({ className = "" }) => {
       </div>
       <div className={sent ? "hidden" : ""}>
         <form
-          className={"text-white w-full tracking-wider text-mobile" + className}
+          className={"text-white w-full tracking-wider text-mobile"}
           method="POST"
           action={mailApiUrl}
           onSubmit={submitForm}
@@ -101,9 +105,9 @@ export const Call = ({ className = "" }) => {
 export const Offer = ({
   compact = false,
   sendButtonTransparent = false,
-  className = "",
+  trackingEventName = "",
 }) => {
-  const { submitForm, sent, error } = useContactForm();
+  const { submitForm, sent, error } = useContactForm(trackingEventName);
   const [mailApiUrl, setMailApiUrl] = useState("");
 
   useEffect(() => {
@@ -134,7 +138,7 @@ export const Offer = ({
       </div>
       <div className={sent ? "hidden" : ""}>
         <form
-          className={"text-white w-full tracking-wider text-mobile" + className}
+          className="text-white w-full tracking-wider text-mobile"
           method="POST"
           action={mailApiUrl}
           onSubmit={submitForm}
