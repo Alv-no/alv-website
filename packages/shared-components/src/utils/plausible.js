@@ -33,6 +33,10 @@ export const trackCustomEvent = (eventName, eventDetails) => {
     return;
   }
 
+  if (!eventName) {
+    return;
+  }
+
   window.plausible(eventName, {
     props: { ...eventDetails },
   });
