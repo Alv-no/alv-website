@@ -3,7 +3,6 @@ import { Header, MobileHeader } from "../header";
 import { Footer, SEO } from "shared-components";
 import * as Logo from "../logo";
 import "./layout.css";
-import CookieNotice from "../cookieNotice";
 
 const Layout = ({
   layoutData,
@@ -53,7 +52,6 @@ const Layout = ({
       />
       <div>{children}</div>
       <Footer {...footerProps} companyName="Alv" />
-      <CookieNotice />
     </>
   );
 };
