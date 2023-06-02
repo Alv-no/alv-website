@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import React from "react";
+import NotFoundPage from "../404";
 import { BlockContent } from "shared-components";
 import { NavyIntro } from "../../../../shared-components/src/components/navyIntro";
 import ApplyForm from "../../components/applyForm";
@@ -7,10 +8,13 @@ import Layout from "../../components/layout";
 import configuration from "../../config";
 import { useLayoutQuery } from "../../hooks/useLayoutQuery";
 import { client } from "../../server-side/client";
-import { createGatsbyImages } from "../../server-side/imageCreator";
 
 const Career = ({ serverData }) => {
   const layoutData = useLayoutQuery();
+
+  if (!serverData) {
+    return <NotFoundPage />;
+  }
 
   const {
     pageTitle,
@@ -95,7 +99,10 @@ async function getPositionDataServerSide(slug) {
   });
   const pageData = response.data.allOpenPostionPage[0];
 
-  createGatsbyImages(pageData);
+  if (pageData.id.includes("drafts")) {
+    throw new Error("No published page found");
+  }
+
   return pageData;
 }
 
@@ -110,7 +117,7 @@ export async function getServerData(context) {
     };
   } catch {
     return {
-      status: 500,
+      status: 404,
     };
   }
 }
