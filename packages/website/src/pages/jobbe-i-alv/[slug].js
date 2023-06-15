@@ -1,4 +1,3 @@
-import { gql } from "@apollo/client";
 import React from "react";
 import { BlockContent } from "shared-components";
 import { NavyIntro } from "../../../../shared-components/src/components/navyIntro";
@@ -6,8 +5,8 @@ import ApplyForm from "../../components/applyForm";
 import Layout from "../../components/layout";
 import configuration from "../../config";
 import { useLayoutQuery } from "../../hooks/useLayoutQuery";
-import { client } from "../../server-side/client";
 import { createGatsbyImages } from "../../server-side/imageCreator";
+import { sanityClient } from "../../server-side/sanityClient";
 
 const Career = ({ serverData }) => {
   const layoutData = useLayoutQuery();
@@ -18,7 +17,7 @@ const Career = ({ serverData }) => {
     heroImage,
     formHeader,
     formDescription,
-    _rawJobDescription,
+    jobDescription,
   } = serverData;
 
   return (
@@ -42,7 +41,7 @@ const Career = ({ serverData }) => {
         }}
       >
         <div className="px-5">
-          <BlockContent blocks={_rawJobDescription} config={configuration} />
+          <BlockContent blocks={jobDescription} config={configuration} />
         </div>
         <div>
           <div className="tracking-wider py-10 bg-[#fafafb] px-8 mt-6 lg:mt-0">
@@ -60,57 +59,22 @@ const Career = ({ serverData }) => {
 
 export default Career;
 
-async function getPositionDataServerSide(slug) {
-  const response = await client.query({
-    fetchPolicy: "no-cache",
-    variables: {
-      slug,
-    },
-    query: gql`
-      query($slug: String!) {
-        allOpenPostionPage(where: { slug: { current: { eq: $slug } } }) {
-          id: _id
-          _rawJobDescription: jobDescriptionRaw
-          slug {
-            current
-          }
-          pageDescription
-          pageTitle
-          formHeader
-          formDescription
-          heroImage {
-            asset {
-              id: _id
-              metadata {
-                dimensions {
-                  height
-                  width
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-  });
-  const pageData = response.data.allOpenPostionPage[0];
-
-  createGatsbyImages(pageData);
-  return pageData;
-}
-
 export async function getServerData(context) {
-  try {
-    const slug = context.params["slug"];
-    const career = await getPositionDataServerSide(slug);
+  const slug = context.params["slug"];
+  const result = (
+    await sanityClient.fetch(
+      `*[_type == "openPostionPage" && slug.current == '${slug}' && !(_id in path('drafts.**'))]`
+    )
+  )[0];
 
-    return {
-      props: career,
-      status: 200,
-    };
-  } catch {
-    return {
-      status: 500,
-    };
+  if (!result) {
+    throw new Error("No such published article");
   }
+
+  createGatsbyImages(result, true);
+
+  return {
+    props: result,
+    status: 200,
+  };
 }

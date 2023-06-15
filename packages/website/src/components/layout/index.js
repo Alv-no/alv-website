@@ -7,7 +7,6 @@ import "./layout.css";
 const Layout = ({
   layoutData,
   children,
-  path,
   pageDescription,
   pageTitle,
   whiteIcons,
@@ -35,7 +34,6 @@ const Layout = ({
       <SEO description={pageDescription} title={pageTitle} {...metaData} />
       <Header
         white={white}
-        path={path}
         whiteIcons={whiteIcons}
         servicePages={servicePages}
         categoryPages={categoryPages}
