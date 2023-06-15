@@ -13,13 +13,23 @@ function resolveNodeType(asset) {
   return asset.url;
 }
 
-function imageCreator(asset) {
+/** @param {boolean} isGroqResult */
+const getImageMetaData = (asset, isGroqResult) => {
+  if (isGroqResult) {
+    return asset.hotspot;
+  }
+
+  return asset.metadata?.dimensions;
+};
+
+/** @param {boolean} isGroqResult */
+function imageCreator(asset, isGroqResult) {
   const node = resolveNodeType(asset);
   let assets = {};
 
   if (asset.metadata?.dimensions) {
     assets = {
-      ...asset.metadata.dimensions,
+      ...getImageMetaData(asset, isGroqResult),
     };
   }
 
@@ -29,7 +39,12 @@ function imageCreator(asset) {
   });
 }
 
-export function createGatsbyImages(element) {
+/**
+ * Goes through the object recursively and creates `GatsbyImage`-objects
+ * @param {object} element - object from sanity
+ * @param isGroqResult - specifies that the object comes from a GROQ-request
+ *  */
+export function createGatsbyImages(element, isGroqResult = false) {
   if (!element) return;
   Object.keys(element).forEach((subElement) => {
     if (typeof element[subElement] === "object") {
@@ -49,7 +64,7 @@ export function createGatsbyImages(element) {
       element[subElement] === "Image" &&
       element.asset
     ) {
-      element.asset.gatsbyImageData = imageCreator(element.asset);
+      element.asset.gatsbyImageData = imageCreator(element.asset, isGroqResult);
       return;
     }
     if (
@@ -57,7 +72,7 @@ export function createGatsbyImages(element) {
       element[subElement] === "image" &&
       element.asset
     ) {
-      element.asset.gatsbyImageData = imageCreator(element.asset);
+      element.asset.gatsbyImageData = imageCreator(element.asset, isGroqResult);
       return;
     }
   });

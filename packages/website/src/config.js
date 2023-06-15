@@ -1,5 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require("gatsby-plugin-config").default;
+
+/**
+ * @typedef {Object} Configuration
+ * @property {string|undefined} SANITY_TOKEN
+ * @property {string|undefined} SANITY_PROJECT_ID
+ * @property {string|undefined} SANITY_DATASET
+ * @property {string|undefined} SANITY_TAG
+ * @property {string|undefined} YT_API
+ * */
+
+/** @type Configuration */
 let configuration;
 switch (config.NODE_ENV) {
   case "development":
