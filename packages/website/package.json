@@ -59,7 +59,7 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-preset-gatsby": "^0.11.0",
-    "gatsby": "4.1.4",
+    "gatsby": "4.25.7",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^2.1.2",
     "gatsby-plugin-linkedin-insight": "^1.0.1",
