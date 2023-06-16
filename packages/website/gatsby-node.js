@@ -17,23 +17,14 @@ exports.createPages = async ({ graphql, actions }) => {
         allSanityVideoseries {
           nodes {
             id
-            description
-            featuredVideo
             videoseriesTitle
             slug {
               current
             }
             playlists {
               process {
-                description
                 id
                 title
-              }
-            }
-            heroImage {
-              asset {
-                url
-                gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
               }
             }
           }
