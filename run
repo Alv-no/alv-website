@@ -23,6 +23,7 @@ function getSecret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
 }
 
+
 function getSecrets() {
   ALV_HOSTNAME="$(getSecret alv-hostname)"
   ALVB_HOSTNAME="$(getSecret alvb-hostname)"
