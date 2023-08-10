@@ -59,9 +59,7 @@ app.post("/send", (req, res) => {
   //console.log(c);
   form.parse(req, async (err, fields, files) => {
     let mailbody = "";
-    const { subject } = fields;
-    const { name } = fields;
-    const { email } = fields;
+    const { subject, firstname, lastname, email } = fields;
     const { cv } = files;
 
     let cvUrl;
@@ -107,17 +105,24 @@ app.post("/send", (req, res) => {
       },
       body: JSON.stringify({
         fields: {
-          Navn: name,
+          Navn: `${firstname} ${lastname}`,
           Epost: email,
           Status: "Til evaluering",
-          CV: cvUrl,
+          CV: {
+            url: cvUrl,
+          },
         },
       }),
     };
-    request(options, function (error, response) {
-      if (error) throw new Error(error);
-      console.log(response.body);
-    });
+
+    try {
+      request(options, function (error, response) {
+        if (error) throw new Error(error);
+        console.log(response.body);
+      });
+    } catch (e) {
+      console.error("Unable to post to airtable :(", e);
+    }
     // Send mail with sendgrid
     sgMail
       .send(msg)
