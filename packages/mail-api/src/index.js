@@ -108,9 +108,11 @@ app.post("/send", (req, res) => {
           Navn: `${firstname} ${lastname}`,
           Epost: email,
           Status: "Til evaluering",
-          CV: {
-            url: cvUrl,
-          },
+          CV: [
+            {
+              url: cvUrl,
+            },
+          ],
         },
       }),
     };
