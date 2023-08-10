@@ -20,7 +20,7 @@ function configureArgs(func) {
   return (id, work) => {
     if (!work && isFunction(id)) {
       work = id;
-      id = Math.random()*10000000000000000;
+      id = Math.random() * 10000000000000000;
     }
 
     if (!work) throw new Error("Missing work parameter");
