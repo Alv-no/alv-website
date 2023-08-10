@@ -8,6 +8,22 @@ const app = express();
 const port = 80;
 const { readFile } = require("fs").promises;
 const { validateEmailAttachment } = require("./utils");
+//const correlator = require("./corrId");
+//const logger = require("./logger");
+const fs = require("fs");
+const path = require("path");
+
+/**
+ * @param {string} dirpath 
+ */
+const ensureDirectoryExists = (dirpath) => {
+  if (!fs.existsSync(dirpath)) {
+   fs.mkdirSync(dirpath, {recursive: true});
+  }
+}
+
+const FILE_DIRNAME = path.join(__dirname, "..", "files");
+ensureDirectoryExists(FILE_DIRNAME);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,12 +39,42 @@ app.get("/", (_, res) => {
   res.send("Hello");
 });
 
+app.get("/file/:filename", (req, res) => {
+  const fileName = req.params["filename"]
+  const filePath = path.join(FILE_DIRNAME, fileName)
+  console.log(filePath);
+
+  if (!fs.existsSync(filePath)) {
+    res.sendStatus(404);
+  }
+  res.sendFile(filePath, () => {
+    fs.rmSync(filePath);
+  });
+
+  
+});
+
 app.post("/send", (req, res) => {
   const form = formidable({ multiples: true });
 
-  form.parse(req, async (err, fields) => {
+  //const c = correlator.getId();
+  //console.log(c);
+  form.parse(req, async (err, fields, files) => {
     let mailbody = "";
     const { subject } = fields;
+    const { name } = fields;
+    const { email } = fields;
+    const { cv } = files;
+
+
+    const correlationId = `${Math.random()*10000000000000000}`;
+    const fileName = `${correlationId}-${cv.originalFilename}`;
+    const filePath = path.join(FILE_DIRNAME, fileName);
+    const cvUrl = `https://mail-api.test-alv.no/files/${fileName}`
+
+    const fileStream = fs.readFileSync(cv.filepath);
+    fs.writeFileSync(filePath, fileStream);
+
 
     if (err) {
       console.error(err);
@@ -51,6 +97,28 @@ app.post("/send", (req, res) => {
       text: mailbody,
     };
 
+    var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://api.airtable.com/v0/app0ueoXOVtAePCHV/tblH9nzYUobkmFCKc',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer patkn9O2mPUFINNqr.878a69df98d728d24debb2e64f1d32e1d09005380a7f57c5bf7777e3ecdf7e76',
+  },
+  body: JSON.stringify({
+    "fields": {
+      "Navn": name,
+      "Epost": email,
+      "Status": "Til evaluering",
+      "CV": cvUrl
+    }
+  })
+
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
     // Send mail with sendgrid
     sgMail
       .send(msg)
@@ -61,6 +129,7 @@ app.post("/send", (req, res) => {
       .catch((error) => {
         console.error(error);
         res.sendStatus(500);
+        
       });
   });
 });
@@ -147,3 +216,4 @@ app.post("/jobApplication/send", (req, res) => {
 app.listen(port, () => {
   console.log("Listening on port " + port);
 });
+

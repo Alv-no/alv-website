@@ -1,0 +1,29 @@
+const cls = require("cls-hooked");
+
+const store = cls.createNamespace("correlation-id-namespace");
+const correlalationId = "correlation-id";
+
+//executes function with correlation id. If Id missing its generated.
+function withId(fn, id) {
+    store.run(() => {
+        store.set(correlalationId, id || randomNumberString());
+        fn();
+    });
+}
+
+const randomNumberString = () => {
+    return `${Math.random()*10000000000000000}`;
+}
+
+//provides current correlation id
+function getId() {
+    return store.get(correlalationId);
+}
+
+module.exports = {
+    withId,
+    getId,
+    //binds an ecentEmitter to the correlationId namespace.
+    bindEmitter: store.bindEmitter.bind(store),
+    bind: store.bind.bind(store),
+};
