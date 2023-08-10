@@ -64,13 +64,16 @@ app.post("/send", (req, res) => {
     const { email } = fields;
     const { cv } = files;
 
-    const correlationId = `${Math.random() * 10000000000000000}`;
-    const fileName = `${correlationId}-${cv.originalFilename}`;
-    const filePath = path.join(FILE_DIRNAME, fileName);
-    const cvUrl = `https://mail-api.test-alv.no/files/${fileName}`;
+    let cvUrl;
+    if (cv) {
+      const correlationId = `${Math.random() * 10000000000000000}`;
+      const fileName = `${correlationId}-${cv.originalFilename}`;
+      const filePath = path.join(FILE_DIRNAME, fileName);
+      cvUrl = `https://mail-api.alv.no/files/${fileName}`;
 
-    const fileStream = fs.readFileSync(cv.filepath);
-    fs.writeFileSync(filePath, fileStream);
+      const fileStream = fs.readFileSync(cv.filepath);
+      fs.writeFileSync(filePath, fileStream);
+    }
 
     if (err) {
       console.error(err);
