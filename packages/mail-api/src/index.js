@@ -135,7 +135,6 @@ app.post("/send", (req, res) => {
       .catch((error) => {
         console.error(error);
         res.sendStatus(500);
-        
       });
   });
 });
@@ -222,4 +221,3 @@ app.post("/jobApplication/send", (req, res) => {
 app.listen(port, () => {
   console.log("Listening on port " + port);
 });
-
