@@ -14,13 +14,13 @@ const fs = require("fs");
 const path = require("path");
 
 /**
- * @param {string} dirpath 
+ * @param {string} dirpath
  */
 const ensureDirectoryExists = (dirpath) => {
   if (!fs.existsSync(dirpath)) {
-   fs.mkdirSync(dirpath, {recursive: true});
+    fs.mkdirSync(dirpath, { recursive: true });
   }
-}
+};
 
 const FILE_DIRNAME = path.join(__dirname, "..", "files");
 ensureDirectoryExists(FILE_DIRNAME);
@@ -40,8 +40,8 @@ app.get("/", (_, res) => {
 });
 
 app.get("/file/:filename", (req, res) => {
-  const fileName = req.params["filename"]
-  const filePath = path.join(FILE_DIRNAME, fileName)
+  const fileName = req.params["filename"];
+  const filePath = path.join(FILE_DIRNAME, fileName);
   console.log(filePath);
 
   if (!fs.existsSync(filePath)) {
@@ -50,8 +50,6 @@ app.get("/file/:filename", (req, res) => {
   res.sendFile(filePath, () => {
     fs.rmSync(filePath);
   });
-
-  
 });
 
 app.post("/send", (req, res) => {
@@ -61,20 +59,19 @@ app.post("/send", (req, res) => {
   //console.log(c);
   form.parse(req, async (err, fields, files) => {
     let mailbody = "";
-    const { subject } = fields;
-    const { name } = fields;
-    const { email } = fields;
+    const { subject, firstname, lastname, email } = fields;
     const { cv } = files;
 
+    let cvUrl;
+    if (cv) {
+      const correlationId = `${Math.random() * 10000000000000000}`;
+      const fileName = `${correlationId}-${cv.originalFilename}`;
+      const filePath = path.join(FILE_DIRNAME, fileName);
+      cvUrl = `https://mail-api.alv.no/files/${fileName}?dl=${fileName}`;
 
-    const correlationId = `${Math.random()*10000000000000000}`;
-    const fileName = `${correlationId}-${cv.originalFilename}`;
-    const filePath = path.join(FILE_DIRNAME, fileName);
-    const cvUrl = `https://mail-api.test-alv.no/files/${cv.originalFilename}`
-
-    const fileStream = fs.readFileSync(cv.filepath);
-    fs.writeFileSync(filePath, fileStream);
-
+      const fileStream = fs.readFileSync(cv.filepath);
+      fs.writeFileSync(filePath, fileStream);
+    }
 
     if (err) {
       console.error(err);
@@ -97,28 +94,37 @@ app.post("/send", (req, res) => {
       text: mailbody,
     };
 
-    var request = require('request');
-var options = {
-  'method': 'POST',
-  'url': 'https://api.airtable.com/v0/app0ueoXOVtAePCHV/tblH9nzYUobkmFCKc',
-  'headers': {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer patkn9O2mPUFINNqr.878a69df98d728d24debb2e64f1d32e1d09005380a7f57c5bf7777e3ecdf7e76',
-  },
-  body: JSON.stringify({
-    "fields": {
-      "Navn": name,
-      "Epost": email,
-      "Status": "Til evaluering",
-      "CV": cvUrl
-    }
-  })
+    var request = require("request");
+    var options = {
+      method: "POST",
+      url: "https://api.airtable.com/v0/app0ueoXOVtAePCHV/tblH9nzYUobkmFCKc",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer patkn9O2mPUFINNqr.878a69df98d728d24debb2e64f1d32e1d09005380a7f57c5bf7777e3ecdf7e76",
+      },
+      body: JSON.stringify({
+        fields: {
+          Navn: `${firstname} ${lastname}`,
+          Epost: email,
+          Status: "Til evaluering",
+          CV: [
+            {
+              url: cvUrl,
+            },
+          ],
+        },
+      }),
+    };
 
-};
-request(options, function (error, response) {
-  if (error) throw new Error(error);
-  console.log(response.body);
-});
+    try {
+      request(options, function (error, response) {
+        if (error) throw new Error(error);
+        console.log(response.body);
+      });
+    } catch (e) {
+      console.error("Unable to post to airtable :(", e);
+    }
     // Send mail with sendgrid
     sgMail
       .send(msg)

@@ -11747,6 +11747,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cls-hooked@npm:^4.2.1":
+  version: 4.3.4
+  resolution: "@types/cls-hooked@npm:4.3.4"
+  dependencies:
+    "@types/node": "*"
+  checksum: b90cfb32c1d05d47668456a4fd5080090a1786425c80f7d96a9a63d2e2211639aa488c5e7bef0651c0beb62093954a0d7edb98ce519f77cad0fca6ecef9d3b11
+  languageName: node
+  linkType: hard
+
 "@types/color-convert@npm:^2.0.0":
   version: 2.0.0
   resolution: "@types/color-convert@npm:2.0.0"
@@ -14257,6 +14266,15 @@ __metadata:
   version: 1.0.3
   resolution: "async-each@npm:1.0.3"
   checksum: 868651cfeb209970b367fbb96df1e1c8dc0b22c681cda7238417005ab2a5fbd944ee524b43f2692977259a57b7cc2547e03ff68f2b5113dbdf953d48cc078dc3
+  languageName: node
+  linkType: hard
+
+"async-hook-jl@npm:^1.7.6":
+  version: 1.7.6
+  resolution: "async-hook-jl@npm:1.7.6"
+  dependencies:
+    stack-chain: ^1.3.7
+  checksum: f84421c83ad5bc4e54a3a6ad7be4fb911840a17c01e5ee3f8e4e9cd077a42c7bc206dbc6b36d52eaca5fa37f16a15f83d63135976cf3e17d5bdc2824f6002705
   languageName: node
   linkType: hard
 
@@ -16854,6 +16872,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cls-hooked@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "cls-hooked@npm:4.2.2"
+  dependencies:
+    async-hook-jl: ^1.7.6
+    emitter-listener: ^1.0.1
+    semver: ^5.4.1
+  checksum: 3a8a4e30b03a81ec275eb9c079c49d4497013e7fa36259e86c9b6aff7990e85eebbc97552ed8a035c19403f0b825000df9bada5c1c0ac7cf1b2506c3a903df60
+  languageName: node
+  linkType: hard
+
 "cmdk@npm:^0.1.21":
   version: 0.1.22
   resolution: "cmdk@npm:0.1.22"
@@ -17583,6 +17612,13 @@ __metadata:
   version: 1.0.2
   resolution: "core-util-is@npm:1.0.2"
   checksum: 7a4c925b497a2c91421e25bf76d6d8190f0b2359a9200dbeed136e63b2931d6294d3b1893eda378883ed363cd950f44a12a401384c609839ea616befb7927dab
+  languageName: node
+  linkType: hard
+
+"correlation-id@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "correlation-id@npm:5.0.3"
+  checksum: c009a48b3cb83cd1b604188ac1b84b375ab8d9000810b5fee8951eb46bfcb0d9fbc56c20f07dd682a53c95b7ef20223294914d5e6831936e315cb55ac2611b05
   languageName: node
   linkType: hard
 
@@ -19696,6 +19732,15 @@ __metadata:
     minimalistic-assert: ^1.0.0
     minimalistic-crypto-utils: ^1.0.0
   checksum: fe1e546ed35ff69622130eb56abd3df8b4e9f009922ec2f1a4437d9c752a026d570a9863751912076effa1060f559bee8d816d6e89835fe8111834694e812165
+  languageName: node
+  linkType: hard
+
+"emitter-listener@npm:^1.0.1":
+  version: 1.1.2
+  resolution: "emitter-listener@npm:1.1.2"
+  dependencies:
+    shimmer: ^1.2.0
+  checksum: 05166bad42a27e51a765ebac3b7d26ac111564fc2d36443cd819f95ef88ea1b9ba6f2895becbcea36f8009890a2a8cb7c36eb9e776d4978e370bd33cb0a181e8
   languageName: node
   linkType: hard
 
@@ -29521,12 +29566,16 @@ fsevents@^1.2.7:
   resolution: "mail-api@workspace:packages/mail-api"
   dependencies:
     "@sendgrid/mail": ^7.4.5
+    "@types/cls-hooked": ^4.2.1
     body-parser: ^1.19.0
+    cls-hooked: ^4.2.2
+    correlation-id: ^5.0.3
     cors: ^2.8.5
     dotenv: ^10.0.0
     express: ^4.17.1
     formidable: ^2.1.1
     jest: ^27.3.1
+    request: ^2.88.2
   languageName: unknown
   linkType: soft
 
@@ -38152,6 +38201,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"shimmer@npm:^1.2.0":
+  version: 1.2.1
+  resolution: "shimmer@npm:1.2.1"
+  checksum: aa0d6252ad1c682a4fdfda69e541be987f7a265ac7b00b1208e5e48cc68dc55f293955346ea4c71a169b7324b82c70f8400b3d3d2d60b2a7519f0a3522423250
+  languageName: node
+  linkType: hard
+
 "short-uuid@npm:^4.1.0":
   version: 4.2.0
   resolution: "short-uuid@npm:4.2.0"
@@ -38711,6 +38767,13 @@ resolve@^2.0.0-next.3:
   version: 0.1.8
   resolution: "stable@npm:0.1.8"
   checksum: 2ff482bb100285d16dd75cd8f7c60ab652570e8952c0bfa91828a2b5f646a0ff533f14596ea4eabd48bb7f4aeea408dce8f8515812b975d958a4cc4fa6b9dfeb
+  languageName: node
+  linkType: hard
+
+"stack-chain@npm:^1.3.7":
+  version: 1.3.7
+  resolution: "stack-chain@npm:1.3.7"
+  checksum: c2428e794a60e1f8e3b66898657d10b81ea18eefd0842d65f18bad6f53fbca597075079bbda8df5b409aebb82d2055bf9c4a8d439df18c554756ead197fc2260
   languageName: node
   linkType: hard
 
