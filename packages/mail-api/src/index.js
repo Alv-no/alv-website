@@ -67,7 +67,7 @@ app.post("/send", (req, res) => {
       const correlationId = `${Math.random() * 10000000000000000}`;
       const fileName = `${correlationId}-${cv.originalFilename}`;
       const filePath = path.join(FILE_DIRNAME, fileName);
-      cvUrl = `https://mail-api.alv.no/files/${fileName}`;
+      cvUrl = `https://mail-api.alv.no/files/${fileName}?dl=${fileName}`;
 
       const fileStream = fs.readFileSync(cv.filepath);
       fs.writeFileSync(filePath, fileStream);
