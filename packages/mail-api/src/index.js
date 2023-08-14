@@ -47,9 +47,10 @@ app.get("/file/:filename", (req, res) => {
   if (!fs.existsSync(filePath)) {
     res.sendStatus(404);
   }
-  res.sendFile(filePath, () => {
-    fs.rmSync(filePath);
-  });
+  res.sendFile(filePath);
+  //res.sendFile(filePath, () => {
+  //  fs.rmSync(filePath);
+  //});
 });
 
 app.post("/send", (req, res) => {
@@ -64,10 +65,10 @@ app.post("/send", (req, res) => {
 
     let cvUrl;
     if (cv) {
-      const correlationId = `${Math.random() * 10000000000000000}`;
+      const correlationId = `${Math.random() * 10000000}`;
       const fileName = `${correlationId}-${cv.originalFilename}`;
       const filePath = path.join(FILE_DIRNAME, fileName);
-      cvUrl = `https://mail-api.alv.no/files/${fileName}?dl=${fileName}`;
+      cvUrl = `https://mail-api.alv.no/files/${fileName}?dl=${cv.originalFilename}`;
 
       const fileStream = fs.readFileSync(cv.filepath);
       fs.writeFileSync(filePath, fileStream);
