@@ -13,15 +13,13 @@ const allowedDocTypes = [
   },
 ];
 
-const validateEmailAttachment = async (file) => {
+const validateEmailAttachment = async (file, logger) => {
   const { mimetype, filepath, size } = file;
-
-  let errors;
 
   // Validate file type by extension
   if (!allowedDocTypes.some((el) => el.mimetype === mimetype)) {
-    errors += "Invalid file type. Must be PDF or DOCX.";
-    return;
+    logger.info("Invalid file type. Must be PDF or DOCX.");
+    return false;
   }
 
   // Validate file type by file signatures
@@ -29,17 +27,17 @@ const validateEmailAttachment = async (file) => {
   const signature = bytes.toString().slice(0, 8);
 
   if (!allowedDocTypes.some((type) => type.signature === signature)) {
-    errors += "Invalid file type. Must be PDF or DOCX.";
-    return;
+    logger.info("Invalid file type. Must be PDF or DOCX.");
+    return false;
   }
 
   // Validate file size
   if (size > 10000000) {
-    errors += "File size exceeds maximum size of 10MB";
-    return;
+    logger.info("File size exceeds maximum size of 10MB");
+    return false;
   }
 
-  return errors;
+  return true;
 };
 
 module.exports = { validateEmailAttachment };
