@@ -1,4 +1,12 @@
 const { readFile } = require("fs").promises;
+const axios = require("axios");
+const fs = require("fs");
+const FormData = require('form-data');
+const dotenv = require("dotenv");
+
+dotenv.config({
+  path: `.env`,
+});
 
 const allowedDocTypes = [
   {
@@ -13,8 +21,40 @@ const allowedDocTypes = [
   },
 ];
 
-const validateEmailAttachment = async (file, logger) => {
+const checkFileForVirus = async (filepath) => {
+  let data = new FormData();
+  data.append('testfile', fs.createReadStream(filepath));
+
+  let config = {
+    method: 'post',
+    url: `${process.env.VIRUSCHECK_URL}/upload_file`,
+    headers: { ...data.getHeaders() },
+    data: data
+  };
+  try {
+    let response = await axios.request(config)
+    return { 'completed': true, 'message': response.data.message };
+  }
+  catch (e) {
+    return { 'completed': false, 'message': e.message };
+  }
+}
+
+const validateAttachment = async (file, logger) => {
   const { mimetype, filepath, size } = file;
+
+  //checks file for virus
+  const virusCheck = await checkFileForVirus(filepath);
+
+  if (virusCheck.completed && !virusCheck.message.includes("OK")) {
+    logger.info("Virus detected in file. File will not be uploaded");
+    return false;
+  }
+
+  if (!virusCheck.completed) {
+    logger.info("Unable to check file for virus: " + virusCheck.message);
+    return false;
+  }
 
   // Validate file type by extension
   if (!allowedDocTypes.some((el) => el.mimetype === mimetype)) {
@@ -40,4 +80,4 @@ const validateEmailAttachment = async (file, logger) => {
   return true;
 };
 
-module.exports = { validateEmailAttachment };
+module.exports = { validateAttachment };
