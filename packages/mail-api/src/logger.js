@@ -1,16 +1,23 @@
-const { createLogger, format, transports } = require("winston");
+const uuid = require(`uuid`);
 
-const logger = createLogger({
-  level: "debug",
-  format: format.combine(
-    format.timestamp({
-      format: "MMM-DD-YYYY HH:mm:ss",
-    }),
-    format.printf(
-      (info) => `${info.level}: ${[info.timestamp]}: ${info.message}:`
-    )
-  ),
-  transports: [new transports.Console()],
-});
-
-module.exports = logger;
+class Logger {
+  constructor(correlationId) {
+    this.correlationId = correlationId || uuid.v4();
+    this.timestamp = new Date().toString();
+  }
+  info(msg) {
+    console.log({
+      correlationId: this.correlationId,
+      msg,
+      timestamp: this.timestamp,
+    });
+  }
+  error(msg) {
+    console.error({
+      correlationId: this.correlationId,
+      msg,
+      timestamp: this.timestamp,
+    });
+  }
+}
+module.exports = Logger;

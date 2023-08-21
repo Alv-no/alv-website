@@ -34,6 +34,10 @@ function getSecrets() {
   YT_API="$(getSecret youtube-api-token)"
   SENDGRID_API_KEY="$(getSecret sendgrid-api-key)"
   MAILTO="$(getSecret mail-api-recipient)"
+  AIRTABLE_APP_ID="$(getSecret airtable-app-id)"
+  AIRTABLE_TABLE_ID="$(getSecret airtable-table-id)"
+  AIRTABLE_API_KEY="$(getSecret airtable-api-key)"
+  VIRUSCHECK_URL ="$(getSecret viruscheck-url)"
   MAILTO_ALVB="$(getSecret mail-api-alvb-recipient)"
   GITHUB_COMMENT_PR_TOKEN=$(getSecret github-comment-pr-token)
 }
@@ -220,6 +224,10 @@ function deployServices() {
       --set "hosts={mail-api.$ALV_HOSTNAME}" \
       --set secrets.MAILTO="$MAILTO" \
       --set secrets.SENDGRID_API_KEY="$SENDGRID_API_KEY" \
+      --set secrets.AIRTABLE_APP_ID="$AIRTABLE_APP_ID" \
+      --set secrets.AIRTABLE_TABLE_ID="$AIRTABLE_TABLE_ID" \
+      --set secrets.AIRTABLE_API_KEY="$AIRTABLE_API_KEY" \
+      --set secrets.VIRUSCHECK_URL="$VIRUSCHECK_URL" \
       --namespace "alv-no"
     sleep 20
     curl "https://mail-api.$ALV_HOSTNAME"
