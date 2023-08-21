@@ -26,12 +26,19 @@ class AirtableClient {
     }
   }
 
-  async sendEmployeeInformationToAirtable(name, email, cv, subject, dirName, logger) {
+  async sendEmployeeInformationToAirtable(
+    name,
+    email,
+    cv,
+    subject,
+    dirName,
+    logger
+  ) {
     let data = {
       fields: {
         Navn: name,
         Epost: email,
-        Emne: subject
+        Emne: subject,
       },
     };
 
@@ -41,31 +48,30 @@ class AirtableClient {
       data.fields.CV = [
         {
           url: cvurl,
-        }
-      ]
+        },
+      ];
     }
 
     let config = {
       url: `https://api.airtable.com/v0/${this.appId}/${this.tableId}`,
-      method: 'post',
+      method: "post",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${this.apiKey}`
+        Authorization: `Bearer ${this.apiKey}`,
       },
-      data: JSON.stringify(data)
-    }
+      data: JSON.stringify(data),
+    };
 
     try {
       await axios.request(config);
       logger.info("Updated airtable");
-    }
-    catch (e) {
+    } catch (e) {
       logger.error("Unable to update airtable: " + e.message);
     }
   }
 
   async _createCvUrl(cv, dirName, logger) {
-    if (cv && await validate.validateAttachment(cv, logger)) {
+    if (cv && (await validate.validateAttachment(cv, logger))) {
       const fileName = `${logger.correlationId}-${cv.originalFilename}`;
       const filePath = path.join(dirName, fileName);
       const fileStream = fs.readFileSync(cv.filepath);

@@ -1,7 +1,7 @@
 const { readFile } = require("fs").promises;
 const axios = require("axios");
 const fs = require("fs");
-const FormData = require('form-data');
+const FormData = require("form-data");
 const dotenv = require("dotenv");
 
 dotenv.config({
@@ -23,22 +23,21 @@ const allowedDocTypes = [
 
 const checkFileForVirus = async (filepath) => {
   let data = new FormData();
-  data.append('testfile', fs.createReadStream(filepath));
+  data.append("testfile", fs.createReadStream(filepath));
 
   let config = {
-    method: 'post',
+    method: "post",
     url: `${process.env.VIRUSCHECK_URL}/upload_file`,
     headers: { ...data.getHeaders() },
-    data: data
+    data: data,
   };
   try {
-    let response = await axios.request(config)
-    return { 'completed': true, 'message': response.data.message };
+    let response = await axios.request(config);
+    return { completed: true, message: response.data.message };
+  } catch (e) {
+    return { completed: false, message: e.message };
   }
-  catch (e) {
-    return { 'completed': false, 'message': e.message };
-  }
-}
+};
 
 const validateAttachment = async (file, logger) => {
   const { mimetype, filepath, size } = file;

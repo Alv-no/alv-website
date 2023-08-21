@@ -12,6 +12,6 @@ router.post("/jobApplication/send", (req, res) => {
 
 router.get("/file/:filename", (req, res) => {
   controller.getFile(req, res);
-})
+});
 
 module.exports = router;
