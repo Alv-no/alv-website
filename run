@@ -37,7 +37,7 @@ function getSecrets() {
   AIRTABLE_APP_ID="$(getSecret airtable-app-id)"
   AIRTABLE_TABLE_ID="$(getSecret airtable-table-id)"
   AIRTABLE_API_KEY="$(getSecret airtable-api-key)"
-  VIRUSCHECK_URL ="$(getSecret viruscheck-url)"
+  VIRUSCHECK_URL="$(getSecret viruscheck-url)"
   MAILTO_ALVB="$(getSecret mail-api-alvb-recipient)"
   GITHUB_COMMENT_PR_TOKEN=$(getSecret github-comment-pr-token)
 }
