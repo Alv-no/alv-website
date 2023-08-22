@@ -16171,6 +16171,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "async@npm:3.2.4"
+  checksum: 43d07459a4e1d09b84a20772414aa684ff4de085cbcaec6eea3c7a8f8150e8c62aa6cd4e699fe8ee93c3a5b324e777d34642531875a0817a35697522c1b02e89
+  languageName: node
+  linkType: hard
+
 "async@npm:~1.4.2":
   version: 1.4.2
   resolution: "async@npm:1.4.2"
@@ -25871,6 +25878,28 @@ fsevents@^1.2.7:
   peerDependencies:
     gatsby: ^4.0.0-next
   checksum: 6b2a94d6e08fa06fddcaf12ceb7e929add46a7fefaa0865ad3c44a3adf04ae2962c6e886d4c133d3d41068a6d97469bf5db6c439d5e406a9a7da708e1253cef7
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-sharp@npm:^4.24.0":
+  version: 4.25.1
+  resolution: "gatsby-plugin-sharp@npm:4.25.1"
+  dependencies:
+    "@babel/runtime": ^7.15.4
+    async: ^3.2.4
+    bluebird: ^3.7.2
+    debug: ^4.3.4
+    filenamify: ^4.3.0
+    fs-extra: ^10.1.0
+    gatsby-core-utils: ^3.25.0
+    gatsby-plugin-utils: ^3.19.0
+    lodash: ^4.17.21
+    probe-image-size: ^7.2.3
+    semver: ^7.3.7
+    sharp: ^0.30.7
+  peerDependencies:
+    gatsby: ^4.0.0-next
+  checksum: 09956cfeb1e2a714539a949a0e77cf7a756572fcaf3d2ee80979a2221d34f0e6d36282ca9f6fa3f191a2dabbd92b8eb4e617601e7e7843f8a3297993a472ad43
   languageName: node
   linkType: hard
 
@@ -38123,6 +38152,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"probe-image-size@npm:^7.2.3":
+  version: 7.2.3
+  resolution: "probe-image-size@npm:7.2.3"
+  dependencies:
+    lodash.merge: ^4.6.2
+    needle: ^2.5.2
+    stream-parser: ~0.3.1
+  checksum: 1a5eeb8f5cb979172144a5d7a017c70fcd664ccc8af9ad3a803903ee81864abea4036adae4fc6e66e9ae21bd3ce0febefaf1f32e65a77ff226b2eb61e9e4978c
+  languageName: node
+  linkType: hard
+
 "process-nextick-args@npm:~1.0.6":
   version: 1.0.7
   resolution: "process-nextick-args@npm:1.0.7"
@@ -46294,7 +46334,7 @@ typescript@^4.0.5:
     gatsby-plugin-postcss: ^5.1.0
     gatsby-plugin-react-helmet: ^5.1.0
     gatsby-plugin-robots-txt: ^1.7.0
-    gatsby-plugin-sharp: ^4.1.3
+    gatsby-plugin-sharp: ^4.24.0
     gatsby-plugin-sitemap: ^5.16.0
     gatsby-plugin-webpack-bundle-analyzer: ^1.0.5
     gatsby-source-filesystem: ^4.1.2
