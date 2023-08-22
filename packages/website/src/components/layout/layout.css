@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.chatlio-title-bar {
+  border-style: solid;
+  border-width: 3px;
+  border-color: white;
+}
+
+#chatlio-message-container {
+  overflow-y: auto;
+}
+
+.chatlio-title-text {
+  top: -3px;
+}
+
+.chatlio-controls-close {
+  top: -3px;
+}
+
+.chatlio-chat-header-menu__trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @layer utilities {
   @variants hover, focus {
     .filter-grayscale-0 {
