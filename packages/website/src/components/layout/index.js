@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Header, MobileHeader } from "../header";
 import { Footer, SEO } from "shared-components";
 import * as Logo from "../logo";
@@ -12,6 +12,16 @@ const Layout = ({
   whiteIcons,
   white,
 }) => {
+  useEffect(() => {
+    document.addEventListener(
+      "chatlio.ready",
+      function () {
+        window._chatlio.show();
+      },
+      false
+    );
+  }, []);
+
   const { servicePages, categoryPages, companyPages, site, ...footerProps } =
     layoutData;
 
@@ -31,6 +41,7 @@ const Layout = ({
 
   return (
     <>
+      <chatlio-widget widgetid="0510c3a3-db1f-4280-5a59-eb536d7ead38"></chatlio-widget>
       <SEO description={pageDescription} title={pageTitle} {...metaData} />
       <Header
         white={white}

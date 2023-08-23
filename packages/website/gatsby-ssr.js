@@ -1,6 +1,7 @@
 const React = require("react");
 
 const headerTags = [
+  <script src="https://js.chatlio.com/widget.js" async></script>,
   <script
     defer
     data-domain="alv.no"
