@@ -2,6 +2,9 @@
 
 set -e
 
+# Import service scripts
+source $(dirname "$0")/packages/website/website-service.sh
+
 SHORT_HASH=$(git rev-parse --short=7 HEAD)
 BUILD_ID="$4"
 TAG="$SHORT_HASH-$BUILD_ID"
@@ -19,6 +22,7 @@ CONTAINER_REGISTRY="$CONTAINER_REGISTRY_NAME.azurecr.io"
 SERVICE_TO_BUILD="$3"
 SUBSCRIPTION="k8s-$ENV-subscription"
 PULL_REQUEST_NUMBER="$6"
+
 function getSecret() {
   az keyvault secret show --vault-name $KEY_VAULT --name $1 | jq '.value' -r
 }
@@ -44,21 +48,12 @@ function getSecrets() {
 
 function buildServices() {
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "building alv website"
-
-    if [ ! -f packages/website/.env.production ]; then
-      echo "ENV=$ENV" >>packages/website/.env.production
-      echo "SANITY_TOKEN=$SANITY_TOKEN" >>packages/website/.env.production
-      echo "YT_API=$YT_API" >>packages/website/.env.production
-      if [ "$ENV" != "prod" ]; then
-        echo "SANITY_DATASET=development" >>packages/website/.env.production
-      fi
-    fi
-
-    docker build . \
-      --file website.Dockerfile \
-      --tag "$CONTAINER_REGISTRY/website:$TAG" \
-      --no-cache
+    buildWebsite \
+      $ENV \
+      $SANITY_TOKEN \
+      $YT_API \
+      $CONTAINER_REGISTRY \
+      $TAG
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
@@ -107,8 +102,9 @@ function buildServices() {
 
 function pushServices() {
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "pushing website"
-    docker push "$CONTAINER_REGISTRY/website:$TAG"
+    pushWebsite \
+      $CONTAINER_REGISTRY \
+      $TAG
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
@@ -173,25 +169,19 @@ function deployServices() {
   helm pull "oci://$CONTAINER_REGISTRY/helm/chart" --version v1 --untar
 
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
-    echo "helm website"
-
-    CHART_NAME_SUFFIX=''
-    HOSTS="$ALV_HOSTNAME,www.$ALV_HOSTNAME"
     if [ "$ENV_INPUT" = "review" ]; then
       CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"
       HOSTS="$ENVIRONMENT_SLUG.review.$ALV_HOSTNAME"
     fi
 
-    helm upgrade "website$CHART_NAME_SUFFIX" ./chart \
-      --install \
-      --set image.repository="$CONTAINER_REGISTRY/website" \
-      --set image.tag="$TAG" \
-      --set "hosts={$HOSTS}" \
-      --namespace "alv-no"
-
     if [ "$ENV_INPUT" = "review" ]; then
       commentPullRequest "https://$HOSTS" $PULL_REQUEST_NUMBER
     fi
+
+    deployWebsite \
+      $ALV_HOSTNAME \
+      $CONTAINER_REGISTRY \
+      $TAG
   fi
 
   if [[ "website-alvb" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then

@@ -1,0 +1,42 @@
+name: Deploy website
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - main
+
+env:
+  ENV: test
+  CONTAINER_REGISTRY: alvkubernetesclustertestacr.azurecr.io
+  ALV_HOSTNAME: TODO
+  SANITY_TOKEN: TODO
+  YT_API: TODO
+  TAG: TODO
+
+jobs:
+  deploy_website:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Import script
+        run: |
+          echo "Sourcing website-service.sh" \
+          source ./packages/website/website-service.sh
+
+      - name: Build image
+        run: buildWebsite
+          $ENV \
+          $SANITY_TOKEN \
+          $YT_API \
+          $CONTAINER_REGISTRY \
+          $TAG
+      
+      - name: Push image
+        run: pushWebsite $CONTAINER_REGISTRY $TAG
+      
+      - name: Deploy image
+        run: deployWebsite $ALV_HOSTNAME $TAG
