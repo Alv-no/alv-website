@@ -1,3 +1,5 @@
+set -e
+
 # Relies on:
 # - docker
 function buildWebsite() {
