@@ -28,12 +28,13 @@ jobs:
           source ./packages/website/website-service.sh
 
       - name: Build image
-        run: buildWebsite
-          $ENV \
-          $SANITY_TOKEN \
-          $YT_API \
-          $CONTAINER_REGISTRY \
-          $TAG
+        run: |
+          buildWebsite \
+            $ENV \
+            $SANITY_TOKEN \
+            $YT_API \
+            $CONTAINER_REGISTRY \
+            $TAG
       
       - name: Push image
         run: pushWebsite $CONTAINER_REGISTRY $TAG
