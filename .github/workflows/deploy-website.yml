@@ -21,23 +21,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Import script
+      - name: Build, push and deploy
+        shell: bash
         run: |
-          echo "Sourcing website-service.sh" \
           source ./packages/website/website-service.sh
-
-      - name: Build image
-        run: |
           buildWebsite \
             $ENV \
             $SANITY_TOKEN \
             $YT_API \
             $CONTAINER_REGISTRY \
             $TAG
-      
-      - name: Push image
-        run: pushWebsite $CONTAINER_REGISTRY $TAG
-      
-      - name: Deploy image
-        run: deployWebsite $ALV_HOSTNAME $TAG
+          pushWebsite \
+            $CONTAINER_REGISTRY \
+            $TAG
+          deployWebsite \
+            $ALV_HOSTNAME \
+            $TAG
