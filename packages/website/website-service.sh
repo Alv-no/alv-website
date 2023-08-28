@@ -12,11 +12,11 @@ function buildWebsite() {
   echo "building alv website"
 
   if [ ! -f .env.production ]; then
-    echo "ENV=$ENV" >>.env.production
-    echo "SANITY_TOKEN=$SANITY_TOKEN" >>.env.production
-    echo "YT_API=$YT_API" >>.env.production
+    echo "ENV=$ENV" >>packages/website/.env.production
+    echo "SANITY_TOKEN=$SANITY_TOKEN" >>packages/website/.env.production
+    echo "YT_API=$YT_API" >>packages/website/.env.production
     if [ "$ENV" != "prod" ]; then
-      echo "SANITY_DATASET=development" >>.env.production
+      echo "SANITY_DATASET=development" >>packages/website/.env.production
     fi
   fi
 
