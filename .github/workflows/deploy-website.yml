@@ -1,4 +1,4 @@
-name: Deploy website
+name: Deploy test website
 
 on:
   pull_request:
@@ -9,31 +9,56 @@ on:
 
 env:
   ENV: test
-  CONTAINER_REGISTRY: alvkubernetesclustertestacr.azurecr.io
-  ALV_HOSTNAME: TODO
-  SANITY_TOKEN: TODO
-  YT_API: TODO
-  TAG: TODO
+  CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
+  KEY_VAULT: ${{ vars.KEY_VAULT_TEST }}
+  TAG: some-random-hash-thingy-12345
 
 jobs:
-  deploy_website:
+  get-secrets:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Build, push and deploy
-        shell: bash
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Azure CLI
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        id: azure_login
+
+      - name: Get Secret from Azure Key Vault
+        id: get_secrets
         run: |
-          source ./packages/website/website-service.sh
-          buildWebsite \
-            $ENV \
-            $SANITY_TOKEN \
-            $YT_API \
-            $CONTAINER_REGISTRY \
-            $TAG
-          pushWebsite \
-            $CONTAINER_REGISTRY \
-            $TAG
-          deployWebsite \
-            $ALV_HOSTNAME \
-            $TAG
+          ALV_HOSTNAME=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name alv-hostname --query "value" -o tsv)
+          SANITY_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name sanity-token --query "value" -o tsv)
+          YT_API=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name youtube-api-token --query "value" -o tsv)
+
+          echo "Secrets: $ALV_HOSTNAME, $SANITY_TOKEN, $YT_API"
+        env:
+          AZURE_CORE_OUTPUT: json
+
+  # deploy-website:
+  #   needs: get-secrets
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Build, push and deploy
+  #       shell: bash
+  #       run: |
+  #         source ./packages/website/website-service.sh
+  #         buildWebsite \
+  #           $ENV \
+  #           $SANITY_TOKEN \
+  #           $YT_API \
+  #           $CONTAINER_REGISTRY \
+  #           $TAG
+  #         pushWebsite \
+  #           $CONTAINER_REGISTRY \
+  #           $TAG
+  #         deployWebsite \
+  #           $ALV_HOSTNAME \
+  #           $TAG
