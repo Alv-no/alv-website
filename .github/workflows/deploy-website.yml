@@ -23,11 +23,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Az CLI login
-        id: azure_login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }} 
+      # - name: Az CLI login
+      #   id: azure_login
+      #   uses: azure/login@v1
+      #   with:
+      #     creds: ${{ secrets.AZURE_CREDENTIALS }} 
 
       - name: Get Secret from Azure Key Vault
         id: get_secrets
