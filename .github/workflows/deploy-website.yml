@@ -32,32 +32,35 @@ jobs:
       - name: Get Secret from Azure Key Vault
         id: get_secrets
         run: |
-          ALV_HOSTNAME=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name alv-hostname --query "value" -o tsv)
-          SANITY_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name sanity-token --query "value" -o tsv)
-          YT_API=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name youtube-api-token --query "value" -o tsv)
+          # ALV_HOSTNAME=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name alv-hostname --query "value" -o tsv)
+          # SANITY_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name sanity-token --query "value" -o tsv)
+          # YT_API=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name youtube-api-token --query "value" -o tsv)
+
+          ALV_HOSTNAME=test-alv.no
+          SANITY_TOKEN=skCxLJ0ShMeufJOqlGvmXciU5kglMhW3Iz5sOCKPCke0TdTZpVAKHO9EHcTGzL1uDj7Z6oDXJ50YCkFW9buLNdIkFvYlMAgSAmAx6MXAzsvrygfSODWJ8LSxyuBnrQGKnYcnuPZViURV0oDPpsVXqdMeuLlfUK3ONSJNGJQk2e9OcN2spJ4U
+          YT_API=123
 
           echo "Secrets: $ALV_HOSTNAME, $SANITY_TOKEN, $YT_API"
         env:
           AZURE_CORE_OUTPUT: json
-
-  # deploy-website:
-  #   needs: get-secrets
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Build, push and deploy
-  #       shell: bash
-  #       run: |
-  #         source ./packages/website/website-service.sh
-  #         buildWebsite \
-  #           $ENV \
-  #           $SANITY_TOKEN \
-  #           $YT_API \
-  #           $CONTAINER_REGISTRY \
-  #           $TAG
-  #         pushWebsite \
-  #           $CONTAINER_REGISTRY \
-  #           $TAG
-  #         deployWebsite \
-  #           $ALV_HOSTNAME \
-  #           $TAG
+  deploy-website:
+    needs: get-secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build, push and deploy
+        shell: bash
+        run: |
+          source ./packages/website/website-service.sh
+          buildWebsite \
+            $ENV \
+            $SANITY_TOKEN \
+            $YT_API \
+            $CONTAINER_REGISTRY \
+            $TAG
+          pushWebsite \
+            $CONTAINER_REGISTRY \
+            $TAG
+          deployWebsite \
+            $ALV_HOSTNAME \
+            $TAG
