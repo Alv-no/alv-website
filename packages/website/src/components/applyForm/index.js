@@ -3,9 +3,11 @@ import { trackCustomEvent } from "shared-components";
 import { PLAUSIBLE_WORK_FOR_US_FORM } from "../../plausible/plausible-events";
 
 const ApplyForm = ({ jobTitle }) => {
+  const [files, setFiles] = useState(null);
   const [status, setStatus] = useState("validating");
   const [formInputs, setFormInputs] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
   });
 
@@ -20,7 +22,8 @@ const ApplyForm = ({ jobTitle }) => {
     e.preventDefault();
 
     const mailApiUrl = `${window.location.protocol}//mail-api.${window.location.hostname}/jobApplication/send`;
-    const { name, email } = formInputs;
+    const { firstName, lastName, email } = formInputs;
+    const name = `${firstName} ${lastName}`; // TODO: update backend to handle first and last name separately
 
     const formData = new FormData();
 
@@ -67,14 +70,26 @@ const ApplyForm = ({ jobTitle }) => {
 
   return (
     <form className="grid" onSubmit={handleSubmit} data-testid="form">
-      <label className="mb-2">Navn *</label>
+      <label className="mb-2">Fornavn *</label>
       <input
         className={
           "rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3"
         }
-        data-testid="name-input"
-        name="name"
-        value={formInputs.name}
+        data-testid="first-name-input"
+        name="firstName"
+        value={formInputs.firstName}
+        onChange={handleInputChange}
+        type="text"
+        required
+      />
+      <label className="mb-2">Etternavn *</label>
+      <input
+        className={
+          "rounded border border-px border-navy bg-transparent h-11 pl-3 mb-3"
+        }
+        data-testid="last-name-input"
+        name="lastName"
+        value={formInputs.lastName}
         onChange={handleInputChange}
         type="text"
         required
@@ -91,13 +106,13 @@ const ApplyForm = ({ jobTitle }) => {
         value={formInputs.email}
         type="email"
       />
+      <UploadAttachments files={files} setFiles={setFiles} />
       <SubmitButton />
     </form>
   );
 };
 
-export const UploadAttachments = (props) => {
-  const { files, setFiles } = props;
+export const UploadAttachments = ({ files, setFiles }) => {
   const hiddenFileInput = useRef(null);
 
   const handleInputClick = () => {
@@ -106,6 +121,13 @@ export const UploadAttachments = (props) => {
 
   const handleRemoveFiles = () => {
     setFiles(null);
+  };
+
+  /**
+   * Resets the file input value to trigger onchange event when uploading the same file again. 
+   */
+  const resetTargetValue = (e) => {
+    e.target.value = null;
   };
 
   return (
@@ -137,6 +159,7 @@ export const UploadAttachments = (props) => {
         accept=".pdf, .docx"
         data-testid="file-upload"
         ref={hiddenFileInput}
+        onClick={resetTargetValue}
         onChange={(e) => setFiles(e.target.files)}
         className="opacity-0 border absolute left-0 w-24"
       />
