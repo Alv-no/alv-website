@@ -52,15 +52,6 @@ jobs:
         shell: bash
         run: |
           source ./packages/website/website-service.sh
-          buildWebsite `
-            $ENV `
-            $SANITY_TOKEN `
-            $YT_API `
-            $CONTAINER_REGISTRY `
-            $TAG
-          pushWebsite `
-            $CONTAINER_REGISTRY `
-            $TAG
-          deployWebsite `
-            $ALV_HOSTNAME `
-            $TAG
+          buildWebsite $ENV $SANITY_TOKEN $YT_API $CONTAINER_REGISTRY $TAG
+          pushWebsite $CONTAINER_REGISTRY $TAG
+          deployWebsite $ALV_HOSTNAME $TAG
