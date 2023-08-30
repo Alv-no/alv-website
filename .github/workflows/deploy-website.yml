@@ -11,7 +11,7 @@ env:
   ENV: test
   CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
   KEY_VAULT: ${{ vars.KEY_VAULT_TEST }}
-  TAG: some-random-hash-thingy-12345
+  TAG: "Heiheihei"
 
 jobs:
   get-secrets:
@@ -40,7 +40,7 @@ jobs:
           SANITY_TOKEN=skCxLJ0ShMeufJOqlGvmXciU5kglMhW3Iz5sOCKPCke0TdTZpVAKHO9EHcTGzL1uDj7Z6oDXJ50YCkFW9buLNdIkFvYlMAgSAmAx6MXAzsvrygfSODWJ8LSxyuBnrQGKnYcnuPZViURV0oDPpsVXqdMeuLlfUK3ONSJNGJQk2e9OcN2spJ4U
           YT_API=123
 
-          echo "Secrets: $ALV_HOSTNAME, $SANITY_TOKEN, $YT_API"
+          echo "Secrets: $ALV_HOSTNAME, $SANITY_TOKEN, $YT_API, $TAG, $ENV, $CONTAINER_REGISTRY"
         env:
           AZURE_CORE_OUTPUT: json
   deploy-website:
