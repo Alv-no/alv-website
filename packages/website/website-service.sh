@@ -5,7 +5,7 @@ set -e
 function buildWebsite() {
   ENV=$1
   SANITY_TOKEN=$2
-  YT_API=$3
+  YOUTUBE_API_TOKEN=$3
   CONTAINER_REGISTRY=$4
   TAG=$5
 
@@ -14,7 +14,7 @@ function buildWebsite() {
   if [ ! -f .env.production ]; then
     echo "ENV=$ENV" >>packages/website/.env.production
     echo "SANITY_TOKEN=$SANITY_TOKEN" >>packages/website/.env.production
-    echo "YT_API=$YT_API" >>packages/website/.env.production
+    echo "YT_API=$YOUTUBE_API_TOKEN" >>packages/website/.env.production
     if [ "$ENV" != "prod" ]; then
       echo "SANITY_DATASET=development" >>packages/website/.env.production
     fi
