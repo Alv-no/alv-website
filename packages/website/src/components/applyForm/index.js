@@ -5,6 +5,7 @@ import { PLAUSIBLE_WORK_FOR_US_FORM } from "../../plausible/plausible-events";
 const ApplyForm = ({ jobTitle }) => {
   const [files, setFiles] = useState(null);
   const [status, setStatus] = useState("validating");
+  const [privacyApproval, setPrivacyApproval] = useState(false);
   const [formInputs, setFormInputs] = useState({
     firstName: "",
     lastName: "",
@@ -107,9 +108,32 @@ const ApplyForm = ({ jobTitle }) => {
         type="email"
       />
       <UploadAttachments files={files} setFiles={setFiles} />
-      <SubmitButton />
+      <PrivacyAgreement privacyApproval={privacyApproval} setPrivacyApproval={setPrivacyApproval} />
+      <SubmitButton disabled={!privacyApproval} />
     </form>
   );
+};
+
+export const PrivacyAgreement = ({ privacyApproval, setPrivacyApproval }) => {
+  return (
+    <div className="mt-2">
+      <input
+        className="mr-2"
+        data-testid="privacy-approval-input"
+        onChange={() => setPrivacyApproval(!privacyApproval)}
+        value={privacyApproval}
+        required
+        name="privacy"
+        type="checkbox"
+      />
+      <a
+        href="https://alv.no/om-oss/personvernerklaering"
+        className="mb-2 underline"
+      >
+        Jeg samtykker til at Alv lagrer mine opplysninger
+      </a>
+    </div>
+  )
 };
 
 export const UploadAttachments = ({ files, setFiles }) => {
@@ -142,7 +166,7 @@ export const UploadAttachments = ({ files, setFiles }) => {
             <>Fjern vedlegg</>
           ) : (
             <>
-              Last opp
+              Last opp CV
               <span className="text-sm mt-1 ml-1 font-normal">
                 (.docx eller .pdf)
               </span>
@@ -178,11 +202,15 @@ export const UploadAttachments = ({ files, setFiles }) => {
   );
 };
 
-const SubmitButton = () => (
+const SubmitButton = ({ disabled }) => (
   <button
+    disabled={disabled}
     type="submit"
     data-testid="submit-btn"
-    className="mt-4 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider hover:bg-yellow hover:text-navy mx-auto w-full xs:w-auto"
+    className={disabled
+      ? "mt-4 opacity-50 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider mx-auto w-full xs:w-auto"
+      : "mt-4 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider hover:bg-yellow hover:text-navy mx-auto w-full xs:w-auto"
+    }
   >
     Send inn
   </button>
