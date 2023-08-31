@@ -28,19 +28,16 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      # - name: Az CLI login
-      #   id: azure_login
-      #   uses: azure/login@v1
-      #   with:
-      #     creds: ${{ secrets.AZURE_CREDENTIALS }} 
-
       - name: Get Secret from Azure Key Vault
         id: get_secrets
         run: |
-          # TODO: get secrets from key vault
-          # ALV_HOSTNAME=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name alv-hostname --query "value" -o tsv)
-          # SANITY_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name sanity-token --query "value" -o tsv)
-          # YOUTUBE_API_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name youtube-api-token --query "value" -o tsv)
+          az login --service-principal -u "${{ secrets.AZURE_CLIENT_ID }}" -p "${{ secrets.AZURE_CLIENT_SECRET }}" --tenant "${{ secrets.AZURE_TENANT_ID }}"
+
+          ALV_HOSTNAME=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name alv-hostname --query "value" -o tsv)
+          SANITY_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name sanity-token --query "value" -o tsv)
+          YOUTUBE_API_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name youtube-api-token --query "value" -o tsv)
+
+          echo "$ALV_HOSTNAME $SANITY_TOKEN $YOUTUBE_API_TOKEN"
 
           echo "alvHostname=$ALV_HOSTNAME" >> $GITHUB_OUTPUT
           echo "sanityToken=$SANITY_TOKEN" >> $GITHUB_OUTPUT
