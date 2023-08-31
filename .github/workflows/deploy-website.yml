@@ -9,8 +9,6 @@ on:
 
 env:
   ENV: test
-  CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
-  KEY_VAULT: ${{ vars.KEY_VAULT_TEST }}
   TAG: en-eller-annen-tag
 
 jobs:
@@ -34,9 +32,9 @@ jobs:
           az login --service-principal -u "${{ vars.AZURE_CLIENT_ID }}" -p "${{ secrets.AZURE_CLIENT_SECRET }}" --tenant "${{ vars.TENANT_ID }}"
           az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
 
-          ALV_HOSTNAME=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name alv-hostname --query "value" -o tsv)
-          SANITY_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name sanity-token --query "value" -o tsv)
-          YOUTUBE_API_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name youtube-api-token --query "value" -o tsv)
+          ALV_HOSTNAME=$(az keyvault secret show --name "alv-hostname" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+          SANITY_TOKEN=$(az keyvault secret show --name "sanity-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+          YOUTUBE_API_TOKEN=$(az keyvault secret show --name "youtube-api-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
 
           echo "$ALV_HOSTNAME $SANITY_TOKEN $YOUTUBE_API_TOKEN"
 
@@ -59,10 +57,10 @@ jobs:
           source ./packages/website/website-service.sh
           
           # Build
-          buildWebsite $ENV $SANITY_TOKEN $YOUTUBE_API_TOKEN $CONTAINER_REGISTRY $TAG
+          buildWebsite $ENV $SANITY_TOKEN $YOUTUBE_API_TOKEN ${{ vars.CONTAINER_REGISTRY }} $TAG
           
           # Push
-          pushWebsite $CONTAINER_REGISTRY $TAG
+          pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
           
           # Deploy
           deployWebsite $ALV_HOSTNAME $TAG
