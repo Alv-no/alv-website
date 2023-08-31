@@ -33,8 +33,7 @@ const ApplyForm = ({ jobTitle }) => {
     formData.append("subject", "Jobbsøknad - " + jobTitle);
     name && formData.append("name", name);
     email && formData.append("email", email);
-
-    setStatus("loading");
+    files && formData.append("cv", files[0]);
 
     fetch(mailApiUrl, {
       method: "POST",
@@ -179,10 +178,8 @@ export const UploadAttachments = ({ files, setFiles }) => {
         <span className="block h-2px w-full bg-navy" />
       </button>
       <input
-        multiple
         type="file"
         name="files"
-        max={3}
         accept=".pdf, .docx"
         data-testid="file-upload"
         ref={hiddenFileInput}
