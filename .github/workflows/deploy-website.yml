@@ -29,15 +29,21 @@ jobs:
       - name: Get Secret from Azure Key Vault
         id: get_secrets
         run: |
-          az login --service-principal -u "${{ vars.AZURE_CLIENT_ID }}" -p "${{ secrets.AZURE_CLIENT_SECRET }}" --tenant "${{ vars.TENANT_ID }}"
+          # Log in to Azure
+          az login --service-principal \
+            -u "${{ vars.AZURE_CLIENT_ID }}" \
+            -p "${{ secrets.AZURE_CLIENT_SECRET }}" \
+            --tenant "${{ vars.TENANT_ID }}"
+          
+          # Set subscription
           az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
 
+          # Get secrets from key vault
           ALV_HOSTNAME=$(az keyvault secret show --name "alv-hostname" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
           SANITY_TOKEN=$(az keyvault secret show --name "sanity-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
           YOUTUBE_API_TOKEN=$(az keyvault secret show --name "youtube-api-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
 
-          echo "$ALV_HOSTNAME $SANITY_TOKEN $YOUTUBE_API_TOKEN"
-
+          # Set job outputs
           echo "alvHostname=$ALV_HOSTNAME" >> $GITHUB_OUTPUT
           echo "sanityToken=$SANITY_TOKEN" >> $GITHUB_OUTPUT
           echo "youtubeApiToken=$YOUTUBE_API_TOKEN" >> $GITHUB_OUTPUT
@@ -52,6 +58,11 @@ jobs:
           ALV_HOSTNAME=${{ needs.get-secrets.outputs.alvHostname }}
           SANITY_TOKEN=${{ needs.get-secrets.outputs.sanityToken }}
           YOUTUBE_API_TOKEN=${{ needs.get-secrets.outputs.youtubeApiToken }}
+
+          # Authenticate Azure container registry
+          docker login ${{ vars.CONTAINER_REGISTRY }} \
+            --username ${{ vars.AZURE_CLIENT_ID }} \
+            --password ${{ secrets.AZURE_CLIENT_SECRET }}
 
           # Source website service
           source ./packages/website/website-service.sh
