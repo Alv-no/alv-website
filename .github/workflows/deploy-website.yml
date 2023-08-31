@@ -74,4 +74,4 @@ jobs:
           pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
           
           # Deploy
-          deployWebsite $ALV_HOSTNAME $TAG
+          deployWebsite $ALV_HOSTNAME ${{ vars.CONTAINER_REGISTRY }} $TAG
