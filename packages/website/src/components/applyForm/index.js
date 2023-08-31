@@ -133,7 +133,7 @@ export const PrivacyAgreement = ({ privacyApproval, setPrivacyApproval }) => {
         href="https://alv.no/om-oss/personvernerklaering"
         className="mb-2 underline"
       >
-        Jeg samtykker til at Alv lagrer mine opplysninger
+        Jeg har lest og akseptert vilkårene
       </a>
     </div>
   );
