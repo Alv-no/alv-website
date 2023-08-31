@@ -108,7 +108,10 @@ const ApplyForm = ({ jobTitle }) => {
         type="email"
       />
       <UploadAttachments files={files} setFiles={setFiles} />
-      <PrivacyAgreement privacyApproval={privacyApproval} setPrivacyApproval={setPrivacyApproval} />
+      <PrivacyAgreement
+        privacyApproval={privacyApproval}
+        setPrivacyApproval={setPrivacyApproval}
+      />
       <SubmitButton disabled={!privacyApproval} />
     </form>
   );
@@ -133,7 +136,7 @@ export const PrivacyAgreement = ({ privacyApproval, setPrivacyApproval }) => {
         Jeg samtykker til at Alv lagrer mine opplysninger
       </a>
     </div>
-  )
+  );
 };
 
 export const UploadAttachments = ({ files, setFiles }) => {
@@ -148,7 +151,7 @@ export const UploadAttachments = ({ files, setFiles }) => {
   };
 
   /**
-   * Resets the file input value to trigger onchange event when uploading the same file again. 
+   * Resets the file input value to trigger onchange event when uploading the same file again.
    */
   const resetTargetValue = (e) => {
     e.target.value = null;
@@ -207,9 +210,10 @@ const SubmitButton = ({ disabled }) => (
     disabled={disabled}
     type="submit"
     data-testid="submit-btn"
-    className={disabled
-      ? "mt-4 opacity-50 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider mx-auto w-full xs:w-auto"
-      : "mt-4 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider hover:bg-yellow hover:text-navy mx-auto w-full xs:w-auto"
+    className={
+      disabled
+        ? "mt-4 opacity-50 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider mx-auto w-full xs:w-auto"
+        : "mt-4 bg-navy py-2 px-14 rounded-full uppercase text-white font-bold tracking-wider hover:bg-yellow hover:text-navy mx-auto w-full xs:w-auto"
     }
   >
     Send inn

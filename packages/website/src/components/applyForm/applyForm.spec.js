@@ -29,7 +29,7 @@ describe("applyForm-component", () => {
     fireEvent.change(firstnameInputEl, { target: { value: "test" } });
     fireEvent.change(lastnameInputEl, { target: { value: "name" } });
     fireEvent.change(emailInputEl, { target: { value: "test@hey.com" } });
-    fireEvent.change(privacyApprovalInput, { target: { checked: true }});
+    fireEvent.change(privacyApprovalInput, { target: { checked: true } });
 
     expect(formEl).toBeValid();
   });
