@@ -31,7 +31,8 @@ jobs:
       - name: Get Secret from Azure Key Vault
         id: get_secrets
         run: |
-          az login --service-principal -u "${{ secrets.AZURE_CLIENT_ID }}" -p "${{ secrets.AZURE_CLIENT_SECRET }}" --tenant "${{ secrets.AZURE_TENANT_ID }}"
+          az login --service-principal -u "${{ vars.AZURE_CLIENT_ID }}" -p "${{ secrets.AZURE_CLIENT_SECRET }}" --tenant "${{ vars.TENANT_ID }}"
+          az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
 
           ALV_HOSTNAME=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name alv-hostname --query "value" -o tsv)
           SANITY_TOKEN=$(az keyvault secret show --vault-name $KEY_VAULT_TEST --name sanity-token --query "value" -o tsv)
