@@ -35,6 +35,8 @@ const ApplyForm = ({ jobTitle }) => {
     email && formData.append("email", email);
     files && formData.append("cv", files[0]);
 
+    setStatus("loading");
+
     fetch(mailApiUrl, {
       method: "POST",
       body: formData,
