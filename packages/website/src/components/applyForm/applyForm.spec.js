@@ -10,20 +10,26 @@ jest.mock("shared-components", () => ({
 describe("applyForm-component", () => {
   render(<ApplyForm jobTitle="Utvikler" />);
 
-  const nameInputEl = screen.getByTestId("name-input");
+  const firstnameInputEl = screen.getByTestId("first-name-input");
+  const lastnameInputEl = screen.getByTestId("last-name-input");
   const emailInputEl = screen.getByTestId("email-input");
+  const privacyApprovalInput = screen.getByTestId("privacy-approval-input");
   const submitBtnEl = screen.getByTestId("submit-btn");
   const formEl = screen.getByTestId("form");
 
   it("should render form elements", () => {
-    expect(nameInputEl).toBeInTheDocument();
+    expect(firstnameInputEl).toBeInTheDocument();
+    expect(lastnameInputEl).toBeInTheDocument();
     expect(emailInputEl).toBeInTheDocument();
+    expect(privacyApprovalInput).toBeInTheDocument();
     expect(submitBtnEl).toBeInTheDocument();
   });
 
   it("should successfully submit with name and email", async () => {
-    fireEvent.change(nameInputEl, { target: { value: "test" } });
+    fireEvent.change(firstnameInputEl, { target: { value: "test" } });
+    fireEvent.change(lastnameInputEl, { target: { value: "name" } });
     fireEvent.change(emailInputEl, { target: { value: "test@hey.com" } });
+    fireEvent.change(privacyApprovalInput, { target: { checked: true }});
 
     expect(formEl).toBeValid();
   });

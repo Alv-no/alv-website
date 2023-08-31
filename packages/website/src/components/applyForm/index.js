@@ -121,9 +121,9 @@ export const PrivacyAgreement = ({ privacyApproval, setPrivacyApproval }) => {
         className="mr-2"
         data-testid="privacy-approval-input"
         onChange={() => setPrivacyApproval(!privacyApproval)}
-        value={privacyApproval}
+        checked={privacyApproval}
         required
-        name="privacy"
+        name="privacy-approval"
         type="checkbox"
       />
       <a
