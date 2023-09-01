@@ -82,11 +82,11 @@ jobs:
           source ./packages/website/website-service.sh
           source ./get-aks-credentials.sh
           
-          # Build
-          buildWebsite $ENV $SANITY_TOKEN $YOUTUBE_API_TOKEN ${{ vars.CONTAINER_REGISTRY }} $TAG
+          # # Build
+          # buildWebsite $ENV $SANITY_TOKEN $YOUTUBE_API_TOKEN ${{ vars.CONTAINER_REGISTRY }} $TAG
           
-          # Push
-          pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
+          # # Push
+          # pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
           
           # Get AKS credentials and configure kubectl
           getAksCredentials ${{ vars.AZURE_SUBSCRIPTION_TEST }} ${{ vars.AZURE_RESOURCE_GROUP_NAME_TEST }} ${{ vars.KUBERNETES_CLUSTER_NAME_TEST }} 

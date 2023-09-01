@@ -44,7 +44,7 @@ function deployWebsite() {
   CONTAINER_REGISTRY=$2
   TAG=$3
 
-  echo "helm website"
+  echo "helm website, secrets: $ALV_HOSTNAME, $CONTAINER_REGISTRY, $TAG"
 
   CHART_NAME_SUFFIX=''
   HOSTS="$ALV_HOSTNAME,www.$ALV_HOSTNAME"
