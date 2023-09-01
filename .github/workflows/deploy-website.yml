@@ -29,12 +29,10 @@ jobs:
       - name: Log in to Azure and set subscription
         shell: bash
         run: |
-          # Log in to Azure
           az login --service-principal \
             -u "${{ vars.AZURE_CLIENT_ID }}" \
             -p "${{ secrets.AZURE_CLIENT_SECRET }}" \
             --tenant "${{ vars.TENANT_ID }}"
-          # Set subscription
           az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
 
       - name: Get Secret from Azure Key Vault
@@ -49,38 +47,49 @@ jobs:
           echo "alvHostname=$ALV_HOSTNAME" >> $GITHUB_OUTPUT
           echo "sanityToken=$SANITY_TOKEN" >> $GITHUB_OUTPUT
           echo "youtubeApiToken=$YOUTUBE_API_TOKEN" >> $GITHUB_OUTPUT
-  # deploy-website:
-  #   needs: get-secrets
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: azure/use-kubelogin@v1
-  #       with:
-  #         kubelogin-version: 'v0.0.28'
-  #     - name: Build, push and deploy
-  #       shell: bash
-  #       run: |
-  #         ALV_HOSTNAME=${{ needs.get-secrets.outputs.alvHostname }}
-  #         SANITY_TOKEN=${{ needs.get-secrets.outputs.sanityToken }}
-  #         YOUTUBE_API_TOKEN=${{ needs.get-secrets.outputs.youtubeApiToken }}
+ 
+  deploy-website:
+    needs: get-secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: azure/use-kubelogin@v1
+        with:
+          kubelogin-version: 'v0.0.28'
 
-  #         # Authenticate Azure container registry
-  #         docker login ${{ vars.CONTAINER_REGISTRY }} \
-  #           --username ${{ vars.AZURE_CLIENT_ID }} \
-  #           --password ${{ secrets.AZURE_CLIENT_SECRET }}
+      - name: Log in to Azure and set subscription
+        shell: bash
+        run: |
+          az login --service-principal \
+            -u "${{ vars.AZURE_CLIENT_ID }}" \
+            -p "${{ secrets.AZURE_CLIENT_SECRET }}" \
+            --tenant "${{ vars.TENANT_ID }}"
+          az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
+  
+      - name: Build, push and deploy
+        shell: bash
+        run: |
+          ALV_HOSTNAME=${{ needs.get-secrets.outputs.alvHostname }}
+          SANITY_TOKEN=${{ needs.get-secrets.outputs.sanityToken }}
+          YOUTUBE_API_TOKEN=${{ needs.get-secrets.outputs.youtubeApiToken }}
 
-  #         # Source services
-  #         source ./packages/website/website-service.sh
-  #         source ./get-aks-credentials.sh
-          
-  #         # Build
-  #         buildWebsite $ENV $SANITY_TOKEN $YOUTUBE_API_TOKEN ${{ vars.CONTAINER_REGISTRY }} $TAG
-          
-  #         # Push
-  #         pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
-          
-  #         # Get AKS credentials and configure kubectl
-  #         getAksCredentials ${{ vars.AZURE_SUBSCRIPTION_TEST }} ${{ vars.AZURE_RESOURCE_GROUP_NAME_TEST }} ${{ vars.KUBERNETES_CLUSTER_NAME_TEST }} 
+          # Authenticate Azure container registry
+          docker login ${{ vars.CONTAINER_REGISTRY }} \
+            --username ${{ vars.AZURE_CLIENT_ID }} \
+            --password ${{ secrets.AZURE_CLIENT_SECRET }}
 
-  #         # Deploy
-  #         deployWebsite $ALV_HOSTNAME ${{ vars.CONTAINER_REGISTRY }} $TAG
+          # Source services
+          source ./packages/website/website-service.sh
+          source ./get-aks-credentials.sh
+          
+          # Build
+          buildWebsite $ENV $SANITY_TOKEN $YOUTUBE_API_TOKEN ${{ vars.CONTAINER_REGISTRY }} $TAG
+          
+          # Push
+          pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
+          
+          # Get AKS credentials and configure kubectl
+          getAksCredentials ${{ vars.AZURE_SUBSCRIPTION_TEST }} ${{ vars.AZURE_RESOURCE_GROUP_NAME_TEST }} ${{ vars.KUBERNETES_CLUSTER_NAME_TEST }} 
+
+          # Deploy
+          deployWebsite $ALV_HOSTNAME ${{ vars.CONTAINER_REGISTRY }} $TAG
