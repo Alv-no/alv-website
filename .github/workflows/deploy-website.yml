@@ -89,6 +89,7 @@ jobs:
           # Source services
           source ./packages/website/website-service.sh
           source ./bash-services/aks-service.sh
+          source ./bash-services/helm-service.sh
           
           # # Build
           # buildWebsite $ENV $SANITY_TOKEN $YOUTUBE_API_TOKEN ${{ vars.CONTAINER_REGISTRY }} $TAG
