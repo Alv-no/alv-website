@@ -52,8 +52,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: azure/setup-helm@v3
-      - uses: azure/setup-kubectl@v3
+      - uses: azure/use-kubelogin@v1
+        with:
+          kubelogin-version: 'v0.0.28'
       - name: Build, push and deploy
         shell: bash
         run: |
