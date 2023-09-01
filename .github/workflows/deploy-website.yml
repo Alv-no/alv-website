@@ -101,5 +101,5 @@ jobs:
           getAksCredentials ${{ vars.AZURE_SUBSCRIPTION_TEST }} ${{ vars.AZURE_RESOURCE_GROUP_NAME_TEST }} ${{ vars.KUBERNETES_CLUSTER_NAME_TEST }} 
 
           # Deploy
-          helmLoginAndPull ${{ vars.AZURE_CLIENT_ID }} ${{ vars.AZURE_CLIENT_SECRET }} $CONTAINER_REGISTRY
+          helmLoginAndPull ${{ vars.AZURE_CLIENT_ID }} ${{ vars.AZURE_CLIENT_SECRET }} ${{ vars.CONTAINER_REGISTRY }}
           deployWebsite $ALV_HOSTNAME ${{ vars.CONTAINER_REGISTRY }} $TAG
