@@ -4,6 +4,7 @@ set -e
 
 # Import service scripts
 source $(dirname "$0")/packages/website/website-service.sh
+source $(dirname "$0")/get-aks-credentials.sh
 
 SHORT_HASH=$(git rev-parse --short=7 HEAD)
 BUILD_ID="$4"
@@ -136,16 +137,6 @@ function commentPullRequest() {
     --data "{\"body\": \"💻 $1\"}"
 }
 
-function getAksCredentials() {
-  # Retrieve the access credentials for your cluster and automatically configure kubectl
-  az aks get-credentials \
-    --subscription "$SUBSCRIPTION" \
-    --resource-group "$RESOURCE_GROUP_NAME" \
-    --name "$KUBERNETES_CLUSTER_NAME"
-
-  kubelogin convert-kubeconfig -l azurecli
-}
-
 function undeployServices() {
   CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"
 
@@ -256,12 +247,12 @@ if [ "deploy" = "$1" ]; then
   az acr login --name $CONTAINER_REGISTRY_NAME
   buildServices
   pushServices
-  getAksCredentials
+  getAksCredentials $SUBSCRIPTION $RESOURCE_GROUP_NAME $KUBERNETES_CLUSTER_NAME
   deployServices
 fi
 
 if [ "undeploy" = "$1" ]; then
   getSecrets
-  getAksCredentials
+  getAksCredentials $SUBSCRIPTION $RESOURCE_GROUP_NAME $KUBERNETES_CLUSTER_NAME
   undeployServices
 fi
