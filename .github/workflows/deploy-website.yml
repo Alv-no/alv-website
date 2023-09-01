@@ -21,8 +21,8 @@ jobs:
       alvHostname: ${{ steps.get_secrets.outputs.alvHostname }}
       sanityToken: ${{ steps.get_secrets.outputs.sanityToken }}
       youtubeApiToken: ${{ steps.get_secrets.outputs.youtubeApiToken }}
-      # spAlvtimeAdminClientId: ${{ steps.get_secrets.outputs.spAlvtimeAdminClientId }}
-      # spAlvtimeAdminRbacSecret: ${{ steps.get_secrets.outputs.spAlvtimeAdminRbacSecret }}
+      spAlvtimeAdminClientId: ${{ steps.get_secrets.outputs.spAlvtimeAdminClientId }}
+      spAlvtimeAdminRbacSecret: ${{ steps.get_secrets.outputs.spAlvtimeAdminRbacSecret }}
 
     steps:
       - name: Check out code
@@ -44,15 +44,15 @@ jobs:
           ALV_HOSTNAME=$(az keyvault secret show --name "alv-hostname" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
           SANITY_TOKEN=$(az keyvault secret show --name "sanity-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
           YOUTUBE_API_TOKEN=$(az keyvault secret show --name "youtube-api-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
-          # SP_ALVTIME_ADMIN_CLIENT_ID=$(az keyvault secret show --name "sp-alvtime-admin-client-id" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
-          # SP_ALVTIME_ADMIN_RBAC_SECRET=$(az keyvault secret show --name "sp-alvtime-admin-rbac-secret" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+          SP_ALVTIME_ADMIN_CLIENT_ID=$(az keyvault secret show --name "sp-alvtime-admin-client-id" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+          SP_ALVTIME_ADMIN_RBAC_SECRET=$(az keyvault secret show --name "sp-alvtime-admin-rbac-secret" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
 
           # Set job outputs
           echo "alvHostname=$ALV_HOSTNAME" >> $GITHUB_OUTPUT
           echo "sanityToken=$SANITY_TOKEN" >> $GITHUB_OUTPUT
           echo "youtubeApiToken=$YOUTUBE_API_TOKEN" >> $GITHUB_OUTPUT
-          # echo "spAlvtimeAdminClientId=$SP_ALVTIME_ADMIN_CLIENT_ID" >> $GITHUB_OUTPUT
-          # echo "spAlvtimeAdminRbacSecret=$SP_ALVTIME_ADMIN_RBAC_SECRET" >> $GITHUB_OUTPUT
+          echo "spAlvtimeAdminClientId=$SP_ALVTIME_ADMIN_CLIENT_ID" >> $GITHUB_OUTPUT
+          echo "spAlvtimeAdminRbacSecret=$SP_ALVTIME_ADMIN_RBAC_SECRET" >> $GITHUB_OUTPUT
  
   deploy-website:
     needs: get-secrets
@@ -78,8 +78,8 @@ jobs:
           ALV_HOSTNAME=${{ needs.get-secrets.outputs.alvHostname }}
           SANITY_TOKEN=${{ needs.get-secrets.outputs.sanityToken }}
           YOUTUBE_API_TOKEN=${{ needs.get-secrets.outputs.youtubeApiToken }}
-          # SP_ALVTIME_ADMIN_CLIENT_ID=${{ needs.get-secrets.outputs.spAlvtimeAdminClientId }}
-          # SP_ALVTIME_ADMIN_RBAC_SECRET=${{ needs.get-secrets.outputs.spAlvtimeAdminRbacSecret }}
+          SP_ALVTIME_ADMIN_CLIENT_ID=${{ needs.get-secrets.outputs.spAlvtimeAdminClientId }}
+          SP_ALVTIME_ADMIN_RBAC_SECRET=${{ needs.get-secrets.outputs.spAlvtimeAdminRbacSecret }}
 
           # Authenticate Azure container registry
           docker login ${{ vars.CONTAINER_REGISTRY }} \
@@ -105,8 +105,8 @@ jobs:
 
           # Deploy
           helmLoginAndPull \
-            ${{ vars.AZURE_CLIENT_ID }} \
-            ${{ vars.AZURE_CLIENT_SECRET }} \
+            ${{ vars.SP_ALVTIME_ADMIN_CLIENT_ID }} \
+            ${{ vars.SP_ALVTIME_ADMIN_RBAC_SECRET }} \
             ${{ vars.CONTAINER_REGISTRY }}
           
           deployWebsite $ALV_HOSTNAME \
