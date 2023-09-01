@@ -112,6 +112,7 @@ jobs:
             ${{ vars.SP_ALVTIME_ADMIN_RBAC_SECRET }} \
             ${{ vars.CONTAINER_REGISTRY }}
           
-          deployWebsite $ALV_HOSTNAME \
+          deployWebsite \
+            $ALV_HOSTNAME \
             ${{ vars.CONTAINER_REGISTRY }} \
             $TAG
