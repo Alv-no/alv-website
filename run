@@ -4,7 +4,8 @@ set -e
 
 # Import service scripts
 source $(dirname "$0")/packages/website/website-service.sh
-source $(dirname "$0")/get-aks-credentials.sh
+source $(dirname "$0")/bash-services/aks-service.sh
+source $(dirname "$0")/bash-services/helm-service.sh
 
 SHORT_HASH=$(git rev-parse --short=7 HEAD)
 BUILD_ID="$4"
@@ -145,20 +146,6 @@ function undeployServices() {
 }
 
 function deployServices() {
-  export HELM_EXPERIMENTAL_OCI=1
-
-  echo "$SP_ALVTIME_ADMIN_RBAC_SECRET" | helm registry login "$CONTAINER_REGISTRY" \
-    --username "$SP_ALVTIME_ADMIN_CLIENT_ID" \
-    --password-stdin
-
-  if [[ -d "chart" ]] && [[ "$CI" ]]; then
-    echo "The chart folder exists on this filesystem. And this is runing in CI"
-    echo "Deleting the chart folder in order for the next command to work"
-    rm -rf chart
-  fi
-
-  helm pull "oci://$CONTAINER_REGISTRY/helm/chart" --version v1 --untar
-
   if [[ "website" = "$SERVICE_TO_BUILD" || -z "$SERVICE_TO_BUILD" ]]; then
     if [ "$ENV_INPUT" = "review" ]; then
       CHART_NAME_SUFFIX="-$ENVIRONMENT_SLUG"

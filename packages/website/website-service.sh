@@ -43,10 +43,10 @@ function deployWebsite() {
   ALV_HOSTNAME=$1
   CONTAINER_REGISTRY=$2
   TAG=$3
+  CHART_NAME_SUFFIX=$4
 
-  echo "helm website, secrets: $ALV_HOSTNAME, $CONTAINER_REGISTRY, $TAG"
+  echo "helm website"
 
-  CHART_NAME_SUFFIX=''
   HOSTS="$ALV_HOSTNAME,www.$ALV_HOSTNAME"
 
   helm upgrade "website$CHART_NAME_SUFFIX" ./chart \
