@@ -95,15 +95,15 @@ jobs:
           source ./bash-services/helm-service.sh
           
           # Build
-          buildWebsite \
-            $ENV \
-            $SANITY_TOKEN \
-            $YOUTUBE_API_TOKEN \
-            ${{ vars.CONTAINER_REGISTRY }} \
-            $TAG
+          # buildWebsite \
+          #   $ENV \
+          #   $SANITY_TOKEN \
+          #   $YOUTUBE_API_TOKEN \
+          #   ${{ vars.CONTAINER_REGISTRY }} \
+          #   $TAG
           
           # Push
-          pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
+          # pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
           
           # Get AKS credentials and configure kubectl
           getAksCredentials \
