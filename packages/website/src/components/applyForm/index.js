@@ -41,9 +41,13 @@ const ApplyForm = ({ jobTitle }) => {
       method: "POST",
       body: formData,
     })
-      .then(() => {
+      .then((res) => {
         setTimeout(() => {
-          setStatus("success");
+          if (res.status === 200) {
+            setStatus("success");
+          } else {
+            setStatus("error");
+          }
         }, 400);
       })
       .catch(() => {
