@@ -45,7 +45,7 @@ function deployWebsite() {
   TAG=$3
   CHART_NAME_SUFFIX=$4
 
-  echo "helm website, secrets: $1, $2, $3, $4"
+  echo "helm upgrade website"
 
   HOSTS="$ALV_HOSTNAME,www.$ALV_HOSTNAME"
 
