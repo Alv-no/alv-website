@@ -32,8 +32,8 @@ jobs:
         shell: bash
         run: |
           az login --service-principal \
-            -u "${{ vars.AZURE_CLIENT_ID }}" \
-            -p "${{ secrets.AZURE_CLIENT_SECRET }}" \
+            -u "${{ vars.INFRA_TEST_SP_CLIENT_ID }}" \
+            -p "${{ secrets.INFRA_TEST_SP_SECRET }}" \
             --tenant "${{ vars.TENANT_ID }}"
           az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
 
