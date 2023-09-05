@@ -11,6 +11,8 @@ dotenv.config({
   path: `.env`,
 });
 
+const maxFileSize = 10 * 1024 * 1024; // 10 MB
+
 /**
  * @param {string} dirpath
  */
@@ -61,7 +63,7 @@ module.exports = {
 
   async sendJobApplication(req, res) {
     const logger = new Logger();
-    const form = formidable({ multiples: true });
+    const form = formidable({ multiples: true, maxFileSize });
 
     form.parse(req, async (err, fields, files) => {
       const { email, subject, name } = fields;
