@@ -86,8 +86,8 @@ jobs:
 
           # Authenticate Azure container registry
           docker login ${{ vars.CONTAINER_REGISTRY }} \
-            --username ${{ vars.AZURE_CLIENT_ID }} \
-            --password ${{ secrets.AZURE_CLIENT_SECRET }}
+            --username ${{ vars.INFRA_TEST_SP_CLIENT_ID }} \
+            --password ${{ secrets.INFRA_TEST_SP_SECRET }}
 
           # Source services
           source ./packages/website/website-service.sh
