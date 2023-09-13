@@ -23,7 +23,8 @@ const Form = ({ identifier }) => {
   const [status, setStatus] = useState("validating");
   const [inputValues, handleInputChange] = useForm({
     subject: `Form-Cta - ${identifier}`,
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     body: "",
   });
@@ -47,18 +48,29 @@ const Form = ({ identifier }) => {
     <FormFeedbackWrapper status={status}>
       <form className={styles.form} onSubmit={handleSubmitClick}>
         <div className="">
-          <FormLabel>Navn</FormLabel>
+          <FormLabel>Fornavn *</FormLabel>
           <input
             className={styles.input}
-            value={inputValues.name}
+            value={inputValues.firstname}
             onChange={handleInputChange}
-            name="name"
+            name="firstname"
             type="text"
             required
           />
         </div>
-        <div>
-          <FormLabel>E-post</FormLabel>
+        <div className="">
+          <FormLabel>Etternavn *</FormLabel>
+          <input
+            className={styles.input}
+            value={inputValues.lastname}
+            onChange={handleInputChange}
+            name="lastname"
+            type="text"
+            required
+          />
+        </div>
+        <div className={styles.textareaWrapper}>
+          <FormLabel>E-post *</FormLabel>
           <input
             className={styles.input}
             value={inputValues.email}
