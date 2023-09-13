@@ -62,8 +62,9 @@ export const submitWithDelay = async (apiUrl, body) => {
     .then((response) => {
       if (!response.ok) {
         submissionResponseStatus = "error";
+      } else {
+        submissionResponseStatus = "success";
       }
-      submissionResponseStatus = "success";
     })
     .catch(() => {
       submissionResponseStatus = "error";
