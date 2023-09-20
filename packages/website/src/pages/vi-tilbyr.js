@@ -132,20 +132,22 @@ const Services = () => {
               ))}
             </ServicesSection>
           </Container>
-          <ImageTextCards
-            title={section7link.heroHeading}
-            image={section7Image.asset.gatsbyImageData}
-            description={section7description}
-            link={section7link.slug.current}
-          >
-            {section7cards.map((card) => (
-              <ServicesCard
-                title={card.heroHeading}
-                description={card.heroDescription}
-                link={`${section7link.slug.current}/${card.slug.current}`}
-              />
-            ))}
-          </ImageTextCards>
+          {section7link && (
+            <ImageTextCards
+              title={section7link.heroHeading}
+              image={section7Image.asset.gatsbyImageData}
+              description={section7description}
+              link={section7link.slug.current}
+            >
+              {section7cards.map((card) => (
+                <ServicesCard
+                  title={card.heroHeading}
+                  description={card.heroDescription}
+                  link={`${section7link.slug.current}/${card.slug.current}`}
+                />
+              ))}
+            </ImageTextCards>
+          )}
         </div>
       </Layout>
     </div>

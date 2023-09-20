@@ -23,7 +23,7 @@ export const LargeLink = ({ children, link, mobileDropdown }) => {
             }`}
             onChange={toggleDropdown}
           />
-          <li className="list-none eight:hidden relative px-5">
+          <li className="list-none eight:hidden relative">
             <LargeLinkContent arrow={mobileDropdown} open={open}>
               {children}
             </LargeLinkContent>
@@ -35,7 +35,7 @@ export const LargeLink = ({ children, link, mobileDropdown }) => {
 };
 
 const LargeLinkContent = ({ children, arrow, open }) => (
-  <h2 className="flex w-full justify-between pointer-events-none text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 sm:ml-1 eight:ml-0 z-50">
+  <h2 className="flex w-full justify-between pointer-events-none text-theme-text font-bold tracking-widest max-w-screen eight:mt-10 2xl:mt-12 uppercase text-nav my-12 eight:my-8 sm:ml-1 eight:ml-0 z-50 px-5 eight:px-0">
     <span>
       {children}
       <Dot />

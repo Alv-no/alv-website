@@ -1,16 +1,21 @@
 import Link from "gatsby-link";
 import React from "react";
-import { LargeLink, SubtitleLink, SocialLinks, Icon } from "shared-components";
-import { generatePlausibleClass } from "shared-components";
+import {
+  generatePlausibleClass,
+  LargeLink,
+  SubtitleLink,
+  SocialLinks,
+  Icon,
+} from "shared-components";
 import { PLAUSIBLE_NAVBAR_CLICK } from "../../plausible/plausible-events";
 
 export const Navigation = ({
   open,
   white,
   toggleClose,
-  servicePages,
   companyPages,
   categoryPages,
+  servicePages,
   logo,
 }) => {
   return (
@@ -91,7 +96,7 @@ const AlvNav = ({ open, toggleClose, categoryPages, logo, companyPages }) => {
     <NavLayout open={open} logo={logo} toggleClose={toggleClose}>
       <div className="w-full flex eight:justify-center h-full eight:items-center relative eight:-top-16">
         <div className="w-full eight:px-0 eight:flex transition duration-300 gap-x-16 justify-center">
-          <GenerateLinks
+          <GenerateClickableLinks
             title="Hva vi tilbyr"
             linksArr={categoryPages}
             parentPage="/vi-tilbyr"
@@ -136,6 +141,38 @@ const GenerateLinks = ({
     <LargeLink link="#" mobileDropdown>
       {title}
     </LargeLink>
+    <ul>
+      {mainLinkText && (
+        <SubtitleLinkWrapper link={parentPage}>
+          {mainLinkText}
+        </SubtitleLinkWrapper>
+      )}
+      {linksArr?.map((link, index) => (
+        <SubtitleLinkWrapper
+          key={index}
+          link={`${parentPage}/${link.slug.current}`}
+        >
+          {link.heroHeading}
+        </SubtitleLinkWrapper>
+      ))}
+      {children}
+    </ul>
+  </div>
+);
+
+/**
+ * Generate clickable links removes the dropdown functionality on
+ * mobile devices and makes the parent link clickable
+ * */
+const GenerateClickableLinks = ({
+  linksArr,
+  title,
+  parentPage,
+  mainLinkText,
+  children,
+}) => (
+  <div className="relative z-70">
+    <LargeLink link={parentPage}>{title}</LargeLink>
     <ul>
       {mainLinkText && (
         <SubtitleLinkWrapper link={parentPage}>
