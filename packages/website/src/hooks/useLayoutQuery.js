@@ -96,7 +96,7 @@ export const generateTemporaryServiceLinks = () => {
     },
     {
       name: "Penetrasjonstest",
-      path: "penetrasjonstest",
+      path: "sikkerhetstester",
       parent: "hva-alv-tilbyr",
     },
     {
@@ -146,5 +146,5 @@ const buildPath = (...segments) => {
  * @param {...string} segments
  * */
 const makeUniqueId = (...segments) => {
-  return segments.join("_")
-}
+  return segments.join("_");
+};
