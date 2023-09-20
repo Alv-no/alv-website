@@ -96,7 +96,7 @@ export const generateTemporaryServiceLinks = () => {
     },
     {
       name: "Penetrasjonstest",
-      path: "sikkerhetstester",
+      path: "penetrasjonstester",
       parent: "hva-alv-tilbyr",
     },
     {
