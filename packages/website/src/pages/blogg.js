@@ -3,6 +3,7 @@ import React from "react";
 import { BlogSection, IntroContainer, Title } from "shared-components";
 import Layout from "../components/layout";
 import { getBlogDataServerSide } from "../hooks/useBlogQueryServerSide";
+import { generateTemporaryServiceLinks } from "../hooks/useLayoutQuery";
 
 const Blog = ({ data, serverData, location }) => {
   // looks for initial category filter from url
@@ -12,7 +13,7 @@ const Blog = ({ data, serverData, location }) => {
   const layoutData = {
     ...data.sanitySiteSettings,
     servicePages: data.allSanityServices.nodes,
-    companyPages: data.allSanityCompany.nodes,
+    companyPages: generateTemporaryServiceLinks(),
     categoryPages: data.allSanityCategoryPage.nodes,
     site: data.site,
   };
