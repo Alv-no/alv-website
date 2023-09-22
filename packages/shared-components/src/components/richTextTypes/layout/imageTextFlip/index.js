@@ -15,7 +15,7 @@ const ImageTextFlip = ({ flip, image, heading, linkableBlock, config }) => {
         className="object-cover aspect-square"
         style={{ padding: 0, margin: 0 }}
       />
-      <div className={`${flipClasses} flex flex-col font-thin sm:-mt-2px mt-4`}>
+      <div className={`${flipClasses} flex flex-col sm:-mt-2px mt-4`}>
         <PortableText
           blocks={linkableBlock}
           projectId={config.SANITY_PROJECT_ID}

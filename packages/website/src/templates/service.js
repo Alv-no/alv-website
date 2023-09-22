@@ -11,6 +11,7 @@ import configuration from "../config";
 import { useBlogQueryRecent } from "../hooks/useBlogQueryRecent";
 import { useLayoutQuery } from "../hooks/useLayoutQuery";
 import useScrollToHeading from "../hooks/useScrollToHeading";
+import { removeHyphensFromText } from "../utils/textutils";
 
 const Service = ({ data }) => {
   const { handleHeadingClick } = useScrollToHeading(window.location.pathname);
@@ -59,7 +60,9 @@ const Service = ({ data }) => {
         <RolesList
           image={data.rolesImg.childImageSharp.gatsbyImageData}
           roles={relatedServices}
-          categoryName={relatedServices[0].node.parentPage.slug.current}
+          categoryName={removeHyphensFromText(
+            relatedServices[0].node.parentPage.slug.current
+          )}
           id="tjenester"
         />
       </Container>

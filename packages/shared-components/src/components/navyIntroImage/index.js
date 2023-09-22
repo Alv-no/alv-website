@@ -20,7 +20,7 @@ export const NavyIntroImage = ({
       <div className="transform sm:-translate-x-5 twelve:translate-x-0 sm:px-0 sm:px-12 flex sm:block justify-center items-center flex-col">
         <Title align={`text-center twelve:text-left`}>
           <span
-            className={`xs:inline text-3xl sm:text-3xl lg:text-4xl hyphenate ${
+            className={`xs:inline text-xl fivefifty:text-3xl lg:text-4xl hyphenate ${
               white ? "text-white" : ""
             }`}
           >
