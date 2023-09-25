@@ -13,8 +13,8 @@ const Blog = ({ data, serverData, location }) => {
   const layoutData = {
     ...data.sanitySiteSettings,
     servicePages: data.allSanityServices.nodes,
-    companyPages: generateTemporaryServiceLinks(),
-    categoryPages: data.allSanityCategoryPage.nodes,
+    companyPages: data.allSanityCompany.nodes,
+    categoryPages: generateTemporaryServiceLinks(),
     site: data.site,
   };
 
@@ -121,7 +121,7 @@ export const query = graphql`
         }
       }
     }
-    allSanityCompany {
+    allSanityCompany(filter: { showInNavigation: { eq: true } }){
       nodes {
         heroHeading
         slug {

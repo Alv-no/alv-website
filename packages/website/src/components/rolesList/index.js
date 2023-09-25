@@ -2,77 +2,69 @@ import React from "react";
 import * as Button from "../../../../shared-components/src/components/button";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Link from "gatsby-link";
-import { BgImage } from "gbimage-bridge";
 
 export const RolesList = ({ image, roles, categoryName }) => {
   return (
-    <div
-      className="sm:grid justify-between"
-      style={{ gridTemplateColumns: "30% 30% 30%" }}
-      id="tjenester"
-    >
-      <div>
+    <div className="grid grid-cols-3 gap-x-12 h-fit">
+      <div className="col-span-3 seven:col-span-1 h-fit">
         <GatsbyImage
-          alt={`${categoryName}-tjenester`}
+          className="opacity-90 h-[320px]"
           image={image}
-          className="relative h-80 opacity-35 sm:block hidden"
+          alt={`${categoryName}-tjenester`}
         />
+        <h3
+          className="seven:text-4xl text-white seven:hidden block w-full pt-8 leading-tight font-semibold uppercase hyphenate text-3xl relative text-center bottom-[225px] h-0"
+          style={{ lineHeight: "1.05" }}
+        >
+          Tjenester innenfor <br /> {categoryName}
+        </h3>
       </div>
-      <span className="sm:hidden">
-        <BgImage image={image}>
-          <div className="bg-navy bg-opacity-20">
-            <h3
-              className="sm:text-4xl text-white w-full text-center px-10 py-20 leading-tight font-semibold uppercase hyphenate text-3xl"
-              style={{ lineHeight: "1.05" }}
-            >
-              Tjenester innenfor <br /> {categoryName}
-            </h3>
-          </div>
-        </BgImage>
-      </span>
 
-      <div>
-        <div className="relative" />
-        <div className="hidden sm:block sm:absolute transform translate-y-4 lg:-translate-x-44 z-40">
+      <div class="col-span-3 seven:col-span-2 grid grid-cols-2 gap-x-12">
+        {/* Title shown on larger devices */}
+        <div className="col-span-1 seven:col-span-2 hidden seven:block">
           <h3
-            className="text-4xl leading-tight font-semibold uppercase"
+            className="seven:text-4xl w-full py-8 leading-tight font-semibold uppercase hyphenate text-3xl ml-[-150px] relative"
             style={{ lineHeight: "1.05" }}
           >
             Tjenester innenfor <br /> {categoryName}
           </h3>
         </div>
-        <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end sm:px-0">
-          {roles &&
-            roles.slice(0, Math.ceil(roles.length / 2)).map((role, index) => {
-              return (
-                <RoleItem
-                  key={index}
-                  internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
-                >
-                  {role.node.heroHeading}
-                </RoleItem>
-              );
-            })}
+
+        <div className="col-span-3 seven:col-span-1">
+          <div className="divide-solid divide-y-2 divide-lightnavy flex flex-col seven:px-0">
+            {roles &&
+              roles.slice(0, Math.ceil(roles.length / 2)).map((role, index) => {
+                return (
+                  <RoleItem
+                    key={index}
+                    internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
+                  >
+                    {role.node.heroHeading}
+                  </RoleItem>
+                );
+              })}
+            <div class="divide-solid divide-y-2 divide-lightnavy seven:hidden"></div>
+          </div>
         </div>
-      </div>
-      <div
-        className="h-2px w-full sm:hidden"
-        style={{ background: "rgba(6, 24, 56, 0.3)" }}
-      />
-      <div className="divide-y-2 divide-lightnavy divide-solid h-full flex flex-col justify-end sm:px-0 -mb-5 sm:mb-0">
-        {roles &&
-          roles
-            .slice(Math.ceil(roles.length / 2), roles.length)
-            .map((role, index) => {
-              return (
-                <RoleItem
-                  key={index}
-                  internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
-                >
-                  {role.node.heroHeading}
-                </RoleItem>
-              );
-            })}
+
+        <div className="col-span-3 seven:col-span-1">
+          <div className="divide-y-2 divide-lightnavy divide-solid flex flex-col seven:px-0 seven:mb-0">
+            {roles &&
+              roles
+                .slice(Math.ceil(roles.length / 2), roles.length)
+                .map((role, index) => {
+                  return (
+                    <RoleItem
+                      key={index}
+                      internalLink={`${role.node.parentPage.slug.current}/${role.node.slug.current}`}
+                    >
+                      {role.node.heroHeading}
+                    </RoleItem>
+                  );
+                })}
+          </div>
+        </div>
       </div>
     </div>
   );
