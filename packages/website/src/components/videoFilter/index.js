@@ -30,9 +30,9 @@ export const VideoFilter = ({ seasons, onChange, seasonTitles }) => {
   };
 
   return (
-    <div className="flex sm:flex-row flex-col justify-between sm:items-center sm:mb-10 mb-10 mt-20 mx-5 sm:mx-0">
+    <div className="flex sm:flex-row flex-col items-center justify-between sm:items-center sm:mb-10 mb-10 mt-20 mx-5 sm:mx-0">
       {seasons.length > 1 ? (
-        <div className="flex tracking-wider items-center h-8 pt-6px sm:my-0 mt-4 mb-5">
+        <div className="flex flex-wrap items-center h-fit pt-6px sm:my-0 mt-4 mb-5">
           <Seasons
             seasons={seasons}
             seasonTitles={seasonTitles}

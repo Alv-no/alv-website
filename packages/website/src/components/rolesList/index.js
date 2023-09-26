@@ -8,12 +8,12 @@ export const RolesList = ({ image, roles, categoryName }) => {
     <div className="grid grid-cols-3 gap-x-12 h-fit">
       <div className="col-span-3 seven:col-span-1 h-fit">
         <GatsbyImage
-          className="opacity-90 h-[320px]"
+          className="opacity-60 h-[320px]"
           image={image}
           alt={`${categoryName}-tjenester`}
         />
         <h3
-          className="seven:text-4xl text-white seven:hidden block w-full pt-8 leading-tight font-semibold uppercase hyphenate text-3xl relative text-center bottom-[225px] h-0"
+          className="seven:text-4xl seven:hidden block w-full pt-8 leading-tight font-semibold uppercase hyphenate text-3xl relative text-center bottom-[225px] h-0"
           style={{ lineHeight: "1.05" }}
         >
           Tjenester innenfor <br /> {categoryName}
