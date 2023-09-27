@@ -9,7 +9,7 @@ on:
 
 env:
   ENV: test
-  TAG: "$(git rev-parse --short \"$GITHUB_SHA\")-${{ github.run_id }}:${{ github.run_attempt }}"
+  BUILD_ID: "${{ github.run_id }}-${{ github.run_attempt }}"
 
 jobs:
   get-secrets:
@@ -25,12 +25,12 @@ jobs:
       spAlvtimeAdminRbacSecret: ${{ steps.get_secrets.outputs.spAlvtimeAdminRbacSecret }}
 
     steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
       - name: first
         shell: bash
-        run: echo ${{ env.TAG }}
-
-  #     - name: Check out code
-  #       uses: actions/checkout@v2
+        run: echo "$(git rev-parse --short HEAD)-${{ env.BUILD_ID }}"
 
   #     - name: Log in to Azure and set subscription
   #       shell: bash
