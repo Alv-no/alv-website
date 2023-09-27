@@ -9,7 +9,7 @@ on:
 
 env:
   ENV: test
-  TAG: en-eller-annen-tag
+  TAG: "$(git rev-parse --short \"$GITHUB_SHA\")-${{ github.run_id }}:${{ github.run_attempt }}"
 
 jobs:
   get-secrets:
@@ -25,100 +25,104 @@ jobs:
       spAlvtimeAdminRbacSecret: ${{ steps.get_secrets.outputs.spAlvtimeAdminRbacSecret }}
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Log in to Azure and set subscription
+      - name: first
         shell: bash
-        run: |
-          az login --service-principal \
-            -u "${{ vars.INFRA_TEST_SP_CLIENT_ID }}" \
-            -p "${{ secrets.INFRA_TEST_SP_SECRET }}" \
-            --tenant "${{ vars.TENANT_ID }}"
-          az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
+        run: echo ${{ env.TAG }}
 
-      - name: Get Secret from Azure Key Vault
-        id: get_secrets
-        run: |
-          # Get secrets from key vault
-          ALV_HOSTNAME=$(az keyvault secret show --name "alv-hostname" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
-          SANITY_TOKEN=$(az keyvault secret show --name "sanity-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
-          YOUTUBE_API_TOKEN=$(az keyvault secret show --name "youtube-api-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
-          SP_ALVTIME_ADMIN_CLIENT_ID=$(az keyvault secret show --name "sp-alvtime-admin-client-id" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
-          SP_ALVTIME_ADMIN_RBAC_SECRET=$(az keyvault secret show --name "sp-alvtime-admin-rbac-secret" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+  #     - name: Check out code
+  #       uses: actions/checkout@v2
 
-          # Set job outputs
-          echo "alvHostname=$ALV_HOSTNAME" >> $GITHUB_OUTPUT
-          echo "sanityToken=$SANITY_TOKEN" >> $GITHUB_OUTPUT
-          echo "youtubeApiToken=$YOUTUBE_API_TOKEN" >> $GITHUB_OUTPUT
-          echo "spAlvtimeAdminClientId=$SP_ALVTIME_ADMIN_CLIENT_ID" >> $GITHUB_OUTPUT
-          echo "spAlvtimeAdminRbacSecret=$SP_ALVTIME_ADMIN_RBAC_SECRET" >> $GITHUB_OUTPUT
+  #     - name: Log in to Azure and set subscription
+  #       shell: bash
+  #       run: |
+  #         az login --service-principal \
+  #           -u "${{ vars.INFRA_TEST_SP_CLIENT_ID }}" \
+  #           -p "${{ secrets.INFRA_TEST_SP_SECRET }}" \
+  #           --tenant "${{ vars.TENANT_ID }}"
+  #         az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
+
+  #     - name: Get Secret from Azure Key Vault
+  #       id: get_secrets
+  #       run: |
+  #         # Get secrets from key vault
+  #         ALV_HOSTNAME=$(az keyvault secret show --name "alv-hostname" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+  #         SANITY_TOKEN=$(az keyvault secret show --name "sanity-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+  #         YOUTUBE_API_TOKEN=$(az keyvault secret show --name "youtube-api-token" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+  #         SP_ALVTIME_ADMIN_CLIENT_ID=$(az keyvault secret show --name "sp-alvtime-admin-client-id" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+  #         SP_ALVTIME_ADMIN_RBAC_SECRET=$(az keyvault secret show --name "sp-alvtime-admin-rbac-secret" --vault-name "${{ vars.KEY_VAULT_TEST }}" --query "value" -o tsv)
+
+  #         # Set job outputs
+  #         echo "alvHostname=$ALV_HOSTNAME" >> $GITHUB_OUTPUT
+  #         echo "sanityToken=$SANITY_TOKEN" >> $GITHUB_OUTPUT
+  #         echo "youtubeApiToken=$YOUTUBE_API_TOKEN" >> $GITHUB_OUTPUT
+  #         echo "spAlvtimeAdminClientId=$SP_ALVTIME_ADMIN_CLIENT_ID" >> $GITHUB_OUTPUT
+  #         echo "spAlvtimeAdminRbacSecret=$SP_ALVTIME_ADMIN_RBAC_SECRET" >> $GITHUB_OUTPUT
  
-  deploy-website:
-    needs: get-secrets
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: azure/setup-helm@v3
-        with:
-          version: '3.10.2'
-      - uses: azure/use-kubelogin@v1
-        with:
-          kubelogin-version: 'v0.0.28'
+  # deploy-website:
+  #   needs: get-secrets
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: azure/setup-helm@v3
+  #       with:
+  #         version: '3.10.2'
+  #     - uses: azure/use-kubelogin@v1
+  #       with:
+  #         kubelogin-version: 'v0.0.28'
 
-      - name: Log in to Azure and set subscription
-        shell: bash
-        run: |
-          az login --service-principal \
-            -u "${{ vars.INFRA_TEST_SP_CLIENT_ID }}" \
-            -p "${{ secrets.INFRA_TEST_SP_SECRET }}" \
-            --tenant "${{ vars.TENANT_ID }}"
-          az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
+  #     - name: Log in to Azure and set subscription
+  #       shell: bash
+  #       run: |
+  #         az login --service-principal \
+  #           -u "${{ vars.INFRA_TEST_SP_CLIENT_ID }}" \
+  #           -p "${{ secrets.INFRA_TEST_SP_SECRET }}" \
+  #           --tenant "${{ vars.TENANT_ID }}"
+  #         az account set --subscription "${{ vars.SUBSCRIPTION_ID_TEST }}"
   
-      - name: Build, push and deploy
-        shell: bash
-        run: |
-          ALV_HOSTNAME=${{ needs.get-secrets.outputs.alvHostname }}
-          SANITY_TOKEN=${{ needs.get-secrets.outputs.sanityToken }}
-          YOUTUBE_API_TOKEN=${{ needs.get-secrets.outputs.youtubeApiToken }}
-          SP_ALVTIME_ADMIN_CLIENT_ID=${{ needs.get-secrets.outputs.spAlvtimeAdminClientId }}
-          SP_ALVTIME_ADMIN_RBAC_SECRET=${{ needs.get-secrets.outputs.spAlvtimeAdminRbacSecret }}
+  #     - name: Build, push and deploy
+  #       shell: bash
+  #       run: |
+  #         ALV_HOSTNAME=${{ needs.get-secrets.outputs.alvHostname }}
+  #         SANITY_TOKEN=${{ needs.get-secrets.outputs.sanityToken }}
+  #         YOUTUBE_API_TOKEN=${{ needs.get-secrets.outputs.youtubeApiToken }}
+  #         SP_ALVTIME_ADMIN_CLIENT_ID=${{ needs.get-secrets.outputs.spAlvtimeAdminClientId }}
+  #         SP_ALVTIME_ADMIN_RBAC_SECRET=${{ needs.get-secrets.outputs.spAlvtimeAdminRbacSecret }}
 
-          # Authenticate Azure container registry
-          docker login ${{ vars.CONTAINER_REGISTRY }} \
-            --username ${{ vars.INFRA_TEST_SP_CLIENT_ID }} \
-            --password ${{ secrets.INFRA_TEST_SP_SECRET }}
+  #         # Authenticate Azure container registry
+  #         docker login ${{ vars.CONTAINER_REGISTRY }} \
+  #           --username ${{ vars.INFRA_TEST_SP_CLIENT_ID }} \
+  #           --password ${{ secrets.INFRA_TEST_SP_SECRET }}
 
-          # Source services
-          source ./packages/website/website-service.sh
-          source ./bash-services/aks-service.sh
-          source ./bash-services/helm-service.sh
+  #         # Source services
+  #         source ./packages/website/website-service.sh
+  #         source ./bash-services/aks-service.sh
+  #         source ./bash-services/helm-service.sh
           
-          # Build
-          buildWebsite \
-            $ENV \
-            $SANITY_TOKEN \
-            $YOUTUBE_API_TOKEN \
-            ${{ vars.CONTAINER_REGISTRY }} \
-            $TAG
+  #         # Build
+  #         buildWebsite \
+  #           $ENV \
+  #           $SANITY_TOKEN \
+  #           $YOUTUBE_API_TOKEN \
+  #           ${{ vars.CONTAINER_REGISTRY }} \
+  #           $TAG
           
-          # Push
-          pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
+  #         # Push
+  #         pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
           
-          # Get AKS credentials and configure kubectl
-          getAksCredentials \
-            ${{ vars.AZURE_SUBSCRIPTION_TEST }} \
-            ${{ vars.AZURE_RESOURCE_GROUP_NAME_TEST }} \
-            ${{ vars.KUBERNETES_CLUSTER_NAME_TEST }} 
+  #         # Get AKS credentials and configure kubectl
+  #         getAksCredentials \
+  #           ${{ vars.AZURE_SUBSCRIPTION_TEST }} \
+  #           ${{ vars.AZURE_RESOURCE_GROUP_NAME_TEST }} \
+  #           ${{ vars.KUBERNETES_CLUSTER_NAME_TEST }} 
 
-          # Pull helm chart
-          helmLoginAndPull \
-            $SP_ALVTIME_ADMIN_CLIENT_ID \
-            $SP_ALVTIME_ADMIN_RBAC_SECRET \
-            ${{ vars.CONTAINER_REGISTRY }}
+  #         # Pull helm chart
+  #         helmLoginAndPull \
+  #           $SP_ALVTIME_ADMIN_CLIENT_ID \
+  #           $SP_ALVTIME_ADMIN_RBAC_SECRET \
+  #           ${{ vars.CONTAINER_REGISTRY }}
           
-          # Deploy to cluster
-          deployWebsite \
-            $ALV_HOSTNAME \
-            ${{ vars.CONTAINER_REGISTRY }} \
-            $TAG
+  #         # Deploy to cluster
+  #         deployWebsite \
+  #           $ALV_HOSTNAME \
+  #           ${{ vars.CONTAINER_REGISTRY }} \
+  #           $TAG
