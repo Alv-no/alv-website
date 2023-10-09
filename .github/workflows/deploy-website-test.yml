@@ -9,7 +9,6 @@ on:
 
 env:
   ENV: test
-  BUILD_ID: "${{ github.run_id }}-${{ github.run_attempt }}"
 
 jobs:
   get-build-tag:
@@ -25,7 +24,7 @@ jobs:
       - name: Create build tag
         id: create_build_tag
         shell: bash
-        run: echo "buildTag=\"$(git rev-parse --short HEAD)-${{ env.BUILD_ID }}\"" >> $GITHUB_OUTPUT
+        run: echo "buildTag=\"$(git rev-parse --short HEAD)-${{ github.run_id }}-${{ github.run_attempt }}\"" >> $GITHUB_OUTPUT
     
   get-secrets:
     runs-on: ubuntu-latest
@@ -119,7 +118,9 @@ jobs:
             $TAG
           
           # Push
-          pushWebsite ${{ vars.CONTAINER_REGISTRY }} $TAG
+          pushWebsite \
+            ${{ vars.CONTAINER_REGISTRY }} \
+            $TAG
           
           # Get AKS credentials and configure kubectl
           getAksCredentials \
