@@ -1,7 +1,6 @@
 name: Deploy test website
 
 on:
-  pull_request:
   push:
     branches:
       - master
