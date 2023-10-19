@@ -27,6 +27,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "alv-gdpr-tracking",
+      options: {
+        googleTagManagerId: "GTM-NG6G4RZ",
+        linkedInPixelId: "1500953",
+      },
+    },
+    {
       resolve: `gatsby-plugin-fastify`,
       options: {
         /* discussed below */

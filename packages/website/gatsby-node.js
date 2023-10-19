@@ -9,6 +9,16 @@ const categoryTemplate = path.resolve(`./src/templates/category.js`);
 const videoCategoryTemplate = path.resolve(`./src/templates/videoCategory.js`);
 const videoserieTemplate = path.resolve(`./src/templates/videoserie.js`);
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "~plugins": path.resolve(__dirname, "plugins"),
+      },
+    },
+  });
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const res = await graphql(

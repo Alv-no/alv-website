@@ -3,6 +3,7 @@ import { Header, MobileHeader } from "../header";
 import { Footer, SEO } from "shared-components";
 import * as Logo from "../logo";
 import "./layout.css";
+import CookieBanner from "../cookieBanner";
 
 const Layout = ({
   layoutData,
@@ -42,6 +43,7 @@ const Layout = ({
   return (
     <>
       <chatlio-widget widgetid="0510c3a3-db1f-4280-5a59-eb536d7ead38"></chatlio-widget>
+      <CookieBanner />
       <SEO description={pageDescription} title={pageTitle} {...metaData} />
       <Header
         white={white}

@@ -1,0 +1,7 @@
+{
+  "name": "alv-gdpr-tracking",
+  "packageManager": "yarn@3.2.3",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "private": true
+}
