@@ -42,8 +42,8 @@ const Layout = ({
 
   return (
     <>
-      <chatlio-widget widgetid="0510c3a3-db1f-4280-5a59-eb536d7ead38"></chatlio-widget>
       <CookieBanner />
+      <chatlio-widget widgetid="0510c3a3-db1f-4280-5a59-eb536d7ead38"></chatlio-widget>
       <SEO description={pageDescription} title={pageTitle} {...metaData} />
       <Header
         white={white}

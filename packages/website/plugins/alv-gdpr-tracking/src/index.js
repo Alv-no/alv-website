@@ -15,11 +15,12 @@ export const addTracking = (options) => {
 
 export const shouldShowCookieBanner = () => {
   if (exists(window)) {
-    return false;
+    return window.cookieTrackers.some(
+      (tracker) => tracker.getConsent() === "EMPTY"
+    );
   }
-  return window.cookieTrackers.some(
-    (tracker) => tracker.getConsent() === "EMPTY"
-  );
+
+  return false;
 };
 
 export const dismissCookies = () => {
