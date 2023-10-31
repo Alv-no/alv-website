@@ -26,5 +26,10 @@ export default {
       title: "White on blue",
       type: "boolean",
     },
+    {
+      name: "tracking",
+      title: "Tracking",
+      type: "tracker",
+    },
   ],
 };
