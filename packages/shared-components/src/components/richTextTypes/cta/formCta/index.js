@@ -3,8 +3,9 @@ import { createFormData, submitWithDelay, useForm } from "../../../../utils";
 import { FormFeedbackWrapper } from "../../../formFeedbackWrapper";
 import * as styles from "./FormCta.module.css";
 import { trackCustomEvent } from "../../../../utils/plausible";
+import { trackEverything } from "../../../../utils/tracker";
 
-const FormCta = ({ identifier, eyebrow, heading, whiteOnBlue }) => {
+const FormCta = ({ identifier, eyebrow, heading, whiteOnBlue, tracking }) => {
   const themeClass = whiteOnBlue ? styles.whiteOnBlue : styles.blueOnWhite;
   const paddingClass = heading.trim()
     ? styles.verticalPadding
@@ -14,12 +15,12 @@ const FormCta = ({ identifier, eyebrow, heading, whiteOnBlue }) => {
     <section className={`${styles.container} ${paddingClass} ${themeClass}`}>
       <span className={styles.eyebrow}>{eyebrow}</span>
       <h3 className={styles.heading}>{heading}</h3>
-      <Form identifier={identifier} />
+      <Form identifier={identifier} tracking={tracking} />
     </section>
   );
 };
 
-const Form = ({ identifier }) => {
+const Form = ({ identifier, tracking }) => {
   const [status, setStatus] = useState("validating");
   const [inputValues, handleInputChange] = useForm({
     subject: `Form-Cta - ${identifier}`,
@@ -31,10 +32,10 @@ const Form = ({ identifier }) => {
 
   const handleSubmitClick = async (e) => {
     e.preventDefault();
-
     setStatus("loading");
 
     trackCustomEvent("Block Form", { identifier });
+    trackEverything(tracking);
 
     const formData = createFormData(inputValues);
 

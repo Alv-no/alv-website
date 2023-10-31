@@ -60,6 +60,7 @@ import multicol from "./sections/multicol";
 import videoList from "./sections/videoList";
 import videoCarousel from "./sections/videoCarousel";
 import videoCard from "./videoCard";
+import tracking from "./track";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -127,5 +128,7 @@ export default createSchema({
     heroCta,
     textCta,
     cta,
+
+    tracking,
   ]),
 });
