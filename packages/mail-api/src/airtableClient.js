@@ -76,7 +76,7 @@ class AirtableClient {
       const filePath = path.join(dirName, fileName);
       const fileStream = fs.readFileSync(cv.filepath);
       fs.writeFileSync(filePath, fileStream);
-
+      fs.closeSync(fileStream);
       return `https://mail-api.alv.no/file/${fileName}?dl=${cv.originalFilename}`;
     }
     return null;

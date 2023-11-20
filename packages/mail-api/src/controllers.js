@@ -4,10 +4,8 @@ const airtableClient = require("./airtableClient");
 const emailClient = require("./emailClient");
 const fs = require("fs");
 const path = require("path");
-const util = require('util');
-const rmSync = util.promisify(fs.rmSync);
 const dotenv = require("dotenv");
-
+const express = require("express");
 dotenv.config({
   path: `.env`,
 });
@@ -81,22 +79,31 @@ module.exports = {
       }
 
       //send to email
-      await sendGrid.sendEmail(fields, subject, logger);
+      try {
+        await sendGrid.sendEmail(fields, subject, logger);
+      } catch (e) {
+        logger.error(e);
+      }
 
       //send to airtable
-      await airtable.sendEmployeeInformationToAirtable(
-        name,
-        email,
-        cv,
-        subject,
-        FILE_DIRNAME,
-        logger
-      );
+      try {
+        await airtable.sendEmployeeInformationToAirtable(
+          name,
+          email,
+          cv,
+          subject,
+          FILE_DIRNAME,
+          logger
+        );
+      } catch (e) {
+        logger.error(e);
+      }
 
       res.sendStatus(200);
     });
   },
 
+  /** @param {express.Request} req */
   async getFile(req, res) {
     const fileName = req.params["filename"];
     const filePath = path.join(FILE_DIRNAME, fileName);
@@ -105,8 +112,12 @@ module.exports = {
     if (!fs.existsSync(filePath)) {
       res.sendStatus(404);
     }
-    res.sendFile(filePath, async () => {
-      await rmSync(filePath);
-    });
+    try {
+      res.sendFile(filePath, () => {
+        fs.rmSync(filePath);
+      });
+    } catch (e) {
+      console.log(e);
+    }
   },
 };
