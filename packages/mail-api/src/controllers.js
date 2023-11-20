@@ -4,7 +4,8 @@ const airtableClient = require("./airtableClient");
 const emailClient = require("./emailClient");
 const fs = require("fs");
 const path = require("path");
-
+const util = require('util');
+const rmSync = util.promisify(fs.rmSync);
 const dotenv = require("dotenv");
 
 dotenv.config({
@@ -96,7 +97,7 @@ module.exports = {
     });
   },
 
-  getFile(req, res) {
+  async getFile(req, res) {
     const fileName = req.params["filename"];
     const filePath = path.join(FILE_DIRNAME, fileName);
     console.log(filePath);
@@ -104,8 +105,8 @@ module.exports = {
     if (!fs.existsSync(filePath)) {
       res.sendStatus(404);
     }
-    res.sendFile(filePath, () => {
-      fs.rmSync(filePath);
+    res.sendFile(filePath, async () => {
+      await rmSync(filePath);
     });
   },
 };
