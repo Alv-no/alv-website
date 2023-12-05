@@ -1,8 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { trackCustomEvent } from "shared-components";
 import { PLAUSIBLE_WORK_FOR_US_FORM } from "../../plausible/plausible-events";
 
+const MAX_FILE_SIZE_BYTES = 1024 * 1000;
+
+const isFileTooLarge = (file) => {
+  return file.size > MAX_FILE_SIZE_BYTES;
+};
+
 const ApplyForm = ({ jobTitle }) => {
+  const [canSubmit, setCanSubmit] = useState(false);
   const [files, setFiles] = useState(null);
   const [status, setStatus] = useState("validating");
   const [privacyApproval, setPrivacyApproval] = useState(false);
@@ -11,6 +18,20 @@ const ApplyForm = ({ jobTitle }) => {
     lastName: "",
     email: "",
   });
+
+  useEffect(() => {
+    const formValid =
+      formInputs.firstName?.length > 0 &&
+      formInputs.lastName?.length > 0 &&
+      formInputs.email?.length > 0;
+    let fileValid = true;
+
+    if (files && files[0]) {
+      fileValid = !isFileTooLarge(files[0]);
+    }
+
+    setCanSubmit(formValid && fileValid && privacyApproval);
+  }, [files, privacyApproval, formInputs]);
 
   const handleInputChange = (event) => {
     setFormInputs((formInputs) => ({
@@ -117,7 +138,7 @@ const ApplyForm = ({ jobTitle }) => {
         privacyApproval={privacyApproval}
         setPrivacyApproval={setPrivacyApproval}
       />
-      <SubmitButton disabled={!privacyApproval} />
+      <SubmitButton disabled={!canSubmit} />
     </form>
   );
 };
@@ -196,15 +217,34 @@ export const UploadAttachments = ({ files, setFiles }) => {
       <ul className="pl-1 mt-2">
         {files &&
           Array.from(files).map((file, i) => (
-            <li key={`file-${i}`} className="flex gap-1">
-              <span className="">{file.name}</span>
-              <span className="text-sm mt-1 ml-1 opacity-50">
-                ({Math.round(file.size / 1000)}kb)
-              </span>
-            </li>
+            <FileListItem key={i} file={file} />
           ))}
       </ul>
     </div>
+  );
+};
+
+const FileListItem = ({ file }) => {
+  const [fileTooLarge, setFileTooLarge] = useState(false);
+
+  useEffect(() => {
+    setFileTooLarge(isFileTooLarge(file));
+  }, [file]);
+
+  return (
+    <li>
+      <div className="flex items-center gap-1">
+        <span className="">{file.name}</span>
+        <span className="text-sm mt-1 ml-1 opacity-50">
+          ({Math.round(file.size / 1000)}kb)
+        </span>
+      </div>
+      {fileTooLarge && (
+        <p className="text-red-600">
+          Fila er større enn 1MB. Last opp en mindre fil og prøv igjen
+        </p>
+      )}
+    </li>
   );
 };
 
