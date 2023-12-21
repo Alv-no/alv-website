@@ -1,17 +1,10 @@
-const express = require("express");
-const controller = require("./controllers");
+import express from "express";
+import { send, sendJobApplication, getFile } from "./controllers.js";
+
 const router = express.Router();
 
-router.post("/send", (req, res) => {
-  controller.send(req, res);
-});
+router.post("/send", send);
+router.post("/jobApplication/send", sendJobApplication);
+router.get("/file/:filename", getFile);
 
-router.post("/jobApplication/send", (req, res) => {
-  controller.sendJobApplication(req, res);
-});
-
-router.get("/file/:filename", (req, res) => {
-  controller.getFile(req, res);
-});
-
-module.exports = router;
+export default router;

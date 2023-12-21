@@ -1,9 +1,9 @@
-const axios = require("axios");
-const path = require("path");
-const fs = require("fs");
-const validate = require("./utils");
+import request from "axios";
+import { join } from "path";
+import { readFileSync, writeFileSync } from "fs";
+import { validateAttachment } from "./utils.js";
 
-class AirtableClient {
+export class AirtableClient {
   /**
    * @param {string} appId
    * @param {string} tableId
@@ -13,6 +13,11 @@ class AirtableClient {
   tableId = "";
   apiKey = "";
 
+  /**
+   * @param {string} appId
+   * @param {string} tableId
+   * @param {string} apiKey
+   * */
   constructor(appId, tableId, apiKey) {
     this.appId = appId;
     this.tableId = tableId;
@@ -26,6 +31,14 @@ class AirtableClient {
     }
   }
 
+  /**
+   * @param {string} name
+   * @param {string} email
+   * @param {import("formidable").File} cv
+   * @param {string} subject
+   * @param {string} dirName
+   * @param {import("./logger").Logger} logger
+   * */
   async sendEmployeeInformationToAirtable(
     name,
     email,
@@ -43,7 +56,6 @@ class AirtableClient {
     };
 
     let cvurl = await this._createCvUrl(cv, dirName, logger);
-
     if (cvurl) {
       data.fields.CV = [
         {
@@ -52,35 +64,36 @@ class AirtableClient {
       ];
     }
 
-    let config = {
-      url: `https://api.airtable.com/v0/${this.appId}/${this.tableId}`,
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${this.apiKey}`,
-      },
-      data: JSON.stringify(data),
-    };
-
     try {
-      await axios.request(config);
+      await request({
+        url: `https://api.airtable.com/v0/${this.appId}/${this.tableId}`,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.apiKey}`,
+        },
+        data: JSON.stringify(data),
+      });
       logger.info("Updated airtable");
     } catch (e) {
       logger.error("Unable to update airtable: " + e.message);
     }
   }
 
+  /**
+   *
+   * @param {import("formidable").File} cv
+   * @param {string} dirName
+   * @param {import("./logger").Logger} logger
+   * */
   async _createCvUrl(cv, dirName, logger) {
-    if (cv && (await validate.validateAttachment(cv, logger))) {
+    if (cv && (await validateAttachment(cv, logger))) {
       const fileName = `${logger.correlationId}-${cv.originalFilename}`;
-      const filePath = path.join(dirName, fileName);
-      const fileStream = fs.readFileSync(cv.filepath);
-      fs.writeFileSync(filePath, fileStream);
-      fs.closeSync(fileStream);
+      const filePath = join(dirName, fileName);
+      const fileStream = readFileSync(cv.filepath);
+      writeFileSync(filePath, fileStream);
       return `https://mail-api.alv.no/file/${fileName}?dl=${cv.originalFilename}`;
     }
     return null;
   }
 }
-
-module.exports = { AirtableClient };
