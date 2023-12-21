@@ -1,10 +1,11 @@
-const { readFile } = require("fs").promises;
-const axios = require("axios");
-const fs = require("fs");
-const FormData = require("form-data");
-const dotenv = require("dotenv");
+import { promises } from "fs";
+import request from "axios";
+import { createReadStream } from "fs";
+import FormData from "form-data";
+import { config } from "dotenv";
+const { readFile } = promises;
 
-dotenv.config({
+config({
   path: `.env`,
 });
 
@@ -21,25 +22,29 @@ const allowedDocTypes = [
   },
 ];
 
+/**
+ * @param {string} filepath */
 const checkFileForVirus = async (filepath) => {
   let data = new FormData();
-  data.append("testfile", fs.createReadStream(filepath));
+  data.append("testfile", createReadStream(filepath));
 
-  let config = {
-    method: "post",
-    url: `${process.env.VIRUSCHECK_URL}/upload_file`,
-    headers: { ...data.getHeaders() },
-    data: data,
-  };
   try {
-    let response = await axios.request(config);
+    let response = await request({
+      method: "POST",
+      url: `${process.env.VIRUSCHECK_URL}/upload_file`,
+      headers: { ...data.getHeaders() },
+      data: data,
+    });
     return { completed: true, message: response.data.message };
   } catch (e) {
     return { completed: false, message: e.message };
   }
 };
 
-const validateAttachment = async (file, logger) => {
+/** @param {import("formidable").File} file
+ * @param {import("./logger.js").Logger} logger
+ * */
+export const validateAttachment = async (file, logger) => {
   const { mimetype, filepath, size } = file;
 
   //checks file for virus
@@ -78,5 +83,3 @@ const validateAttachment = async (file, logger) => {
 
   return true;
 };
-
-module.exports = { validateAttachment };

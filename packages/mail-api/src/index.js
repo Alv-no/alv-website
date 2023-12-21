@@ -1,11 +1,14 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import routes from "./routes.js";
+import { loggerMiddleware } from "./logger.js";
+
 const app = express();
-const port = 80;
-const routes = require("./routes");
+const port = 8083;
 
 app.use(cors());
+app.use(loggerMiddleware);
 app.use(routes);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
