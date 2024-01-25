@@ -1,7 +1,7 @@
 import "../styles/global.css";
-import { Source_Sans_Pro } from "next/font/google";
+import { Source_Sans_3 } from "next/font/google";
 
-const sourceSansPro = Source_Sans_Pro({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
   weight: ["200", "300", "400", "600", "700", "900"],
   fallback: ["sans-serif"],
@@ -9,7 +9,7 @@ const sourceSansPro = Source_Sans_Pro({
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={sourceSansPro.className}>
+    <main className={sourceSans.className}>
       <Component {...pageProps} />
     </main>
   );
