@@ -21,6 +21,7 @@ Once ready to develop the website run:
 yarn
 yarn workspace website run dev
 ```
+
 ### Creating .env-files
 
 Ask devs for .env-files for `packages/website` and `packages/website-alvb` those thypically contains access-tokens.
@@ -29,12 +30,12 @@ For `packages/cms` and `packages-cms-alvb` i recomend adding the following piece
 
 ```env
 SANITY_STUDIO_API_DATASET=development
-SANITY_AUTH_TOKEN=some token here with access to publish schmea chages
+SANITY_AUTH_TOKEN=some token here with access to publish schema changes
 ```
 
 ### Workaround for Apple m1
 
-``` shell
+```shell
 brew install vips
 yarn rebuild sharp
 yarn set resolution sharp@npm:0.28.2
@@ -45,7 +46,6 @@ yarn set resolution sharp@npm:0.28.2
 For production we use Docker, you can build and test the Docker images locally.
 You can either build and start all services by using docker-compose:
 
-
 ```
 make build-website build-cms build-mail-api
 docker-compose up -d
@@ -54,7 +54,6 @@ docker-compose up -d
 And then browse it using a web browser at `localhost:8080`, `website.localhost/` and `cms.localhost/`.
 
 Or build and start individual service as following:
-
 
 ```
 docker build -f website.Dockerfile -t website .
@@ -73,11 +72,11 @@ az login
 
 ## Packages
 
-Package                       | Description
--------                       | -----------
-[website](./packages/website) | Gatsby-powered website: Alv.no
-[website-alvb](./packages/website-alvb) | Gatsby-powered website: AlvB.no
-[cms](./packages/cms)         | Sanity CMS: Alv.no
-[cms-alvb](./packages/cms-alvb)    | Sanity CMS: AlvB.no
-[mail-api](./packages/mail-api) | Mail API backend for contact form
-[shared-components](./packages/shared-components) | Component library to share components between different gatsby sites
+| Package                                           | Description                                                          |
+| ------------------------------------------------- | -------------------------------------------------------------------- |
+| [website](./packages/website)                     | Gatsby-powered website: Alv.no                                       |
+| [website-alvb](./packages/website-alvb)           | Gatsby-powered website: AlvB.no                                      |
+| [cms](./packages/cms)                             | Sanity CMS: Alv.no                                                   |
+| [cms-alvb](./packages/cms-alvb)                   | Sanity CMS: AlvB.no                                                  |
+| [mail-api](./packages/mail-api)                   | Mail API backend for contact form                                    |
+| [shared-components](./packages/shared-components) | Component library to share components between different gatsby sites |
