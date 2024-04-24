@@ -3,6 +3,9 @@ export const createLocaleTextGetter = (languageCode) => {
   const localize = (value) => {
     if (Array.isArray(value)) {
       return value.map((v) => localize(v, languages));
+    }
+    if (value === null) {
+      return "en";
     } else if (typeof value == "object") {
       if (/^locale[A-Z]/.test(value._type)) {
         // format sanity blockContent keys (example: "_rawEn" => "en")
