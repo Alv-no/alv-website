@@ -129,8 +129,8 @@ async function getEmployeeData() {
 
   employeeData.allEmployee = employeeData.allEmployee.map((employee) => {
     employee.slug = createSlugForEmployee(
-      employee.firstname,
-      employee.lastname
+      employee?.firstname,
+      employee?.lastname
     );
     return employee;
   });
