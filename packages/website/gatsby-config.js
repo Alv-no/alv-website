@@ -139,13 +139,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-webpack-bundle-analyzer",
-      options: {
-        analyzerPort: 7000,
-        disable: true,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,

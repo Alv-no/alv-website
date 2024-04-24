@@ -9,10 +9,12 @@ export const FeaturedTeam = ({ team, notitle, fallbackImg, notransparent }) => {
   const handleClick = (e) => {
     return e;
   };
-  const linkableTeam = team.map((el) => {
-    el.slug = createSlugForEmployee(el.firstname, el.lastname);
-    return el;
-  });
+  const linkableTeam = team
+    .filter((el) => !!el)
+    .map((el) => {
+      el.slug = createSlugForEmployee(el?.firstname, el?.lastname);
+      return el;
+    });
   return (
     <div id="konsulentene">
       {!notitle && (
