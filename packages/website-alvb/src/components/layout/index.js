@@ -17,8 +17,7 @@ export const Layout = ({
   navyHeader,
   noCta,
 }) => {
-  const { address, org, email, phone, servicePages, categoryPages, site } =
-    useLayoutQuery();
+  const { address, org, email, phone, site } = useLayoutQuery();
 
   const metaAuthor = site.siteMetadata.author;
   const metaDescription = pageDescription || site.siteMetadata.description;
@@ -51,12 +50,7 @@ export const Layout = ({
         whiteIcons={whiteIcons}
         localization={true}
       />
-      <MobileHeader
-        white
-        servicePages={servicePages}
-        categoryPages={categoryPages}
-        logo={Logo}
-      />
+      <MobileHeader white logo={Logo} />
       <div>{children}</div>
       <Footer
         gray
