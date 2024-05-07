@@ -10,7 +10,7 @@ export const LinkableContent = ({ raw, heading, scrollTo, config }) => {
       (el) =>
         el._type === "linkableHeading" ||
         (el._type === "imageTextFlip" &&
-          el.linkableBlock.find((node) => node.Heading))
+          el.linkableBlock?.find((node) => node.Heading))
     )
     .map((el) => {
       let heading;
