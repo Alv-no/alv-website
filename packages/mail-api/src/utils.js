@@ -22,8 +22,7 @@ const allowedDocTypes = [
   },
 ];
 
-/**
- * @param {string} filepath */
+/** @param {string} filepath */
 const checkFileForVirus = async (filepath) => {
   let data = new FormData();
   data.append("testfile", createReadStream(filepath));

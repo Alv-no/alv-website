@@ -1,7 +1,4 @@
 import request from "axios";
-import { join } from "path";
-import { readFileSync, writeFileSync } from "fs";
-import { validateAttachment } from "./utils.js";
 
 export class AirtableClient {
   /**
@@ -34,19 +31,10 @@ export class AirtableClient {
   /**
    * @param {string} name
    * @param {string} email
-   * @param {import("formidable").File} cv
    * @param {string} subject
-   * @param {string} dirName
    * @param {import("./logger").Logger} logger
    * */
-  async sendEmployeeInformationToAirtable(
-    name,
-    email,
-    cv,
-    subject,
-    dirName,
-    logger
-  ) {
+  async sendEmployeeInformationToAirtable(name, email, subject, logger) {
     let data = {
       fields: {
         Navn: name,
@@ -54,15 +42,6 @@ export class AirtableClient {
         Emne: subject,
       },
     };
-
-    let cvurl = await this._createCvUrl(cv, dirName, logger);
-    if (cvurl) {
-      data.fields.CV = [
-        {
-          url: cvurl,
-        },
-      ];
-    }
 
     try {
       await request({
@@ -78,22 +57,5 @@ export class AirtableClient {
     } catch (e) {
       logger.error("Unable to update airtable: " + e.message);
     }
-  }
-
-  /**
-   *
-   * @param {import("formidable").File} cv
-   * @param {string} dirName
-   * @param {import("./logger").Logger} logger
-   * */
-  async _createCvUrl(cv, dirName, logger) {
-    if (cv && (await validateAttachment(cv, logger))) {
-      const fileName = `${logger.correlationId}-${cv.originalFilename}`;
-      const filePath = join(dirName, fileName);
-      const fileStream = readFileSync(cv.filepath);
-      writeFileSync(filePath, fileStream);
-      return `https://mail-api.alv.no/file/${fileName}?dl=${cv.originalFilename}`;
-    }
-    return null;
   }
 }

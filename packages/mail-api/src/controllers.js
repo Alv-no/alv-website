@@ -70,7 +70,7 @@ export async function send(req, res) {
  * */
 export async function sendJobApplication(req, res) {
   try {
-    const [fields, files] = await parseFormAsync(req);
+    const [fields] = await parseFormAsync(req);
 
     if (!fields.subject || !fields.name || !fields.email) {
       req.logger.error("Missing data: Requires subject, name and email");
@@ -86,9 +86,7 @@ export async function sendJobApplication(req, res) {
     await airtable.sendEmployeeInformationToAirtable(
       fields.name[0],
       fields.email[0],
-      files.cv[0],
       fields.subject[0],
-      FILE_DIRNAME,
       req.logger
     );
 
@@ -104,7 +102,7 @@ export async function sendJobApplication(req, res) {
 
 /**
  * @param {MailRequest} req
- * @returns {[formidable.Fields<string>, formidable.Files<string>]}
+ * @returns {Promise<[formidable.Fields<string>, formidable.Files<string>]>}
  * */
 const parseFormAsync = (req) => {
   return new Promise((resolve, reject) => {
