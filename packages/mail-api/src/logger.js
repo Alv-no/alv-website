@@ -73,7 +73,7 @@ export class Logger {
 }
 
 /**
- * @param {import("express").Request} req
+ * @param {import("./controllers").MailRequest} req
  * @param {import("express").Response} res
  * @param {import("express").NextFunction} next
  * */
