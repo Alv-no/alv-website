@@ -51,7 +51,7 @@ const Employees = ({ location, serverData }) => {
           allEmployees={allEmployees}
           linkedId={activeCard}
           fallbackImg={data.fallbackImg.childImageSharp.gatsbyImageData}
-          showVideo={true}
+          showVideo={false}
           config={config}
         />
         <Cta
@@ -87,11 +87,6 @@ async function getEmployeeData() {
           lastname
           ytVideoId
           id: _id
-          video {
-            asset {
-              url
-            }
-          }
           cv {
             asset {
               url
