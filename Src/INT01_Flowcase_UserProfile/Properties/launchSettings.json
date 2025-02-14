@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "INT01_Flowcase_UserProfile": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7277",
+      "launchBrowser": false
+    }
+  }
+}
