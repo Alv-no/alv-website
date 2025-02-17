@@ -1,0 +1,19 @@
+name: alv-website
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-build:
+    uses: ./.github/workflows/build.yml
+  
+  call-release:
+    uses: ./.github/workflows/release.yml
+    needs: call-build
+    secrets: inherit
+    with:
+      applicationName: 'alv-website'
+      defaultResourceLocation: 'norwayeast'
+      environment: 'Test'
