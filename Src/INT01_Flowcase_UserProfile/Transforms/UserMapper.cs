@@ -51,21 +51,6 @@ namespace INT01_Flowcase_UserProfile.Transforms
             return courseEntity;
         }
 
-        public static SkillEntity MapToSkillEntity(this string skillTitle, string employee)
-        {
-            string guid = Guid.NewGuid().ToString();
-            SkillEntity skillEntity = new SkillEntity
-            {
-                RowKey = guid,
-                Title = skillTitle,
-                Slug = guid,
-                Employees = employee,
-                Edited = DateTime.UtcNow
-            };
-
-            return skillEntity;
-        }
-
         public static ProjectEntity MapToProjectEntity(this Project flowcaseProject, string employeeName)
         {
             string id = Guid.NewGuid().ToString();

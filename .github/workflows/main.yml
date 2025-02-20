@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  call-build:
-    uses: ./.github/workflows/build.yml
+  #call-build:
+  #  uses: ./.github/workflows/build.yml
   
   call-release:
     uses: ./.github/workflows/release.yml

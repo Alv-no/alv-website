@@ -1,0 +1,30 @@
+name: 'Build'
+on:
+  workflow_call:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build .NET Project
+        run: dotnet build Src/INT01_Flowcase_UserProfile/INT01_Flowcase_UserProfile.csproj --configuration Release
+    
+      - name: Publish the function app
+        run: dotnet publish --configuration Release --output ./publish --no-build
+    
+      #- name: Zip Artifacts
+      #  run: |
+      #    cd publish
+      #    zip -r ../functionapp.zip .
+    
+      #- name: Upload Artifacts
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: functionapp-zip
+      #    path: functionapp.zip

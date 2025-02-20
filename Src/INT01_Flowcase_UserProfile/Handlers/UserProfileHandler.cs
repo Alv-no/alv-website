@@ -1,4 +1,5 @@
-﻿using INT01_Flowcase_UserProfile.Clients;
+﻿using System.Globalization;
+using INT01_Flowcase_UserProfile.Clients;
 using INT01_Flowcase_UserProfile.Models.Flowcase;
 using INT01_Flowcase_UserProfile.Models.TableEntities;
 using INT01_Flowcase_UserProfile.Transforms;
@@ -56,37 +57,58 @@ namespace INT01_Flowcase_UserProfile.Handlers
             CV? userCV = await _flowcaseClient.GetUserCV(user.user_id, user.default_cv_id);
             if (userCV is null) return;
 
+            string employeeLastName = userCV.name.Split(" ")[^1].ToLower();
+
             //PROCESS CV SUMMARY
             Qualification? qualification = userCV.key_qualifications
                 .FirstOrDefault(x => x.label?.no?.ToLower() == "standard");
 
             if (qualification is null)
-                _logger.LogError("User '{username}' has no CV summary with title 'Standard'. CV summary not uploaded.", user.name);
-            else
-                await CreateOrUpdateCVSummary(user, qualification);
-
-            string employeeLastName = userCV.name.Split(" ")[^1].ToLower();
-
-            //PROCESS CV CERTIFICATIONS
-            foreach (Certification certification in userCV.certifications.Where(x => !x.disabled))
             {
-                if (!string.IsNullOrEmpty(certification.name.no))
-                    await CreateOrUpdateCourse(certification.name.no.Trim(), employeeLastName);
+                _logger.LogError("User '{username}' has no CV summary with title 'Standard'. CV summary not uploaded.", user.name);
             }
+            else
+            {
+                await CreateOrUpdateCVSummary(user, qualification);
+                //PROCESS CV SKILLS 
+                //foreach (KeyPoint keypoint in qualification.key_points)
+                //{
+                //    if (!string.IsNullOrEmpty(keypoint?.name?.no))
+                //        await CreateOrUpdateSkill(keypoint.name.no.Trim(), employeeLastName);
+                //}
+            }
+            //PROCESS CV CERTIFICATIONS
+            //foreach (Certification certification in userCV.certifications.Where(x => !x.disabled))
+            //{
+            //    if (!string.IsNullOrEmpty(certification.name.no))
+            //        await CreateOrUpdateCourse(certification.name.no.Trim(), employeeLastName);
+            //}
 
             //PROCESS CV COURSES
-            foreach (Course course in userCV.courses.Where(x => !x.disabled))
-            {
-                if (!string.IsNullOrEmpty(course.name.no))
-                    await CreateOrUpdateCourse(course.name.no.Trim(), employeeLastName);
-            }
+            //foreach (Course course in userCV.courses.Where(x => !x.disabled))
+            //{
+            //    if (!string.IsNullOrEmpty(course.name.no))
+            //        await CreateOrUpdateCourse(course.name.no.Trim(), employeeLastName);
+            //}
 
             //PROCESS CV PROJECTS
-            foreach (Project project in userCV.project_experiences.Where(x => !x.disabled))
-            {
-                if (!string.IsNullOrEmpty(project.customer?.no) && project.customer?.no?.ToLower() != "alv as")
-                    await CreateOrUpdateProject(user.name, project);
-            }
+            //var selectedProjects = userCV.project_experiences
+            //    .Where(x => IsValidProject(x))
+            //    .OrderByDescending(x => {
+
+            //        string month = string.IsNullOrEmpty(x.month_from) 
+            //        ? "01" 
+            //        : (x.month_from.Length < 2 ? $"0{x.month_from}" : x.month_from);
+
+            //        return DateTime.ParseExact($"01/{month}/{x.year_from}", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //    })
+            //    .OrderBy(x => !x.starred)
+            //    .Take(5);
+
+            //foreach (Project project in selectedProjects)
+            //{
+            //    await CreateOrUpdateProject(user.name, project);
+            //}
 
             //PROCESS CV SKILLS 
             foreach (Technology technology in userCV.technologies)
@@ -94,7 +116,11 @@ namespace INT01_Flowcase_UserProfile.Handlers
                 foreach (TechnologySkill skill in technology.technology_skills)
                 {
                     if (!string.IsNullOrEmpty(skill.tags?.no))
-                        await CreateOrUpdateSkill(skill.tags.no.Trim(), employeeLastName);
+                    {
+                        string skillId = await CreateSkillIfNotExists(skill.tags.no.Trim());
+                        _logger.LogInformation("Attaching skill '{skillName}' to employee '{employeeName}'.", skill.tags.no.Trim(), userCV.name);
+                        await CreateOrUpdateEmployeeSkill(userCV.name, skillId, skill.total_duration_in_years);
+                    }
                 }
             }
         }
@@ -122,26 +148,44 @@ namespace INT01_Flowcase_UserProfile.Handlers
             }
         }
 
-        private async Task CreateOrUpdateSkill(string skillTitle, string employee)
+        private async Task<string> CreateSkillIfNotExists(string skillName)
         {
-            SkillEntity? existingSkill = _storageClient.GetSkillByTitle(skillTitle);
-
-            if (existingSkill is not null)
+            SkillEntity? existingSkill = _storageClient.GetSkillByName(skillName);
+            
+            if (existingSkill is null)
             {
-                if (!existingSkill.Employees.Split(",").Contains(employee))
-                {
-                    _logger.LogInformation("Updating skill '{skillTitle}' for employee '{employeeLastname}'.", existingSkill.Title, employee);
+                string skillId = Guid.NewGuid().ToString();
+                _logger.LogInformation("Registering new skill '{skillName}'.", skillName);
+                SkillEntity newSkill = new SkillEntity { RowKey = skillId, Slug = skillId, Name = skillName };
+                await _storageClient.CreateSkill(newSkill);
+                return skillId;
+            }
+            
+            return existingSkill.RowKey;
+        }
 
-                    existingSkill.Employees += $",{employee}";
-                    existingSkill.Edited = DateTime.UtcNow;
-                    await _storageClient.CreateOrUpdateSkill(existingSkill);
-                }
+        private async Task CreateOrUpdateEmployeeSkill(string employeeName, string skillId, int yearsExperience)
+        {
+            EmployeeSkillEntity? existingEmployeeSkill = _storageClient.GetEmployeeSkillById(skillId);
+            if (existingEmployeeSkill is not null)
+            {
+                existingEmployeeSkill.YearsExperience = yearsExperience;
+                existingEmployeeSkill.Edited = DateTime.UtcNow;
+                await _storageClient.CreateOrUpdateEmployeeSkill(existingEmployeeSkill);
             }
             else
             {
-                _logger.LogInformation("Registering new course '{courseTitle}' for employee '{userLastname}'.", skillTitle, employee);
-                SkillEntity newSkill = skillTitle.MapToSkillEntity(employee);
-                await _storageClient.CreateOrUpdateSkill(newSkill);
+                string id = Guid.NewGuid().ToString();
+                EmployeeSkillEntity newEmployeeSkill = new EmployeeSkillEntity
+                {
+                    RowKey = id,
+                    Slug = id,
+                    EmployeeName = employeeName,
+                    SkillId = skillId,
+                    YearsExperience = yearsExperience
+                };
+
+                await _storageClient.CreateOrUpdateEmployeeSkill(newEmployeeSkill);
             }
         }
 
@@ -188,5 +232,11 @@ namespace INT01_Flowcase_UserProfile.Handlers
             || newEntity.Etternavn != existingEntity.Etternavn
             || newEntity.Epost != existingEntity.Epost
             || newEntity.Telefonnummer != existingEntity.Telefonnummer;
+
+        private bool IsValidProject(Project project) =>
+            !project.disabled
+            && !string.IsNullOrEmpty(project.year_from)
+            && !string.IsNullOrEmpty(project.customer?.no)
+            && project.customer?.no?.ToLower() != "alv as";
     }
 }

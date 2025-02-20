@@ -17,6 +17,7 @@ namespace INT01_Flowcase_UserProfile.Clients
         private readonly TableClient _coursesTable;
         private readonly TableClient _projectsTable;
         private readonly TableClient _skillsTable;
+        private readonly TableClient _employeeSkillsTable;
         private readonly ILogger<StorageClient> _logger;
 
         public StorageClient
@@ -35,6 +36,7 @@ namespace INT01_Flowcase_UserProfile.Clients
             _coursesTable = tableFactory.CreateClient("courses-table");
             _projectsTable = tableFactory.CreateClient("projects-table");
             _skillsTable = tableFactory.CreateClient("skills-table");
+            _employeeSkillsTable = tableFactory.CreateClient("employeeskills-table");
         }
 
         public async Task UploadPDFToBlob(string filename, byte[] content)
@@ -106,16 +108,28 @@ namespace INT01_Flowcase_UserProfile.Clients
             await _projectsTable.UpsertEntityAsync(entity);
         }
 
-        public SkillEntity? GetSkillByTitle(string title)
+        public SkillEntity? GetSkillByName(string name)
         {
             return _skillsTable
-                .Query<SkillEntity>(x => x.Title.Equals(title, StringComparison.OrdinalIgnoreCase))
+                .Query<SkillEntity>(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
                 .FirstOrDefault();
         }
 
-        public async Task CreateOrUpdateSkill(SkillEntity entity)
+        public async Task CreateSkill(SkillEntity entity)
         {
             await _skillsTable.UpsertEntityAsync(entity);
+        }
+
+        public EmployeeSkillEntity? GetEmployeeSkillById(string skillId)
+        {
+            return _employeeSkillsTable
+                .Query<EmployeeSkillEntity>(x => x.SkillId.Equals(skillId, StringComparison.OrdinalIgnoreCase))
+                .FirstOrDefault();
+        }
+
+        public async Task CreateOrUpdateEmployeeSkill(EmployeeSkillEntity entity)
+        {
+            await _employeeSkillsTable.UpsertEntityAsync(entity);
         }
     }
 }

@@ -35,6 +35,7 @@ namespace INT01_Flowcase_UserProfile.Functions
 
                     foreach (User user in getUsers)
                     {
+                        _logger.LogInformation("Processing user '{username}'.", user.name);
                         await _handler.UpdateUserInformation(user);
                     }
 

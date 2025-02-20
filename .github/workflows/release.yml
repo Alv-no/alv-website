@@ -1,0 +1,80 @@
+name: 'Release'
+on:
+  workflow_call:
+    inputs:
+      applicationName:
+        type: string
+        required: true
+      defaultResourceLocation:
+        type: string
+        required: true
+      environment:
+        type: string  
+        required: true
+
+env:
+  resourceGroupName: 'rg-${{ inputs.applicationName }}'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: 'Create Resource Group'
+        run: az group create --name ${{env.resourceGroupName}} --location ${{inputs.defaultResourceLocation}}
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+        
+      - name: Terraform Init
+        run: terraform init 
+        working-directory: ./terraform
+
+      - name: Terraform Plan
+        run: | 
+          terraform plan \
+          -var-file="parameters/terraform.${{ inputs.environment }}.tfvars" \
+          -var="resource_group_name=${{env.resourceGroupName}}" \
+          -var="resource_location=${{inputs.defaultResourceLocation}}" \
+          -var="application_code=${{inputs.applicationCode}}" \
+          -input=false
+        working-directory: ./terraform
+
+      - name: Terraform Apply
+        run: |
+          terraform apply \
+          -var-file="parameters/terraform.${{ inputs.environment }}.tfvars" \
+          -var="resource_group_name=${{env.resourceGroupName}}" \
+          -var="resource_location=${{inputs.defaultResourceLocation}}" \
+          -var="application_code=${{inputs.applicationCode}}" \
+          -auto-approve -input=false
+          working-directory: ./terraform
+
+      #- name: Export Terraform Output
+      #  id: tf
+      #  run: echo "AZURE_FUNCTIONAPP_NAME=$(terraform output -raw function_app_name)" >> $GITHUB_OUTPUT
+      #  working-directory: ./Deployment/Terraform
+
+      #- name: Download function app artifact
+      #  uses: actions/download-artifact@v4
+      #  with:
+      #    name: functionapp-zip
+      #    path: ./ 
+
+      #- name: Get Output
+      #  run: echo "App Name ${{ steps.tf.outputs.FUNCTION_APP_NAME }}"
+
+      #- name: 'Run Azure Functions Action'
+      #  uses: Azure/functions-action@v1
+      #  with:
+      #    app-name: 'func-int001-oq3urrq' #${{ steps.tf.outputs.AZURE_FUNCTIONAPP_NAME }}
+      #    package: './publish'

@@ -16,6 +16,12 @@
         public FlowcaseField? label { get; init; }
         public FlowcaseField? long_description { get; init; }
         public bool disabled { get; init; }
+        public List<KeyPoint> key_points { get; init; } = new List<KeyPoint>();
+    }
+
+    public record KeyPoint
+    {
+        public FlowcaseField? name { get; init; }
     }
 
     public record Certification
@@ -43,7 +49,9 @@
         public List<ProjectRole> roles { get; init; } = new List<ProjectRole>();
         public List<ProjectSkill> project_experience_skills { get; init; } = new List<ProjectSkill>();
         public bool disabled { get; init; }
+        public bool starred { get; init; }
     }
+
 
     public record ProjectRole
     {
@@ -63,6 +71,8 @@
     public record TechnologySkill
     {
         public FlowcaseField? tags { get; init; }
+        public int total_duration_in_years { get; init; }
+
     }
 
     public record FlowcaseField

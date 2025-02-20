@@ -23,7 +23,7 @@ namespace INT01_Flowcase_UserProfile.Functions
             _handler = handler;
         }
 
-        [Function(nameof(INT01_Download_CV))]
+        //[Function(nameof(INT01_Download_CV))]
         public async Task Run([TimerTrigger("%TimerTrigger%")] TimerInfo myTimer)
         {
             using (_logger.BeginScope("{INTId}", "INT01"))
